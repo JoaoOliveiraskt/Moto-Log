@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: 'i.imgur.com',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cloudflare-ipfs.com',
+        pathname: '**',
+      }
     ],
   },
 };

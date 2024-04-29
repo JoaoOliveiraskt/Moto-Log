@@ -18,7 +18,7 @@ export const fetchProductCategory = async () => {
 export const fetchAllProducts = async () => {
   try {
     const response = await fetch(`${apiUrl}/products`);
-
+    
     if (!response.ok) {
       throw new Error("Erro ao obter produtos");
     }

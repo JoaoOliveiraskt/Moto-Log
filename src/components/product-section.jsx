@@ -13,7 +13,7 @@ export default function ProductSection() {
             <IoIosArrowRoundForward />
           </Link>
         </div>
-        <ProductList startIndex={25} endIndex={30} />
+        <ProductList startIndex={0} endIndex={5} />
       </div>
 
       <div>
@@ -24,7 +24,7 @@ export default function ProductSection() {
             <IoIosArrowRoundForward />
           </Link>
         </div>
-        <ProductList startIndex={31} endIndex={36} />
+        <ProductList startIndex={10} endIndex={15} />
       </div>
 
       <div>
@@ -35,7 +35,7 @@ export default function ProductSection() {
             <IoIosArrowRoundForward />
           </Link>
         </div>
-        <ProductList startIndex={37} endIndex={42} />
+        <ProductList startIndex={20} endIndex={25} />
       </div>
 
       <div>
@@ -46,7 +46,7 @@ export default function ProductSection() {
             <IoIosArrowRoundForward />
           </Link>
         </div>
-        <ProductList startIndex={10} endIndex={15} />
+        <ProductList startIndex={30} endIndex={35} />
       </div>
     </div>
   );
