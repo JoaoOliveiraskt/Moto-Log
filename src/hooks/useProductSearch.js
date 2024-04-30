@@ -8,19 +8,17 @@ function useProductSearch(startIndex, endIndex) {
     async function fetchProducts() {
       try {
         const productsData = await fetchAllProducts();
-        console.log(productsData);
+
         const formatProductDataUrl = productsData.map((product) => ({
           ...product,
-          // Se as URLs estiverem em um formato incorreto, corrija-as aqui
           images: product.images.map((image) => {
             if (
               image.startsWith("http://") ||
               image.startsWith("https://") ||
               image.startsWith("/")
             ) {
-              return image; // Mantém a URL da imagem inalterada
+              return image;
             } else {
-              // Adiciona uma barra "/" antes da URL da imagem
               return "/" + image;
             }
           }),
