@@ -11,6 +11,9 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'cloudflare-ipfs.com',
         pathname: '**',
+      },
+      {
+        hostname: 'fakestoreapi.com'
       }
     ],
   },

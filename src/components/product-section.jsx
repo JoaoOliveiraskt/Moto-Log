@@ -37,17 +37,6 @@ export default function ProductSection() {
         </div>
         <ProductList startIndex={20} endIndex={25} />
       </div>
-
-      <div>
-        <div className="flex justify-between items-center">
-          <h2 className="font-bold text-xl my-4">Em promoção</h2>
-          <Link href="#" className="flex items-center gap-1 text-blue-700">
-            <span className=" font-medium">Ver todos</span>
-            <IoIosArrowRoundForward />
-          </Link>
-        </div>
-        <ProductList startIndex={30} endIndex={35} />
-      </div>
     </div>
   );
 }
