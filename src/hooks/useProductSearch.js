@@ -8,15 +8,23 @@ function useProductSearch(startIndex, endIndex) {
     async function fetchProducts() {
       try {
         const productsData = await fetchAllProducts();
-
-        const formatProductDataUrl = productsData.map(product => ({
+        console.log(productsData);
+        const formatProductDataUrl = productsData.map((product) => ({
           ...product,
           // Se as URLs estiverem em um formato incorreto, corrija-as aqui
-          images: product.images.map(image => image.replace(/[\[\]]+/g, '')),
-          
+          images: product.images.map((image) => {
+            if (
+              image.startsWith("http://") ||
+              image.startsWith("https://") ||
+              image.startsWith("/")
+            ) {
+              return image; // Mantém a URL da imagem inalterada
+            } else {
+              // Adiciona uma barra "/" antes da URL da imagem
+              return "/" + image;
+            }
+          }),
         }));
-
-        console.log(formatProductDataUrl)
         setProducts(formatProductDataUrl.slice(startIndex, endIndex));
       } catch (error) {
         console.error("Erro ao buscar produtos:", error);
