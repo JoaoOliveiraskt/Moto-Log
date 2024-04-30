@@ -4,9 +4,9 @@ import useCategorySearch from "@/hooks/useCategorySearch";
 import Image from "next/image";
 
 const descriptions = {
-  Clothes: "Moda para todas as ocasiões.",
+  Ropa: "Moda para todas as ocasiões.",
   Electronics: "Tecnologia que simplifica sua vida.",
-  Furniture: "Conforto e estilo para o seu lar.",
+  "Change title": "Conforto e estilo para o seu lar.",
   Shoes: "Estilo e conforto para os seus pés.",
   Miscellaneous: "Descubra produtos únicos e surpreendentes.",
 };
@@ -26,7 +26,7 @@ export default function HeroCards() {
               <div className="flex items-start lg:items-center">
                 <a href="#" title="" className="shrink-0">
                   <Image
-                    className="lg:h-24 w-14 h-14 lg:w-24 rounded-xl object-cvoer"
+                    className="lg:h-24 w-14 h-14 lg:w-24 rounded-xl object-cover"
                     src={category.image}
                     alt={category.name}
                     width={100}
@@ -37,8 +37,8 @@ export default function HeroCards() {
                 <div className="flex-1 ml-4 lg:ml-6">
                   <p className="text-xs font-bold text-zinc-900 lg:text-sm">
                     <a href="#" title="" className="">
-                      {" "}
-                      {category.name}{" "}
+                      
+                      {category.name}
                     </a>
                   </p>
 

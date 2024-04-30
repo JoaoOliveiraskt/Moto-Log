@@ -10,6 +10,7 @@ export default function useCategorySearch() {
     async function fetchCategories() {
       try {
         const categoriesData = await fetchProductCategory();
+        console.log(categoriesData)
         setCategories(categoriesData.slice(0, 5));
       } catch (error) {
         console.error("Erro ao buscar categorias de produtos:", error);
