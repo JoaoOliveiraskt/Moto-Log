@@ -3,18 +3,17 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'i.imgur.com',
-        pathname: '**',
+        hostname: "i.imgur.com",
       },
       {
-        protocol: 'https',
-        hostname: 'cloudflare-ipfs.com',
-        pathname: '**',
+        hostname: "cloudflare-ipfs.com",
       },
       {
-        hostname: 'fakestoreapi.com'
-      }
+        hostname: "fakestoreapi.com",
+      },
+      {
+        hostname: "images.pexels.com",
+      },
     ],
   },
 };
