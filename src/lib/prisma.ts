@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '../../prisma/generated/client';
 
 declare global {
   var cachedPrisma: PrismaClient;
