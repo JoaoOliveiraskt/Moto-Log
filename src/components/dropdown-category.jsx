@@ -1,4 +1,3 @@
-"use client";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,10 +5,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import useCategorySearch from "@/hooks/useCategorySearch";
+import { db } from "@/lib/prisma";
 
-export default function DropdownCategory() {
-  const categories = useCategorySearch();
+export default async function DropdownCategory() {
+  const categories = await db.categoria.findMany({});
 
   return (
     <DropdownMenu>
@@ -23,7 +22,9 @@ export default function DropdownCategory() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         {categories.map((category) => (
-          <DropdownMenuItem key={category.id}>{category.name}</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer" key={category.id}>
+            {category.nome}
+          </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>

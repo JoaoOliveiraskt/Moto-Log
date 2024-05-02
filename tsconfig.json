@@ -119,7 +119,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/lib/prisma.js", "src/hooks/fetch-categories.js", "src/app/api/index.js"  ],
   "exclude": [
     "node_modules"
   ]

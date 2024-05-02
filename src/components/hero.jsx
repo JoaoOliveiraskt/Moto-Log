@@ -1,14 +1,17 @@
 import React from "react";
-import HeroCards from "./hero-categories";
+import HeroCards from "./category-list";
+import Image from "next/image";
 export default function Section() {
   return (
     <>
-      <section className="relative py-12 bg-white sm:py-16 lg:py-20">
+      <section className="relative py-20 md:py-12 bg-white ">
         <div className="absolute inset-0">
-          <img
-            className="object-cover w-full h-full"
+          <Image
             src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/5/grid-pattern.png"
-            alt=""
+            alt="Logo Moto Log"
+            width={0}
+            height={0}
+            className="object-cover w-full h-full"
           />
         </div>
 
@@ -29,13 +32,13 @@ export default function Section() {
               className="max-w-md mx-auto mt-8 space-y-4 sm:space-x-4 sm:flex sm:space-y-0 sm:items-end"
             >
               <div className="flex-1">
-                <label for="" className="sr-only">
+                <label htmlFor="" className="sr-only">
                   {" "}
                   Buscar{" "}
                 </label>
                 <div>
                   <input
-                    type="email"
+                    type="text"
                     name=""
                     id=""
                     className="block w-full px-4 py-3 sm:py-3.5 text-base font-medium text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg sm:text-sm focus:ring-gray-900 focus:border-gray-900"
@@ -64,11 +67,11 @@ export default function Section() {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  stroke-width="2"
+                  strokeWidth="2"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
@@ -85,11 +88,11 @@ export default function Section() {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  stroke-width="2"
+                  strokeWidth="2"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M5 13l4 4L19 7"
                   />
                 </svg>

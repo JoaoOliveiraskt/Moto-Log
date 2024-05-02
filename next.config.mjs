@@ -14,6 +14,9 @@ const nextConfig = {
       {
         hostname: "images.pexels.com",
       },
+      {
+        hostname: "landingfoliocom.imgix.net",
+      },
     ],
   },
 };

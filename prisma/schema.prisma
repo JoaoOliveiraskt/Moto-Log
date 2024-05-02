@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -17,16 +11,16 @@ model Loja {
   id         String      @id @default(uuid())
   nome       String
   imagemUrl  String
-  categorias Categoria[]
   Produtos   Produto[]
+  categorias Categoria[] @relation("CategoriaToLoja")
 }
 
 model Categoria {
   id       String    @id @default(uuid())
   nome     String
   imageUrl String
-  lojas    Loja[]
   produtos Produto[]
+  lojas    Loja[]    @relation("CategoriaToLoja")
 }
 
 model Produto {
@@ -36,8 +30,8 @@ model Produto {
   imagemUrl           String
   preco               Decimal   @db.Decimal(10, 2)
   porcentagemDesconto Decimal   @db.Decimal(10, 2)
-  lojaId              String
+  lojaId              String    
   loja                Loja      @relation(fields: [lojaId], references: [id])
-  categoriaId         String
+  categoriaId         String    
   categoria           Categoria @relation(fields: [categoriaId], references: [id])
 }
