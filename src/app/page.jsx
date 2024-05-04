@@ -3,7 +3,7 @@ import ProductSection from "@/components/product-section";
 
 export default function Home() {
   return (
-    <main className="flex flex-col">
+    <main>
       <Hero />
       <ProductSection/>
     </main>
