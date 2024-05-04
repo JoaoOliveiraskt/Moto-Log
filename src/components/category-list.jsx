@@ -13,7 +13,7 @@ const descriptions = {
 export default async function CategoryList() {
   const categories = await FetchCategory();
   return (
-<div className="flex md:flex-wrap md:items-center md:justify-center w-full gap-4 py-8 sm:py-4 sm:overflow-x-auto lg:mt-20 snap-x px-4">
+<div className="flex flex-wrap items-center justify-center w-full gap-4 py-2 mt-6 sm:py-4 lg:mt-20 snap-x">
     {categories.map((category) => (
       <CategoryItem key={category.id} category={category} />
     ))}
