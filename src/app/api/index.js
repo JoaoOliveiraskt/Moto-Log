@@ -1,15 +1,11 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const storeRoutes = require("./store");
-const categoryRoutes = require("./category");
-const productRoutes = require("./product");
+import express from "express";
+import bodyParser from "body-parser";
+import productRoutes from "./product.js";
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 app.use(bodyParser.json());
-app.use("/api/stores", storeRoutes);
-app.use("/api/categories", categoryRoutes);
 app.use("/api/products", productRoutes);
 
 app.listen(PORT, () => {
