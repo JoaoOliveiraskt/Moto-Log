@@ -4,7 +4,7 @@ import DiscountBadge from "./discount-badge";
 import calculateTotalPrice from "@/app/helpers/price";
 import formatCurrency from "@/app/helpers/format-currency";
 import { Prisma } from "prisma/generated/client";
-
+import AddToCartButton from "./add-to-cart";
 interface ProductInfoProps {
   product: Prisma.ProdutoGetPayload<{}>;
 }
@@ -123,18 +123,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         </li>
       </ul>
 
-      <div className="flex gap-4 w-full">
-        <Button className="font-bold tracking-wide px-12" size="xl">
-          Adicionar ao carrinho
-        </Button>
-        <Button
-          className="flex gap-2 border-2 hover:border-zinc-900"
-          size="xl"
-          variant="outline"
-        >
-          <FaRegHeart size={20} />
-        </Button>
-      </div>
+      <AddToCartButton />
 
       <ul className="flex flex-col justify-between gap-4 text-gray-600">
         <li className="flex items-center">
