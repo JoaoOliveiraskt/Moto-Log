@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Section() {
   return (
     <>
-      <section className="relative py-20 md:py-12 bg-white ">
+      <section className="relative pt-6 md:py-16 bg-white">
         <div className="absolute inset-0">
           <Image
             src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/5/grid-pattern.png"
