@@ -14,7 +14,7 @@ export default function Header() {
       <div className="mx-auto max-w-screen-xl">
         <div className="flex h-16 items-center justify-between">
           <div className="md:flex md:items-center md:gap-12">
-            <Link className="font-black text-4xl" href="#">
+            <Link className="font-black text-4xl" href="/">
               <Image
                 src={Logo}
                 alt="Logo"
