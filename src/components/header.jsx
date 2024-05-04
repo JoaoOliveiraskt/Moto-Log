@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { Button } from "./ui/button";
+
 import Image from "next/image";
 import Logo from "../../public/images/moto-log-logo.png";
 
 import DropdownCategory from "./dropdown-category";
 import DropdownStore from "./dropdown-store";
+import { Button } from "./ui/button";
 
 export default function Header() {
   return (
