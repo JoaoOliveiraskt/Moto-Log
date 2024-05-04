@@ -5,24 +5,21 @@ import ProductBanner from "../components/product-banner";
 import ProductInfo from "../components/product-info";
 import GoBackButton from "../components/go-back-button";
 
-
 interface ProductPageProps {
   params: {
     id: string;
-  };
-  include: {
-    loja: true;
   };
 }
 
 const ProductDetail: React.FC<ProductPageProps> = async ({
   params: { id },
 }) => {
-
-
   const produto = await db.produto.findUnique({
     where: {
       id,
+    },
+    include: {
+      loja: true,
     },
   });
 
@@ -39,7 +36,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
         <div className="flex flex-col w-full gap-6 lg:flex-row">
           <ProductBanner images={images} produto={produto} />
 
-          <ProductInfo product={produto}/>
+          <ProductInfo product={produto} />
         </div>
       </div>
     </div>
