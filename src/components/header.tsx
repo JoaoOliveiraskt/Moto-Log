@@ -6,7 +6,7 @@ import Logo from "../../public/images/moto-log-logo.png";
 
 import DropdownCategory from "./dropdown-category";
 import DropdownStore from "./dropdown-store";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 
 export default function Header() {
   return (
