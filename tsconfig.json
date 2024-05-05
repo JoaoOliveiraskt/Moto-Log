@@ -119,7 +119,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/lib/prisma.js", "src/hooks/fetch-categories.js", "src/app/api/index.js", "src/app/product/[id]/page.tsx", "src/components/ui/button.jsx", "src/app/layout.js", "src/components/product-list.jsx", "src/components/header.jsx", "src/app/page.jsx", "src/app/product/components/product-info.tsx", "src/app/product/components/product-banner.tsx"  ],
+, "src/lib/prisma.js", "src/hooks/fetch-categories.ts", "src/app/api/index.js", "src/app/product/[id]/page.tsx", "src/components/ui/button-teste.jsx", "src/app/layout.tsx", "src/components/product-list.tsx", "src/components/header.tsx", "src/app/page.tsx", "src/app/product/components/product-info.tsx", "src/app/product/components/product-banner.tsx", "src/components/product-card.tsx", "src/hooks/fetch-product-id.ts"  ],
   "exclude": [
     "node_modules"
   ]

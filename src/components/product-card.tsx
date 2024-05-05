@@ -2,8 +2,28 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Decimal } from "prisma/generated/client/runtime/library";
 
-const ProductCard = ({ product }) => {
+interface ProductProps {
+  product: {
+    id: string;
+    nome: string;
+    imagemUrl: string;
+    preco: Decimal;
+    loja: {
+      nome: string;
+    };
+  };
+}
+
+const ProductCard = ({ product }: ProductProps) => {
+  const formatPrice = (price: Decimal) => {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(Number(price));
+  };
+
   return (
     <Link href={`/product/${product.id}`}>
       <div className="hover:shadow-lg cursor-pointer rounded-lg overflow-hidden">
@@ -20,7 +40,7 @@ const ProductCard = ({ product }) => {
             <h2 className="font-medium line-clamp-1">{product.nome}</h2>
           </div>
           <div>
-            <p className="font-bold">R$ {product.preco},00</p>
+            <p className="font-bold">{formatPrice(product.preco)}</p>
           </div>
           <div>
             <p className="">{product.loja.nome}</p>

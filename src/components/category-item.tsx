@@ -1,6 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-const descriptions = {
+interface Category {
+  id: string;
+  nome: string;
+  imageUrl: string;
+}
+
+interface Descriptions {
+  [key: string]: string;
+}
+
+const descriptions: Descriptions = {
   Roupas: "Estilo para todas as ocasiões.",
   Calçados: "Conforto e moda para os seus pés.",
   Eletrônicos: "Inovação que simplifica sua vida.",
@@ -9,7 +19,11 @@ const descriptions = {
   Livros: "Inspiração e conhecimento para sua mente.",
 };
 
-export default function CategoryItem({ category }) {
+interface CategoryProps {
+  category: Category;
+}
+
+export default function CategoryItem({ category }: CategoryProps) {
   return (
     <Link href="#" className="relative snap-center scroll-ml-6 shrink-0">
       <div className="overflow-hidden w-[300px] lg:w-[420px] transition-all duration-200 transform bg-white border border-gray-200 rounded-2xl hover:shadow-lg hover:-translate-y-1">
@@ -31,7 +45,7 @@ export default function CategoryItem({ category }) {
               </p>
 
               <p className="mt-2 text-sm font-semibold text-zinc-500 group-hover:text-zinc-600">
-               {descriptions[category.nome]}
+                {descriptions[category.nome]}
               </p>
             </div>
           </div>
