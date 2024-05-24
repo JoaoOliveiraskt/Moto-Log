@@ -31,12 +31,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.13.0
- * Query Engine version: b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
+ * Prisma Client JS version: 5.14.0
+ * Query Engine version: e9771e62de70f79a5e1c604a2d7c8e2a0a874b48
  */
 Prisma.prismaVersion = {
-  client: "5.13.0",
-  engine: "b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b"
+  client: "5.14.0",
+  engine: "e9771e62de70f79a5e1c604a2d7c8e2a0a874b48"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -137,7 +137,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\joao\\Documents\\Github\\moto-log\\prisma\\generated\\client",
+      "value": "C:\\Users\\joao\\github\\Moto-Log\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -158,13 +158,13 @@ const config = {
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
-  "clientVersion": "5.13.0",
-  "engineVersion": "b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b",
+  "clientVersion": "5.14.0",
+  "engineVersion": "e9771e62de70f79a5e1c604a2d7c8e2a0a874b48",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -173,8 +173,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Loja {\n  id         String      @id @default(uuid())\n  nome       String\n  imagemUrl  String\n  Produtos   Produto[]\n  categorias Categoria[] @relation(\"CategoriaToLoja\")\n}\n\nmodel Categoria {\n  id       String    @id @default(uuid())\n  nome     String\n  imageUrl String\n  produtos Produto[]\n  lojas    Loja[]    @relation(\"CategoriaToLoja\")\n}\n\nmodel Produto {\n  id                  String    @id @default(uuid())\n  nome                String\n  descricao           String\n  imagemUrl           String\n  preco               Decimal   @db.Decimal(10, 2)\n  porcentagemDesconto Decimal   @db.Decimal(10, 2)\n  lojaId              String    \n  loja                Loja      @relation(fields: [lojaId], references: [id])\n  categoriaId         String    \n  categoria           Categoria @relation(fields: [categoriaId], references: [id])\n}\n",
-  "inlineSchemaHash": "eaa660ae304e91966d6ee6350bf63cc986f5fe5a1964aa87b465fe49ef2bb313",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Loja {\n  id         String      @id @default(uuid())\n  nome       String\n  imagemUrl  String\n  Produtos   Produto[]\n  categorias Categoria[] @relation(\"CategoriaToLoja\")\n}\n\nmodel Categoria {\n  id       String    @id @default(uuid())\n  nome     String\n  imageUrl String\n  produtos Produto[]\n  lojas    Loja[]    @relation(\"CategoriaToLoja\")\n}\n\nmodel Produto {\n  id                  String    @id @default(uuid())\n  nome                String\n  descricao           String\n  imagemUrl           String\n  preco               Decimal   @db.Decimal(10, 2)\n  porcentagemDesconto Decimal   @db.Decimal(10, 2)\n  lojaId              String\n  loja                Loja      @relation(fields: [lojaId], references: [id])\n  categoriaId         String\n  categoria           Categoria @relation(fields: [categoriaId], references: [id])\n}\n",
+  "inlineSchemaHash": "458562a41000abe24c887da521985e2c7d3e4d05c1267e1f44dafc26dc0c04f4",
   "copyEngine": true
 }
 config.dirname = '/'
