@@ -10,7 +10,12 @@ import calculateTotalPrice from "@/app/helpers/price";
 import formatCurrency from "@/app/helpers/format-currency";
 import { Prisma } from "prisma/generated/client";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import Cart from "@/components/cart";
 interface ProductInfoProps {
   product: Prisma.ProdutoGetPayload<{}>;
@@ -212,8 +217,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       </div>
 
       <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
-        
-        <SheetContent className="">
+        <SheetContent className="w-[90vw]">
           <SheetHeader>
             <SheetTitle className="">Seu carrinho</SheetTitle>
           </SheetHeader>

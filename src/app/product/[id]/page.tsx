@@ -4,8 +4,6 @@ import { notFound } from "next/navigation";
 import ProductBanner from "../components/product-banner";
 import ProductInfo from "../components/product-info";
 import GoBackButton from "../components/go-back-button";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
-import Cart from "@/components/cart";
 
 interface ProductPageProps {
   params: {
