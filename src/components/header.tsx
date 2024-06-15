@@ -7,6 +7,7 @@ import Logo from "../../public/images/moto-log-logo.png";
 import DropdownCategory from "./dropdown-category";
 import DropdownStore from "./dropdown-store";
 import { Button } from "@/components/ui/button";
+import CartButton from "./ui/cart-button";
 
 export default function Header() {
   return (
@@ -70,19 +71,21 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="sm:flex sm:gap-4">
+            <div className="flex gap-4">
               <Link className="text-sm font-medium text-white" href="#">
                 <Button className="shadow-md">Login</Button>
               </Link>
 
               <div className="hidden sm:flex">
                 <Link
-                  className="rounded-md bg-gray-100 text-sm font-medium shadow-md"
+                  className="rounded-md bg-gray-100 text-sm font-medium shadow-sm"
                   href="#"
                 >
                   <Button variant="outline">Registrar</Button>
                 </Link>
               </div>
+
+              <CartButton />
             </div>
 
             <div className="block md:hidden">
