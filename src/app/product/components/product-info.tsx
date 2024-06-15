@@ -26,7 +26,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const handleAddToCart = () => {
-    addProductToCart(product);
+    addProductToCart(product, 1);
     setIsCartOpen(true);
   };
 
