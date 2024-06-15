@@ -17,6 +17,9 @@ const nextConfig = {
       {
         hostname: "landingfoliocom.imgix.net",
       },
+      {
+        hostname: "lh3.googleusercontent.com",
+      },
     ],
   },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],

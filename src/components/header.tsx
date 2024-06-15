@@ -9,6 +9,15 @@ import DropdownStore from "./dropdown-store";
 import { Button } from "@/components/ui/button";
 import CartButton from "./ui/cart-button";
 
+import LoginButton, { MenuButton } from "./ui/login-button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
+
 export default function Header() {
   return (
     <header className="bg-white px-4">
@@ -72,40 +81,25 @@ export default function Header() {
 
           <div className="flex items-center gap-4">
             <div className="flex gap-4">
-              <Link className="text-sm font-medium text-white" href="#">
-                <Button className="shadow-md">Login</Button>
-              </Link>
-
-              <div className="hidden sm:flex">
-                <Link
-                  className="rounded-md bg-gray-100 text-sm font-medium shadow-sm"
-                  href="#"
-                >
-                  <Button variant="outline">Registrar</Button>
-                </Link>
-              </div>
-
               <CartButton />
             </div>
 
-            <div className="block md:hidden">
-              <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
-            </div>
+            <Sheet>
+              <SheetTrigger>
+                <MenuButton />
+              </SheetTrigger>
+
+              <SheetContent>
+                <SheetHeader>
+                  <SheetTitle className="text-left">Menu</SheetTitle>
+                </SheetHeader>
+
+                <div className="flex justify-between">
+                  <MenuButton />
+                  <LoginButton />
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>
