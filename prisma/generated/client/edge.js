@@ -137,7 +137,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\joao\\github\\Moto-Log\\prisma\\generated\\client",
+      "value": "/home/joao/Documentos/github/Moto-Log/prisma/generated/client",
       "fromEnvVar": null
     },
     "config": {
@@ -146,7 +146,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-3.0.x",
         "native": true
       }
     ],

@@ -31,8 +31,8 @@ model Produto {
   imagemUrl           String
   preco               Decimal   @db.Decimal(10, 2)
   porcentagemDesconto Decimal   @db.Decimal(10, 2)
-  lojaId              String    
+  lojaId              String
   loja                Loja      @relation(fields: [lojaId], references: [id])
-  categoriaId         String    
+  categoriaId         String
   categoria           Categoria @relation(fields: [categoriaId], references: [id])
 }
