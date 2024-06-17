@@ -14,6 +14,7 @@ model Loja {
   imagemUrl  String
   Produtos   Produto[]
   categorias Categoria[] @relation("CategoriaToLoja")
+  pedidos    Order[]
 }
 
 model Categoria {
@@ -35,6 +36,32 @@ model Produto {
   loja                Loja      @relation(fields: [lojaId], references: [id])
   categoriaId         String
   categoria           Categoria @relation(fields: [categoriaId], references: [id])
+  pedidos             Order[]
+}
+
+model Order {
+  id            String      @id @default(uuid())
+  user          User        @relation(fields: [userId], references: [id])
+  userId        String
+  createdAt     DateTime    @default(now())
+  products      Produto[]
+  loja          Loja        @relation(fields: [lojaId], references: [id])
+  lojaId        String
+  deliveryFee   Decimal?    @db.Decimal(10, 2)
+  deliveryTime  Int?
+  subTotalPrice Decimal     @db.Decimal(10, 2)
+  totalPrice    Decimal     @db.Decimal(10, 2)
+  totalDiscount Decimal     @db.Decimal(10, 2)
+  status        OrderStatus
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  PREPARING
+  DELIVERING
+  COMPLETED
 }
 
 model Account {
@@ -75,6 +102,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  orders        Order[]
 
   @@map("users")
 }

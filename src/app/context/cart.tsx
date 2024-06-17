@@ -1,10 +1,20 @@
 "use client";
 
+import { Prisma } from "prisma/generated/client";
 import { Produto } from "prisma/generated/client";
 import { ReactNode, createContext, useMemo, useState } from "react";
 import calculateTotalPrice from "../helpers/price";
 
-export interface CartProduct extends Produto {
+export interface CartProduct 
+  extends Prisma.ProdutoGetPayload<{
+  include: {
+    loja: {
+      select: {
+        id: true
+      }
+    }
+  }
+}>{
   quantity: number;
 }
 
