@@ -1,22 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-
 import Image from "next/image";
 import Logo from "../../public/images/moto-log-logo.png";
-
 import DropdownCategory from "./dropdown-category";
 import DropdownStore from "./dropdown-store";
-import { Button } from "@/components/ui/button";
 import CartButton from "./ui/cart-button";
-
-import LoginButton, { MenuButton } from "./ui/login-button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "./ui/sheet";
+import MenuSideBar from "./menu-sidebar";
+import GoogleLoginButton from "./ui/google-signin-button";
 
 export default function Header() {
   return (
@@ -79,27 +69,12 @@ export default function Header() {
             </nav>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="flex gap-4">
+          <div className="flex items-center gap-2">
+            <div className="flex">
               <CartButton />
             </div>
 
-            <Sheet>
-              <SheetTrigger>
-                <MenuButton />
-              </SheetTrigger>
-
-              <SheetContent>
-                <SheetHeader>
-                  <SheetTitle className="text-left">Menu</SheetTitle>
-                </SheetHeader>
-
-                <div className="flex justify-between">
-                  <MenuButton />
-                  <LoginButton />
-                </div>
-              </SheetContent>
-            </Sheet>
+            <MenuSideBar />
           </div>
         </div>
       </div>

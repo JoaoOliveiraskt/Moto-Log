@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { CartProvider } from "./context/cart";
 import AuthProvider from "./providers/auth";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +19,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
       <body className={inter.className}>
+      <Script src="https://accounts.google.com/gsi/client" async defer></Script>
         <AuthProvider>
           <CartProvider>
             <Header />
