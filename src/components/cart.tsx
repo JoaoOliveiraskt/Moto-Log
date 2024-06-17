@@ -7,36 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "./ui/card";
 import formatCurrency from "@/app/helpers/format-currency";
 import { Separator } from "./ui/separator";
-import { CreateOrder } from "@/app/actions/order";
-import { OrderStatus } from "prisma/generated/client";
-import { useSession } from "next-auth/react";
 
 const Cart = () => {
-  const { data } = useSession();
-
   const { products, subTotalPrice, totalPrice, totalDiscount } =
     useContext(CartContext);
-
-  const handleFinishOrderClick = async () => {
-    if (!data?.user) return;
-
-    const loja = products[0].loja;
-
-    await CreateOrder({
-      totalPrice,
-      subTotalPrice,
-      totalDiscount,
-      loja: {
-        connect: { id: loja.id },
-      },
-      status: OrderStatus.CONFIRMED,
-      user: {
-        connect: {
-          id: data.user.id,
-        },
-      },
-    });
-  };
 
   return (
     <div className="flex flex-col h-full py-5 ">
