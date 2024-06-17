@@ -6,7 +6,6 @@ import DropdownCategory from "./dropdown-category";
 import DropdownStore from "./dropdown-store";
 import CartButton from "./ui/cart-button";
 import MenuSideBar from "./menu-sidebar";
-import GoogleLoginButton from "./ui/google-signin-button";
 
 export default function Header() {
   return (

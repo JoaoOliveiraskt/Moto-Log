@@ -14,6 +14,7 @@ model Loja {
   imagemUrl  String
   Produtos   Produto[]
   categorias Categoria[] @relation("CategoriaToLoja")
+  pedidos    Order[]
 }
 
 model Categoria {
@@ -31,41 +32,68 @@ model Produto {
   imagemUrl           String
   preco               Decimal   @db.Decimal(10, 2)
   porcentagemDesconto Decimal   @db.Decimal(10, 2)
-  lojaId              String    
+  lojaId              String
   loja                Loja      @relation(fields: [lojaId], references: [id])
-  categoriaId         String    
+  categoriaId         String
   categoria           Categoria @relation(fields: [categoriaId], references: [id])
+  pedidos             Order[]
 }
+
+model Order {
+  id            String      @id @default(uuid())
+  user          User        @relation(fields: [userId], references: [id])
+  userId        String
+  createdAt     DateTime    @default(now())
+  products      Produto[]
+  restaurant    Loja        @relation(fields: [restaurantId], references: [id])
+  restaurantId  String
+  deliveryFee   Decimal     @db.Decimal(10, 2)
+  deliveryTime  Int
+  subtotalPrice Decimal     @db.Decimal(10, 2)
+  totalPrice    Decimal     @db.Decimal(10, 2)
+  totalDiscount Decimal     @db.Decimal(10, 2)
+  status        OrderStatus
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  PREPARING
+  DELIVERING
+  COMPLETED
+}
+
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String  @map("user_id")
-  type               String
-  provider           String
-  providerAccountId  String  @map("provider_account_id")
-  refresh_token      String? @db.Text
-  access_token       String? @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String? @db.Text
-  session_state      String?
- 
+  id                String  @id @default(cuid())
+  userId            String  @map("user_id")
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   @@unique([provider, providerAccountId])
   @@map("accounts")
 }
- 
+
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique @map("session_token")
   userId       String   @map("user_id")
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   @@map("sessions")
 }
- 
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -74,15 +102,16 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
- 
+  orders        Order[]
+
   @@map("users")
 }
- 
+
 model VerificationToken {
   identifier String
   token      String
   expires    DateTime
- 
+
   @@unique([identifier, token])
   @@map("verificationtokens")
 }
