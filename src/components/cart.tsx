@@ -18,7 +18,7 @@ const Cart = () => {
     <div className="flex flex-col h-full py-5 ">
       {products.length > 0 ? (
         <>
-          <div className="space-y-4 flex-auto">
+          <div className="space-y-4 flex-auto overflow-y-scroll">
             {products.map((product) => (
               <CartItem key={product.id} cartProduct={product} />
             ))}

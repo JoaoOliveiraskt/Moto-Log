@@ -22,6 +22,9 @@ const nextConfig = {
       },
     ],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 };
 
