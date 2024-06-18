@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { IoCartOutline } from "react-icons/io5";
 import Cart from "../cart";
 import {
@@ -10,7 +9,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./sheet";
-import { Button } from "@/components/ui/button";
 
 const CartButton = () => {
   return (

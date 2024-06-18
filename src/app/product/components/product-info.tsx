@@ -17,6 +17,19 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import Cart from "@/components/cart";
+import {
+  AlertDialogHeader,
+  AlertDialogFooter,
+} from "@/components/ui/alert-dialog";
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "@/components/ui/alert-dialog";
 interface ProductInfoProps {
   product: Prisma.ProdutoGetPayload<{}>;
 }
@@ -24,10 +37,27 @@ interface ProductInfoProps {
 export default function ProductInfo({ product }: ProductInfoProps) {
   const { addProductToCart, products } = useContext(CartContext);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
+
+  const addToCart = ({ emptyCart }: { emptyCart?: boolean }) => {
+    addProductToCart({ product, quantity: 1, emptyCart });
+    setIsCartOpen(true);
+  };
 
   const handleAddToCart = () => {
-    addProductToCart(product, 1);
-    setIsCartOpen(true);
+    // Verificar se há algum produto de outra loja no carrinho
+    const hasDifferentStoreProduct = products.some(
+      (cartProduct) => cartProduct.lojaId !== product.lojaId
+    );
+
+    // Se houver, abrir um modal de confirmação
+    if (hasDifferentStoreProduct) {
+      return setIsConfirmationModalOpen(true);
+    }
+
+    addToCart({
+      emptyCart: false,
+    });
   };
 
   return (
@@ -224,6 +254,30 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           <Cart />
         </SheetContent>
       </Sheet>
+
+      <AlertDialog
+        open={isConfirmationModalOpen}
+        onOpenChange={setIsConfirmationModalOpen}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>
+              Você só pode adicionar produtos de uma loja por vez
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              Deseja mesmo adicionar esse produto ? isso irá{" "}
+              <span className="text-red-500">remover</span> os produtos do seu
+              carrinho atual.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction onClick={() => addToCart({ emptyCart: true })}>
+              Adicionar
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   );
 }

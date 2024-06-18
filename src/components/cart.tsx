@@ -12,6 +12,8 @@ const Cart = () => {
   const { products, subTotalPrice, totalPrice, totalDiscount } =
     useContext(CartContext);
 
+  const handleFinishOrderClick = () => {};
+
   return (
     <div className="flex flex-col h-full py-5 ">
       {products.length > 0 ? (
@@ -32,7 +34,7 @@ const Cart = () => {
                 <Separator />
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-muted-foreground">Entrega</span>
-                  <span className="text-destructive uppercase">Grátis</span>
+                  <span className="text-confirmed uppercase">Grátis</span>
                 </div>
                 <Separator />
                 <div className="flex justify-between items-center text-sm">

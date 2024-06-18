@@ -13,7 +13,15 @@ interface ICartContext {
   subTotalPrice: number;
   totalPrice: number;
   totalDiscount: number;
-  addProductToCart: (product: Produto, quantity: number) => void;
+  addProductToCart: ({
+    product,
+    quantity,
+    emptyCart,
+  }: {
+    product: Produto;
+    quantity: number;
+    emptyCart?: boolean;
+  }) => void;
   decreaseProductQuantity: (productId: string) => void;
   encreaseProductQuantity: (productId: string) => void;
   removeProductFromCart: (productId: string) => void;
@@ -77,7 +85,19 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  const addProductToCart = (product: Produto, quantity: number) => {
+  const addProductToCart = ({
+    product,
+    quantity,
+    emptyCart,
+  }: {
+    product: Produto;
+    quantity: number;
+    emptyCart?: boolean;
+  }) => {
+    if (emptyCart) {
+      setProducts([]);
+    }
+
     const isProductInCart = products.some(
       (cartProduct) => cartProduct.id === product.id
     );
