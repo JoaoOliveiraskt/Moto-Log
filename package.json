@@ -5,14 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && prisma generate",
-    "vercel-build": "prisma generate && prisma migrate deploy && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate-dev": "npx prisma migrate dev"
-  },
-  "prisma": {
-    "seed": "ts-node ./prisma/seed.ts"
+    "prepare": "husky prisma migrate deploy prisma generate"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.2.0",
