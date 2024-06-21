@@ -8,7 +8,7 @@ import { Card, CardContent } from "./ui/card";
 import formatCurrency from "@/app/helpers/format-currency";
 import { Separator } from "./ui/separator";
 import { CreateOrder } from "@/app/actions/order";
-import { OrderStatus } from "prisma/generated/client";
+import { OrderStatus } from "../../prisma/generated/client";
 import { useSession } from "next-auth/react";
 import { Loader2 } from "lucide-react";
 import {

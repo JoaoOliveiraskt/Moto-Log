@@ -1,4 +1,4 @@
-import { Produto } from "prisma/generated/client";
+import { Produto } from "../../../prisma/generated/client";
 
 export const calculateTotalPrice = (product: Produto) => {
   if (Number(product.porcentagemDesconto) === 0) {

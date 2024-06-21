@@ -1,4 +1,4 @@
-import { Categoria } from "prisma/generated/client";
+import { Categoria } from "../../prisma/generated/client";
 import { db } from "../lib/prisma";
 
 export default async function FetchCategory(): Promise<Categoria[]> {

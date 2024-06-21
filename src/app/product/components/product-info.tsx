@@ -8,7 +8,7 @@ import { FaCircle } from "react-icons/fa";
 import DiscountBadge from "./discount-badge";
 import calculateTotalPrice from "@/app/helpers/price";
 import formatCurrency from "@/app/helpers/format-currency";
-import { Prisma } from "prisma/generated/client";
+import { Prisma } from "../../../../prisma/generated/client";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,

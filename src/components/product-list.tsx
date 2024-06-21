@@ -1,5 +1,5 @@
 import ProductCard from "./product-card";
-import { Produto } from "prisma/generated/client";
+import { Produto } from "../../prisma/generated/client";
 import { db } from "@/lib/prisma";
 
 export default async function ProductList() {

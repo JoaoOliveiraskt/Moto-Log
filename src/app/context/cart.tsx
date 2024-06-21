@@ -1,6 +1,6 @@
 "use client";
 
-import { Prisma } from "prisma/generated/client";
+import { Prisma } from "../../../prisma/generated/client";
 import { ReactNode, createContext, useMemo, useState } from "react";
 import calculateTotalPrice from "../helpers/price";
 

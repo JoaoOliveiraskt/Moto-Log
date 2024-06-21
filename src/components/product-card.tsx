@@ -4,7 +4,7 @@ import formatCurrency from "@/app/helpers/format-currency";
 import calculateTotalPrice from "@/app/helpers/price";
 import Image from "next/image";
 import Link from "next/link";
-import { Prisma } from "prisma/generated/client";
+import { Prisma } from "../../prisma/generated/client";
 import { BsArrowDownShort } from "react-icons/bs";
 
 interface ProductProps {
