@@ -69,11 +69,13 @@ const Cart = ({ setIsOpen }: CartProps) => {
       clearCart();
       setIsOpen(false);
       toast({
+        className: "bg-muted",
         title: "Pedido finalizado com sucesso!",
         description:
           "Você pode acompanhar o status do seu pedido na aba 'Meus Pedidos'",
         action: (
           <ToastAction
+            className="bg-background"
             altText="Ver pedido"
             onClick={() => router.push("/my-orders")}
           >
