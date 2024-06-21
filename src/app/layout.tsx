@@ -24,7 +24,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <Script src="https://accounts.google.com/gsi/client" async defer></Script>
         <AuthProvider>
           <CartProvider>
             <Header />
