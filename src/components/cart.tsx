@@ -21,8 +21,16 @@ import {
   AlertDialogHeader,
   AlertDialogFooter,
 } from "./ui/alert-dialog";
+import { toast } from "./ui/use-toast";
+import { ToastAction } from "./ui/toast";
+import { useRouter } from "next/navigation";
 
-const Cart = () => {
+interface CartProps {
+  setIsOpen: (isOpen: boolean) => void;
+}
+
+const Cart = ({ setIsOpen }: CartProps) => {
+  const router = useRouter();
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
   const { data } = useSession();
@@ -59,6 +67,20 @@ const Cart = () => {
       });
 
       clearCart();
+      setIsOpen(false);
+      toast({
+        title: "Pedido finalizado com sucesso!",
+        description:
+          "Você pode acompanhar o status do seu pedido na aba 'Meus Pedidos'",
+        action: (
+          <ToastAction
+            altText="Ver pedido"
+            onClick={() => router.push("/my-orders")}
+          >
+            Ver pedido
+          </ToastAction>
+        ),
+      });
     } catch (error) {
       console.error(error);
     } finally {

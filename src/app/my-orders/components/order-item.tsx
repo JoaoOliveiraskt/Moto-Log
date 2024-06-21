@@ -87,14 +87,15 @@ const OrderItem = ({ order }: OrderItemProps) => {
 
         <div className="flex items-center justify-between">
           <p className="text-sm">{formatCurrency(Number(order.totalPrice))}</p>
-          <Button
-            variant={"ghost"}
-            size={"sm"}
-            className="text-destructive text-sm hover:text-destructive"
-            disabled={order.status !== "COMPLETED"}
-          >
-            Adicionar ao carrinho
-          </Button>
+          {order.status === "COMPLETED" && (
+            <Button
+              variant={"ghost"}
+              size={"sm"}
+              className="text-destructive text-sm hover:text-destructive"
+            >
+              Refazer pedido
+            </Button>
+          )}
         </div>
       </CardContent>
     </Card>

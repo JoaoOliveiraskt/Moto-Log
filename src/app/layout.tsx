@@ -6,6 +6,7 @@ import Footer from "@/components/footer";
 import { CartProvider } from "./context/cart";
 import AuthProvider from "./providers/auth";
 import Script from "next/script";
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
             <Header />
             {children}
             <Footer />
+            <Toaster />
           </CartProvider>
         </AuthProvider>
       </body>

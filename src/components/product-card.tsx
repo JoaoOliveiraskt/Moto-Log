@@ -9,12 +9,11 @@ import { BsArrowDownShort } from "react-icons/bs";
 
 interface ProductProps {
   product: Prisma.ProdutoGetPayload<{
-    include: { loja: { select: { nome: true, id: true } } };
+    include: { loja: { select: { nome: true; id: true } } };
   }>;
 }
 
 const ProductCard = ({ product }: ProductProps) => {
-  console.log(product.id)
   return (
     <Link href={`/product/${product.id}`}>
       <div className="hover:shadow-md cursor-pointer rounded-lg h-64 overflow-hidden">

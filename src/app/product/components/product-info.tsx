@@ -275,26 +275,24 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           <SheetHeader>
             <SheetTitle className="">Seu carrinho</SheetTitle>
           </SheetHeader>
-          <Cart />
+          <Cart setIsOpen={setIsCartOpen} />
         </SheetContent>
       </Sheet>
 
       <AlertDialog open={isLoginModalOpen} onOpenChange={setIsLoginModalOpen}>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>
-            Faça o Login
-          </AlertDialogTitle>
-          <AlertDialogDescription>
-            Você precisa fazer o login para adicionar produtos ao carrinho.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <LoginButton className="w-full"/>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Faça o Login</AlertDialogTitle>
+            <AlertDialogDescription>
+              Você precisa estar logado para adicionar produtos ao carrinho.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <LoginButton className="w-full" />
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
       <AlertDialog
         open={isConfirmationModalOpen}
