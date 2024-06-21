@@ -13,7 +13,7 @@ interface ProductBannerProps {
 const ProductBanner: React.FC<ProductBannerProps> = ({ images, produto }) => {
   return (
     <div className="flex flex-col-reverse md:flex-row gap-6">
-      <div className="flex gap-4 md:flex-col">
+      <div className="flex justify-between gap-4 md:flex-col">
         {images.map((image, index) => (
           <div
             key={index}
@@ -29,7 +29,7 @@ const ProductBanner: React.FC<ProductBannerProps> = ({ images, produto }) => {
         ))}
       </div>
 
-      <div className="w-fit h-fit overflow-hidden">
+      <div className="w-full h-fit overflow-hidden">
         <div className="relative h-60 w-full md:w-[550px] md:h-[560px] rounded-md overflow-hidden">
           <Image
             src={produto.imagemUrl}
