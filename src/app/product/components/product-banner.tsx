@@ -12,7 +12,7 @@ interface ProductBannerProps {
 
 const ProductBanner: React.FC<ProductBannerProps> = ({ images, produto }) => {
   return (
-    <div className="flex flex-col-reverse md:flex-row gap-6">
+    <div className="flex flex-col-reverse md:flex-row gap-6 h-fit">
       <div className="flex justify-between gap-4 md:flex-col">
         {images.map((image, index) => (
           <div
