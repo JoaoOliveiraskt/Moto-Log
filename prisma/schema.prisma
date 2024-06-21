@@ -45,14 +45,15 @@ model Order {
   userId        String
   createdAt     DateTime    @default(now())
   products      Produto[]
-  loja    Loja        @relation(fields: [lojaId], references: [id])
-  lojaId  String
-  deliveryFee   Decimal?     @db.Decimal(10, 2)
+  loja          Loja        @relation(fields: [lojaId], references: [id])
+  lojaId        String
+  deliveryFee   Decimal?    @db.Decimal(10, 2)
   deliveryTime  Int?
   subTotalPrice Decimal     @db.Decimal(10, 2)
   totalPrice    Decimal     @db.Decimal(10, 2)
   totalDiscount Decimal     @db.Decimal(10, 2)
   status        OrderStatus
+  address       String?
 }
 
 enum OrderStatus {

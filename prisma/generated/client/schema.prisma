@@ -53,6 +53,7 @@ model Order {
   totalPrice    Decimal     @db.Decimal(10, 2)
   totalDiscount Decimal     @db.Decimal(10, 2)
   status        OrderStatus
+  address       String?
 }
 
 enum OrderStatus {

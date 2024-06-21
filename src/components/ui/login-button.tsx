@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
 import { Button } from "@/components/ui/button";
-import { signIn, signOut, useSession,  } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { PiSignInBold } from "react-icons/pi";
 import { PiSignOutBold } from "react-icons/pi";

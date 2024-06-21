@@ -1,10 +1,21 @@
 "use client";
 
-import { Produto } from "prisma/generated/client";
+import { Prisma } from "prisma/generated/client";
 import { ReactNode, createContext, useMemo, useState } from "react";
 import calculateTotalPrice from "../helpers/price";
 
-export interface CartProduct extends Produto {
+export interface CartProduct
+  extends Prisma.ProdutoGetPayload<{
+    include: {
+      loja: {
+        select: {
+          id: true;
+          deliveryFee: true;
+          deliveryTime: true;
+        };
+      };
+    };
+  }> {
   quantity: number;
 }
 
@@ -18,13 +29,26 @@ interface ICartContext {
     quantity,
     emptyCart,
   }: {
-    product: Produto;
+    product: Prisma.ProdutoGetPayload<{
+      include: {
+        loja: {
+          select: {
+            id: true;
+            nome: true;
+            imagemUrl: true;
+            deliveryFee: true;
+            deliveryTime: true;
+          };
+        };
+      };
+    }>;
     quantity: number;
     emptyCart?: boolean;
   }) => void;
   decreaseProductQuantity: (productId: string) => void;
   encreaseProductQuantity: (productId: string) => void;
   removeProductFromCart: (productId: string) => void;
+  clearCart: () => void;
 }
 
 export const CartContext = createContext<ICartContext>({
@@ -36,6 +60,7 @@ export const CartContext = createContext<ICartContext>({
   decreaseProductQuantity: () => {},
   encreaseProductQuantity: () => {},
   removeProductFromCart: () => {},
+  clearCart: () => {},
 });
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -85,12 +110,28 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const clearCart = () => {
+    return setProducts([]);
+  };
+
   const addProductToCart = ({
     product,
     quantity,
     emptyCart,
   }: {
-    product: Produto;
+    product: Prisma.ProdutoGetPayload<{
+      include: {
+        loja: {
+          select: {
+            id: true;
+            nome: true;
+            imagemUrl: true;
+            deliveryFee: true;
+            deliveryTime: true;
+          };
+        };
+      };
+    }>;
     quantity: number;
     emptyCart?: boolean;
   }) => {
@@ -121,13 +162,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     <CartContext.Provider
       value={{
         products,
+        totalPrice,
+        subTotalPrice,
+        totalDiscount,
+        clearCart,
         addProductToCart,
         decreaseProductQuantity,
         encreaseProductQuantity,
         removeProductFromCart,
-        totalPrice,
-        subTotalPrice,
-        totalDiscount,
       }}
     >
       {children}

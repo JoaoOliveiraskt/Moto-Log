@@ -15,7 +15,7 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({session, user}) {
-      session.user = {...session.user, id: user.id} as { name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; id?: string | null | undefined; };
+      session.user = {...session.user, id: user.id};
       return session;
     },
   },

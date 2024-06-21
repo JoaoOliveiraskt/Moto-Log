@@ -23,28 +23,52 @@ import {
 } from "@/components/ui/alert-dialog";
 import {
   AlertDialog,
-  AlertDialogTrigger,
   AlertDialogContent,
   AlertDialogTitle,
   AlertDialogDescription,
   AlertDialogCancel,
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
+import { useSession } from "next-auth/react";
+import LoginButton from "@/components/ui/login-button";
 interface ProductInfoProps {
-  product: Prisma.ProdutoGetPayload<{}>;
+  quantity: number;
+  product: Prisma.ProdutoGetPayload<{
+    include: {
+      loja: {
+        select: {
+          id: true;
+          nome: true;
+          imagemUrl: true;
+          deliveryFee: true;
+          deliveryTime: true;
+        };
+      };
+    };
+  }>;
 }
 
 export default function ProductInfo({ product }: ProductInfoProps) {
   const { addProductToCart, products } = useContext(CartContext);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const addToCart = ({ emptyCart }: { emptyCart?: boolean }) => {
-    addProductToCart({ product, quantity: 1, emptyCart });
+    addProductToCart({ product, emptyCart, quantity: 1 });
     setIsCartOpen(true);
   };
 
+  const handleLoginOpen = () => {
+    setIsLoginModalOpen(true);
+  };
+
+  const { data } = useSession();
+
   const handleAddToCart = () => {
+    if (!data?.user) {
+      return handleLoginOpen();
+    }
     // Verificar se há algum produto de outra loja no carrinho
     const hasDifferentStoreProduct = products.some(
       (cartProduct) => cartProduct.lojaId !== product.lojaId
@@ -241,7 +265,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
               />
             </svg>
-            <p className="ml-2">Feito pelos profissionais</p>
+            <p className="ml-2">Feito por profissionais</p>
           </li>
         </ul>
       </div>
@@ -254,6 +278,23 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           <Cart />
         </SheetContent>
       </Sheet>
+
+      <AlertDialog open={isLoginModalOpen} onOpenChange={setIsLoginModalOpen}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>
+            Faça o Login
+          </AlertDialogTitle>
+          <AlertDialogDescription>
+            Você precisa fazer o login para adicionar produtos ao carrinho.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <LoginButton className="w-full"/>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
 
       <AlertDialog
         open={isConfirmationModalOpen}

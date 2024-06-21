@@ -37,7 +37,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
           <div className="flex flex-col w-full gap-6 lg:flex-row">
             <ProductBanner images={images} produto={produto} />
 
-            <ProductInfo product={produto} />
+            <ProductInfo product={produto} quantity={0}/>
           </div>
         </div>
       </div>
