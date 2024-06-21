@@ -80,7 +80,7 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
             </div>
             {/* botão de deletar */}
 
-            <Button size={"icon"} onClick={handleRemoveProduct}>
+            <Button size={"icon"} onClick={handleRemoveProduct} className="bg-destructive">
               <IoTrashOutline size={18} />
             </Button>
           </div>

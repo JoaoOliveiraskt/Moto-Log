@@ -129,10 +129,10 @@ const Cart = ({ setIsOpen }: CartProps) => {
 
             <Button
               onClick={() => setIsConfirmDialogOpen(true)}
-              className="w-full mt-6"
+              className="w-full mt-6 bg-destructive"
               disabled={isSubmitLoading}
             >
-              Finalizar Compra
+              Fazer pedido
             </Button>
           </>
         ) : (
@@ -159,6 +159,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
           <AlertDialogFooter>
             <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <AlertDialogAction
+              className="bg-destructive"
               onClick={handleFinishOrderClick}
               disabled={isSubmitLoading}
             >
