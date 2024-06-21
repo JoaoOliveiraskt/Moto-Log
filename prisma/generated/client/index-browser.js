@@ -142,6 +142,13 @@ exports.Prisma.ProdutoScalarFieldEnum = {
   categoriaId: 'categoriaId'
 };
 
+exports.Prisma.OrderProductScalarFieldEnum = {
+  id: 'id',
+  orderId: 'orderId',
+  productId: 'productId',
+  quantity: 'quantity'
+};
+
 exports.Prisma.OrderScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -219,6 +226,7 @@ exports.Prisma.ModelName = {
   Loja: 'Loja',
   Categoria: 'Categoria',
   Produto: 'Produto',
+  OrderProduct: 'OrderProduct',
   Order: 'Order',
   Account: 'Account',
   Session: 'Session',

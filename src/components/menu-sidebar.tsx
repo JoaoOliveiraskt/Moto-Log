@@ -1,6 +1,6 @@
 'use client';
 
-import { AvatarInfo } from "./ui/login-button";
+import { AvatarInfo } from "./login-button";
 import { Separator } from "./ui/separator";
 import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -9,6 +9,7 @@ import { FiHome } from "react-icons/fi";
 import { RiFileList3Line } from "react-icons/ri";
 import { MdFavoriteBorder } from "react-icons/md";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 const UserStatus = () => {
   const { status } = useSession();
@@ -39,7 +40,7 @@ const MenuSideBar = () => {
             className="space-x-3 w-full justify-start text-sm tracking-tight"
           >
             <FiHome size={18} />
-            <span className="block">Inicio</span>
+            <Link href={'/'} className="block">Inicio</Link>
           </Button>
 
           {status === "authenticated" && (
@@ -47,9 +48,12 @@ const MenuSideBar = () => {
               <Button
                 variant={"ghost"}
                 className="space-x-3 w-full justify-start text-sm tracking-tight"
+                asChild
               >
+                <div>
                 <RiFileList3Line size={18} />
-                <span className="block">Meus Pedidos</span>
+                <Link href={'/my-orders'} className="block">Meus Pedidos</Link>
+                </div>
               </Button>
               <Button
                 variant={"ghost"}

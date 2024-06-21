@@ -30,7 +30,7 @@ import {
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
 import { useSession } from "next-auth/react";
-import LoginButton from "@/components/ui/login-button";
+import LoginButton from "@/components/login-button";
 interface ProductInfoProps {
   quantity: number;
   product: Prisma.ProdutoGetPayload<{

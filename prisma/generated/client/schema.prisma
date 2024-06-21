@@ -26,32 +26,41 @@ model Categoria {
 }
 
 model Produto {
-  id                  String    @id @default(uuid())
+  id                  String         @id @default(uuid())
   nome                String
   descricao           String
   imagemUrl           String
-  preco               Decimal   @db.Decimal(10, 2)
-  porcentagemDesconto Decimal   @db.Decimal(10, 2)
+  preco               Decimal        @db.Decimal(10, 2)
+  porcentagemDesconto Decimal        @db.Decimal(10, 2)
   lojaId              String
-  loja                Loja      @relation(fields: [lojaId], references: [id])
+  loja                Loja           @relation(fields: [lojaId], references: [id])
   categoriaId         String
-  categoria           Categoria @relation(fields: [categoriaId], references: [id])
-  pedidos             Order[]
+  categoria           Categoria      @relation(fields: [categoriaId], references: [id])
+  pedidos             OrderProduct[]
+}
+
+model OrderProduct {
+  id        String  @id @default(uuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id])
+  productId String
+  product   Produto @relation(fields: [productId], references: [id])
+  quantity  Int
 }
 
 model Order {
-  id            String      @id @default(uuid())
-  user          User        @relation(fields: [userId], references: [id])
+  id            String         @id @default(uuid())
+  user          User           @relation(fields: [userId], references: [id])
   userId        String
-  createdAt     DateTime    @default(now())
-  products      Produto[]
-  loja          Loja        @relation(fields: [lojaId], references: [id])
+  createdAt     DateTime       @default(now())
+  products      OrderProduct[]
+  loja          Loja           @relation(fields: [lojaId], references: [id])
   lojaId        String
-  deliveryFee   Decimal?    @db.Decimal(10, 2)
+  deliveryFee   Decimal?       @db.Decimal(10, 2)
   deliveryTime  Int?
-  subTotalPrice Decimal     @db.Decimal(10, 2)
-  totalPrice    Decimal     @db.Decimal(10, 2)
-  totalDiscount Decimal     @db.Decimal(10, 2)
+  subTotalPrice Decimal        @db.Decimal(10, 2)
+  totalPrice    Decimal        @db.Decimal(10, 2)
+  totalDiscount Decimal        @db.Decimal(10, 2)
   status        OrderStatus
   address       String?
 }
