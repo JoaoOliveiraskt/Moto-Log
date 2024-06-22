@@ -1,6 +1,8 @@
 import React from "react";
 import HeroCards from "./category-list";
 import Image from "next/image";
+import CategoryList from "./category-list";
+
 export default function Section() {
   return (
     <>
@@ -107,6 +109,7 @@ export default function Section() {
       </section>
 
       <HeroCards />
+
     </>
   );
 }
