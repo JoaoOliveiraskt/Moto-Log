@@ -69,7 +69,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
       clearCart();
       setIsOpen(false);
       toast({
-        className: "bg-green-600/70",
+        className: "bg-green-600",
         title: "Pedido finalizado com sucesso!",
         description:
           "Você pode acompanhar o status do seu pedido na aba 'Meus Pedidos'",
