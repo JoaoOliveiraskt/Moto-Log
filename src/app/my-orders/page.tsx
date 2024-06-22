@@ -26,7 +26,7 @@ const MyOrdersPage = async () => {
   });
   return (
     <>
-      <div className="py-6 px-4">
+      <div className="py-6 px-4 sm:flex sm: flex-col sm:max-w-[40rem] mx-auto">
         <h2 className="font-semibold pb-6 text-lg">Meus Pedidos</h2>
 
         <div className="space-y-3">
