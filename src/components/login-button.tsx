@@ -5,6 +5,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { PiSignInBold } from "react-icons/pi";
 import { PiSignOutBold } from "react-icons/pi";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const UserStatus = () => {
   const { status } = useSession();
@@ -17,8 +19,10 @@ interface Props {
 
 const LoginButton = ({ className }: Props) => {
   const status = UserStatus();
-  const handleSigInClick = () => signIn();
+  const handleSigInClick = () => signIn("google", { callbackUrl: "/" });
   const handleSigOutClick = () => signOut();
+
+  const router = useRouter();
   return (
     <div>
       {status === "authenticated" ? (
@@ -40,7 +44,7 @@ const LoginButton = ({ className }: Props) => {
           }}
           className={`flex items-center space-x-2 shadow-md ${className}`}
         >
-          <span>Entrar</span>
+          <span>Sign in with Google</span>
           <PiSignInBold size={18} />
         </Button>
       )}
@@ -53,6 +57,7 @@ export default LoginButton;
 export const AvatarInfo = () => {
   const { data } = useSession();
   const status = UserStatus();
+  
   return (
     <>
       {status === "authenticated" ? (
@@ -89,7 +94,12 @@ export const AvatarInfo = () => {
       ) : (
         <div className="flex items-center justify-between mt-6">
           <h2 className="font-semibold tracking-tight">Faça seu login!</h2>
-          <LoginButton />
+          <Link href="/login">
+            <Button className={`flex items-center space-x-2 shadow-md`}>
+              <span>Entrar</span>
+              <PiSignInBold size={18} />
+            </Button>
+          </Link>
         </div>
       )}
     </>
