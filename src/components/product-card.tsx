@@ -16,7 +16,7 @@ interface ProductProps {
 const ProductCard = ({ product }: ProductProps) => {
   return (
     <Link href={`/product/${product.id}`}>
-      <div className="hover:shadow-md cursor-pointer rounded-lg h-64 sm:h-80 overflow-hidden">
+      <div className="hover:shadow-md cursor-pointer rounded-lg h-64 sm:h-80 overflow-hidden bg-card dark:bg-dark-card">
         <div className="relative h-32 w-full md:h-48">
           <Image
             src={product.imagemUrl}

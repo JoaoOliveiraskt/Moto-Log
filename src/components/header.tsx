@@ -6,12 +6,20 @@ import DropdownCategory from "./dropdown-category";
 import DropdownStore from "./dropdown-store";
 import CartButton from "./ui/cart-button";
 import MenuSideBar from "./menu-sidebar";
+import { ModeToggle } from "./theme/theme-switcher";
+import Container from "./container";
+
+const navLinks = [
+  { name: "Home", href: "#" },
+  { name: "Sobre", href: "#" },
+  { name: "Serviços", href: "#" },
+];
 
 export default function Header() {
   return (
-    <header className="bg-white px-4">
-      <div className="mx-auto max-w-screen-xl">
-        <div className="flex h-16 items-center justify-between">
+    <div className="border-t border-zinc-400/65 dark:border-zinc-800 fixed bottom-0 sm:top-0 z-10 w-full h-max px-2 sm:px-0 pb-8 p-2 sm:py-4 bg-background">
+      <Container className="flex items-center justify-center">
+        <div className="w-full flex items-center justify-between">
           <div className="md:flex md:items-center md:gap-12">
             <Link className="font-black text-4xl" href="/">
               <Image
@@ -26,36 +34,18 @@ export default function Header() {
           </div>
 
           <div className="hidden md:block">
-            <nav aria-label="Global">
+            <nav aria-label="Global" className="">
               <ul className="flex items-center gap-6 text-sm">
-                <li>
-                  <Link
-                    className="text-gray-500 transition hover:text-gray-500/75"
-                    href="#"
-                  >
-                    {" "}
-                    Home{" "}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-gray-500 transition hover:text-gray-500/75"
-                    href="#"
-                  >
-                    {" "}
-                    Sobre{" "}
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    className="text-gray-500 transition hover:text-gray-500/75"
-                    href="#"
-                  >
-                    {" "}
-                    Serviços{" "}
-                  </Link>
-                </li>
+                {navLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      className="transition text-primary hover:text-muted-foreground dark:text-muted-foreground dark:hover:text-primary"
+                      href={link.href}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
 
                 <li>
                   <DropdownCategory />
@@ -69,6 +59,7 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-2">
+            <ModeToggle />
             <div className="flex">
               <CartButton />
             </div>
@@ -76,7 +67,7 @@ export default function Header() {
             <MenuSideBar />
           </div>
         </div>
-      </div>
-    </header>
+      </Container>
+    </div>
   );
 }

@@ -3,6 +3,8 @@ import { db } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import OrderItem from "./components/order-item";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const MyOrdersPage = async () => {
   const session = await getServerSession(authOptions);
@@ -26,6 +28,7 @@ const MyOrdersPage = async () => {
   });
   return (
     <>
+    <Header />
       <div className="py-6 px-4 sm:flex sm: flex-col sm:max-w-[40rem] mx-auto">
         <h2 className="font-semibold pb-6 text-lg">Meus Pedidos</h2>
 
@@ -35,6 +38,7 @@ const MyOrdersPage = async () => {
           ))}
         </div>
       </div>
+      <Footer />
     </>
   );
 };

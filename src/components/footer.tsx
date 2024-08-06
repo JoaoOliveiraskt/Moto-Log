@@ -1,7 +1,9 @@
+import Container from "./container";
+
 export default function Footer() {
   return (
-    <footer className="bg-white">
-      <div className="mx-auto max-w-screen-xl px-4 pb-8 pt-32 sm:px-6 lg:px-8">
+    <Container className="pb-8 mb-16 pt-32">
+      <footer>
         <div className="mx-auto max-w-lg">
           <strong className="block text-center text-xl font-bold text-gray-900 sm:text-3xl">
             Quer receber as últimas notícias do Moto Log em primeira mão ?
@@ -228,7 +230,7 @@ export default function Footer() {
             © Company 2024. All rights reserved.
           </p>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </Container>
   );
 }

@@ -1,13 +1,19 @@
 import FetchCategory from "../hooks/fetch-categories";
 import CategoryItem from "./category-item";
+import Container from "./container";
 
 export default async function CategoryList() {
   const categories = await FetchCategory();
   return (
-    <div className="flex flex-wrap items-center justify-center w-full gap-4 py-2 mt-6 sm:py-4 lg:mt-20 snap-x">
-      {categories.map((category) => (
-        <CategoryItem key={category.id} category={category} />
-      ))}
-    </div>
+    <Container className="my-10 flex flex-col gap-10">
+      <h2 className="text-start text-xl sm:text-3xl font-bold text-primary">
+        Principais categorias
+      </h2>
+      <div className=" flex flex-wrap items-center justify-center w-full gap-4">
+        {categories.slice(0, 5).map((category) => (
+          <CategoryItem key={category.id} category={category} />
+        ))}
+      </div>
+    </Container>
   );
 }

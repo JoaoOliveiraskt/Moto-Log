@@ -30,15 +30,16 @@ const MenuSideBar = () => {
     <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
       <Button
         onClick={handleMenuOpen.open}
-        variant={"ghost"}
-        className="flex rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
+        variant="outline"
+        size="icon"
+        className="cursor-pointer outline-none h-8 w-8 border-none"
       >
         <AiOutlineMenu size={24} />
       </Button>
 
       <SheetContent>
         <div className="flex flex-col mt-4 space-y-4">
-          <AvatarInfo />
+          <div onClick={handleMenuOpen.close}><AvatarInfo /></div>
         </div>
 
         <div className="py-4">

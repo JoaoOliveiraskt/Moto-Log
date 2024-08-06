@@ -17,7 +17,7 @@ export default async function DropdownStore() {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <div className="flex items-center gap-1">
-          <p className="text-gray-500 transition hover:text-gray-500/75">
+          <p className="transition text-primary hover:text-muted-foreground dark:text-muted-foreground dark:hover:text-primary">
             Lojas
           </p>
           <RiArrowDropDownLine />

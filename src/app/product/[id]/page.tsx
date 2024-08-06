@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import ProductBanner from "../components/product-banner";
 import ProductInfo from "../components/product-info";
 import GoBackButton from "../components/go-back-button";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 interface ProductPageProps {
   params: {
@@ -31,9 +33,10 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
 
   return (
     <>
-      <div className="flex w-full overflow-hidden px-4">
+    <Header />
+      <div className="flex w-full overflow-hidden px-4 pt-4 sm:mt-12">
         <div className="w-full lg:w-[78rem] mx-auto flex flex-col gap-6 rounded-md  mt-2 md:mt-8">
-          <GoBackButton />
+          <GoBackButton  />
           <div className="flex flex-col w-full gap-6 lg:flex-row">
             <ProductBanner images={images} produto={produto} />
 
@@ -41,6 +44,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

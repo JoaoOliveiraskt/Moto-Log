@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useSession } from "next-auth/react";
 import LoginButton from "@/components/login-button";
+import Container from "@/components/container";
 interface ProductInfoProps {
   quantity: number;
   product: Prisma.ProdutoGetPayload<{
@@ -317,6 +318,6 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </>
+      </>
   );
 }

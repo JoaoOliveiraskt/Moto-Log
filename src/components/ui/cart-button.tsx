@@ -9,20 +9,24 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./sheet";
+import { Button } from "./button";
 
 const CartButton = () => {
   return (
     <Sheet>
       <SheetTrigger>
-        <div className="flex rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
+      <Button
+          variant="outline"
+          size="icon"
+          className="cursor-pointer outline-none h-8 w-8 border-none">
           <IoCartOutline size={24} />
-        </div>
+        </Button>
       </SheetTrigger>
       <SheetContent className="w-[90vw]">
         <SheetHeader>
           <SheetTitle className="">Seu carrinho</SheetTitle>
         </SheetHeader>
-        <Cart />
+        <Cart/>
       </SheetContent>
     </Sheet>
   );

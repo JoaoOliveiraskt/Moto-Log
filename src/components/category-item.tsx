@@ -1,3 +1,6 @@
+import { Footprints, Cable, Watch } from "lucide-react";
+import { GiClothes, GiLipstick } from "react-icons/gi";
+import { PiBooks } from "react-icons/pi";
 import Image from "next/image";
 import Link from "next/link";
 interface Category {
@@ -19,6 +22,15 @@ const descriptions: Descriptions = {
   Livros: "Inspiração e conhecimento para sua mente.",
 };
 
+const categoryIcons: { [key: string]: JSX.Element } = {
+  Roupas: <GiClothes size={30} />,
+  Calçados: <Footprints size={30} />,
+  Eletrônicos: <Cable size={30} />,
+  Acessórios: <Watch size={30} />,
+  Cosméticos: <GiLipstick size={30} />,
+  Livros: <PiBooks />,
+};
+
 interface CategoryProps {
   category: Category;
 }
@@ -26,28 +38,15 @@ interface CategoryProps {
 export default function CategoryItem({ category }: CategoryProps) {
   return (
     <Link href="#" className="relative snap-center scroll-ml-6 shrink-0">
-      <div className="overflow-hidden w-[300px] lg:w-[420px] transition-all duration-200 transform bg-white border border-gray-200 rounded-2xl hover:shadow-lg hover:-translate-y-1">
+      <div className="overflow-hidden w-[170px] lg:w-[243px] transition-all duration-200 transform bg-card dark:bg-dark-card border border-border rounded-2xl hover:shadow-lg hover:-translate-y-1">
         <div className="px-4 py-5 sm:p-5">
-          <div className="flex items-start lg:items-center">
-            <div className="shrink-0">
-              <Image
-                className="lg:h-24 w-14 h-14 lg:w-24 rounded-xl object-cover"
-                src={category.imageUrl}
-                alt={category.nome}
-                width={100}
-                height={100}
-              />
-            </div>
-
-            <div className="flex-1 ml-4 lg:ml-6">
-              <p className="text-xs font-bold text-zinc-900 lg:text-sm">
+          <div className="flex items-center justify-between">
+            <div className="">
+              <p className="text-xs font-bold text-primary lg:text-sm">
                 {category.nome}
               </p>
-
-              <p className="mt-2 text-sm font-semibold text-zinc-500 group-hover:text-zinc-600">
-                {descriptions[category.nome]}
-              </p>
             </div>
+            <div className="">{categoryIcons[category.nome]}</div>
           </div>
         </div>
       </div>
