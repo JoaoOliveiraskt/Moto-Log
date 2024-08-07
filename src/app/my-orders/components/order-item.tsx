@@ -41,7 +41,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
     <Card>
       <CardContent className="p-5">
         <div
-          className={`w-fit px-2 py-0.5 bg-muted text-black rounded-full ${
+          className={`w-fit px-2 py-0.5 bg-card text-black rounded-full ${
             order.status !== "COMPLETED" && "bg-confirmed"
           }`}
         >

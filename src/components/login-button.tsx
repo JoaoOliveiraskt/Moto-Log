@@ -44,7 +44,7 @@ const LoginButton = ({ className }: Props) => {
           }}
           className={`flex items-center space-x-2 shadow-md ${className}`}
         >
-          <span>Sign in with Google</span>
+          <span>Entrar com o Google</span>
           <PiSignInBold size={18} />
         </Button>
       )}
@@ -57,7 +57,7 @@ export default LoginButton;
 export const AvatarInfo = () => {
   const { data } = useSession();
   const status = UserStatus();
-  
+
   return (
     <>
       {status === "authenticated" ? (

@@ -11,7 +11,7 @@ export default function Component() {
         <div className="mx-auto w-full max-w-md space-y-6">
           <div className="space-y-2 text-center">
             <h1 className="text-3xl font-bold">Login</h1>
-            <p className="text-muted-foreground">Sign in to your account to continue</p>
+            <p className="text-muted-foreground">Faça login na sua conta para continuar</p>
           </div>
           <div className="space-y-4">
             <LoginButton className="w-full"/>
@@ -19,13 +19,6 @@ export default function Component() {
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-muted" />
               </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
-              </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="m@example.com" required />
             </div>
           </div>
         </div>

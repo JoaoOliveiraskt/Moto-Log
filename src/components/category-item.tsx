@@ -13,15 +13,6 @@ interface Descriptions {
   [key: string]: string;
 }
 
-const descriptions: Descriptions = {
-  Roupas: "Estilo para todas as ocasiões.",
-  Calçados: "Conforto e moda para os seus pés.",
-  Eletrônicos: "Inovação que simplifica sua vida.",
-  Acessórios: "Descubra detalhes únicos e surpreendentes.",
-  Cosméticos: "Beleza e cuidado para o seu dia a dia.",
-  Livros: "Inspiração e conhecimento para sua mente.",
-};
-
 const categoryIcons: { [key: string]: JSX.Element } = {
   Roupas: <GiClothes size={30} />,
   Calçados: <Footprints size={30} />,
@@ -37,12 +28,12 @@ interface CategoryProps {
 
 export default function CategoryItem({ category }: CategoryProps) {
   return (
-    <Link href="#" className="relative snap-center scroll-ml-6 shrink-0">
-      <div className="overflow-hidden w-[170px] lg:w-[243px] transition-all duration-200 transform bg-card dark:bg-dark-card border border-border rounded-2xl hover:shadow-lg hover:-translate-y-1">
+    <Link href="#" className="overflow-hidden relative bg-card border border-border hover:border-accent rounded-2xl text-muted-foreground hover:text-foreground w-[170px] lg:w-[243px] transition-all duration-200 transform">
+      <div className="">
         <div className="px-4 py-5 sm:p-5">
           <div className="flex items-center justify-between">
             <div className="">
-              <p className="text-xs font-bold text-primary lg:text-sm">
+              <p className="text-xs font-bold lg:text-sm">
                 {category.nome}
               </p>
             </div>

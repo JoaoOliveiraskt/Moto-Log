@@ -11,13 +11,19 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
+import { ModeToggle } from "./theme/theme-switcher";
 
 const UserStatus = () => {
   const { status } = useSession();
   return status;
 };
 
-const MenuSideBar = () => {
+interface Props {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+const MenuSideBar = ({className, children}: Props) => {
   const status = UserStatus();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -28,14 +34,18 @@ const MenuSideBar = () => {
 
   return (
     <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+      <div className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground">
+
       <Button
         onClick={handleMenuOpen.open}
-        variant="outline"
+        variant="icon"
         size="icon"
-        className="cursor-pointer outline-none h-8 w-8 border-none"
+        className={`flex flex-col gap-1 cursor-pointer outline-none border-none ${className}`}
       >
         <AiOutlineMenu size={24} />
+        <p>{children}</p>
       </Button>
+      </div>
 
       <SheetContent>
         <div className="flex flex-col mt-4 space-y-4">
@@ -52,8 +62,8 @@ const MenuSideBar = () => {
               variant={"ghost"}
               className="space-x-3 w-full justify-start text-sm tracking-tight"
             >
-              <FiHome size={18} />
-              <p>Início</p>
+              <FiHome size={18} className="text-foreground"/>
+              <p className="block text-foreground">Início</p>
             </Button>
           </Link>
 
@@ -68,20 +78,24 @@ const MenuSideBar = () => {
                   variant={"ghost"}
                   className="space-x-3 w-full justify-start text-sm tracking-tight"
                 >
-                  <RiFileList3Line size={18} />
+                  <RiFileList3Line size={18} className="text-foreground"/>
 
-                  <p>Meus Pedidos</p>
+                  <p className="block text-foreground">Meus Pedidos</p>
                 </Button>
               </Link>
               <Button
                 variant={"ghost"}
-                className="space-x-3 w-full justify-start text-sm tracking-tight"
+                className="space-x-3 w-full justify-start text-sm tracking-tight text-foreground"
               >
-                <MdFavoriteBorder size={18} />
-                <span className="block">Favoritos</span>
+                <MdFavoriteBorder size={18} className="text-foreground"/>
+                <span className="block text-foreground">Favoritos</span>
               </Button>
             </>
           )}
+
+          <ModeToggle className="flex gap-3 px-4 w-full justify-start text-sm tracking-tight">
+            <span className="text-foreground">Tema</span>
+          </ModeToggle>
         </div>
 
         <div className="py-4">

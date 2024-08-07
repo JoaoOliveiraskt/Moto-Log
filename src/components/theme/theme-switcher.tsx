@@ -11,7 +11,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export function ModeToggle() {
+interface Props {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export function ModeToggle({className, children}: Props) {
   const { theme, setTheme } = useTheme();
 
   function toggleTheme() {
@@ -20,16 +25,17 @@ export function ModeToggle() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger asChild className="text-muted-foreground hover:text-foreground ">
         <Button
           onClick={toggleTheme}
-          variant="outline"
+          variant="ghost"
           size="icon"
-          className="cursor-pointer outline-none h-8 w-8 border-none"
+          className={`cursor-pointer outline-none border-none ${className}`}
         >
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <RxMoon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
+          <span className={``}>{children}</span>
+          
         </Button>
       </DropdownMenuTrigger>
     </DropdownMenu>

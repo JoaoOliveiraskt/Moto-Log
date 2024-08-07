@@ -16,7 +16,7 @@ interface ProductProps {
 const ProductCard = ({ product }: ProductProps) => {
   return (
     <Link href={`/product/${product.id}`}>
-      <div className="hover:shadow-md cursor-pointer rounded-lg h-64 sm:h-80 overflow-hidden bg-card dark:bg-dark-card">
+      <div className="hover:shadow-md cursor-pointer rounded-lg h-64 sm:h-80 overflow-hidden bg-background border border-border/60 hover:text-orange-400">
         <div className="relative h-32 w-full md:h-48">
           <Image
             src={product.imagemUrl}
@@ -33,9 +33,9 @@ const ProductCard = ({ product }: ProductProps) => {
             </div>
           )}
         </div>
-        <div className="flex flex-col justify-between p-2">
+        <div className="h-full flex flex-col gap-2 p-2">
           <div className="hover:text-orange-400">
-            <h2 className="font-medium line-clamp-1">{product.nome}</h2>
+            <h2 className="font-medium line-clamp-1 ">{product.nome}</h2>
           </div>
           <div>
             <div className="flex gap-4">

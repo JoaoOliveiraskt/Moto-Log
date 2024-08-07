@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import OrderItem from "./components/order-item";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import BottomNav from "@/components/bottom-nav";
 
 const MyOrdersPage = async () => {
   const session = await getServerSession(authOptions);
@@ -29,7 +30,8 @@ const MyOrdersPage = async () => {
   return (
     <>
     <Header />
-      <div className="py-6 px-4 sm:flex sm: flex-col sm:max-w-[40rem] mx-auto">
+    <BottomNav />
+      <div className="py-6 px-4 sm:flex sm: flex-col sm:max-w-[40rem] mx-auto mt-4 sm:mt-20">
         <h2 className="font-semibold pb-6 text-lg">Meus Pedidos</h2>
 
         <div className="space-y-3">
