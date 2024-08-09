@@ -23,7 +23,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const MenuSideBar = ({className, children}: Props) => {
+const MenuSideBar = ({ className, children }: Props) => {
   const status = UserStatus();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -35,21 +35,22 @@ const MenuSideBar = ({className, children}: Props) => {
   return (
     <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
       <div className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground">
-
-      <Button
-        onClick={handleMenuOpen.open}
-        variant="icon"
-        size="icon"
-        className={`flex flex-col gap-1 cursor-pointer outline-none border-none ${className}`}
-      >
-        <AiOutlineMenu size={24} />
-        <p>{children}</p>
-      </Button>
+        <Button
+          onClick={handleMenuOpen.open}
+          variant="icon"
+          size="icon"
+          className={`flex flex-col gap-1 cursor-pointer outline-none border-none ${className}`}
+        >
+          <AiOutlineMenu size={24} />
+          <p>{children}</p>
+        </Button>
       </div>
 
       <SheetContent>
         <div className="flex flex-col mt-4 space-y-4">
-          <div onClick={handleMenuOpen.close}><AvatarInfo /></div>
+          <div onClick={handleMenuOpen.close}>
+            <AvatarInfo />
+          </div>
         </div>
 
         <div className="py-4">
@@ -62,7 +63,7 @@ const MenuSideBar = ({className, children}: Props) => {
               variant={"ghost"}
               className="space-x-3 w-full justify-start text-sm tracking-tight"
             >
-              <FiHome size={18} className="text-foreground"/>
+              <FiHome size={18} className="text-foreground" />
               <p className="block text-foreground">Início</p>
             </Button>
           </Link>
@@ -78,18 +79,11 @@ const MenuSideBar = ({className, children}: Props) => {
                   variant={"ghost"}
                   className="space-x-3 w-full justify-start text-sm tracking-tight"
                 >
-                  <RiFileList3Line size={18} className="text-foreground"/>
+                  <RiFileList3Line size={18} className="text-foreground" />
 
                   <p className="block text-foreground">Meus Pedidos</p>
                 </Button>
               </Link>
-              <Button
-                variant={"ghost"}
-                className="space-x-3 w-full justify-start text-sm tracking-tight text-foreground"
-              >
-                <MdFavoriteBorder size={18} className="text-foreground"/>
-                <span className="block text-foreground">Favoritos</span>
-              </Button>
             </>
           )}
 

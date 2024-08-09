@@ -23,9 +23,11 @@ export default async function DropdownStore() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         {storeNames.map((store) => (
-          <DropdownMenuItem className="cursor-pointer" key={store.id}>
+          <Link key={store.id} href={`/store/${store.id}`}> 
+          <DropdownMenuItem className="cursor-pointer hover:text-foreground">
             {store.nome}
           </DropdownMenuItem>
+        </Link>
         ))}
 
         <DropdownMenuSeparator />

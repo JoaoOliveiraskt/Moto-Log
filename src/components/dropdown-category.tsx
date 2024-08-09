@@ -21,7 +21,7 @@ export default async function DropdownCategory() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         {categories.map((category) => (
-          <Link key={category.id} href={`/categorie/${category.id}`}>
+          <Link key={category.id} href={`/category/${category.id}`}>
             <DropdownMenuItem className="cursor-pointer hover:text-foreground">
               {category.nome}
             </DropdownMenuItem>
