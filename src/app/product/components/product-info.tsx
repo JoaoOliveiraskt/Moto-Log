@@ -31,7 +31,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useSession } from "next-auth/react";
 import LoginButton from "@/components/login-button";
-import Container from "@/components/container";
 interface ProductInfoProps {
   quantity: number;
   product: Prisma.ProdutoGetPayload<{
@@ -92,48 +91,13 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           <h1 className="text-3xl font-bold">{product.nome}</h1>
         </div>
 
-        <div className="flex items-center gap-4">
-          <div className="flex items-center text-yellow-400">
-            <svg
-              className="w-5 h-5"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg
-              className="w-5 h-5"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg
-              className="w-5 h-5"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg
-              className="w-5 h-5"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <svg
-              className="w-5 h-5"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
+            <StarIcon className="w-5 h-5 fill-primary" />
+            <StarIcon className="w-5 h-5 fill-primary" />
+            <StarIcon className="w-5 h-5 fill-primary" />
+            <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
+            <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
           </div>
           <p className="ml-2 text-gray-600">157 Avaliações</p>
         </div>
@@ -165,44 +129,33 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           </h2>
         </div>
 
-        <div className="flex items-center">
-          <svg
-            className="w-6 h-6 text-green-500"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
-            />
-          </svg>
-          <p className="ml-2 text-gray-600">Economize 50% agora</p>
+        <div className="grid gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="flex gap-2">
+              <span className="text-muted-foreground">Color:</span>
+              <span className="font-medium">Black</span>
+            </div>
+            <div className="flex gap-2">
+              <span className="text-muted-foreground">Size:</span>
+              <span className="font-medium">15.6 inch</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="flex gap-2">
+              <span className="text-muted-foreground">Material:</span>
+              <span className="font-medium">Full-grain Leather</span>
+            </div>
+            <div className="flex gap-2">
+              <span className="text-muted-foreground">Weight:</span>
+              <span className="font-medium">3.2 lbs</span>
+            </div>
+          </div>
         </div>
-
-        <h2 className="text-xl font-semibold">Recursos</h2>
-        <ul className="flex flex-col gap-4">
-          <li className="flex items-center gap-4">
-            <FaCircle size={6} />
-            <p>Respirável para conforto.</p>
-          </li>
-          <li className="flex items-center gap-4">
-            <FaCircle size={6} />
-            <p>Solado antiderrapante.</p>
-          </li>
-          <li className="flex items-center gap-4">
-            <FaCircle size={6} />
-            <p>Costuras reforçadas.</p>
-          </li>
-        </ul>
 
         <div className="flex gap-4 w-full">
           <Button
             onClick={handleAddToCart}
-            className="font-bold tracking-wide px-12"
+            className="font-bold tracking-wide px-12 "
             size="xl"
           >
             Adicionar ao carrinho
@@ -318,6 +271,25 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-      </>
+    </>
+  );
+}
+
+function StarIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
   );
 }
