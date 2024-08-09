@@ -95,6 +95,9 @@
     --destructive-foreground: 5 84% 92%;
     --ring: 240 2% 80%;
     --radius: 0.5rem;
+
+    --confirmed: 120 100% 50%;
+    --confirmed-foreground: 0 0% 98%;
   }
 
   .dark {

@@ -41,11 +41,11 @@ const OrderItem = ({ order }: OrderItemProps) => {
     <Card>
       <CardContent className="p-5">
         <div
-          className={`w-fit px-2 py-0.5 bg-card text-black rounded-full ${
-            order.status !== "COMPLETED" && "bg-confirmed"
+          className={`w-fit px-2 py-0.5 border border-border text-popover rounded-full ${
+            order.status !== "COMPLETED" ? "bg-card-foreground " : "bg-confirmed" 
           }`}
         >
-          <span className="blok text-sm font-semibold">
+          <span className="block text-sm font-bold tracking-tight">
             {getOrderStatus(order.status)}
           </span>
         </div>
@@ -70,11 +70,11 @@ const OrderItem = ({ order }: OrderItemProps) => {
           {order.products.map((product) => (
             <div key={product.id} className="flex space-x-2">
               <div className="flex flex-col items-center justify-center w-5 h-5 rounded-full bg-muted-foreground">
-                <span className="block text-xs text-primary-foreground">
+                <span className="block text-xs font-bold text-primary-foreground">
                   {product.quantity}
                 </span>
               </div>
-              <span className="text-muted-foreground text-sm">
+              <span className="text-muted-foreground text-sm font-medium">
                 {product.product.nome}
               </span>
             </div>
@@ -86,12 +86,12 @@ const OrderItem = ({ order }: OrderItemProps) => {
         </div>
 
         <div className="flex items-center justify-between">
-          <p className="text-sm">{formatCurrency(Number(order.totalPrice))}</p>
+          <p className="text-sm font-medium tracking-wider">{formatCurrency(Number(order.totalPrice))}</p>
           {order.status === "COMPLETED" && (
             <Button
               variant={"ghost"}
               size={"sm"}
-              className="text-destructive text-sm hover:text-destructive"
+              className="text-destructive/70 hover:text-foreground text-sm tracking-tight"
             >
               Refazer pedido
             </Button>

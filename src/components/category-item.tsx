@@ -30,7 +30,7 @@ export default function CategoryItem({ category }: CategoryProps) {
     <Link
       href="#"
       className="shadow-sm shadow-black/15 w-auto overflow-hidden  bg-card border hover:border-accent rounded-2xl 
-      text-muted-foreground hover:text-foreground transition-all duration-200 transform"
+      text-foreground hover:text-foreground transition-all duration-200 transform"
     >
       <div className="w-full">
         <div className="px-4 py-5 sm:p-5">
