@@ -37,11 +37,11 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
     <>
       <Header />
       <BottomNav />
-      <Container>
-        <div className="flex w-full overflow-hidden pt-4 sm:mt-12">
-          <div className="w-full lg:w-[78rem] mx-auto flex flex-col gap-6 rounded-md  mt-2 md:mt-8">
+      <Container className="mt-8 lg:mt-20">
+        <div className="flex w-full overflow-hidden">
+          <div className="w-full lg:w-[78rem] mx-auto flex flex-col gap-8 rounded-md">
             <GoBackButton />
-            <div className="flex flex-col w-full gap-6 lg:flex-row">
+            <div className="flex flex-col w-full gap-8 lg:flex-row">
               <ProductBanner images={images} produto={produto} />
 
               <ProductInfo product={produto} quantity={0} />

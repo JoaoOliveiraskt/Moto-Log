@@ -2,6 +2,7 @@ import BottomNav from "@/components/bottom-nav";
 import Container from "@/components/container";
 import Footer from "@/components/footer";
 import GoBackButton from "@/components/go-back-button";
+
 import Header from "@/components/header";
 import ProductCard from "@/components/product-card";
 import { db } from "@/lib/prisma";
@@ -44,13 +45,8 @@ export default async function CategorieList({ params }: Props) {
   return (
     <>
       <Header />
-      <Container className=" flex flex-col gap-4 mt-8 xl:mt-20">
-        <GoBackButton />
-        <div className="flex justify-between items-center">
-          <h2 className="font-bold text-primary text-xl sm:text-3xl">
-            {category.nome}
-          </h2>
-        </div>
+      <Container className="flex flex-col gap-8 mt-8 lg:mt-20">
+        <GoBackButton name={category.nome} />
 
         {products.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">

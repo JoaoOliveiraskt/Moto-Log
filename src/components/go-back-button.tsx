@@ -2,27 +2,36 @@
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { HiOutlineArrowSmLeft } from "react-icons/hi";
+import { RiArrowLeftSLine } from "react-icons/ri";
 
 interface Props {
   className?: string;
+  name?: string;
 }
 
-const GoBackButton: React.FC = ({className}: Props) => {
+const GoBackButton: React.FC<Props> = ({ className, name }: Props) => {
   const router = useRouter();
 
   const handleGoBack = () => router.back();
+
+  const title = name || "";
+
   return (
-    <div className={`${className}`} title="Voltar">
+    <div className="flex items-center gap-4 h-10">
       <Button
         onClick={handleGoBack}
-        className="flex bg-transparent border-none h-fit hover:bg-accent"
+        className={`flex bg-transparent border-none h-fit hover:bg-accent ${className}`}
         size="icon"
         variant="outline"
-        
+        title="Voltar"
       >
-        <HiOutlineArrowSmLeft size={32} />
+        <RiArrowLeftSLine size={32} />
       </Button>
+      {title && (
+        <span className="font-bold text-primary text-xl sm:text-3xl">
+          {title}
+        </span>
+      )}
     </div>
   );
 };

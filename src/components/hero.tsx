@@ -5,8 +5,8 @@ import { PiSealCheck } from "react-icons/pi";
 
 export default function Section() {
   return (
-    <Container className="mt-4 sm:mt-20">
-      <section className="relative pt-6 md:py-16">
+    <Container className="mt-8 sm:mt-24">
+      <section className="relative">
         <div className="relative px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
           <div className="max-w-3xl mx-auto text-center ">
             <h1 className="pb-2 text-3xl font-bold  sm:text-4xl lg:text-5xl tracking-tighter text-foreground bg-clip-text dark:text-transparent dark:bg-gradient-to-r from-white to-gray-500">

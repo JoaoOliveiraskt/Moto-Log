@@ -6,6 +6,8 @@ import OrderItem from "./components/order-item";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import BottomNav from "@/components/bottom-nav";
+import GoBackButton from "@/components/go-back-button";
+import Container from "@/components/container";
 
 const MyOrdersPage = async () => {
   const session = await getServerSession(authOptions);
@@ -31,15 +33,15 @@ const MyOrdersPage = async () => {
     <>
     <Header />
     <BottomNav />
-      <div className="py-6 px-4 sm:flex sm: flex-col sm:max-w-[40rem] mx-auto mt-4 sm:mt-20">
-        <h2 className="font-semibold pb-6 text-lg">Meus Pedidos</h2>
+      <Container className="flex flex-col gap-8  mt-8 lg:mt-20">
+        <GoBackButton name={"Meus pedidos"} />
 
-        <div className="space-y-3">
+        <div className="gap-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {orders.map((order) => (
             <OrderItem key={order.id} order={order} />
           ))}
         </div>
-      </div>
+      </Container>
       <Footer />
     </>
   );
