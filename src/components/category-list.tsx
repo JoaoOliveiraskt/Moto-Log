@@ -9,8 +9,8 @@ export default async function CategoryList() {
       <h2 className="text-start text-xl sm:text-3xl font-bold text-primary">
         Principais categorias
       </h2>
-      <div className=" flex flex-wrap items-center justify-center w-full gap-4">
-        {categories.slice(0, 5).map((category) => (
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {categories.slice(0, 6).map((category) => (
           <CategoryItem key={category.id} category={category} />
         ))}
       </div>

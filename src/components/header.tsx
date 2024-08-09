@@ -8,58 +8,53 @@ import CartSideBar from "./ui/cart-button";
 import MenuSideBar from "./menu-sidebar";
 import { ModeToggle } from "./theme/theme-switcher";
 import Container from "./container";
+import { TbHexagonLetterM } from "react-icons/tb";
+import { TbCircleLetterMFilled } from "react-icons/tb";
+import { TbSquareRoundedLetterMFilled } from "react-icons/tb";
 
 const navLinks = [
-  { name: "Home", href: "#" },
-  { name: "Sobre", href: "#" },
-  { name: "Serviços", href: "#" },
+  { name: "Home", href: "/" },
 ];
 
 export default function Header() {
   return (
-    <div className="hidden sm:block border-t border-zinc-400/65 dark:border-zinc-800 fixed bottom-0 sm:top-0 z-10 w-full h-max px-2 sm:px-0 pb-8 p-2 sm:py-4 bg-background">
+    <div className="hidden sm:block fixed top-0 z-10 w-full h-max py-3 bg-background">
       <Container className="flex items-center justify-center">
         <div className="w-full flex items-center justify-between">
-          <div className="md:flex md:items-center md:gap-12">
-            <Link className="font-black text-4xl" href="/">
-              {/*<Image
-                src={Logo}
-                alt="Logo"
-                width={40}
-                height={40}
-                priority
-                className="z-50"
-              />*/}
-              <h2 className="font-extrabold text-xl">M/L</h2>
-            </Link>
-          </div>
+          <div className="w-full flex items-center gap-5">
+            <div className="md:flex md:items-center md:gap-12">
+              <Link className="font-black text-4xl" href="/">
+                <TbSquareRoundedLetterMFilled size={40} />
+              </Link>
+            </div>
 
-          <div className="hidden md:block">
-            <nav aria-label="Global" className="">
-              <ul className="flex items-center gap-6 text-sm">
-                {navLinks.map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      className="transition text-primary hover:text-muted-foreground dark:text-muted-foreground dark:hover:text-primary"
-                      href={link.href}
-                    >
-                      {link.name}
-                    </Link>
+            <div className="hidden md:block">
+              <nav aria-label="Global" className="">
+                <ul className="flex items-center gap-5 tracking-tight text-muted-foreground font-medium text-sm">
+                  {navLinks.map((link, index) => (
+                    <li key={index}>
+                      <Link
+                        className="transition hover:text-foreground"
+                        href={link.href}
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+
+                  <li>
+                    <DropdownCategory />
                   </li>
-                ))}
 
-                <li>
-                  <DropdownCategory />
-                </li>
-
-                <li>
-                  <DropdownStore />
-                </li>
-              </ul>
-            </nav>
+                  <li>
+                    <DropdownStore />
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
 
-          <div className="flex items-center gap-0">
+          <div className="flex items-center">
             <ModeToggle />
 
             <CartSideBar />

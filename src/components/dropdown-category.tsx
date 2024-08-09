@@ -13,17 +13,15 @@ export default async function DropdownCategory() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className="flex items-center gap-1">
-          <p className="transition text-primary hover:text-muted-foreground dark:text-muted-foreground dark:hover:text-primary">
-            Categorias
-          </p>
+        <div className="flex items-center gap-1 hover:text-foreground">
+          <p>Categorias</p>
           <RiArrowDropDownLine />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         {categories.map((category) => (
-          <DropdownMenuItem className="cursor-pointer" key={category.id}>
-            {category.nome}
+          <DropdownMenuItem className="cursor-pointer hover:text-foreground" key={category.id}>
+            <p>{category.nome}</p>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

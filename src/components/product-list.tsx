@@ -12,7 +12,7 @@ export default async function ProductList() {
     take: 20,
   });
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
       {products.map((product: Produto) => (
         <div key={product.id}>
           {/* @ts-ignore */}

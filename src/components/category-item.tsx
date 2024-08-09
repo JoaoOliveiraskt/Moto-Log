@@ -1,7 +1,6 @@
 import { Footprints, Cable, Watch } from "lucide-react";
 import { GiClothes, GiLipstick } from "react-icons/gi";
 import { PiBooks } from "react-icons/pi";
-import Image from "next/image";
 import Link from "next/link";
 interface Category {
   id: string;
@@ -19,7 +18,7 @@ const categoryIcons: { [key: string]: JSX.Element } = {
   Eletrônicos: <Cable size={30} />,
   Acessórios: <Watch size={30} />,
   Cosméticos: <GiLipstick size={30} />,
-  Livros: <PiBooks />,
+  Livros: <PiBooks size={30} />,
 };
 
 interface CategoryProps {
@@ -28,14 +27,16 @@ interface CategoryProps {
 
 export default function CategoryItem({ category }: CategoryProps) {
   return (
-    <Link href="#" className="overflow-hidden relative bg-card border border-border hover:border-accent rounded-2xl text-muted-foreground hover:text-foreground w-[170px] lg:w-[243px] transition-all duration-200 transform">
-      <div className="">
+    <Link
+      href="#"
+      className="shadow-sm shadow-black/15 w-auto overflow-hidden  bg-card border hover:border-accent rounded-2xl 
+      text-muted-foreground hover:text-foreground transition-all duration-200 transform"
+    >
+      <div className="w-full">
         <div className="px-4 py-5 sm:p-5">
           <div className="flex items-center justify-between">
             <div className="">
-              <p className="text-xs font-bold lg:text-sm">
-                {category.nome}
-              </p>
+              <p className="text-xs font-bold lg:text-sm">{category.nome}</p>
             </div>
             <div className="">{categoryIcons[category.nome]}</div>
           </div>

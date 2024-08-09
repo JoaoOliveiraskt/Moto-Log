@@ -1,15 +1,18 @@
 import React from "react";
+import Container from "./container";
+import { Input } from "./ui/input";
+import { PiSealCheck } from "react-icons/pi";
 
 export default function Section() {
   return (
-    <>
-      <section className="relative pt-6 md:py-16 mt-4 sm:mt-16">
+    <Container className="mt-4 sm:mt-20">
+      <section className="relative pt-6 md:py-16">
         <div className="relative px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-3xl font-bold text-primary sm:text-4xl lg:text-5xl">
+          <div className="max-w-3xl mx-auto text-center ">
+            <h1 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl tracking-tight">
               Revolucione sua Experiência de Compra e Venda com Moto Log
             </h1>
-            <p className="max-w-md mx-auto mt-6 text-base font-normal leading-7 text-gray-500 dark:text-gray-400">
+            <p className="max-w-md mx-auto mt-6 font-medium leading-7 text-muted-foreground">
               Explore e apoie lojas locais com Moto-Log. Conecte-se a produtos
               exclusivos, entregas rápidas e faça parte da revolução no comércio
               local online.
@@ -18,28 +21,27 @@ export default function Section() {
             <form
               action="#"
               method="POST"
-              className="max-w-md mx-auto mt-8 space-y-4 sm:space-x-4 sm:flex sm:space-y-0 sm:items-end"
+              className=" max-w-md h-11 mx-auto mt-8 space-y-4 sm:space-x-4 sm:flex sm:space-y-0 sm:items-end"
             >
-              <div className="flex-1">
+              <div className="flex-1 h-full ">
                 <label htmlFor="" className="sr-only">
                   {" "}
                   Buscar{" "}
                 </label>
-                <div>
-                  <input
-                    type="text"
-                    name=""
-                    id=""
-                    className="block w-full px-4 py-3 sm:py-3.5 text-base font-medium text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg sm:text-sm focus:ring-gray-900 focus:border-gray-900"
-                    placeholder="Pesquisa"
-                  />
-                </div>
+
+                <Input
+                  type="text"
+                  name=""
+                  id=""
+                  className="border border-border w-full h-full px-4 text-lg font-medium rounded-lg bg-card"
+                  placeholder="Pesquisa"
+                />
               </div>
 
-              <div className="relative group">
+              <div className="relative group h-full">
                 <button
                   type="button"
-                  className="inline-flex relative items-center justify-center w-full sm:w-auto px-8 py-3 sm:text-sm text-base sm:py-3.5 font-semibold text-white transition-all duration-200 bg-indigo-600 border border-transparent rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
+                  className="h-full inline-flex relative items-center justify-center w-full sm:w-auto px-8 py-3 sm:py-3.5 font-medium text-foreground transition-all duration-200 bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none "
                 >
                   Buscar
                 </button>
@@ -47,42 +49,16 @@ export default function Section() {
             </form>
 
             <ul className="flex items-center justify-center mt-6 space-x-6 sm:space-x-8">
-              <li className="flex items-center">
-                <svg
-                  className="w-5 h-5 mr-2 text-gray-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
+              <li className="flex items-center gap-1.5">
+                <PiSealCheck size={20} />
                 <span className="text-xs font-medium text-primary sm:text-sm">
                   {" "}
                   Entregas Rápidas e Confiáveis{" "}
                 </span>
               </li>
 
-              <li className="flex items-center">
-                <svg
-                  className="w-5 h-5 mr-2 text-gray-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
+              <li className="flex items-center gap-1.5">
+                <PiSealCheck size={20} />
                 <span className="text-xs font-medium text-primary sm:text-sm">
                   {" "}
                   Apoio local.{" "}
@@ -92,6 +68,6 @@ export default function Section() {
           </div>
         </div>
       </section>
-    </>
+    </Container>
   );
 }
