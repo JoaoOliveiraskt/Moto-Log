@@ -16,7 +16,7 @@ export default async function DropdownStore() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className="flex items-center gap-1 hover:text-foreground">
+        <div className="flex items-center gap-1 hover:text-muted-foreground">
           <p>Lojas</p>
           <RiArrowDropDownLine />
         </div>

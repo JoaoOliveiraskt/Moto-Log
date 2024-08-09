@@ -1,4 +1,4 @@
-import MenuSideBar from "./menu-sidebar";
+import Menu from "./menu";
 import HomeButton from "./ui/button-home";
 import OrderButton from "./ui/button-order";
 import CartSideBar from "./ui/cart-button";
@@ -19,9 +19,9 @@ export default function BottomNav() {
           <span>Carrinho</span>
         </CartSideBar>
 
-        <MenuSideBar className="h-14 w-14">
+        <Menu className="h-14 w-14">
           <span>Menu</span>
-        </MenuSideBar>
+        </Menu>
       </nav>
     </div>
   );

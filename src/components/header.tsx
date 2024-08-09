@@ -5,7 +5,7 @@ import Logo from "../../public/images/moto-log-logo.png";
 import DropdownCategory from "./dropdown-category";
 import DropdownStore from "./dropdown-store";
 import CartSideBar from "./ui/cart-button";
-import MenuSideBar from "./menu-sidebar";
+import Menu from "./menu";
 import { ModeToggle } from "./theme/theme-switcher";
 import Container from "./container";
 import { TbSquareRoundedLetterMFilled } from "react-icons/tb";
@@ -26,7 +26,7 @@ export default function Header() {
 
             <div className="hidden md:block">
               <nav aria-label="Global" className="">
-                <ul className="flex items-center gap-5 tracking-tight text-muted-foreground font-medium ">
+                <ul className="flex items-center gap-5 tracking-tight text-foreground font-medium ">
                   {/*} {navLinks.map((link, index) => (
                     <li key={index}>
                       <Link
@@ -55,7 +55,7 @@ export default function Header() {
 
             <CartSideBar />
 
-            <MenuSideBar />
+            <Menu />
           </div>
         </div>
       </Container>

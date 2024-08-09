@@ -14,7 +14,7 @@ export default async function DropdownCategory() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className="flex items-center gap-1 hover:text-foreground">
+        <div className="flex items-center gap-1 hover:text-muted-foreground">
           <p>Categorias</p>
           <RiArrowDropDownLine />
         </div>
