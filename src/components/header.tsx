@@ -18,7 +18,7 @@ const navLinks = [
 
 export default function Header() {
   return (
-    <div className="hidden sm:block fixed top-0 z-10 w-full h-max py-3 bg-background">
+    <div className="hidden lg:block fixed top-0 z-10 w-full h-max py-3 bg-background">
       <Container className="flex items-center justify-center">
         <div className="w-full flex items-center justify-between">
           <div className="w-full flex items-center gap-5">

@@ -7,6 +7,7 @@ import GoBackButton from "../components/go-back-button";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import BottomNav from "@/components/bottom-nav";
+import Container from "@/components/container";
 
 interface ProductPageProps {
   params: {
@@ -34,18 +35,20 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
 
   return (
     <>
-    <Header />
-    <BottomNav />
-      <div className="flex w-full overflow-hidden px-4 pt-4 sm:mt-12">
-        <div className="w-full lg:w-[78rem] mx-auto flex flex-col gap-6 rounded-md  mt-2 md:mt-8">
-          <GoBackButton  />
-          <div className="flex flex-col w-full gap-6 lg:flex-row">
-            <ProductBanner images={images} produto={produto} />
+      <Header />
+      <BottomNav />
+      <Container>
+        <div className="flex w-full overflow-hidden pt-4 sm:mt-12">
+          <div className="w-full lg:w-[78rem] mx-auto flex flex-col gap-6 rounded-md  mt-2 md:mt-8">
+            <GoBackButton />
+            <div className="flex flex-col w-full gap-6 lg:flex-row">
+              <ProductBanner images={images} produto={produto} />
 
-            <ProductInfo product={produto} quantity={0}/>
+              <ProductInfo product={produto} quantity={0} />
+            </div>
           </div>
         </div>
-      </div>
+      </Container>
       <Footer />
     </>
   );
