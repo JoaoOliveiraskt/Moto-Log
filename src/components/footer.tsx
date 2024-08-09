@@ -1,46 +1,44 @@
 import Container from "./container";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 export default function Footer() {
   return (
-    <Container className="pb-8 mb-16 pt-32">
-      <footer>
-        <div className="mx-auto max-w-lg">
-          <strong className="block text-center text-xl font-bold text-gray-900 sm:text-3xl">
+    <Container className="mt-10 sm:mt-16 pb-32 lg:pb-12">
+      <footer className="">
+        <div className="mx-auto px-4 max-w-screen-lg h-56 sm:h-80 border rounded-3xl flex flex-col items-center justify-center bg-gradient-to-t from-zinc-200 viac-zinc-100 dark:from-zinc-900/60 dark:via-zinc-950 to-transparent">
+          <strong className="block max-w-lg text-center text-xl font-bold text-foreground sm:text-3xl">
             Quer receber as últimas notícias do Moto Log em primeira mão ?
           </strong>
 
           <form className="mt-6">
             <div className="relative max-w-lg">
-              <label className="sr-only" htmlFor="email">
-                {" "}
-                Email{" "}
-              </label>
-
-              <input
-                className="w-full rounded-full border-gray-200 bg-gray-100 p-4 pe-32 text-sm font-medium"
+              <Input
+              required
+                className="w-full h-12 rounded-lg border-border bg-transparent p-4 pe-40 text-sm font-medium"
                 id="email"
                 type="email"
                 placeholder="seuemail@email.com"
               />
 
-              <button className="absolute end-1 top-1/2 -translate-y-1/2 rounded-full bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-600">
+              <Button  className="absolute end-1 top-1/2 -translate-y-1/2 rounded-md mr-1 text-sm font-medium transition">
                 Inscreva-se
-              </button>
+              </Button>
             </div>
           </form>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-32">
+        <div className="mt-10 sm:mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-32">
           <div className="mx-auto max-w-sm lg:max-w-none">
-            <p className="mt-4 text-center text-gray-500 lg:text-left lg:text-lg">
+            <p className="mt-4 text-center text-foreground font-medium tracking-tight lg:text-left lg:text-lg">
               Descubra a liberdade de comprar e vender localmente com o Moto
               Log. Conecte-se com produtos únicos e apóie os negócios da sua
               comunidade.
             </p>
 
-            <div className="mt-6 flex justify-center gap-4 lg:justify-start">
+            <div className="mt-6 flex justify-center gap-4 lg:justify-start text-muted-foreground">
               <a
-                className="text-gray-700 transition hover:text-gray-700/75"
+                className="hover:text-foreground"
                 href="#"
                 target="_blank"
                 rel="noreferrer"
@@ -62,7 +60,7 @@ export default function Footer() {
               </a>
 
               <a
-                className="text-gray-700 transition hover:text-gray-700/75"
+                className="hover:text-foreground"
                 href="#"
                 target="_blank"
                 rel="noreferrer"
@@ -84,7 +82,7 @@ export default function Footer() {
               </a>
 
               <a
-                className="text-gray-700 transition hover:text-gray-700/75"
+                className="hover:text-foreground"
                 href="#"
                 target="_blank"
                 rel="noreferrer"
@@ -102,7 +100,7 @@ export default function Footer() {
               </a>
 
               <a
-                className="text-gray-700 transition hover:text-gray-700/75"
+                className="hover:text-foreground"
                 href="#"
                 target="_blank"
                 rel="noreferrer"
@@ -127,24 +125,21 @@ export default function Footer() {
 
           <div className="grid grid-cols-1 gap-8 text-center lg:grid-cols-3 lg:text-left">
             <div>
-              <strong className="font-medium text-gray-900"> Serviços </strong>
+              <strong className="font-medium text-foreground">
+                {" "}
+                Serviços{" "}
+              </strong>
 
-              <ul className="mt-6 space-y-1">
+              <ul className="mt-6 space-y-1 text-muted-foreground">
                 <li>
-                  <a
-                    className="text-gray-700 transition hover:text-gray-700/75"
-                    href="#"
-                  >
+                  <a className="hover:text-foreground" href="#">
                     {" "}
                     Entregas{" "}
                   </a>
                 </li>
 
                 <li>
-                  <a
-                    className="text-gray-700 transition hover:text-gray-700/75"
-                    href="#"
-                  >
+                  <a className="hover:text-foreground" href="#">
                     Compras locais
                   </a>
                 </li>
@@ -152,44 +147,32 @@ export default function Footer() {
             </div>
 
             <div>
-              <strong className="font-medium text-gray-900"> About </strong>
+              <strong className="font-medium text-foreground"> About </strong>
 
-              <ul className="mt-6 space-y-1">
+              <ul className="mt-6 space-y-1 text-muted-foreground">
                 <li>
-                  <a
-                    className="text-gray-700 transition hover:text-gray-700/75"
-                    href="#"
-                  >
+                  <a className="transition hover:text-foreground" href="#">
                     {" "}
                     Sobre{" "}
                   </a>
                 </li>
 
                 <li>
-                  <a
-                    className="text-gray-700 transition hover:text-gray-700/75"
-                    href="#"
-                  >
+                  <a className="transition hover:text-foreground" href="#">
                     {" "}
                     Carreiras{" "}
                   </a>
                 </li>
 
                 <li>
-                  <a
-                    className="text-gray-700 transition hover:text-gray-700/75"
-                    href="#"
-                  >
+                  <a className="transition hover:text-foreground" href="#">
                     {" "}
                     História{" "}
                   </a>
                 </li>
 
                 <li>
-                  <a
-                    className="text-gray-700 transition hover:text-gray-700/75"
-                    href="#"
-                  >
+                  <a className="transition hover:text-foreground" href="#">
                     {" "}
                     Nosso time{" "}
                   </a>
@@ -198,12 +181,12 @@ export default function Footer() {
             </div>
 
             <div>
-              <strong className="font-medium text-gray-900"> Support </strong>
+              <strong className="font-medium text-foreground"> Support </strong>
 
-              <ul className="mt-6 space-y-1">
+              <ul className="mt-6 space-y-1 text-muted-foreground">
                 <li>
                   <a
-                    className="text-gray-700 transition hover:text-gray-700/75"
+                    className="transition hover:text-foreground"
                     href="#"
                   >
                     {" "}
@@ -213,7 +196,7 @@ export default function Footer() {
 
                 <li>
                   <a
-                    className="text-gray-700 transition hover:text-gray-700/75"
+                    className="transition hover:text-foreground"
                     href="#"
                   >
                     {" "}
@@ -225,8 +208,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 border-t border-gray-100 pt-8">
-          <p className="text-center text-xs/relaxed text-gray-500">
+        <div className="mt-16 border-t border-border pt-8">
+          <p className="text-center text-xs/relaxed text-muted-dforeground">
             © Company 2024. All rights reserved.
           </p>
         </div>
