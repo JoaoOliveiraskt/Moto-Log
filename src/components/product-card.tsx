@@ -15,8 +15,8 @@ interface ProductProps {
 
 const ProductCard = ({ product }: ProductProps) => {
   return (
-    <Link href={`/product/${product.id}`}>
-      <div className="hover:shadow-md cursor-pointer rounded-lg h-64 sm:h-80 overflow-hidden bg-background border border-border/60 hover:text-orange-400">
+    <Link className="" href={`/product/${product.id}`}>
+      <div className="cursor-pointer rounded-lg h-64 sm:h-80 overflow-hidden text-foreground hover:hover:text-orange-400 transition ">
         <div className="relative h-32 w-full md:h-48">
           <Image
             src={product.imagemUrl}
@@ -25,7 +25,7 @@ const ProductCard = ({ product }: ProductProps) => {
             className="object-cover"
           />
           {Number(product.porcentagemDesconto) > 0 && (
-            <div className="flex items-center justify-center absolute px-1 top-2 left-2 bg-red-500 text-primary-foreground rounded-2xl">
+            <div className="flex items-center justify-around absolute px-2 top-2 left-2 bg-destructive text-destructive-foreground rounded-2xl">
               <BsArrowDownShort size={20} />
               <span className="text-sm">
                 {Number(product.porcentagemDesconto)}%
@@ -33,24 +33,26 @@ const ProductCard = ({ product }: ProductProps) => {
             </div>
           )}
         </div>
-        <div className="h-full flex flex-col gap-2 p-2">
-          <div className="hover:text-orange-400">
-            <h2 className="font-medium line-clamp-1 ">{product.nome}</h2>
+        <div className="h-full flex flex-col gap-2 p-2 ">
+          <div className="">
+            <h2 className="font-medium line-clamp-1">{product.nome}</h2>
           </div>
-          <div>
-            <div className="flex gap-4">
+          <div className="flex gap-2 items-center">
+            <div className="text-muted-foreground">
               <h3 className="font-bold">
                 {formatCurrency(calculateTotalPrice(product))}
               </h3>
             </div>
             {Number(product.porcentagemDesconto) > 0 && (
-              <p className="text-sm line-through text-muted-foreground">
+              <p className="text-sm line-through text-muted-foreground/80 font-medium">
                 {formatCurrency(Number(product.preco))}
               </p>
             )}
           </div>
           <div>
-            <p className="">{product.loja.nome}</p>
+            <p className="text-muted-foreground font-medium">
+              {product.loja.nome}
+            </p>
           </div>
         </div>
       </div>

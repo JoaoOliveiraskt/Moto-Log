@@ -13,7 +13,7 @@ import { TbCircleLetterMFilled } from "react-icons/tb";
 import { TbSquareRoundedLetterMFilled } from "react-icons/tb";
 
 const navLinks = [
-  { name: "Home", href: "/" },
+  { name: "", href: "/" },
 ];
 
 export default function Header() {
@@ -30,8 +30,8 @@ export default function Header() {
 
             <div className="hidden md:block">
               <nav aria-label="Global" className="">
-                <ul className="flex items-center gap-5 tracking-tight text-muted-foreground font-medium text-sm">
-                  {navLinks.map((link, index) => (
+                <ul className="flex items-center gap-5 tracking-tight text-muted-foreground font-medium ">
+                 {/*} {navLinks.map((link, index) => (
                     <li key={index}>
                       <Link
                         className="transition hover:text-foreground"
@@ -40,7 +40,7 @@ export default function Header() {
                         {link.name}
                       </Link>
                     </li>
-                  ))}
+                  ))}*/}
 
                   <li>
                     <DropdownCategory />

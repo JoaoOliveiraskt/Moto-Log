@@ -9,10 +9,10 @@ export default function Section() {
       <section className="relative pt-6 md:py-16">
         <div className="relative px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
           <div className="max-w-3xl mx-auto text-center ">
-            <h1 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl tracking-tight">
+            <h1 className="pb-2 text-3xl font-bold  sm:text-4xl lg:text-5xl tracking-tighter text-foreground bg-clip-text dark:text-transparent dark:bg-gradient-to-r from-white to-gray-500">
               Revolucione sua Experiência de Compra e Venda com Moto Log
             </h1>
-            <p className="max-w-md mx-auto mt-6 font-medium leading-7 text-muted-foreground">
+            <p className="max-w-md mx-auto mt-4 font-medium leading-7 text-muted-foreground">
               Explore e apoie lojas locais com Moto-Log. Conecte-se a produtos
               exclusivos, entregas rápidas e faça parte da revolução no comércio
               local online.

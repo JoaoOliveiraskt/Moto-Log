@@ -5,7 +5,7 @@ import Container from "./container";
 
 export default function ProductSection() {
   return (
-    <Container className="my-10 flex flex-col gap-10">
+    <Container className="my-10 flex flex-col gap-4">
       <div className="flex justify-between items-center">
         <h2 className="font-bold text-primary text-xl sm:text-3xl">Recomendados</h2>
         <Link href="#" className="flex items-center gap-1 text-blue-700">
