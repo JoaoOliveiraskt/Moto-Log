@@ -24,6 +24,7 @@ import {
 import { toast } from "./ui/use-toast";
 import { ToastAction } from "./ui/toast";
 import { useRouter } from "next/navigation";
+import { ScrollArea } from "./ui/scroll-area";
 
 interface CartProps {
   setIsOpen: (isOpen: boolean) => void;
@@ -94,12 +95,15 @@ const Cart = ({ setIsOpen }: CartProps) => {
     <>
       <div className="flex flex-col h-full py-5 ">
         {products.length > 0 ? (
-          <>
-            <div className="space-y-4 flex-auto overflow-y-scroll">
+          <div className="flex flex-col h-full justify-between">
+            <ScrollArea className="h-full">
               {products.map((product) => (
-                <CartItem key={product.id} cartProduct={product} />
+                <>
+                  <CartItem key={product.id} cartProduct={product} />
+                  <Separator className="my-3" />
+                </>
               ))}
-            </div>
+            </ScrollArea>
 
             <div className="mt-6">
               <Card>
@@ -129,12 +133,12 @@ const Cart = ({ setIsOpen }: CartProps) => {
 
             <Button
               onClick={() => setIsConfirmDialogOpen(true)}
-              className="w-full mt-6 bg-destructive"
+              className="w-full mt-6 bg-destructive hover:bg-destructive/40 text-foreground"
               disabled={isSubmitLoading}
             >
               Fazer pedido
             </Button>
-          </>
+          </div>
         ) : (
           <div className="flex justify-center items-center h-96">
             <p className="text-lg text-muted-foreground">

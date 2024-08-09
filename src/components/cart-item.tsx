@@ -78,10 +78,10 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
                 +
               </Button>
             </div>
-            {/* botão de deletar */}
 
-            <Button size={"icon"} onClick={handleRemoveProduct} className="bg-destructive">
-              <IoTrashOutline size={18} />
+            {/* botão de deletar */}
+            <Button size={"icon"} onClick={handleRemoveProduct} className="bg-destructive hover:bg-destructive/40 text-foreground">
+              <IoTrashOutline size={18}/>
             </Button>
           </div>
         </div>
