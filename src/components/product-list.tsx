@@ -9,7 +9,7 @@ export default async function ProductList() {
         select: { nome: true },
       },
     },
-    take: 20,
+    take: 15,
   });
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">

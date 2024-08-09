@@ -11,7 +11,7 @@ export default async function CategoryList() {
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {categories.slice(0, 6).map((category) => (
-          <CategoryItem key={category.id} category={category} />
+          <CategoryItem key={category.id} category={category} link={`/categorie/${category.id}`}/>
         ))}
       </div>
     </Container>

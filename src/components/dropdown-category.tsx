@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { db } from "@/lib/prisma";
+import Link from "next/link";
 
 export default async function DropdownCategory() {
   const categories = await db.categoria.findMany({});
@@ -20,9 +21,11 @@ export default async function DropdownCategory() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         {categories.map((category) => (
-          <DropdownMenuItem className="cursor-pointer hover:text-foreground" key={category.id}>
-            <p>{category.nome}</p>
-          </DropdownMenuItem>
+          <Link key={category.id} href={`/categorie/${category.id}`}>
+            <DropdownMenuItem className="cursor-pointer hover:text-foreground">
+              {category.nome}
+            </DropdownMenuItem>
+          </Link>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>

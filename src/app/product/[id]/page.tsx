@@ -3,7 +3,7 @@ import { db } from "../../../lib/prisma";
 import { notFound } from "next/navigation";
 import ProductBanner from "../components/product-banner";
 import ProductInfo from "../components/product-info";
-import GoBackButton from "../components/go-back-button";
+import GoBackButton from "@/components/go-back-button";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import BottomNav from "@/components/bottom-nav";

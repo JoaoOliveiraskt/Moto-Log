@@ -23,12 +23,13 @@ const categoryIcons: { [key: string]: JSX.Element } = {
 
 interface CategoryProps {
   category: Category;
+  link: string;
 }
 
-export default function CategoryItem({ category }: CategoryProps) {
+export default function CategoryItem({ category, link }: CategoryProps) {
   return (
     <Link
-      href="#"
+      href={link}
       className="shadow-sm shadow-black/15 w-auto overflow-hidden  bg-card border hover:border-accent rounded-2xl 
       text-foreground hover:text-foreground transition-all duration-200 transform"
     >
