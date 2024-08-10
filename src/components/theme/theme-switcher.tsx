@@ -28,7 +28,7 @@ export function ModeToggle({className, children}: Props) {
       <DropdownMenuTrigger asChild className="text-muted-foreground hover:text-foreground ">
         <Button
           onClick={toggleTheme}
-          variant="icon"
+          variant="ghost"
           size="icon"
           className={`cursor-pointer outline-none border-none ${className}`}
         >
