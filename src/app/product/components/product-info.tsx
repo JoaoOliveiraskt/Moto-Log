@@ -20,8 +20,6 @@ import Cart from "@/components/cart";
 import {
   AlertDialogHeader,
   AlertDialogFooter,
-} from "@/components/ui/alert-dialog";
-import {
   AlertDialog,
   AlertDialogContent,
   AlertDialogTitle,
@@ -56,7 +54,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
   const addToCart = ({ emptyCart }: { emptyCart?: boolean }) => {
     addProductToCart({ product, emptyCart, quantity: 1 });
-    setIsCartOpen(true);
+  
   };
 
   const handleLoginOpen = () => {

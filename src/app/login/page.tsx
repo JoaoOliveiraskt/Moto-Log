@@ -1,8 +1,6 @@
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import Image from "next/image"
-import LoginButton from "@/components/login-button"
+import Image from "next/image";
+import LoginButton from "@/components/login-button";
+
 
 export default function Component() {
   return (
@@ -10,11 +8,14 @@ export default function Component() {
       <div className="flex items-center justify-center px-4 py-12 md:px-6">
         <div className="mx-auto w-full max-w-md space-y-6">
           <div className="space-y-2 text-center">
+         
             <h1 className="text-3xl font-bold">Login</h1>
-            <p className="text-muted-foreground">Faça login na sua conta para continuar</p>
+            <p className="text-muted-foreground">
+              Faça login na sua conta para continuar
+            </p>
           </div>
           <div className="space-y-4">
-            <LoginButton className="w-full"/>
+            <LoginButton className="w-full" />
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-muted" />
@@ -24,7 +25,7 @@ export default function Component() {
         </div>
       </div>
       <div className="bg-muted hidden md:block">
-      <Image
+        <Image
           src="/placeholder.svg"
           alt="Login Image"
           width={1920}
@@ -33,5 +34,5 @@ export default function Component() {
         />
       </div>
     </div>
-  )
+  );
 }
