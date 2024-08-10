@@ -67,19 +67,22 @@ const Cart = ({ setIsOpen }: CartProps) => {
         },
       });
 
-      clearCart();
       setIsOpen(false);
+
+      clearCart();
+
       toast({
-        className: "bg-green-700",
+        className: "bg-green-800",
         title: "Pedido finalizado com sucesso!",
-        description: "Você pode acompanhar o seu pedido na aba 'Meus Pedidos'",
+        description:
+          "Você pode acompanhar o status do seu pedido na aba 'Meus Pedidos'",
         action: (
           <ToastAction
             className=""
             altText="Ver pedido"
             onClick={() => router.push("/my-orders")}
           >
-            Ver pedido
+            Meus pedido
           </ToastAction>
         ),
       });
@@ -154,7 +157,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Deseja Finalizar seu pedido ?</AlertDialogTitle>
-            <AlertDialogDescription className="">
+            <AlertDialogDescription className="font-medium">
               Ao finalizar seu pedido, você concorda com os termos e condições
               da loja.
             </AlertDialogDescription>

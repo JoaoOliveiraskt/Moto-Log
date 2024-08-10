@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Cart from "../cart";
 import {
   Sheet,
@@ -22,8 +22,11 @@ const CartSideBar = ({ children, className }: Props) => {
   const { products } = useContext(CartContext);
   const totalItems = products.length;
 
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+
   return (
-    <Sheet>
+    <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
       <SheetTrigger>
         <div className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground relative">
           <Button
@@ -43,11 +46,11 @@ const CartSideBar = ({ children, className }: Props) => {
           </Button>
         </div>
       </SheetTrigger>
-      <SheetContent className="w-[75vw]">
+      <SheetContent>
         <SheetHeader>
           <SheetTitle className="">Seu carrinho</SheetTitle>
         </SheetHeader>
-        <Cart />
+        <Cart setIsOpen={setIsCartOpen}/>
       </SheetContent>
     </Sheet>
   );

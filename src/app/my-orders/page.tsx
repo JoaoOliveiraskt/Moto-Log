@@ -37,7 +37,7 @@ const MyOrdersPage = async () => {
         <GoBackButton name={"Meus pedidos"} />
 
         <div className="gap-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-          {orders.map((order) => (
+          {[...orders].reverse().map((order) => (
             <OrderItem key={order.id} order={order} />
           ))}
         </div>

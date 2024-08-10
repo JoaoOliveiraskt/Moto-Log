@@ -21,8 +21,9 @@ const ProductCard = ({ product }: ProductProps) => {
           <Image
             src={product.imagemUrl}
             alt={product.nome}
-            fill
-            className="object-cover"
+            width={1000}
+            height={1000}
+            className="object-cover w-full h-full"
           />
           {Number(product.porcentagemDesconto) > 0 && (
             <div className="flex items-center justify-around absolute px-2 top-2 left-2 bg-destructive text-destructive-foreground rounded-2xl">

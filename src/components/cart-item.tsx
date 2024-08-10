@@ -88,11 +88,7 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
             </div>
 
             {/* botão de deletar */}
-            <Button
-              variant={"ghost"}
-              size={"icon"}
-              onClick={handleRemoveProduct}
-            >
+            <Button variant={"ghost"} size={"icon"} onClick={handleRemoveProduct}>
               <IoTrashOutline size={18} />
             </Button>
           </div>
