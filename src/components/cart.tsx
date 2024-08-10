@@ -70,13 +70,12 @@ const Cart = ({ setIsOpen }: CartProps) => {
       clearCart();
       setIsOpen(false);
       toast({
-        className: "bg-green-600",
+        className: "bg-green-700",
         title: "Pedido finalizado com sucesso!",
-        description:
-          "Você pode acompanhar o status do seu pedido na aba 'Meus Pedidos'",
+        description: "Você pode acompanhar o seu pedido na aba 'Meus Pedidos'",
         action: (
           <ToastAction
-            className="bg-background"
+            className=""
             altText="Ver pedido"
             onClick={() => router.push("/my-orders")}
           >
@@ -133,7 +132,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
 
             <Button
               onClick={() => setIsConfirmDialogOpen(true)}
-              className="w-full mt-6 bg-destructive hover:bg-destructive/40 text-foreground"
+              className="w-full mt-6"
               disabled={isSubmitLoading}
             >
               Fazer pedido
@@ -155,7 +154,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Deseja Finalizar seu pedido ?</AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogDescription className="">
               Ao finalizar seu pedido, você concorda com os termos e condições
               da loja.
             </AlertDialogDescription>
@@ -163,7 +162,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
           <AlertDialogFooter>
             <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <AlertDialogAction
-              className="bg-destructive"
+              className=""
               onClick={handleFinishOrderClick}
               disabled={isSubmitLoading}
             >

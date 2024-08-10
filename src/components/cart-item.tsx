@@ -12,7 +12,11 @@ interface CartItemProps {
 }
 
 const CartItem = ({ cartProduct }: CartItemProps) => {
-  const { decreaseProductQuantity, encreaseProductQuantity, removeProductFromCart } = useContext(CartContext);
+  const {
+    decreaseProductQuantity,
+    encreaseProductQuantity,
+    removeProductFromCart,
+  } = useContext(CartContext);
 
   const handleDecreaseProductQuantityClick = () => {
     decreaseProductQuantity(cartProduct.id);
@@ -20,11 +24,11 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
 
   const handleEncreaseProductQuantityClick = () => {
     encreaseProductQuantity(cartProduct.id);
-  }
+  };
 
   const handleRemoveProduct = () => {
     removeProductFromCart(cartProduct.id);
-  }
+  };
 
   return (
     <div className="flex items-center justify-between">
@@ -47,12 +51,16 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
             </h3>
             <div className="flex items-center">
               <h4 className="text-sm font-bold">
-                {formatCurrency(calculateTotalPrice(cartProduct) * cartProduct.quantity)}
+                {formatCurrency(
+                  calculateTotalPrice(cartProduct) * cartProduct.quantity
+                )}
               </h4>
 
               {Number(cartProduct.porcentagemDesconto) > 0 && (
                 <span className="text-xs ml-2 text-gray-500 line-through">
-                  {formatCurrency(Number(cartProduct.preco) * cartProduct.quantity)}
+                  {formatCurrency(
+                    Number(cartProduct.preco) * cartProduct.quantity
+                  )}
                 </span>
               )}
             </div>
@@ -70,7 +78,7 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
               </Button>
               <span className="w-8 text-center">{cartProduct.quantity}</span>
               <Button
-              onClick={handleEncreaseProductQuantityClick}
+                onClick={handleEncreaseProductQuantityClick}
                 size={"icon"}
                 variant={"ghost"}
                 className="py-1 px-3 rounded-md text-center border border-zinc-400/80"
@@ -80,8 +88,12 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
             </div>
 
             {/* botão de deletar */}
-            <Button size={"icon"} onClick={handleRemoveProduct} className="bg-destructive hover:bg-destructive/40 text-foreground">
-              <IoTrashOutline size={18}/>
+            <Button
+              variant={"ghost"}
+              size={"icon"}
+              onClick={handleRemoveProduct}
+            >
+              <IoTrashOutline size={18} />
             </Button>
           </div>
         </div>

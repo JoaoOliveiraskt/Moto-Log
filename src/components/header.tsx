@@ -50,7 +50,7 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center gap-1">
             <ModeToggle />
 
             <CartSideBar />

@@ -21,16 +21,16 @@ export default function Footer() {
                 placeholder="seuemail@email.com"
               />
 
-              <Button  className="absolute end-1 top-1/2 -translate-y-1/2 rounded-md mr-1 text-sm font-medium transition">
+              <Button  className="absolute end-1 top-1/2 -translate-y-1/2 rounded-md mr-0.5 text-sm font-medium transition">
                 Inscreva-se
               </Button>
             </div>
           </form>
         </div>
 
-        <div className="mt-10 sm:mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-32">
-          <div className="mx-auto max-w-sm lg:max-w-none">
-            <p className="mt-4 text-center text-foreground font-medium tracking-tight lg:text-left lg:text-lg">
+        <div className="mt-10 sm:mt-16 flex flex-col gap-5 lg:flex-row w-full justify-center lg:justify-between items-center">
+          <div className="max-w-sm">
+            <p className="mt-4 max-w-md text-center text-foreground font-medium tracking-tight lg:text-left lg:text-lg">
               Descubra a liberdade de comprar e vender localmente com o Moto
               Log. Conecte-se com produtos únicos e apóie os negócios da sua
               comunidade.

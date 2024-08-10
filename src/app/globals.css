@@ -92,7 +92,7 @@
     --accent: 240 1% 64%;
     --accent-foreground: 261 5% 13%;
     --destructive: 5 84% 32%;
-    --destructive-foreground: 5 84% 92%;
+    --destructive-foreground: 0 0% 100%;
     --ring: 240 2% 80%;
     --radius: 0.5rem;
 
