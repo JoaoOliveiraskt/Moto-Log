@@ -152,7 +152,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
           </div>
-          <p className="ml-2 text-gray-600">157 Avaliações</p>
+          <p className="ml-2 ">157 Avaliações</p>
         </div>
 
         <div className="flex flex-col gap-1">
@@ -174,7 +174,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
         <div>
           <h2 className="mb-2 text-xl font-semibold">Descrição</h2>
-          <h2 className="">
+          <h2 className="text-muted-foreground">
             {product.descricao} Conheça o novo tênis de corrida da marca X. Este
             tênis foi projetado com tecnologia avançada para proporcionar
             conforto e desempenho excepcionais durante suas corridas. Compre
@@ -197,11 +197,11 @@ export default function ProductInfo({ product }: ProductInfoProps) {
               d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
             />
           </svg>
-          <p className="ml-2 text-gray-600">Economize 50% agora</p>
+          <p className="ml-2 text-muted-foreground">Economize 50% agora</p>
         </div>
 
         <h2 className="text-xl font-semibold">Recursos</h2>
-        <ul className="flex flex-col gap-4">
+        <ul className="flex flex-col gap-4 text-muted-foreground">
           <li className="flex items-center gap-4">
             <FaCircle size={6} />
             <p>Respirável para conforto.</p>
@@ -233,7 +233,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           </Button>
         </div>
 
-        <ul className="flex flex-col justify-between gap-4 text-gray-600">
+        <ul className="flex flex-col justify-between gap-4 text-muted-foreground">
           <li className="flex items-center">
             <svg
               className="w-6 h-6 text-green-500"
@@ -319,7 +319,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>
-              Você só pode adicionar produtos de uma loja por vez
+              Você tem produtos de outra loja no carrinho
             </AlertDialogTitle>
             <AlertDialogDescription>
               Deseja mesmo adicionar esse produto ? isso irá{" "}

@@ -14,7 +14,7 @@ const navLinks = [{ name: "", href: "/" }];
 
 export default function Header() {
   return (
-    <div className="hidden lg:block fixed top-0 z-10 h-12 bg-background pt-1 w-screen">
+    <div className="hidden lg:block fixed top-0 z-10 h-12 bg-background/80 backdrop-blur-3xl pt-1 w-screen">
       <Container className="flex h-full  justify-center">
         <div className="w-full flex items-center justify-between">
           <div className="w-full flex items-center gap-5">

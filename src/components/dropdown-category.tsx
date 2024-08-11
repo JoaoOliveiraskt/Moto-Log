@@ -19,10 +19,10 @@ export default async function DropdownCategory() {
           <RiArrowDropDownLine />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="bg-background/75 backdrop-blur-3xl">
         {categories.map((category) => (
           <Link key={category.id} href={`/category/${category.id}`}>
-            <DropdownMenuItem className="cursor-pointer hover:text-foreground">
+            <DropdownMenuItem>
               {category.nome}
             </DropdownMenuItem>
           </Link>

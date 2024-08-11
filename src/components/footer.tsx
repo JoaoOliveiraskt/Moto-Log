@@ -6,8 +6,8 @@ export default function Footer() {
   return (
     <Container className="mt-10 sm:mt-16 pb-32 lg:pb-12">
       <footer className="">
-        <div className="mx-auto px-4 max-w-screen-lg h-56 sm:h-80 border rounded-3xl flex flex-col items-center justify-center bg-gradient-to-t from-zinc-200 viac-zinc-100 dark:from-zinc-900/60 dark:via-zinc-950 to-transparent">
-          <strong className="block max-w-lg text-center text-xl font-bold text-foreground sm:text-3xl">
+        <div className="mx-auto px-4 max-w-screen-lg h-56 sm:h-80 border rounded-3xl flex flex-col items-center justify-center bg-gradient-to-t from-zinc-200 via-zinc-100 dark:from-cyan-950/5 dark:via-transparent to-transparent">
+          <strong className=" max-w-lg text-center text-xl font-bold  sm:text-3xl">
             Quer receber as últimas notícias do Moto Log em primeira mão ?
           </strong>
 

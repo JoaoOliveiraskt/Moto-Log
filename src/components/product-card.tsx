@@ -16,7 +16,7 @@ interface ProductProps {
 const ProductCard = ({ product }: ProductProps) => {
   return (
     <Link className="" href={`/product/${product.id}`}>
-      <div className="cursor-pointer rounded-lg h-64 sm:h-80 overflow-hidden text-foreground hover:hover:text-orange-400 transition ">
+      <div className="cursor-pointer rounded-lg h-64 sm:h-80 overflow-hidden text-foreground hover:hover:text-orange-400 transition">
         <div className="relative h-32 w-full md:h-48">
           <Image
             src={product.imagemUrl}
@@ -26,7 +26,7 @@ const ProductCard = ({ product }: ProductProps) => {
             className="object-cover w-full h-full"
           />
           {Number(product.porcentagemDesconto) > 0 && (
-            <div className="flex items-center justify-around absolute px-2 top-2 left-2 bg-destructive text-destructive-foreground rounded-2xl">
+            <div className="flex items-center justify-around absolute px-2 top-2 left-2 bg-gradient-to-br from-indigo-800 to-cyan-600 text-destructive-foreground rounded-2xl">
               <BsArrowDownShort size={20} />
               <span className="text-sm">
                 {Number(product.porcentagemDesconto)}%
@@ -50,11 +50,12 @@ const ProductCard = ({ product }: ProductProps) => {
               </p>
             )}
           </div>
-          <div>
-            <p className="text-muted-foreground font-medium">
-              {product.loja.nome}
-            </p>
-          </div>
+          <Link
+            href={`/store/${product.lojaId}`}
+            className="text-muted-foreground font-medium hover:text-blue-600"
+          >
+            <p>{product.loja.nome}</p>
+          </Link>
         </div>
       </div>
     </Link>

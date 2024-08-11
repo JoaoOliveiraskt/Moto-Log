@@ -5,6 +5,8 @@ import { OrderStatus, Prisma } from "prisma/generated/client";
 import { HiMiniChevronRight } from "react-icons/hi2";
 import { Separator } from "@/components/ui/separator";
 import formatCurrency from "@/app/helpers/format-currency";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import Link from "next/link";
 
 interface OrderItemProps {
   order: Prisma.OrderGetPayload<{
@@ -38,11 +40,11 @@ const getOrderStatus = (status: OrderStatus) => {
 
 const OrderItem = ({ order }: OrderItemProps) => {
   return (
-    <Card>
-      <CardContent className="p-5">
+    <Card className="cursor-pointer hover:border-accent flex flex-col gap-2">
+      <CardContent className="p-2.5 flex flex-col gap-1.5">
         <div
-          className={`w-fit px-2 py-0.5 border border-border text-popover rounded-full ${
-            order.status !== "COMPLETED" ? "bg-card-foreground " : "bg-confirmed" 
+          className={`w-fit px-1.5 py-0 text-popover rounded-full ${
+            order.status !== "COMPLETED" ? "bg-card-foreground " : "bg-emerald-700" 
           }`}
         >
           <span className="block text-sm font-bold tracking-tight">
@@ -50,7 +52,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
           </span>
         </div>
 
-        <div className="flex justify-between items-center pt-3">
+        <Link href={`/store/${order.lojaId}`} className="flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Avatar className="w-6 h-6">
               <AvatarImage src={order.loja.imagemUrl} />
@@ -60,15 +62,15 @@ const OrderItem = ({ order }: OrderItemProps) => {
           <Button variant={"ghost"} size={"icon"}>
             <HiMiniChevronRight size={24} />
           </Button>
-        </div>
+        </Link>
 
-        <div className="py-3">
+        <div className="">
           <Separator />
         </div>
 
-        <div className="space-y-1.5">
+        <ScrollArea className="h-16">
           {order.products.map((product) => (
-            <div key={product.id} className="flex space-x-2">
+            <div key={product.id} className="flex space-x-2 mt-1.5">
               <div className="flex flex-col items-center justify-center w-5 h-5 rounded-full bg-muted-foreground">
                 <span className="block text-xs font-bold text-primary-foreground">
                   {product.quantity}
@@ -79,9 +81,9 @@ const OrderItem = ({ order }: OrderItemProps) => {
               </span>
             </div>
           ))}
-        </div>
+        </ScrollArea>
 
-        <div className="py-3">
+        <div className="">
           <Separator />
         </div>
 
