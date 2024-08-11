@@ -1,12 +1,14 @@
 interface ContainerProps {
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }
 
-export default function Container({ children, className }: ContainerProps) {
+export default function Container({ children, className, id }: ContainerProps) {
   return (
     <div
-      className={`${className} mx-auto max-w-screen-sm md:max-w-screen-lg lg:max-w-screen-xl px-4`}
+      id={`${id}`}
+      className={`${className} mx-auto max-w-screen-2xl px-4`}
     >
       {children}
     </div>

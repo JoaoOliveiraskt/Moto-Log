@@ -7,21 +7,13 @@ export default function BottomNav() {
   return (
     <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-background border-t border-zinc-400 dark:border-border z-50">
       <nav className="flex items-center justify-around py-3">
-        <HomeButton className="h-14 w-14">
-          <p>Início</p>
-        </HomeButton>
+        <HomeButton className="h-14 w-14"></HomeButton>
 
-        <OrderButton className="h-14 w-14">
-          <p>Pedidos</p>
-        </OrderButton>
+        <OrderButton className="h-14 w-14"></OrderButton>
 
-        <CartSideBar className="h-14 w-14">
-          <span>Carrinho</span>
-        </CartSideBar>
+        <CartSideBar iconSize={22} model="icon" className="h-14 w-14"></CartSideBar>
 
-        <Menu className="h-14 w-14">
-          <span>Menu</span>
-        </Menu>
+        <Menu iconSize={22} className="h-14 w-14"></Menu>
       </nav>
     </div>
   );

@@ -14,9 +14,9 @@ const navLinks = [{ name: "", href: "/" }];
 
 export default function Header() {
   return (
-    <div className="hidden lg:block fixed top-0 z-10 h-12 bg-background/80 backdrop-blur-3xl pt-1 w-screen">
+    <div className="hidden lg:block fixed top-0 z-10 h-16 bg-background/80 backdrop-blur-3xl w-screen">
       <Container className="flex h-full  justify-center">
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full h-full flex items-center justify-between">
           <div className="w-full flex items-center gap-5">
             <div className="md:flex md:items-center md:gap-12">
               <Link className="font-black text-4xl" href="/">
@@ -53,9 +53,12 @@ export default function Header() {
           <div className="flex items-center gap-1">
             <ModeToggle />
 
-            <CartSideBar />
+            <CartSideBar iconSize={20} model="outline" />
 
-            <Menu />
+            <Menu
+              iconSize={20}
+              className="h-9 w-9 border border-border rounded-md"
+            />
           </div>
         </div>
       </Container>

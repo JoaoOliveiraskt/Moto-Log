@@ -22,7 +22,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ScrollArea } from "./ui/scroll-area";
+import { GoChevronRight } from "react-icons/go";
+import { SheetTrigger } from "./ui/sheet";
 
 const UserStatus = () => {
   const { status } = useSession();
@@ -32,9 +33,10 @@ const UserStatus = () => {
 interface Props {
   className?: string;
   children?: React.ReactNode;
+  iconSize?: number;
 }
 
-const Menu = ({ className, children }: Props) => {
+const Menu = ({ className, children, iconSize }: Props) => {
   const status = UserStatus();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -61,31 +63,23 @@ const Menu = ({ className, children }: Props) => {
   ];
 
   return (
-    
     <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-      <DropdownMenuTrigger className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground">
-        <Button
-          onClick={handleMenuOpen.open}
-          variant="icon"
-          size="icon"
-          className={`flex flex-col gap-1 cursor-pointer outline-none border-none ${className}`}
-        >
-          <AiOutlineMenu size={24} />
-          <p>{children}</p>
-        </Button>
+      <DropdownMenuTrigger
+        onClick={handleMenuOpen.open}
+        className={`flex flex-col justify-center items-center gap-1 cursor-default text-muted-foreground hover:text-foreground ${className}`}
+      >
+        <AiOutlineMenu size={iconSize} />
+        <p>{children}</p>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-80 px-2 bg-background/45 dark:bg-background/70 backdrop-blur-3xl">
-        <DropdownMenuLabel className="flex flex-col space-y-4">
-          <div onClick={handleMenuOpen.close}>
-            <AvatarInfo />
-          </div>
-        </DropdownMenuLabel>
+      <DropdownMenuContent className="w-80 bg-background/55 dark:bg-background/70 backdrop-blur-3xl">
+        <div className="px-2">
+          <AvatarInfo />
+        </div>
 
         <DropdownMenuSeparator />
 
-      
-      <div className="space-y-2">
+        <div className="space-y-2 px-2">
           <Link href={"/"} className="block" onClick={handleMenuOpen.close}>
             <Button
               variant={"ghost"}
@@ -111,7 +105,7 @@ const Menu = ({ className, children }: Props) => {
             </Button>
           </Link>
 
-          <ModeToggle className="cursor-default flex gap-3 px-4 w-full justify-start text-sm tracking-tight">
+          <ModeToggle className="cursor-default bg-transparent text-foreground outline-none border-none flex gap-3 px-4 w-full justify-start text-sm tracking-tight">
             <span className="text-foreground">Tema</span>
           </ModeToggle>
         </div>
@@ -119,32 +113,31 @@ const Menu = ({ className, children }: Props) => {
         <DropdownMenuSeparator />
 
         <>
-          <Accordion type="single" collapsible className="w-full border rounded-lg">
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full rounded-lg px-2"
+          >
             <AccordionItem value="item-1" className="">
               <AccordionTrigger className="hover:no-underline ">
-            
-                  Categorias
-             
+                Categorias
               </AccordionTrigger>
               {categories.map((category, index) => (
-                <AccordionContent
-                  key={index}
-                  className="ml-2 text-muted-foreground hover:text-foreground"
-                >
-                  <Link href={`/category/${category.id}`}>
-                    <Button
-                      variant={"ghost"}
-                      className="space-x-3 w-full justify-start text-sm tracking-tight cursor-default"
-                    >
+                <AccordionContent key={index} className="ml-2 ">
+                  <Button
+                    variant={"ghost"}
+                    className="space-x-3 w-full text-sm tracking-tight cursor-default"
+                  >
+                    <Link href={`/category/${category.id}`} className="flex justify-between w-full">
                       <p className="block text-sm">{category.name}</p>
-                    </Button>
-                  </Link>
+                      <GoChevronRight size={15} />
+                    </Link>
+                  </Button>
                 </AccordionContent>
               ))}
             </AccordionItem>
-          </Accordion >
+          </Accordion>
         </>
-     
       </DropdownMenuContent>
     </DropdownMenu>
   );

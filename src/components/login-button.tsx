@@ -28,22 +28,24 @@ const LoginButton = ({ className }: Props) => {
     <div>
       {status === "authenticated" ? (
         <Button
+          variant={"outline"}
           onClick={(e) => {
             e.preventDefault();
             handleSigOutClick();
           }}
-          className={`flex items-center space-x-2 shadow-md ${className}`}
+          className={`border border-border flex items-center space-x-2 shadow-md ${className}`}
         >
           <span>Sair</span>
           <PiSignOutBold size={18} />
         </Button>
       ) : (
         <Button
+          variant={"outline"}
           onClick={(e) => {
             e.preventDefault();
             handleSigInClick();
           }}
-          className={`flex items-center space-x-2 shadow-md ${className}`}
+          className={`border border-border flex items-center space-x-2 shadow-md ${className}`}
         >
           <RiGoogleFill size={18} />
           <span>Entrar com o Google</span>
@@ -63,7 +65,7 @@ export const AvatarInfo = () => {
   return (
     <>
       {status === "authenticated" ? (
-        <div className="space-y-4">
+        <div className="space-y-2">
           <div className="flex items-center space-x-2">
             <Avatar>
               <AvatarImage
@@ -95,9 +97,12 @@ export const AvatarInfo = () => {
         </div>
       ) : (
         <div className="flex items-center justify-between mt-6">
-          <h2 className="font-semibold tracking-tight">Faça seu login!</h2>
+          <h2 className="font-semibold tracking-tight ml-4">Faça seu login!</h2>
           <Link href="/login">
-            <Button className={`flex items-center space-x-2 shadow-md`}>
+            <Button
+              variant={"outline"}
+              className={`flex items-center space-x-2 shadow-md`}
+            >
               <span>Entrar</span>
               <PiSignInBold size={18} />
             </Button>

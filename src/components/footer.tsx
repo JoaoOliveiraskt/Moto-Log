@@ -8,7 +8,7 @@ export default function Footer() {
       <footer className="">
         <div className="mx-auto px-4 max-w-screen-lg h-56 sm:h-80 border rounded-3xl flex flex-col items-center justify-center bg-gradient-to-t from-zinc-200 via-zinc-100 dark:from-cyan-950/5 dark:via-transparent to-transparent">
           <strong className=" max-w-lg text-center text-xl font-bold  sm:text-3xl">
-            Quer receber as últimas notícias do Moto Log em primeira mão ?
+          Seja o primeiro a saber sobre novidades, vendas e promoções com nossa newsletter. 
           </strong>
 
           <form className="mt-6">

@@ -20,7 +20,7 @@ const GoBackButton: React.FC<Props> = ({ className, name }: Props) => {
     <div className="flex items-center gap-4 h-10">
       <Button
         onClick={handleGoBack}
-        className={`flex bg-transparent border-none h-fit hover:bg-accent ${className}`}
+        className={`flex items-center rounded-full border border-border ${className}`}
         size="icon"
         variant="outline"
         title="Voltar"

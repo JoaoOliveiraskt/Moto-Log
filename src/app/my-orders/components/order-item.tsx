@@ -40,8 +40,8 @@ const getOrderStatus = (status: OrderStatus) => {
 
 const OrderItem = ({ order }: OrderItemProps) => {
   return (
-    <Card className="cursor-pointer hover:border-accent flex flex-col gap-2">
-      <CardContent className="p-2.5 flex flex-col gap-1.5">
+    <Card className="cursor-pointer bg-background hover:border-accent flex flex-col gap-2">
+      <CardContent className="p-2.5 flex flex-col gap-2">
         <div
           className={`w-fit px-1.5 py-0 text-popover rounded-full ${
             order.status !== "COMPLETED" ? "bg-card-foreground " : "bg-emerald-700" 
@@ -52,17 +52,17 @@ const OrderItem = ({ order }: OrderItemProps) => {
           </span>
         </div>
 
-        <Link href={`/store/${order.lojaId}`} className="flex justify-between items-center">
+          <Button variant={"outline"} size={"icon"} className="w-full border border-border flex justify-between items-center px-2">
           <div className="flex items-center space-x-2">
             <Avatar className="w-6 h-6">
               <AvatarImage src={order.loja.imagemUrl} />
             </Avatar>
             <span>{order.loja.nome}</span>
           </div>
-          <Button variant={"ghost"} size={"icon"}>
+        <Link href={`/store/${order.lojaId}`} >
             <HiMiniChevronRight size={24} />
-          </Button>
         </Link>
+          </Button>
 
         <div className="">
           <Separator />

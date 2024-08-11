@@ -110,7 +110,7 @@
     --card: 0 0% 4%;
     --card-foreground: 231 21% 98%;
 
-    --border: 0 0% 15%;
+    --border: 0 0% 13%;
     --input: 231 9% 11%;
     --primary: 231 5% 73%;
     --primary-foreground: 231 5% 13%;
@@ -120,8 +120,8 @@
     --accent-foreground: 261 5% 13%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
-    --ring: 220 3% 81%;
-    
+    --ring: 210 4% 22%;
+
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
   }
@@ -136,5 +136,6 @@
   }
 }
 
-
-
+* {
+  scroll-behavior: smooth;
+}

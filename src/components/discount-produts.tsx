@@ -36,8 +36,8 @@ export default async function DiscountProducts() {
   }
 
   return (
-    <Container className="my-10 flex flex-col gap-4">
-      <div className="flex justify-between items-center">
+    <Container  className="my-10 flex flex-col gap-4">
+      <div  className="flex justify-between items-center">
         <h2 className="font-bold text-primary text-xl sm:text-3xl">
           Em promoção
         </h2>

@@ -16,8 +16,8 @@ export default function Component() {
         <div className="flex items-center justify-center px-4 py-12 md:px-6">
           <div className="mx-auto w-full max-w-md space-y-6">
             <div className="space-y-2 text-center">
-              <h1 className="text-3xl font-bold text-white">Login</h1>
-              <p className="text-muted-foreground text-white">
+              <h1 className="text-3xl font-bold text-foreground">Login</h1>
+              <p className="text-muted-foreground">
                 Faça login na sua conta para continuar
               </p>
             </div>

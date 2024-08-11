@@ -8,7 +8,7 @@ import {
 import { db } from "@/lib/prisma";
 import Link from "next/link";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { HiMiniArrowSmallRight } from "react-icons/hi2";
+import { GoChevronRight } from "react-icons/go";
 
 export default async function DropdownStore() {
   const storeNames = await db.loja.findMany({});
@@ -23,19 +23,22 @@ export default async function DropdownStore() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-background/75 backdrop-blur-3xl">
         {storeNames.map((store) => (
-          <Link key={store.id} href={`/store/${store.id}`}> 
-          <DropdownMenuItem className="hover:text-foreground">
-            {store.nome}
-          </DropdownMenuItem>
-        </Link>
+          <Link key={store.id} href={`/store/${store.id}`}>
+            <DropdownMenuItem className="hover:text-foreground">
+              {store.nome}
+            </DropdownMenuItem>
+          </Link>
         ))}
 
         <DropdownMenuSeparator />
 
         <DropdownMenuItem>
-          <Link href="#" className="cursor-default flex items-center justify-between w-full ">
+          <Link
+            href="#"
+            className="cursor-default flex items-center justify-between w-full "
+          >
             <span className="">Ver todas</span>
-            <HiMiniArrowSmallRight />
+            <GoChevronRight size={15} />
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>

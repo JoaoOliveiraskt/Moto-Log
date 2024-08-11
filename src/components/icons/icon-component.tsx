@@ -1,10 +1,10 @@
 import React from 'react';
 import { IconType } from 'react-icons';
-import { IoCartOutline } from "react-icons/io5";
 import { RxMoon } from "react-icons/rx";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FiHome, FiSun } from "react-icons/fi";
 import { RiFileList3Line } from "react-icons/ri";
+import { FiShoppingCart } from "react-icons/fi";
 
 
 interface IconComponentProps {
@@ -17,7 +17,7 @@ interface IconComponentProps {
 const IconComponent: React.FC<IconComponentProps> = ({ iconName, size = 24, color = "black", className }) => {
     const icons: Record<string, IconType> = {
         home: FiHome,
-        cart: IoCartOutline,
+        cart: FiShoppingCart,
         order: RiFileList3Line,
         menu: AiOutlineMenu,
         moon: RxMoon,
