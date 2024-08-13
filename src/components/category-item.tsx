@@ -37,12 +37,12 @@ export default function CategoryItem({ category, link }: CategoryProps) {
         <div className="w-full">
           <div className="px-4 py-5 sm:p-5">
             <div className="flex items-center justify-between">
-              <div className="">
+              <div >
                 <p className="text-xs font-medium lg:text-sm">
                   {category.nome}
                 </p>
               </div>
-              <div className="">{categoryIcons[category.nome]}</div>
+              <div >{categoryIcons[category.nome]}</div>
             </div>
           </div>
         </div>

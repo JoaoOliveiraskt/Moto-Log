@@ -1,8 +1,10 @@
 import BottomNav from "@/components/bottom-nav";
 import Container from "@/components/container";
 import Footer from "@/components/footer";
+import GoBackButton from "@/components/go-back-button";
 import Header from "@/components/header";
 import ProductCard from "@/components/product-card";
+import ProductList from "@/components/product-list";
 import { Button } from "@/components/ui/button";
 import { db } from "@/lib/prisma";
 import Image from "next/image";
@@ -45,31 +47,32 @@ export default async function Store({ params }: Props) {
   return (
     <>
       <Header />
-
-      <Container className="!px-0">
-        <div className="relative h-[300px] overflow-hidden xl:mt-[57px]">
-          <Image
-            src={store.imagemUrl}
-            alt="Store Banner"
-            width={1920}
-            height={1000}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent " />
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-12">
-            <div className="max-w-3xl">
-              <h1 className="text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
-                {store.nome}
-              </h1>
-              <p className="mt-2 text-lg text-muted-foreground md:text-xl">
-                Descubra as últimas tendências da moda em nossa loja.
-              </p>
-            </div>
+      <Container className="xl:mt-16">
+      <GoBackButton />
+      </Container>
+      <div className=" mx-auto max-w-screen-xl relative h-[300px] overflow-hidden ">
+        <Image
+          src={store.imagemUrl}
+          alt="Store Banner"
+          width={1920}
+          height={1000}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent " />
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-12">
+          <div className="max-w-3xl">
+            <h1 className="text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
+              {store.nome}
+            </h1>
+            <p className="mt-2 text-lg text-muted-foreground md:text-xl">
+              Descubra as últimas tendências da moda em nossa loja.
+            </p>
           </div>
         </div>
-      </Container>
-      <Container className="px-0">
-        <div className="flex flex-col w-full  xl:mt-[68px]">
+      </div>
+
+      <Container className="!px-5">
+        <div className="flex flex-col w-full">
           <div className="bg-background  lg:px-0">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-8">
@@ -109,12 +112,12 @@ export default async function Store({ params }: Props) {
                   Produtos Mais Vendidos
                 </h2>
                 {products.length > 0 ? (
-                  <div className=" gap-2">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-2">
+                  <div className=" gap-2 ">
+                    <ProductList className="!grid-cols-2 sm:!grid-cols-3">
                       {products.slice(0, 3).map((product) => (
                         <ProductCard key={product.id} product={product} />
                       ))}
-                    </div>
+                    </ProductList>
                   </div>
                 ) : (
                   <p className="text-muted-foreground">
@@ -128,11 +131,11 @@ export default async function Store({ params }: Props) {
                 Todos os Produtos
               </h2>
               {products.length > 0 ? (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
+                <ProductList>
                   {products.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
-                </div>
+                </ProductList>
               ) : (
                 <p className="text-muted-foreground ">
                   Nenhum produto encontrado

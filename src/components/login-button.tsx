@@ -33,10 +33,10 @@ const LoginButton = ({ className }: Props) => {
             e.preventDefault();
             handleSigOutClick();
           }}
-          className={`border border-border flex items-center space-x-2 shadow-md ${className}`}
+          className={`bg-transparent border border-border flex items-center space-x-3 ${className}`}
         >
-          <span>Sair</span>
           <PiSignOutBold size={18} />
+          <span>Sair</span>
         </Button>
       ) : (
         <Button
@@ -45,7 +45,7 @@ const LoginButton = ({ className }: Props) => {
             e.preventDefault();
             handleSigInClick();
           }}
-          className={`border border-border flex items-center space-x-2 shadow-md ${className}`}
+          className={`border border-border flex items-center space-x-2 ${className}`}
         >
           <RiGoogleFill size={18} />
           <span>Entrar com o Google</span>
@@ -66,7 +66,7 @@ export const AvatarInfo = () => {
     <>
       {status === "authenticated" ? (
         <div className="space-y-2">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 px-4">
             <Avatar>
               <AvatarImage
                 src={data?.user?.image as string | undefined}
@@ -93,11 +93,11 @@ export const AvatarInfo = () => {
             </div>
           </div>
 
-          <LoginButton className="w-full" />
+          <LoginButton className="w-full bg-transparent border-none justify-start cursor-default rounded-none" />
         </div>
       ) : (
-        <div className="flex items-center justify-between mt-6">
-          <h2 className="font-semibold tracking-tight ml-4">Faça seu login!</h2>
+        <div className="flex items-center gap-4 px-4">
+          <h2 className="font-semibold tracking-tight">Faça seu login!</h2>
           <Link href="/login">
             <Button
               variant={"outline"}

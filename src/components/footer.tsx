@@ -5,23 +5,24 @@ import { Input } from "./ui/input";
 export default function Footer() {
   return (
     <Container className="mt-10 sm:mt-16 pb-32 lg:pb-12">
-      <footer className="">
+      <footer >
         <div className="mx-auto px-4 max-w-screen-lg h-56 sm:h-80 border rounded-3xl flex flex-col items-center justify-center bg-gradient-to-t from-zinc-200 via-zinc-100 dark:from-cyan-950/5 dark:via-transparent to-transparent">
           <strong className=" max-w-lg text-center text-xl font-bold  sm:text-3xl">
-          Seja o primeiro a saber sobre novidades, vendas e promoções com nossa newsletter. 
+            Seja o primeiro a saber sobre novidades, vendas e promoções com
+            nossa newsletter.
           </strong>
 
           <form className="mt-6">
             <div className="relative max-w-lg">
               <Input
-              required
+                required
                 className="w-full h-12 rounded-lg border-border bg-transparent p-4 pe-40 text-sm font-medium"
                 id="email"
                 type="email"
                 placeholder="seuemail@email.com"
               />
 
-              <Button  className="absolute end-1 top-1/2 -translate-y-1/2 rounded-md mr-0.5 text-sm font-medium transition">
+              <Button className="absolute end-1 top-1/2 -translate-y-1/2 rounded-md mr-0.5 text-sm font-medium transition">
                 Inscreva-se
               </Button>
             </div>
@@ -185,20 +186,14 @@ export default function Footer() {
 
               <ul className="mt-6 space-y-1 text-muted-foreground">
                 <li>
-                  <a
-                    className="transition hover:text-foreground"
-                    href="#"
-                  >
+                  <a className="transition hover:text-foreground" href="#">
                     {" "}
                     FAQs{" "}
                   </a>
                 </li>
 
                 <li>
-                  <a
-                    className="transition hover:text-foreground"
-                    href="#"
-                  >
+                  <a className="transition hover:text-foreground" href="#">
                     {" "}
                     Contact{" "}
                   </a>

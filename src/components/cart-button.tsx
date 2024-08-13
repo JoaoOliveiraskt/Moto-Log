@@ -1,17 +1,13 @@
 "use client";
 
 import { useContext, useState } from "react";
-import Cart from "../cart";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "./sheet";
-import { Button } from "./button";
-import IconComponent from "../icons/icon-component";
+
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
+import { Button } from "./ui/button";
+import IconComponent from "./icons/icon-component";
 import { CartContext } from "@/app/context/cart";
+import Cart from "./cart";
+import { Separator } from "./ui/separator";
 
 interface Props {
   children?: React.ReactNode;
@@ -43,11 +39,11 @@ const CartSideBar = ({ children, className, model, iconSize }: Props) => {
             | undefined
         }
         size="icon"
-        className={`relative flex flex-col items-center gap-1 cursor-default text-muted-foreground hover:text-foreground ${className}`}
+        className={`relative flex flex-col items-center  cursor-default text-muted-foreground hover:text-foreground ${className}`}
       >
         <IconComponent iconName="cart" size={iconSize} color="foreground" />
         {totalItems > 0 && (
-          <span className="absolute flex items-center justify-center -top-1 -right-1 h-3.5 w-3.5 rounded-full bg-destructive text-destructive-foreground text-xs">
+          <span className="absolute flex items-center justify-center top-2 lg:-top-1 right-1 lg:-right-1 h-3.5 w-3.5 rounded-full bg-destructive text-destructive-foreground text-xs">
             {totalItems}
           </span>
         )}
@@ -56,9 +52,10 @@ const CartSideBar = ({ children, className, model, iconSize }: Props) => {
         </p>
       </Button>
 
-      <SheetContent>
+      <SheetContent className="w-full">
         <SheetHeader>
-          <SheetTitle className="">Seu carrinho</SheetTitle>
+          <SheetTitle>Seu carrinho</SheetTitle>
+          <Separator />
         </SheetHeader>
         <Cart setIsOpen={setIsCartOpen} />
       </SheetContent>

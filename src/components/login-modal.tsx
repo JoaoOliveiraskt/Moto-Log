@@ -8,18 +8,14 @@ import {
   AlertDialogTitle,
   AlertDialogDescription,
   AlertDialogCancel,
-  AlertDialogAction,
 } from "@/components/ui/alert-dialog";
-import { useState } from "react";
 
 interface LoginModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-  }
+  isOpen: boolean;
+  onClose: () => void;
+}
 
 export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-
   return (
     <AlertDialog open={isOpen} onOpenChange={onClose}>
       <AlertDialogContent>

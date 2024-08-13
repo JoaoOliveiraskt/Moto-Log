@@ -41,38 +41,48 @@ const getOrderStatus = (status: OrderStatus) => {
 const OrderItem = ({ order }: OrderItemProps) => {
   return (
     <Card className="cursor-pointer bg-background hover:border-accent flex flex-col gap-2">
-      <CardContent className="p-2.5 flex flex-col gap-2">
-        <div
-          className={`w-fit px-1.5 py-0 text-popover rounded-full ${
-            order.status !== "COMPLETED" ? "bg-card-foreground " : "bg-emerald-700" 
-          }`}
-        >
-          <span className="block text-sm font-bold tracking-tight">
-            {getOrderStatus(order.status)}
-          </span>
-        </div>
+      <CardContent className="p-3 flex flex-col gap-3">
+        <div className="flex items-center justify-between w-full">
+          <div className="flex gap-4 items-center">
+            <div
+              className={`px-2 py-1 rounded-full ${
+                order.status !== "COMPLETED"
+                  ? "text-muted-foreground"
+                  : "text-emerald-500"
+              }`}
+            >
+              <span className="block text-sm font-semibold tracking-wider">
+                {getOrderStatus(order.status)}
+              </span>
+            </div>
 
-          <Button variant={"outline"} size={"icon"} className="w-full border border-border flex justify-between items-center px-2">
-          <div className="flex items-center space-x-2">
-            <Avatar className="w-6 h-6">
-              <AvatarImage src={order.loja.imagemUrl} />
-            </Avatar>
-            <span>{order.loja.nome}</span>
+            <Link
+              href={`/store/${order.lojaId}`}
+              className="flex gap-2 items-center mt-1 text-muted-foreground 
+              hover:text-blue-700 dark:hover:text-blue-600 w-fit"
+            >
+              <div className="flex items-center space-x-2">
+                <Avatar className="w-6 h-6">
+                  <AvatarImage src={order.loja.imagemUrl} />
+                </Avatar>
+                <span className="">{order.loja.nome}</span>
+              </div>
+              <HiMiniChevronRight />
+            </Link>
           </div>
-        <Link href={`/store/${order.lojaId}`} >
-            <HiMiniChevronRight size={24} />
-        </Link>
-          </Button>
 
-        <div className="">
-          <Separator />
+          <p className="text-muted-foreground text-lg font-semibold tracking-wider">
+            {formatCurrency(Number(order.totalPrice))}
+          </p>
         </div>
 
-        <ScrollArea className="h-16">
+        <Separator />
+
+        <ScrollArea className="max-h-24">
           {order.products.map((product) => (
-            <div key={product.id} className="flex space-x-2 mt-1.5">
-              <div className="flex flex-col items-center justify-center w-5 h-5 rounded-full bg-muted-foreground">
-                <span className="block text-xs font-bold text-primary-foreground">
+            <div key={product.id} className="flex space-x-2 mb-2">
+              <div className="flex flex-col items-center justify-center w-5 h-5 rounded-full border">
+                <span className="block text-xs font-bold text-foreground">
                   {product.quantity}
                 </span>
               </div>
@@ -83,12 +93,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
           ))}
         </ScrollArea>
 
-        <div className="">
-          <Separator />
-        </div>
-
         <div className="flex items-center justify-between">
-          <p className="text-sm font-medium tracking-wider">{formatCurrency(Number(order.totalPrice))}</p>
           {order.status === "COMPLETED" && (
             <Button
               variant={"ghost"}

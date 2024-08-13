@@ -34,6 +34,7 @@ import LoginButton from "@/components/login-button";
 import Container from "@/components/container";
 import { toast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
+import { RiCheckboxCircleFill } from "react-icons/ri";
 interface ProductInfoProps {
   quantity: number;
   product: Prisma.ProdutoGetPayload<{
@@ -77,7 +78,6 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       (cartProduct) => cartProduct.lojaId !== product.lojaId
     );
 
-    // Se houver, abrir um modal de confirmação
     if (hasDifferentStoreProduct) {
       return setIsConfirmationModalOpen(true);
     }
@@ -87,15 +87,9 @@ export default function ProductInfo({ product }: ProductInfoProps) {
     });
 
     toast({
-      className: "bg-green-800",
-      title: "Produto adicionado ao carrinho com sucesso!",
-      description: "Clique no botão ao lado para ver seu pedido.",
+      title: "Produto adicionado ao carrinho!",
       action: (
-        <ToastAction
-          className=""
-          altText="Ver pedido"
-          onClick={() => setIsCartOpen(true)}
-        >
+        <ToastAction altText="Ver pedido" onClick={() => setIsCartOpen(true)}>
           Ver carrinho
         </ToastAction>
       ),
@@ -218,6 +212,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
         <div className="flex gap-4 w-full">
           <Button
+            variant={"secondary"}
             onClick={handleAddToCart}
             className="font-bold tracking-wide px-12"
             size="xl"
@@ -289,9 +284,9 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       </div>
 
       <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
-        <SheetContent className="w-[90vw]">
+        <SheetContent className="w-full">
           <SheetHeader>
-            <SheetTitle className="">Seu carrinho</SheetTitle>
+            <SheetTitle>Seu carrinho</SheetTitle>
           </SheetHeader>
           <Cart setIsOpen={setIsCartOpen} />
         </SheetContent>

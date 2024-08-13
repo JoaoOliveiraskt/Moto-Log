@@ -1,7 +1,7 @@
 "use client";
 
 import { AvatarInfo } from "./login-button";
-import { AiOutlineMenu } from "react-icons/ai";
+import { RiMenu2Fill } from "react-icons/ri";
 import { Button } from "./ui/button";
 import { FiHome } from "react-icons/fi";
 import { RiFileList3Line } from "react-icons/ri";
@@ -12,7 +12,6 @@ import { ModeToggle } from "./theme/theme-switcher";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -23,7 +22,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { GoChevronRight } from "react-icons/go";
-import { SheetTrigger } from "./ui/sheet";
 
 const UserStatus = () => {
   const { status } = useSession();
@@ -34,9 +32,10 @@ interface Props {
   className?: string;
   children?: React.ReactNode;
   iconSize?: number;
+  model?: string;
 }
 
-const Menu = ({ className, children, iconSize }: Props) => {
+const Menu = ({ className, children, iconSize, model }: Props) => {
   const status = UserStatus();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -66,24 +65,22 @@ const Menu = ({ className, children, iconSize }: Props) => {
     <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
       <DropdownMenuTrigger
         onClick={handleMenuOpen.open}
-        className={`flex flex-col justify-center items-center gap-1 cursor-default text-muted-foreground hover:text-foreground ${className}`}
+        className={`cursor-default flex items-center justify-center text-muted-foreground hover:text-foreground ${className}`}
       >
-        <AiOutlineMenu size={iconSize} />
+        <RiMenu2Fill size={iconSize} />
         <p>{children}</p>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-80 bg-background/55 dark:bg-background/70 backdrop-blur-3xl">
-        <div className="px-2">
-          <AvatarInfo />
-        </div>
+      <DropdownMenuContent className="px-0 pb-0 bg-background dark:bg-background/80 dark:backdrop-blur-3xl">
+        <AvatarInfo />
 
         <DropdownMenuSeparator />
 
-        <div className="space-y-2 px-2">
+        <div className="space-y-2 ">
           <Link href={"/"} className="block" onClick={handleMenuOpen.close}>
             <Button
               variant={"ghost"}
-              className="space-x-3 w-full justify-start text-sm tracking-tight cursor-default"
+              className="space-x-3 w-full justify-start text-sm tracking-tight cursor-default rounded-none"
             >
               <FiHome size={18} className="text-foreground" />
               <p className="block text-foreground">Início</p>
@@ -97,7 +94,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
           >
             <Button
               variant={"ghost"}
-              className="space-x-3 w-full justify-start text-sm tracking-tight cursor-default"
+              className="space-x-3 w-full justify-start text-sm tracking-tight cursor-default rounded-none"
             >
               <RiFileList3Line size={18} className="text-foreground" />
 
@@ -105,31 +102,30 @@ const Menu = ({ className, children, iconSize }: Props) => {
             </Button>
           </Link>
 
-          <ModeToggle className="cursor-default bg-transparent text-foreground outline-none border-none flex gap-3 px-4 w-full justify-start text-sm tracking-tight">
+          <ModeToggle className="cursor-default rounded-none bg-transparent text-foreground outline-none border-none flex gap-3 px-4 w-full justify-start text-sm tracking-tight">
             <span className="text-foreground">Tema</span>
           </ModeToggle>
         </div>
 
-        <DropdownMenuSeparator />
+        <DropdownMenuSeparator className="lg:hidden" />
 
         <>
-          <Accordion
-            type="single"
-            collapsible
-            className="w-full rounded-lg px-2"
-          >
-            <AccordionItem value="item-1" className="">
-              <AccordionTrigger className="hover:no-underline ">
-                Categorias
+          <Accordion type="single" collapsible className="w-full rounded-lg lg:hidden">
+            <AccordionItem value="item-1" >
+              <AccordionTrigger className="hover:no-underline rounded-none">
+                <p >Categorias</p>
               </AccordionTrigger>
               {categories.map((category, index) => (
-                <AccordionContent key={index} className="ml-2 ">
+                <AccordionContent key={index} className="rounded-none ">
                   <Button
                     variant={"ghost"}
-                    className="space-x-3 w-full text-sm tracking-tight cursor-default"
+                    className="space-x-3 w-full text-sm tracking-tight rounded-none cursor-default"
                   >
-                    <Link href={`/category/${category.id}`} className="flex justify-between w-full">
-                      <p className="block text-sm">{category.name}</p>
+                    <Link
+                      href={`/category/${category.id}`}
+                      className="flex justify-between w-full cursor-default"
+                    >
+                      <p className="block text-sm ml-4">{category.name}</p>
                       <GoChevronRight size={15} />
                     </Link>
                   </Button>

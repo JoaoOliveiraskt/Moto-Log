@@ -21,7 +21,7 @@ export default async function DropdownStore() {
           <RiArrowDropDownLine />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-background/75 backdrop-blur-3xl">
+      <DropdownMenuContent className="bg-background dark:bg-background/80 dark:backdrop-blur-3xl">
         {storeNames.map((store) => (
           <Link key={store.id} href={`/store/${store.id}`}>
             <DropdownMenuItem className="hover:text-foreground">
@@ -37,7 +37,7 @@ export default async function DropdownStore() {
             href="#"
             className="cursor-default flex items-center justify-between w-full "
           >
-            <span className="">Ver todas</span>
+            <span >Ver todas</span>
             <GoChevronRight size={15} />
           </Link>
         </DropdownMenuItem>

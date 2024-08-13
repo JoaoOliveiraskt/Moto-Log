@@ -20,5 +20,4 @@ const FetchProductById = async (productId: string): Promise<Produto | null> => {
   }
 };
 
-// Exporte a função FetchProductById
 export default FetchProductById;

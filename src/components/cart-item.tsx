@@ -31,11 +31,9 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
   };
 
   return (
-    <div className="flex items-center justify-between">
-      {/* Imagem e Info */}
-
-      <div className="flex gap-4">
-        <div className="w-20 h-20 relative">
+    <div>
+      <div className="flex gap-4 h-24 w-full">
+        <div className="w-24 h-full relative">
           <Image
             src={cartProduct.imagemUrl}
             alt={cartProduct.nome}
@@ -44,20 +42,20 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
           />
         </div>
 
-        <div className="flex flex-col space-y-1">
+        <div className="flex flex-col justify-between h-full">
           <div className="space-y-1">
-            <h3 className="text-xs font-bold line-clamp-1">
+            <h3 className="font-bold text-lg line-clamp-1">
               {cartProduct.nome}
             </h3>
             <div className="flex items-center">
-              <h4 className="text-sm font-bold">
+              <h4 className="text-sm">
                 {formatCurrency(
                   calculateTotalPrice(cartProduct) * cartProduct.quantity
                 )}
               </h4>
 
               {Number(cartProduct.porcentagemDesconto) > 0 && (
-                <span className="text-xs ml-2 text-gray-500 line-through">
+                <span className="text-xs ml-2 text-muted-foreground line-through">
                   {formatCurrency(
                     Number(cartProduct.preco) * cartProduct.quantity
                   )}
@@ -67,12 +65,12 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
           </div>
 
           <div className="flex space-x-2">
-            <div className="flex items-center space-x-2 justify-center">
+            <div className="flex items-center space-x-2 justify-center border rounded-md overflow-hidden h-8">
               <Button
                 onClick={handleDecreaseProductQuantityClick}
                 size={"icon"}
                 variant={"ghost"}
-                className="py-1 px-3 rounded-md text-center border border-zinc-400/80"
+                className="text-center rounded-none"
               >
                 -
               </Button>
@@ -81,14 +79,19 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
                 onClick={handleEncreaseProductQuantityClick}
                 size={"icon"}
                 variant={"ghost"}
-                className="py-1 px-3 rounded-md text-center border border-zinc-400/80"
+                className="text-center rounded-none"
               >
                 +
               </Button>
             </div>
 
             {/* botão de deletar */}
-            <Button variant={"ghost"} size={"icon"} onClick={handleRemoveProduct}>
+            <Button
+              className="h-8"
+              variant={"ghost"}
+              size={"icon"}
+              onClick={handleRemoveProduct}
+            >
               <IoTrashOutline size={18} />
             </Button>
           </div>

@@ -5,6 +5,7 @@ import GoBackButton from "@/components/go-back-button";
 
 import Header from "@/components/header";
 import ProductCard from "@/components/product-card";
+import ProductList from "@/components/product-list";
 import { db } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 
@@ -45,17 +46,17 @@ export default async function CategorieList({ params }: Props) {
   return (
     <>
       <Header />
-      <Container className="flex flex-col gap-8 mt-8 lg:mt-20">
+      <Container className="flex flex-col gap-8 mt-8 lg:mt-16">
         <GoBackButton name={category.nome} />
 
         {products.length > 0 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
+          <ProductList>
             {products.map((product) => (
               <div key={product.id}>
                 <ProductCard product={product} />
               </div>
             ))}
-          </div>
+          </ProductList>
         ) : (
           <h2 className="font-bold text-primary text-xl sm:text-3xl text-center mt-20">
             Ops, não encontramos produtos nessa categoria

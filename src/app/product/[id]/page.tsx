@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import ProductCard from "@/components/product-card";
+import ProductList from "@/components/product-list";
 
 interface ProductPageProps {
   params: {
@@ -41,29 +42,31 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
   const relatedProducts = await db.produto.findMany({
     where: {
       categoriaId: produto.categoriaId,
-      id: { not: produto.id }, // Exclui o produto atual dos relacionados
+      id: { not: produto.id },
     },
     include: {
       loja: true,
     },
 
-    take: 5, // Limita a 4 produtos
+    take: 5,
   });
 
   return (
     <>
       <Header />
       <BottomNav />
-      <Container className="mt-8 lg:mt-20">
-        <div className="w-full flex flex-col gap-8">
-          <GoBackButton />
+      <Container className="lg:mt-16">
+        <GoBackButton  />
+      </Container>
+      <Container className="">
+        <div className="w-full flex flex-col gap-4">
           <div className="flex flex-col w-full gap-8 lg:flex-row">
             <ProductBanner images={images} produto={produto} />
 
             <ProductInfo product={produto} quantity={0} />
           </div>
 
-          <div className="">
+          <div>
             <div>
               <h2 className="text-2xl font-bold">Reviews</h2>
               <div className="grid gap-6 mt-4">
@@ -128,11 +131,11 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
               <h2 className="text-2xl font-bold">Produtos Relacionados</h2>
 
               {/* Grid of related products */}
-              <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
+              <ProductList>
                 {relatedProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
-              </div>
+              </ProductList>
             </div>
           </div>
         </div>

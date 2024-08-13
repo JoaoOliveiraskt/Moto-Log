@@ -1,7 +1,8 @@
+import CartSideBar from "./cart-button";
 import Menu from "./menu";
 import HomeButton from "./ui/button-home";
 import OrderButton from "./ui/button-order";
-import CartSideBar from "./ui/cart-button";
+
 
 export default function BottomNav() {
   return (

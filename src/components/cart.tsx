@@ -72,13 +72,12 @@ const Cart = ({ setIsOpen }: CartProps) => {
       clearCart();
 
       toast({
-        className: "bg-green-800",
+        className: "",
         title: "Pedido finalizado com sucesso!",
         description:
           "Você pode acompanhar o status do seu pedido na aba 'Meus Pedidos'",
         action: (
           <ToastAction
-            className=""
             altText="Ver pedido"
             onClick={() => router.push("/my-orders")}
           >
@@ -126,7 +125,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
                   </div>
                   <Separator />
                   <div className="flex justify-between items-center text-sm font-semibold">
-                    <span className="">Total</span>
+                    <span>Total</span>
                     <span>{formatCurrency(totalPrice)}</span>
                   </div>
                 </CardContent>
@@ -165,7 +164,6 @@ const Cart = ({ setIsOpen }: CartProps) => {
           <AlertDialogFooter>
             <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <AlertDialogAction
-              className=""
               onClick={handleFinishOrderClick}
               disabled={isSubmitLoading}
             >

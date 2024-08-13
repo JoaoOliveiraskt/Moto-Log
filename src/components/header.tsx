@@ -1,43 +1,27 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import Image from "next/image";
-import Logo from "../../public/images/moto-log-logo.png";
 import DropdownCategory from "./dropdown-category";
 import DropdownStore from "./dropdown-store";
-import CartSideBar from "./ui/cart-button";
 import Menu from "./menu";
-import { ModeToggle } from "./theme/theme-switcher";
-import Container from "./container";
-import { TbSquareRoundedLetterMFilled } from "react-icons/tb";
-
-const navLinks = [{ name: "", href: "/" }];
+import { TbSquareLetterMFilled } from "react-icons/tb";
+import SearchInput from "./search-input";
+import CartSideBar from "./cart-button";
 
 export default function Header() {
   return (
-    <div className="hidden lg:block fixed top-0 z-10 h-16 bg-background/80 backdrop-blur-3xl w-screen">
-      <Container className="flex h-full  justify-center">
+    <div className="hidden lg:block fixed top-0 z-10 h-16 bg-background dark:bg-background/80 dark:backdrop-blur-3xl w-screen">
+      <div className="h-full max-w-screen-xl mx-auto px-4">
         <div className="w-full h-full flex items-center justify-between">
-          <div className="w-full flex items-center gap-5">
-            <div className="md:flex md:items-center md:gap-12">
-              <Link className="font-black text-4xl" href="/">
-                <TbSquareRoundedLetterMFilled size={40} />
+          <div className="w-fit flex items-center gap-10">
+            <div className="md:flex md:items-center md:gap-3">
+              <Link className="text-xl font-extrabold flex items-center gap-2" href="/">
+                <TbSquareLetterMFilled size={35} />
+                <p>Moto Log</p>
               </Link>
             </div>
 
             <div className="hidden md:block">
-              <nav aria-label="Global" className="">
+              <nav aria-label="Global">
                 <ul className="flex items-center gap-5 tracking-tight text-foreground font-medium ">
-                  {/*} {navLinks.map((link, index) => (
-                    <li key={index}>
-                      <Link
-                        className="transition hover:text-foreground"
-                        href={link.href}
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}*/}
-
                   <li>
                     <DropdownCategory />
                   </li>
@@ -50,18 +34,19 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="flex items-center gap-1">
-            <ModeToggle />
+          <div className="flex items-center justify-between w-auto gap-2">
+            <SearchInput className="w-96" />
+            <div className="flex items-center justify-between  gap-2">
+              <CartSideBar iconSize={18} model="outline" />
 
-            <CartSideBar iconSize={20} model="outline" />
-
-            <Menu
-              iconSize={20}
-              className="h-9 w-9 border border-border rounded-md"
-            />
+              <Menu
+                iconSize={18}
+                className="h-9 w-9 border border-input bg-background shadow-sm hover:bg-accent rounded-md"
+              />
+            </div>
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 }

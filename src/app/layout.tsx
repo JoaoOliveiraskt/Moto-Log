@@ -9,7 +9,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 
 import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${GeistSans.className}`}>
       <body>
         <AuthProvider>
           <CartProvider>

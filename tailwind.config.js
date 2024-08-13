@@ -27,6 +27,9 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['BasierSquare', 'GeistSans', 'Inter', 'sans-serif'],
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

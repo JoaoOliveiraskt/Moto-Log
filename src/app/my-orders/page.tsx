@@ -33,28 +33,27 @@ const MyOrdersPage = async () => {
   });
   return (
     <>
-    <Header />
-    <BottomNav />
-      <Container className="flex flex-col gap-8 mt-8 lg:mt-20">
+      <Header />
+      <BottomNav />
+      <Container className="flex flex-col gap-8 mt-8 lg:mt-16">
+        
         <GoBackButton name={"Meus pedidos"} />
 
         {orders.length > 0 ? (
-            <div className="gap-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+          <div className="gap-5 grid grid-cols-1 md:grid-cols-2">
             {[...orders].reverse().map((order) => (
               <OrderItem key={order.id} order={order} />
             ))}
           </div>
-        ): (
-          
+        ) : (
           <div className="flex flex-col md:flex-row gap-4 my-16 sm:my-32 items-center justify-center">
-          <h2 className="text-center font-bold">Nenhum pedido foi feito até agora</h2>
-          <Link href="/">
-            <Button>
-              Ir às compras
-            </Button>
-          </Link>
-        </div>
-
+            <h2 className="text-center font-bold">
+              Você ainda não fez nenhum pedido.
+            </h2>
+            <Link href="/">
+              <Button>Ir às compras</Button>
+            </Link>
+          </div>
         )}
       </Container>
       <Footer />

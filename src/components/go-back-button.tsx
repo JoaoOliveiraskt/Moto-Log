@@ -17,7 +17,7 @@ const GoBackButton: React.FC<Props> = ({ className, name }: Props) => {
   const title = name || "";
 
   return (
-    <div className="flex items-center gap-4 h-10">
+    <div className="flex items-center gap-4 h-12 w-fit">
       <Button
         onClick={handleGoBack}
         className={`flex items-center rounded-full border border-border ${className}`}
@@ -25,7 +25,7 @@ const GoBackButton: React.FC<Props> = ({ className, name }: Props) => {
         variant="outline"
         title="Voltar"
       >
-        <RiArrowLeftSLine size={32} />
+        <RiArrowLeftSLine size={30} />
       </Button>
       {title && (
         <span className="font-bold text-primary text-xl sm:text-3xl">
