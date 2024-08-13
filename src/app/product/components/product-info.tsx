@@ -3,7 +3,6 @@
 import { useContext, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { CartContext } from "@/app/context/cart";
-
 import { FaCircle } from "react-icons/fa";
 import DiscountBadge from "./discount-badge";
 import calculateTotalPrice from "@/app/helpers/price";
@@ -31,10 +30,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useSession } from "next-auth/react";
 import LoginButton from "@/components/login-button";
-import Container from "@/components/container";
 import { toast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
-import { RiCheckboxCircleFill } from "react-icons/ri";
 interface ProductInfoProps {
   quantity: number;
   product: Prisma.ProdutoGetPayload<{

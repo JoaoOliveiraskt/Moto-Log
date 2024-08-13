@@ -108,7 +108,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
 
             <div className="mt-6">
               <Card>
-                <CardContent className="p-5 space-y-4">
+                <CardContent className="p-5 space-y-4 bg-background/80">
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">Subtotal</span>
                     <span>{formatCurrency(subTotalPrice)}</span>

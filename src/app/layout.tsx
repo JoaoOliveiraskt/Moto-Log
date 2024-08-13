@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import type { Metadata } from "next";
+import { Inter, Lato } from "next/font/google";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { CartProvider } from "./context/cart";
@@ -9,6 +9,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 
 import { GeistSans } from "geist/font/sans";
+import SearchInput from "@/components/search-input";
+import BottomNav from "@/components/bottom-nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,8 +30,11 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              <SearchInput className="fixed top-0 right-0 w-full p-2 z-10 h-16 max-w-md mx-auto lg:hidden" />
+              <Header />
               {children}
-
+              <BottomNav />
+              <Footer />
               <Toaster />
             </ThemeProvider>
           </CartProvider>

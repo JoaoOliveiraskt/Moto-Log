@@ -39,7 +39,7 @@ export default async function DiscountProducts() {
     <div className="my-10 flex flex-col gap-8">
       <div className="flex justify-between items-center">
         <h2 className="font-bold text-primary text-xl sm:text-3xl">
-          Em promoção
+          Produtos em desconto
         </h2>
 
         <SeeAllButton href="#" />

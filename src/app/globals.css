@@ -101,17 +101,17 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 230 6% 11%;
     --foreground: 231 56% 97%;
     --muted: 201 13% 14%;
     --muted-foreground: 60 1% 65%;
     --popover: 231 56% 97%;
     --popover-foreground: 231 21% 98%;
-    --card: 0 0% 4%;
+    --card: 225 7% 65%;
     --card-foreground: 231 21% 98%;
 
-    --border: 0 0% 12%;
-    --input: 231 9% 11%;
+    --border: 255 0% 15%;
+    --input: 255 0% 15%;
     --primary: 231 5% 73%;
     --primary-foreground: 231 5% 13%;
     --secondary: 210 4% 22%;

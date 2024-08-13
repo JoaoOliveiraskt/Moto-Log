@@ -3,9 +3,6 @@ import { db } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import OrderItem from "./components/order-item";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import BottomNav from "@/components/bottom-nav";
 import GoBackButton from "@/components/go-back-button";
 import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
@@ -33,10 +30,7 @@ const MyOrdersPage = async () => {
   });
   return (
     <>
-      <Header />
-      <BottomNav />
-      <Container className="flex flex-col gap-8 mt-8 lg:mt-16">
-        
+      <Container className="flex flex-col gap-8 mt-16 lg:mt-16">
         <GoBackButton name={"Meus pedidos"} />
 
         {orders.length > 0 ? (
@@ -56,7 +50,6 @@ const MyOrdersPage = async () => {
           </div>
         )}
       </Container>
-      <Footer />
     </>
   );
 };

@@ -1,9 +1,5 @@
-import BottomNav from "@/components/bottom-nav";
 import Container from "@/components/container";
-import Footer from "@/components/footer";
 import GoBackButton from "@/components/go-back-button";
-
-import Header from "@/components/header";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import { db } from "@/lib/prisma";
@@ -45,7 +41,6 @@ export default async function CategorieList({ params }: Props) {
 
   return (
     <>
-      <Header />
       <Container className="flex flex-col gap-8 mt-8 lg:mt-16">
         <GoBackButton name={category.nome} />
 
@@ -63,8 +58,6 @@ export default async function CategorieList({ params }: Props) {
           </h2>
         )}
       </Container>
-      <BottomNav />
-      <Footer />
     </>
   );
 }

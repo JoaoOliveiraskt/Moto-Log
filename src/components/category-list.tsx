@@ -7,10 +7,10 @@ export default async function CategoryList() {
   return (
     <div id="category-list" className="mt-10 flex flex-col gap-5">
       <h2 className="text-start text-xl sm:text-3xl font-bold text-primary">
-        Principais categorias
+        Buscar por categoria
       </h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
-        {categories.slice(0, 5).map((category) => (
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+        {categories.slice(0, 6).map((category) => (
           <CategoryItem
             key={category.id}
             category={category}

@@ -1,5 +1,5 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { OrderStatus, Prisma } from "prisma/generated/client";
 import { HiMiniChevronRight } from "react-icons/hi2";
@@ -40,12 +40,12 @@ const getOrderStatus = (status: OrderStatus) => {
 
 const OrderItem = ({ order }: OrderItemProps) => {
   return (
-    <Card className="cursor-pointer bg-background hover:border-accent flex flex-col gap-2">
+    <Card className="cursor-pointer flex flex-col gap-2 bg-card/5 hover:bg-card/10 transition-all">
       <CardContent className="p-3 flex flex-col gap-3">
-        <div className="flex items-center justify-between w-full">
-          <div className="flex gap-4 items-center">
+        <CardHeader className="px-1">
+          <div className="flex gap-4 items-center justify-between">
             <div
-              className={`px-2 py-1 rounded-full ${
+              className={`${
                 order.status !== "COMPLETED"
                   ? "text-muted-foreground"
                   : "text-emerald-500"
@@ -59,7 +59,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
             <Link
               href={`/store/${order.lojaId}`}
               className="flex gap-2 items-center mt-1 text-muted-foreground 
-              hover:text-blue-700 dark:hover:text-blue-600 w-fit"
+              hover:text-cyan-600 dark:hover:text-cyan-600 w-fit"
             >
               <div className="flex items-center space-x-2">
                 <Avatar className="w-6 h-6">
@@ -74,11 +74,11 @@ const OrderItem = ({ order }: OrderItemProps) => {
           <p className="text-muted-foreground text-lg font-semibold tracking-wider">
             {formatCurrency(Number(order.totalPrice))}
           </p>
-        </div>
+        </CardHeader>
 
         <Separator />
 
-        <ScrollArea className="max-h-24">
+        <ScrollArea className="max-h-28">
           {order.products.map((product) => (
             <div key={product.id} className="flex space-x-2 mb-2">
               <div className="flex flex-col items-center justify-center w-5 h-5 rounded-full border">

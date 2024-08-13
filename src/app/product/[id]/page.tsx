@@ -4,13 +4,8 @@ import { notFound } from "next/navigation";
 import ProductBanner from "../components/product-banner";
 import ProductInfo from "../components/product-info";
 import GoBackButton from "@/components/go-back-button";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import BottomNav from "@/components/bottom-nav";
 import Container from "@/components/container";
-import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Image from "next/image";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 
@@ -53,23 +48,25 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
 
   return (
     <>
-      <Header />
-      <BottomNav />
-      <Container className="lg:mt-16">
-        <GoBackButton  />
+      <Container className="mt-14 lg:mt-16">
+        <GoBackButton />
       </Container>
       <Container className="">
         <div className="w-full flex flex-col gap-4">
           <div className="flex flex-col w-full gap-8 lg:flex-row">
-            <ProductBanner images={images} produto={produto} />
+            <ProductBanner
+              images={images}
+              produto={produto}
+              className="rounded-xl"
+            />
 
             <ProductInfo product={produto} quantity={0} />
           </div>
 
           <div>
-            <div>
+            <div className="my-2">
               <h2 className="text-2xl font-bold">Reviews</h2>
-              <div className="grid gap-6 mt-4">
+              <div className="grid gap-6 mt-4 max-w-screen-md">
                 <div className="flex gap-4">
                   <Avatar className="w-10 h-10 border">
                     <AvatarImage src="/placeholder-user.jpg" alt="@shadcn" />
@@ -140,7 +137,6 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
           </div>
         </div>
       </Container>
-      <Footer />
     </>
   );
 };

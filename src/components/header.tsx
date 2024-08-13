@@ -5,17 +5,23 @@ import Menu from "./menu";
 import { TbSquareLetterMFilled } from "react-icons/tb";
 import SearchInput from "./search-input";
 import CartSideBar from "./cart-button";
+import { Edu_VIC_WA_NT_Beginner } from "next/font/google";
+
+const logoFont = Edu_VIC_WA_NT_Beginner({
+  subsets: ["latin"],
+  weight: ["700"],
+});
 
 export default function Header() {
   return (
-    <div className="hidden lg:block fixed top-0 z-10 h-16 bg-background dark:bg-background/80 dark:backdrop-blur-3xl w-screen">
-      <div className="h-full max-w-screen-xl mx-auto px-4">
+    <div className="hidden lg:block fixed top-0 z-10 h-16 bg-background w-screen">
+      <div className="h-full max-w-screen-2xl mx-auto px-4">
         <div className="w-full h-full flex items-center justify-between">
           <div className="w-fit flex items-center gap-10">
             <div className="md:flex md:items-center md:gap-3">
-              <Link className="text-xl font-extrabold flex items-center gap-2" href="/">
+              <Link className=" flex items-center gap-3" href="/">
                 <TbSquareLetterMFilled size={35} />
-                <p>Moto Log</p>
+                <p className={`${logoFont.className} text-xl `}>Moto/Log</p>
               </Link>
             </div>
 

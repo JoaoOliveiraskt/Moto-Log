@@ -4,9 +4,10 @@ import { Input } from "./ui/input";
 
 export default function Footer() {
   return (
-    <Container className="mt-10 sm:mt-16 pb-32 lg:pb-12">
-      <footer >
-        <div className="mx-auto px-4 max-w-screen-lg h-56 sm:h-80 border rounded-3xl flex flex-col items-center justify-center bg-gradient-to-t from-zinc-200 via-zinc-100 dark:from-cyan-950/5 dark:via-transparent to-transparent">
+    <div className="">
+    <Container className="mt-10 sm:mt-16 md:mt-32 pb-32 lg:pb-12">
+      <footer className="flex flex-col gap-8 md:gap-16  ">
+        <div className="mx-auto w-full px-4 max-w-screen-lg h-56 sm:h-80 border rounded-3xl flex flex-col items-center justify-center bg-gradient-to-t from-zinc-200 via-zinc-100 dark:from-cyan-950/5 dark:via-transparent to-transparent">
           <strong className=" max-w-lg text-center text-xl font-bold  sm:text-3xl">
             Seja o primeiro a saber sobre novidades, vendas e promoções com
             nossa newsletter.
@@ -29,7 +30,7 @@ export default function Footer() {
           </form>
         </div>
 
-        <div className="mt-10 sm:mt-16 flex flex-col gap-5 lg:flex-row w-full justify-center lg:justify-between items-center">
+        <div className="mt-10 sm:mt-16 flex flex-col lg:flex-row w-full justify-center lg:justify-between items-center">
           <div className="max-w-sm">
             <p className="mt-4 max-w-md text-center text-foreground font-medium tracking-tight lg:text-left lg:text-lg">
               Descubra a liberdade de comprar e vender localmente com o Moto
@@ -210,5 +211,6 @@ export default function Footer() {
         </div>
       </footer>
     </Container>
+    </div>
   );
 }

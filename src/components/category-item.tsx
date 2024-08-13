@@ -22,6 +22,10 @@ const categoryIcons: { [key: string]: JSX.Element } = {
   Livros: <PiBooks size={30} />,
 };
 
+const descriptions = {
+  
+}
+
 interface CategoryProps {
   category: Category;
   link: string;
@@ -30,19 +34,19 @@ interface CategoryProps {
 export default function CategoryItem({ category, link }: CategoryProps) {
   return (
     <Card
-      className="shadow-sm shadow-black/15 w-auto bg-background hover:border-accent rounded-2xl 
-      text-foreground hover:text-foreground transition-all duration-200 transform"
+      className="shadow-sm hover:shadow-lg shadow-border dark:shadow-none w-auto bg-card/5 hover:bg-card/10
+       transition-all rounded-2xl text-muted-foreground"
     >
       <Link href={link}>
         <div className="w-full">
           <div className="px-4 py-5 sm:p-5">
             <div className="flex items-center justify-between">
-              <div >
+              <div>
                 <p className="text-xs font-medium lg:text-sm">
                   {category.nome}
                 </p>
               </div>
-              <div >{categoryIcons[category.nome]}</div>
+              <div>{categoryIcons[category.nome]}</div>
             </div>
           </div>
         </div>

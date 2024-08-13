@@ -2,7 +2,6 @@ import BottomNav from "@/components/bottom-nav";
 import Container from "@/components/container";
 import Footer from "@/components/footer";
 import GoBackButton from "@/components/go-back-button";
-import Header from "@/components/header";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import { Button } from "@/components/ui/button";
@@ -46,9 +45,8 @@ export default async function Store({ params }: Props) {
 
   return (
     <>
-      <Header />
       <Container className="xl:mt-16">
-      <GoBackButton />
+        <GoBackButton />
       </Container>
       <div className=" mx-auto max-w-screen-xl relative h-[300px] overflow-hidden ">
         <Image
@@ -145,9 +143,6 @@ export default async function Store({ params }: Props) {
           </div>
         </div>
       </Container>
-
-      <BottomNav />
-      <Footer />
     </>
   );
 }
