@@ -133,6 +133,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
             </div>
 
             <Button
+            variant={"secondary"}
               onClick={() => setIsConfirmDialogOpen(true)}
               className="w-full mt-6"
               disabled={isSubmitLoading}
