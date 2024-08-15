@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Lato } from "next/font/google";
+import { Inter, Space_Grotesk, Ubuntu } from "next/font/google";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { CartProvider } from "./context/cart";
@@ -13,6 +13,8 @@ import SearchInput from "@/components/search-input";
 import BottomNav from "@/components/bottom-nav";
 
 const inter = Inter({ subsets: ["latin"] });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
+const ubuntu = Ubuntu({ subsets: ["latin"], weight: ["300", "400", "500", "700"] });
 
 export const metadata: Metadata = {
   title: "Moto Log",
@@ -25,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${GeistSans.className}`}>
+    <html lang="en" className={`${spaceGrotesk.className}`}>
       <body>
         <AuthProvider>
           <CartProvider>

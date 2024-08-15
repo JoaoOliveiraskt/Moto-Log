@@ -9,7 +9,7 @@ export default async function CategoryList() {
       <h2 className="text-start text-xl sm:text-3xl font-bold text-primary">
         Buscar por categoria
       </h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2">
         {categories.slice(0, 6).map((category) => (
           <CategoryItem
             key={category.id}

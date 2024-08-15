@@ -28,7 +28,7 @@ const ProductCard = ({ product }: ProductProps) => {
     <div className="relative">
       <Link href={`/product/${product.id}`}>
         <div className="cursor-pointer rounded-lg h-auto overflow-hidden text-foreground">
-          <div className="h-32 w-full md:h-44 rounded-xl overflow-hidden">
+          <div className="h-36 sm:h-40 w-full lg:h-52 rounded-xl overflow-hidden">
             <Image
               src={product.imagemUrl}
               alt={product.nome}
@@ -46,7 +46,7 @@ const ProductCard = ({ product }: ProductProps) => {
               </div>
             )}
           </div>
-          <div className="h-full flex flex-col gap-2 p-2 ">
+          <div className="h-full flex flex-col gap-2 p-2">
             <div>
               <h2 className="font-medium line-clamp-1">{product.nome}</h2>
             </div>
@@ -71,6 +71,8 @@ const ProductCard = ({ product }: ProductProps) => {
           </div>
         </div>
       </Link>
+
+
       <Button
         variant={"outline"}
         size={"icon"}

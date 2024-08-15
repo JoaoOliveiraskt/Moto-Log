@@ -45,7 +45,7 @@ export default async function Store({ params }: Props) {
 
   return (
     <>
-      <Container className="xl:mt-16">
+      <Container className="mt-16">
         <GoBackButton />
       </Container>
       <div className=" mx-auto max-w-screen-xl relative h-[300px] overflow-hidden ">

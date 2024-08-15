@@ -107,23 +107,26 @@ const Cart = ({ setIsOpen }: CartProps) => {
             </ScrollArea>
 
             <div className="mt-6">
-              <Card>
-                <CardContent className="p-5 space-y-4 bg-background/80">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-muted-foreground">Subtotal</span>
-                    <span>{formatCurrency(subTotalPrice)}</span>
-                  </div>
-                  <Separator />
+              <Card className="border-none">
+                <CardContent className="p-5 border-none space-y-5 dark:bg-background/80">
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">Entrega</span>
                     <span className="text-confirmed uppercase">Grátis</span>
                   </div>
-                  <Separator />
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-muted-foreground">Subtotal</span>
+                    <span className="text-muted-foreground">
+                      {formatCurrency(subTotalPrice)}
+                    </span>
+                  </div>
+
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">Descontos</span>
-                    <span>- {formatCurrency(totalDiscount)}</span>
+                    <span className="text-muted-foreground">
+                      - {formatCurrency(totalDiscount)}
+                    </span>
                   </div>
-                  <Separator />
+
                   <div className="flex justify-between items-center text-sm font-semibold">
                     <span>Total</span>
                     <span>{formatCurrency(totalPrice)}</span>
@@ -133,7 +136,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
             </div>
 
             <Button
-            variant={"secondary"}
+              variant={"secondary"}
               onClick={() => setIsConfirmDialogOpen(true)}
               className="w-full mt-6"
               disabled={isSubmitLoading}

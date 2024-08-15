@@ -28,7 +28,7 @@ export const Banner = () => {
           <Button
             variant={"secondary"}
             size={"lg"}
-            className="rounded-full shadow-xl shadow-foreground/20 dark:shadow-none "
+            className="rounded-full  shadow-xl shadow-foreground/20 dark:shadow-none "
           >
             Ver Ofertas
           </Button>
@@ -62,7 +62,7 @@ export const BannerSec = () => {
           <Button
             variant={"outline"}
             size={"lg"}
-            className="bg-transparent hover:bg-background rounded-full"
+            className="rounded-full bg-transparent"
           >
             Aproveite as Ofertas
           </Button>
@@ -92,7 +92,7 @@ export const BannerTerc = () => {
         <Button
           variant={"outline"}
           size={"lg"}
-          className="bg-transparent hover:bg-background rounded-full"
+          className="bg-transparent rounded-full"
         >
           Aproveite as Ofertas
         </Button>

@@ -65,13 +65,13 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
     <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
       <DropdownMenuTrigger
         onClick={handleMenuOpen.open}
-        className={`cursor-default flex items-center justify-center text-muted-foreground hover:text-foreground ${className}`}
+        className={`cursor-default flex items-center justify-center text-muted-foreground ${className}`}
       >
         <RiMenu2Fill size={iconSize} />
         <p>{children}</p>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="px-0 pb-0 bg-background dark:bg-background/80 dark:backdrop-blur-3xl">
+      <DropdownMenuContent className="px-0 pb-0 dark:bg-background">
         <AvatarInfo />
 
         <DropdownMenuSeparator />
