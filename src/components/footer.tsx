@@ -34,7 +34,7 @@ export default function Footer() {
 
           <div className="flex flex-col lg:flex-row w-full justify-center lg:justify-between items-center">
             <div className="max-w-sm">
-              <p className="mt-4 max-w-md text-center text-foreground font-medium tracking-tight lg:text-left lg:text-lg">
+              <p className="mt-4 max-w-md text-center text-muted-foreground font-medium tracking-tight lg:text-left lg:text-lg">
                 Descubra a liberdade de comprar e vender localmente com o Moto
                 Log. Conecte-se com produtos únicos e apóie os negócios da sua
                 comunidade.

@@ -94,13 +94,13 @@
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 240 5.9% 10%;
-    --radius: 1rem;
+    --radius: 0.7rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.7rem;
+    
 
     --confirmed: 120 100% 50%;
     --confirmed-foreground: 0 0% 98%;
@@ -116,7 +116,7 @@
     --card: 0 0% 13%;
     --card-foreground: 231 21% 98%;
 
-    --border: 0 0% 17%;
+    --border: 0 0% 20%;
     --input: 0 0% 17%;
     --primary: 60 6% 94%;
     --primary-foreground: 231 5% 13%;
@@ -144,4 +144,14 @@
 
 * {
   scroll-behavior: smooth;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari e Edge */
 }

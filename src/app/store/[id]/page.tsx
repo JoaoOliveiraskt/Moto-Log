@@ -1,3 +1,4 @@
+
 import Container from "@/components/container";
 import GoBackButton from "@/components/go-back-button";
 import ProductCard from "@/components/product-card";
@@ -43,10 +44,10 @@ export default async function Store({ params }: Props) {
 
   return (
     <>
-      <Container className="mt-16">
+      <Container className="mt-20">
         <GoBackButton />
       </Container>
-      <div className=" mx-auto max-w-screen-xl relative h-[300px] overflow-hidden ">
+      <div className="mt-8 mx-auto max-w-screen-xl relative h-[300px] overflow-hidden ">
         <Image
           src={store.imagemUrl}
           alt="Store Banner"
