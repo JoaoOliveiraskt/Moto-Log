@@ -9,27 +9,28 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 
+
 export default async function CategoryList() {
   const categories = await FetchCategory();
 
   return (
-    <div id="category-list" className="space-y-5 mt-20 lg:mt-32 w-full">
-      <h2 className="text-start text-xl sm:text-4xl font-bold text-primary">
+    <div id="category-list" className="mt-20 lg:mt-32 w-full">
+      <h2 className="text-start  text-xl sm:text-4xl font-bold text-primary mb-8">
         Categorias
       </h2>
 
       <Carousel className="">
         <CarouselContent className="flex gap-2 lg:px-10 ">
-        {Array(3) // Número de vezes que deseja repetir os itens
-    .fill(categories) 
-    .flat() // Achata o array multidimensional
-    .map((category, index) => (
-      <CategoryItem
-        key={`${category.id}-${index}`}
-        category={category}
-        link={`/category/${category.id}`}
-      />
-    ))}
+          {Array(3) // Número de vezes que deseja repetir os itens
+            .fill(categories)
+            .flat() // Achata o array multidimensional
+            .map((category, index) => (
+              <CategoryItem
+                key={`${category.id}-${index}`}
+                category={category}
+                link={`/category/${category.id}`}
+              />
+            ))}
         </CarouselContent>
         <CarouselPrevious className="hidden lg:block left-0" />
         <CarouselNext className="hidden lg:block right-0" />

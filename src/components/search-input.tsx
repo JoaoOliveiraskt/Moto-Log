@@ -22,7 +22,7 @@ export default function SearchInput({ className }: Props) {
         <Input
           type="text"
           name="search"
-          className="h-12 w-full px-14 rounded-3xl bg-accent"
+          className="h-12 w-full px-14 rounded-3xl"
           placeholder="Buscar produtos..."
         />
       </div>

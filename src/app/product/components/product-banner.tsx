@@ -1,6 +1,15 @@
 import Image from "next/image";
 import React from "react";
 
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
 interface ProductBannerProps {
   images: string[];
   produto: {
@@ -17,11 +26,9 @@ const ProductBanner: React.FC<ProductBannerProps> = ({
   className,
 }) => {
   return (
-    <div
-      className={`flex flex-col-reverse gap-6 h-fit w-full rounded-xl ${className}`}
-    >
-      <div className="w-full h-fit overflow-hidden">
-        <div className="relative w-auto h-[400px] md:h-[500px] overflow-hidden">
+    <Carousel className="h-fit mx-6">
+      <CarouselContent className="relative w-fit">
+        <CarouselItem className="w-max h-[400px] overflow-hidden p-0 rounded-md">
           <Image
             src={produto.imagemUrl}
             alt={produto.nome}
@@ -29,9 +36,11 @@ const ProductBanner: React.FC<ProductBannerProps> = ({
             height={400}
             className="object-cover w-full h-full"
           />
-        </div>
-      </div>
-    </div>
+        </CarouselItem>
+      </CarouselContent>
+      <CarouselPrevious className="z-20 left-4" />
+      <CarouselNext className="right-4" />
+    </Carousel>
   );
 };
 
