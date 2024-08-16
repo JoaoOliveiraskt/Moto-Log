@@ -32,6 +32,12 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
     return notFound();
   }
 
+  const convertedProduct = {
+    ...produto, 
+    preco: produto.preco.toNumber(),
+    porcentagemDesconto: produto.porcentagemDesconto.toNumber(),
+  }
+
   const images = Array.from({ length: 4 }, () => produto.imagemUrl);
 
   const relatedProducts = await db.produto.findMany({
@@ -44,7 +50,14 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
     },
 
     take: 5,
+  
   });
+
+  const relatedProductsConvertidos = relatedProducts.map(prod => ({
+    ...prod,
+    preco: prod.preco.toNumber(),
+    porcentagemDesconto: prod.porcentagemDesconto.toNumber(),
+  }));
 
   return (
     <>
@@ -58,7 +71,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
               className="rounded-xl"
             />
 
-            <ProductInfo product={produto} quantity={0} />
+            <ProductInfo product={convertedProduct} quantity={0} />
           </div>
 
           <div>

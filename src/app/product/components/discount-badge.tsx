@@ -6,10 +6,11 @@ interface DiscountBadgeProps {
 
 export default function DiscountBadge({ product }: DiscountBadgeProps) {
   return (
-    <div className="flex items-center">
-      <p className="text-gray-400 line-through tracking-wider">
+    <div className="flex items-center gap-2 text-muted-foreground">
+      <span>-</span>
+      <span className=" line-through tracking-wider">
         {product.porcentagemDesconto.toString()}%
-      </p>
+      </span>
     </div>
   );
 }

@@ -58,7 +58,7 @@ const ProductCard = ({ product }: ProductProps) => {
 
             <div className="flex gap-2 items-center">
               <h3 className="font-bold">
-                {formatCurrency(calculateTotalPrice(product))}
+                {formatCurrency(Number(calculateTotalPrice(product)))}
               </h3>
 
               {Number(product.porcentagemDesconto) > 0 && (

@@ -116,20 +116,20 @@ const Cart = ({ setIsOpen }: CartProps) => {
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">Subtotal</span>
                     <span className="text-muted-foreground">
-                      {formatCurrency(subTotalPrice)}
+                      {formatCurrency(Number(subTotalPrice))}
                     </span>
                   </div>
 
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">Descontos</span>
                     <span className="text-muted-foreground">
-                      - {formatCurrency(totalDiscount)}
+                      - {formatCurrency(Number(totalDiscount))}
                     </span>
                   </div>
 
                   <div className="flex justify-between items-center text-sm font-semibold">
                     <span>Total</span>
-                    <span>{formatCurrency(totalPrice)}</span>
+                    <span>{formatCurrency(Number(totalPrice))}</span>
                   </div>
                 </CardContent>
               </Card>

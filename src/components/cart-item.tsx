@@ -50,9 +50,9 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
             <div className="flex items-center">
               <h4 className="text-sm">
                 {formatCurrency(
-                  calculateTotalPrice(cartProduct) * cartProduct.quantity
+                  Number(calculateTotalPrice(cartProduct)) * cartProduct.quantity
                 )}
-              </h4>
+              </h4> 
 
               {Number(cartProduct.porcentagemDesconto) > 0 && (
                 <span className="text-xs ml-2 text-muted-foreground line-through">

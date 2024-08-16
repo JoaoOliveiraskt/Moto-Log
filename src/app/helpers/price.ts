@@ -1,13 +1,15 @@
 import { Produto } from "../../../prisma/generated/client";
 
 export const calculateTotalPrice = (product: Produto) => {
-  if (Number(product.porcentagemDesconto) === 0) {
-    return Number(product.preco);
+  const preco = Number(product.preco);
+  const porcentagemDesconto = Number(product.porcentagemDesconto);
+
+  if (porcentagemDesconto === 0) {
+    return preco;
   }
 
-  const discount =
-    Number(product.preco) * (Number(product.porcentagemDesconto) / 100);
-  return Number(product.preco) - discount;
+  const discount = preco * (porcentagemDesconto / 100);
+  return preco - discount;
 };
 
 export default calculateTotalPrice;
