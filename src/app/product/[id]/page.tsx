@@ -48,7 +48,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
 
   return (
     <>
-      <Container className="flex flex-col gap-8 mt-20">
+      <Container className="flex flex-col gap-8 mt-20 !max-w-screen-xl">
         <GoBackButton />
         <div className="w-full flex flex-col gap-4">
           <div className="flex flex-col w-full gap-8 lg:flex-row">

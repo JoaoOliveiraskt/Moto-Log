@@ -30,11 +30,11 @@ const MyOrdersPage = async () => {
   });
   return (
     <>
-      <Container className="flex flex-col gap-8 mt-16">
+      <Container className="flex flex-col gap-8 mt-20">
         <GoBackButton name={"Meus pedidos"} />
 
         {orders.length > 0 ? (
-          <div className="gap-5 grid grid-cols-1 md:grid-cols-2">
+          <div className="gap-5 grid grid-cols-1  max-w-screen-sm mx-auto w-full">
             {[...orders].reverse().map((order) => (
               <OrderItem key={order.id} order={order} />
             ))}

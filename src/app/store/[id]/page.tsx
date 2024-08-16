@@ -68,7 +68,7 @@ export default async function Store({ params }: Props) {
         </div>
       </div>
 
-      <Container className="!px-5">
+      <Container className="!px-5 !max-w-screen-xl">
         <div className="flex flex-col w-full">
           <div className="bg-background  lg:px-0">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

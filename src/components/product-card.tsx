@@ -46,22 +46,21 @@ const ProductCard = ({ product }: ProductProps) => {
               </div>
             )}
           </div>
-          <div className="h-full flex flex-col gap-2 p-2">
-            <div>
-              <h2 className="font-medium line-clamp-1">{product.nome}</h2>
-            </div>
+          <div className="h-full p-2">
+            <h2 className="font-medium line-clamp-2">{product.nome}</h2>
+
             <Link
               href={`/store/${product.lojaId}`}
               className="text-muted-foreground font-medium hover:text-lime-600 w-fit"
             >
-              <p>{product.loja.nome}</p>
+              <p className="text-sm mb-2">{product.loja.nome}</p>
             </Link>
+
             <div className="flex gap-2 items-center">
-              <div>
-                <h3 className="font-bold">
-                  {formatCurrency(calculateTotalPrice(product))}
-                </h3>
-              </div>
+              <h3 className="font-bold">
+                {formatCurrency(calculateTotalPrice(product))}
+              </h3>
+
               {Number(product.porcentagemDesconto) > 0 && (
                 <p className="text-sm line-through text-muted-foreground/80 font-medium">
                   {formatCurrency(Number(product.preco))}
@@ -71,7 +70,6 @@ const ProductCard = ({ product }: ProductProps) => {
           </div>
         </div>
       </Link>
-
 
       <Button
         variant={"outline"}
