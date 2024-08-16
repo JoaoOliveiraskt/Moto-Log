@@ -65,13 +65,13 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
     <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
       <DropdownMenuTrigger
         onClick={handleMenuOpen.open}
-        className={`cursor-default flex items-center justify-center text-muted-foreground ${className}`}
+        className={` flex items-center justify-center text-muted-foreground hover:text-foreground ${className}`}
       >
         <RiMenu2Fill size={iconSize} />
         <p>{children}</p>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="px-0 pb-0 dark:bg-background">
+      <DropdownMenuContent className="p-2 bg-card border-none" align="end">
         <AvatarInfo />
 
         <DropdownMenuSeparator />
@@ -80,7 +80,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
           <Link href={"/"} className="block" onClick={handleMenuOpen.close}>
             <Button
               variant={"ghost"}
-              className="space-x-3 w-full justify-start text-sm tracking-tight cursor-default rounded-none"
+              className="space-x-3 w-full justify-start text-sm tracking-tight  "
             >
               <FiHome size={18} className="text-foreground" />
               <p className="block text-foreground">Início</p>
@@ -94,7 +94,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
           >
             <Button
               variant={"ghost"}
-              className="space-x-3 w-full justify-start text-sm tracking-tight cursor-default rounded-none"
+              className="space-x-3 w-full justify-start text-sm tracking-tight  "
             >
               <RiFileList3Line size={18} className="text-foreground" />
 
@@ -102,7 +102,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             </Button>
           </Link>
 
-          <ModeToggle className="cursor-default rounded-none bg-transparent text-foreground outline-none border-none flex gap-3 px-4 w-full justify-start text-sm tracking-tight">
+          <ModeToggle className="  bg-transparent text-foreground outline-none border-none flex gap-3 px-4 w-full justify-start text-sm tracking-tight">
             <span className="text-foreground">Tema</span>
           </ModeToggle>
         </div>
@@ -110,20 +110,24 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
         <DropdownMenuSeparator className="lg:hidden" />
 
         <>
-          <Accordion type="single" collapsible className="w-full rounded-lg lg:hidden">
-            <AccordionItem value="item-1" >
-              <AccordionTrigger className="hover:no-underline rounded-none">
-                <p >Categorias</p>
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full rounded-lg lg:hidden"
+          >
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="hover:no-underline ">
+                <p>Categorias</p>
               </AccordionTrigger>
               {categories.map((category, index) => (
-                <AccordionContent key={index} className="rounded-none ">
+                <AccordionContent key={index} className=" ">
                   <Button
                     variant={"ghost"}
-                    className="space-x-3 w-full text-sm tracking-tight rounded-none cursor-default"
+                    className="space-x-3 w-full text-sm tracking-tight  "
                   >
                     <Link
                       href={`/category/${category.id}`}
-                      className="flex justify-between w-full cursor-default"
+                      className="flex justify-between w-full "
                     >
                       <p className="block text-sm ml-4">{category.name}</p>
                       <GoChevronRight size={15} />

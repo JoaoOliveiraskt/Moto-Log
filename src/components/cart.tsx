@@ -108,7 +108,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
 
             <div className="mt-6">
               <Card className="border-none">
-                <CardContent className="p-5 border-none space-y-5 dark:bg-background/80">
+                <CardContent className="p-5 border-none space-y-5 bg-card rounded-md">
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">Entrega</span>
                     <span className="text-confirmed uppercase">Grátis</span>
@@ -136,9 +136,8 @@ const Cart = ({ setIsOpen }: CartProps) => {
             </div>
 
             <Button
-              variant={"secondary"}
               onClick={() => setIsConfirmDialogOpen(true)}
-              className="w-full mt-6"
+              className="w-1/2 mx-auto mt-6 mb-1"
               disabled={isSubmitLoading}
             >
               Fazer pedido

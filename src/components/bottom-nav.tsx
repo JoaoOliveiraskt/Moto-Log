@@ -6,7 +6,7 @@ import OrderButton from "./ui/button-order";
 
 export default function BottomNav() {
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-background border-t border-zinc-400 dark:border-border z-50">
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-background border-t dark:border-border z-50">
       <nav className="flex items-center justify-around py-3">
         <HomeButton className="h-14 w-14"></HomeButton>
 

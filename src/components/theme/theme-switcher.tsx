@@ -27,7 +27,7 @@ export function ModeToggle({ className, children }: Props) {
       onClick={toggleTheme}
       variant="outline"
       size="icon"
-      className={`cursor-default text-muted-foreground hover:text-foreground ${className}`}
+      className={` text-muted-foreground hover:text-foreground ${className}`}
     >
       <LuSun
         size={18}

@@ -9,8 +9,7 @@ import RecomendedProducts from "@/components/recomended-products";
 export default function Home() {
   return (
     <main>
-      <Container className="grid gap-12">
-        <Hero />
+      <Container className="space-y-10">
         <CategoryList />
         <DiscountProducts />
         <BannerSec />

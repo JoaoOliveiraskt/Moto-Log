@@ -36,7 +36,7 @@ const AccordionTrigger = React.forwardRef<
     >
       <Button
         variant={"ghost"}
-        className=" w-full flex flex-1 py-1 items-center justify-between text-sm tracking-tight cursor-default rounded-none"
+        className=" w-full flex flex-1 py-1 items-center justify-between text-sm tracking-tight  rounded-none"
       >
         {children}
         <ChevronDownIcon className="h-4 w-4 shrink-0 text-foreground" />

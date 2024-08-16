@@ -1,6 +1,4 @@
-import BottomNav from "@/components/bottom-nav";
 import Container from "@/components/container";
-import Footer from "@/components/footer";
 import GoBackButton from "@/components/go-back-button";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
@@ -101,7 +99,7 @@ export default async function Store({ params }: Props) {
                     </div>
                   </div>
                 </div>
-                <Button variant={"secondary"} className="w-full md:w-auto">
+                <Button className="w-full md:w-auto">
                   Contate-nos
                 </Button>
               </div>

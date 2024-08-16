@@ -14,12 +14,12 @@ export default async function DropdownCategory() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className="flex items-center gap-1 hover:text-muted-foreground">
+        <div className="flex items-center gap-1 hover:text-foreground text-muted-foreground">
           <p>Categorias</p>
           <RiArrowDropDownLine />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-background dark:bg-background/80 dark:backdrop-blur-3xl">
+      <DropdownMenuContent className="bg-card">
         {categories.map((category) => (
           <Link key={category.id} href={`/category/${category.id}`}>
             <DropdownMenuItem>

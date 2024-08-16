@@ -93,7 +93,7 @@ export const AvatarInfo = () => {
             </div>
           </div>
 
-          <LoginButton className="w-full bg-transparent border-none justify-start cursor-default rounded-none" />
+          <LoginButton className="w-full bg-transparent justify-start border-none" />
         </div>
       ) : (
         <div className="flex items-center gap-4 px-4">

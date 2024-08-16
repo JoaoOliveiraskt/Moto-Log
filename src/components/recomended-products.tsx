@@ -15,7 +15,7 @@ export default async function RecomendedProducts() {
     take: 15,
   });
   return (
-    <div className="my-10 flex flex-col gap-10">
+    <div className="space-y-5">
       <div className="flex justify-between items-center">
         <h2 className="font-bold text-primary text-xl sm:text-3xl">
           Recomendados

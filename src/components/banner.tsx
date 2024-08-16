@@ -3,12 +3,18 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-
 import Lottie from "lottie-react";
 import cartAnimation from "../../public/animations/cart-animation.json";
 import groovyWalkAnimation from "../../public/animations/groovy-walk.json";
 
-export const Banner = () => {
+interface BannerProps {
+  title: string;
+  subtitle: string;
+  textButton: string;
+  className?: string;
+}
+
+export const Banner = ({ className }: BannerProps) => {
   return (
     <div
       className="relative mx-auto my-10 max-w-screen-xl h-56 rounded-2xl overflow-hidden 
@@ -45,7 +51,7 @@ export const Banner = () => {
 export const BannerSec = () => {
   return (
     <div
-      className="flex items-center justify-around mx-auto mt-10 mb-10 max-w-screen-xl sm:h-64 p-4 sm:p-8 h-full w-full rounded-2xl overflow-hidden 
+      className="flex items-center justify-around mx-auto max-w-screen-xl sm:h-64 p-4 sm:p-8 h-full w-full rounded-2xl overflow-hidden 
       bg-gradient-to-bl backdrop-blur-3xl bg-sky-800"
     >
       <div className=" flex flex-col gap-12">
@@ -59,45 +65,12 @@ export const BannerSec = () => {
           </h2>
         </div>
         <Link href="#category-list">
-          <Button
-            variant={"outline"}
-            size={"lg"}
-            className="rounded-full bg-transparent"
-          >
+          <Button size={"lg"} className="rounded-full">
             Aproveite as Ofertas
           </Button>
         </Link>
       </div>
-      <Lottie animationData={cartAnimation} className="ml-8 h-72 w-fit  " />
+      <Lottie animationData={cartAnimation} className="ml-8 h-72 w-fit" />
     </div>
   );
-};
-
-export const BannerTerc = () => {
-  <div
-    className="flex items-center justify-around mx-auto mt-10 mb-10 max-w-screen-xl h-40 sm:h-64 rounded-2xl overflow-hidden 
-  bg-gradient-to-bl backdrop-blur-3xl bg-yellow-500"
-  >
-    <div className=" flex flex-col gap-12">
-      <div className="space-y-3">
-        <strong className="max-w-44 sm:max-w-xl text-left text-xl sm:text-2xl font-bold text-foreground drop-shadow-md">
-          Conectando você aos melhores produtos da região
-        </strong>
-
-        <h2 className="text-lg sm:text-xl text-foreground drop-shadow-md">
-          Descubra novidades e aproveite vantagens exclusivas
-        </h2>
-      </div>
-      <Link href="#category-list">
-        <Button
-          variant={"outline"}
-          size={"lg"}
-          className="bg-transparent rounded-full"
-        >
-          Aproveite as Ofertas
-        </Button>
-      </Link>
-    </div>
-    <Lottie animationData={cartAnimation} className="ml-8 h-72 w-fit  " />
-  </div>;
 };

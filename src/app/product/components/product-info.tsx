@@ -163,9 +163,24 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           )}
         </div>
 
+        <div className="flex gap-2 w-full">
+          <Button
+            onClick={handleAddToCart}
+            className="font-bold tracking-wide"
+          >
+            Adicionar ao carrinho
+          </Button>
+          <Button
+            className="flex items-center justify-center"
+            variant="ghost"
+          >
+            <FaRegHeart size={20} />
+          </Button>
+        </div>
+
         <div>
           <h2 className="mb-2 text-xl font-semibold">Descrição</h2>
-          <h2 className="text-muted-foreground">
+          <h2 className="text-muted-foreground max-w-screen-sm">
             {product.descricao} Conheça o novo tênis de corrida da marca X. Este
             tênis foi projetado com tecnologia avançada para proporcionar
             conforto e desempenho excepcionais durante suas corridas. Compre
@@ -207,23 +222,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           </li>
         </ul>
 
-        <div className="flex gap-4 w-full">
-          <Button
-            variant={"secondary"}
-            onClick={handleAddToCart}
-            className="font-bold tracking-wide px-12"
-            size="xl"
-          >
-            Adicionar ao carrinho
-          </Button>
-          <Button
-            className="flex gap-2 border-2 hover:border-zinc-900"
-            size="xl"
-            variant="outline"
-          >
-            <FaRegHeart size={20} />
-          </Button>
-        </div>
+       
 
         <ul className="flex flex-col justify-between gap-4 text-muted-foreground">
           <li className="flex items-center">

@@ -26,7 +26,7 @@ const CartSideBar = ({ children, className, model, iconSize }: Props) => {
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
       <Button
         onClick={() => setIsCartOpen(true)}
-        className={`relative flex flex-col items-center cursor-default text-muted-foreground ${className}`}
+        className={`relative flex flex-col items-center  text-muted-foreground ${className}`}
         variant={
           model as
             | "link"
