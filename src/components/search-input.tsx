@@ -8,7 +8,7 @@ interface Props {
 
 export default function SearchInput({ className }: Props) {
   return (
-    <form action="#" method="POST" className={`${className}`}>
+    <form action="#" method="POST" className="w-full h-fit" >
       <div className="relative">
         <label htmlFor="" className="sr-only">
           {" "}
@@ -22,7 +22,7 @@ export default function SearchInput({ className }: Props) {
         <Input
           type="text"
           name="search"
-          className="h-12 w-full px-14 rounded-3xl"
+          className={`h-12 w-full px-14 rounded-3xl ${className}`}
           placeholder="Buscar produtos..."
         />
       </div>

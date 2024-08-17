@@ -28,7 +28,7 @@ const LoginButton = ({ className }: Props) => {
     <div>
       {status === "authenticated" ? (
         <Button
-          variant={"outline"}
+          variant={"ghost"}
           onClick={(e) => {
             e.preventDefault();
             handleSigOutClick();

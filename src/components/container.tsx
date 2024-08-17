@@ -8,7 +8,7 @@ export default function Container({ children, className, id }: ContainerProps) {
   return (
     <div
       id={`${id}`}
-      className={`${className} mx-auto max-w-screen-lg lg:max-w-[1740px] px-2 md:px-4`}
+      className={`${className} mx-auto max-w-screen-lg lg:max-w-screen-xl px-4`}
     >
       {children}
     </div>

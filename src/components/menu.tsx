@@ -94,16 +94,16 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
           >
             <Button
               variant={"ghost"}
-              className="space-x-3 w-full justify-start text-sm tracking-tight  "
+              className="space-x-3 w-full justify-start text-sm tracking-tight"
             >
-              <RiFileList3Line size={18} className="text-foreground" />
+              <RiFileList3Line size={18} className="" />
 
               <p className="block text-foreground">Meus Pedidos</p>
             </Button>
           </Link>
 
-          <ModeToggle className="  bg-transparent text-foreground outline-none border-none flex gap-3 px-4 w-full justify-start text-sm tracking-tight">
-            <span className="text-foreground">Tema</span>
+          <ModeToggle className="flex gap-3 px-4 w-full justify-start">
+            <span>Tema</span>
           </ModeToggle>
         </div>
 

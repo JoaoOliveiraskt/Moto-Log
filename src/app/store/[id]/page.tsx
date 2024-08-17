@@ -44,10 +44,10 @@ export default async function Store({ params }: Props) {
 
   return (
     <>
-      <Container className="mt-20">
-        <GoBackButton />
+      <Container className="lg:mt-20">
+        <GoBackButton className="hidden lg:flex"/>
       </Container>
-      <div className="mt-8 mx-auto max-w-screen-xl relative h-[300px] overflow-hidden ">
+      <div className="mt-2 mx-auto max-w-screen-xl relative h-[300px] overflow-hidden px-0 lg:px-4">
         <Image
           src={store.imagemUrl}
           alt="Store Banner"
@@ -162,26 +162,6 @@ function ClockIcon(props) {
     >
       <circle cx="12" cy="12" r="10" />
       <polyline points="12 6 12 12 16 14" />
-    </svg>
-  );
-}
-
-function CreditCardIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="20" height="14" x="2" y="5" rx="2" />
-      <line x1="2" x2="22" y1="10" y2="10" />
     </svg>
   );
 }

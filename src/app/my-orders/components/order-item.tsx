@@ -40,7 +40,7 @@ const getOrderStatus = (status: OrderStatus) => {
 
 const OrderItem = ({ order }: OrderItemProps) => {
   return (
-    <Card className="cursor-pointer flex flex-col gap-2 bg-card/5 hover:bg-card/10 transition-all">
+    <Card className="cursor-pointer flex flex-col gap-2 bg-card">
       <CardContent className="p-3 flex flex-col gap-3">
         <CardHeader className="px-1">
           <div className="flex gap-4 items-center justify-between">

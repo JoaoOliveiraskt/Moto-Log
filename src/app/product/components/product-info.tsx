@@ -154,22 +154,6 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             agora e ganhe frete grátis para o mundo todo.
           </h2>
         </div>
-
-        <h2 className="text-xl font-semibold">Recursos</h2>
-        <ul className="flex flex-col gap-4 text-muted-foreground">
-          <li className="flex items-center gap-4">
-            <FaCircle size={6} />
-            <p>Respirável para conforto.</p>
-          </li>
-          <li className="flex items-center gap-4">
-            <FaCircle size={6} />
-            <p>Solado antiderrapante.</p>
-          </li>
-          <li className="flex items-center gap-4">
-            <FaCircle size={6} />
-            <p>Costuras reforçadas.</p>
-          </li>
-        </ul>
       </div>
 
       <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
