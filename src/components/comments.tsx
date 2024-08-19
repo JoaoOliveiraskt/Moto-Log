@@ -1,5 +1,5 @@
-import { GoStarFill } from "react-icons/go";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import icon from "@/components/icons/icon-component";
 
 export default function Comments() {
   return (
@@ -20,11 +20,11 @@ export default function Comments() {
                 </span>
               </div>
               <div className="flex items-center gap-1">
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
               </div>
             </div>
             <div className="grid gap-2">
@@ -53,11 +53,11 @@ export default function Comments() {
                 </span>
               </div>
               <div className="flex items-center gap-1">
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
               </div>
             </div>
             <div className="grid gap-2">
@@ -86,11 +86,11 @@ export default function Comments() {
                 </span>
               </div>
               <div className="flex items-center gap-1">
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
               </div>
             </div>
             <div className="grid gap-2">
@@ -119,11 +119,11 @@ export default function Comments() {
                 </span>
               </div>
               <div className="flex items-center gap-1">
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
-                <GoStarFill size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
+                <icon.star size={12} />
               </div>
             </div>
             <div className="grid gap-2">

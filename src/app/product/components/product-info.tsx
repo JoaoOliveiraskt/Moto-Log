@@ -32,7 +32,8 @@ import { useSession } from "next-auth/react";
 import LoginButton from "@/components/login-button";
 import { toast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
-import { GoStarFill } from "react-icons/go";
+import icon from "@/components/icons/icon-component";
+import LikeButton from "@/components/like-button";
 
 interface ProductInfoProps {
   quantity: number;
@@ -102,11 +103,11 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1 text-yellow-400 ">
-            <GoStarFill size={20} />
-            <GoStarFill size={20} />
-            <GoStarFill size={20} />
-            <GoStarFill size={20} />
-            <GoStarFill size={20} />
+            <icon.star size={20} />
+            <icon.star size={20} />
+            <icon.star size={20} />
+            <icon.star size={20} />
+            <icon.star size={20} />
           </div>
           <p className="ml-2 ">157 Avaliações</p>
         </div>
@@ -136,13 +137,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           >
             Adicionar ao carrinho
           </Button>
-          <Button
-            className="flex items-center justify-center"
-            variant="ghost"
-            size={"icon"}
-          >
-            <FaRegHeart size={20} />
-          </Button>
+          <LikeButton />
         </div>
 
         <div>

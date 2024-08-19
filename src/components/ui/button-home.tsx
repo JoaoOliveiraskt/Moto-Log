@@ -1,5 +1,5 @@
 import Link from "next/link";
-import IconComponent from "../icons/icon-component";
+import icon from "../icons/icon-component";
 import { Button } from "./button";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   className?: string;
 }
 
-export default function HomeButton({children, className}: Props) {
+export default function HomeButton({ children, className }: Props) {
   return (
     <Link
       href="/"
@@ -19,10 +19,11 @@ export default function HomeButton({children, className}: Props) {
         size="icon"
         className={`flex flex-col gap-1 cursor-pointer outline-none border-none ${className}`}
       >
-        <IconComponent iconName="home" color="foreground"/>
-        <p className="text-muted-foreground hover:text-foreground">{children}</p>
+        <icon.home color="foreground" />
+        <p className="text-muted-foreground hover:text-foreground">
+          {children}
+        </p>
       </Button>
-
     </Link>
   );
 }

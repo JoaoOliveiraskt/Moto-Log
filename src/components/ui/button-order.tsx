@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import IconComponent from "../icons/icon-component";
+import icon from "../icons/icon-component";
 import { Button } from "./button";
 import { useSession } from "next-auth/react";
 
@@ -23,7 +23,7 @@ export default function OrderButton({ children, className }: Props) {
         size="icon"
         className={`flex flex-col gap-1 cursor-pointer outline-none border-none ${className}`}
       >
-        <IconComponent iconName="order" color="foreground" />
+        <icon.order color="foreground" />
         <p className="text-muted-foreground hover:text-foreground">
           {children}
         </p>

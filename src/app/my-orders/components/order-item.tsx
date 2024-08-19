@@ -2,7 +2,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { OrderStatus, Prisma } from "prisma/generated/client";
-import { HiMiniChevronRight } from "react-icons/hi2";
+import icon from "@/components/icons/icon-component";
 import { Separator } from "@/components/ui/separator";
 import formatCurrency from "@/app/helpers/format-currency";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -67,7 +67,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
                 </Avatar>
                 <span className="">{order.loja.nome}</span>
               </div>
-              <HiMiniChevronRight />
+              <icon.arrowRight size={18} />
             </Link>
           </div>
 

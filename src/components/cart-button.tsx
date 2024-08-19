@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
 import { Button } from "./ui/button";
-import IconComponent from "./icons/icon-component";
+import icon from "./icons/icon-component";
 import { CartContext } from "@/app/context/cart";
 import Cart from "./cart";
 import { Separator } from "./ui/separator";
@@ -40,8 +40,8 @@ const CartSideBar = ({ children, className, model, iconSize }: Props) => {
             | undefined
         }
         size="icon"
-      > 
-        <IconComponent iconName="cart" size={iconSize} color="foreground" />
+      >
+        <icon.cart size={iconSize} color="foreground" />
         {totalItems > 0 && (
           <span className="absolute flex items-center justify-center top-2 lg:-top-1 right-1 lg:-right-1 h-3.5 w-3.5 rounded-full bg-destructive text-destructive-foreground text-xs">
             {totalItems}

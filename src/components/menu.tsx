@@ -1,10 +1,7 @@
 "use client";
 
 import { AvatarInfo } from "./login-button";
-import { RiMenu2Fill } from "react-icons/ri";
 import { Button } from "./ui/button";
-import { FiHome } from "react-icons/fi";
-import { RiFileList3Line } from "react-icons/ri";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
@@ -21,7 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { GoChevronRight } from "react-icons/go";
+import icon from "@/components/icons/icon-component";
 
 const UserStatus = () => {
   const { status } = useSession();
@@ -67,7 +64,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
         onClick={handleMenuOpen.open}
         className={` flex items-center justify-center text-muted-foreground hover:text-foreground ${className}`}
       >
-        <RiMenu2Fill size={iconSize} />
+        <icon.menu size={18} />
         <p>{children}</p>
       </DropdownMenuTrigger>
 
@@ -82,7 +79,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               variant={"ghost"}
               className="space-x-3 w-full justify-start text-sm tracking-tight  "
             >
-              <FiHome size={18} className="text-foreground" />
+              <icon.home size={18} className="text-foreground" />
               <p className="block text-foreground">Início</p>
             </Button>
           </Link>
@@ -96,7 +93,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               variant={"ghost"}
               className="space-x-3 w-full justify-start text-sm tracking-tight"
             >
-              <RiFileList3Line size={18} className="" />
+              <icon.order size={18} />
 
               <p className="block text-foreground">Meus Pedidos</p>
             </Button>
@@ -120,7 +117,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
                 <p>Categorias</p>
               </AccordionTrigger>
               {categories.map((category, index) => (
-                <AccordionContent key={index} className=" ">
+                <AccordionContent key={index}>
                   <Button
                     variant={"ghost"}
                     className="space-x-3 w-full text-sm tracking-tight  "
@@ -130,7 +127,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
                       className="flex justify-between w-full "
                     >
                       <p className="block text-sm ml-4">{category.name}</p>
-                      <GoChevronRight size={15} />
+                      <icon.arrowRight size={18} />
                     </Link>
                   </Button>
                 </AccordionContent>

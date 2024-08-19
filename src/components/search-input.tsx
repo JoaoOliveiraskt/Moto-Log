@@ -1,6 +1,5 @@
-import { RxMagnifyingGlass } from "react-icons/rx";
 import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+import icon from "@/components/icons/icon-component";
 
 interface Props {
   className?: string;
@@ -8,13 +7,13 @@ interface Props {
 
 export default function SearchInput({ className }: Props) {
   return (
-    <form action="#" method="POST" className="w-full h-fit" >
+    <form action="#" method="POST" className="w-full h-fit">
       <div className="relative">
         <label htmlFor="" className="sr-only">
           {" "}
           Buscar{" "}
         </label>
-        <RxMagnifyingGlass
+        <icon.search
           size={25}
           className="absolute start-4 top-1/2 -translate-y-1/2"
         />

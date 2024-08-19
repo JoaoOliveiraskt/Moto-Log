@@ -3,11 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { PiSignInBold } from "react-icons/pi";
-import { PiSignOutBold } from "react-icons/pi";
+import icon from "@/components/icons/icon-component";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { RiGoogleFill } from "react-icons/ri";
 
 const UserStatus = () => {
   const { status } = useSession();
@@ -35,7 +33,7 @@ const LoginButton = ({ className }: Props) => {
           }}
           className={`bg-transparent border border-border flex items-center space-x-3 ${className}`}
         >
-          <PiSignOutBold size={18} />
+          <icon.signOut size={18} />
           <span>Sair</span>
         </Button>
       ) : (
@@ -47,9 +45,9 @@ const LoginButton = ({ className }: Props) => {
           }}
           className={`border border-border flex items-center space-x-2 ${className}`}
         >
-          <RiGoogleFill size={18} />
+          <icon.google size={18} />
           <span>Entrar com o Google</span>
-          <PiSignInBold size={18} />
+          <icon.signIn size={18} />
         </Button>
       )}
     </div>
@@ -104,7 +102,7 @@ export const AvatarInfo = () => {
               className={`flex items-center space-x-2 shadow-md`}
             >
               <span>Entrar</span>
-              <PiSignInBold size={18} />
+              <icon.signIn size={18} />
             </Button>
           </Link>
         </div>

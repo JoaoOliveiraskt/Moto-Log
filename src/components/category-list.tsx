@@ -4,18 +4,16 @@ import CategoryItem from "./category-item";
 import {
   Carousel,
   CarouselContent,
-  CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
-
 
 export default async function CategoryList() {
   const categories = await FetchCategory();
 
   return (
     <div id="category-list" className="mt-20 lg:mt-32 w-full">
-      <h2 className="text-start  text-xl sm:text-4xl font-bold text-primary mb-8">
+      <h2 className="text-start  text-4xl xl:text-5xl font-bold text-primary mb-8">
         Categorias
       </h2>
 
