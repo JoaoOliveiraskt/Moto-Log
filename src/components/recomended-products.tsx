@@ -1,5 +1,4 @@
 import ProductList from "./product-list";
-import Container from "./container";
 import SeeAllButton from "./see-all-button";
 import { db } from "@/lib/prisma";
 import ProductCard from "./product-card";

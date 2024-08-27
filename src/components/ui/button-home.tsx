@@ -5,9 +5,10 @@ import { Button } from "./button";
 interface Props {
   children?: React.ReactNode;
   className?: string;
+  size?: number;
 }
 
-export default function HomeButton({ children, className }: Props) {
+export default function HomeButton({ children, className, size }: Props) {
   return (
     <Link
       href="/"
@@ -19,7 +20,7 @@ export default function HomeButton({ children, className }: Props) {
         size="icon"
         className={`flex flex-col gap-1 cursor-pointer outline-none border-none ${className}`}
       >
-        <icon.home color="foreground" />
+        <icon.home color="foreground" size={size}/>
         <p className="text-muted-foreground hover:text-foreground">
           {children}
         </p>

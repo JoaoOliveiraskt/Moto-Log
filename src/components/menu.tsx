@@ -68,12 +68,10 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
         <p>{children}</p>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="p-2 bg-card border-none" align="end">
+      <DropdownMenuContent className="px-2 pt-2 bg-card border-none" align="end">
         <AvatarInfo />
 
-        <DropdownMenuSeparator />
-
-        <div className="space-y-2 ">
+        <div className="space-y-1 ">
           <Link href={"/"} className="block" onClick={handleMenuOpen.close}>
             <Button
               variant={"ghost"}

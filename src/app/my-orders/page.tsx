@@ -45,7 +45,9 @@ const MyOrdersPage = async () => {
               Você ainda não fez nenhum pedido.
             </h2>
             <Link href="/">
-              <Button>Ir às compras</Button>
+              <Button>
+                Ir às compras
+                </Button>
             </Link>
           </div>
         )}

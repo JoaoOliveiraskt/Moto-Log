@@ -37,7 +37,7 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <div className="fixed border-b top-0 w-full flex items-center justify-between gap-3 z-10 bg-background lg:hidden px-4 py-1">
+              <div className="fixed top-0 w-full flex items-center justify-between gap-3 z-10 bg-background lg:hidden px-4 py-2">
                 <GoBackButton />
                 <SearchInput className="h-10" />
                 <Link className=" flex items-center gap-3" href="/">
@@ -49,24 +49,24 @@ export default function RootLayout({
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-fit w-[43px] fill-fg-primary"
                     data-sentry-element="svg"
-                    data-sentry-source-file="MobbinLogo.tsx"
-                    data-sentry-component="MobbinLogo"
+                    data-sentry-source-file="MoToLogLogo.tsx"
+                    data-sentry-component="MoToLogLogo"
                   >
-                    <title>Mobbin</title>
+                    <title>Moto Log</title>
                     <path
                       d="M128 28H96V60H128V28Z"
                       data-sentry-element="path"
-                      data-sentry-source-file="MobbinLogo.tsx"
+                      data-sentry-source-file="MoToLogLogo.tsx"
                     ></path>
                     <path
                       d="M0 59.9998V31.8268L31.8268 0H59.9998V28.1731L28.1731 59.9998H0Z"
                       data-sentry-element="path"
-                      data-sentry-source-file="MobbinLogo.tsx"
+                      data-sentry-source-file="MoToLogLogo.tsx"
                     ></path>
                     <path
                       d="M48 59.9998V31.8268L79.8268 0H108V28.1731L76.1731 59.9998H48Z"
                       data-sentry-element="path"
-                      data-sentry-source-file="MobbinLogo.tsx"
+                      data-sentry-source-file="MoToLogLogo.tsx"
                     ></path>
                   </svg>
                 </Link>
