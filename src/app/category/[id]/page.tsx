@@ -2,8 +2,8 @@ import Container from "@/components/container";
 import GoBackButton from "@/components/go-back-button";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
-import { db } from "@/lib/prisma";
 import { notFound } from "next/navigation";
+import { getCategoryById } from "@/app/actions/getCategory";
 
 interface Props {
   params: {
@@ -11,27 +11,8 @@ interface Props {
   };
 }
 
-async function getData(id: string) {
-  const category = await db.categoria.findUnique({
-    where: { id },
-    include: {
-      produtos: {
-        include: {
-          loja: true,
-        },
-      },
-    },
-  });
-
-  if (!category) {
-    return null;
-  }
-
-  return category;
-}
-
 export default async function CategorieList({ params }: Props) {
-  const category = await getData(params.id);
+  const category = await getCategoryById(params.id);
 
   if (!category) {
     notFound();
@@ -42,7 +23,7 @@ export default async function CategorieList({ params }: Props) {
   return (
     <>
       <Container className="flex flex-col gap-8 mt-20">
-        <GoBackButton name={category.nome} className="hidden lg:flex"/>
+        <GoBackButton name={category.nome} className="hidden lg:flex" />
 
         {products.length > 0 ? (
           <ProductList>
