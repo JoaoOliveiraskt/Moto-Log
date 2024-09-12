@@ -96,7 +96,7 @@
     --ring: 240 5.9% 10%;
     --confirmed: 120 100% 50%;
     --confirmed-foreground: 0 0% 100%;
-    --radius: 0.7rem;
+    --radius: 0.5rem;
   }
 
   .dark {

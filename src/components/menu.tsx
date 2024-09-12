@@ -62,13 +62,16 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
     <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
       <DropdownMenuTrigger
         onClick={handleMenuOpen.open}
-        className={` flex items-center justify-center text-muted-foreground hover:text-foreground ${className}`}
+        className={`rounded-md flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors ${className}`}
       >
         <icon.menu size={18} />
         <p>{children}</p>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="px-2 pt-2 bg-card border-none" align="end">
+      <DropdownMenuContent
+        className="px-2 py-2 bg-card border-none space-y-1 "
+        align="end"
+      >
         <AvatarInfo />
 
         <div className="space-y-1 ">

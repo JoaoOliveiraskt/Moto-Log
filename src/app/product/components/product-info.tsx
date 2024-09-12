@@ -1,9 +1,7 @@
 "use client";
 
 import { useContext, useState } from "react";
-import { FaRegHeart } from "react-icons/fa";
 import { CartContext } from "@/app/context/cart";
-import { FaCircle } from "react-icons/fa";
 import DiscountBadge from "./discount-badge";
 import calculateTotalPrice from "@/app/helpers/price";
 import formatCurrency from "@/app/helpers/format-currency";
@@ -160,7 +158,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         </SheetContent>
       </Sheet>
 
-      <AlertDialog open={isLoginModalOpen} onOpenChange={setIsLoginModalOpen}>
+      <AlertDialog open={isLoginModalOpen} onOpenChange={setIsLoginModalOpen} >
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Faça o Login</AlertDialogTitle>
@@ -169,7 +167,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <LoginButton className="w-full" />
           </AlertDialogFooter>
         </AlertDialogContent>

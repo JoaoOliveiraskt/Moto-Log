@@ -31,19 +31,18 @@ const LoginButton = ({ className }: Props) => {
             e.preventDefault();
             handleSigOutClick();
           }}
-          className={`bg-transparent border border-border flex items-center space-x-3 ${className}`}
+          className={`flex items-center space-x-3 ${className}`}
         >
           <icon.signOut size={18} />
           <span>Sair</span>
         </Button>
       ) : (
         <Button
-          variant={"outline"}
           onClick={(e) => {
             e.preventDefault();
             handleSigInClick();
           }}
-          className={`border border-border flex items-center space-x-2 ${className}`}
+          className={`flex items-center space-x-2 ${className}`}
         >
           <icon.google size={18} />
           <span>Entrar com o Google</span>
@@ -97,10 +96,7 @@ export const AvatarInfo = () => {
         <div className="flex items-center gap-4 px-4">
           <h2 className="font-semibold tracking-tight">Faça seu login!</h2>
           <Link href="/login">
-            <Button
-              variant={"outline"}
-              className={`flex items-center space-x-2 shadow-md`}
-            >
+            <Button variant={"ghost"} className={`flex items-center space-x-2`}>
               <span>Entrar</span>
               <icon.signIn size={18} />
             </Button>
