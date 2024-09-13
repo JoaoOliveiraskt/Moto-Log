@@ -48,6 +48,7 @@ export default function CreateStore() {
     formData.append("description", data.description || "");
   };
 
+  {/*
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof window !== "undefined") {
       const file = event.target.files?.[0];
@@ -59,7 +60,7 @@ export default function CreateStore() {
         reader.readAsDataURL(file);
       }
     }
-  };
+  };*/}
 
   if (status !== "authenticated") {
     router.push("/login");
@@ -128,7 +129,7 @@ export default function CreateStore() {
                       accept="image/*"
                       className="absolute inset-0 opacity-0 cursor-pointer"
                       {...register("storeImage")}
-                      onChange={handleImageChange}
+                     
                     />
                     {selectedImage ? (
                       <Image
