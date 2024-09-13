@@ -33,6 +33,9 @@ export default function CreateStore() {
   const status = UserStatus();
   const router = useRouter();
 
+  {
+    /*
+
   const {
     register,
     handleSubmit,
@@ -47,8 +50,6 @@ export default function CreateStore() {
     formData.append("name", data.name);
     formData.append("description", data.description || "");
   };
-
-  {/*
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof window !== "undefined") {
       const file = event.target.files?.[0];
@@ -60,7 +61,8 @@ export default function CreateStore() {
         reader.readAsDataURL(file);
       }
     }
-  };*/}
+  };*/
+  }
 
   if (status !== "authenticated") {
     router.push("/login");
@@ -85,7 +87,7 @@ export default function CreateStore() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form>
               <div className="grid gap-6">
                 <div className="grid gap-3">
                   <Label htmlFor="name">Nome</Label>
@@ -94,13 +96,7 @@ export default function CreateStore() {
                     type="text"
                     className="w-full"
                     placeholder="Nome da loja"
-                    {...register("name")}
                   />
-                  {errors.name && (
-                    <p className="text-red-500">
-                      {(errors.name as { message: string }).message}
-                    </p>
-                  )}
                 </div>
 
                 <div className="grid gap-3">
@@ -112,7 +108,6 @@ export default function CreateStore() {
                     id="description"
                     placeholder="Descrição da loja por exemplo: 'somos uma loja de roupas que preza pela qualidade e conforto'"
                     className="min-h-32"
-                    {...register("description")}
                   />
                 </div>
 
@@ -128,8 +123,6 @@ export default function CreateStore() {
                       type="file"
                       accept="image/*"
                       className="absolute inset-0 opacity-0 cursor-pointer"
-                      {...register("storeImage")}
-                     
                     />
                     {selectedImage ? (
                       <Image
@@ -145,11 +138,6 @@ export default function CreateStore() {
                       </div>
                     )}
                   </Label>
-                  {errors.storeImage && (
-                    <p className="text-red-500">
-                      {(errors.storeImage as { message: string }).message}
-                    </p>
-                  )}
                 </div>
               </div>
 
@@ -158,7 +146,6 @@ export default function CreateStore() {
               </Button>
             </form>
           </CardContent>
-         
         </Card>
       </main>
     );
