@@ -4,8 +4,6 @@ import CartSideBar from "./cart-button";
 import { ModeToggle } from "./theme/theme-switcher";
 import Container from "./container";
 import MotoLogLogo from "./icons/moto-log-logo";
-import { Button } from "./ui/button";
-import Link from "next/link";
 
 export default function Header() {
   return (
@@ -23,9 +21,7 @@ export default function Header() {
           </div>
           <div className="flex items-center w-auto gap-2">
             <div className="flex items-center gap-2">
-            
-
-              <ModeToggle className="border-none text-muted-foreground" />
+              <ModeToggle className="border-none text-muted-foreground h-9 w-9" />
 
               <CartSideBar
                 iconSize={18}

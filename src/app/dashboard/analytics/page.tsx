@@ -1,6 +1,6 @@
 "use client";
 
-import React, { PureComponent } from "react";
+import React from "react";
 import Link from "next/link";
 import {
   Activity,
@@ -45,8 +45,7 @@ const chartData = [
 ];
 
 
-export default class extends PureComponent {
-  render() {
+const DashboardAnalytics = () =>  {
     return (
       <main className="flex flex-col gap-4 md:gap-8">
         <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
@@ -226,4 +225,5 @@ export default class extends PureComponent {
       </main>
     );
   }
-}
+  
+export default DashboardAnalytics;
