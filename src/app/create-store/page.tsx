@@ -46,18 +46,18 @@ export default function CreateStore() {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("description", data.description || "");
-
-    console.log(data);
   };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setSelectedImage(reader.result);
-      };
-      reader.readAsDataURL(file);
+    if (typeof window !== "undefined") {
+      const file = event.target.files?.[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setSelectedImage(reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
     }
   };
 
@@ -95,9 +95,11 @@ export default function CreateStore() {
                     placeholder="Nome da loja"
                     {...register("name")}
                   />
-                 {errors.name && (
-                  <p className="text-red-500">{(errors.name as { message: string }).message}</p>
-                )}
+                  {errors.name && (
+                    <p className="text-red-500">
+                      {(errors.name as { message: string }).message}
+                    </p>
+                  )}
                 </div>
 
                 <div className="grid gap-3">
@@ -143,8 +145,10 @@ export default function CreateStore() {
                     )}
                   </Label>
                   {errors.storeImage && (
-                  <p className="text-red-500">{(errors.storeImage as { message: string }).message}</p>
-                )}
+                    <p className="text-red-500">
+                      {(errors.storeImage as { message: string }).message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -153,7 +157,7 @@ export default function CreateStore() {
               </Button>
             </form>
           </CardContent>
-          <pre className="mt-6 text-sm text-foreground">{output}</pre>
+         
         </Card>
       </main>
     );
