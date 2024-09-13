@@ -4,10 +4,12 @@ import CartSideBar from "./cart-button";
 import { ModeToggle } from "./theme/theme-switcher";
 import Container from "./container";
 import MotoLogLogo from "./icons/moto-log-logo";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 export default function Header() {
   return (
-    <div className="hidden lg:flex fixed top-0 z-10 h-[72px] bg-background w-screen">
+    <div className="hidden lg:flex fixed top-0 z-40 h-[72px] bg-background w-screen">
       <Container className="h-full w-full relative">
         <div className="w-full h-full flex items-center justify-between">
           <div className="w-fit flex items-center gap-10">
@@ -21,8 +23,10 @@ export default function Header() {
           </div>
           <div className="flex items-center w-auto gap-2">
             <div className="flex items-center gap-2">
+            
+
               <ModeToggle className="border-none text-muted-foreground" />
-              
+
               <CartSideBar
                 iconSize={18}
                 model="outline"

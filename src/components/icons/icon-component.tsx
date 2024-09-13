@@ -11,8 +11,16 @@ import { HiMiniChevronRight } from "react-icons/hi2";
 import { RiMenu2Fill } from "react-icons/ri";
 import { GoStarFill } from "react-icons/go";
 import { RxMagnifyingGlass } from "react-icons/rx";
+import { MdOutlineSell } from "react-icons/md";
+import { RxDashboard } from "react-icons/rx";
+import {
+  LineChart,
+  Package,
+  Package2,
+  Settings,
+} from "lucide-react";
 
-const icon = {
+const Icon = {
   home: FiHome,
   cart: RiShoppingCart2Line,
   order: RiFileList3Line,
@@ -27,6 +35,12 @@ const icon = {
   like: BiLike,
   arrowDown: BsArrowDownShort,
   arrowRight: HiMiniChevronRight,
+  sell: MdOutlineSell,
+  dashboard: RxDashboard,
+  package: Package,
+  package2: Package2,
+  settings: Settings,
+  lineChart: LineChart,
 };
 
-export default icon;
+export default Icon;

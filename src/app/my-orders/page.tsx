@@ -1,6 +1,6 @@
 import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
+import { db } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import OrderItem from "./components/order-item";
 import GoBackButton from "@/components/go-back-button";

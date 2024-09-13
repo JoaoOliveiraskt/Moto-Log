@@ -23,7 +23,6 @@ export function ModeToggle({ className, children }: Props) {
     <Button
       onClick={toggleTheme}
       variant="ghost"
-      size="icon"
       className={`${className}`}
     >
       <icon.sun
