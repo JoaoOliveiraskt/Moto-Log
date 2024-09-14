@@ -13,12 +13,14 @@ import { GoStarFill } from "react-icons/go";
 import { RxMagnifyingGlass } from "react-icons/rx";
 import { MdOutlineSell } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
+import { FaGithub } from "react-icons/fa6";
 import {
   LineChart,
   Package,
   Package2,
   Settings,
 } from "lucide-react";
+
 
 const Icon = {
   home: FiHome,
@@ -41,6 +43,7 @@ const Icon = {
   package2: Package2,
   settings: Settings,
   lineChart: LineChart,
+  github: FaGithub,
 };
 
 export default Icon;

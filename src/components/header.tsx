@@ -21,7 +21,6 @@ export default function Header() {
           </div>
           <div className="flex items-center w-auto gap-2">
             <div className="flex items-center gap-2">
-              <ModeToggle className="border-none text-muted-foreground h-9 w-9" />
 
               <CartSideBar
                 iconSize={18}

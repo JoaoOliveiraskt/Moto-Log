@@ -9,6 +9,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Upload } from "lucide-react";
+import Image from "next/image";
 
 export default function EditStore() {
   return (
@@ -39,6 +41,34 @@ export default function EditStore() {
                 className="min-h-32 max-w-xl"
               />
             </div>
+          </div>
+
+          <div className="grid gap-3 relative h-fit">
+            <p>Imagem de banner</p>
+            <Label
+              htmlFor="storeImage"
+              className="flex items-center justify-center max-w-xl h-20 border border-dashed rounded-md cursor-pointer"
+            >
+              <span className="sr-only">Adicionar imagem de banner</span>
+              <Input
+                id="storeImage"
+                type="file"
+                accept="image/*"
+                className="absolute inset-0 opacity-0 cursor-pointer"
+              />
+
+              <Image
+                alt="Preview"
+                width={200}
+                height={100}
+                className="w-full h-full object-cover rounded-md"
+                src={""}
+              />
+
+              <div className="flex items-center justify-center w-full h-full">
+                <Upload className="h-6 w-6 text-muted-foreground" />
+              </div>
+            </Label>
           </div>
           <Button className="mt-6">Atualizar</Button>
         </CardContent>

@@ -9,7 +9,6 @@ import { ModeToggle } from "./theme/theme-switcher";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import icon from "@/components/icons/icon-component";
@@ -96,7 +95,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
           </Link>
 
           <Link
-            href="/create-store"
+            href="/welcome-create-store"
             passHref
             onClick={handleMenuOpen.close}
           >

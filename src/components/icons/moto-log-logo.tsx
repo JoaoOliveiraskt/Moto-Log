@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export default function MotoLogLogo() {
   return (
-    <Link className=" flex items-center gap-3" href="/">
+    <Link className="p-0" href="/">
       <svg
         width="128"
         height="60"
         viewBox="0 0 128 60"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-20 w-[43px] fill-fg-primary"
+        className="h-20 w-[43px] fill-fg-primary "
         data-sentry-element="svg"
         data-sentry-source-file="MoToLogLogo.tsx"
         data-sentry-component="MoToLogLogo"
