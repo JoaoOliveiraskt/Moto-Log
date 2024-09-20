@@ -29,7 +29,6 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
   const status = UserStatus();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data: session } = useSession();
-  console.log("Sessão:", session);
   const isLojista = session?.user.role === "LOJISTA";
 
   const handleMenuOpen = {
