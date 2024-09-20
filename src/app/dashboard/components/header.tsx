@@ -59,36 +59,16 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky  px-4 sm:px-10 top-0 z-30 flex h-14 items-center gap-4 border-b bg-background sm:static sm:h-auto sm:border-0 sm:bg-transparent">
-      <Select onValueChange={(value) => setStoreName(value)}>
-        <SelectTrigger id="store" aria-label="Select store" className="max-w-48">
-          <SelectValue placeholder={storeName} />
-        </SelectTrigger>
-        <SelectContent>
-          {stores.map((store) => (
-            <SelectItem key={store.id} value={store.nome}>
-              {store.nome}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-
-      <h1
-        className="
-        text-2xl font-semibold text-foreground sm:font-bold
-      "
-      >
-        {storeName}
-      </h1>
+    <header className="sticky  px-4 md:px-10 top-0 z-30 flex h-14 items-center gap-4 border-b bg-background md:static md:h-auto md:border-0 md:bg-transparent">
 
       <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
         <SheetTrigger asChild>
-          <Button size="icon" variant="outline" className="sm:hidden">
+          <Button size="icon" variant="outline" className="md:hidden">
             <PanelLeft className="h-5 w-5" />
             <span className="sr-only">Toggle Menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="sm:max-w-xs">
+        <SheetContent side="left" className="md:max-w-xs">
           <nav className="grid gap-6 text-lg font-medium">
             <Link
               href="#"
@@ -133,6 +113,20 @@ export default function Header() {
           </nav>
         </SheetContent>
       </Sheet>
+
+   <Select onValueChange={(value) => setStoreName(value)}>
+        <SelectTrigger id="store" aria-label="Select store" className="w-full md:max-w-56">
+          <SelectValue placeholder={storeName} />
+        </SelectTrigger>
+        <SelectContent>
+          {stores.map((store) => (
+            <SelectItem key={store.id} value={store.nome}>
+              {store.nome}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+
     </header>
   );
 }
