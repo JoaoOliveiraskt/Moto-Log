@@ -14,6 +14,7 @@ const UserStatus = () => {
 
 interface Props {
   className?: string;
+  onClick?: () => void;
 }
 
 const LoginButton = ({ className }: Props) => {
@@ -30,6 +31,7 @@ const LoginButton = ({ className }: Props) => {
           onClick={(e) => {
             e.preventDefault();
             handleSigOutClick();
+            router.push("/");
           }}
           className={`flex items-center space-x-3 ${className}`}
         >
@@ -55,7 +57,7 @@ const LoginButton = ({ className }: Props) => {
 
 export default LoginButton;
 
-export const AvatarInfo = () => {
+export const AvatarInfo = ({onClick}: Props) => {
   const { data } = useSession();
   const status = UserStatus();
 
@@ -96,7 +98,7 @@ export const AvatarInfo = () => {
         <div className="flex items-center gap-4 px-4">
           <h2 className="font-semibold tracking-tight">Faça seu login!</h2>
           <Link href="/login">
-            <Button variant={"ghost"} className={`flex items-center space-x-2`}>
+            <Button onClick={onClick} variant={"ghost"} className={`flex items-center space-x-2`}>
               <span>Entrar</span>
               <icon.signIn size={18} />
             </Button>

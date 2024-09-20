@@ -14,6 +14,7 @@ import { RxMagnifyingGlass } from "react-icons/rx";
 import { MdOutlineSell } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { FaGithub } from "react-icons/fa6";
+import { GoIssueClosed } from "react-icons/go";
 import {
   LineChart,
   Package,
@@ -44,6 +45,7 @@ const Icon = {
   settings: Settings,
   lineChart: LineChart,
   github: FaGithub,
+  confirmed: GoIssueClosed,
 };
 
 export default Icon;

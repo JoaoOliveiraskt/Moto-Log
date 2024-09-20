@@ -11,14 +11,24 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Upload } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import createStoreSchema from "@/schemas/storeSchema";
+import { createStoreSchema } from "../api/create-store-api/route";
 import { useState } from "react";
-import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import Icon from "@/components/icons/icon-component";
 
 const UserStatus = () => {
   const { status } = useSession();
@@ -26,16 +36,16 @@ const UserStatus = () => {
 };
 
 export default function CreateStore() {
-  const [output, setOutput] = useState("");
-  const [selectedImage, setSelectedImage] = useState<
-    string | ArrayBuffer | null
-  >(null);
+  const [isSubmitLoading, setIsSubmitLoading] = useState(false);
+  const [isSubmitOk, setIsSubmitOk] = useState(false);
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
   const status = UserStatus();
   const router = useRouter();
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(createStoreSchema),
@@ -43,30 +53,45 @@ export default function CreateStore() {
   });
 
   const onSubmit = async (data: any) => {
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("description", data.description || "");
-  };
+    setIsSubmitLoading(true);
+    const response = await fetch("/api/create-store-api", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (typeof window !== "undefined") {
-      const file = event.target.files?.[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          setSelectedImage(reader.result);
-        };
-        reader.readAsDataURL(file);
-      }
+    if (response.ok) {
+      setIsSubmitLoading(false);
+      setIsSubmitOk(true);
+      setIsConfirmDialogOpen(true);
+    } else {
+      setIsSubmitLoading(false);
     }
   };
 
+  const formatPhoneNumber = (value: string) => {
+    const cleaned = ("" + value).replace(/\D/g, "");
+    const match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
+    if (match) {
+      return `(${match[1]}) ${match[2]}-${match[3]}`;
+    }
+    return value;
+  };
+
   if (status !== "authenticated") {
-    router.push("/login");
-    return null;
+    return (
+      <>
+        <main className="h-screen w-full flex items-center justify-center flex-col space-y-10 mt-[72px]">
+          <h1>Você precisa estar logado para criar uma loja</h1>
+          <Button onClick={() => router.push("/login")}>Fazer login</Button>
+        </main>
+      </>
+    );
   } else {
     return (
-      <main className="h-screen w-full flex items-center justify-center flex-col space-y-10">
+      <main className="h-screen w-full flex items-center justify-center flex-col space-y-10 mt-[72px]">
         <div>
           <h1 className="text-3xl font-semibold text-center mb-2">
             Crie sua loja
@@ -76,8 +101,8 @@ export default function CreateStore() {
           </p>
         </div>
 
-        <Card x-chunk="dashboard-07-chunk-0" className="max-w-lg md:w-96">
-          <CardHeader className="px-6 mt-6 space-y-2 mb-5">
+        <Card className="max-w-lg md:w-96">
+          <CardHeader className="px-6 space-y-2 mt-6 mb-5">
             <CardTitle>Informações da Loja</CardTitle>
             <CardDescription>
               Adicione informações sobre a sua loja
@@ -86,6 +111,7 @@ export default function CreateStore() {
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid gap-6">
+                {/* Nome da loja */}
                 <div className="grid gap-3">
                   <Label htmlFor="name">Nome</Label>
                   <Input
@@ -102,6 +128,7 @@ export default function CreateStore() {
                   )}
                 </div>
 
+                {/* Descrição */}
                 <div className="grid gap-3">
                   <Label htmlFor="description">
                     Descrição{" "}
@@ -109,56 +136,126 @@ export default function CreateStore() {
                   </Label>
                   <Textarea
                     id="description"
-                    placeholder="Descrição da loja por exemplo: 'somos uma loja de roupas que preza pela qualidade e conforto'"
+                    placeholder="Descrição da loja"
                     className="min-h-32"
                     {...register("description")}
                   />
+                  {errors.description && (
+                    <p className="text-red-500">
+                      {(errors.description as { message: string }).message}
+                    </p>
+                  )}
                 </div>
 
-                <div className="grid gap-3 relative h-fit">
-                  <p>Imagem de banner</p>
-                  <Label
-                    htmlFor="storeImage"
-                    className="flex items-center justify-center w-full h-20 border border-dashed rounded-md cursor-pointer"
-                  >
-                    <span className="sr-only">Adicionar imagem de banner</span>
-                    <Input
-                      id="storeImage"
-                      type="file"
-                      accept="image/*"
-                      className="absolute inset-0 opacity-0 cursor-pointer"
-                      {...register("storeImage")}
-                      onChange={handleImageChange}
-                    />
-                    {selectedImage ? (
-                      <Image
-                        src={selectedImage as string}
-                        alt="Preview"
-                        width={200}
-                        height={100}
-                        className="w-full h-full object-cover rounded-md"
-                      />
-                    ) : (
-                      <div className="flex items-center justify-center w-full h-full">
-                        <Upload className="h-6 w-6 text-muted-foreground" />
-                      </div>
-                    )}
+                {/* Telefone */}
+                <div className="grid gap-3">
+                  <Label htmlFor="phone">
+                    Telefone{" "}
+                    <span className="text-muted-foreground"> (opcional)</span>
                   </Label>
-                  {errors.storeImage && (
+                  <Input
+                    id="phone"
+                    type="text"
+                    className="w-full"
+                    placeholder="Ex: (xx) xxxx-xxxx"
+                    {...register("phone", {
+                      onChange: (e) => {
+                        const formattedValue = formatPhoneNumber(
+                          e.target.value
+                        );
+                        setValue("phone", formattedValue);
+                      },
+                    })}
+                  />
+                  {errors.phone && (
                     <p className="text-red-500">
-                      {(errors.storeImage as { message: string }).message}
+                      {(errors.phone as { message: string }).message}
+                    </p>
+                  )}
+                </div>
+
+                {/* Endereço */}
+                <div className="grid gap-3">
+                  <Label htmlFor="address">
+                    Endereço{" "}
+                    <span className="text-muted-foreground"> (opcional)</span>
+                  </Label>
+                  <Input
+                    id="address"
+                    type="text"
+                    className="w-full"
+                    placeholder="Ex: Rua Principal 123, Cidade Exemplo, EUA"
+                    {...register("address")}
+                  />
+                  {errors.address && (
+                    <p className="text-red-500">
+                      {(errors.address as { message: string }).message}
+                    </p>
+                  )}
+                </div>
+
+                {/* Horário de Funcionamento */}
+                <div className="grid gap-3">
+                  <Label htmlFor="workingHours">
+                    Horário de Funcionamento{" "}
+                    <span className="text-muted-foreground"> (opcional)</span>
+                  </Label>
+                  <Input
+                    id="workingHours"
+                    type="text"
+                    className="w-full"
+                    placeholder="Ex: Seg-Sáb: 10h - 20h, Dom: 12h - 18h"
+                    {...register("workingHours")}
+                  />
+                  {errors.workingHours && (
+                    <p className="text-red-500">
+                      {(errors.workingHours as { message: string }).message}
                     </p>
                   )}
                 </div>
               </div>
 
-              <Button type="submit" className="mt-6 w-full">
-                Criar Loja
-              </Button>
+              {isSubmitOk === true ? (
+                <Button type="submit" className={`mt-6 w-full bg-green-600`}>
+                  <Icon.confirmed />
+                </Button>
+              ) : (
+                <Button type="submit" className={`mt-6 w-full`}>
+                  {isSubmitLoading ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : (
+                    <p>Criar Loja</p>
+                  )}
+                </Button>
+              )}
             </form>
           </CardContent>
-         
         </Card>
+
+        <AlertDialog
+          open={isConfirmDialogOpen}
+          onOpenChange={setIsConfirmDialogOpen}
+        >
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Loja criada com sucesso! 🎉</AlertDialogTitle>
+              <AlertDialogDescription className="font-medium">
+                Você pode começar a adicionar produtos agora mesmo.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel onClick={() => router.push("/")}>
+                Cancelar
+              </AlertDialogCancel>
+              <AlertDialogAction
+                onClick={() => router.push("/dashboard/products")}
+                disabled={isSubmitLoading}
+              >
+                Ir para a loja
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </main>
     );
   }

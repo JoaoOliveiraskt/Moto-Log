@@ -28,6 +28,9 @@ interface Props {
 const Menu = ({ className, children, iconSize, model }: Props) => {
   const status = UserStatus();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: session } = useSession();
+  console.log("Sessão:", session);
+  const isLojista = session?.user.role === "LOJISTA";
 
   const handleMenuOpen = {
     open: () => setIsMenuOpen(true),
@@ -48,8 +51,8 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
         className="px-2 py-2 bg-card border-none"
         align="end"
       >
-        <AvatarInfo />
-
+        <AvatarInfo onClick={handleMenuOpen.close} />
+        
         <ModeToggle className="flex gap-3 px-4 w-full justify-start">
           <span>Tema</span>
         </ModeToggle>
@@ -65,19 +68,21 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             </Button>
           </Link>
 
-          <Link
-            href="/dashboard/products"
-            passHref
-            onClick={handleMenuOpen.close}
-          >
-            <Button
-              variant={"ghost"}
-              className="space-x-3 w-full justify-start text-sm tracking-tight"
+          {isLojista && (
+            <Link
+              href="/dashboard/products"
+              passHref
+              onClick={handleMenuOpen.close}
             >
-              <icon.dashboard size={18} />
-              <p className="block text-foreground">Dashboard</p>
-            </Button>
-          </Link>
+              <Button
+                variant={"ghost"}
+                className="space-x-3 w-full justify-start text-sm tracking-tight"
+              >
+                <icon.dashboard size={18} />
+                <p className="block text-foreground">Dashboard</p>
+              </Button>
+            </Link>
+          )}
 
           <Link
             href={status === "authenticated" ? "/my-orders" : "/login"}

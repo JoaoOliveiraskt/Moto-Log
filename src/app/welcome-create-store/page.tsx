@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Icon from "@/components/icons/icon-component";
 
 export default function WelcomeCreateStore() {
   return (
@@ -8,13 +7,13 @@ export default function WelcomeCreateStore() {
       <div className="w-full space-y-3 flex flex-col items-center justify-center">
         <h1
           className="
-        text-2xl
         font-bold
+        text-3xl
         sm:text-5xl
         md:text-6xl
         lg:text-7xl
         text-center 
-        bg-gradient-to-r from-slate-500 to-stone-700 text-transparent bg-clip-text p-2
+        bg-gradient-to-r from-slate-500 to-stone-500 text-transparent bg-clip-text p-2
       "
         >
           Bem vindo ao Moto-Log

@@ -126,7 +126,11 @@ exports.Prisma.LojaScalarFieldEnum = {
   descricao: 'descricao',
   imagemFile: 'imagemFile',
   userId: 'userId',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  endereco: 'endereco',
+  horarioFuncionamento: 'horarioFuncionamento',
+  telefone: 'telefone',
+  email: 'email'
 };
 
 exports.Prisma.CategoriaScalarFieldEnum = {
