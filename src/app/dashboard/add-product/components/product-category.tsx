@@ -29,19 +29,6 @@ export default function ProductCategory() {
               </SelectContent>
             </Select>
           </div>
-          <div className="grid gap-3">
-            <Label htmlFor="subcategory">Subcategoria (opcional)</Label>
-            <Select>
-              <SelectTrigger id="subcategory" aria-label="Select subcategory">
-                <SelectValue placeholder="Selecionar subcategoria" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="t-shirts">Camisetas</SelectItem>
-                <SelectItem value="hoodies">Moletons com capuz</SelectItem>
-                <SelectItem value="sweatshirts">Suéteres</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
         </div>
       </CardContent>
     </Card>

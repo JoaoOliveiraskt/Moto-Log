@@ -359,15 +359,13 @@ export default function ProductsContent() {
                       </DropdownMenu>
                     </TableCell>
                   </TableRow>
-
-                  {/* Repetir para os outros produtos */}
                 </TableBody>
               </Table>
             </CardContent>
             <CardFooter>
-                <div className="text-xs text-muted-foreground">
+              <div className="text-xs text-muted-foreground">
                 Mostrando <strong>1-6</strong> de <strong>32</strong> produtos
-                </div>
+              </div>
             </CardFooter>
           </Card>
         </TabsContent>
