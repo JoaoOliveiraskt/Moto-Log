@@ -16,18 +16,18 @@ Moto-Log é um e-commerce multi-vendor desenvolvido como parte de um trabalho un
 ## 🛠️ Tecnologias Utilizadas
 
 - **Frontend**:
-  - [Next.js](https://nextjs.org/){:target="_blank"}
-  - [React](https://reactjs.org/){:target="_blank"}
-  - [Tailwind CSS](https://tailwindcss.com/){:target="_blank"}
-  - [ShadcnUI](https://ui.shadcn.com/){:target="_blank"}
+  - [Next.js](https://nextjs.org/)
+  - [React](https://reactjs.org/)
+  - [Tailwind CSS](https://tailwindcss.com/)
+  - [ShadcnUI](https://ui.shadcn.com/)
 - **Backend**:
   - [Node.js](https://nodejs.org/){:target="_blank"}
 - **Banco de Dados**:
-  - [PostgreSQL](https://www.postgresql.org/){:target="_blank"} com [Prisma](https://www.prisma.io/){:target="_blank"}
+  - [PostgreSQL](https://www.postgresql.org/) com [Prisma](https://www.prisma.io/)
 - **Autenticação**:
-  - [NextAuth](https://next-auth.js.org/){:target="_blank"}
+  - [NextAuth](https://next-auth.js.org/)
 - **Hospedagem**:
-  - [Vercel](https://vercel.com/){:target="_blank"}
+  - [Vercel](https://vercel.com/)
 
 ## 🚀 Como Começar
 
@@ -35,9 +35,9 @@ Moto-Log é um e-commerce multi-vendor desenvolvido como parte de um trabalho un
 
 Antes de começar, você precisará ter instalado em sua máquina:
 
-- [Node.js](https://nodejs.org/){:target="_blank"}
-- [PostgreSQL](https://www.postgresql.org/){:target="_blank"}
-- [Git](https://git-scm.com/){:target="_blank"}
+- [Node.js](https://nodejs.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Git](https://git-scm.com/)
 
 ### Clonar o Repositório
 
@@ -101,3 +101,13 @@ Contribuições são bem-vindas! Para contribuir:
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
 
 João Victor - joaoliveiraam@gmail.com
+
+## 👥 Membros da Equipe
+
+- João Victor
+- Rosaria Mariano
+- Diego Felipe
+- Samuel Oliveira
+- Auro Garcia
+- Gabriell Vianna
+- Vitor Hugo
