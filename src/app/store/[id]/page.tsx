@@ -47,7 +47,7 @@ export default async function Store({ params }: Props) {
       <Container className="lg:mt-20">
         <GoBackButton className="hidden lg:flex"/>
       </Container>
-      <div className="mt-2 mx-auto max-w-screen-xl relative h-[300px] overflow-hidden px-0 lg:px-4">
+      <div className="mt-2 mx-auto max-w-[1440px] relative h-[300px] overflow-hidden px-0 lg:px-4">
         <Image
           src={store.imagemUrl}
           alt="Store Banner"
@@ -68,7 +68,7 @@ export default async function Store({ params }: Props) {
         </div>
       </div>
 
-      <Container className="!px-5 !max-w-screen-xl">
+      <Container className="!px-5">
         <div className="flex flex-col w-full">
           <div className="bg-background  lg:px-0">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

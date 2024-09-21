@@ -10,9 +10,10 @@ import Icon from "@/components/icons/icon-component";
 interface Props {
   className?: string;
   children?: React.ReactNode;
+  size?: "default" | "icon" | "sm" | "lg" | "xl" | "menu" | null;
 }
 
-export function ModeToggle({ className, children }: Props) {
+export function ModeToggle({ className, children, size }: Props) {
   const { theme, setTheme } = useTheme();
 
   function toggleTheme() {
@@ -23,6 +24,7 @@ export function ModeToggle({ className, children }: Props) {
     <Button
       onClick={toggleTheme}
       variant="ghost"
+      size={size}
       className={`${className}`}
     >
       <Icon.sun

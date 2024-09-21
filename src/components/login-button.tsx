@@ -15,9 +15,10 @@ const UserStatus = () => {
 interface Props {
   className?: string;
   onClick?: () => void;
+  size?: "default" | "icon" | "sm" | "lg" | "xl" | "menu" | null;
 }
 
-const LoginButton = ({ className }: Props) => {
+const LoginButton = ({ className, size }: Props) => {
   const status = UserStatus();
   const handleSigInClick = () => signIn("google", { callbackUrl: "/" });
   const handleSigOutClick = () => signOut();
@@ -28,6 +29,7 @@ const LoginButton = ({ className }: Props) => {
       {status === "authenticated" ? (
         <Button
           variant={"ghost"}
+          size={size}
           onClick={(e) => {
             e.preventDefault();
             handleSigOutClick();
@@ -57,7 +59,7 @@ const LoginButton = ({ className }: Props) => {
 
 export default LoginButton;
 
-export const AvatarInfo = ({onClick}: Props) => {
+export const AvatarInfo = ({ onClick, size }: Props) => {
   const { data } = useSession();
   const status = UserStatus();
 
@@ -92,13 +94,17 @@ export const AvatarInfo = ({onClick}: Props) => {
             </div>
           </div>
 
-          <LoginButton className="w-full bg-transparent justify-start border-none" />
+          <LoginButton size={"menu"} className="w-full bg-transparent justify-start border-none" />
         </div>
       ) : (
         <div className="flex items-center gap-4 px-4">
           <h2 className="font-semibold tracking-tight">Faça seu login!</h2>
           <Link href="/login">
-            <Button onClick={onClick} variant={"ghost"} className={`flex items-center space-x-2`}>
+            <Button
+              onClick={onClick}
+              variant={"ghost"}
+              className={`flex items-center space-x-2`}
+            >
               <span>Entrar</span>
               <icon.signIn size={18} />
             </Button>

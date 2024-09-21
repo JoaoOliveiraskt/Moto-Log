@@ -60,7 +60,6 @@ export default function Header() {
 
   return (
     <header className="sticky  px-4 md:px-10 top-0 z-30 flex h-14 items-center gap-4 border-b bg-background md:static md:h-auto md:border-0 md:bg-transparent">
-
       <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
         <SheetTrigger asChild>
           <Button size="icon" variant="outline" className="md:hidden">
@@ -114,8 +113,12 @@ export default function Header() {
         </SheetContent>
       </Sheet>
 
-   <Select onValueChange={(value) => setStoreName(value)}>
-        <SelectTrigger id="store" aria-label="Select store" className="w-full md:max-w-56">
+      <Select onValueChange={(value) => setStoreName(value)}>
+        <SelectTrigger
+          id="store"
+          aria-label="Select store"
+          className="w-full md:max-w-56"
+        >
           <SelectValue placeholder={storeName} />
         </SelectTrigger>
         <SelectContent>
@@ -126,7 +129,6 @@ export default function Header() {
           ))}
         </SelectContent>
       </Select>
-
     </header>
   );
 }

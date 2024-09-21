@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <>
       <Container className="mt-10 sm:mt-16 md:mt-32 pb-24 lg:pb-12">
-        <footer className="flex flex-col gap-5 md:gap-16 mx-auto max-w-screen-lg">
+        <footer className="flex flex-col gap-5 md:gap-16 mx-auto max-w-[1440px]">
           <div className="flex flex-col sm:flex-row gap-6 justify-between sm:items-center border-t">
             <div className="max-w-sm flex w-full">
               <div className="flex flex-col">

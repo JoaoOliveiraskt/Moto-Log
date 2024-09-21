@@ -105,7 +105,7 @@ export default function Dashboard() {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
-                    variant="outline"
+                    variant="ghost"
                     size="sm"
                     className="h-7 gap-1 text-sm"
                   >
@@ -125,7 +125,7 @@ export default function Dashboard() {
                   <DropdownMenuCheckboxItem>Cancelado</DropdownMenuCheckboxItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Button size="sm" variant="outline" className="h-7 gap-1 text-sm">
+              <Button size="sm" variant="ghost" className="h-7 gap-1 text-sm">
                 <File className="h-3.5 w-3.5" />
                 <span className="sr-only sm:not-sr-only">Exportar</span>
               </Button>
@@ -320,7 +320,7 @@ export default function Dashboard() {
               <CardDescription>Data: 23 de novembro de 2023</CardDescription>
             </div>
             <div className="ml-auto flex items-center gap-1">
-              <Button size="sm" variant="outline" className="h-8 gap-1">
+              <Button size="sm" variant="ghost" className="h-8 gap-1">
                 <Truck className="h-3.5 w-3.5" />
                 <span className="lg:sr-only xl:not-sr-only xl:whitespace-nowrap">
                   Rastrear Pedido
@@ -328,7 +328,7 @@ export default function Dashboard() {
               </Button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button size="icon" variant="outline" className="h-8 w-8">
+                  <Button size="icon" variant="ghost" className="h-8 w-8">
                     <MoreVertical className="h-3.5 w-3.5" />
                     <span className="sr-only">Mais</span>
                   </Button>

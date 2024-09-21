@@ -17,7 +17,7 @@ interface BannerProps {
 export const Banner = ({ className }: BannerProps) => {
   return (
     <div
-      className="relative mx-auto my-10 max-w-screen-xl h-56 rounded-2xl overflow-hidden 
+      className="relative mx-auto my-10 max-w-[1440px] h-56 rounded-2xl overflow-hidden 
       bg-gradient-to-bl backdrop-blur-3xl"
     >
       <div className="absolute top-0 left-0 flex flex-col justify-center items-center gap-4 sm:gap-12 p-4 sm:p-8 h-full w-full z-10">
@@ -51,7 +51,7 @@ export const Banner = ({ className }: BannerProps) => {
 export const BannerSec = () => {
   return (
     <div
-      className="flex items-center justify-around mx-auto max-w-screen-xl sm:h-64 p-4 sm:p-8 h-full w-full rounded-2xl overflow-hidden 
+      className="flex items-center justify-around mx-auto max-w-[1440px] sm:h-64 p-4 sm:p-8 h-full w-full rounded-2xl overflow-hidden 
       bg-gradient-to-bl backdrop-blur-3xl bg-sky-800"
     >
       <div className=" flex flex-col gap-12">

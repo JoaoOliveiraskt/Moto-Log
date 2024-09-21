@@ -34,7 +34,7 @@ import Link from "next/link";
 
 export default function ProductsContent() {
   return (
-    <main className="grid flex-1 items-start gap-4 sm:py-0 md:gap-8">
+    <main className="grid flex-1 items-start gap-4 sm:py-0 md:gap-8 mt-4">
       <Tabs defaultValue="all">
         <div className="flex items-center">
           <TabsList>
@@ -47,7 +47,7 @@ export default function ProductsContent() {
           <div className="ml-auto flex items-center gap-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm" className="h-7 gap-1">
+                <Button variant="ghost" size="sm" className="h-7 gap-1">
                   <ListFilter className="h-3.5 w-3.5" />
                   <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                     Filtrar
@@ -63,7 +63,7 @@ export default function ProductsContent() {
                 <DropdownMenuCheckboxItem>Arquivado</DropdownMenuCheckboxItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Button size="sm" variant="outline" className="h-7 gap-1">
+            <Button size="sm" variant="ghost" className="h-7 gap-1">
               <File className="h-3.5 w-3.5" />
               <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                 Exportar
@@ -83,7 +83,7 @@ export default function ProductsContent() {
           </div>
         </div>
         <TabsContent value="all">
-          <Card x-chunk="dashboard-06-chunk-0">
+          <Card x-chunk="dashboard-06-chunk-0" >
             <CardHeader className="px-6 mt-6 space-y-2 mb-5">
               <CardTitle>Produtos</CardTitle>
               <CardDescription>

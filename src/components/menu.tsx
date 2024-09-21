@@ -50,9 +50,9 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
         className="px-2 py-2 bg-card border-none"
         align="end"
       >
-        <AvatarInfo onClick={handleMenuOpen.close} />
+        <AvatarInfo onClick={handleMenuOpen.close} size={"menu"}/>
         
-        <ModeToggle className="flex gap-3 px-4 w-full justify-start">
+        <ModeToggle className="flex gap-3 px-4 w-full justify-start" size={"menu"}>
           <span>Tema</span>
         </ModeToggle>
 
@@ -60,6 +60,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
           <Link href={"/"} className="block" onClick={handleMenuOpen.close}>
             <Button
               variant={"ghost"}
+              size={"menu"}
               className="space-x-3 w-full justify-start text-sm tracking-tight  "
             >
               <icon.home size={18} className="text-foreground" />
@@ -75,6 +76,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             >
               <Button
                 variant={"ghost"}
+                size={"menu"}
                 className="space-x-3 w-full justify-start text-sm tracking-tight"
               >
                 <icon.dashboard size={18} />
@@ -90,6 +92,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
           >
             <Button
               variant={"ghost"}
+              size={"menu"}
               className="space-x-3 w-full justify-start text-sm tracking-tight"
             >
               <icon.order size={18} />
@@ -105,6 +108,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
           >
             <Button
               variant={"ghost"}
+              size={"menu"}
               className="space-x-3 w-full justify-start text-sm tracking-tight"
             >
               <icon.sell size={18} />
