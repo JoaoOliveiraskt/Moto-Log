@@ -45,31 +45,45 @@ Primeiro, clone o repositório para sua máquina local:
 ```bash
 git clone https://github.com/JoaoOliveiraskt/Moto-Log.git
 cd Moto-Log
+```
 
-Instalação
+### Instalação
+
 Instale as dependências do projeto:
 npm install
 
-Configuração do Banco de Dados
+### Configuração do Banco de Dados
+
 Crie um arquivo .env na raiz do projeto e adicione suas configurações de banco de dados e autenticação:
 
+```bash
 DATABASE_URL="postgresql://username:password@host:port/database"
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
 NEXTAUTH_SECRET="your-nextauth-secret"
 NEXTAUTH_URL="http://localhost:3000"
-Executar as Migrações do Prisma
+```
+
+### Executar as Migrações do Prisma
+
 Aplique as migrações do banco de dados:
 
+```bash
 npx prisma migrate dev
+```
 
-Executar o Projeto
+### Executar o Projeto
+
 Inicie o servidor de desenvolvimento:
 
+```bash
 npm run dev
+```
+
 Acesse o aplicativo em http://localhost:3000.
 
-🤝 Contribuições
+### 🤝 Contribuições
+
 Contribuições são bem-vindas! Para contribuir:
 
 Fork o repositório.
@@ -78,12 +92,8 @@ Faça suas mudanças e commit (git commit -m 'Add nova feature').
 Envie a branch para o repositório remoto (git push origin feature/MinhaFeature).
 Abra um Pull Request.
 
-📞 Contato
+### 📞 Contato
+
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
 
 João Victor - joaoliveiraam@gmail.com
-
-css
-Copiar código
-
-Agora, os comandos estão organizados em blocos de código, permitindo que qualquer pessoa possa copiar facilmente!
