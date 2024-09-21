@@ -98,7 +98,7 @@ Contribuições são bem-vindas! Para contribuir:
 4. Envie a branch para o repositório remoto: `git push origin feature/MinhaFeature`.
 5. Abra um Pull Request.
 
-### 📞 Contato
+## 📞 Contato
 
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
 
