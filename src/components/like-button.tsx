@@ -37,7 +37,7 @@ export default function LikeButton({ className, size = 24 }: Props) {
         handleLike();
         liked ? showUnlikedToast() : showLikedToast();
       }}
-      className={`flex items-center justify-center rounded-full border-none ${className}`}
+      className={`flex items-center justify-center rounded-full border-none text-foreground ${className}`}
     >
       {liked ? (
         <icon.heartFilled size={size} className={`text-destructive`} />

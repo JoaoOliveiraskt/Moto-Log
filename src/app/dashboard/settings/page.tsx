@@ -43,7 +43,7 @@ export default function EditStore() {
             </div>
           </div>
 
-          <div className="grid gap-3 relative h-fit">
+          <div className="grid gap-3 relative h-fit mt-6">
             <p>Imagem de banner</p>
             <Label
               htmlFor="storeImage"
