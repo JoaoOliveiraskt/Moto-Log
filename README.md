@@ -2,7 +2,7 @@
 
 ## 📖 Descrição
 
-Moto-Log é um e-commerce multi-vendor desenvolvido como parte de um trabalho universitário, com o objetivo de ajudar pequenas empresas locais a vender seus produtos online. O sistema oferece uma experiência de compra fácil e segura, permitindo que lojas físicas criem suas vitrines online e conectem-se com clientes de maneira intuitiva e eficiente.
+Moto-Log é um e-commerce multi-vendor desenvolvido como parte de um trabalho universitário, com o objetivo de ajudar pequenas empresas locais a vender seus produtos online. O sistema oferece uma experiência de compra fácil e segura, permitindo que lojas físicas criem suas vitrines online e se conectem com clientes de maneira intuitiva e eficiente.
 
 ## 🌟 Funcionalidades
 
@@ -15,17 +15,17 @@ Moto-Log é um e-commerce multi-vendor desenvolvido como parte de um trabalho un
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Frontend**: 
+- **Frontend**:
   - [Next.js](https://nextjs.org/)
   - [React](https://reactjs.org/)
   - [Tailwind CSS](https://tailwindcss.com/)
-- **Backend**: 
+- **Backend**:
   - [Node.js](https://nodejs.org/)
-- **Banco de Dados**: 
+- **Banco de Dados**:
   - [PostgreSQL](https://www.postgresql.org/) com [Prisma](https://www.prisma.io/)
-- **Autenticação**: 
+- **Autenticação**:
   - [NextAuth](https://next-auth.js.org/)
-- **Hospedagem**: 
+- **Hospedagem**:
   - [Vercel](https://vercel.com/)
 
 ## 🚀 Como Começar
@@ -44,39 +44,46 @@ Primeiro, clone o repositório para sua máquina local:
 
 ```bash
 git clone https://github.com/JoaoOliveiraskt/Moto-Log.git
-cd moto-log
+cd Moto-Log
 
-# Instalação
+Instalação
+Instale as dependências do projeto:
 npm install
 
-# Configuração do Banco de Dados
-# Crie um arquivo `.env` na raiz do projeto e adicione suas configurações de banco de dados e autenticação:
+Configuração do Banco de Dados
+Crie um arquivo .env na raiz do projeto e adicione suas configurações de banco de dados e autenticação:
 
 DATABASE_URL="postgresql://username:password@host:port/database"
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
 NEXTAUTH_SECRET="your-nextauth-secret"
 NEXTAUTH_URL="http://localhost:3000"
+Executar as Migrações do Prisma
+Aplique as migrações do banco de dados:
 
-# Executar as Migrações do Prisma
 npx prisma migrate dev
 
-# Executar o Projeto
+Executar o Projeto
+Inicie o servidor de desenvolvimento:
+
 npm run dev
+Acesse o aplicativo em http://localhost:3000.
 
-# Acesse o aplicativo em http://localhost:3000
-
-## 🤝 Contribuições
-
+🤝 Contribuições
 Contribuições são bem-vindas! Para contribuir:
 
-1. Fork o repositório.
-2. Crie uma nova branch (`git checkout -b feature/MinhaFeature`).
-3. Faça suas mudanças e commit (`git commit -m 'Add nova feature'`).
-4. Envie a branch para o repositório remoto (`git push origin feature/MinhaFeature`).
-5. Abra um Pull Request.
+Fork o repositório.
+Crie uma nova branch (git checkout -b feature/MinhaFeature).
+Faça suas mudanças e commit (git commit -m 'Add nova feature').
+Envie a branch para o repositório remoto (git push origin feature/MinhaFeature).
+Abra um Pull Request.
 
-## 📞 Contato
-
+📞 Contato
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+
 João Victor - joaoliveiraam@gmail.com
+
+css
+Copiar código
+
+Agora, os comandos estão organizados em blocos de código, permitindo que qualquer pessoa possa copiar facilmente!
