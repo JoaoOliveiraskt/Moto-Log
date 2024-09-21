@@ -39,7 +39,7 @@ export default async function DiscountProducts() {
     <div className="space-y-5">
       <div className="flex justify-between items-center">
         <h2 className="font-bold text-primary text-xl sm:text-3xl">
-          Produtos com desconto
+          Com desconto
         </h2>
 
         <SeeAllButton href="/discount" />

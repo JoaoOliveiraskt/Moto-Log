@@ -26,7 +26,7 @@ async function getAllDiscountProducts() {
 
 export default async function DiscountPage() {
   const products = await getAllDiscountProducts();
-  const title = "Produtos com desconto";
+  const title = "Com desconto";
 
   return (
     <Container className="space-y-8 mt-20">

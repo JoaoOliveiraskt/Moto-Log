@@ -4,7 +4,7 @@ import { db } from "@/lib/prisma";
 import ProductCard from "./product-card";
 import { Produto } from "prisma/generated/client";
 
-export default async function RecomendedProducts() {
+export default async function RecommendedProducts() {
   const products = await db.produto.findMany({
     include: {
       loja: {
@@ -19,15 +19,15 @@ export default async function RecomendedProducts() {
         <h2 className="font-bold text-primary text-xl sm:text-3xl">
           Recomendados
         </h2>
-        <SeeAllButton href="#" />
+        <SeeAllButton href="/recommended" />
       </div>
       <ProductList>
-      {products.map((product: Produto) => (
-        <div key={product.id}>
-          {/* @ts-ignore */}
-          <ProductCard product={product} />
-        </div>
-      ))}
+        {products.map((product: Produto) => (
+          <div key={product.id}>
+            {/* @ts-ignore */}
+            <ProductCard product={product} />
+          </div>
+        ))}
       </ProductList>
     </div>
   );

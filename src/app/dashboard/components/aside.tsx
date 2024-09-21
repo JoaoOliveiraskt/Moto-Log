@@ -58,7 +58,7 @@ export function AsideToolTip({ name, href, icon: IconComponent }: Props) {
         <TooltipTrigger asChild>
           <Link
             href={href}
-            className={`flex px-4 py-4 gap-4 h-9 w-9 items-center rounded-lg transition-colors hover:text-foreground hover:bg-accent md:h-8 md:w-full ${
+            className={`flex px-4 py-5 gap-4 h-9 w-9 items-center rounded-lg transition-colors hover:text-foreground hover:bg-accent md:h-8 md:w-full ${
               isActive ? "bg-accent" : ""
             }`}
           >

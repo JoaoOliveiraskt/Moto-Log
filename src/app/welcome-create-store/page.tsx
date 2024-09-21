@@ -35,16 +35,16 @@ export default function WelcomeCreateStore() {
         md:text-6xl
         lg:text-7xl
         text-center 
-        bg-gradient-to-r from-slate-500 to-stone-500 text-transparent bg-clip-text p-2
+        bg-gradient-to-r from-slate-600 via-indigo-500 to-slate-600 text-transparent bg-clip-text p-2 tracking-tighter
       "
           >
-            Bem vindo ao Moto-Log
+            Bem-vindo ao Moto-Log
           </h1>
         </motion.div>
         <motion.div {...pAnimation}>
           <h2 className="text-sm sm:text-lg max-w-lg text-center">
-            Comece com sua nova loja em apenas algumas etapas e comece a vender
-            seus produtos online.
+            Crie sua nova loja em poucos passos e comece a vender seus produtos
+            online de forma simples e rápida.
           </h2>
         </motion.div>
       </div>

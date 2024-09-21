@@ -2,8 +2,7 @@ import { BannerSec } from "@/components/banner";
 import CategoryList from "@/components/category-list";
 import Container from "@/components/container";
 import DiscountProducts from "@/components/discount-products";
-import RecomendedProducts from "@/components/recomended-products";
-
+import RecommendedProducts from "@/components/recommended-products";
 
 export default function Home() {
   return (
@@ -12,7 +11,7 @@ export default function Home() {
         <CategoryList />
         <DiscountProducts />
         <BannerSec />
-        <RecomendedProducts />
+        <RecommendedProducts />
       </Container>
     </main>
   );
