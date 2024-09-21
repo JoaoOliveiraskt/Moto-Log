@@ -21,7 +21,7 @@ Moto-Log é um e-commerce multi-vendor desenvolvido como parte de um trabalho un
   - [Tailwind CSS](https://tailwindcss.com/)
   - [ShadcnUI](https://ui.shadcn.com/)
 - **Backend**:
-  - [Node.js](https://nodejs.org/){:target="_blank"}
+  - [Node.js](https://nodejs.org/)
 - **Banco de Dados**:
   - [PostgreSQL](https://www.postgresql.org/) com [Prisma](https://www.prisma.io/)
 - **Autenticação**:
