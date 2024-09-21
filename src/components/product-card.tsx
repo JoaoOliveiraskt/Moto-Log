@@ -40,25 +40,25 @@ const ProductCard = ({ product }: ProductProps) => {
           <div className="h-full p-2">
             <h2 className="font-medium line-clamp-2">{product.nome}</h2>
 
-            <div className="w-fit">
-              <Link
-                href={`/store/${product.lojaId}`}
-                className="text-muted-foreground font-medium hover:text-lime-600  mb-2"
-              >
-                <h3 className="text-sm ">{product.loja.nome}</h3>
-              </Link>
-            </div>
-
-            <div className="flex gap-2 items-center">
-              <span className="font-bold">
-                {formatCurrency(Number(calculateTotalPrice(product)))}
-              </span>
-
+            <div className="flex flex-col items-start">
               {Number(product.porcentagemDesconto) > 0 && (
                 <span className="text-sm line-through text-muted-foreground/80 font-medium">
                   {formatCurrency(Number(product.preco))}
                 </span>
               )}
+
+              <span className="font-bold">
+                {formatCurrency(Number(calculateTotalPrice(product)))}
+              </span>
+            </div>
+
+            <div className="w-fit">
+              <Link
+                href={`/store/${product.lojaId}`}
+                className="text-foreground font-medium hover:hover:text-cyan-600  mb-2"
+              >
+                <h3 className="text-sm ">{product.loja.nome}</h3>
+              </Link>
             </div>
           </div>
         </div>

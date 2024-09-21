@@ -27,7 +27,7 @@ export default function CategoryItem({
     <Link
       href={link}
       className={cn([
-        `w-auto rounded-full z-20 border`, 
+        `w-auto rounded-full z-20 border dark:border-zinc-900`, 
         active && "bg-foreground text-background",
         className
       ])}

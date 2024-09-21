@@ -39,10 +39,10 @@ export default async function DiscountProducts() {
     <div className="space-y-5">
       <div className="flex justify-between items-center">
         <h2 className="font-bold text-primary text-xl sm:text-3xl">
-          Produtos em desconto
+          Produtos com desconto
         </h2>
 
-        <SeeAllButton href="#" />
+        <SeeAllButton href="/discount" />
       </div>
       <ProductList>
         {products.slice(0, 10).map((product) => (
