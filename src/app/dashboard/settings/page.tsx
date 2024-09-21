@@ -14,7 +14,7 @@ import Image from "next/image";
 
 export default function EditStore() {
   return (
-    <main className="w-full flex flex-col space-y-10">
+    <main className="w-full flex flex-col space-y-10 mt-4">
       <Card x-chunk="dashboard-07-chunk-0" className="">
         <CardHeader className="px-6 mt-6 space-y-2 mb-5">
           <CardTitle className="text-3xl ">Atualize sua loja</CardTitle>

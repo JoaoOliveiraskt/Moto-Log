@@ -27,16 +27,8 @@ export default function Aside() {
   ];
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background md:flex mt-[72px]">
-      <nav className="flex flex-col items-center gap-4 px-2 py-4">
-        <Link
-          href="#"
-          className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
-        >
-          <Icon.package2 className="group-hover:scale-110" />
-          <span className="sr-only">Acme Inc</span>
-        </Link>
-
+    <aside className="fixed inset-y-0  z-10 hidden w-fit flex-col border-r bg-background md:flex mt-[72px]">
+      <nav className="flex flex-col gap-2 px-2 py-4">
         {links.map((link) => (
           <AsideToolTip
             key={link.name}
@@ -66,12 +58,12 @@ export function AsideToolTip({ name, href, icon: IconComponent }: Props) {
         <TooltipTrigger asChild>
           <Link
             href={href}
-            className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground hover:bg-accent md:h-8 md:w-8 ${
+            className={`flex px-4 py-4 gap-4 h-9 w-9 items-center rounded-lg transition-colors hover:text-foreground hover:bg-accent md:h-8 md:w-full ${
               isActive ? "bg-accent" : ""
             }`}
           >
             <IconComponent className="h-5 w-5 text-foreground" />
-            <span className="sr-only">{name}</span>
+            <span className="">{name}</span>
           </Link>
         </TooltipTrigger>
         <TooltipContent side="right">{name}</TooltipContent>
