@@ -19,10 +19,13 @@ Moto-Log é um e-commerce multi-vendor desenvolvido como parte de um trabalho un
   - [Next.js](https://nextjs.org/)
   - [React](https://reactjs.org/)
   - [Tailwind CSS](https://tailwindcss.com/)
+  - [ShadcnUI](https://ui.shadcn.com/)
 - **Backend**:
   - [Node.js](https://nodejs.org/)
 - **Banco de Dados**:
-  - [PostgreSQL](https://www.postgresql.org/) com [Prisma](https://www.prisma.io/)
+  - [PostgreSQL](https://www.postgresql.org/)
+  - [Prisma](https://www.prisma.io/)
+  - [Neon](https://neon.tech)
 - **Autenticação**:
   - [NextAuth](https://next-auth.js.org/)
 - **Hospedagem**:
@@ -50,7 +53,10 @@ cd Moto-Log
 ### Instalação
 
 Instale as dependências do projeto:
+
+```bash
 npm install
+```
 
 ### Configuração do Banco de Dados
 
@@ -82,18 +88,28 @@ npm run dev
 
 Acesse o aplicativo em http://localhost:3000.
 
-### 🤝 Contribuições
+## 🤝 Contribuições
 
 Contribuições são bem-vindas! Para contribuir:
 
-Fork o repositório.
-Crie uma nova branch (git checkout -b feature/MinhaFeature).
-Faça suas mudanças e commit (git commit -m 'Add nova feature').
-Envie a branch para o repositório remoto (git push origin feature/MinhaFeature).
-Abra um Pull Request.
+1. Fork o repositório.
+2. Crie uma nova branch: `git checkout -b feature/MinhaFeature`.
+3. Faça suas mudanças e commit: `git commit -m 'Add nova feature'`.
+4. Envie a branch para o repositório remoto: `git push origin feature/MinhaFeature`.
+5. Abra um Pull Request.
 
-### 📞 Contato
+## 📞 Contato
 
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
 
 João Victor - joaoliveiraam@gmail.com
+
+## 👥 Membros da Equipe
+
+- Auro Garcia
+- Diego Felipe
+- Gabriell Vianna
+- João Victor
+- Rosária
+- Samuel Oliveira
+- Vitor Hugo
