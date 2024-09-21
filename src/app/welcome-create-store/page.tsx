@@ -42,7 +42,7 @@ export default function WelcomeCreateStore() {
           </h1>
         </motion.div>
         <motion.div {...pAnimation}>
-          <h2 className="text-sm sm:text-lg max-w-lg text-center">
+          <h2 className="text-sm sm:text-lg max-w-lg text-center px-7 md:px-0">
             Crie sua nova loja em poucos passos e comece a vender seus produtos
             online de forma simples e rápida.
           </h2>
