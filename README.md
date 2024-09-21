@@ -106,10 +106,10 @@ João Victor - joaoliveiraam@gmail.com
 
 ## 👥 Membros da Equipe
 
-- João Victor
-- Rosaria Mariano
-- Diego Felipe
-- Samuel Oliveira
 - Auro Garcia
+- Diego Felipe
 - Gabriell Vianna
+- João Victor
+- Rosária
+- Samuel Oliveira
 - Vitor Hugo
