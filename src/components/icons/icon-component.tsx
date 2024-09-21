@@ -15,6 +15,8 @@ import { MdOutlineSell } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { FaGithub } from "react-icons/fa6";
 import { GoIssueClosed } from "react-icons/go";
+import { CiHeart } from "react-icons/ci";
+import { TbHeartFilled } from "react-icons/tb";
 import {
   LineChart,
   Package,
@@ -46,6 +48,8 @@ const Icon = {
   lineChart: LineChart,
   github: FaGithub,
   confirmed: GoIssueClosed,
+  heart: CiHeart,
+  heartFilled: TbHeartFilled,
 };
 
 export default Icon;

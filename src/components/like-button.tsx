@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import icon from "./icons/icon-component";
 import { Button } from "./ui/button";
 import { toast } from "./ui/use-toast";
@@ -7,21 +10,40 @@ interface Props {
   size?: number;
 }
 
-export default function LikeButton({className, size = 18}: Props) {
+export default function LikeButton({ className, size = 24 }: Props) {
+  const [liked, setLiked] = useState(false);
+
+  const handleLike = () => {
+    setLiked(!liked);
+  };
+
   const showLikedToast = () => {
     toast({
       title: "Produto adicionado aos favoritos",
     });
   };
 
+  const showUnlikedToast = () => {
+    toast({
+      title: "Produto removido dos favoritos",
+    });
+  };
+
   return (
     <Button
-      variant={"outline"}
+      variant={"icon"}
       size={"icon"}
-      onClick={showLikedToast}
+      onClick={() => {
+        handleLike();
+        liked ? showUnlikedToast() : showLikedToast();
+      }}
       className={`flex items-center justify-center rounded-full border-none ${className}`}
     >
-      <icon.like size={size} />
+      {liked ? (
+        <icon.heartFilled size={size} className={`text-destructive`} />
+      ) : (
+        <icon.heart size={size} className={``} />
+      )}
     </Button>
   );
 }

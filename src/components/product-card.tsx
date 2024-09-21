@@ -64,7 +64,7 @@ const ProductCard = ({ product }: ProductProps) => {
         </div>
       </Link>
 
-      <LikeButton className="absolute top-2 right-2 h-7 w-7" size={14} />
+      <LikeButton className="absolute top-2 right-2 h-7 w-7" />
     </div>
   );
 };
