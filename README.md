@@ -50,7 +50,10 @@ cd Moto-Log
 ### Instalação
 
 Instale as dependências do projeto:
+
+```bash
 npm install
+```
 
 ### Configuração do Banco de Dados
 
@@ -82,15 +85,15 @@ npm run dev
 
 Acesse o aplicativo em http://localhost:3000.
 
-### 🤝 Contribuições
+## 🤝 Contribuições
 
 Contribuições são bem-vindas! Para contribuir:
 
-Fork o repositório.
-Crie uma nova branch (git checkout -b feature/MinhaFeature).
-Faça suas mudanças e commit (git commit -m 'Add nova feature').
-Envie a branch para o repositório remoto (git push origin feature/MinhaFeature).
-Abra um Pull Request.
+1. Fork o repositório.
+2. Crie uma nova branch: `git checkout -b feature/MinhaFeature`.
+3. Faça suas mudanças e commit: `git commit -m 'Add nova feature'`.
+4. Envie a branch para o repositório remoto: `git push origin feature/MinhaFeature`.
+5. Abra um Pull Request.
 
 ### 📞 Contato
 
