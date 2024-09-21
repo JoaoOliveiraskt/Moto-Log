@@ -23,7 +23,9 @@ Moto-Log é um e-commerce multi-vendor desenvolvido como parte de um trabalho un
 - **Backend**:
   - [Node.js](https://nodejs.org/)
 - **Banco de Dados**:
-  - [PostgreSQL](https://www.postgresql.org/) com [Prisma](https://www.prisma.io/)
+  - [PostgreSQL](https://www.postgresql.org/)
+  - [Prisma](https://www.prisma.io/)
+  - [Neon](https://neon.tech)
 - **Autenticação**:
   - [NextAuth](https://next-auth.js.org/)
 - **Hospedagem**:
