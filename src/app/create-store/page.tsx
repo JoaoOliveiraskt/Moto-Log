@@ -118,7 +118,7 @@ export default function CreateStore() {
         </motion.div>
 
         <motion.div {...animation2}>
-          <Card className="w-full md:w-[30rem] bg-card/40 opacity-90">
+          <Card className="w-full md:w-[30rem] bg-card/50 opacity-90">
             <CardHeader className="px-6 space-y-2 mt-4 mb-5">
               <CardTitle>Informações da Loja</CardTitle>
               <CardDescription>
