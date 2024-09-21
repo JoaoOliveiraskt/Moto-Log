@@ -106,7 +106,7 @@ export default function CreateStore() {
   } else {
     return (
       <main className="h-screen w-full flex items-center justify-center flex-col space-y-6 mt-[72px] lg:mt-10">
-        <Pattern />
+        <Pattern enableAnimation={false} />
 
         <motion.div {...animation1}>
           <h1 className="text-3xl font-semibold text-center mb-2">
