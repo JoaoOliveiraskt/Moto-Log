@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Pattern from "@/components/pattern";
 
 const h1Animation = {
   initial: { y: 10, opacity: 0 },
@@ -25,19 +26,12 @@ const buttonAnimation = {
 export default function WelcomeCreateStore() {
   return (
     <main className="w-full h-screen flex flex-col items-center justify-center space-y-10">
-      <div className="w-full space-y-3 flex flex-col items-center justify-center">
+      
+      <Pattern />
+
+      <div className="relative z-10 w-full space-y-3 flex flex-col items-center justify-center">
         <motion.div {...h1Animation}>
-          <h1
-            className="
-        font-bold
-        text-3xl
-        sm:text-5xl
-        md:text-6xl
-        lg:text-7xl
-        text-center 
-        bg-gradient-to-r from-slate-600 via-indigo-500 to-slate-600 text-transparent bg-clip-text p-2 tracking-tighter
-      "
-          >
+          <h1 className="font-bold text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-center bg-gradient-to-r from-slate-600 via-indigo-500 to-slate-600 text-transparent bg-clip-text p-2 tracking-tighter">
             Bem-vindo ao Moto-Log
           </h1>
         </motion.div>
@@ -48,6 +42,7 @@ export default function WelcomeCreateStore() {
           </h2>
         </motion.div>
       </div>
+
       <motion.div {...buttonAnimation}>
         <Link href="/create-store" passHref>
           <Button className="text-sm tracking-tight">

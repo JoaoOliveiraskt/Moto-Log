@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import Icon from "@/components/icons/icon-component";
 import { motion } from "framer-motion";
+import Pattern from "@/components/pattern";
 
 const UserStatus = () => {
   const { status } = useSession();
@@ -105,6 +106,8 @@ export default function CreateStore() {
   } else {
     return (
       <main className="h-screen w-full flex items-center justify-center flex-col space-y-6 mt-[72px] lg:mt-10">
+        <Pattern />
+
         <motion.div {...animation1}>
           <h1 className="text-3xl font-semibold text-center mb-2">
             Crie sua loja
@@ -115,7 +118,7 @@ export default function CreateStore() {
         </motion.div>
 
         <motion.div {...animation2}>
-          <Card className="w-full md:w-[30rem]">
+          <Card className="w-full md:w-[30rem] bg-card/40 opacity-90">
             <CardHeader className="px-6 space-y-2 mt-4 mb-5">
               <CardTitle>Informações da Loja</CardTitle>
               <CardDescription>
