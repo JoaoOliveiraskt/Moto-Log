@@ -40,14 +40,14 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
     <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
       <DropdownMenuTrigger
         onClick={handleMenuOpen.open}
-        className={`rounded-md flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors ${className}`}
+        className={`rounded-md flex items-center justify-center text-muted-foreground hover: transition-colors ${className}`}
       >
         <icon.menu size={18} />
         <p>{children}</p>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        className="px-2 py-2 bg-card border-none"
+        className="px-2 py-2 bg-card rounded-xl text-muted-foreground"
         align="end"
       >
         <AvatarInfo onClick={handleMenuOpen.close} size={"menu"}/>
@@ -63,8 +63,8 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               size={"menu"}
               className="space-x-3 w-full justify-start text-sm tracking-tight  "
             >
-              <icon.home size={18} className="text-foreground" />
-              <p className="block text-foreground">Início</p>
+              <icon.home size={18} className="" />
+              <p className="block ">Início</p>
             </Button>
           </Link>
 
@@ -80,7 +80,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
                 className="space-x-3 w-full justify-start text-sm tracking-tight"
               >
                 <icon.dashboard size={18} />
-                <p className="block text-foreground">Dashboard</p>
+                <p className="block ">Dashboard</p>
               </Button>
             </Link>
           )}
@@ -97,7 +97,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             >
               <icon.order size={18} />
 
-              <p className="block text-foreground">Meus Pedidos</p>
+              <p className="block ">Meus Pedidos</p>
             </Button>
           </Link>
 
@@ -112,7 +112,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               className="space-x-3 w-full justify-start text-sm tracking-tight"
             >
               <icon.sell size={18} />
-              <p className="block text-foreground">Vender Agora</p>
+              <p className="block ">Vender Agora</p>
             </Button>
           </Link>
         </div>
