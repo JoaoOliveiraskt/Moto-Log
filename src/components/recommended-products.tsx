@@ -3,8 +3,11 @@ import SeeAllButton from "./see-all-button";
 import { db } from "@/lib/prisma";
 import ProductCard from "./product-card";
 import { Produto } from "prisma/generated/client";
+import { revalidateTime } from "@/lib/revalidate";
 
-export default async function RecommendedProducts() {
+export const revalidate = revalidateTime;
+
+async function getRecommendedProducts() {
   const products = await db.produto.findMany({
     include: {
       loja: {
@@ -12,6 +15,13 @@ export default async function RecommendedProducts() {
       },
     },
   });
+
+  return products || [];
+}
+
+export default async function RecommendedProducts() {
+  const products = await getRecommendedProducts();
+
   return (
     <div className="space-y-5">
       <div className="flex justify-between items-center">

@@ -3,6 +3,9 @@ import ProductCard from "@/components/product-card";
 import { db } from "@/lib/prisma";
 import Container from "@/components/container";
 import GoBackButton from "@/components/go-back-button";
+import { revalidateTime } from "@/lib/revalidate";
+
+export const revalidate = revalidateTime;
 
 async function getAllDiscountProducts() {
   const products = await db.produto.findMany({
