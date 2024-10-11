@@ -111,19 +111,19 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-4">
-            <p className="text-xl font-bold tracking-wide">
-              {formatCurrency(Number(calculateTotalPrice(product)))}
-            </p>
+            {Number(product.porcentagemDesconto) > 0 && (
+              <p className="text-muted-foreground line-through">
+                {formatCurrency(Number(product.preco))}
+              </p>
+            )}
             {Number(product.porcentagemDesconto) > 0 && (
               <DiscountBadge product={product} />
             )}
           </div>
 
-          {Number(product.porcentagemDesconto) > 0 && (
-            <p className="text-muted-foreground line-through">
-              {formatCurrency(Number(product.preco))}
-            </p>
-          )}
+          <p className="text-xl font-bold tracking-wide">
+            {formatCurrency(Number(calculateTotalPrice(product)))}
+          </p>
         </div>
 
         <div className="flex items-center gap-5 w-full">
@@ -139,12 +139,9 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
         <div>
           <h2 className="mb-2 text-xl font-semibold">Descrição</h2>
-          <h2 className="text-muted-foreground max-w-screen-sm">
-            {product.descricao} Conheça o novo tênis de corrida da marca X. Este
-            tênis foi projetado com tecnologia avançada para proporcionar
-            conforto e desempenho excepcionais durante suas corridas. Compre
-            agora e ganhe frete grátis para o mundo todo.
-          </h2>
+          <h3 className="text-muted-foreground max-w-screen-sm">
+            {product.descricao}
+          </h3>
         </div>
       </div>
 
@@ -157,7 +154,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         </SheetContent>
       </Sheet>
 
-      <AlertDialog open={isLoginModalOpen} onOpenChange={setIsLoginModalOpen} >
+      <AlertDialog open={isLoginModalOpen} onOpenChange={setIsLoginModalOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Faça o Login</AlertDialogTitle>
