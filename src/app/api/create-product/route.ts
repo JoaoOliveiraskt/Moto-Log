@@ -4,6 +4,7 @@ import { z, ZodError } from "zod";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import { ProdutoStatus } from "prisma/generated/client";
+import { revalidatePath } from "next/cache";
 
 const createProductSchema = z.object({
   name: z.string().min(2, "O nome é obrigatório").max(100),
@@ -71,7 +72,6 @@ export async function POST(request: Request) {
     const body = await request.json();
     const data = createProductSchema.parse(body);
 
-
     const category = await db.categoria.findUnique({
       where: { id: data.categoryId },
     });
@@ -82,7 +82,6 @@ export async function POST(request: Request) {
         { status: 404 }
       );
     }
-
 
     const product = await db.$transaction(async (tx) => {
       const sku = await generateSKU(tx);
@@ -105,6 +104,7 @@ export async function POST(request: Request) {
         },
       });
     });
+    revalidatePath("/");
 
     return NextResponse.json({ product }, { status: 201 });
   } catch (error) {

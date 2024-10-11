@@ -3,9 +3,6 @@ import SeeAllButton from "./see-all-button";
 import { db } from "@/lib/prisma";
 import ProductCard from "./product-card";
 import { Produto } from "prisma/generated/client";
-import { revalidateTime } from "@/lib/revalidate";
-
-export const revalidate = revalidateTime;
 
 async function getRecommendedProducts() {
   const products = await db.produto.findMany({

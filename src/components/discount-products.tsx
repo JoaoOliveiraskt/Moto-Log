@@ -2,9 +2,7 @@ import { db } from "@/lib/prisma";
 import ProductCard from "./product-card";
 import SeeAllButton from "./see-all-button";
 import ProductList from "./product-list";
-import { revalidateTime } from "@/lib/revalidate";
-
-export const revalidate = revalidateTime;
+  
 
 async function getDiscountProducts() {
   const discountProducts = await db.produto.findMany({
