@@ -63,7 +63,15 @@ export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTok
  * Enums
  */
 export namespace $Enums {
-  export const OrderStatus: {
+  export const ProdutoStatus: {
+  ATIVO: 'ATIVO',
+  ARQUIVADO: 'ARQUIVADO'
+};
+
+export type ProdutoStatus = (typeof ProdutoStatus)[keyof typeof ProdutoStatus]
+
+
+export const OrderStatus: {
   PENDING: 'PENDING',
   CONFIRMED: 'CONFIRMED',
   CANCELLED: 'CANCELLED',
@@ -83,6 +91,10 @@ export const Role: {
 export type Role = (typeof Role)[keyof typeof Role]
 
 }
+
+export type ProdutoStatus = $Enums.ProdutoStatus
+
+export const ProdutoStatus: typeof $Enums.ProdutoStatus
 
 export type OrderStatus = $Enums.OrderStatus
 
@@ -3903,91 +3915,149 @@ export namespace Prisma {
   }
 
   export type ProdutoAvgAggregateOutputType = {
+    estoque: number | null
     preco: Decimal | null
     porcentagemDesconto: Decimal | null
+    totalVendido: number | null
   }
 
   export type ProdutoSumAggregateOutputType = {
+    estoque: number | null
     preco: Decimal | null
     porcentagemDesconto: Decimal | null
+    totalVendido: number | null
   }
 
   export type ProdutoMinAggregateOutputType = {
     id: string | null
+    sku: string | null
     nome: string | null
     descricao: string | null
     imagemUrl: string | null
+    cor: string | null
+    tamanho: string | null
+    estoque: number | null
     preco: Decimal | null
     porcentagemDesconto: Decimal | null
     lojaId: string | null
     categoriaId: string | null
+    status: $Enums.ProdutoStatus | null
+    totalVendido: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type ProdutoMaxAggregateOutputType = {
     id: string | null
+    sku: string | null
     nome: string | null
     descricao: string | null
     imagemUrl: string | null
+    cor: string | null
+    tamanho: string | null
+    estoque: number | null
     preco: Decimal | null
     porcentagemDesconto: Decimal | null
     lojaId: string | null
     categoriaId: string | null
+    status: $Enums.ProdutoStatus | null
+    totalVendido: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type ProdutoCountAggregateOutputType = {
     id: number
+    sku: number
     nome: number
     descricao: number
     imagemUrl: number
+    imagemUrls: number
+    cor: number
+    tamanho: number
+    estoque: number
     preco: number
     porcentagemDesconto: number
     lojaId: number
     categoriaId: number
+    status: number
+    totalVendido: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
   export type ProdutoAvgAggregateInputType = {
+    estoque?: true
     preco?: true
     porcentagemDesconto?: true
+    totalVendido?: true
   }
 
   export type ProdutoSumAggregateInputType = {
+    estoque?: true
     preco?: true
     porcentagemDesconto?: true
+    totalVendido?: true
   }
 
   export type ProdutoMinAggregateInputType = {
     id?: true
+    sku?: true
     nome?: true
     descricao?: true
     imagemUrl?: true
+    cor?: true
+    tamanho?: true
+    estoque?: true
     preco?: true
     porcentagemDesconto?: true
     lojaId?: true
     categoriaId?: true
+    status?: true
+    totalVendido?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type ProdutoMaxAggregateInputType = {
     id?: true
+    sku?: true
     nome?: true
     descricao?: true
     imagemUrl?: true
+    cor?: true
+    tamanho?: true
+    estoque?: true
     preco?: true
     porcentagemDesconto?: true
     lojaId?: true
     categoriaId?: true
+    status?: true
+    totalVendido?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type ProdutoCountAggregateInputType = {
     id?: true
+    sku?: true
     nome?: true
     descricao?: true
     imagemUrl?: true
+    imagemUrls?: true
+    cor?: true
+    tamanho?: true
+    estoque?: true
     preco?: true
     porcentagemDesconto?: true
     lojaId?: true
     categoriaId?: true
+    status?: true
+    totalVendido?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -4079,13 +4149,22 @@ export namespace Prisma {
 
   export type ProdutoGroupByOutputType = {
     id: string
+    sku: string
     nome: string
     descricao: string
     imagemUrl: string
+    imagemUrls: string[]
+    cor: string
+    tamanho: string
+    estoque: number
     preco: Decimal
-    porcentagemDesconto: Decimal
+    porcentagemDesconto: Decimal | null
     lojaId: string
     categoriaId: string
+    status: $Enums.ProdutoStatus
+    totalVendido: number | null
+    createdAt: Date
+    updatedAt: Date | null
     _count: ProdutoCountAggregateOutputType | null
     _avg: ProdutoAvgAggregateOutputType | null
     _sum: ProdutoSumAggregateOutputType | null
@@ -4109,13 +4188,22 @@ export namespace Prisma {
 
   export type ProdutoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    sku?: boolean
     nome?: boolean
     descricao?: boolean
     imagemUrl?: boolean
+    imagemUrls?: boolean
+    cor?: boolean
+    tamanho?: boolean
+    estoque?: boolean
     preco?: boolean
     porcentagemDesconto?: boolean
     lojaId?: boolean
     categoriaId?: boolean
+    status?: boolean
+    totalVendido?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     pedidos?: boolean | Produto$pedidosArgs<ExtArgs>
     categoria?: boolean | CategoriaDefaultArgs<ExtArgs>
     loja?: boolean | LojaDefaultArgs<ExtArgs>
@@ -4124,26 +4212,44 @@ export namespace Prisma {
 
   export type ProdutoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    sku?: boolean
     nome?: boolean
     descricao?: boolean
     imagemUrl?: boolean
+    imagemUrls?: boolean
+    cor?: boolean
+    tamanho?: boolean
+    estoque?: boolean
     preco?: boolean
     porcentagemDesconto?: boolean
     lojaId?: boolean
     categoriaId?: boolean
+    status?: boolean
+    totalVendido?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     categoria?: boolean | CategoriaDefaultArgs<ExtArgs>
     loja?: boolean | LojaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["produto"]>
 
   export type ProdutoSelectScalar = {
     id?: boolean
+    sku?: boolean
     nome?: boolean
     descricao?: boolean
     imagemUrl?: boolean
+    imagemUrls?: boolean
+    cor?: boolean
+    tamanho?: boolean
+    estoque?: boolean
     preco?: boolean
     porcentagemDesconto?: boolean
     lojaId?: boolean
     categoriaId?: boolean
+    status?: boolean
+    totalVendido?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
   export type ProdutoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4166,13 +4272,22 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      sku: string
       nome: string
       descricao: string
       imagemUrl: string
+      imagemUrls: string[]
+      cor: string
+      tamanho: string
+      estoque: number
       preco: Prisma.Decimal
-      porcentagemDesconto: Prisma.Decimal
+      porcentagemDesconto: Prisma.Decimal | null
       lojaId: string
       categoriaId: string
+      status: $Enums.ProdutoStatus
+      totalVendido: number | null
+      createdAt: Date
+      updatedAt: Date | null
     }, ExtArgs["result"]["produto"]>
     composites: {}
   }
@@ -4598,13 +4713,22 @@ export namespace Prisma {
    */ 
   interface ProdutoFieldRefs {
     readonly id: FieldRef<"Produto", 'String'>
+    readonly sku: FieldRef<"Produto", 'String'>
     readonly nome: FieldRef<"Produto", 'String'>
     readonly descricao: FieldRef<"Produto", 'String'>
     readonly imagemUrl: FieldRef<"Produto", 'String'>
+    readonly imagemUrls: FieldRef<"Produto", 'String[]'>
+    readonly cor: FieldRef<"Produto", 'String'>
+    readonly tamanho: FieldRef<"Produto", 'String'>
+    readonly estoque: FieldRef<"Produto", 'Int'>
     readonly preco: FieldRef<"Produto", 'Decimal'>
     readonly porcentagemDesconto: FieldRef<"Produto", 'Decimal'>
     readonly lojaId: FieldRef<"Produto", 'String'>
     readonly categoriaId: FieldRef<"Produto", 'String'>
+    readonly status: FieldRef<"Produto", 'ProdutoStatus'>
+    readonly totalVendido: FieldRef<"Produto", 'Int'>
+    readonly createdAt: FieldRef<"Produto", 'DateTime'>
+    readonly updatedAt: FieldRef<"Produto", 'DateTime'>
   }
     
 
@@ -11067,13 +11191,22 @@ export namespace Prisma {
 
   export const ProdutoScalarFieldEnum: {
     id: 'id',
+    sku: 'sku',
     nome: 'nome',
     descricao: 'descricao',
     imagemUrl: 'imagemUrl',
+    imagemUrls: 'imagemUrls',
+    cor: 'cor',
+    tamanho: 'tamanho',
+    estoque: 'estoque',
     preco: 'preco',
     porcentagemDesconto: 'porcentagemDesconto',
     lojaId: 'lojaId',
-    categoriaId: 'categoriaId'
+    categoriaId: 'categoriaId',
+    status: 'status',
+    totalVendido: 'totalVendido',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type ProdutoScalarFieldEnum = (typeof ProdutoScalarFieldEnum)[keyof typeof ProdutoScalarFieldEnum]
@@ -11213,6 +11346,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Decimal'
    */
   export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
@@ -11227,16 +11374,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'ProdutoStatus'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type EnumProdutoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProdutoStatus'>
     
 
 
   /**
-   * Reference to a field of type 'Int[]'
+   * Reference to a field of type 'ProdutoStatus[]'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type ListEnumProdutoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProdutoStatus[]'>
     
 
 
@@ -11432,13 +11579,22 @@ export namespace Prisma {
     OR?: ProdutoWhereInput[]
     NOT?: ProdutoWhereInput | ProdutoWhereInput[]
     id?: StringFilter<"Produto"> | string
+    sku?: StringFilter<"Produto"> | string
     nome?: StringFilter<"Produto"> | string
     descricao?: StringFilter<"Produto"> | string
     imagemUrl?: StringFilter<"Produto"> | string
+    imagemUrls?: StringNullableListFilter<"Produto">
+    cor?: StringFilter<"Produto"> | string
+    tamanho?: StringFilter<"Produto"> | string
+    estoque?: IntFilter<"Produto"> | number
     preco?: DecimalFilter<"Produto"> | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFilter<"Produto"> | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: DecimalNullableFilter<"Produto"> | Decimal | DecimalJsLike | number | string | null
     lojaId?: StringFilter<"Produto"> | string
     categoriaId?: StringFilter<"Produto"> | string
+    status?: EnumProdutoStatusFilter<"Produto"> | $Enums.ProdutoStatus
+    totalVendido?: IntNullableFilter<"Produto"> | number | null
+    createdAt?: DateTimeFilter<"Produto"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Produto"> | Date | string | null
     pedidos?: OrderProductListRelationFilter
     categoria?: XOR<CategoriaRelationFilter, CategoriaWhereInput>
     loja?: XOR<LojaRelationFilter, LojaWhereInput>
@@ -11446,13 +11602,22 @@ export namespace Prisma {
 
   export type ProdutoOrderByWithRelationInput = {
     id?: SortOrder
+    sku?: SortOrder
     nome?: SortOrder
     descricao?: SortOrder
     imagemUrl?: SortOrder
+    imagemUrls?: SortOrder
+    cor?: SortOrder
+    tamanho?: SortOrder
+    estoque?: SortOrder
     preco?: SortOrder
-    porcentagemDesconto?: SortOrder
+    porcentagemDesconto?: SortOrderInput | SortOrder
     lojaId?: SortOrder
     categoriaId?: SortOrder
+    status?: SortOrder
+    totalVendido?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     pedidos?: OrderProductOrderByRelationAggregateInput
     categoria?: CategoriaOrderByWithRelationInput
     loja?: LojaOrderByWithRelationInput
@@ -11460,30 +11625,48 @@ export namespace Prisma {
 
   export type ProdutoWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    sku?: string
     AND?: ProdutoWhereInput | ProdutoWhereInput[]
     OR?: ProdutoWhereInput[]
     NOT?: ProdutoWhereInput | ProdutoWhereInput[]
     nome?: StringFilter<"Produto"> | string
     descricao?: StringFilter<"Produto"> | string
     imagemUrl?: StringFilter<"Produto"> | string
+    imagemUrls?: StringNullableListFilter<"Produto">
+    cor?: StringFilter<"Produto"> | string
+    tamanho?: StringFilter<"Produto"> | string
+    estoque?: IntFilter<"Produto"> | number
     preco?: DecimalFilter<"Produto"> | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFilter<"Produto"> | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: DecimalNullableFilter<"Produto"> | Decimal | DecimalJsLike | number | string | null
     lojaId?: StringFilter<"Produto"> | string
     categoriaId?: StringFilter<"Produto"> | string
+    status?: EnumProdutoStatusFilter<"Produto"> | $Enums.ProdutoStatus
+    totalVendido?: IntNullableFilter<"Produto"> | number | null
+    createdAt?: DateTimeFilter<"Produto"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Produto"> | Date | string | null
     pedidos?: OrderProductListRelationFilter
     categoria?: XOR<CategoriaRelationFilter, CategoriaWhereInput>
     loja?: XOR<LojaRelationFilter, LojaWhereInput>
-  }, "id">
+  }, "id" | "sku">
 
   export type ProdutoOrderByWithAggregationInput = {
     id?: SortOrder
+    sku?: SortOrder
     nome?: SortOrder
     descricao?: SortOrder
     imagemUrl?: SortOrder
+    imagemUrls?: SortOrder
+    cor?: SortOrder
+    tamanho?: SortOrder
+    estoque?: SortOrder
     preco?: SortOrder
-    porcentagemDesconto?: SortOrder
+    porcentagemDesconto?: SortOrderInput | SortOrder
     lojaId?: SortOrder
     categoriaId?: SortOrder
+    status?: SortOrder
+    totalVendido?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     _count?: ProdutoCountOrderByAggregateInput
     _avg?: ProdutoAvgOrderByAggregateInput
     _max?: ProdutoMaxOrderByAggregateInput
@@ -11496,13 +11679,22 @@ export namespace Prisma {
     OR?: ProdutoScalarWhereWithAggregatesInput[]
     NOT?: ProdutoScalarWhereWithAggregatesInput | ProdutoScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Produto"> | string
+    sku?: StringWithAggregatesFilter<"Produto"> | string
     nome?: StringWithAggregatesFilter<"Produto"> | string
     descricao?: StringWithAggregatesFilter<"Produto"> | string
     imagemUrl?: StringWithAggregatesFilter<"Produto"> | string
+    imagemUrls?: StringNullableListFilter<"Produto">
+    cor?: StringWithAggregatesFilter<"Produto"> | string
+    tamanho?: StringWithAggregatesFilter<"Produto"> | string
+    estoque?: IntWithAggregatesFilter<"Produto"> | number
     preco?: DecimalWithAggregatesFilter<"Produto"> | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalWithAggregatesFilter<"Produto"> | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: DecimalNullableWithAggregatesFilter<"Produto"> | Decimal | DecimalJsLike | number | string | null
     lojaId?: StringWithAggregatesFilter<"Produto"> | string
     categoriaId?: StringWithAggregatesFilter<"Produto"> | string
+    status?: EnumProdutoStatusWithAggregatesFilter<"Produto"> | $Enums.ProdutoStatus
+    totalVendido?: IntNullableWithAggregatesFilter<"Produto"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"Produto"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Produto"> | Date | string | null
   }
 
   export type OrderProductWhereInput = {
@@ -12069,11 +12261,20 @@ export namespace Prisma {
 
   export type ProdutoCreateInput = {
     id?: string
+    sku: string
     nome: string
     descricao: string
     imagemUrl: string
+    imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
+    cor: string
+    tamanho: string
+    estoque: number
     preco: Decimal | DecimalJsLike | number | string
-    porcentagemDesconto: Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.ProdutoStatus
+    totalVendido?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     pedidos?: OrderProductCreateNestedManyWithoutProductInput
     categoria: CategoriaCreateNestedOneWithoutProdutosInput
     loja: LojaCreateNestedOneWithoutProdutosInput
@@ -12081,23 +12282,41 @@ export namespace Prisma {
 
   export type ProdutoUncheckedCreateInput = {
     id?: string
+    sku: string
     nome: string
     descricao: string
     imagemUrl: string
+    imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
+    cor: string
+    tamanho: string
+    estoque: number
     preco: Decimal | DecimalJsLike | number | string
-    porcentagemDesconto: Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
     lojaId: string
     categoriaId: string
+    status?: $Enums.ProdutoStatus
+    totalVendido?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     pedidos?: OrderProductUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProdutoUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
+    imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
+    cor?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
+    totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: OrderProductUpdateManyWithoutProductNestedInput
     categoria?: CategoriaUpdateOneRequiredWithoutProdutosNestedInput
     loja?: LojaUpdateOneRequiredWithoutProdutosNestedInput
@@ -12105,45 +12324,81 @@ export namespace Prisma {
 
   export type ProdutoUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
+    imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
+    cor?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lojaId?: StringFieldUpdateOperationsInput | string
     categoriaId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
+    totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: OrderProductUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProdutoCreateManyInput = {
     id?: string
+    sku: string
     nome: string
     descricao: string
     imagemUrl: string
+    imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
+    cor: string
+    tamanho: string
+    estoque: number
     preco: Decimal | DecimalJsLike | number | string
-    porcentagemDesconto: Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
     lojaId: string
     categoriaId: string
+    status?: $Enums.ProdutoStatus
+    totalVendido?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type ProdutoUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
+    imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
+    cor?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
+    totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ProdutoUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
+    imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
+    cor?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lojaId?: StringFieldUpdateOperationsInput | string
     categoriaId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
+    totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type OrderProductCreateInput = {
@@ -12767,6 +13022,25 @@ export namespace Prisma {
     imageUrl?: SortOrder
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type DecimalFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -12776,6 +13050,46 @@ export namespace Prisma {
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type EnumProdutoStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProdutoStatus | EnumProdutoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProdutoStatus[] | ListEnumProdutoStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProdutoStatus[] | ListEnumProdutoStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProdutoStatusFilter<$PrismaModel> | $Enums.ProdutoStatus
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type OrderProductListRelationFilter = {
@@ -12800,45 +13114,90 @@ export namespace Prisma {
 
   export type ProdutoCountOrderByAggregateInput = {
     id?: SortOrder
+    sku?: SortOrder
     nome?: SortOrder
     descricao?: SortOrder
     imagemUrl?: SortOrder
+    imagemUrls?: SortOrder
+    cor?: SortOrder
+    tamanho?: SortOrder
+    estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrder
     lojaId?: SortOrder
     categoriaId?: SortOrder
+    status?: SortOrder
+    totalVendido?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ProdutoAvgOrderByAggregateInput = {
+    estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrder
+    totalVendido?: SortOrder
   }
 
   export type ProdutoMaxOrderByAggregateInput = {
     id?: SortOrder
+    sku?: SortOrder
     nome?: SortOrder
     descricao?: SortOrder
     imagemUrl?: SortOrder
+    cor?: SortOrder
+    tamanho?: SortOrder
+    estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrder
     lojaId?: SortOrder
     categoriaId?: SortOrder
+    status?: SortOrder
+    totalVendido?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ProdutoMinOrderByAggregateInput = {
     id?: SortOrder
+    sku?: SortOrder
     nome?: SortOrder
     descricao?: SortOrder
     imagemUrl?: SortOrder
+    cor?: SortOrder
+    tamanho?: SortOrder
+    estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrder
     lojaId?: SortOrder
     categoriaId?: SortOrder
+    status?: SortOrder
+    totalVendido?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ProdutoSumOrderByAggregateInput = {
+    estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrder
+    totalVendido?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
@@ -12857,15 +13216,60 @@ export namespace Prisma {
     _max?: NestedDecimalFilter<$PrismaModel>
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type EnumProdutoStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProdutoStatus | EnumProdutoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProdutoStatus[] | ListEnumProdutoStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProdutoStatus[] | ListEnumProdutoStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProdutoStatusWithAggregatesFilter<$PrismaModel> | $Enums.ProdutoStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProdutoStatusFilter<$PrismaModel>
+    _max?: NestedEnumProdutoStatusFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type OrderRelationFilter = {
@@ -12905,44 +13309,6 @@ export namespace Prisma {
 
   export type OrderProductSumOrderByAggregateInput = {
     quantity?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type DecimalNullableFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type EnumOrderStatusFilter<$PrismaModel = never> = {
@@ -13008,38 +13374,6 @@ export namespace Prisma {
     subTotalPrice?: SortOrder
     totalPrice?: SortOrder
     totalDiscount?: SortOrder
-  }
-
-  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedDecimalNullableFilter<$PrismaModel>
-    _sum?: NestedDecimalNullableFilter<$PrismaModel>
-    _min?: NestedDecimalNullableFilter<$PrismaModel>
-    _max?: NestedDecimalNullableFilter<$PrismaModel>
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type EnumOrderStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -13131,17 +13465,6 @@ export namespace Prisma {
     expires?: SortOrder
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type EnumRoleFilter<$PrismaModel = never> = {
     equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
     in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
@@ -13194,20 +13517,6 @@ export namespace Prisma {
     emailVerified?: SortOrder
     image?: SortOrder
     role?: SortOrder
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
@@ -13471,6 +13780,10 @@ export namespace Prisma {
     deleteMany?: LojaScalarWhereInput | LojaScalarWhereInput[]
   }
 
+  export type ProdutoCreateimagemUrlsInput = {
+    set: string[]
+  }
+
   export type OrderProductCreateNestedManyWithoutProductInput = {
     create?: XOR<OrderProductCreateWithoutProductInput, OrderProductUncheckedCreateWithoutProductInput> | OrderProductCreateWithoutProductInput[] | OrderProductUncheckedCreateWithoutProductInput[]
     connectOrCreate?: OrderProductCreateOrConnectWithoutProductInput | OrderProductCreateOrConnectWithoutProductInput[]
@@ -13497,12 +13810,49 @@ export namespace Prisma {
     connect?: OrderProductWhereUniqueInput | OrderProductWhereUniqueInput[]
   }
 
+  export type ProdutoUpdateimagemUrlsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type DecimalFieldUpdateOperationsInput = {
     set?: Decimal | DecimalJsLike | number | string
     increment?: Decimal | DecimalJsLike | number | string
     decrement?: Decimal | DecimalJsLike | number | string
     multiply?: Decimal | DecimalJsLike | number | string
     divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type EnumProdutoStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ProdutoStatus
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type OrderProductUpdateManyWithoutProductNestedInput = {
@@ -13561,14 +13911,6 @@ export namespace Prisma {
     connect?: ProdutoWhereUniqueInput
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type OrderUpdateOneRequiredWithoutProductsNestedInput = {
     create?: XOR<OrderCreateWithoutProductsInput, OrderUncheckedCreateWithoutProductsInput>
     connectOrCreate?: OrderCreateOrConnectWithoutProductsInput
@@ -13609,22 +13951,6 @@ export namespace Prisma {
     connectOrCreate?: OrderProductCreateOrConnectWithoutOrderInput | OrderProductCreateOrConnectWithoutOrderInput[]
     createMany?: OrderProductCreateManyOrderInputEnvelope
     connect?: OrderProductWhereUniqueInput | OrderProductWhereUniqueInput[]
-  }
-
-  export type NullableDecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string | null
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type EnumOrderStatusFieldUpdateOperationsInput = {
@@ -13757,10 +14083,6 @@ export namespace Prisma {
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
     createMany?: SessionCreateManyUserInputEnvelope
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
   }
 
   export type EnumRoleFieldUpdateOperationsInput = {
@@ -13999,20 +14321,33 @@ export namespace Prisma {
     not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
-  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type NestedEnumProdutoStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProdutoStatus | EnumProdutoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProdutoStatus[] | ListEnumProdutoStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProdutoStatus[] | ListEnumProdutoStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProdutoStatusFilter<$PrismaModel> | $Enums.ProdutoStatus
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -14042,22 +14377,20 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type NestedEnumOrderStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumOrderStatusFilter<$PrismaModel> | $Enums.OrderStatus
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -14074,6 +14407,16 @@ export namespace Prisma {
     _sum?: NestedDecimalNullableFilter<$PrismaModel>
     _min?: NestedDecimalNullableFilter<$PrismaModel>
     _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumProdutoStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProdutoStatus | EnumProdutoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProdutoStatus[] | ListEnumProdutoStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProdutoStatus[] | ListEnumProdutoStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProdutoStatusWithAggregatesFilter<$PrismaModel> | $Enums.ProdutoStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProdutoStatusFilter<$PrismaModel>
+    _max?: NestedEnumProdutoStatusFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -14103,34 +14446,6 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedEnumOrderStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumOrderStatusWithAggregatesFilter<$PrismaModel> | $Enums.OrderStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumOrderStatusFilter<$PrismaModel>
-    _max?: NestedEnumOrderStatusFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type NestedEnumRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
-  }
-
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -14143,6 +14458,30 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumOrderStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumOrderStatusFilter<$PrismaModel> | $Enums.OrderStatus
+  }
+
+  export type NestedEnumOrderStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumOrderStatusWithAggregatesFilter<$PrismaModel> | $Enums.OrderStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumOrderStatusFilter<$PrismaModel>
+    _max?: NestedEnumOrderStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
   export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
@@ -14224,23 +14563,41 @@ export namespace Prisma {
 
   export type ProdutoCreateWithoutLojaInput = {
     id?: string
+    sku: string
     nome: string
     descricao: string
     imagemUrl: string
+    imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
+    cor: string
+    tamanho: string
+    estoque: number
     preco: Decimal | DecimalJsLike | number | string
-    porcentagemDesconto: Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.ProdutoStatus
+    totalVendido?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     pedidos?: OrderProductCreateNestedManyWithoutProductInput
     categoria: CategoriaCreateNestedOneWithoutProdutosInput
   }
 
   export type ProdutoUncheckedCreateWithoutLojaInput = {
     id?: string
+    sku: string
     nome: string
     descricao: string
     imagemUrl: string
+    imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
+    cor: string
+    tamanho: string
+    estoque: number
     preco: Decimal | DecimalJsLike | number | string
-    porcentagemDesconto: Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
     categoriaId: string
+    status?: $Enums.ProdutoStatus
+    totalVendido?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     pedidos?: OrderProductUncheckedCreateNestedManyWithoutProductInput
   }
 
@@ -14362,13 +14719,22 @@ export namespace Prisma {
     OR?: ProdutoScalarWhereInput[]
     NOT?: ProdutoScalarWhereInput | ProdutoScalarWhereInput[]
     id?: StringFilter<"Produto"> | string
+    sku?: StringFilter<"Produto"> | string
     nome?: StringFilter<"Produto"> | string
     descricao?: StringFilter<"Produto"> | string
     imagemUrl?: StringFilter<"Produto"> | string
+    imagemUrls?: StringNullableListFilter<"Produto">
+    cor?: StringFilter<"Produto"> | string
+    tamanho?: StringFilter<"Produto"> | string
+    estoque?: IntFilter<"Produto"> | number
     preco?: DecimalFilter<"Produto"> | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFilter<"Produto"> | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: DecimalNullableFilter<"Produto"> | Decimal | DecimalJsLike | number | string | null
     lojaId?: StringFilter<"Produto"> | string
     categoriaId?: StringFilter<"Produto"> | string
+    status?: EnumProdutoStatusFilter<"Produto"> | $Enums.ProdutoStatus
+    totalVendido?: IntNullableFilter<"Produto"> | number | null
+    createdAt?: DateTimeFilter<"Produto"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Produto"> | Date | string | null
   }
 
   export type CategoriaUpsertWithWhereUniqueWithoutLojasInput = {
@@ -14398,23 +14764,41 @@ export namespace Prisma {
 
   export type ProdutoCreateWithoutCategoriaInput = {
     id?: string
+    sku: string
     nome: string
     descricao: string
     imagemUrl: string
+    imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
+    cor: string
+    tamanho: string
+    estoque: number
     preco: Decimal | DecimalJsLike | number | string
-    porcentagemDesconto: Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.ProdutoStatus
+    totalVendido?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     pedidos?: OrderProductCreateNestedManyWithoutProductInput
     loja: LojaCreateNestedOneWithoutProdutosInput
   }
 
   export type ProdutoUncheckedCreateWithoutCategoriaInput = {
     id?: string
+    sku: string
     nome: string
     descricao: string
     imagemUrl: string
+    imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
+    cor: string
+    tamanho: string
+    estoque: number
     preco: Decimal | DecimalJsLike | number | string
-    porcentagemDesconto: Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
     lojaId: string
+    status?: $Enums.ProdutoStatus
+    totalVendido?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     pedidos?: OrderProductUncheckedCreateNestedManyWithoutProductInput
   }
 
@@ -14721,24 +15105,42 @@ export namespace Prisma {
 
   export type ProdutoCreateWithoutPedidosInput = {
     id?: string
+    sku: string
     nome: string
     descricao: string
     imagemUrl: string
+    imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
+    cor: string
+    tamanho: string
+    estoque: number
     preco: Decimal | DecimalJsLike | number | string
-    porcentagemDesconto: Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
+    status?: $Enums.ProdutoStatus
+    totalVendido?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
     categoria: CategoriaCreateNestedOneWithoutProdutosInput
     loja: LojaCreateNestedOneWithoutProdutosInput
   }
 
   export type ProdutoUncheckedCreateWithoutPedidosInput = {
     id?: string
+    sku: string
     nome: string
     descricao: string
     imagemUrl: string
+    imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
+    cor: string
+    tamanho: string
+    estoque: number
     preco: Decimal | DecimalJsLike | number | string
-    porcentagemDesconto: Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
     lojaId: string
     categoriaId: string
+    status?: $Enums.ProdutoStatus
+    totalVendido?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type ProdutoCreateOrConnectWithoutPedidosInput = {
@@ -14798,24 +15200,42 @@ export namespace Prisma {
 
   export type ProdutoUpdateWithoutPedidosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
+    imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
+    cor?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
+    totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     categoria?: CategoriaUpdateOneRequiredWithoutProdutosNestedInput
     loja?: LojaUpdateOneRequiredWithoutProdutosNestedInput
   }
 
   export type ProdutoUncheckedUpdateWithoutPedidosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
+    imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
+    cor?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lojaId?: StringFieldUpdateOperationsInput | string
     categoriaId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
+    totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type LojaCreateWithoutPedidosInput = {
@@ -15375,12 +15795,21 @@ export namespace Prisma {
 
   export type ProdutoCreateManyLojaInput = {
     id?: string
+    sku: string
     nome: string
     descricao: string
     imagemUrl: string
+    imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
+    cor: string
+    tamanho: string
+    estoque: number
     preco: Decimal | DecimalJsLike | number | string
-    porcentagemDesconto: Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
     categoriaId: string
+    status?: $Enums.ProdutoStatus
+    totalVendido?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type OrderUpdateWithoutLojaInput = {
@@ -15426,34 +15855,61 @@ export namespace Prisma {
 
   export type ProdutoUpdateWithoutLojaInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
+    imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
+    cor?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
+    totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: OrderProductUpdateManyWithoutProductNestedInput
     categoria?: CategoriaUpdateOneRequiredWithoutProdutosNestedInput
   }
 
   export type ProdutoUncheckedUpdateWithoutLojaInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
+    imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
+    cor?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     categoriaId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
+    totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: OrderProductUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProdutoUncheckedUpdateManyWithoutLojaInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
+    imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
+    cor?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     categoriaId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
+    totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CategoriaUpdateWithoutLojasInput = {
@@ -15478,44 +15934,80 @@ export namespace Prisma {
 
   export type ProdutoCreateManyCategoriaInput = {
     id?: string
+    sku: string
     nome: string
     descricao: string
     imagemUrl: string
+    imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
+    cor: string
+    tamanho: string
+    estoque: number
     preco: Decimal | DecimalJsLike | number | string
-    porcentagemDesconto: Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
     lojaId: string
+    status?: $Enums.ProdutoStatus
+    totalVendido?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type ProdutoUpdateWithoutCategoriaInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
+    imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
+    cor?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
+    totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: OrderProductUpdateManyWithoutProductNestedInput
     loja?: LojaUpdateOneRequiredWithoutProdutosNestedInput
   }
 
   export type ProdutoUncheckedUpdateWithoutCategoriaInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
+    imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
+    cor?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lojaId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
+    totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: OrderProductUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProdutoUncheckedUpdateManyWithoutCategoriaInput = {
     id?: StringFieldUpdateOperationsInput | string
+    sku?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
+    imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
+    cor?: StringFieldUpdateOperationsInput | string
+    tamanho?: StringFieldUpdateOperationsInput | string
+    estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    porcentagemDesconto?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lojaId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
+    totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type LojaUpdateWithoutCategoriasInput = {

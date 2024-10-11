@@ -25,6 +25,9 @@ const nextConfig = {
       },
       {
         hostname: "cdn.pixabay.com",
+      },
+      {
+        hostname: "plus.unsplash.com"
       }
     ],
   },

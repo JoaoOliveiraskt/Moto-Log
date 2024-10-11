@@ -1,4 +1,3 @@
-import Container from "./container";
 import { db } from "@/lib/prisma";
 import ProductCard from "./product-card";
 import SeeAllButton from "./see-all-button";
@@ -45,11 +44,14 @@ export default async function DiscountProducts() {
         <SeeAllButton href="/discount" />
       </div>
       <ProductList>
-        {products.slice(0, 10).map((product) => (
-          <div key={product.id}>
-            <ProductCard product={product} />
-          </div>
-        ))}
+        {products
+          .reverse()
+          .slice(0, 10)
+          .map((product) => (
+            <div key={product.id}>
+              <ProductCard product={product} />
+            </div>
+          ))}
       </ProductList>
     </div>
   );

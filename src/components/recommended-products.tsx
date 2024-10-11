@@ -11,7 +11,6 @@ export default async function RecommendedProducts() {
         select: { nome: true },
       },
     },
-    take: 15,
   });
   return (
     <div className="space-y-5">
@@ -22,12 +21,15 @@ export default async function RecommendedProducts() {
         <SeeAllButton href="/recommended" />
       </div>
       <ProductList>
-        {products.map((product: Produto) => (
-          <div key={product.id}>
-            {/* @ts-ignore */}
-            <ProductCard product={product} />
-          </div>
-        ))}
+        {products
+          .reverse()
+          .slice(0, 15)
+          .map((product: Produto) => (
+            <div key={product.id}>
+              {/* @ts-ignore */}
+              <ProductCard product={product} />
+            </div>
+          ))}
       </ProductList>
     </div>
   );

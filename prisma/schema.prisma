@@ -36,16 +36,31 @@ model Categoria {
 
 model Produto {
   id                  String         @id @default(uuid())
+  sku                 String         @unique
   nome                String
   descricao           String
   imagemUrl           String
+  imagemUrls          String[]       @default([])
+  cor                 String
+  tamanho             String
+  estoque             Int
   preco               Decimal        @db.Decimal(10, 2)
-  porcentagemDesconto Decimal        @db.Decimal(10, 2)
+  porcentagemDesconto Decimal?       @db.Decimal(10, 2)
   lojaId              String
   categoriaId         String
   pedidos             OrderProduct[]
   categoria           Categoria      @relation(fields: [categoriaId], references: [id])
   loja                Loja           @relation(fields: [lojaId], references: [id])
+
+  status       ProdutoStatus @default(ATIVO)
+  totalVendido Int?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime?     @updatedAt
+}
+
+enum ProdutoStatus {
+  ATIVO
+  ARQUIVADO
 }
 
 model OrderProduct {

@@ -6,115 +6,116 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { PlusCircle } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useFormContext } from "react-hook-form";
 
 export default function Stock() {
+  const { register, setValue } = useFormContext();
+
   return (
     <Card x-chunk="dashboard-07-chunk-1">
       <CardHeader className="px-6 mt-6 space-y-2 mb-5">
         <CardTitle>Estoque</CardTitle>
-        <CardDescription>
-          Adicione variantes de produtos e gerencie o estoque
-        </CardDescription>
       </CardHeader>
       <CardContent>
-        <Table>
+        <Table className="">
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[100px]">SKU</TableHead>
               <TableHead>Estoque</TableHead>
               <TableHead>Preço</TableHead>
-              <TableHead className="w-[100px]">Tamanho</TableHead>
+              <TableHead>
+                <span>Desconto (%)</span>
+              </TableHead>
+              <TableHead>Tamanho</TableHead>
+              <TableHead className="max-w-[100px]">Cor</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell className="font-semibold">GGPC-001</TableCell>
+            <TableRow className="hover-none">
               <TableCell>
-                <Label htmlFor="stock-1" className="sr-only">
+                <Label htmlFor="stock" className="sr-only">
                   Estoque
                 </Label>
-                <Input id="stock-1" type="number" defaultValue="100" />
+                <Input
+                  {...register("stock", {
+                    required: "O estoque é obrigatório",
+                  })}
+                  id="stock"
+                  type="number"
+                  placeholder="Ex: 100"
+                />
               </TableCell>
+
               <TableCell>
-                <Label htmlFor="price-1" className="sr-only">
-                  Price
+                <Label htmlFor="price" className="sr-only">
+                  Preço
                 </Label>
-                <Input id="price-1" type="number" defaultValue="99.99" />
+                <Input
+                  {...register("price", {
+                    required: "O preço é obrigatório",
+                  })}
+                  id="price"
+                  type="number"
+                  step="0.01"
+                  placeholder="Ex: 99.99"
+                />
               </TableCell>
-              <TableCell>
-                <ToggleGroup type="single" defaultValue="s" variant="outline">
-                  <ToggleGroupItem value="s">P</ToggleGroupItem>
-                  <ToggleGroupItem value="m">M</ToggleGroupItem>
-                  <ToggleGroupItem value="l">G</ToggleGroupItem>
-                </ToggleGroup>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-semibold">GGPC-002</TableCell>
-              <TableCell>
-                <Label htmlFor="stock-2" className="sr-only">
-                  Estoque
+
+              <TableCell className="flex items-center">
+                <Label htmlFor="discountPercentage" className="sr-only">
+                  Desconto
                 </Label>
-                <Input id="stock-2" type="number" defaultValue="143" />
+                <Input
+                  {...register("discountPercentage", {
+                    required: "O desconto é obrigatório",
+                  })}
+                  id="discountPercentage"
+                  type="number"
+                  step="0.01"
+                  placeholder="Ex: 10.00"
+                />
               </TableCell>
+
               <TableCell>
-                <Label htmlFor="price-2" className="sr-only">
-                  Price
-                </Label>
-                <Input id="price-2" type="number" defaultValue="99.99" />
+                <Select onValueChange={(value) => setValue("size", value)}>
+                  <SelectTrigger className="w-fit">
+                    <SelectValue placeholder="Selecione" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="P">P</SelectItem>
+                    <SelectItem value="M">M</SelectItem>
+                    <SelectItem value="G">G</SelectItem>
+                    <SelectItem value="GG">GG</SelectItem>
+                  </SelectContent>
+                </Select>
               </TableCell>
+
               <TableCell>
-                <ToggleGroup type="single" defaultValue="m" variant="outline">
-                <ToggleGroupItem value="s">P</ToggleGroupItem>
-                  <ToggleGroupItem value="m">M</ToggleGroupItem>
-                  <ToggleGroupItem value="l">G</ToggleGroupItem>
-                </ToggleGroup>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-semibold">GGPC-003</TableCell>
-              <TableCell>
-                <Label htmlFor="stock-3" className="sr-only">
-                  Estoque
-                </Label>
-                <Input id="stock-3" type="number" defaultValue="32" />
-              </TableCell>
-              <TableCell>
-                <Label htmlFor="price-3" className="sr-only">
-                  Estoque
-                </Label>
-                <Input id="price-3" type="number" defaultValue="99.99" />
-              </TableCell>
-              <TableCell>
-                <ToggleGroup type="single" defaultValue="s" variant="outline">
-                <ToggleGroupItem value="s">P</ToggleGroupItem>
-                  <ToggleGroupItem value="m">M</ToggleGroupItem>
-                  <ToggleGroupItem value="l">G</ToggleGroupItem>
-                </ToggleGroup>
+                <Select onValueChange={(value) => setValue("color", value)}>
+                  <SelectTrigger className="w-fit">
+                    <SelectValue placeholder="Selecione" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="preto">Preto</SelectItem>
+                    <SelectItem value="branco">Branco</SelectItem>
+                    <SelectItem value="azul">Azul</SelectItem>
+                    <SelectItem value="vermelho">Vermelho</SelectItem>
+                  </SelectContent>
+                </Select>
               </TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </CardContent>
-      <CardFooter className="justify-center border-t p-4">
-        <Button size="sm" variant="ghost" className="gap-1">
-          <PlusCircle className="h-3.5 w-3.5" />
-          Adicionar variante
-        </Button>
-      </CardFooter>
     </Card>
   );
 }

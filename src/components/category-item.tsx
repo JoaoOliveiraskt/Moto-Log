@@ -32,7 +32,7 @@ export default function CategoryItem({
         className
       ])}
     >
-      <div className="flex items-center gap-1 w-fit px-4 py-2 bg-background hover:bg-accent hover:text-foreground rounded-full">
+      <div className="flex items-center gap-1 w-fit px-4 py-1.5 bg-card hover:bg-accent hover:text-foreground rounded-full">
         <p className="font-medium">{category.nome}</p>
       </div>
     </Link>

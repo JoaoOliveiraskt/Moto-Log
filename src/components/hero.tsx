@@ -1,6 +1,5 @@
 import React from "react";
 import { PiSealCheck } from "react-icons/pi";
-import BannerCarousel from "./banner-carousel";
 
 export default function Hero() {
   return (

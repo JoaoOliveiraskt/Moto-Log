@@ -4,8 +4,8 @@ import calculateTotalPrice from "@/app/helpers/price";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { useContext } from "react";
+import Icon from "./icons/icon-component";
 
-import { IoTrashOutline } from "react-icons/io5";
 
 interface CartItemProps {
   cartProduct: CartProduct;
@@ -92,7 +92,7 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
               size={"icon"}
               onClick={handleRemoveProduct}
             >
-              <IoTrashOutline size={18} />
+              <Icon.trash />
             </Button>
           </div>
         </div>

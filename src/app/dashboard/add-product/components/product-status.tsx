@@ -7,8 +7,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useFormContext, Controller } from "react-hook-form";
 
 export default function ProductStatus() {
+  const { control } = useFormContext();
+
   return (
     <Card x-chunk="dashboard-07-chunk-3">
       <CardHeader className="px-6 mt-6 space-y-2 mb-5">
@@ -18,15 +21,26 @@ export default function ProductStatus() {
         <div className="grid gap-6">
           <div className="grid gap-3">
             <Label htmlFor="status">Status</Label>
-            <Select>
-              <SelectTrigger id="status" aria-label="Select status">
-                <SelectValue placeholder="Selecionar status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="published">Ativo</SelectItem>
-                <SelectItem value="archived">Arquivado</SelectItem>
-              </SelectContent>
-            </Select>
+
+            <Controller
+              control={control}
+              name="status"
+              defaultValue="ATIVO"
+              render={({ field }) => (
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <SelectTrigger id="status" aria-label="Select status">
+                    <SelectValue placeholder="Selecionar status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="ATIVO">Ativo</SelectItem>
+                    <SelectItem value="ARQUIVADO">Arquivado</SelectItem>
+                  </SelectContent>
+                </Select>
+              )}
+            />
           </div>
         </div>
       </CardContent>

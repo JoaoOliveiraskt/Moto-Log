@@ -141,13 +141,22 @@ exports.Prisma.CategoriaScalarFieldEnum = {
 
 exports.Prisma.ProdutoScalarFieldEnum = {
   id: 'id',
+  sku: 'sku',
   nome: 'nome',
   descricao: 'descricao',
   imagemUrl: 'imagemUrl',
+  imagemUrls: 'imagemUrls',
+  cor: 'cor',
+  tamanho: 'tamanho',
+  estoque: 'estoque',
   preco: 'preco',
   porcentagemDesconto: 'porcentagemDesconto',
   lojaId: 'lojaId',
-  categoriaId: 'categoriaId'
+  categoriaId: 'categoriaId',
+  status: 'status',
+  totalVendido: 'totalVendido',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.OrderProductScalarFieldEnum = {
@@ -222,6 +231,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.ProdutoStatus = exports.$Enums.ProdutoStatus = {
+  ATIVO: 'ATIVO',
+  ARQUIVADO: 'ARQUIVADO'
+};
+
 exports.OrderStatus = exports.$Enums.OrderStatus = {
   PENDING: 'PENDING',
   CONFIRMED: 'CONFIRMED',

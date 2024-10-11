@@ -13,6 +13,7 @@ export const createStoreSchema = z.object({
     .string()
     .max(200, "O máximo de caracteres permitido é 200")
     .optional(),
+  imageUrl: z.string().url("A URL da imagem deve ser válida"),
   phone: z
     .string()
     .optional()
@@ -64,6 +65,7 @@ export async function POST(request: Request) {
       data: {
         nome: data.name,
         descricao: data.description,
+        imagemUrl: data.imageUrl,
         telefone: data.phone,
         endereco: data.address,
         horarioFuncionamento: data.workingHours,

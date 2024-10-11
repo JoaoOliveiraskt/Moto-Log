@@ -1,3 +1,6 @@
+"use client";
+
+import { useFormContext } from "react-hook-form";
 import {
   Card,
   CardContent,
@@ -10,6 +13,11 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function ProductDetails() {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   return (
     <Card x-chunk="dashboard-07-chunk-0">
       <CardHeader className="px-6 mt-6 space-y-2 mb-5">
@@ -26,16 +34,30 @@ export default function ProductDetails() {
               id="name"
               type="text"
               className="w-full"
-              defaultValue="Gamer Gear Pro Controller"
+              placeholder="Nome do produto"
+              {...register("name", {
+                required: "O nome do produto é obrigatório",
+              })}
             />
+            {errors.name && (
+              <p className="text-red-500 text-sm">
+                {errors.name.message?.toString()}
+              </p>
+            )}
           </div>
           <div className="grid gap-3">
             <Label htmlFor="description">Descrição</Label>
             <Textarea
               id="description"
-              defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl nec ultricies ultricies, nunc nisl ultricies nunc, nec ultricies nunc nisl nec nunc."
               className="min-h-32"
+              placeholder="Descrição do produto"
+              {...register("description")}
             />
+            {errors.description && (
+              <p className="text-red-500 text-sm">
+                {errors.description.message?.toString()}
+              </p>
+            )}
           </div>
         </div>
       </CardContent>

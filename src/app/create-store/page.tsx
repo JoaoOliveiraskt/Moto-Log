@@ -164,6 +164,23 @@ export default function CreateStore() {
                     )}
                   </div>
 
+                  {/* URL da imagem */}
+                  <div className="grid gap-3">
+                    <Label htmlFor="imageUrl">URL da Imagem</Label>
+                    <Input
+                      id="imageUrl"
+                      type="text"
+                      className="w-full"
+                      placeholder="URL da imagem"
+                      {...register("imageUrl")}
+                    />
+                    {errors.imageUrl && (
+                      <p className="text-red-500">
+                        {(errors.imageUrl as { message: string }).message}
+                      </p>
+                    )}
+                  </div>
+
                   {/* Telefone */}
                   <div className="grid gap-3">
                     <Label htmlFor="phone">

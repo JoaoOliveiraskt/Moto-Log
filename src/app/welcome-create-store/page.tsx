@@ -30,12 +30,12 @@ export default function WelcomeCreateStore() {
 
       <div className="relative z-10 w-full space-y-3 flex flex-col items-center justify-center -top-12">
         <motion.div {...h1Animation} className="max-w-3xl">
-          <h1 className="font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-8xl text-center bg-gradient-to-b from-neutral-50 via-neutral-300 to-neutral-700  text-transparent bg-clip-text p-2 tracking-tighter">
+          <h1 className="font-semibold text-2xl sm:text-5xl text-center bg-gradient-to-b from-neutral-50 via-neutral-300 to-neutral-700  text-transparent bg-clip-text p-2 tracking-tighter">
             Seja bem-vindo ao Moto Log
           </h1>
         </motion.div>
         <motion.div {...pAnimation}>
-          <h2 className="text-sm sm:text-lg max-w-lg text-center px-7 md:px-0">
+          <h2 className="text-sm sm:text-base max-w-xs sm:max-w-md text-center px-7 md:px-0">
             Crie sua nova loja em poucos passos e comece a vender seus produtos
             online de forma simples e rápida.
           </h2>

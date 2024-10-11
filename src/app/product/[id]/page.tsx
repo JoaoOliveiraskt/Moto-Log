@@ -35,7 +35,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
   const convertedProduct = {
     ...produto,
     preco: produto.preco.toNumber(),
-    porcentagemDesconto: produto.porcentagemDesconto.toNumber(),
+    porcentagemDesconto: produto.porcentagemDesconto ? produto.porcentagemDesconto.toNumber() : 0,
   };
 
   const images = Array.from({ length: 4 }, () => produto.imagemUrl);
@@ -48,14 +48,13 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
     include: {
       loja: true,
     },
-
     take: 5,
   });
 
   const relatedProductsConvertidos = relatedProducts.map((prod) => ({
     ...prod,
     preco: prod.preco.toNumber(),
-    porcentagemDesconto: prod.porcentagemDesconto.toNumber(),
+    porcentagemDesconto: prod.porcentagemDesconto ? prod.porcentagemDesconto.toNumber() : 0,
   }));
 
   return (
@@ -80,7 +79,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
 
             {/* Grid of related products */}
             <ProductList>
-              {relatedProducts.map((product) => (
+              {relatedProductsConvertidos.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </ProductList>

@@ -21,7 +21,7 @@ export default async function RecommendedProducts() {
         <GoBackButton name={name} />
       </div>
       <ProductList>
-        {products.map((product: Produto) => (
+        {products.slice().reverse().map((product: Produto) => (
           <div key={product.id}>
             {/* @ts-ignore */}
             <ProductCard product={product} />

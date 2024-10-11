@@ -1,6 +1,6 @@
-
 import Container from "@/components/container";
 import GoBackButton from "@/components/go-back-button";
+import Icon from "@/components/icons/icon-component";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import { Button } from "@/components/ui/button";
@@ -41,6 +41,7 @@ export default async function Store({ params }: Props) {
   }
 
   const products = store?.Produtos || [];
+  const storeImageUrl = store.imagemUrl;
 
   return (
     <>
@@ -48,13 +49,19 @@ export default async function Store({ params }: Props) {
         <GoBackButton className="hidden lg:flex"/>
       </Container>
       <div className="mt-2 mx-auto max-w-[1440px] relative h-[300px] overflow-hidden px-0 lg:px-4">
-        <Image
-          src={store.imagemUrl}
-          alt="Store Banner"
-          width={1920}
-          height={1000}
-          className="w-full h-full object-cover"
-        />
+        {storeImageUrl ? (
+          <Image
+            src={storeImageUrl}
+            alt="Store Banner"
+            width={1920}
+            height={1000}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="bg-gray-200 h-full flex items-center justify-center text-gray-700">
+            <span>Loja sem imagem</span>
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent " />
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-12">
           <div className="max-w-3xl">
@@ -90,11 +97,11 @@ export default async function Store({ params }: Props) {
                     </h2>
                     <div className="grid gap-2 text-muted-foreground">
                       <div className="flex items-center gap-2">
-                        <LocateIcon className="h-5 w-5" />
+                        <Icon.location />
                         <span>Rua Principal 123, Cidade Exemplo, EUA</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <ClockIcon className="h-5 w-5" />
+                        <Icon.clock />
                         <span>Seg-Sáb: 10h - 20h, Dom: 12h - 18h</span>
                       </div>
                     </div>
@@ -143,48 +150,5 @@ export default async function Store({ params }: Props) {
         </div>
       </Container>
     </>
-  );
-}
-
-function ClockIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
-    </svg>
-  );
-}
-
-function LocateIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <line x1="2" x2="5" y1="12" y2="12" />
-      <line x1="19" x2="22" y1="12" y2="12" />
-      <line x1="12" x2="12" y1="2" y2="5" />
-      <line x1="12" x2="12" y1="19" y2="22" />
-      <circle cx="12" cy="12" r="7" />
-    </svg>
   );
 }

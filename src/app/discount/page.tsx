@@ -32,11 +32,14 @@ export default async function DiscountPage() {
     <Container className="space-y-8 mt-20">
       <GoBackButton name={title} />
       <ProductList>
-        {products.map((product) => (
-          <div key={product.id}>
-            <ProductCard product={product} />
-          </div>
-        ))}
+        {products
+          .slice()
+          .reverse()
+          .map((product) => (
+            <div key={product.id}>
+              <ProductCard product={product} />
+            </div>
+          ))}
       </ProductList>
     </Container>
   );

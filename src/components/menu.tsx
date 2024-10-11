@@ -101,7 +101,8 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             </Button>
           </Link>
 
-          <Link
+         {!isLojista && (
+           <Link
             href="/welcome-create-store"
             passHref
             onClick={handleMenuOpen.close}
@@ -115,6 +116,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               <p className="block ">Vender Agora</p>
             </Button>
           </Link>
+         )}
         </div>
       </DropdownMenuContent>
     </DropdownMenu>

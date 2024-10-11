@@ -17,6 +17,9 @@ import { FaGithub } from "react-icons/fa6";
 import { GoIssueClosed } from "react-icons/go";
 import { CiHeart } from "react-icons/ci";
 import { TbHeartFilled } from "react-icons/tb";
+import { IoTrashOutline } from "react-icons/io5";
+import { FiClock } from "react-icons/fi";
+import { SlLocationPin } from "react-icons/sl";
 import {
   LineChart,
   Package,
@@ -28,6 +31,7 @@ import {
 const Icon = {
   home: FiHome,
   cart: RiShoppingCart2Line,
+  trash: IoTrashOutline,
   order: RiFileList3Line,
   menu: RiMenu2Fill,
   search: RxMagnifyingGlass,
@@ -50,6 +54,9 @@ const Icon = {
   confirmed: GoIssueClosed,
   heart: CiHeart,
   heartFilled: TbHeartFilled,
+  clock: FiClock,
+  location: SlLocationPin,
+  
 };
 
 export default Icon;
