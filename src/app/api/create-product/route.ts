@@ -47,6 +47,10 @@ const generateSKU = async (tx: any): Promise<string> => {
   return nextSKU;
 };
 
+const revalidatePaths = (paths: string[]) => {
+  paths.forEach(path => revalidatePath(path));
+};
+
 export async function POST(request: Request) {
   try {
     const session = await getServerSession(authOptions);
@@ -104,7 +108,7 @@ export async function POST(request: Request) {
         },
       });
     });
-    revalidatePath("/");
+    revalidatePaths(["/", "/recommended", "/discount"]);
 
     return NextResponse.json({ product }, { status: 201 });
   } catch (error) {
