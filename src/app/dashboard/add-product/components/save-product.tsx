@@ -11,14 +11,12 @@ const ProductFormActionButtons: React.FC<ProductFormActionButtonsProps> = ({ isL
     <div className="hidden items-center gap-2 md:ml-auto md:flex">
       <Button
         variant="outline"
-        size="sm"
         type="button"
         onClick={onDiscard}
       >
         Descartar
       </Button>
       <Button
-        size="sm"
         type="submit"
         disabled={isLoading}
         className="min-w-28"
