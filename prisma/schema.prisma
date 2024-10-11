@@ -23,15 +23,12 @@ model Loja {
   user                 User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   pedidos              Order[]
   Produtos             Produto[]
-  categorias           Categoria[] @relation("CategoriaToLoja")
 }
 
 model Categoria {
   id       String    @id @default(uuid())
   nome     String
-  imageUrl String
   produtos Produto[]
-  lojas    Loja[]    @relation("CategoriaToLoja")
 }
 
 model Produto {
@@ -41,8 +38,6 @@ model Produto {
   descricao           String
   imagemUrl           String
   imagemUrls          String[]       @default([])
-  cor                 String
-  tamanho             String
   estoque             Int
   preco               Decimal        @db.Decimal(10, 2)
   porcentagemDesconto Decimal?       @db.Decimal(10, 2)

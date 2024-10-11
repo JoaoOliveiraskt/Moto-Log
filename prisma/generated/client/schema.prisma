@@ -9,29 +9,26 @@ datasource db {
 }
 
 model Loja {
-  id                   String      @id @default(uuid())
+  id                   String    @id @default(uuid())
   nome                 String
   imagemUrl            String?
   descricao            String?
   imagemFile           String?
   userId               String
-  createdAt            DateTime    @default(now()) @db.Timestamp(6)
+  createdAt            DateTime  @default(now()) @db.Timestamp(6)
   endereco             String?
   horarioFuncionamento String?
   telefone             String?
-  email                String?     @db.VarChar
-  user                 User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  email                String?   @db.VarChar
+  user                 User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   pedidos              Order[]
   Produtos             Produto[]
-  categorias           Categoria[] @relation("CategoriaToLoja")
 }
 
 model Categoria {
   id       String    @id @default(uuid())
   nome     String
-  imageUrl String
   produtos Produto[]
-  lojas    Loja[]    @relation("CategoriaToLoja")
 }
 
 model Produto {
@@ -40,9 +37,7 @@ model Produto {
   nome                String
   descricao           String
   imagemUrl           String
-  imagemUrls          String[]
-  cor                 String
-  tamanho             String
+  imagemUrls          String[]       @default([])
   estoque             Int
   preco               Decimal        @db.Decimal(10, 2)
   porcentagemDesconto Decimal?       @db.Decimal(10, 2)

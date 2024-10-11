@@ -2,7 +2,6 @@ import { db } from "@/lib/prisma";
 import ProductCard from "./product-card";
 import SeeAllButton from "./see-all-button";
 import ProductList from "./product-list";
-  
 
 async function getDiscountProducts() {
   const discountProducts = await db.produto.findMany({
@@ -36,14 +35,20 @@ export default async function DiscountProducts() {
         <SeeAllButton href="/discount" />
       </div>
       <ProductList>
-        {products
-          .reverse()
-          .slice(0, 15)
-          .map((product) => (
-            <div key={product.id}>
-              <ProductCard product={product} />
-            </div>
-          ))}
+        {products.length === 0 ? (
+             <h3 className="font-bold text-lg">
+             Nenhum produto com desconto disponível no momento.
+           </h3>
+        ) : (
+          products
+            .reverse()
+            .slice(0, 15)
+            .map((product) => (
+              <div key={product.id}>
+                <ProductCard product={product} />
+              </div>
+            ))
+        )}
       </ProductList>
     </div>
   );

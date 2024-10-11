@@ -135,8 +135,7 @@ exports.Prisma.LojaScalarFieldEnum = {
 
 exports.Prisma.CategoriaScalarFieldEnum = {
   id: 'id',
-  nome: 'nome',
-  imageUrl: 'imageUrl'
+  nome: 'nome'
 };
 
 exports.Prisma.ProdutoScalarFieldEnum = {
@@ -146,8 +145,6 @@ exports.Prisma.ProdutoScalarFieldEnum = {
   descricao: 'descricao',
   imagemUrl: 'imagemUrl',
   imagemUrls: 'imagemUrls',
-  cor: 'cor',
-  tamanho: 'tamanho',
   estoque: 'estoque',
   preco: 'preco',
   porcentagemDesconto: 'porcentagemDesconto',

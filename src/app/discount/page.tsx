@@ -34,15 +34,21 @@ export default async function DiscountPage() {
   return (
     <Container className="space-y-8 mt-20">
       <GoBackButton name={title} />
-      <ProductList>
-        {products
-          .slice()
-          .reverse()
-          .map((product) => (
-            <div key={product.id}>
-              <ProductCard product={product} />
-            </div>
-          ))}
+      <ProductList className="min-h-screen">
+        {products.length === 0 ? (
+          <h3 className="font-bold text-lg">
+            Nenhum produto com desconto disponível no momento.
+          </h3>
+        ) : (
+          products
+            .slice()
+            .reverse()
+            .map((product) => (
+              <div key={product.id}>
+                <ProductCard product={product} />
+              </div>
+            ))
+        )}
       </ProductList>
     </Container>
   );

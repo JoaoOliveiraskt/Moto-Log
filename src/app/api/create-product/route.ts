@@ -12,8 +12,6 @@ const createProductSchema = z.object({
   imageUrl: z.string().url("A URL da imagem deve ser válida"),
   price: z.number().min(0.01, "O preço deve ser maior que zero"),
   discountPercentage: z.number().optional(),
-  color: z.string(),
-  size: z.string(),
   stock: z.number().int().min(0, "O estoque deve ser maior ou igual a zero"),
   categoryId: z.string(),
   status: z.enum([ProdutoStatus.ATIVO, ProdutoStatus.ARQUIVADO]),
@@ -102,8 +100,6 @@ export async function POST(request: Request) {
           categoriaId: data.categoryId,
           status: data.status,
           totalVendido: 0,
-          cor: data.color,
-          tamanho: data.size,
           estoque: data.stock,
         },
       });

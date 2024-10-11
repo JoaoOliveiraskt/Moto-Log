@@ -9,13 +9,6 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useFormContext } from "react-hook-form";
 
 export default function Stock() {
@@ -35,8 +28,6 @@ export default function Stock() {
               <TableHead>
                 <span>Desconto (%)</span>
               </TableHead>
-              <TableHead>Tamanho</TableHead>
-              <TableHead className="max-w-[100px]">Cor</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -83,34 +74,6 @@ export default function Stock() {
                   step="0.01"
                   placeholder="Ex: 10.00"
                 />
-              </TableCell>
-
-              <TableCell>
-                <Select onValueChange={(value) => setValue("size", value)}>
-                  <SelectTrigger className="w-fit">
-                    <SelectValue placeholder="Selecione" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="P">P</SelectItem>
-                    <SelectItem value="M">M</SelectItem>
-                    <SelectItem value="G">G</SelectItem>
-                    <SelectItem value="GG">GG</SelectItem>
-                  </SelectContent>
-                </Select>
-              </TableCell>
-
-              <TableCell>
-                <Select onValueChange={(value) => setValue("color", value)}>
-                  <SelectTrigger className="w-fit">
-                    <SelectValue placeholder="Selecione" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="preto">Preto</SelectItem>
-                    <SelectItem value="branco">Branco</SelectItem>
-                    <SelectItem value="azul">Azul</SelectItem>
-                    <SelectItem value="vermelho">Vermelho</SelectItem>
-                  </SelectContent>
-                </Select>
               </TableCell>
             </TableRow>
           </TableBody>

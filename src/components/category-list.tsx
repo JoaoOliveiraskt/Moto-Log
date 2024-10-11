@@ -19,16 +19,13 @@ export default async function CategoryList() {
 
       <Carousel className="">
         <CarouselContent className="flex gap-2 lg:px-10 ">
-          {Array(3) // Número de vezes que deseja repetir os itens
-            .fill(categories)
-            .flat() // Achata o array multidimensional
-            .map((category, index) => (
-              <CategoryItem
-                key={`${category.id}-${index}`}
-                category={category}
-                link={`/category/${category.id}`}
-              />
-            ))}
+          {categories.map((category, index) => (
+            <CategoryItem
+              key={`${category.id}-${index}`}
+              category={category}
+              link={`/category/${category.id}`}
+            />
+          ))}
         </CarouselContent>
         <CarouselPrevious className="hidden lg:block left-0" />
         <CarouselNext className="hidden lg:block right-0" />

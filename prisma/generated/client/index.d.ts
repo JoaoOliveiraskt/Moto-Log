@@ -1613,13 +1613,11 @@ export namespace Prisma {
   export type LojaCountOutputType = {
     pedidos: number
     Produtos: number
-    categorias: number
   }
 
   export type LojaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pedidos?: boolean | LojaCountOutputTypeCountPedidosArgs
     Produtos?: boolean | LojaCountOutputTypeCountProdutosArgs
-    categorias?: boolean | LojaCountOutputTypeCountCategoriasArgs
   }
 
   // Custom InputTypes
@@ -1647,13 +1645,6 @@ export namespace Prisma {
     where?: ProdutoWhereInput
   }
 
-  /**
-   * LojaCountOutputType without action
-   */
-  export type LojaCountOutputTypeCountCategoriasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CategoriaWhereInput
-  }
-
 
   /**
    * Count Type CategoriaCountOutputType
@@ -1661,12 +1652,10 @@ export namespace Prisma {
 
   export type CategoriaCountOutputType = {
     produtos: number
-    lojas: number
   }
 
   export type CategoriaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     produtos?: boolean | CategoriaCountOutputTypeCountProdutosArgs
-    lojas?: boolean | CategoriaCountOutputTypeCountLojasArgs
   }
 
   // Custom InputTypes
@@ -1685,13 +1674,6 @@ export namespace Prisma {
    */
   export type CategoriaCountOutputTypeCountProdutosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProdutoWhereInput
-  }
-
-  /**
-   * CategoriaCountOutputType without action
-   */
-  export type CategoriaCountOutputTypeCountLojasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LojaWhereInput
   }
 
 
@@ -2034,7 +2016,6 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
     pedidos?: boolean | Loja$pedidosArgs<ExtArgs>
     Produtos?: boolean | Loja$ProdutosArgs<ExtArgs>
-    categorias?: boolean | Loja$categoriasArgs<ExtArgs>
     _count?: boolean | LojaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["loja"]>
 
@@ -2071,7 +2052,6 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
     pedidos?: boolean | Loja$pedidosArgs<ExtArgs>
     Produtos?: boolean | Loja$ProdutosArgs<ExtArgs>
-    categorias?: boolean | Loja$categoriasArgs<ExtArgs>
     _count?: boolean | LojaCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type LojaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2084,7 +2064,6 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
       pedidos: Prisma.$OrderPayload<ExtArgs>[]
       Produtos: Prisma.$ProdutoPayload<ExtArgs>[]
-      categorias: Prisma.$CategoriaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2494,8 +2473,6 @@ export namespace Prisma {
 
     Produtos<T extends Loja$ProdutosArgs<ExtArgs> = {}>(args?: Subset<T, Loja$ProdutosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProdutoPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    categorias<T extends Loja$categoriasArgs<ExtArgs> = {}>(args?: Subset<T, Loja$categoriasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2893,26 +2870,6 @@ export namespace Prisma {
   }
 
   /**
-   * Loja.categorias
-   */
-  export type Loja$categoriasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Categoria
-     */
-    select?: CategoriaSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoriaInclude<ExtArgs> | null
-    where?: CategoriaWhereInput
-    orderBy?: CategoriaOrderByWithRelationInput | CategoriaOrderByWithRelationInput[]
-    cursor?: CategoriaWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CategoriaScalarFieldEnum | CategoriaScalarFieldEnum[]
-  }
-
-  /**
    * Loja without action
    */
   export type LojaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2940,19 +2897,16 @@ export namespace Prisma {
   export type CategoriaMinAggregateOutputType = {
     id: string | null
     nome: string | null
-    imageUrl: string | null
   }
 
   export type CategoriaMaxAggregateOutputType = {
     id: string | null
     nome: string | null
-    imageUrl: string | null
   }
 
   export type CategoriaCountAggregateOutputType = {
     id: number
     nome: number
-    imageUrl: number
     _all: number
   }
 
@@ -2960,19 +2914,16 @@ export namespace Prisma {
   export type CategoriaMinAggregateInputType = {
     id?: true
     nome?: true
-    imageUrl?: true
   }
 
   export type CategoriaMaxAggregateInputType = {
     id?: true
     nome?: true
-    imageUrl?: true
   }
 
   export type CategoriaCountAggregateInputType = {
     id?: true
     nome?: true
-    imageUrl?: true
     _all?: true
   }
 
@@ -3051,7 +3002,6 @@ export namespace Prisma {
   export type CategoriaGroupByOutputType = {
     id: string
     nome: string
-    imageUrl: string
     _count: CategoriaCountAggregateOutputType | null
     _min: CategoriaMinAggregateOutputType | null
     _max: CategoriaMaxAggregateOutputType | null
@@ -3074,27 +3024,22 @@ export namespace Prisma {
   export type CategoriaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     nome?: boolean
-    imageUrl?: boolean
     produtos?: boolean | Categoria$produtosArgs<ExtArgs>
-    lojas?: boolean | Categoria$lojasArgs<ExtArgs>
     _count?: boolean | CategoriaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["categoria"]>
 
   export type CategoriaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     nome?: boolean
-    imageUrl?: boolean
   }, ExtArgs["result"]["categoria"]>
 
   export type CategoriaSelectScalar = {
     id?: boolean
     nome?: boolean
-    imageUrl?: boolean
   }
 
   export type CategoriaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     produtos?: boolean | Categoria$produtosArgs<ExtArgs>
-    lojas?: boolean | Categoria$lojasArgs<ExtArgs>
     _count?: boolean | CategoriaCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CategoriaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3103,12 +3048,10 @@ export namespace Prisma {
     name: "Categoria"
     objects: {
       produtos: Prisma.$ProdutoPayload<ExtArgs>[]
-      lojas: Prisma.$LojaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       nome: string
-      imageUrl: string
     }, ExtArgs["result"]["categoria"]>
     composites: {}
   }
@@ -3501,8 +3444,6 @@ export namespace Prisma {
 
     produtos<T extends Categoria$produtosArgs<ExtArgs> = {}>(args?: Subset<T, Categoria$produtosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProdutoPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    lojas<T extends Categoria$lojasArgs<ExtArgs> = {}>(args?: Subset<T, Categoria$lojasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LojaPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3533,7 +3474,6 @@ export namespace Prisma {
   interface CategoriaFieldRefs {
     readonly id: FieldRef<"Categoria", 'String'>
     readonly nome: FieldRef<"Categoria", 'String'>
-    readonly imageUrl: FieldRef<"Categoria", 'String'>
   }
     
 
@@ -3868,26 +3808,6 @@ export namespace Prisma {
   }
 
   /**
-   * Categoria.lojas
-   */
-  export type Categoria$lojasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Loja
-     */
-    select?: LojaSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LojaInclude<ExtArgs> | null
-    where?: LojaWhereInput
-    orderBy?: LojaOrderByWithRelationInput | LojaOrderByWithRelationInput[]
-    cursor?: LojaWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: LojaScalarFieldEnum | LojaScalarFieldEnum[]
-  }
-
-  /**
    * Categoria without action
    */
   export type CategoriaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3934,8 +3854,6 @@ export namespace Prisma {
     nome: string | null
     descricao: string | null
     imagemUrl: string | null
-    cor: string | null
-    tamanho: string | null
     estoque: number | null
     preco: Decimal | null
     porcentagemDesconto: Decimal | null
@@ -3953,8 +3871,6 @@ export namespace Prisma {
     nome: string | null
     descricao: string | null
     imagemUrl: string | null
-    cor: string | null
-    tamanho: string | null
     estoque: number | null
     preco: Decimal | null
     porcentagemDesconto: Decimal | null
@@ -3973,8 +3889,6 @@ export namespace Prisma {
     descricao: number
     imagemUrl: number
     imagemUrls: number
-    cor: number
-    tamanho: number
     estoque: number
     preco: number
     porcentagemDesconto: number
@@ -4008,8 +3922,6 @@ export namespace Prisma {
     nome?: true
     descricao?: true
     imagemUrl?: true
-    cor?: true
-    tamanho?: true
     estoque?: true
     preco?: true
     porcentagemDesconto?: true
@@ -4027,8 +3939,6 @@ export namespace Prisma {
     nome?: true
     descricao?: true
     imagemUrl?: true
-    cor?: true
-    tamanho?: true
     estoque?: true
     preco?: true
     porcentagemDesconto?: true
@@ -4047,8 +3957,6 @@ export namespace Prisma {
     descricao?: true
     imagemUrl?: true
     imagemUrls?: true
-    cor?: true
-    tamanho?: true
     estoque?: true
     preco?: true
     porcentagemDesconto?: true
@@ -4154,8 +4062,6 @@ export namespace Prisma {
     descricao: string
     imagemUrl: string
     imagemUrls: string[]
-    cor: string
-    tamanho: string
     estoque: number
     preco: Decimal
     porcentagemDesconto: Decimal | null
@@ -4193,8 +4099,6 @@ export namespace Prisma {
     descricao?: boolean
     imagemUrl?: boolean
     imagemUrls?: boolean
-    cor?: boolean
-    tamanho?: boolean
     estoque?: boolean
     preco?: boolean
     porcentagemDesconto?: boolean
@@ -4217,8 +4121,6 @@ export namespace Prisma {
     descricao?: boolean
     imagemUrl?: boolean
     imagemUrls?: boolean
-    cor?: boolean
-    tamanho?: boolean
     estoque?: boolean
     preco?: boolean
     porcentagemDesconto?: boolean
@@ -4239,8 +4141,6 @@ export namespace Prisma {
     descricao?: boolean
     imagemUrl?: boolean
     imagemUrls?: boolean
-    cor?: boolean
-    tamanho?: boolean
     estoque?: boolean
     preco?: boolean
     porcentagemDesconto?: boolean
@@ -4277,8 +4177,6 @@ export namespace Prisma {
       descricao: string
       imagemUrl: string
       imagemUrls: string[]
-      cor: string
-      tamanho: string
       estoque: number
       preco: Prisma.Decimal
       porcentagemDesconto: Prisma.Decimal | null
@@ -4718,8 +4616,6 @@ export namespace Prisma {
     readonly descricao: FieldRef<"Produto", 'String'>
     readonly imagemUrl: FieldRef<"Produto", 'String'>
     readonly imagemUrls: FieldRef<"Produto", 'String[]'>
-    readonly cor: FieldRef<"Produto", 'String'>
-    readonly tamanho: FieldRef<"Produto", 'String'>
     readonly estoque: FieldRef<"Produto", 'Int'>
     readonly preco: FieldRef<"Produto", 'Decimal'>
     readonly porcentagemDesconto: FieldRef<"Produto", 'Decimal'>
@@ -11182,8 +11078,7 @@ export namespace Prisma {
 
   export const CategoriaScalarFieldEnum: {
     id: 'id',
-    nome: 'nome',
-    imageUrl: 'imageUrl'
+    nome: 'nome'
   };
 
   export type CategoriaScalarFieldEnum = (typeof CategoriaScalarFieldEnum)[keyof typeof CategoriaScalarFieldEnum]
@@ -11196,8 +11091,6 @@ export namespace Prisma {
     descricao: 'descricao',
     imagemUrl: 'imagemUrl',
     imagemUrls: 'imagemUrls',
-    cor: 'cor',
-    tamanho: 'tamanho',
     estoque: 'estoque',
     preco: 'preco',
     porcentagemDesconto: 'porcentagemDesconto',
@@ -11450,7 +11343,6 @@ export namespace Prisma {
     user?: XOR<UserRelationFilter, UserWhereInput>
     pedidos?: OrderListRelationFilter
     Produtos?: ProdutoListRelationFilter
-    categorias?: CategoriaListRelationFilter
   }
 
   export type LojaOrderByWithRelationInput = {
@@ -11468,7 +11360,6 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
     pedidos?: OrderOrderByRelationAggregateInput
     Produtos?: ProdutoOrderByRelationAggregateInput
-    categorias?: CategoriaOrderByRelationAggregateInput
   }
 
   export type LojaWhereUniqueInput = Prisma.AtLeast<{
@@ -11489,7 +11380,6 @@ export namespace Prisma {
     user?: XOR<UserRelationFilter, UserWhereInput>
     pedidos?: OrderListRelationFilter
     Produtos?: ProdutoListRelationFilter
-    categorias?: CategoriaListRelationFilter
   }, "id">
 
   export type LojaOrderByWithAggregationInput = {
@@ -11532,17 +11422,13 @@ export namespace Prisma {
     NOT?: CategoriaWhereInput | CategoriaWhereInput[]
     id?: StringFilter<"Categoria"> | string
     nome?: StringFilter<"Categoria"> | string
-    imageUrl?: StringFilter<"Categoria"> | string
     produtos?: ProdutoListRelationFilter
-    lojas?: LojaListRelationFilter
   }
 
   export type CategoriaOrderByWithRelationInput = {
     id?: SortOrder
     nome?: SortOrder
-    imageUrl?: SortOrder
     produtos?: ProdutoOrderByRelationAggregateInput
-    lojas?: LojaOrderByRelationAggregateInput
   }
 
   export type CategoriaWhereUniqueInput = Prisma.AtLeast<{
@@ -11551,15 +11437,12 @@ export namespace Prisma {
     OR?: CategoriaWhereInput[]
     NOT?: CategoriaWhereInput | CategoriaWhereInput[]
     nome?: StringFilter<"Categoria"> | string
-    imageUrl?: StringFilter<"Categoria"> | string
     produtos?: ProdutoListRelationFilter
-    lojas?: LojaListRelationFilter
   }, "id">
 
   export type CategoriaOrderByWithAggregationInput = {
     id?: SortOrder
     nome?: SortOrder
-    imageUrl?: SortOrder
     _count?: CategoriaCountOrderByAggregateInput
     _max?: CategoriaMaxOrderByAggregateInput
     _min?: CategoriaMinOrderByAggregateInput
@@ -11571,7 +11454,6 @@ export namespace Prisma {
     NOT?: CategoriaScalarWhereWithAggregatesInput | CategoriaScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Categoria"> | string
     nome?: StringWithAggregatesFilter<"Categoria"> | string
-    imageUrl?: StringWithAggregatesFilter<"Categoria"> | string
   }
 
   export type ProdutoWhereInput = {
@@ -11584,8 +11466,6 @@ export namespace Prisma {
     descricao?: StringFilter<"Produto"> | string
     imagemUrl?: StringFilter<"Produto"> | string
     imagemUrls?: StringNullableListFilter<"Produto">
-    cor?: StringFilter<"Produto"> | string
-    tamanho?: StringFilter<"Produto"> | string
     estoque?: IntFilter<"Produto"> | number
     preco?: DecimalFilter<"Produto"> | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: DecimalNullableFilter<"Produto"> | Decimal | DecimalJsLike | number | string | null
@@ -11607,8 +11487,6 @@ export namespace Prisma {
     descricao?: SortOrder
     imagemUrl?: SortOrder
     imagemUrls?: SortOrder
-    cor?: SortOrder
-    tamanho?: SortOrder
     estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrderInput | SortOrder
@@ -11633,8 +11511,6 @@ export namespace Prisma {
     descricao?: StringFilter<"Produto"> | string
     imagemUrl?: StringFilter<"Produto"> | string
     imagemUrls?: StringNullableListFilter<"Produto">
-    cor?: StringFilter<"Produto"> | string
-    tamanho?: StringFilter<"Produto"> | string
     estoque?: IntFilter<"Produto"> | number
     preco?: DecimalFilter<"Produto"> | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: DecimalNullableFilter<"Produto"> | Decimal | DecimalJsLike | number | string | null
@@ -11656,8 +11532,6 @@ export namespace Prisma {
     descricao?: SortOrder
     imagemUrl?: SortOrder
     imagemUrls?: SortOrder
-    cor?: SortOrder
-    tamanho?: SortOrder
     estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrderInput | SortOrder
@@ -11684,8 +11558,6 @@ export namespace Prisma {
     descricao?: StringWithAggregatesFilter<"Produto"> | string
     imagemUrl?: StringWithAggregatesFilter<"Produto"> | string
     imagemUrls?: StringNullableListFilter<"Produto">
-    cor?: StringWithAggregatesFilter<"Produto"> | string
-    tamanho?: StringWithAggregatesFilter<"Produto"> | string
     estoque?: IntWithAggregatesFilter<"Produto"> | number
     preco?: DecimalWithAggregatesFilter<"Produto"> | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: DecimalNullableWithAggregatesFilter<"Produto"> | Decimal | DecimalJsLike | number | string | null
@@ -12114,7 +11986,6 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutStoresInput
     pedidos?: OrderCreateNestedManyWithoutLojaInput
     Produtos?: ProdutoCreateNestedManyWithoutLojaInput
-    categorias?: CategoriaCreateNestedManyWithoutLojasInput
   }
 
   export type LojaUncheckedCreateInput = {
@@ -12131,7 +12002,6 @@ export namespace Prisma {
     email?: string | null
     pedidos?: OrderUncheckedCreateNestedManyWithoutLojaInput
     Produtos?: ProdutoUncheckedCreateNestedManyWithoutLojaInput
-    categorias?: CategoriaUncheckedCreateNestedManyWithoutLojasInput
   }
 
   export type LojaUpdateInput = {
@@ -12148,7 +12018,6 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutStoresNestedInput
     pedidos?: OrderUpdateManyWithoutLojaNestedInput
     Produtos?: ProdutoUpdateManyWithoutLojaNestedInput
-    categorias?: CategoriaUpdateManyWithoutLojasNestedInput
   }
 
   export type LojaUncheckedUpdateInput = {
@@ -12165,7 +12034,6 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     pedidos?: OrderUncheckedUpdateManyWithoutLojaNestedInput
     Produtos?: ProdutoUncheckedUpdateManyWithoutLojaNestedInput
-    categorias?: CategoriaUncheckedUpdateManyWithoutLojasNestedInput
   }
 
   export type LojaCreateManyInput = {
@@ -12212,51 +12080,40 @@ export namespace Prisma {
   export type CategoriaCreateInput = {
     id?: string
     nome: string
-    imageUrl: string
     produtos?: ProdutoCreateNestedManyWithoutCategoriaInput
-    lojas?: LojaCreateNestedManyWithoutCategoriasInput
   }
 
   export type CategoriaUncheckedCreateInput = {
     id?: string
     nome: string
-    imageUrl: string
     produtos?: ProdutoUncheckedCreateNestedManyWithoutCategoriaInput
-    lojas?: LojaUncheckedCreateNestedManyWithoutCategoriasInput
   }
 
   export type CategoriaUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
     produtos?: ProdutoUpdateManyWithoutCategoriaNestedInput
-    lojas?: LojaUpdateManyWithoutCategoriasNestedInput
   }
 
   export type CategoriaUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
     produtos?: ProdutoUncheckedUpdateManyWithoutCategoriaNestedInput
-    lojas?: LojaUncheckedUpdateManyWithoutCategoriasNestedInput
   }
 
   export type CategoriaCreateManyInput = {
     id?: string
     nome: string
-    imageUrl: string
   }
 
   export type CategoriaUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
   }
 
   export type CategoriaUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProdutoCreateInput = {
@@ -12266,8 +12123,6 @@ export namespace Prisma {
     descricao: string
     imagemUrl: string
     imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
-    cor: string
-    tamanho: string
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
@@ -12287,8 +12142,6 @@ export namespace Prisma {
     descricao: string
     imagemUrl: string
     imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
-    cor: string
-    tamanho: string
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
@@ -12308,8 +12161,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
     imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
-    cor?: StringFieldUpdateOperationsInput | string
-    tamanho?: StringFieldUpdateOperationsInput | string
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -12329,8 +12180,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
     imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
-    cor?: StringFieldUpdateOperationsInput | string
-    tamanho?: StringFieldUpdateOperationsInput | string
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -12350,8 +12199,6 @@ export namespace Prisma {
     descricao: string
     imagemUrl: string
     imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
-    cor: string
-    tamanho: string
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
@@ -12370,8 +12217,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
     imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
-    cor?: StringFieldUpdateOperationsInput | string
-    tamanho?: StringFieldUpdateOperationsInput | string
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -12388,8 +12233,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
     imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
-    cor?: StringFieldUpdateOperationsInput | string
-    tamanho?: StringFieldUpdateOperationsInput | string
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -12879,12 +12722,6 @@ export namespace Prisma {
     none?: ProdutoWhereInput
   }
 
-  export type CategoriaListRelationFilter = {
-    every?: CategoriaWhereInput
-    some?: CategoriaWhereInput
-    none?: CategoriaWhereInput
-  }
-
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -12895,10 +12732,6 @@ export namespace Prisma {
   }
 
   export type ProdutoOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type CategoriaOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12994,32 +12827,19 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type LojaListRelationFilter = {
-    every?: LojaWhereInput
-    some?: LojaWhereInput
-    none?: LojaWhereInput
-  }
-
-  export type LojaOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type CategoriaCountOrderByAggregateInput = {
     id?: SortOrder
     nome?: SortOrder
-    imageUrl?: SortOrder
   }
 
   export type CategoriaMaxOrderByAggregateInput = {
     id?: SortOrder
     nome?: SortOrder
-    imageUrl?: SortOrder
   }
 
   export type CategoriaMinOrderByAggregateInput = {
     id?: SortOrder
     nome?: SortOrder
-    imageUrl?: SortOrder
   }
 
   export type StringNullableListFilter<$PrismaModel = never> = {
@@ -13119,8 +12939,6 @@ export namespace Prisma {
     descricao?: SortOrder
     imagemUrl?: SortOrder
     imagemUrls?: SortOrder
-    cor?: SortOrder
-    tamanho?: SortOrder
     estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrder
@@ -13145,8 +12963,6 @@ export namespace Prisma {
     nome?: SortOrder
     descricao?: SortOrder
     imagemUrl?: SortOrder
-    cor?: SortOrder
-    tamanho?: SortOrder
     estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrder
@@ -13164,8 +12980,6 @@ export namespace Prisma {
     nome?: SortOrder
     descricao?: SortOrder
     imagemUrl?: SortOrder
-    cor?: SortOrder
-    tamanho?: SortOrder
     estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrder
@@ -13472,6 +13286,12 @@ export namespace Prisma {
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
+  export type LojaListRelationFilter = {
+    every?: LojaWhereInput
+    some?: LojaWhereInput
+    none?: LojaWhereInput
+  }
+
   export type AccountListRelationFilter = {
     every?: AccountWhereInput
     some?: AccountWhereInput
@@ -13482,6 +13302,10 @@ export namespace Prisma {
     every?: SessionWhereInput
     some?: SessionWhereInput
     none?: SessionWhereInput
+  }
+
+  export type LojaOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type AccountOrderByRelationAggregateInput = {
@@ -13572,12 +13396,6 @@ export namespace Prisma {
     connect?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
   }
 
-  export type CategoriaCreateNestedManyWithoutLojasInput = {
-    create?: XOR<CategoriaCreateWithoutLojasInput, CategoriaUncheckedCreateWithoutLojasInput> | CategoriaCreateWithoutLojasInput[] | CategoriaUncheckedCreateWithoutLojasInput[]
-    connectOrCreate?: CategoriaCreateOrConnectWithoutLojasInput | CategoriaCreateOrConnectWithoutLojasInput[]
-    connect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
-  }
-
   export type OrderUncheckedCreateNestedManyWithoutLojaInput = {
     create?: XOR<OrderCreateWithoutLojaInput, OrderUncheckedCreateWithoutLojaInput> | OrderCreateWithoutLojaInput[] | OrderUncheckedCreateWithoutLojaInput[]
     connectOrCreate?: OrderCreateOrConnectWithoutLojaInput | OrderCreateOrConnectWithoutLojaInput[]
@@ -13590,12 +13408,6 @@ export namespace Prisma {
     connectOrCreate?: ProdutoCreateOrConnectWithoutLojaInput | ProdutoCreateOrConnectWithoutLojaInput[]
     createMany?: ProdutoCreateManyLojaInputEnvelope
     connect?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
-  }
-
-  export type CategoriaUncheckedCreateNestedManyWithoutLojasInput = {
-    create?: XOR<CategoriaCreateWithoutLojasInput, CategoriaUncheckedCreateWithoutLojasInput> | CategoriaCreateWithoutLojasInput[] | CategoriaUncheckedCreateWithoutLojasInput[]
-    connectOrCreate?: CategoriaCreateOrConnectWithoutLojasInput | CategoriaCreateOrConnectWithoutLojasInput[]
-    connect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -13646,19 +13458,6 @@ export namespace Prisma {
     deleteMany?: ProdutoScalarWhereInput | ProdutoScalarWhereInput[]
   }
 
-  export type CategoriaUpdateManyWithoutLojasNestedInput = {
-    create?: XOR<CategoriaCreateWithoutLojasInput, CategoriaUncheckedCreateWithoutLojasInput> | CategoriaCreateWithoutLojasInput[] | CategoriaUncheckedCreateWithoutLojasInput[]
-    connectOrCreate?: CategoriaCreateOrConnectWithoutLojasInput | CategoriaCreateOrConnectWithoutLojasInput[]
-    upsert?: CategoriaUpsertWithWhereUniqueWithoutLojasInput | CategoriaUpsertWithWhereUniqueWithoutLojasInput[]
-    set?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
-    disconnect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
-    delete?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
-    connect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
-    update?: CategoriaUpdateWithWhereUniqueWithoutLojasInput | CategoriaUpdateWithWhereUniqueWithoutLojasInput[]
-    updateMany?: CategoriaUpdateManyWithWhereWithoutLojasInput | CategoriaUpdateManyWithWhereWithoutLojasInput[]
-    deleteMany?: CategoriaScalarWhereInput | CategoriaScalarWhereInput[]
-  }
-
   export type OrderUncheckedUpdateManyWithoutLojaNestedInput = {
     create?: XOR<OrderCreateWithoutLojaInput, OrderUncheckedCreateWithoutLojaInput> | OrderCreateWithoutLojaInput[] | OrderUncheckedCreateWithoutLojaInput[]
     connectOrCreate?: OrderCreateOrConnectWithoutLojaInput | OrderCreateOrConnectWithoutLojaInput[]
@@ -13687,19 +13486,6 @@ export namespace Prisma {
     deleteMany?: ProdutoScalarWhereInput | ProdutoScalarWhereInput[]
   }
 
-  export type CategoriaUncheckedUpdateManyWithoutLojasNestedInput = {
-    create?: XOR<CategoriaCreateWithoutLojasInput, CategoriaUncheckedCreateWithoutLojasInput> | CategoriaCreateWithoutLojasInput[] | CategoriaUncheckedCreateWithoutLojasInput[]
-    connectOrCreate?: CategoriaCreateOrConnectWithoutLojasInput | CategoriaCreateOrConnectWithoutLojasInput[]
-    upsert?: CategoriaUpsertWithWhereUniqueWithoutLojasInput | CategoriaUpsertWithWhereUniqueWithoutLojasInput[]
-    set?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
-    disconnect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
-    delete?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
-    connect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
-    update?: CategoriaUpdateWithWhereUniqueWithoutLojasInput | CategoriaUpdateWithWhereUniqueWithoutLojasInput[]
-    updateMany?: CategoriaUpdateManyWithWhereWithoutLojasInput | CategoriaUpdateManyWithWhereWithoutLojasInput[]
-    deleteMany?: CategoriaScalarWhereInput | CategoriaScalarWhereInput[]
-  }
-
   export type ProdutoCreateNestedManyWithoutCategoriaInput = {
     create?: XOR<ProdutoCreateWithoutCategoriaInput, ProdutoUncheckedCreateWithoutCategoriaInput> | ProdutoCreateWithoutCategoriaInput[] | ProdutoUncheckedCreateWithoutCategoriaInput[]
     connectOrCreate?: ProdutoCreateOrConnectWithoutCategoriaInput | ProdutoCreateOrConnectWithoutCategoriaInput[]
@@ -13707,23 +13493,11 @@ export namespace Prisma {
     connect?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
   }
 
-  export type LojaCreateNestedManyWithoutCategoriasInput = {
-    create?: XOR<LojaCreateWithoutCategoriasInput, LojaUncheckedCreateWithoutCategoriasInput> | LojaCreateWithoutCategoriasInput[] | LojaUncheckedCreateWithoutCategoriasInput[]
-    connectOrCreate?: LojaCreateOrConnectWithoutCategoriasInput | LojaCreateOrConnectWithoutCategoriasInput[]
-    connect?: LojaWhereUniqueInput | LojaWhereUniqueInput[]
-  }
-
   export type ProdutoUncheckedCreateNestedManyWithoutCategoriaInput = {
     create?: XOR<ProdutoCreateWithoutCategoriaInput, ProdutoUncheckedCreateWithoutCategoriaInput> | ProdutoCreateWithoutCategoriaInput[] | ProdutoUncheckedCreateWithoutCategoriaInput[]
     connectOrCreate?: ProdutoCreateOrConnectWithoutCategoriaInput | ProdutoCreateOrConnectWithoutCategoriaInput[]
     createMany?: ProdutoCreateManyCategoriaInputEnvelope
     connect?: ProdutoWhereUniqueInput | ProdutoWhereUniqueInput[]
-  }
-
-  export type LojaUncheckedCreateNestedManyWithoutCategoriasInput = {
-    create?: XOR<LojaCreateWithoutCategoriasInput, LojaUncheckedCreateWithoutCategoriasInput> | LojaCreateWithoutCategoriasInput[] | LojaUncheckedCreateWithoutCategoriasInput[]
-    connectOrCreate?: LojaCreateOrConnectWithoutCategoriasInput | LojaCreateOrConnectWithoutCategoriasInput[]
-    connect?: LojaWhereUniqueInput | LojaWhereUniqueInput[]
   }
 
   export type ProdutoUpdateManyWithoutCategoriaNestedInput = {
@@ -13740,19 +13514,6 @@ export namespace Prisma {
     deleteMany?: ProdutoScalarWhereInput | ProdutoScalarWhereInput[]
   }
 
-  export type LojaUpdateManyWithoutCategoriasNestedInput = {
-    create?: XOR<LojaCreateWithoutCategoriasInput, LojaUncheckedCreateWithoutCategoriasInput> | LojaCreateWithoutCategoriasInput[] | LojaUncheckedCreateWithoutCategoriasInput[]
-    connectOrCreate?: LojaCreateOrConnectWithoutCategoriasInput | LojaCreateOrConnectWithoutCategoriasInput[]
-    upsert?: LojaUpsertWithWhereUniqueWithoutCategoriasInput | LojaUpsertWithWhereUniqueWithoutCategoriasInput[]
-    set?: LojaWhereUniqueInput | LojaWhereUniqueInput[]
-    disconnect?: LojaWhereUniqueInput | LojaWhereUniqueInput[]
-    delete?: LojaWhereUniqueInput | LojaWhereUniqueInput[]
-    connect?: LojaWhereUniqueInput | LojaWhereUniqueInput[]
-    update?: LojaUpdateWithWhereUniqueWithoutCategoriasInput | LojaUpdateWithWhereUniqueWithoutCategoriasInput[]
-    updateMany?: LojaUpdateManyWithWhereWithoutCategoriasInput | LojaUpdateManyWithWhereWithoutCategoriasInput[]
-    deleteMany?: LojaScalarWhereInput | LojaScalarWhereInput[]
-  }
-
   export type ProdutoUncheckedUpdateManyWithoutCategoriaNestedInput = {
     create?: XOR<ProdutoCreateWithoutCategoriaInput, ProdutoUncheckedCreateWithoutCategoriaInput> | ProdutoCreateWithoutCategoriaInput[] | ProdutoUncheckedCreateWithoutCategoriaInput[]
     connectOrCreate?: ProdutoCreateOrConnectWithoutCategoriaInput | ProdutoCreateOrConnectWithoutCategoriaInput[]
@@ -13765,19 +13526,6 @@ export namespace Prisma {
     update?: ProdutoUpdateWithWhereUniqueWithoutCategoriaInput | ProdutoUpdateWithWhereUniqueWithoutCategoriaInput[]
     updateMany?: ProdutoUpdateManyWithWhereWithoutCategoriaInput | ProdutoUpdateManyWithWhereWithoutCategoriaInput[]
     deleteMany?: ProdutoScalarWhereInput | ProdutoScalarWhereInput[]
-  }
-
-  export type LojaUncheckedUpdateManyWithoutCategoriasNestedInput = {
-    create?: XOR<LojaCreateWithoutCategoriasInput, LojaUncheckedCreateWithoutCategoriasInput> | LojaCreateWithoutCategoriasInput[] | LojaUncheckedCreateWithoutCategoriasInput[]
-    connectOrCreate?: LojaCreateOrConnectWithoutCategoriasInput | LojaCreateOrConnectWithoutCategoriasInput[]
-    upsert?: LojaUpsertWithWhereUniqueWithoutCategoriasInput | LojaUpsertWithWhereUniqueWithoutCategoriasInput[]
-    set?: LojaWhereUniqueInput | LojaWhereUniqueInput[]
-    disconnect?: LojaWhereUniqueInput | LojaWhereUniqueInput[]
-    delete?: LojaWhereUniqueInput | LojaWhereUniqueInput[]
-    connect?: LojaWhereUniqueInput | LojaWhereUniqueInput[]
-    update?: LojaUpdateWithWhereUniqueWithoutCategoriasInput | LojaUpdateWithWhereUniqueWithoutCategoriasInput[]
-    updateMany?: LojaUpdateManyWithWhereWithoutCategoriasInput | LojaUpdateManyWithWhereWithoutCategoriasInput[]
-    deleteMany?: LojaScalarWhereInput | LojaScalarWhereInput[]
   }
 
   export type ProdutoCreateimagemUrlsInput = {
@@ -14568,8 +14316,6 @@ export namespace Prisma {
     descricao: string
     imagemUrl: string
     imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
-    cor: string
-    tamanho: string
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
@@ -14588,8 +14334,6 @@ export namespace Prisma {
     descricao: string
     imagemUrl: string
     imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
-    cor: string
-    tamanho: string
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
@@ -14609,25 +14353,6 @@ export namespace Prisma {
   export type ProdutoCreateManyLojaInputEnvelope = {
     data: ProdutoCreateManyLojaInput | ProdutoCreateManyLojaInput[]
     skipDuplicates?: boolean
-  }
-
-  export type CategoriaCreateWithoutLojasInput = {
-    id?: string
-    nome: string
-    imageUrl: string
-    produtos?: ProdutoCreateNestedManyWithoutCategoriaInput
-  }
-
-  export type CategoriaUncheckedCreateWithoutLojasInput = {
-    id?: string
-    nome: string
-    imageUrl: string
-    produtos?: ProdutoUncheckedCreateNestedManyWithoutCategoriaInput
-  }
-
-  export type CategoriaCreateOrConnectWithoutLojasInput = {
-    where: CategoriaWhereUniqueInput
-    create: XOR<CategoriaCreateWithoutLojasInput, CategoriaUncheckedCreateWithoutLojasInput>
   }
 
   export type UserUpsertWithoutStoresInput = {
@@ -14724,8 +14449,6 @@ export namespace Prisma {
     descricao?: StringFilter<"Produto"> | string
     imagemUrl?: StringFilter<"Produto"> | string
     imagemUrls?: StringNullableListFilter<"Produto">
-    cor?: StringFilter<"Produto"> | string
-    tamanho?: StringFilter<"Produto"> | string
     estoque?: IntFilter<"Produto"> | number
     preco?: DecimalFilter<"Produto"> | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: DecimalNullableFilter<"Produto"> | Decimal | DecimalJsLike | number | string | null
@@ -14737,31 +14460,6 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"Produto"> | Date | string | null
   }
 
-  export type CategoriaUpsertWithWhereUniqueWithoutLojasInput = {
-    where: CategoriaWhereUniqueInput
-    update: XOR<CategoriaUpdateWithoutLojasInput, CategoriaUncheckedUpdateWithoutLojasInput>
-    create: XOR<CategoriaCreateWithoutLojasInput, CategoriaUncheckedCreateWithoutLojasInput>
-  }
-
-  export type CategoriaUpdateWithWhereUniqueWithoutLojasInput = {
-    where: CategoriaWhereUniqueInput
-    data: XOR<CategoriaUpdateWithoutLojasInput, CategoriaUncheckedUpdateWithoutLojasInput>
-  }
-
-  export type CategoriaUpdateManyWithWhereWithoutLojasInput = {
-    where: CategoriaScalarWhereInput
-    data: XOR<CategoriaUpdateManyMutationInput, CategoriaUncheckedUpdateManyWithoutLojasInput>
-  }
-
-  export type CategoriaScalarWhereInput = {
-    AND?: CategoriaScalarWhereInput | CategoriaScalarWhereInput[]
-    OR?: CategoriaScalarWhereInput[]
-    NOT?: CategoriaScalarWhereInput | CategoriaScalarWhereInput[]
-    id?: StringFilter<"Categoria"> | string
-    nome?: StringFilter<"Categoria"> | string
-    imageUrl?: StringFilter<"Categoria"> | string
-  }
-
   export type ProdutoCreateWithoutCategoriaInput = {
     id?: string
     sku: string
@@ -14769,8 +14467,6 @@ export namespace Prisma {
     descricao: string
     imagemUrl: string
     imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
-    cor: string
-    tamanho: string
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
@@ -14789,8 +14485,6 @@ export namespace Prisma {
     descricao: string
     imagemUrl: string
     imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
-    cor: string
-    tamanho: string
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
@@ -14812,43 +14506,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type LojaCreateWithoutCategoriasInput = {
-    id?: string
-    nome: string
-    imagemUrl?: string | null
-    descricao?: string | null
-    imagemFile?: string | null
-    createdAt?: Date | string
-    endereco?: string | null
-    horarioFuncionamento?: string | null
-    telefone?: string | null
-    email?: string | null
-    user: UserCreateNestedOneWithoutStoresInput
-    pedidos?: OrderCreateNestedManyWithoutLojaInput
-    Produtos?: ProdutoCreateNestedManyWithoutLojaInput
-  }
-
-  export type LojaUncheckedCreateWithoutCategoriasInput = {
-    id?: string
-    nome: string
-    imagemUrl?: string | null
-    descricao?: string | null
-    imagemFile?: string | null
-    userId: string
-    createdAt?: Date | string
-    endereco?: string | null
-    horarioFuncionamento?: string | null
-    telefone?: string | null
-    email?: string | null
-    pedidos?: OrderUncheckedCreateNestedManyWithoutLojaInput
-    Produtos?: ProdutoUncheckedCreateNestedManyWithoutLojaInput
-  }
-
-  export type LojaCreateOrConnectWithoutCategoriasInput = {
-    where: LojaWhereUniqueInput
-    create: XOR<LojaCreateWithoutCategoriasInput, LojaUncheckedCreateWithoutCategoriasInput>
-  }
-
   export type ProdutoUpsertWithWhereUniqueWithoutCategoriaInput = {
     where: ProdutoWhereUniqueInput
     update: XOR<ProdutoUpdateWithoutCategoriaInput, ProdutoUncheckedUpdateWithoutCategoriaInput>
@@ -14863,39 +14520,6 @@ export namespace Prisma {
   export type ProdutoUpdateManyWithWhereWithoutCategoriaInput = {
     where: ProdutoScalarWhereInput
     data: XOR<ProdutoUpdateManyMutationInput, ProdutoUncheckedUpdateManyWithoutCategoriaInput>
-  }
-
-  export type LojaUpsertWithWhereUniqueWithoutCategoriasInput = {
-    where: LojaWhereUniqueInput
-    update: XOR<LojaUpdateWithoutCategoriasInput, LojaUncheckedUpdateWithoutCategoriasInput>
-    create: XOR<LojaCreateWithoutCategoriasInput, LojaUncheckedCreateWithoutCategoriasInput>
-  }
-
-  export type LojaUpdateWithWhereUniqueWithoutCategoriasInput = {
-    where: LojaWhereUniqueInput
-    data: XOR<LojaUpdateWithoutCategoriasInput, LojaUncheckedUpdateWithoutCategoriasInput>
-  }
-
-  export type LojaUpdateManyWithWhereWithoutCategoriasInput = {
-    where: LojaScalarWhereInput
-    data: XOR<LojaUpdateManyMutationInput, LojaUncheckedUpdateManyWithoutCategoriasInput>
-  }
-
-  export type LojaScalarWhereInput = {
-    AND?: LojaScalarWhereInput | LojaScalarWhereInput[]
-    OR?: LojaScalarWhereInput[]
-    NOT?: LojaScalarWhereInput | LojaScalarWhereInput[]
-    id?: StringFilter<"Loja"> | string
-    nome?: StringFilter<"Loja"> | string
-    imagemUrl?: StringNullableFilter<"Loja"> | string | null
-    descricao?: StringNullableFilter<"Loja"> | string | null
-    imagemFile?: StringNullableFilter<"Loja"> | string | null
-    userId?: StringFilter<"Loja"> | string
-    createdAt?: DateTimeFilter<"Loja"> | Date | string
-    endereco?: StringNullableFilter<"Loja"> | string | null
-    horarioFuncionamento?: StringNullableFilter<"Loja"> | string | null
-    telefone?: StringNullableFilter<"Loja"> | string | null
-    email?: StringNullableFilter<"Loja"> | string | null
   }
 
   export type OrderProductCreateWithoutProductInput = {
@@ -14923,15 +14547,11 @@ export namespace Prisma {
   export type CategoriaCreateWithoutProdutosInput = {
     id?: string
     nome: string
-    imageUrl: string
-    lojas?: LojaCreateNestedManyWithoutCategoriasInput
   }
 
   export type CategoriaUncheckedCreateWithoutProdutosInput = {
     id?: string
     nome: string
-    imageUrl: string
-    lojas?: LojaUncheckedCreateNestedManyWithoutCategoriasInput
   }
 
   export type CategoriaCreateOrConnectWithoutProdutosInput = {
@@ -14952,7 +14572,6 @@ export namespace Prisma {
     email?: string | null
     user: UserCreateNestedOneWithoutStoresInput
     pedidos?: OrderCreateNestedManyWithoutLojaInput
-    categorias?: CategoriaCreateNestedManyWithoutLojasInput
   }
 
   export type LojaUncheckedCreateWithoutProdutosInput = {
@@ -14968,7 +14587,6 @@ export namespace Prisma {
     telefone?: string | null
     email?: string | null
     pedidos?: OrderUncheckedCreateNestedManyWithoutLojaInput
-    categorias?: CategoriaUncheckedCreateNestedManyWithoutLojasInput
   }
 
   export type LojaCreateOrConnectWithoutProdutosInput = {
@@ -15016,15 +14634,11 @@ export namespace Prisma {
   export type CategoriaUpdateWithoutProdutosInput = {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    lojas?: LojaUpdateManyWithoutCategoriasNestedInput
   }
 
   export type CategoriaUncheckedUpdateWithoutProdutosInput = {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    lojas?: LojaUncheckedUpdateManyWithoutCategoriasNestedInput
   }
 
   export type LojaUpsertWithoutProdutosInput = {
@@ -15051,7 +14665,6 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutStoresNestedInput
     pedidos?: OrderUpdateManyWithoutLojaNestedInput
-    categorias?: CategoriaUpdateManyWithoutLojasNestedInput
   }
 
   export type LojaUncheckedUpdateWithoutProdutosInput = {
@@ -15067,7 +14680,6 @@ export namespace Prisma {
     telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     pedidos?: OrderUncheckedUpdateManyWithoutLojaNestedInput
-    categorias?: CategoriaUncheckedUpdateManyWithoutLojasNestedInput
   }
 
   export type OrderCreateWithoutProductsInput = {
@@ -15110,8 +14722,6 @@ export namespace Prisma {
     descricao: string
     imagemUrl: string
     imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
-    cor: string
-    tamanho: string
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
@@ -15130,8 +14740,6 @@ export namespace Prisma {
     descricao: string
     imagemUrl: string
     imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
-    cor: string
-    tamanho: string
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
@@ -15205,8 +14813,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
     imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
-    cor?: StringFieldUpdateOperationsInput | string
-    tamanho?: StringFieldUpdateOperationsInput | string
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -15225,8 +14831,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
     imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
-    cor?: StringFieldUpdateOperationsInput | string
-    tamanho?: StringFieldUpdateOperationsInput | string
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -15251,7 +14855,6 @@ export namespace Prisma {
     email?: string | null
     user: UserCreateNestedOneWithoutStoresInput
     Produtos?: ProdutoCreateNestedManyWithoutLojaInput
-    categorias?: CategoriaCreateNestedManyWithoutLojasInput
   }
 
   export type LojaUncheckedCreateWithoutPedidosInput = {
@@ -15267,7 +14870,6 @@ export namespace Prisma {
     telefone?: string | null
     email?: string | null
     Produtos?: ProdutoUncheckedCreateNestedManyWithoutLojaInput
-    categorias?: CategoriaUncheckedCreateNestedManyWithoutLojasInput
   }
 
   export type LojaCreateOrConnectWithoutPedidosInput = {
@@ -15350,7 +14952,6 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutStoresNestedInput
     Produtos?: ProdutoUpdateManyWithoutLojaNestedInput
-    categorias?: CategoriaUpdateManyWithoutLojasNestedInput
   }
 
   export type LojaUncheckedUpdateWithoutPedidosInput = {
@@ -15366,7 +14967,6 @@ export namespace Prisma {
     telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     Produtos?: ProdutoUncheckedUpdateManyWithoutLojaNestedInput
-    categorias?: CategoriaUncheckedUpdateManyWithoutLojasNestedInput
   }
 
   export type UserUpsertWithoutOrdersInput = {
@@ -15561,7 +15161,6 @@ export namespace Prisma {
     email?: string | null
     pedidos?: OrderCreateNestedManyWithoutLojaInput
     Produtos?: ProdutoCreateNestedManyWithoutLojaInput
-    categorias?: CategoriaCreateNestedManyWithoutLojasInput
   }
 
   export type LojaUncheckedCreateWithoutUserInput = {
@@ -15577,7 +15176,6 @@ export namespace Prisma {
     email?: string | null
     pedidos?: OrderUncheckedCreateNestedManyWithoutLojaInput
     Produtos?: ProdutoUncheckedCreateNestedManyWithoutLojaInput
-    categorias?: CategoriaUncheckedCreateNestedManyWithoutLojasInput
   }
 
   export type LojaCreateOrConnectWithoutUserInput = {
@@ -15704,6 +15302,23 @@ export namespace Prisma {
     data: XOR<LojaUpdateManyMutationInput, LojaUncheckedUpdateManyWithoutUserInput>
   }
 
+  export type LojaScalarWhereInput = {
+    AND?: LojaScalarWhereInput | LojaScalarWhereInput[]
+    OR?: LojaScalarWhereInput[]
+    NOT?: LojaScalarWhereInput | LojaScalarWhereInput[]
+    id?: StringFilter<"Loja"> | string
+    nome?: StringFilter<"Loja"> | string
+    imagemUrl?: StringNullableFilter<"Loja"> | string | null
+    descricao?: StringNullableFilter<"Loja"> | string | null
+    imagemFile?: StringNullableFilter<"Loja"> | string | null
+    userId?: StringFilter<"Loja"> | string
+    createdAt?: DateTimeFilter<"Loja"> | Date | string
+    endereco?: StringNullableFilter<"Loja"> | string | null
+    horarioFuncionamento?: StringNullableFilter<"Loja"> | string | null
+    telefone?: StringNullableFilter<"Loja"> | string | null
+    email?: StringNullableFilter<"Loja"> | string | null
+  }
+
   export type OrderUpsertWithWhereUniqueWithoutUserInput = {
     where: OrderWhereUniqueInput
     update: XOR<OrderUpdateWithoutUserInput, OrderUncheckedUpdateWithoutUserInput>
@@ -15800,8 +15415,6 @@ export namespace Prisma {
     descricao: string
     imagemUrl: string
     imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
-    cor: string
-    tamanho: string
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
@@ -15860,8 +15473,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
     imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
-    cor?: StringFieldUpdateOperationsInput | string
-    tamanho?: StringFieldUpdateOperationsInput | string
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -15880,8 +15491,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
     imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
-    cor?: StringFieldUpdateOperationsInput | string
-    tamanho?: StringFieldUpdateOperationsInput | string
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -15900,8 +15509,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
     imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
-    cor?: StringFieldUpdateOperationsInput | string
-    tamanho?: StringFieldUpdateOperationsInput | string
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -15912,26 +15519,6 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type CategoriaUpdateWithoutLojasInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    nome?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    produtos?: ProdutoUpdateManyWithoutCategoriaNestedInput
-  }
-
-  export type CategoriaUncheckedUpdateWithoutLojasInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    nome?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    produtos?: ProdutoUncheckedUpdateManyWithoutCategoriaNestedInput
-  }
-
-  export type CategoriaUncheckedUpdateManyWithoutLojasInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    nome?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
-  }
-
   export type ProdutoCreateManyCategoriaInput = {
     id?: string
     sku: string
@@ -15939,8 +15526,6 @@ export namespace Prisma {
     descricao: string
     imagemUrl: string
     imagemUrls?: ProdutoCreateimagemUrlsInput | string[]
-    cor: string
-    tamanho: string
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
@@ -15958,8 +15543,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
     imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
-    cor?: StringFieldUpdateOperationsInput | string
-    tamanho?: StringFieldUpdateOperationsInput | string
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -15978,8 +15561,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
     imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
-    cor?: StringFieldUpdateOperationsInput | string
-    tamanho?: StringFieldUpdateOperationsInput | string
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -15998,8 +15579,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     imagemUrl?: StringFieldUpdateOperationsInput | string
     imagemUrls?: ProdutoUpdateimagemUrlsInput | string[]
-    cor?: StringFieldUpdateOperationsInput | string
-    tamanho?: StringFieldUpdateOperationsInput | string
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -16008,52 +15587,6 @@ export namespace Prisma {
     totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type LojaUpdateWithoutCategoriasInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    nome?: StringFieldUpdateOperationsInput | string
-    imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    descricao?: NullableStringFieldUpdateOperationsInput | string | null
-    imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    user?: UserUpdateOneRequiredWithoutStoresNestedInput
-    pedidos?: OrderUpdateManyWithoutLojaNestedInput
-    Produtos?: ProdutoUpdateManyWithoutLojaNestedInput
-  }
-
-  export type LojaUncheckedUpdateWithoutCategoriasInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    nome?: StringFieldUpdateOperationsInput | string
-    imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    descricao?: NullableStringFieldUpdateOperationsInput | string | null
-    imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    pedidos?: OrderUncheckedUpdateManyWithoutLojaNestedInput
-    Produtos?: ProdutoUncheckedUpdateManyWithoutLojaNestedInput
-  }
-
-  export type LojaUncheckedUpdateManyWithoutCategoriasInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    nome?: StringFieldUpdateOperationsInput | string
-    imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    descricao?: NullableStringFieldUpdateOperationsInput | string | null
-    imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type OrderProductCreateManyProductInput = {
@@ -16163,7 +15696,6 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     pedidos?: OrderUpdateManyWithoutLojaNestedInput
     Produtos?: ProdutoUpdateManyWithoutLojaNestedInput
-    categorias?: CategoriaUpdateManyWithoutLojasNestedInput
   }
 
   export type LojaUncheckedUpdateWithoutUserInput = {
@@ -16179,7 +15711,6 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     pedidos?: OrderUncheckedUpdateManyWithoutLojaNestedInput
     Produtos?: ProdutoUncheckedUpdateManyWithoutLojaNestedInput
-    categorias?: CategoriaUncheckedUpdateManyWithoutLojasNestedInput
   }
 
   export type LojaUncheckedUpdateManyWithoutUserInput = {

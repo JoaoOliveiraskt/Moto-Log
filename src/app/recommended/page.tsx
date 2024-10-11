@@ -25,16 +25,22 @@ export default async function RecommendedProducts() {
       <div className="flex justify-between items-center">
         <GoBackButton name={name} />
       </div>
-      <ProductList>
-        {products
-          .slice()
-          .reverse()
-          .map((product: Produto) => (
-            <div key={product.id}>
-              {/* @ts-ignore */}
-              <ProductCard product={product} />
-            </div>
-          ))}
+      <ProductList className="min-h-screen">
+        {products.length === 0 ? (
+          <h3 className="font-bold text-lg">
+            Nenhum produto disponível no momento.
+          </h3>
+        ) : (
+          products
+            .slice()
+            .reverse()
+            .map((product: Produto) => (
+              <div key={product.id}>
+                {/* @ts-ignore */}
+                <ProductCard product={product} />
+              </div>
+            ))
+        )}
       </ProductList>
     </Container>
   );

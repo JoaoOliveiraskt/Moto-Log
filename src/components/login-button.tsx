@@ -74,8 +74,9 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
                 alt={data?.user?.name as string | undefined}
               />
               <AvatarFallback>
-                {data?.user?.name?.split(" ")[0][0]}
-                {data?.user?.name?.split(" ")[1][0]}
+                {data?.user?.name?.split(" ")[0][0]} {/* Primeiro nome */}
+                {data?.user?.name?.split(" ")[1]?.[0] || ""}{" "}
+                {/* Segundo nome, com fallback */}
               </AvatarFallback>
             </Avatar>
 
@@ -94,7 +95,10 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
             </div>
           </div>
 
-          <LoginButton size={"menu"} className="w-full bg-transparent justify-start border-none" />
+          <LoginButton
+            size={"menu"}
+            className="w-full bg-transparent justify-start border-none"
+          />
         </div>
       ) : (
         <div className="flex items-center gap-4 px-4">

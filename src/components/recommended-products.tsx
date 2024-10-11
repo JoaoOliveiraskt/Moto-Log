@@ -28,15 +28,21 @@ export default async function RecommendedProducts() {
         <SeeAllButton href="/recommended" />
       </div>
       <ProductList>
-        {products
-          .reverse()
-          .slice(0, 15)
-          .map((product: Produto) => (
-            <div key={product.id}>
-              {/* @ts-ignore */}
-              <ProductCard product={product} />
-            </div>
-          ))}
+        {products.length === 0 ? (
+          <h3 className="font-bold text-lg">
+            Nenhum produto disponível no momento.
+          </h3>
+        ) : (
+          products
+            .reverse()
+            .slice(0, 15)
+            .map((product: Produto) => (
+              <div key={product.id}>
+                {/* @ts-ignore */}
+                <ProductCard product={product} />
+              </div>
+            ))
+        )}
       </ProductList>
     </div>
   );
