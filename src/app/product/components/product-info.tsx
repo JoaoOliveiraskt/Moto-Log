@@ -71,7 +71,6 @@ export default function ProductInfo({ product }: ProductInfoProps) {
     if (!data?.user) {
       return handleLoginOpen();
     }
-    // Verificar se há algum produto de outra loja no carrinho
     const hasDifferentStoreProduct = products.some(
       (cartProduct) => cartProduct.lojaId !== product.lojaId
     );

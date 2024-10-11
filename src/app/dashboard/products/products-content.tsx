@@ -1,5 +1,3 @@
-// app/dashboard/products/products-content.tsx
-
 import Image from "next/image";
 import { MoreHorizontal, PlusCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -29,8 +27,41 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { db } from "@/lib/prisma";
 
-export default function ProductsContent() {
+async function getProductsForUser() {
+  const session = await getServerSession(authOptions);
+
+  if (!session || !session.user) {
+    return [];
+  }
+
+  const userId = session.user.id;
+
+  const products = await db.produto.findMany({
+    where: {
+      loja: {
+        userId: userId,
+      },
+    },
+    include: {
+      loja: {
+        select: {
+          nome: true,
+          id: true,
+        },
+      },
+    },
+  });
+
+  return products || [];
+}
+
+export default async function ProductsContent() {
+  const products = await getProductsForUser();
+
   return (
     <main className="grid flex-1 items-start gap-4 sm:py-0 md:gap-8 mt-4">
       <Tabs defaultValue="all">
@@ -43,7 +74,7 @@ export default function ProductsContent() {
             </TabsTrigger>
           </TabsList>
           <div className="ml-auto flex items-center gap-2">
-            <Button  className="gap-1">
+            <Button className="gap-1">
               <Link
                 href="/dashboard/add-product"
                 className="flex items-center gap-1"
@@ -57,7 +88,7 @@ export default function ProductsContent() {
           </div>
         </div>
         <TabsContent value="all">
-          <Card x-chunk="dashboard-06-chunk-0" >
+          <Card x-chunk="dashboard-06-chunk-0">
             <CardHeader className="px-6 mt-6 space-y-2 mb-5">
               <CardTitle>Produtos</CardTitle>
               <CardDescription>
@@ -75,9 +106,6 @@ export default function ProductsContent() {
                     <TableHead>Status</TableHead>
                     <TableHead>Preço</TableHead>
                     <TableHead className="hidden md:table-cell">
-                      Total de vendas
-                    </TableHead>
-                    <TableHead className="hidden md:table-cell">
                       Criado em
                     </TableHead>
                     <TableHead>
@@ -86,259 +114,79 @@ export default function ProductsContent() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  <TableRow>
-                    <TableCell className="hidden sm:table-cell">
-                      <Image
-                        alt="Product image"
-                        className="aspect-square rounded-md object-cover"
-                        height="64"
-                        src="/placeholder.svg"
-                        width="64"
-                      />
-                    </TableCell>
-                    <TableCell className="font-medium">
-                      AirChill Cooler
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant="outline">Ativo</Badge>
-                    </TableCell>
-                    <TableCell>R$499.99</TableCell>
-                    <TableCell className="hidden md:table-cell">25</TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      2023-07-12 10:42 AM
-                    </TableCell>
-                    <TableCell>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            aria-haspopup="true"
-                            size="icon"
-                            variant="ghost"
-                          >
-                            <MoreHorizontal className="h-4 w-4" />
-                            <span className="sr-only">Toggle menu</span>
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuLabel>Ações</DropdownMenuLabel>
-                          <DropdownMenuItem>Editar</DropdownMenuItem>
-                          <DropdownMenuItem>Deletar</DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
-
-                  <TableRow>
-                    <TableCell className="hidden sm:table-cell">
-                      <Image
-                        alt="Product image"
-                        className="aspect-square rounded-md object-cover"
-                        height="64"
-                        src="/placeholder.svg"
-                        width="64"
-                      />
-                    </TableCell>
-                    <TableCell className="font-medium">EcoClean 360</TableCell>
-                    <TableCell>
-                      <Badge variant="outline">Ativo</Badge>
-                    </TableCell>
-                    <TableCell>R$499.99</TableCell>
-                    <TableCell className="hidden md:table-cell">25</TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      2023-07-12 10:42 AM
-                    </TableCell>
-                    <TableCell>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            aria-haspopup="true"
-                            size="icon"
-                            variant="ghost"
-                          >
-                            <MoreHorizontal className="h-4 w-4" />
-                            <span className="sr-only">Toggle menu</span>
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuLabel>Ações</DropdownMenuLabel>
-                          <DropdownMenuItem>Editar</DropdownMenuItem>
-                          <DropdownMenuItem>Deletar</DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
-
-                  <TableRow>
-                    <TableCell className="hidden sm:table-cell">
-                      <Image
-                        alt="Product image"
-                        className="aspect-square rounded-md object-cover"
-                        height="64"
-                        src="/placeholder.svg"
-                        width="64"
-                      />
-                    </TableCell>
-                    <TableCell className="font-medium">
-                      TechWear Alpha
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant="outline">Ativo</Badge>
-                    </TableCell>
-                    <TableCell>R$499.99</TableCell>
-                    <TableCell className="hidden md:table-cell">25</TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      2023-07-12 10:42 AM
-                    </TableCell>
-                    <TableCell>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            aria-haspopup="true"
-                            size="icon"
-                            variant="ghost"
-                          >
-                            <MoreHorizontal className="h-4 w-4" />
-                            <span className="sr-only">Toggle menu</span>
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuLabel>Ações</DropdownMenuLabel>
-                          <DropdownMenuItem>Editar</DropdownMenuItem>
-                          <DropdownMenuItem>Deletar</DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
-
-                  <TableRow>
-                    <TableCell className="hidden sm:table-cell">
-                      <Image
-                        alt="Product image"
-                        className="aspect-square rounded-md object-cover"
-                        height="64"
-                        src="/placeholder.svg"
-                        width="64"
-                      />
-                    </TableCell>
-                    <TableCell className="font-medium">
-                      XtremeSound Pro
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant="outline">Ativo</Badge>
-                    </TableCell>
-                    <TableCell>R$499.99</TableCell>
-                    <TableCell className="hidden md:table-cell">25</TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      2023-07-12 10:42 AM
-                    </TableCell>
-                    <TableCell>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            aria-haspopup="true"
-                            size="icon"
-                            variant="ghost"
-                          >
-                            <MoreHorizontal className="h-4 w-4" />
-                            <span className="sr-only">Toggle menu</span>
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuLabel>Ações</DropdownMenuLabel>
-                          <DropdownMenuItem>Editar</DropdownMenuItem>
-                          <DropdownMenuItem>Deletar</DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
-
-                  <TableRow>
-                    <TableCell className="hidden sm:table-cell">
-                      <Image
-                        alt="Product image"
-                        className="aspect-square rounded-md object-cover"
-                        height="64"
-                        src="/placeholder.svg"
-                        width="64"
-                      />
-                    </TableCell>
-                    <TableCell className="font-medium">
-                      GigaLaptop X15
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant="outline">Ativo</Badge>
-                    </TableCell>
-                    <TableCell>R$499.99</TableCell>
-                    <TableCell className="hidden md:table-cell">25</TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      2023-07-12 10:42 AM
-                    </TableCell>
-                    <TableCell>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            aria-haspopup="true"
-                            size="icon"
-                            variant="ghost"
-                          >
-                            <MoreHorizontal className="h-4 w-4" />
-                            <span className="sr-only">Toggle menu</span>
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuLabel>Ações</DropdownMenuLabel>
-                          <DropdownMenuItem>Editar</DropdownMenuItem>
-                          <DropdownMenuItem>Deletar</DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
-
-                  <TableRow>
-                    <TableCell className="hidden sm:table-cell">
-                      <Image
-                        alt="Product image"
-                        className="aspect-square rounded-md object-cover"
-                        height="64"
-                        src="/placeholder.svg"
-                        width="64"
-                      />
-                    </TableCell>
-                    <TableCell className="font-medium">UltraView 4K</TableCell>
-                    <TableCell>
-                      <Badge variant="outline">Ativo</Badge>
-                    </TableCell>
-                    <TableCell>R$499.99</TableCell>
-                    <TableCell className="hidden md:table-cell">25</TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      2023-07-12 10:42 AM
-                    </TableCell>
-                    <TableCell>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            aria-haspopup="true"
-                            size="icon"
-                            variant="ghost"
-                          >
-                            <MoreHorizontal className="h-4 w-4" />
-                            <span className="sr-only">Toggle menu</span>
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuLabel>Ações</DropdownMenuLabel>
-                          <DropdownMenuItem>Editar</DropdownMenuItem>
-                          <DropdownMenuItem>Deletar</DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
+                  {products.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={6} className="text-center">
+                        Nenhum produto encontrado.
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    products
+                      .slice()
+                      .reverse()
+                      .map((product) => (
+                        <TableRow key={product.id}>
+                          <TableCell className="hidden sm:table-cell">
+                            <div className="relative h-16 w-16 overflow-hidden rounded-md">
+                              <Image
+                                alt="Product image"
+                                className="absolute inset-0 h-full w-full object-cover"
+                                height="1000"
+                                width="1000"
+                                src={product.imagemUrl}
+                              />
+                            </div>
+                          </TableCell>
+                          <TableCell className="font-medium">
+                            {product.nome}
+                          </TableCell>
+                          <TableCell>
+                            <Badge variant="outline">{product.status}</Badge>
+                          </TableCell>
+                          <TableCell>{`R$${product.preco.toFixed(
+                            2
+                          )}`}</TableCell>
+                          <TableCell className="hidden md:table-cell">
+                            {
+                              new Date(product.createdAt)
+                                .toLocaleString("pt-BR", {
+                                  year: "2-digit",
+                                  month: "2-digit",
+                                  day: "2-digit",
+                                  hour12: false,
+                                })
+                                .split(" ")[0]
+                            }
+                          </TableCell>
+                          <TableCell>
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <Button
+                                  aria-haspopup="true"
+                                  size="icon"
+                                  variant="ghost"
+                                >
+                                  <MoreHorizontal className="h-4 w-4" />
+                                  <span className="sr-only">Toggle menu</span>
+                                </Button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="end">
+                                <DropdownMenuLabel>Ações</DropdownMenuLabel>
+                                <DropdownMenuItem>Editar</DropdownMenuItem>
+                                <DropdownMenuItem>Deletar</DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                  )}
                 </TableBody>
               </Table>
             </CardContent>
             <CardFooter>
               <div className="text-xs text-muted-foreground">
-                Mostrando <strong>1-6</strong> de <strong>32</strong> produtos
+                Mostrando <strong>1-{products.length}</strong> de{" "}
+                <strong>{products.length}</strong> produtos
               </div>
             </CardFooter>
           </Card>

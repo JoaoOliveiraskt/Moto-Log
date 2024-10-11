@@ -19,7 +19,7 @@ const handler = NextAuth({
         where: { id: user.id },
         select: { id: true, role: true },
       });
-      session.user = { ...session.user, id: user.id, role: userRecord?.role || "CLIENT"}; // Adiciona a role ao session.user
+      session.user = { ...session.user, id: user.id, role: userRecord?.role || "CLIENT"};
       return session;
     },
   },

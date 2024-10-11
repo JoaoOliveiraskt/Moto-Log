@@ -44,7 +44,7 @@ export default function Aside() {
 
 interface Props {
   name: string;
-  icon: React.ElementType; // Recebe um componente de ícone
+  icon: React.ElementType;
   href: string;
 }
 

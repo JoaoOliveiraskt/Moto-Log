@@ -26,18 +26,17 @@ const carouselItems = [
   {
     title: "Promoções imperdíveis nas suas lojas preferidas",
     subtitle: "Descontos exclusivos, só para você!",
-    backgroundColor: "bg-blue-400", // Azul suave
+    backgroundColor: "bg-blue-400", 
   },
   {
     title: "Aproveite as melhores ofertas da sua região",
     subtitle: "Compras inteligentes, preços baixos!",
     backgroundColor: "bg-yellow-400",
-     // Amarelo suave
   },
   {
     title: "Descontos que você não pode perder",
     subtitle: "Compras com qualidade e economia!",
-    backgroundColor: "bg-orange-400", // Verde-azulado suave (minha escolha)
+    backgroundColor: "bg-orange-400",
   },
 ];
 
