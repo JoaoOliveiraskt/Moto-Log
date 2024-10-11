@@ -12,11 +12,13 @@ export default async function RecommendedProducts() {
     include: {
       loja: {
         select: { nome: true },
-      },
+      }, 
     },
   });
+
+  console.log("Produtos encontrados:", products);
   return (
-    <Container className="space-y-8 mt-20">
+    <Container className="space-y-8 mt-20 ">
       <div className="flex justify-between items-center">
         <GoBackButton name={name} />
       </div>
