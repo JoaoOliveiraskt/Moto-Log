@@ -54,12 +54,12 @@ export default async function Store({ params }: Props) {
                 alt="Store Banner"
                 width={1000}
                 height={1000}
-                className="w-20 h-20 md:w-24 md:h-24 object-cover rounded-[28px] border"
+                className="w-16 h-16 md:w-24 md:h-24 object-cover rounded-2xl md:rounded-[28px] border"
               />
             ) : null}
           </div>
 
-          <div className="w-full mt-6 tracking-tighter">
+          <div className="w-full mt-4 md:mt-6 tracking-tighter">
             <h1 className="text-3xl font-bold text-foreground md:text-4xl lg:text-[44px]">
               {store.nome} -
             </h1>
