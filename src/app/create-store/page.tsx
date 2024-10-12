@@ -105,7 +105,7 @@ export default function CreateStore() {
     );
   } else {
     return (
-      <main className="h-screen w-full flex items-center justify-center flex-col space-y-6 mt-[72px] lg:mt-10">
+      <main className="h-screen w-full flex items-center justify-center flex-col space-y-6 mt-[72px] md:mt-16 lg:mt-10">
         <Pattern enableAnimation={false} />
 
         <motion.div {...animation1}>
@@ -118,7 +118,7 @@ export default function CreateStore() {
         </motion.div>
 
         <motion.div {...animation2}>
-          <Card className="w-full md:w-[30rem] bg-card/50 opacity-90">
+          <Card className="w-full md:w-[30rem] bg-card/75 opacity-90">
             <CardHeader className="px-6 space-y-2 mt-4 mb-5">
               <CardTitle>Informações da Loja</CardTitle>
               <CardDescription>
@@ -154,7 +154,7 @@ export default function CreateStore() {
                     <Textarea
                       id="description"
                       placeholder="Descrição da loja"
-                      className="min-h-32"
+                      className="min-h-24"
                       {...register("description")}
                     />
                     {errors.description && (

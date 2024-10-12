@@ -35,7 +35,7 @@ export default async function DiscountProducts() {
   const products = await getDiscountProducts();
 
   return (
-    <div className="space-y-5">
+    <div  className="space-y-5">
       <div className="flex justify-between items-center ">
         <h2 className="font-bold text-primary text-xl sm:text-3xl">
           Com desconto

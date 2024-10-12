@@ -25,7 +25,7 @@ const buttonAnimation = {
 
 export default function WelcomeCreateStore() {
   return (
-    <main className="w-full h-screen flex flex-col items-center justify-center">
+    <main className="max-w-full h-screen flex flex-col items-center justify-center">
       <Pattern />
 
       <div className="relative z-10 w-full space-y-3 flex flex-col items-center justify-center -top-12">

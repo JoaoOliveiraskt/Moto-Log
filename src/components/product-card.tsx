@@ -23,7 +23,7 @@ const ProductCard = ({ product }: ProductProps) => {
     <div className="relative mb-6">
       <Link href={`/product/${product.id}`}>
         <div className="cursor-pointer h-max overflow-hidden text-foreground">
-          <div className="h-48 w-full lg:h-56 rounded-3xl overflow-hidden">
+          <div className="h-48 w-full lg:h-56 rounded-2xl overflow-hidden">
             <Image
               src={product.imagemUrl}
               alt={product.nome}
@@ -42,12 +42,12 @@ const ProductCard = ({ product }: ProductProps) => {
             )}
           </div>
           <div className="min-h-full px-1 py-2 flex flex-col justify-between">
-            <h2 className="font-bold line-clamp-2 lg:line-clamp-1">
+            <h2 className="font-semibold line-clamp-2 lg:line-clamp-1">
               {product.nome}
             </h2>
 
-            <div className="flex flex-col-reverse items-start md:flex-row md:items-center md:gap-2">
-              <span className="font-medium">
+            <div className="flex flex-col-reverse items-start md:flex-row md:items-center md:gap-2 mt-0.5">
+              <span className="font-medium text-sm text-foreground">
                 {formatCurrency(Number(calculateTotalPrice(product)))}
               </span>
               {Number(product.porcentagemDesconto) > 0 && (
@@ -77,7 +77,7 @@ const ProductCard = ({ product }: ProductProps) => {
                 </div>
                 <div className="flex flex-col justify-center">
                   <h5 className="text-sm: md:text-base">{product.loja.nome}</h5>
-                  <span className="text-xs text-muted-foreground lg:line-clamp-1">
+                  <span className="text-xs text-muted-foreground line-clamp-1">
                     {product.loja.descricao}
                   </span>
                 </div>
