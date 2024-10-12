@@ -47,14 +47,14 @@ export default async function Store({ params }: Props) {
     <>
       <Container className="lg:mt-20">
         <div className="w-full overflow-hidden">
-          <div className="mt-6 md:mt-4">
+          <div className="mt-20 lg:mt-4">
             {storeImageUrl ? (
               <Image
                 src={storeImageUrl}
                 alt="Store Banner"
                 width={1000}
                 height={1000}
-                className="w-24 h-24 object-cover rounded-[28px] border"
+                className="w-20 h-20 md:w-24 md:h-24 object-cover rounded-[28px] border"
               />
             ) : null}
           </div>
