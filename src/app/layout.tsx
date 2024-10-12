@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Source_Sans_3 } from "next/font/google";
+import { Inter, Source_Sans_3, Open_Sans, Poppins } from "next/font/google";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { CartProvider } from "./context/cart";
@@ -13,7 +13,7 @@ import GoBackButton from "@/components/go-back-button";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
-const sourceSans3 = Source_Sans_3({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ["latin"], weight: ["500", "700", "900"] });
 
 export const metadata: Metadata = {
   title: "Moto Log",

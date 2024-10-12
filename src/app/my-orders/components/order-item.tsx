@@ -59,7 +59,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
             <Link
               href={`/store/${order.lojaId}`}
               className="flex gap-2 items-center mt-1 text-muted-foreground 
-              hover:text-cyan-600 dark:hover:text-cyan-600 w-fit"
+              hover:text-cyan-600 w-fit"
             >
               <div className="flex items-center space-x-2">
                 <Avatar className="w-6 h-6">

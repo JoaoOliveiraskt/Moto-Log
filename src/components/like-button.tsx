@@ -40,9 +40,9 @@ export default function LikeButton({ className, size = 24 }: Props) {
       className={`flex items-center justify-center rounded-full border-none text-foreground ${className}`}
     >
       {liked ? (
-        <icon.heartFilled size={size} className={`text-destructive`} />
+        <icon.bookmark2 size={size} className={`text-destructive`} />
       ) : (
-        <icon.heart size={size} className={``} />
+        <icon.bookmark size={size} className={``} />
       )}
     </Button>
   );

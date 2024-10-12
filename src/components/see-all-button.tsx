@@ -9,7 +9,10 @@ interface Props {
 export default function SeeAllButton({ href }: Props) {
   return (
     <Button variant={"icon"}>
-      <Link href={href} className="flex items-center gap-1 text-cyan-500 hover:text-cyan-600 transition-all">
+      <Link
+        href={href}
+        className="flex items-center gap-1 text-cyan-600 hover:text-cyan-500 transition-all"
+      >
         <span className="font-medium">Ver todos</span>
         <GoChevronRight />
       </Link>

@@ -25,12 +25,12 @@ export default function CategoryItem({
     <Link
       href={link}
       className={cn([
-        `w-auto rounded-full z-20 border dark:border-zinc-900`,
+        `w-auto rounded-full z-20 border dark:border/10`,
         active && "bg-foreground text-background",
         className,
       ])}
     >
-      <div className="flex items-center gap-1 w-fit px-4 py-1.5 bg-card hover:bg-accent hover:text-foreground rounded-full">
+      <div className="flex items-center gap-1 w-fit px-4 py-2.5 bg-card/30 hover:bg-accent/50 hover:text-foreground rounded-full transition-all">
         <p className="font-medium">{category.nome}</p>
       </div>
     </Link>

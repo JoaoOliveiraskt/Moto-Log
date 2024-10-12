@@ -28,6 +28,9 @@ const nextConfig = {
       },
       {
         hostname: "plus.unsplash.com"
+      },
+      {
+        hostname: "cdn.dribbble.com"
       }
     ],
   },

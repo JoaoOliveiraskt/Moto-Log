@@ -1,5 +1,3 @@
-"use client";
-
 import { useFormContext } from "react-hook-form";
 import {
   Card,
@@ -12,7 +10,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-export default function ProductDetails() {
+interface ProductDetailsProps {
+  isEditing?: boolean;
+}
+
+export default function ProductDetails({ isEditing }: ProductDetailsProps) {
   const {
     register,
     formState: { errors },

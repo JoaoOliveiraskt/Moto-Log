@@ -17,6 +17,10 @@ const createProductSchema = z.object({
   status: z.enum([ProdutoStatus.ATIVO, ProdutoStatus.ARQUIVADO]),
 });
 
+const updateProductSchema = createProductSchema.extend({
+  id: z.string(),
+});
+
 const handleErrorResponse = (error: unknown) => {
   if (error instanceof ZodError) {
     return NextResponse.json(
@@ -107,6 +111,75 @@ export async function POST(request: Request) {
     revalidatePaths(["/", "/recommended", "/discount"]);
 
     return NextResponse.json({ product }, { status: 201 });
+  } catch (error) {
+    return handleErrorResponse(error);
+  }
+}
+
+export async function PUT(request: Request) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session) {
+      return NextResponse.json(
+        { error: "Usuário não autenticado" },
+        { status: 401 }
+      );
+    }
+
+    const userId = session.user.id;
+    const userStore = await db.loja.findFirst({
+      where: { userId: userId },
+    });
+
+    if (!userStore) {
+      return NextResponse.json(
+        { error: "Loja não encontrada para este usuário" },
+        { status: 404 }
+      );
+    }
+
+    const body = await request.json();
+    const data = updateProductSchema.parse(body);
+    
+    const existingProduct = await db.produto.findUnique({
+      where: { id: data.id },
+    });
+
+    if (!existingProduct) {
+      return NextResponse.json(
+        { error: "Produto não encontrado" },
+        { status: 404 }
+      );
+    }
+
+    const category = await db.categoria.findUnique({
+      where: { id: data.categoryId },
+    });
+
+    if (!category) {
+      return NextResponse.json(
+        { error: "Categoria não encontrada" },
+        { status: 404 }
+      );
+    }
+
+    const updatedProduct = await db.produto.update({
+      where: { id: data.id },
+      data: {
+        nome: data.name,
+        descricao: data.description || "",
+        imagemUrl: data.imageUrl,
+        preco: data.price,
+        porcentagemDesconto: data.discountPercentage,
+        estoque: data.stock,
+        categoriaId: data.categoryId,
+        status: data.status,
+      },
+    });
+
+    revalidatePaths(["/", "/recommended", "/discount"]);
+
+    return NextResponse.json({ product: updatedProduct }, { status: 200 });
   } catch (error) {
     return handleErrorResponse(error);
   }

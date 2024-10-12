@@ -19,6 +19,8 @@ async function getAllDiscountProducts() {
         select: {
           nome: true,
           id: true,
+          descricao: true,
+          imagemUrl: true,
         },
       },
     },

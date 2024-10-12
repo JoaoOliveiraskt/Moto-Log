@@ -95,7 +95,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
   return (
     <>
-      <div className="flex flex-col w-full gap-6">
+      <div className="flex flex-col w-full max-w-3xl gap-6">
         <h1 className="text-3xl font-bold">{product.nome}</h1>
 
         <div className="flex items-center gap-4">

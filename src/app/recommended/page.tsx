@@ -14,7 +14,7 @@ export default async function RecommendedProducts() {
   const products = await db.produto.findMany({
     include: {
       loja: {
-        select: { nome: true },
+        select: { nome: true, id: true, descricao: true, imagemUrl: true },
       },
     },
   });

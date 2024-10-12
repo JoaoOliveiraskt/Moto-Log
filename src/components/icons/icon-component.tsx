@@ -15,7 +15,8 @@ import { MdOutlineSell } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { FaGithub } from "react-icons/fa6";
 import { GoIssueClosed } from "react-icons/go";
-import { CiHeart } from "react-icons/ci";
+import { CiBookmark } from "react-icons/ci";
+import { IoBookmark } from "react-icons/io5";
 import { TbHeartFilled } from "react-icons/tb";
 import { IoTrashOutline } from "react-icons/io5";
 import { FiClock } from "react-icons/fi";
@@ -52,7 +53,8 @@ const Icon = {
   lineChart: LineChart,
   github: FaGithub,
   confirmed: GoIssueClosed,
-  heart: CiHeart,
+  bookmark: CiBookmark,
+  bookmark2: IoBookmark,
   heartFilled: TbHeartFilled,
   clock: FiClock,
   location: SlLocationPin,

@@ -12,8 +12,8 @@ export default async function CategoryList() {
   const categories = await FetchCategory();
 
   return (
-    <div id="category-list" className="mt-20 lg:mt-32 w-full">
-      <h2 className="text-start  text-4xl xl:text-5xl font-bold text-primary mb-8">
+    <div id="category-list" className="mt-20 lg:mt-28 w-full">
+      <h2 className="text-start text-4xl xl:text-[2.75rem] font-semibold text-primary mb-8">
         Categorias
       </h2>
 
