@@ -35,14 +35,14 @@ const ProductCard = ({ product }: ProductProps) => {
             {Number(product.porcentagemDesconto) > 0 && (
               <div className="text-black bg-confirmed flex items-center justify-around absolute px-1.5 py-0.5 -top-1.5 -left-1.5 rounded-lg">
                 <icon.arrowDown size={18} />
-                <span className="text-sm">
+                <span className="text-xs">
                   {Number(product.porcentagemDesconto)}%
                 </span>
               </div>
             )}
           </div>
           <div className="min-h-full px-1 py-2 flex flex-col justify-between">
-            <h2 className="font-semibold line-clamp-2 lg:line-clamp-1">
+            <h2 className="font-bold line-clamp-2 lg:line-clamp-1">
               {product.nome}
             </h2>
 
@@ -62,7 +62,7 @@ const ProductCard = ({ product }: ProductProps) => {
                 href={`/store/${product.lojaId}`}
                 className="text-foreground font-medium hover:text-cyan-600 mb-2 flex items-center gap-2"
               >
-                <div className="w-8 h-8 rounded-lg overflow-hidden bg-gradient-to-r from-blue-500 to-green-500 flex-shrink-0">
+                <div className="w-8 h-8 rounded-lg border overflow-hidden flex-shrink-0">
                   {product.loja.imagemUrl ? (
                     <Image
                       src={product.loja.imagemUrl}
@@ -76,10 +76,9 @@ const ProductCard = ({ product }: ProductProps) => {
                   )}
                 </div>
                 <div className="flex flex-col justify-center">
-                  <h5 className="text-sm: md:text-base">{product.loja.nome}</h5>
-                  <span className="text-xs text-muted-foreground line-clamp-1">
-                    {product.loja.descricao}
-                  </span>
+                  <h5 className="text-sm: md:text-base font-bold">
+                    {product.loja.nome}
+                  </h5>
                 </div>
               </Link>
             </div>

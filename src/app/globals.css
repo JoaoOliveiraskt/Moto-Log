@@ -94,16 +94,16 @@
     --border: 240 1% 85%;
     --input: 240 1% 85%;
     --ring: 240 5.9% 10%;
-    --confirmed: 155 76% 44%;
+    --confirmed: 140 76% 44%;
     --confirmed-foreground: 0 0% 100%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 0 0% 6%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 7%;
+    --foreground: 60 6% 94%;
     --muted: 201 13% 14%;
-    --muted-foreground: 0 0% 59.61%;
+    --muted-foreground: 60 1% 59%;
     --card: 0 0% 10%;
     --card-foreground: 231 21% 98%;
     --popover: 60 6% 94%;

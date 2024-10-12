@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, } from "next/font/google";
+import { Inter, Open_Sans, Manrope, Source_Sans_3} from "next/font/google";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { CartProvider } from "./context/cart";
@@ -13,6 +13,9 @@ import GoBackButton from "@/components/go-back-button";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
+const openSans = Open_Sans({ subsets: ["latin"], weight: ["500", "700", "800"]  });
+const manrope = Manrope({ subsets: ["latin"], weight: ["600", "700", "800"]  });
+const sourceSans = Source_Sans_3({ subsets: ["latin"], weight: ["600", "700", "900"]  });
 
 export const metadata: Metadata = {
   title: "Moto Log",
@@ -25,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.className}`}>
+    <html lang="en" className={`${manrope.className}`}>
       <body>
         <AuthProvider>
           <CartProvider>
