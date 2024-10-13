@@ -6,6 +6,10 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import icon from "@/components/icons/icon-component";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import LoginDialog from "./login-dialog";
+import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
 
 const UserStatus = () => {
   const { status } = useSession();
@@ -19,21 +23,24 @@ interface Props {
 }
 
 const LoginButton = ({ className, size }: Props) => {
-  const status = UserStatus();
-  const handleSigInClick = () => signIn("google", { callbackUrl: "/" });
-  const handleSigOutClick = () => signOut();
+  const { isAuthenticated } = useAuth();
 
-  const router = useRouter();
+  const handleSigInClick = () => {
+    signIn("google");
+  };
+  const handleSigOutClick = () => {
+    signOut({ callbackUrl: "/" });
+  };
+
   return (
     <div>
-      {status === "authenticated" ? (
+      {isAuthenticated ? (
         <Button
           variant={"ghost"}
           size={size}
           onClick={(e) => {
             e.preventDefault();
             handleSigOutClick();
-            router.push("/");
           }}
           className={`flex items-center space-x-3 ${className}`}
         >
@@ -42,13 +49,14 @@ const LoginButton = ({ className, size }: Props) => {
         </Button>
       ) : (
         <Button
+          size={"rounded"}
           onClick={(e) => {
             e.preventDefault();
             handleSigInClick();
           }}
           className={`flex items-center space-x-2 ${className}`}
         >
-          <icon.google size={18} />
+          <Image src="/google.svg" width={16} height={16} alt="google icon" />
           <span>Entrar com o Google</span>
           <icon.signIn size={18} />
         </Button>
@@ -63,10 +71,14 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
   const { data } = useSession();
   const status = UserStatus();
 
+  const [open, setOpen] = useState(false);
+
+  const toggleOpen = () => setOpen(!open);
+
   return (
     <>
       {status === "authenticated" ? (
-        <div className="space-y-2">
+        <div className="space-y-2 mb-4">
           <div className="flex items-center space-x-2 px-4">
             <Avatar>
               <AvatarImage
@@ -74,18 +86,17 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
                 alt={data?.user?.name as string | undefined}
               />
               <AvatarFallback>
-                {data?.user?.name?.split(" ")[0][0]} {/* Primeiro nome */}
+                {data?.user?.name?.split(" ")[0][0]}
                 {data?.user?.name?.split(" ")[1]?.[0] || ""}{" "}
-                {/* Segundo nome, com fallback */}
               </AvatarFallback>
             </Avatar>
 
             <div>
-              <div className="flex space-x-1">
-                <p className="text-lg font-semibold tracking-tight">
+              <div className="flex space-x-1 text-foreground">
+                <p className=" font-semibold tracking-tight">
                   {data?.user?.name?.split(" ")[0]}
                 </p>
-                <p className="line-clamp-1 text-lg font-semibold tracking-tight">
+                <p className="line-clamp-1  font-semibold tracking-tight">
                   {data?.user?.name?.split(" ")[1]}
                 </p>
               </div>
@@ -94,25 +105,21 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
               </p>
             </div>
           </div>
-
-          <LoginButton
-            size={"menu"}
-            className="w-full bg-transparent justify-start border-none"
-          />
         </div>
       ) : (
-        <div className="flex items-center gap-4 px-4">
+        <div className="flex items-center gap-4 px-4 mb-2">
           <h2 className="font-semibold tracking-tight">Faça seu login!</h2>
-          <Link href="/login">
-            <Button
-              onClick={onClick}
-              variant={"ghost"}
-              className={`flex items-center space-x-2`}
-            >
-              <span>Entrar</span>
-              <icon.signIn size={18} />
-            </Button>
-          </Link>
+
+          <Button
+            onClick={toggleOpen}
+            variant={"ghost"}
+            className={`flex items-center space-x-2`}
+          >
+            <span>Entrar</span>
+            <icon.signIn size={18} />
+          </Button>
+
+          <LoginDialog open={open} onOpenChange={setOpen} />
         </div>
       )}
     </>

@@ -81,7 +81,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
             altText="Ver pedido"
             onClick={() => router.push("/my-orders")}
           >
-            Meus pedido
+            Meus pedidos
           </ToastAction>
         ),
       });
@@ -108,7 +108,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
 
             <div className="mt-6">
               <Card className="border-none">
-                <CardContent className="p-5 border-none space-y-5 bg-card rounded-md">
+                <CardContent className="p-5 border-none space-y-5">
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">Entrega</span>
                     <span className="text-confirmed uppercase">Grátis</span>
@@ -136,8 +136,9 @@ const Cart = ({ setIsOpen }: CartProps) => {
             </div>
 
             <Button
+              size={"rounded"}
               onClick={() => setIsConfirmDialogOpen(true)}
-              className="w-1/2 mx-auto mt-6 mb-1"
+              className="w-1/2 mx-auto mt-6 mb-4 font-semibold"
               disabled={isSubmitLoading}
             >
               Fazer pedido
@@ -167,6 +168,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
           <AlertDialogFooter>
             <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <AlertDialogAction
+            className="rounded-full"
               onClick={handleFinishOrderClick}
               disabled={isSubmitLoading}
             >

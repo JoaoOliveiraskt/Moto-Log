@@ -21,7 +21,7 @@ export default async function RecommendedProducts() {
 
   return (
     <div className="space-y-5">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between lg:justify-normal items-center">
         <h2 className="font-bold text-primary text-xl sm:text-3xl">
           Recomendados
         </h2>

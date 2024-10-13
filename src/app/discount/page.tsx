@@ -35,7 +35,7 @@ export default async function DiscountPage() {
 
   return (
     <Container className="space-y-8 mt-20">
-      <GoBackButton name={title} />
+      <GoBackButton name={title} className="hidden lg:flex" />
       <ProductList className="min-h-screen">
         {products.length === 0 ? (
           <h3 className="font-bold text-lg">

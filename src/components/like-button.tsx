@@ -37,12 +37,20 @@ export default function LikeButton({ className, size = 24 }: Props) {
         handleLike();
         liked ? showUnlikedToast() : showLikedToast();
       }}
-      className={`flex items-center justify-center rounded-full border-none text-foreground ${className}`}
+      className={`flex items-center justify-center rounded-full border-none text-foreground hover:text-foreground ${className}`}
     >
       {liked ? (
-        <icon.bookmark2 size={size} className={`text-destructive`} />
+        <icon.bookmark2
+          size={size}
+          className={`text-destructive`}
+          title="remover dos favoritos"
+        />
       ) : (
-        <icon.bookmark size={size} className={``} />
+        <icon.bookmark
+          size={size}
+          className={``}
+          title="Adicionar aos favoritos"
+        />
       )}
     </Button>
   );

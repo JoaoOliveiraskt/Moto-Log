@@ -23,7 +23,7 @@ export default async function RecommendedProducts() {
   return (
     <Container className="space-y-8 mt-20 ">
       <div className="flex justify-between items-center">
-        <GoBackButton name={name} />
+        <GoBackButton name={name} className="hidden lg:flex" />
       </div>
       <ProductList className="min-h-screen">
         {products.length === 0 ? (

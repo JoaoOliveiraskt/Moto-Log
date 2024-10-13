@@ -46,7 +46,7 @@ interface ICartContext {
     emptyCart?: boolean;
   }) => void;
   decreaseProductQuantity: (productId: string) => void;
-  encreaseProductQuantity: (productId: string) => void;
+  increaseProductQuantity: (productId: string) => void;
   removeProductFromCart: (productId: string) => void;
   clearCart: () => void;
 }
@@ -58,7 +58,7 @@ export const CartContext = createContext<ICartContext>({
   totalDiscount: 0,
   addProductToCart: () => {},
   decreaseProductQuantity: () => {},
-  encreaseProductQuantity: () => {},
+  increaseProductQuantity: () => {},
   removeProductFromCart: () => {},
   clearCart: () => {},
 });
@@ -92,7 +92,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  const encreaseProductQuantity = (productId: string) => {
+  const increaseProductQuantity = (productId: string) => {
     return setProducts((prev) =>
       prev.map((cartProduct) => {
         if (cartProduct.id === productId) {
@@ -135,27 +135,22 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     quantity: number;
     emptyCart?: boolean;
   }) => {
-    if (emptyCart) {
-      setProducts([]);
-    }
+    const updatedProducts = emptyCart ? [] : [...products];
 
-    const isProductInCart = products.some(
+    const productIndex = updatedProducts.findIndex(
       (cartProduct) => cartProduct.id === product.id
     );
 
-    if (isProductInCart) {
-      return setProducts((prev) =>
-        prev.map((cartProduct) => {
-          if (cartProduct.id === product.id) {
-            return { ...cartProduct, quantity: cartProduct.quantity + 1 };
-          }
-
-          return cartProduct;
-        })
-      );
+    if (productIndex !== -1) {
+      updatedProducts[productIndex] = {
+        ...updatedProducts[productIndex],
+        quantity: updatedProducts[productIndex].quantity + quantity,
+      };
+    } else {
+      updatedProducts.push({ ...product, quantity });
     }
 
-    setProducts((prev) => [...prev, { ...product, quantity: 1 }]);
+    setProducts(updatedProducts);
   };
 
   return (
@@ -168,7 +163,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         clearCart,
         addProductToCart,
         decreaseProductQuantity,
-        encreaseProductQuantity,
+        increaseProductQuantity,
         removeProductFromCart,
       }}
     >

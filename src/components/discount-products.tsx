@@ -25,28 +25,22 @@ async function getDiscountProducts() {
   return discountProducts || [];
 }
 
-const Animation = {
-  initial: { y: 10, opacity: 0 },
-  animate: { y: 0, opacity: 1 },
-  transition: { type: "spring", stiffness: 50, duration: 0.7, delay: 0.2 },
-};
-
 export default async function DiscountProducts() {
   const products = await getDiscountProducts();
 
   return (
-    <div  className="space-y-5">
-      <div className="flex justify-between items-center ">
-        <h2 className="font-bold text-primary text-xl sm:text-3xl">
+    <div className="space-y-5">
+      <div className="flex justify-between items-center lg:justify-normal">
+        <h2 className="font-bold text-primary text-xl sm:text-3xl ">
           Com desconto
         </h2>
         <SeeAllButton href="/discount" />
       </div>
       <ProductList>
         {products.length === 0 ? (
-             <h3 className="font-bold text-lg">
-             Nenhum produto com desconto disponível no momento.
-           </h3>
+          <h3 className="font-bold text-lg">
+            Nenhum produto com desconto disponível no momento.
+          </h3>
         ) : (
           products
             .reverse()

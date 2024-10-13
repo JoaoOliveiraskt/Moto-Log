@@ -15,7 +15,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createStoreSchema } from "../api/create-store-api/route";
 import { useState } from "react";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import {
@@ -31,11 +30,10 @@ import {
 import Icon from "@/components/icons/icon-component";
 import { motion } from "framer-motion";
 import Pattern from "@/components/pattern";
-
-const UserStatus = () => {
-  const { status } = useSession();
-  return status;
-};
+import Container from "@/components/container";
+import Link from "next/link";
+import LoginDialog from "@/components/login-dialog";
+import { useAuth } from "@/hooks/useAuth";
 
 const animation1 = {
   initial: { y: 10, opacity: 0 },
@@ -53,8 +51,10 @@ export default function CreateStore() {
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
   const [isSubmitOk, setIsSubmitOk] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
-  const status = UserStatus();
+  const [openDialog, setOpenDialog] = useState(false);
   const router = useRouter();
+  const toggleOpen = () => setOpenDialog(!openDialog);
+  const { isAuthenticated } = useAuth();
 
   const {
     register,
@@ -94,20 +94,29 @@ export default function CreateStore() {
     return value;
   };
 
-  if (status !== "authenticated") {
+  if (!isAuthenticated) {
     return (
       <>
-        <main className="h-screen w-full flex items-center justify-center flex-col space-y-10 mt-[72px]">
-          <h1>Você precisa estar logado para criar uma loja</h1>
-          <Button onClick={() => router.push("/login")}>Fazer login</Button>
-        </main>
+        <Container className="h-screen w-full flex items-center justify-center flex-col space-y-10 md:-mt-36">
+          <h1 className="text-xl text-center">
+            Você precisa estar logado para criar uma loja
+          </h1>
+          <div className="flex items-center gap-5">
+            <Button asChild variant={"outline"} size={"rounded"}>
+              <Link href={"/"}>Cancelar</Link>
+            </Button>
+            <Button size={"rounded"} onClick={toggleOpen}>
+              Fazer login
+            </Button>
+          </div>
+        </Container>
+
+        <LoginDialog open={openDialog} onOpenChange={setOpenDialog} />
       </>
     );
   } else {
     return (
       <main className="h-screen w-full flex items-center justify-center flex-col space-y-6 mt-[72px] md:mt-16 lg:mt-10">
-        <Pattern enableAnimation={false} />
-
         <motion.div {...animation1}>
           <h1 className="text-3xl font-semibold text-center mb-2">
             Crie sua loja
