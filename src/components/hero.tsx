@@ -4,8 +4,9 @@ import React from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import Balancer from "react-wrap-balancer";
-import { useSession } from "next-auth/react";
 import Icon from "./icons/icon-component";
+import Image from "next/image";
+import { useAuth } from "@/hooks/useAuth";
 
 const scrollToSection = () => {
   const element = document.getElementById("category-list");
@@ -14,18 +15,13 @@ const scrollToSection = () => {
   }
 };
 
-const UserStatus = () => {
-  const { status } = useSession();
-  return status;
-};
-
 export default function Hero() {
-  const status = UserStatus();
+  const { isAuthenticated, loading } = useAuth();
 
-  if (status !== "authenticated") {
+  if (!isAuthenticated) {
     return (
       <>
-        <div className="flex flex-col items-center justify-center h-5/6 text-center p-4 mt-20 lg:mt-24 w-full border-b -mb-9 overflow-hidden">
+        <div className="flex flex-col items-center justify-center h-5/6 text-center p-4 mt-20 lg:mt-24 w-full b -mb-9 overflow-hidden">
           <div className="px-2 py-1 bg-sky-700 rounded-lg flex items-center justify-center mb-4">
             <span className="text-xs text-center text-white">
               Lançamentos semanais 🎉
@@ -58,44 +54,44 @@ export default function Hero() {
             </Button>
           </div>
 
-          <div className="mb-8">
+          <div className="mb-8 flex flex-col items-center justify-center">
             <div className="mx-auto max-w-7xl flex flex-col items-center justify-center">
               <h2 className="text-center text-sm  text-muted-foreground">
                 Com a confiança das equipes mais inovadoras do mundo
               </h2>
-              <div className="flex mt-4">
-                <img
+              <div className="flex gap-2 mt-4">
+                <Image
                   alt="Reform"
                   src="https://tailwindui.com/plus/img/logos/158x48/reform-logo-gray-400.svg"
                   width={158}
                   height={48}
-                  className="col-span-2 max-h-7 w-full object-contain lg:col-span-1"
+                  className=" max-h-7 w-fit "
                 />
-                <img
+                <Image
                   alt="Tuple"
                   src="https://tailwindui.com/plus/img/logos/158x48/tuple-logo-gray-400.svg"
                   width={158}
                   height={48}
-                  className="col-span-2 max-h-7 w-full object-contain lg:col-span-1"
+                  className=" max-h-7 w-fit "
                 />
-                <img
+                <Image
                   alt="SavvyCal"
                   src="https://tailwindui.com/plus/img/logos/158x48/savvycal-logo-gray-400.svg"
                   width={158}
                   height={48}
-                  className="col-span-2 max-h-7 w-full object-contain sm:col-start-2 lg:col-span-1"
+                  className=" max-h-7 w-fit  "
                 />
-                <img
+                <Image
                   alt="Statamic"
                   src="https://tailwindui.com/plus/img/logos/158x48/statamic-logo-gray-400.svg"
                   width={158}
                   height={48}
-                  className="col-span-2  max-h-7 w-full object-contain sm:col-start-auto lg:col-span-1"
+                  className="max-h-7 w-fit "
                 />
               </div>
             </div>
 
-            <div className="flex gap-0.5 w-full items-center justify-center mt-6">
+            <div className="flex gap-1 w-full items-center justify-center mt-6">
               <Icon.star className="w-3 h-3 text-orange-400" />
               <Icon.star className="w-3 h-3 text-orange-400" />
               <Icon.star className="w-3 h-3 text-orange-400" />

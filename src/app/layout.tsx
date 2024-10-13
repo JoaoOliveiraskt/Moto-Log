@@ -12,10 +12,8 @@ import BottomNav from "@/components/bottom-nav";
 import GoBackButton from "@/components/go-back-button";
 import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
-const openSans = Open_Sans({ subsets: ["latin"], weight: ["500", "700", "800"]  });
+//const inter = Inter({ subsets: ["latin"] });
 const manrope = Manrope({ subsets: ["latin"], weight: ["600", "700", "800"]  });
-const sourceSans = Source_Sans_3({ subsets: ["latin"], weight: ["600", "700", "900"]  });
 
 export const metadata: Metadata = {
   title: "Moto Log",
