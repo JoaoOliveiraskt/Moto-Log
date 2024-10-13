@@ -25,12 +25,6 @@ async function getDiscountProducts() {
   return discountProducts || [];
 }
 
-const Animation = {
-  initial: { y: 10, opacity: 0 },
-  animate: { y: 0, opacity: 1 },
-  transition: { type: "spring", stiffness: 50, duration: 0.7, delay: 0.2 },
-};
-
 export default async function DiscountProducts() {
   const products = await getDiscountProducts();
 
