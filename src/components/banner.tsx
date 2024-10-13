@@ -5,48 +5,6 @@ import React from "react";
 import { Button } from "./ui/button";
 import Lottie from "lottie-react";
 import cartAnimation from "../../public/animations/cart-animation.json";
-import groovyWalkAnimation from "../../public/animations/groovy-walk.json";
-
-interface BannerProps {
-  title: string;
-  subtitle: string;
-  textButton: string;
-  className?: string;
-}
-
-export const Banner = ({ className }: BannerProps) => {
-  return (
-    <div
-      className="relative mx-auto my-10 max-w-[1440px] h-56 rounded-2xl overflow-hidden 
-      bg-gradient-to-bl backdrop-blur-3xl"
-    >
-      <div className="absolute top-0 left-0 flex flex-col justify-center items-center gap-4 sm:gap-12 p-4 sm:p-8 h-full w-full z-10">
-        <div className="space-y-2 sm:space-y-3 text-center">
-          <strong className="text-left text-lg sm:text-xl font-bold text-foreground drop-shadow-md z-10">
-            Encontre as melhores ofertas na sua loja favorita
-          </strong>
-
-          <h2 className="text-md sm:text-lg text-foreground drop-shadow-md z-10">
-            Aproveite as melhores promoções e descontos!
-          </h2>
-        </div>
-        <Link href="#category-list">
-          <Button
-            variant={"secondary"}
-            size={"lg"}
-            className="rounded-full  shadow-xl shadow-foreground/20 dark:shadow-none "
-          >
-            Ver Ofertas
-          </Button>
-        </Link>
-      </div>
-      <Lottie
-        animationData={groovyWalkAnimation}
-        className="w-1/2 sm:h-full absolute bottom-0 right-0 z-0"
-      />
-    </div>
-  );
-};
 
 export const BannerSec = () => {
   return (

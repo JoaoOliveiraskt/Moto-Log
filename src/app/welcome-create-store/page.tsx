@@ -26,11 +26,9 @@ const buttonAnimation = {
 export default function WelcomeCreateStore() {
   return (
     <main className="max-w-full h-screen flex flex-col items-center justify-center">
-      <Pattern />
-
       <div className="relative z-10 w-full space-y-3 flex flex-col items-center justify-center -top-12">
-        <motion.div {...h1Animation} className="max-w-3xl">
-          <h1 className="font-semibold text-2xl sm:text-5xl text-center bg-gradient-to-b from-neutral-50 via-neutral-300 to-neutral-700  text-transparent bg-clip-text p-2 tracking-tighter">
+        <motion.div {...h1Animation} className="max-w-4xl">
+          <h1 className="font-semibold text-3xl md:text-7xl text-center dark:bg-gradient-to-b dark:from-neutral-50 dark:via-neutral-300 dark:to-neutral-700  dark:text-transparent dark:bg-clip-text p-2 tracking-tighter">
             Seja bem-vindo ao Moto Log
           </h1>
         </motion.div>
@@ -44,8 +42,8 @@ export default function WelcomeCreateStore() {
 
       <motion.div {...buttonAnimation}>
         <Link href="/create-store" passHref>
-          <Button className="text-sm tracking-tight" size={"lg"}>
-            <p className="block">Começar</p>
+          <Button className="text-sm tracking-tight py-6" size={"rounded"}>
+            <p className="block font-semibold">Começar</p>
           </Button>
         </Link>
       </motion.div>

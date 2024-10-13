@@ -12,16 +12,16 @@ export default function HomeButton({ children, className, size }: Props) {
   return (
     <Link
       href="/"
-      className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground"
+      className="flex flex-col items-center gap-1"
       prefetch={false}
     >
       <Button
         variant="icon"
         size="icon"
-        className={`flex flex-col gap-1 cursor-pointer outline-none border-none ${className}`}
+        className={`flex flex-col items-center gap-1 cursor-pointer outline-none border-none ${className}`}
       >
         <icon.home color="foreground" size={size}/>
-        <p className="text-muted-foreground hover:text-foreground">
+        <p className="text-muted-foreground text-sm">
           {children}
         </p>
       </Button>

@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
-import { RiArrowLeftSLine } from "react-icons/ri";
 import { GoArrowLeft } from "react-icons/go";
 
 interface Props {

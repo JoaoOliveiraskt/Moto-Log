@@ -26,7 +26,7 @@ const CartSideBar = ({ children, className, model, iconSize }: Props) => {
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
       <Button
         onClick={() => setIsCartOpen(true)}
-        className={`relative flex flex-col items-center  text-muted-foreground ${className}`}
+        className={`relative flex flex-col items-center gap-1 text-muted-foreground ${className}`}
         variant={
           model as
             | "link"
@@ -43,11 +43,11 @@ const CartSideBar = ({ children, className, model, iconSize }: Props) => {
       >
         <icon.cart size={iconSize} color="foreground" />
         {totalItems > 0 && (
-          <span className="absolute flex items-center justify-center top-2 lg:-top-1 right-1 lg:-right-1 h-3.5 w-3.5 rounded-full bg-destructive text-destructive-foreground text-xs">
+          <span className="absolute flex items-center justify-center top-2 lg:-top-1 right-1 lg:-right-0 h-3.5 w-3.5 rounded-full bg-destructive text-destructive-foreground text-xs">
             {totalItems}
           </span>
         )}
-        <p className="text-muted-foreground hover:text-foreground">
+        <p className="text-muted-foreground hover:text-foreground text-sm">
           {children}
         </p>
       </Button>

@@ -32,14 +32,6 @@ const ProductCard = ({ product }: ProductProps) => {
               priority
               className="object-cover w-full h-full hover:scale-105 transition-transform duration-150"
             />
-            {Number(product.porcentagemDesconto) > 0 && (
-              <div className="text-black bg-confirmed flex items-center justify-around absolute px-1.5 py-0.5 -top-1.5 -left-1.5 rounded-lg">
-                <icon.arrowDown size={18} />
-                <span className="text-xs">
-                  {Number(product.porcentagemDesconto)}%
-                </span>
-              </div>
-            )}
           </div>
           <div className="min-h-full px-1 py-2 flex flex-col justify-between">
             <h2 className="font-bold line-clamp-2 lg:line-clamp-1">
@@ -51,9 +43,14 @@ const ProductCard = ({ product }: ProductProps) => {
                 {formatCurrency(Number(calculateTotalPrice(product)))}
               </span>
               {Number(product.porcentagemDesconto) > 0 && (
-                <span className="text-xs line-through text-muted-foreground/80 font-medium">
-                  {formatCurrency(Number(product.preco))}
-                </span>
+                <div className="flex gap-2">
+                  <span className="text-xs line-through text-muted-foreground/80 font-medium">
+                    {formatCurrency(Number(product.preco))}
+                  </span>
+                  <span className="text-xs text-confirmed">
+                    {Number(product.porcentagemDesconto)}% OFF
+                  </span>
+                </div>
               )}
             </div>
 
@@ -62,7 +59,7 @@ const ProductCard = ({ product }: ProductProps) => {
                 href={`/store/${product.lojaId}`}
                 className="text-foreground font-medium hover:text-cyan-600 mb-2 flex items-center gap-2"
               >
-                <div className="w-8 h-8 rounded-lg border overflow-hidden flex-shrink-0">
+                <div className="w-7 h-7 rounded-lg border overflow-hidden flex-shrink-0">
                   {product.loja.imagemUrl ? (
                     <Image
                       src={product.loja.imagemUrl}
@@ -76,7 +73,7 @@ const ProductCard = ({ product }: ProductProps) => {
                   )}
                 </div>
                 <div className="flex flex-col justify-center">
-                  <h5 className="text-sm: md:text-base font-bold">
+                  <h5 className="text-sm: md:text-base ">
                     {product.loja.nome}
                   </h5>
                 </div>
@@ -86,7 +83,9 @@ const ProductCard = ({ product }: ProductProps) => {
         </div>
       </Link>
 
-      <LikeButton className="absolute top-2 right-2 h-7 w-7" />
+      <div className="absolute top-2 right-2 h-7 w-7 bg-white flex items-center rounded-full ">
+        <LikeButton size={20} className="text-black hover:text-black" />
+      </div>
     </div>
   );
 };

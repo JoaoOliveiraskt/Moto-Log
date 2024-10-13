@@ -128,9 +128,9 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
         <div className="flex items-center gap-5 w-full">
           <Button
-            size={"lg"}
+            size={"rounded"}
             onClick={handleAddToCart}
-            className="font-bold tracking-wide"
+            className="font-bold tracking-wide py-5"
           >
             Adicionar ao carrinho
           </Button>
