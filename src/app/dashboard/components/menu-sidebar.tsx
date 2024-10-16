@@ -33,12 +33,12 @@ export default function MenuSideBar() {
   return (
     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
       <SheetTrigger asChild>
-        <Button size="icon" variant="outline" className="md:hidden">
+        <Button size="icon" variant="outline" className="lg:hidden">
           <PanelLeft className="h-5 w-5" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="md:max-w-xs">
+      <SheetContent side="left" className="md:max-w-screen-md">
         <nav className="grid text-lg font-medium">
           {links.map((link) => (
             <Link

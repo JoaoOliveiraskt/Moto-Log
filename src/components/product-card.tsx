@@ -11,6 +11,7 @@ import LikeButton from "./like-button";
 interface ProductProps {
   product: Prisma.ProdutoGetPayload<{
     include: {
+      categoria: { select: { nome: true } };
       loja: {
         select: { nome: true; id: true; imagemUrl: true; descricao: true };
       };
@@ -18,22 +19,28 @@ interface ProductProps {
   }>;
 }
 
+
+
 const ProductCard = ({ product }: ProductProps) => {
   return (
     <div className="relative mb-6">
       <Link href={`/product/${product.id}`}>
         <div className="cursor-pointer h-max overflow-hidden text-foreground">
-          <div className="h-48 w-full lg:h-56 rounded-2xl overflow-hidden">
+          <div className="h-48 w-full lg:h-[17rem] rounded-2xl overflow-hidden border">
             <Image
               src={product.imagemUrl}
               alt={product.nome}
               width={600}
               height={600}
               priority
-              className="object-cover w-full h-full hover:scale-105 transition-transform duration-150"
+              className="object-cover w-full h-full hover:scale-105  duration-500 transition-all"
             />
           </div>
           <div className="min-h-full px-1 py-2 flex flex-col justify-between">
+            <h3 className="text-xs text-muted-foreground font-medium">
+              {product.categoria?.nome}
+            </h3>
+
             <h2 className="font-bold line-clamp-2 lg:line-clamp-1">
               {product.nome}
             </h2>
@@ -44,7 +51,7 @@ const ProductCard = ({ product }: ProductProps) => {
               </span>
               {Number(product.porcentagemDesconto) > 0 && (
                 <div className="flex gap-2">
-                  <span className="text-xs line-through text-muted-foreground/80 font-medium">
+                  <span className="text-xs line-through text-muted-foreground font-medium">
                     {formatCurrency(Number(product.preco))}
                   </span>
                   <span className="text-xs text-confirmed">
@@ -59,7 +66,7 @@ const ProductCard = ({ product }: ProductProps) => {
                 href={`/store/${product.lojaId}`}
                 className="text-foreground font-medium hover:text-cyan-600 mb-2 flex items-center gap-2"
               >
-                <div className="w-7 h-7 rounded-lg border overflow-hidden flex-shrink-0">
+                <div className="w-7 h-7 rounded-sm border overflow-hidden flex-shrink-0">
                   {product.loja.imagemUrl ? (
                     <Image
                       src={product.loja.imagemUrl}

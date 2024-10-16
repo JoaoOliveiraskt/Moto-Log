@@ -20,11 +20,11 @@ const buttonVariants = cva(
         icon: "text-muted-foreground hover:text-foreground focus:text-primary-foreground",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        rounded: "h-9 px-4 py-4 rounded-full",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-6",
-        xl: "h-11 rounded-md px-6",
+        default: "h-10 px-4 py-4",
+        rounded: "h-10 px-4 py-4 rounded-full",
+        sm: "h-8 rounded-sm px-3 text-xs",
+        lg: "h-10 rounded-sm px-6",
+        xl: "h-12 rounded-sm px-6",
         icon: "h-9 w-9",
         menu: "h-9 px-4 py-5"
       },

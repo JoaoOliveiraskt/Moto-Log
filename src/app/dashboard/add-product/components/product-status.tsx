@@ -13,7 +13,7 @@ export default function ProductStatus() {
   const { control } = useFormContext();
 
   return (
-    <Card x-chunk="dashboard-07-chunk-3">
+    <Card >
       <CardHeader className="px-6 mt-6 space-y-2 mb-5">
         <CardTitle>Status do Produto</CardTitle>
       </CardHeader>

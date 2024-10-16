@@ -10,15 +10,12 @@ import Image from "next/image";
 
 export default function ProductImages() {
   return (
-    <Card className="overflow-hidden" x-chunk="dashboard-07-chunk-4">
+    <Card className="overflow-hidden h-full">
       <CardHeader className="px-6 mt-6 space-y-2 mb-5">
         <CardTitle>Imagens do Produto</CardTitle>
-        <CardDescription>
-          Adicione imagens do produto
-        </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-2">
+        <div className="grid gap-2 min-h-96">
           <Image
             alt="Imagem do produto"
             className="aspect-square w-full rounded-md object-cover border"

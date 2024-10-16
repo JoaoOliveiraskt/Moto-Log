@@ -10,6 +10,7 @@ import Image from "next/image";
 import LoginDialog from "./login-dialog";
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import Icon from "@/components/icons/icon-component";
 
 const UserStatus = () => {
   const { status } = useSession();
@@ -56,7 +57,7 @@ const LoginButton = ({ className, size }: Props) => {
           }}
           className={`flex items-center space-x-2 ${className}`}
         >
-          <Image src="/google.svg" width={16} height={16} alt="google icon" />
+          <Icon.google size={20} />
           <span>Entrar com o Google</span>
           <icon.signIn size={18} />
         </Button>

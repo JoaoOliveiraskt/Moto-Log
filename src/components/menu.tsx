@@ -44,13 +44,13 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
           className={`rounded-md flex flex-col gap-1 items-center justify-center text-muted-foreground hover:transition-colors ${className}`}
         >
           <icon.menu size={iconSize} />
-          <p className="text-muted-foreground hover:text-foreground text-sm">
+          <p className="text-foreground hover:text-foreground text-sm">
             {children}
           </p>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent
-          className="px-2 py-2 bg-card rounded-xl text-muted-foreground min-w-64"
+          className="px-2 py-2 bg-card rounded-xl text-foreground min-w-64"
           align="end"
         >
           <AvatarInfo onClick={handleMenuOpen.close} size={"menu"} />

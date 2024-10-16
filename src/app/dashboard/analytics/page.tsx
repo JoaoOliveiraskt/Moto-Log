@@ -28,6 +28,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Container from "@/components/container";
 
 const chartData = [
   { month: "Jan", value: 4000 },
@@ -44,9 +45,9 @@ const chartData = [
   { month: "Dez", value: 3490 },
 ];
 
-
-const DashboardAnalytics = () =>  {
-    return (
+const DashboardAnalytics = () => {
+  return (
+    <Container>
       <main className="flex flex-col gap-4 md:gap-8 mt-4">
         <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
           <Card>
@@ -223,7 +224,8 @@ const DashboardAnalytics = () =>  {
           </Card>
         </div>
       </main>
-    );
-  }
-  
+    </Container>
+  );
+};
+
 export default DashboardAnalytics;

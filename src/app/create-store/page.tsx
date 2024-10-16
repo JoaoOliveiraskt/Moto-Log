@@ -34,6 +34,7 @@ import Container from "@/components/container";
 import Link from "next/link";
 import LoginDialog from "@/components/login-dialog";
 import { useAuth } from "@/hooks/useAuth";
+import MotoLogLogo from "@/components/icons/moto-log-logo";
 
 const animation1 = {
   initial: { y: 10, opacity: 0 },
@@ -116,22 +117,17 @@ export default function CreateStore() {
     );
   } else {
     return (
-      <main className="h-screen w-full flex items-center justify-center flex-col space-y-6 mt-[72px] md:mt-16 lg:mt-10">
+      <Container className="h-screen w-full flex items-center justify-center flex-col space-y-6 mt-[72px] md:mt-20">
         <motion.div {...animation1}>
-          <h1 className="text-3xl font-semibold text-center mb-2">
-            Crie sua loja
-          </h1>
-          <p className="text-center text-muted-foreground">
-            Comece a vender seus produtos agora mesmo
-          </p>
+          <MotoLogLogo />
         </motion.div>
 
         <motion.div {...animation2}>
           <Card className="w-full md:w-[30rem] bg-card/75 opacity-90">
             <CardHeader className="px-6 space-y-2 mt-4 mb-5">
-              <CardTitle>Informações da Loja</CardTitle>
+              <CardTitle className="text-2xl">Crie sua loja</CardTitle>
               <CardDescription>
-                Adicione informações sobre a sua loja
+                Comece a vender seus produtos agora mesmo
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -263,7 +259,11 @@ export default function CreateStore() {
                     <Icon.confirmed />
                   </Button>
                 ) : (
-                  <Button type="submit" className={`mt-6 w-full`}>
+                  <Button
+                    size={"rounded"}
+                    type="submit"
+                    className={`mt-6 w-full`}
+                  >
                     {isSubmitLoading ? (
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     ) : (
@@ -300,7 +300,7 @@ export default function CreateStore() {
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
-      </main>
+      </Container>
     );
   }
 }

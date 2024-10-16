@@ -7,15 +7,25 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
+import Link from "next/link";
 
 export default async function CategoryList() {
   const categories = await FetchCategory();
 
   return (
-    <div id="category-list" className="mt-[80px] w-full">
-      <h2 className="text-start text-4xl xl:text-[2.75rem] font-semibold text-primary mb-6">
-        Categorias
+    <div id="category-list" className="mt-[100px] w-full space-y-8">
+      <h2 className="text-start text-4xl xl:text-[2.75rem] font-bold text-primary">
+        Explorar
       </h2>
+
+      <div className="flex items-center gap-8">
+        <Link href="/recommended" className="text-muted-foreground hover:text-foreground font-bold transition-all">
+          <span>Recomendados</span>
+        </Link>
+        <Link href="/discount" className="text-muted-foreground hover:text-foreground font-bold transition-all">
+          <span>Ofertas</span> 
+        </Link>
+      </div>
 
       <Carousel className="">
         <CarouselContent className="flex gap-2 lg:px-10 ">

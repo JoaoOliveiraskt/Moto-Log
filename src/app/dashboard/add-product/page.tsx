@@ -90,28 +90,24 @@ export default function AddProductPage() {
   };
 
   return (
-    <main className="grid flex-1 items-center justify-center gap-4 p-4 md:gap-8">
+    <main > 
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
-          className="mx-auto grid max-w-[60rem] flex-1 auto-rows-max gap-4"
+          className="grid w-full h-full flex-1 auto-rows-max gap-4 md:gap-4 lg:min-h-[calc(100vh-9.125rem)]"
         >
-     
-          <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
-            <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
+          <div className="h-full grid gap-4 md:auto-rows-[20rem] md:grid-cols-[1fr_250px] lg:grid-cols-[3fr_1fr] lg:gap-8 justify-between"> 
+            {/* Parte da esquerda com os detalhes do produto */}
+            <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-5">
               <ProductDetails />
               <Stock />
-              <ProductCategory />
             </div>
-
-            <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
-              <ProductStatus />
-              <Card className="overflow-hidden" x-chunk="dashboard-07-chunk-4">
+  
+            {/* Parte da direita com o status, imagem e botões */}
+            <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-5">
+              <Card className="overflow-hidden h-full" >
                 <CardHeader className="px-6 mt-6 space-y-2 mb-5">
                   <CardTitle>Imagem do Produto</CardTitle>
-                  <CardDescription>
-                    Adicione a imagem do produto
-                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Input
@@ -121,41 +117,34 @@ export default function AddProductPage() {
                   />
                 </CardContent>
               </Card>
+              <ProductCategory />
+              <ProductStatus />
               <ProductFormActionButtons isLoading={isLoading} onDiscard={() => methods.reset()} />
             </div>
           </div>
-          <div className="flex items-center justify-center gap-2 md:hidden">
-            <Button
-              variant="outline"
-              size="sm"
-              type="button"
-              onClick={() => methods.reset()}
-            >
+  
+          {/* Botões para telas menores */}
+          <div className="flex items-center justify-center gap-2 md:hidden h-full">
+            <Button variant="outline" size="sm" type="button" onClick={() => methods.reset()}>
               Descartar
             </Button>
-            <Button
-              size="sm"
-              type="submit"
-              disabled={isLoading}
-              className="min-w-28"
-            >
-              {isLoading ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              ) : (
-                "Salvar produto"
-              )}
+            <Button size="sm" type="submit" disabled={isLoading} className="min-w-28">
+              {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Salvar produto"}
             </Button>
           </div>
+          
+          {/* Mensagem de erro */}
           {errorMessage && (
             <p className="text-red-500 text-center">{errorMessage}</p>
           )}
         </form>
       </FormProvider>
-
+  
+      {/* Modal de confirmação */}
       <ModalConfirmation
         isConfirmDialogOpen={isConfirmDialogOpen}
         setIsConfirmDialogOpen={setIsConfirmDialogOpen}
       />
     </main>
   );
-}
+}  

@@ -128,7 +128,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
         <div className="flex items-center gap-5 w-full">
           <Button
-            size={"rounded"}
+            size={"xl"}
             onClick={handleAddToCart}
             className="font-bold tracking-wide py-5"
           >

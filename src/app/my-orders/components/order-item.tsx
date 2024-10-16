@@ -39,58 +39,78 @@ const getOrderStatus = (status: OrderStatus) => {
 };
 
 const OrderItem = ({ order }: OrderItemProps) => {
+  const getDiscountedPrice = (preco: number, discount?: number) => {
+    if (!discount) return preco;
+    return preco - preco * (discount / 100);
+  };
+
   return (
     <Card className="cursor-pointer flex flex-col gap-2 bg-card">
-      <CardContent className="p-3 flex flex-col gap-3">
-        <CardHeader className="px-1">
+      <CardContent className="p-4 flex flex-col gap-3">
+        <CardHeader className="px-1 space-y-4 mb-4">
           <div className="flex gap-4 items-center justify-between">
             <div
               className={`${
-                order.status !== "COMPLETED"
-                  ? "text-muted-foreground"
-                  : "text-emerald-500"
+                order.status !== "COMPLETED" ? "" : "text-emerald-500"
               }`}
             >
-              <span className="block text-sm font-semibold tracking-wider">
+              <span className="block text-sm  font-semibold tracking-wider">
                 {getOrderStatus(order.status)}
               </span>
             </div>
 
             <Link
               href={`/store/${order.lojaId}`}
-              className="flex gap-2 items-center mt-1 text-muted-foreground 
+              className="flex gap-2 items-center mt-1  text-muted-foreground
               hover:text-cyan-600 w-fit"
             >
-              <div className="flex items-center space-x-2">
-                <Avatar className="w-6 h-6">
-                  <AvatarImage src={order.loja.imagemUrl} />
+              <div className="flex items-center space-x-3">
+                <Avatar className="w-7 h-7 rounded-lg border">
+                  <AvatarImage src={order.loja.imagemUrl || undefined} />
                 </Avatar>
-                <span className="">{order.loja.nome}</span>
+                <span className="font-semibold">{order.loja.nome}</span>
               </div>
               <icon.arrowRight size={18} />
             </Link>
           </div>
 
-          <p className="text-muted-foreground text-lg font-semibold tracking-wider">
+          <p className="text-foreground text-3xl font-semibold tracking-wider">
             {formatCurrency(Number(order.totalPrice))}
           </p>
         </CardHeader>
 
-        <Separator />
-
         <ScrollArea className="max-h-28">
-          {order.products.map((product) => (
-            <div key={product.id} className="flex space-x-2 mb-2">
-              <div className="flex flex-col items-center justify-center w-5 h-5 rounded-full border">
-                <span className="block text-xs font-bold text-foreground">
-                  {product.quantity}
+          {order.products.map((product) => {
+            const discountedPrice = getDiscountedPrice(
+              Number(product.product.preco),
+              Number(product.product.porcentagemDesconto)
+            );
+            return (
+              <Link
+                key={product.id}
+                href={`/product/${product.productId}`}
+                className="flex justify-between mb-2 text-muted-foreground hover:text-foreground"
+              >
+                <div className="flex space-x-2">
+                  <div className="flex flex-col items-center justify-center w-5 h-5 rounded-full border">
+                    <span className="block text-xs font-bold ">
+                      {product.quantity}
+                    </span>
+                  </div>
+                  <span className="text-sm font-medium line-clamp-1">
+                    {product.product.nome}
+                  </span>
+                </div>
+                <span>
+                  {discountedPrice && (
+                    <span className="text-sm font-medium">
+                      {formatCurrency(discountedPrice)}
+                    </span>
+                  )}
                 </span>
-              </div>
-              <span className="text-muted-foreground text-sm font-medium">
-                {product.product.nome}
-              </span>
-            </div>
-          ))}
+              </Link>
+            );
+          })}
         </ScrollArea>
 
         <div className="flex items-center justify-between">
