@@ -14,18 +14,6 @@ export const createStoreSchema = z.object({
     .max(200, "O máximo de caracteres permitido é 200")
     .optional(),
   imageUrl: z.string().url("A URL da imagem deve ser válida"),
-  phone: z
-    .string()
-    .optional()
-    .nullable()
-    .refine((value) => !value || /^\(\d{2}\) \d{4,5}-\d{4}$/.test(value), {
-      message: "Formato de telefone inválido",
-    }),
-  address: z
-    .string()
-    .max(150, "O endereço deve ter no máximo 150 caracteres")
-    .optional(),
-  workingHours: z.string().optional(),
 });
 
 const handleErrorResponse = (error: unknown) => {
@@ -66,9 +54,6 @@ export async function POST(request: Request) {
         nome: data.name,
         descricao: data.description,
         imagemUrl: data.imageUrl,
-        telefone: data.phone,
-        endereco: data.address,
-        horarioFuncionamento: data.workingHours,
         email: session.user.email,
         user: {
           connect: {
@@ -85,6 +70,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(store, { status: 201 });
   } catch (error) {
+    console.error("Error creating store", error);
     return handleErrorResponse(error);
   }
 }

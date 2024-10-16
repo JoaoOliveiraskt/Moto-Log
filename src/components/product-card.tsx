@@ -19,8 +19,6 @@ interface ProductProps {
   }>;
 }
 
-
-
 const ProductCard = ({ product }: ProductProps) => {
   return (
     <div className="relative mb-6">
@@ -66,7 +64,7 @@ const ProductCard = ({ product }: ProductProps) => {
                 href={`/store/${product.lojaId}`}
                 className="text-foreground font-medium hover:text-cyan-600 mb-2 flex items-center gap-2"
               >
-                <div className="w-7 h-7 rounded-sm border overflow-hidden flex-shrink-0">
+                <div className="w-8 h-8 rounded-md border overflow-hidden flex-shrink-0">
                   {product.loja.imagemUrl ? (
                     <Image
                       src={product.loja.imagemUrl}

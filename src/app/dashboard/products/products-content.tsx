@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/prisma";
 import ProductTable from "./components/product-table";
+import BtnAddProduct from "./components/btn-add-product";
 
 async function getProductsForUser() {
   const session = await getServerSession(authOptions);
@@ -26,7 +27,6 @@ async function getProductsForUser() {
 
 export default async function ProductsContent() {
   const products = await getProductsForUser();
-
   const activeProducts = products.filter(
     (product) => product.status === "ATIVO"
   );
@@ -50,17 +50,7 @@ export default async function ProductsContent() {
             </TabsTrigger>
           </TabsList>
           <div className="ml-auto flex items-center gap-2">
-            <Button size={"lg"} className="gap-1">
-              <Link
-                href="/dashboard/add-product"
-                className="flex items-center gap-1"
-              >
-                <PlusCircle className="h-3.5 w-3.5" />
-                <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                  Adicionar produto
-                </span>
-              </Link>
-            </Button>
+            <BtnAddProduct />
           </div>
         </div>
 

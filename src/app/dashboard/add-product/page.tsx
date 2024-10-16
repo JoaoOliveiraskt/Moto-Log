@@ -20,6 +20,18 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import ModalConfirmation from "./components/modal-confirmation";
 import ProductFormActionButtons from "./components/save-product";
+import Container from "@/components/container";
+import GoBackButton from "@/components/go-back-button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 interface ProductData {
   name: string;
@@ -34,7 +46,12 @@ interface ProductData {
   size: string;
 }
 
-export default function AddProductPage() {
+interface Props {
+  isModalOpen: boolean;
+  setIsModalOpen: (isOpen: boolean) => void;
+}
+
+export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
   const methods = useForm<ProductData>();
   const { isLoading, isSuccessful, startLoading, stopLoading, setSuccess } =
     useSubmitState();
@@ -90,61 +107,93 @@ export default function AddProductPage() {
   };
 
   return (
-    <main > 
-      <FormProvider {...methods}>
-        <form
-          onSubmit={methods.handleSubmit(onSubmit)}
-          className="grid w-full h-full flex-1 auto-rows-max gap-4 md:gap-4 lg:min-h-[calc(100vh-9.125rem)]"
-        >
-          <div className="h-full grid gap-4 md:auto-rows-[20rem] md:grid-cols-[1fr_250px] lg:grid-cols-[3fr_1fr] lg:gap-8 justify-between"> 
-            {/* Parte da esquerda com os detalhes do produto */}
-            <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-5">
-              <ProductDetails />
-              <Stock />
-            </div>
-  
-            {/* Parte da direita com o status, imagem e botões */}
-            <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-5">
-              <Card className="overflow-hidden h-full" >
-                <CardHeader className="px-6 mt-6 space-y-2 mb-5">
-                  <CardTitle>Imagem do Produto</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Input
-                    type="text"
-                    placeholder="URL da imagem"
-                    {...methods.register("imageUrl", { required: true })}
+    <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+      <DialogContent className="h-full max-h-[85%]">
+        <DialogHeader>
+          <DialogTitle>Adicionar Produto</DialogTitle>
+          <DialogDescription>
+            Preencha os detalhes abaixo para adicionar um novo produto à sua
+            loja.
+          </DialogDescription>
+        </DialogHeader>
+
+        <ScrollArea className="max-h-[98%] overflow-hidden">
+          <FormProvider {...methods}>
+            <form
+              onSubmit={methods.handleSubmit(onSubmit)}
+              className="grid w-full h-full flex-1 auto-rows-max gap-4 md:gap-4 lg:min-h-[calc(100vh-9.125rem)]"
+            >
+              <div className="h-full grid gap-4 lg:gap-5 justify-between">
+                {/* Parte da esquerda com os detalhes do produto */}
+                <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-5">
+                  <ProductDetails />
+                  <Stock />
+                </div>
+
+                {/* Parte da direita com o status, imagem e botões */}
+                <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-5">
+                  <Card className="overflow-hidden h-full">
+                    <CardHeader className="px-6 mt-6 space-y-2 mb-5">
+                      <CardTitle>Imagem do Produto</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <Input
+                        type="text"
+                        placeholder="URL da imagem"
+                        {...methods.register("imageUrl", { required: true })}
+                      />
+                    </CardContent>
+                  </Card>
+                  <ProductCategory />
+                  <ProductStatus />
+                  <ProductFormActionButtons
+                    isLoading={isLoading}
+                    onDiscard={() => methods.reset()}
                   />
-                </CardContent>
-              </Card>
-              <ProductCategory />
-              <ProductStatus />
-              <ProductFormActionButtons isLoading={isLoading} onDiscard={() => methods.reset()} />
-            </div>
-          </div>
-  
-          {/* Botões para telas menores */}
-          <div className="flex items-center justify-center gap-2 md:hidden h-full">
-            <Button variant="outline" size="sm" type="button" onClick={() => methods.reset()}>
-              Descartar
-            </Button>
-            <Button size="sm" type="submit" disabled={isLoading} className="min-w-28">
-              {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Salvar produto"}
-            </Button>
-          </div>
-          
-          {/* Mensagem de erro */}
-          {errorMessage && (
-            <p className="text-red-500 text-center">{errorMessage}</p>
-          )}
-        </form>
-      </FormProvider>
-  
-      {/* Modal de confirmação */}
-      <ModalConfirmation
-        isConfirmDialogOpen={isConfirmDialogOpen}
-        setIsConfirmDialogOpen={setIsConfirmDialogOpen}
-      />
-    </main>
+                </div>
+              </div>
+
+              <DialogFooter>
+                {/* Botões para telas menores */}
+                <div className="flex items-center justify-center gap-2 md:hidden h-full pb-4">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    type="button"
+                    onClick={() => methods.reset()}
+                  >
+                    Descartar
+                  </Button>
+                  <Button
+                    size="sm"
+                    type="submit"
+                    disabled={isLoading}
+                    className="min-w-28"
+                  >
+                    {isLoading ? (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    ) : (
+                      "Salvar produto"
+                    )}
+                  </Button>
+                </div>
+
+                {/* Mensagem de erro */}
+                {errorMessage && (
+                  <p className="text-red-500 text-center">{errorMessage}</p>
+                )}
+              </DialogFooter>
+            </form>
+          </FormProvider>
+          <ScrollBar orientation="vertical" className="-ml-2" />
+        </ScrollArea>
+
+        {/* Modal de confirmação */}
+        <ModalConfirmation
+          isConfirmDialogOpen={isConfirmDialogOpen}
+          setIsConfirmDialogOpen={setIsConfirmDialogOpen}
+        />
+      </DialogContent>
+    </Dialog>
   );
-}  
+}

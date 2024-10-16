@@ -127,9 +127,6 @@ exports.Prisma.LojaScalarFieldEnum = {
   imagemFile: 'imagemFile',
   userId: 'userId',
   createdAt: 'createdAt',
-  endereco: 'endereco',
-  horarioFuncionamento: 'horarioFuncionamento',
-  telefone: 'telefone',
   email: 'email'
 };
 
@@ -148,10 +145,10 @@ exports.Prisma.ProdutoScalarFieldEnum = {
   estoque: 'estoque',
   preco: 'preco',
   porcentagemDesconto: 'porcentagemDesconto',
-  lojaId: 'lojaId',
-  categoriaId: 'categoriaId',
   status: 'status',
   totalVendido: 'totalVendido',
+  lojaId: 'lojaId',
+  categoriaId: 'categoriaId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
