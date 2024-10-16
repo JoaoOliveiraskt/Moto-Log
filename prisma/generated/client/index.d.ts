@@ -1819,9 +1819,6 @@ export namespace Prisma {
     imagemFile: string | null
     userId: string | null
     createdAt: Date | null
-    endereco: string | null
-    horarioFuncionamento: string | null
-    telefone: string | null
     email: string | null
   }
 
@@ -1833,9 +1830,6 @@ export namespace Prisma {
     imagemFile: string | null
     userId: string | null
     createdAt: Date | null
-    endereco: string | null
-    horarioFuncionamento: string | null
-    telefone: string | null
     email: string | null
   }
 
@@ -1847,9 +1841,6 @@ export namespace Prisma {
     imagemFile: number
     userId: number
     createdAt: number
-    endereco: number
-    horarioFuncionamento: number
-    telefone: number
     email: number
     _all: number
   }
@@ -1863,9 +1854,6 @@ export namespace Prisma {
     imagemFile?: true
     userId?: true
     createdAt?: true
-    endereco?: true
-    horarioFuncionamento?: true
-    telefone?: true
     email?: true
   }
 
@@ -1877,9 +1865,6 @@ export namespace Prisma {
     imagemFile?: true
     userId?: true
     createdAt?: true
-    endereco?: true
-    horarioFuncionamento?: true
-    telefone?: true
     email?: true
   }
 
@@ -1891,9 +1876,6 @@ export namespace Prisma {
     imagemFile?: true
     userId?: true
     createdAt?: true
-    endereco?: true
-    horarioFuncionamento?: true
-    telefone?: true
     email?: true
     _all?: true
   }
@@ -1978,9 +1960,6 @@ export namespace Prisma {
     imagemFile: string | null
     userId: string
     createdAt: Date
-    endereco: string | null
-    horarioFuncionamento: string | null
-    telefone: string | null
     email: string | null
     _count: LojaCountAggregateOutputType | null
     _min: LojaMinAggregateOutputType | null
@@ -2009,9 +1988,6 @@ export namespace Prisma {
     imagemFile?: boolean
     userId?: boolean
     createdAt?: boolean
-    endereco?: boolean
-    horarioFuncionamento?: boolean
-    telefone?: boolean
     email?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     pedidos?: boolean | Loja$pedidosArgs<ExtArgs>
@@ -2027,9 +2003,6 @@ export namespace Prisma {
     imagemFile?: boolean
     userId?: boolean
     createdAt?: boolean
-    endereco?: boolean
-    horarioFuncionamento?: boolean
-    telefone?: boolean
     email?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["loja"]>
@@ -2042,9 +2015,6 @@ export namespace Prisma {
     imagemFile?: boolean
     userId?: boolean
     createdAt?: boolean
-    endereco?: boolean
-    horarioFuncionamento?: boolean
-    telefone?: boolean
     email?: boolean
   }
 
@@ -2073,9 +2043,6 @@ export namespace Prisma {
       imagemFile: string | null
       userId: string
       createdAt: Date
-      endereco: string | null
-      horarioFuncionamento: string | null
-      telefone: string | null
       email: string | null
     }, ExtArgs["result"]["loja"]>
     composites: {}
@@ -2508,9 +2475,6 @@ export namespace Prisma {
     readonly imagemFile: FieldRef<"Loja", 'String'>
     readonly userId: FieldRef<"Loja", 'String'>
     readonly createdAt: FieldRef<"Loja", 'DateTime'>
-    readonly endereco: FieldRef<"Loja", 'String'>
-    readonly horarioFuncionamento: FieldRef<"Loja", 'String'>
-    readonly telefone: FieldRef<"Loja", 'String'>
     readonly email: FieldRef<"Loja", 'String'>
   }
     
@@ -3857,10 +3821,10 @@ export namespace Prisma {
     estoque: number | null
     preco: Decimal | null
     porcentagemDesconto: Decimal | null
-    lojaId: string | null
-    categoriaId: string | null
     status: $Enums.ProdutoStatus | null
     totalVendido: number | null
+    lojaId: string | null
+    categoriaId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3874,10 +3838,10 @@ export namespace Prisma {
     estoque: number | null
     preco: Decimal | null
     porcentagemDesconto: Decimal | null
-    lojaId: string | null
-    categoriaId: string | null
     status: $Enums.ProdutoStatus | null
     totalVendido: number | null
+    lojaId: string | null
+    categoriaId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3892,10 +3856,10 @@ export namespace Prisma {
     estoque: number
     preco: number
     porcentagemDesconto: number
-    lojaId: number
-    categoriaId: number
     status: number
     totalVendido: number
+    lojaId: number
+    categoriaId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3925,10 +3889,10 @@ export namespace Prisma {
     estoque?: true
     preco?: true
     porcentagemDesconto?: true
-    lojaId?: true
-    categoriaId?: true
     status?: true
     totalVendido?: true
+    lojaId?: true
+    categoriaId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3942,10 +3906,10 @@ export namespace Prisma {
     estoque?: true
     preco?: true
     porcentagemDesconto?: true
-    lojaId?: true
-    categoriaId?: true
     status?: true
     totalVendido?: true
+    lojaId?: true
+    categoriaId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3960,10 +3924,10 @@ export namespace Prisma {
     estoque?: true
     preco?: true
     porcentagemDesconto?: true
-    lojaId?: true
-    categoriaId?: true
     status?: true
     totalVendido?: true
+    lojaId?: true
+    categoriaId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4065,10 +4029,10 @@ export namespace Prisma {
     estoque: number
     preco: Decimal
     porcentagemDesconto: Decimal | null
-    lojaId: string
-    categoriaId: string
     status: $Enums.ProdutoStatus
     totalVendido: number | null
+    lojaId: string
+    categoriaId: string
     createdAt: Date
     updatedAt: Date | null
     _count: ProdutoCountAggregateOutputType | null
@@ -4102,10 +4066,10 @@ export namespace Prisma {
     estoque?: boolean
     preco?: boolean
     porcentagemDesconto?: boolean
-    lojaId?: boolean
-    categoriaId?: boolean
     status?: boolean
     totalVendido?: boolean
+    lojaId?: boolean
+    categoriaId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     pedidos?: boolean | Produto$pedidosArgs<ExtArgs>
@@ -4124,10 +4088,10 @@ export namespace Prisma {
     estoque?: boolean
     preco?: boolean
     porcentagemDesconto?: boolean
-    lojaId?: boolean
-    categoriaId?: boolean
     status?: boolean
     totalVendido?: boolean
+    lojaId?: boolean
+    categoriaId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     categoria?: boolean | CategoriaDefaultArgs<ExtArgs>
@@ -4144,10 +4108,10 @@ export namespace Prisma {
     estoque?: boolean
     preco?: boolean
     porcentagemDesconto?: boolean
-    lojaId?: boolean
-    categoriaId?: boolean
     status?: boolean
     totalVendido?: boolean
+    lojaId?: boolean
+    categoriaId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -4180,10 +4144,10 @@ export namespace Prisma {
       estoque: number
       preco: Prisma.Decimal
       porcentagemDesconto: Prisma.Decimal | null
-      lojaId: string
-      categoriaId: string
       status: $Enums.ProdutoStatus
       totalVendido: number | null
+      lojaId: string
+      categoriaId: string
       createdAt: Date
       updatedAt: Date | null
     }, ExtArgs["result"]["produto"]>
@@ -4619,10 +4583,10 @@ export namespace Prisma {
     readonly estoque: FieldRef<"Produto", 'Int'>
     readonly preco: FieldRef<"Produto", 'Decimal'>
     readonly porcentagemDesconto: FieldRef<"Produto", 'Decimal'>
-    readonly lojaId: FieldRef<"Produto", 'String'>
-    readonly categoriaId: FieldRef<"Produto", 'String'>
     readonly status: FieldRef<"Produto", 'ProdutoStatus'>
     readonly totalVendido: FieldRef<"Produto", 'Int'>
+    readonly lojaId: FieldRef<"Produto", 'String'>
+    readonly categoriaId: FieldRef<"Produto", 'String'>
     readonly createdAt: FieldRef<"Produto", 'DateTime'>
     readonly updatedAt: FieldRef<"Produto", 'DateTime'>
   }
@@ -11067,9 +11031,6 @@ export namespace Prisma {
     imagemFile: 'imagemFile',
     userId: 'userId',
     createdAt: 'createdAt',
-    endereco: 'endereco',
-    horarioFuncionamento: 'horarioFuncionamento',
-    telefone: 'telefone',
     email: 'email'
   };
 
@@ -11094,10 +11055,10 @@ export namespace Prisma {
     estoque: 'estoque',
     preco: 'preco',
     porcentagemDesconto: 'porcentagemDesconto',
-    lojaId: 'lojaId',
-    categoriaId: 'categoriaId',
     status: 'status',
     totalVendido: 'totalVendido',
+    lojaId: 'lojaId',
+    categoriaId: 'categoriaId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -11336,9 +11297,6 @@ export namespace Prisma {
     imagemFile?: StringNullableFilter<"Loja"> | string | null
     userId?: StringFilter<"Loja"> | string
     createdAt?: DateTimeFilter<"Loja"> | Date | string
-    endereco?: StringNullableFilter<"Loja"> | string | null
-    horarioFuncionamento?: StringNullableFilter<"Loja"> | string | null
-    telefone?: StringNullableFilter<"Loja"> | string | null
     email?: StringNullableFilter<"Loja"> | string | null
     user?: XOR<UserRelationFilter, UserWhereInput>
     pedidos?: OrderListRelationFilter
@@ -11353,9 +11311,6 @@ export namespace Prisma {
     imagemFile?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
-    endereco?: SortOrderInput | SortOrder
-    horarioFuncionamento?: SortOrderInput | SortOrder
-    telefone?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     pedidos?: OrderOrderByRelationAggregateInput
@@ -11373,9 +11328,6 @@ export namespace Prisma {
     imagemFile?: StringNullableFilter<"Loja"> | string | null
     userId?: StringFilter<"Loja"> | string
     createdAt?: DateTimeFilter<"Loja"> | Date | string
-    endereco?: StringNullableFilter<"Loja"> | string | null
-    horarioFuncionamento?: StringNullableFilter<"Loja"> | string | null
-    telefone?: StringNullableFilter<"Loja"> | string | null
     email?: StringNullableFilter<"Loja"> | string | null
     user?: XOR<UserRelationFilter, UserWhereInput>
     pedidos?: OrderListRelationFilter
@@ -11390,9 +11342,6 @@ export namespace Prisma {
     imagemFile?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
-    endereco?: SortOrderInput | SortOrder
-    horarioFuncionamento?: SortOrderInput | SortOrder
-    telefone?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     _count?: LojaCountOrderByAggregateInput
     _max?: LojaMaxOrderByAggregateInput
@@ -11410,9 +11359,6 @@ export namespace Prisma {
     imagemFile?: StringNullableWithAggregatesFilter<"Loja"> | string | null
     userId?: StringWithAggregatesFilter<"Loja"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Loja"> | Date | string
-    endereco?: StringNullableWithAggregatesFilter<"Loja"> | string | null
-    horarioFuncionamento?: StringNullableWithAggregatesFilter<"Loja"> | string | null
-    telefone?: StringNullableWithAggregatesFilter<"Loja"> | string | null
     email?: StringNullableWithAggregatesFilter<"Loja"> | string | null
   }
 
@@ -11469,10 +11415,10 @@ export namespace Prisma {
     estoque?: IntFilter<"Produto"> | number
     preco?: DecimalFilter<"Produto"> | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: DecimalNullableFilter<"Produto"> | Decimal | DecimalJsLike | number | string | null
-    lojaId?: StringFilter<"Produto"> | string
-    categoriaId?: StringFilter<"Produto"> | string
     status?: EnumProdutoStatusFilter<"Produto"> | $Enums.ProdutoStatus
     totalVendido?: IntNullableFilter<"Produto"> | number | null
+    lojaId?: StringFilter<"Produto"> | string
+    categoriaId?: StringFilter<"Produto"> | string
     createdAt?: DateTimeFilter<"Produto"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Produto"> | Date | string | null
     pedidos?: OrderProductListRelationFilter
@@ -11490,10 +11436,10 @@ export namespace Prisma {
     estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrderInput | SortOrder
-    lojaId?: SortOrder
-    categoriaId?: SortOrder
     status?: SortOrder
     totalVendido?: SortOrderInput | SortOrder
+    lojaId?: SortOrder
+    categoriaId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     pedidos?: OrderProductOrderByRelationAggregateInput
@@ -11514,10 +11460,10 @@ export namespace Prisma {
     estoque?: IntFilter<"Produto"> | number
     preco?: DecimalFilter<"Produto"> | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: DecimalNullableFilter<"Produto"> | Decimal | DecimalJsLike | number | string | null
-    lojaId?: StringFilter<"Produto"> | string
-    categoriaId?: StringFilter<"Produto"> | string
     status?: EnumProdutoStatusFilter<"Produto"> | $Enums.ProdutoStatus
     totalVendido?: IntNullableFilter<"Produto"> | number | null
+    lojaId?: StringFilter<"Produto"> | string
+    categoriaId?: StringFilter<"Produto"> | string
     createdAt?: DateTimeFilter<"Produto"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Produto"> | Date | string | null
     pedidos?: OrderProductListRelationFilter
@@ -11535,10 +11481,10 @@ export namespace Prisma {
     estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrderInput | SortOrder
-    lojaId?: SortOrder
-    categoriaId?: SortOrder
     status?: SortOrder
     totalVendido?: SortOrderInput | SortOrder
+    lojaId?: SortOrder
+    categoriaId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     _count?: ProdutoCountOrderByAggregateInput
@@ -11561,10 +11507,10 @@ export namespace Prisma {
     estoque?: IntWithAggregatesFilter<"Produto"> | number
     preco?: DecimalWithAggregatesFilter<"Produto"> | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: DecimalNullableWithAggregatesFilter<"Produto"> | Decimal | DecimalJsLike | number | string | null
-    lojaId?: StringWithAggregatesFilter<"Produto"> | string
-    categoriaId?: StringWithAggregatesFilter<"Produto"> | string
     status?: EnumProdutoStatusWithAggregatesFilter<"Produto"> | $Enums.ProdutoStatus
     totalVendido?: IntNullableWithAggregatesFilter<"Produto"> | number | null
+    lojaId?: StringWithAggregatesFilter<"Produto"> | string
+    categoriaId?: StringWithAggregatesFilter<"Produto"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Produto"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Produto"> | Date | string | null
   }
@@ -11979,9 +11925,6 @@ export namespace Prisma {
     descricao?: string | null
     imagemFile?: string | null
     createdAt?: Date | string
-    endereco?: string | null
-    horarioFuncionamento?: string | null
-    telefone?: string | null
     email?: string | null
     user: UserCreateNestedOneWithoutStoresInput
     pedidos?: OrderCreateNestedManyWithoutLojaInput
@@ -11996,9 +11939,6 @@ export namespace Prisma {
     imagemFile?: string | null
     userId: string
     createdAt?: Date | string
-    endereco?: string | null
-    horarioFuncionamento?: string | null
-    telefone?: string | null
     email?: string | null
     pedidos?: OrderUncheckedCreateNestedManyWithoutLojaInput
     Produtos?: ProdutoUncheckedCreateNestedManyWithoutLojaInput
@@ -12011,9 +11951,6 @@ export namespace Prisma {
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutStoresNestedInput
     pedidos?: OrderUpdateManyWithoutLojaNestedInput
@@ -12028,9 +11965,6 @@ export namespace Prisma {
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     pedidos?: OrderUncheckedUpdateManyWithoutLojaNestedInput
     Produtos?: ProdutoUncheckedUpdateManyWithoutLojaNestedInput
@@ -12044,9 +11978,6 @@ export namespace Prisma {
     imagemFile?: string | null
     userId: string
     createdAt?: Date | string
-    endereco?: string | null
-    horarioFuncionamento?: string | null
-    telefone?: string | null
     email?: string | null
   }
 
@@ -12057,9 +11988,6 @@ export namespace Prisma {
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -12071,9 +11999,6 @@ export namespace Prisma {
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -12145,10 +12070,10 @@ export namespace Prisma {
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
-    lojaId: string
-    categoriaId: string
     status?: $Enums.ProdutoStatus
     totalVendido?: number | null
+    lojaId: string
+    categoriaId: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     pedidos?: OrderProductUncheckedCreateNestedManyWithoutProductInput
@@ -12183,10 +12108,10 @@ export namespace Prisma {
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lojaId?: StringFieldUpdateOperationsInput | string
-    categoriaId?: StringFieldUpdateOperationsInput | string
     status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
     totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    lojaId?: StringFieldUpdateOperationsInput | string
+    categoriaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: OrderProductUncheckedUpdateManyWithoutProductNestedInput
@@ -12202,10 +12127,10 @@ export namespace Prisma {
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
-    lojaId: string
-    categoriaId: string
     status?: $Enums.ProdutoStatus
     totalVendido?: number | null
+    lojaId: string
+    categoriaId: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -12236,10 +12161,10 @@ export namespace Prisma {
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lojaId?: StringFieldUpdateOperationsInput | string
-    categoriaId?: StringFieldUpdateOperationsInput | string
     status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
     totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    lojaId?: StringFieldUpdateOperationsInput | string
+    categoriaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -12743,9 +12668,6 @@ export namespace Prisma {
     imagemFile?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
-    endereco?: SortOrder
-    horarioFuncionamento?: SortOrder
-    telefone?: SortOrder
     email?: SortOrder
   }
 
@@ -12757,9 +12679,6 @@ export namespace Prisma {
     imagemFile?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
-    endereco?: SortOrder
-    horarioFuncionamento?: SortOrder
-    telefone?: SortOrder
     email?: SortOrder
   }
 
@@ -12771,9 +12690,6 @@ export namespace Prisma {
     imagemFile?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
-    endereco?: SortOrder
-    horarioFuncionamento?: SortOrder
-    telefone?: SortOrder
     email?: SortOrder
   }
 
@@ -12942,10 +12858,10 @@ export namespace Prisma {
     estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrder
-    lojaId?: SortOrder
-    categoriaId?: SortOrder
     status?: SortOrder
     totalVendido?: SortOrder
+    lojaId?: SortOrder
+    categoriaId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12966,10 +12882,10 @@ export namespace Prisma {
     estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrder
-    lojaId?: SortOrder
-    categoriaId?: SortOrder
     status?: SortOrder
     totalVendido?: SortOrder
+    lojaId?: SortOrder
+    categoriaId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12983,10 +12899,10 @@ export namespace Prisma {
     estoque?: SortOrder
     preco?: SortOrder
     porcentagemDesconto?: SortOrder
-    lojaId?: SortOrder
-    categoriaId?: SortOrder
     status?: SortOrder
     totalVendido?: SortOrder
+    lojaId?: SortOrder
+    categoriaId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -14337,9 +14253,9 @@ export namespace Prisma {
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
-    categoriaId: string
     status?: $Enums.ProdutoStatus
     totalVendido?: number | null
+    categoriaId: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     pedidos?: OrderProductUncheckedCreateNestedManyWithoutProductInput
@@ -14452,10 +14368,10 @@ export namespace Prisma {
     estoque?: IntFilter<"Produto"> | number
     preco?: DecimalFilter<"Produto"> | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: DecimalNullableFilter<"Produto"> | Decimal | DecimalJsLike | number | string | null
-    lojaId?: StringFilter<"Produto"> | string
-    categoriaId?: StringFilter<"Produto"> | string
     status?: EnumProdutoStatusFilter<"Produto"> | $Enums.ProdutoStatus
     totalVendido?: IntNullableFilter<"Produto"> | number | null
+    lojaId?: StringFilter<"Produto"> | string
+    categoriaId?: StringFilter<"Produto"> | string
     createdAt?: DateTimeFilter<"Produto"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Produto"> | Date | string | null
   }
@@ -14488,9 +14404,9 @@ export namespace Prisma {
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
-    lojaId: string
     status?: $Enums.ProdutoStatus
     totalVendido?: number | null
+    lojaId: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     pedidos?: OrderProductUncheckedCreateNestedManyWithoutProductInput
@@ -14566,9 +14482,6 @@ export namespace Prisma {
     descricao?: string | null
     imagemFile?: string | null
     createdAt?: Date | string
-    endereco?: string | null
-    horarioFuncionamento?: string | null
-    telefone?: string | null
     email?: string | null
     user: UserCreateNestedOneWithoutStoresInput
     pedidos?: OrderCreateNestedManyWithoutLojaInput
@@ -14582,9 +14495,6 @@ export namespace Prisma {
     imagemFile?: string | null
     userId: string
     createdAt?: Date | string
-    endereco?: string | null
-    horarioFuncionamento?: string | null
-    telefone?: string | null
     email?: string | null
     pedidos?: OrderUncheckedCreateNestedManyWithoutLojaInput
   }
@@ -14659,9 +14569,6 @@ export namespace Prisma {
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutStoresNestedInput
     pedidos?: OrderUpdateManyWithoutLojaNestedInput
@@ -14675,9 +14582,6 @@ export namespace Prisma {
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     pedidos?: OrderUncheckedUpdateManyWithoutLojaNestedInput
   }
@@ -14743,10 +14647,10 @@ export namespace Prisma {
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
-    lojaId: string
-    categoriaId: string
     status?: $Enums.ProdutoStatus
     totalVendido?: number | null
+    lojaId: string
+    categoriaId: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -14834,10 +14738,10 @@ export namespace Prisma {
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lojaId?: StringFieldUpdateOperationsInput | string
-    categoriaId?: StringFieldUpdateOperationsInput | string
     status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
     totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    lojaId?: StringFieldUpdateOperationsInput | string
+    categoriaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -14849,9 +14753,6 @@ export namespace Prisma {
     descricao?: string | null
     imagemFile?: string | null
     createdAt?: Date | string
-    endereco?: string | null
-    horarioFuncionamento?: string | null
-    telefone?: string | null
     email?: string | null
     user: UserCreateNestedOneWithoutStoresInput
     Produtos?: ProdutoCreateNestedManyWithoutLojaInput
@@ -14865,9 +14766,6 @@ export namespace Prisma {
     imagemFile?: string | null
     userId: string
     createdAt?: Date | string
-    endereco?: string | null
-    horarioFuncionamento?: string | null
-    telefone?: string | null
     email?: string | null
     Produtos?: ProdutoUncheckedCreateNestedManyWithoutLojaInput
   }
@@ -14946,9 +14844,6 @@ export namespace Prisma {
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutStoresNestedInput
     Produtos?: ProdutoUpdateManyWithoutLojaNestedInput
@@ -14962,9 +14857,6 @@ export namespace Prisma {
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     Produtos?: ProdutoUncheckedUpdateManyWithoutLojaNestedInput
   }
@@ -15155,9 +15047,6 @@ export namespace Prisma {
     descricao?: string | null
     imagemFile?: string | null
     createdAt?: Date | string
-    endereco?: string | null
-    horarioFuncionamento?: string | null
-    telefone?: string | null
     email?: string | null
     pedidos?: OrderCreateNestedManyWithoutLojaInput
     Produtos?: ProdutoCreateNestedManyWithoutLojaInput
@@ -15170,9 +15059,6 @@ export namespace Prisma {
     descricao?: string | null
     imagemFile?: string | null
     createdAt?: Date | string
-    endereco?: string | null
-    horarioFuncionamento?: string | null
-    telefone?: string | null
     email?: string | null
     pedidos?: OrderUncheckedCreateNestedManyWithoutLojaInput
     Produtos?: ProdutoUncheckedCreateNestedManyWithoutLojaInput
@@ -15313,9 +15199,6 @@ export namespace Prisma {
     imagemFile?: StringNullableFilter<"Loja"> | string | null
     userId?: StringFilter<"Loja"> | string
     createdAt?: DateTimeFilter<"Loja"> | Date | string
-    endereco?: StringNullableFilter<"Loja"> | string | null
-    horarioFuncionamento?: StringNullableFilter<"Loja"> | string | null
-    telefone?: StringNullableFilter<"Loja"> | string | null
     email?: StringNullableFilter<"Loja"> | string | null
   }
 
@@ -15418,9 +15301,9 @@ export namespace Prisma {
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
-    categoriaId: string
     status?: $Enums.ProdutoStatus
     totalVendido?: number | null
+    categoriaId: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -15494,9 +15377,9 @@ export namespace Prisma {
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    categoriaId?: StringFieldUpdateOperationsInput | string
     status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
     totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    categoriaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: OrderProductUncheckedUpdateManyWithoutProductNestedInput
@@ -15512,9 +15395,9 @@ export namespace Prisma {
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    categoriaId?: StringFieldUpdateOperationsInput | string
     status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
     totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    categoriaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -15529,9 +15412,9 @@ export namespace Prisma {
     estoque: number
     preco: Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: Decimal | DecimalJsLike | number | string | null
-    lojaId: string
     status?: $Enums.ProdutoStatus
     totalVendido?: number | null
+    lojaId: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -15564,9 +15447,9 @@ export namespace Prisma {
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lojaId?: StringFieldUpdateOperationsInput | string
     status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
     totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    lojaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: OrderProductUncheckedUpdateManyWithoutProductNestedInput
@@ -15582,9 +15465,9 @@ export namespace Prisma {
     estoque?: IntFieldUpdateOperationsInput | number
     preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     porcentagemDesconto?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lojaId?: StringFieldUpdateOperationsInput | string
     status?: EnumProdutoStatusFieldUpdateOperationsInput | $Enums.ProdutoStatus
     totalVendido?: NullableIntFieldUpdateOperationsInput | number | null
+    lojaId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -15644,9 +15527,6 @@ export namespace Prisma {
     descricao?: string | null
     imagemFile?: string | null
     createdAt?: Date | string
-    endereco?: string | null
-    horarioFuncionamento?: string | null
-    telefone?: string | null
     email?: string | null
   }
 
@@ -15690,9 +15570,6 @@ export namespace Prisma {
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     pedidos?: OrderUpdateManyWithoutLojaNestedInput
     Produtos?: ProdutoUpdateManyWithoutLojaNestedInput
@@ -15705,9 +15582,6 @@ export namespace Prisma {
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     pedidos?: OrderUncheckedUpdateManyWithoutLojaNestedInput
     Produtos?: ProdutoUncheckedUpdateManyWithoutLojaNestedInput
@@ -15720,9 +15594,6 @@ export namespace Prisma {
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    endereco?: NullableStringFieldUpdateOperationsInput | string | null
-    horarioFuncionamento?: NullableStringFieldUpdateOperationsInput | string | null
-    telefone?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
   }
 

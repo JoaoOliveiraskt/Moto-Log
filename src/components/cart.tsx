@@ -168,7 +168,7 @@ const Cart = ({ setIsOpen }: CartProps) => {
           <AlertDialogFooter>
             <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <AlertDialogAction
-            className="rounded-full"
+            
               onClick={handleFinishOrderClick}
               disabled={isSubmitLoading}
             >

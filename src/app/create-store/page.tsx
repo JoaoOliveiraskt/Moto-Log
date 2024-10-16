@@ -29,7 +29,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import Icon from "@/components/icons/icon-component";
 import { motion } from "framer-motion";
-import Pattern from "@/components/pattern";
 import Container from "@/components/container";
 import Link from "next/link";
 import LoginDialog from "@/components/login-dialog";
@@ -86,15 +85,6 @@ export default function CreateStore() {
     }
   };
 
-  const formatPhoneNumber = (value: string) => {
-    const cleaned = ("" + value).replace(/\D/g, "");
-    const match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
-    if (match) {
-      return `(${match[1]}) ${match[2]}-${match[3]}`;
-    }
-    return value;
-  };
-
   if (!isAuthenticated) {
     return (
       <>
@@ -117,13 +107,13 @@ export default function CreateStore() {
     );
   } else {
     return (
-      <Container className="h-screen w-full flex items-center justify-center flex-col space-y-6 mt-[72px] md:mt-20">
+      <Container className="h-screen w-full flex items-center flex-col space-y-6 mt-[72px] md:mt-36">
         <motion.div {...animation1}>
           <MotoLogLogo />
         </motion.div>
 
         <motion.div {...animation2}>
-          <Card className="w-full md:w-[30rem] bg-card/75 opacity-90">
+          <Card className="w-full sm:w-[30rem] bg-card/75 opacity-90 ">
             <CardHeader className="px-6 space-y-2 mt-4 mb-5">
               <CardTitle className="text-2xl">Crie sua loja</CardTitle>
               <CardDescription>
@@ -185,92 +175,31 @@ export default function CreateStore() {
                       </p>
                     )}
                   </div>
-
-                  {/* Telefone */}
-                  <div className="grid gap-3">
-                    <Label htmlFor="phone">
-                      Telefone{" "}
-                      <span className="text-muted-foreground"> (opcional)</span>
-                    </Label>
-                    <Input
-                      id="phone"
-                      type="text"
-                      className="w-full"
-                      placeholder="Ex: (xx) xxxx-xxxx"
-                      {...register("phone", {
-                        onChange: (e) => {
-                          const formattedValue = formatPhoneNumber(
-                            e.target.value
-                          );
-                          setValue("phone", formattedValue);
-                        },
-                      })}
-                    />
-                    {errors.phone && (
-                      <p className="text-red-500">
-                        {(errors.phone as { message: string }).message}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Endereço */}
-                  <div className="grid gap-3">
-                    <Label htmlFor="address">
-                      Endereço{" "}
-                      <span className="text-muted-foreground"> (opcional)</span>
-                    </Label>
-                    <Input
-                      id="address"
-                      type="text"
-                      className="w-full"
-                      placeholder="Ex: Rua Principal 123, Cidade Exemplo, EUA"
-                      {...register("address")}
-                    />
-                    {errors.address && (
-                      <p className="text-red-500">
-                        {(errors.address as { message: string }).message}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Horário de Funcionamento */}
-                  <div className="grid gap-3">
-                    <Label htmlFor="workingHours">
-                      Horário de Funcionamento{" "}
-                      <span className="text-muted-foreground"> (opcional)</span>
-                    </Label>
-                    <Input
-                      id="workingHours"
-                      type="text"
-                      className="w-full"
-                      placeholder="Ex: Seg-Sáb: 10h - 20h, Dom: 12h - 18h"
-                      {...register("workingHours")}
-                    />
-                    {errors.workingHours && (
-                      <p className="text-red-500">
-                        {(errors.workingHours as { message: string }).message}
-                      </p>
-                    )}
-                  </div>
                 </div>
 
-                {isSubmitOk === true ? (
-                  <Button type="submit" className={`mt-6 w-full bg-green-600`}>
-                    <Icon.confirmed />
-                  </Button>
-                ) : (
-                  <Button
-                    size={"rounded"}
-                    type="submit"
-                    className={`mt-6 w-full`}
-                  >
-                    {isSubmitLoading ? (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    ) : (
-                      <p>Criar Loja</p>
-                    )}
-                  </Button>
-                )}
+                <div className="w-full">
+                  {isSubmitOk === true ? (
+                    <Button
+                      size={"rounded"}
+                      type="submit"
+                      className={`mt-6 bg-confirmed w-full `}
+                    >
+                      <Icon.confirmed />
+                    </Button>
+                  ) : (
+                    <Button
+                      size={"rounded"}
+                      type="submit"
+                      className={`mt-6 w-full `}
+                    >
+                      {isSubmitLoading ? (
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin " />
+                      ) : (
+                        <p className="font-semibold">Criar Loja</p>
+                      )}
+                    </Button>
+                  )}
+                </div>
               </form>
             </CardContent>
           </Card>
