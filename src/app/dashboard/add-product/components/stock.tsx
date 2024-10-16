@@ -15,7 +15,7 @@ export default function Stock() {
   const { register, setValue } = useFormContext();
 
   return (
-    <Card x-chunk="dashboard-07-chunk-1">
+    <Card x-chunk="dashboard-07-chunk-1" className="h-full">
       <CardHeader className="px-6 mt-6 space-y-2 mb-5">
         <CardTitle>Estoque</CardTitle>
       </CardHeader>

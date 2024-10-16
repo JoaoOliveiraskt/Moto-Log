@@ -12,7 +12,7 @@ import BottomNav from "@/components/bottom-nav";
 import GoBackButton from "@/components/go-back-button";
 import Link from "next/link";
 
-//const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 const manrope = Manrope({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700", "800"],

@@ -86,7 +86,7 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
             </div>
 
             <Button
-              className="h-8"
+              className="h-8 rounded-sm"
               variant={"ghost"}
               size={"icon"}
               onClick={handleRemoveProduct}

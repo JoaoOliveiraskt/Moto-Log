@@ -4,7 +4,6 @@ import { RiFileList3Line } from "react-icons/ri";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { PiSignOutBold } from "react-icons/pi";
 import { PiSignInBold } from "react-icons/pi";
-import { RiGoogleFill } from "react-icons/ri";
 import { BsArrowDownShort } from "react-icons/bs";
 import { BiLike } from "react-icons/bi";
 import { HiMiniChevronRight } from "react-icons/hi2";
@@ -21,13 +20,8 @@ import { FiClock } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
 import { MdBookmarkAdd } from "react-icons/md";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
-import {
-  LineChart,
-  Package,
-  Package2,
-  Settings,
-} from "lucide-react";
-
+import { FcGoogle } from "react-icons/fc";
+import { LineChart, Package, Package2, Settings } from "lucide-react";
 
 const Icon = {
   home: FiHome,
@@ -41,7 +35,6 @@ const Icon = {
   star: GoStarFill,
   signOut: PiSignOutBold,
   signIn: PiSignInBold,
-  google: RiGoogleFill,
   like: BiLike,
   arrowDown: BsArrowDownShort,
   arrowRight: HiMiniChevronRight,
@@ -58,7 +51,7 @@ const Icon = {
   heartFilled: TbHeartFilled,
   clock: FiClock,
   location: SlLocationPin,
-  
+  google: FcGoogle,
 };
 
 export default Icon;

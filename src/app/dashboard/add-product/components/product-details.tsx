@@ -21,12 +21,9 @@ export default function ProductDetails({ isEditing }: ProductDetailsProps) {
   } = useFormContext();
 
   return (
-    <Card x-chunk="dashboard-07-chunk-0">
+    <Card  className="h-full">
       <CardHeader className="px-6 mt-6 space-y-2 mb-5">
         <CardTitle>Detalhes do Produto</CardTitle>
-        <CardDescription>
-          Escreva informações detalhadas sobre o produto.
-        </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="grid gap-6">
