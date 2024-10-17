@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Open_Sans, Manrope, Source_Sans_3 } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { CartProvider } from "./context/cart";
@@ -10,11 +10,11 @@ import { ThemeProvider } from "@/components/theme/theme-provider";
 import SearchInput from "@/components/search-input";
 import BottomNav from "@/components/bottom-nav";
 import GoBackButton from "@/components/go-back-button";
-import Link from "next/link";
 import MotoLogLogo from "@/components/icons/moto-log-logo";
 import { Suspense } from "react";
 import LoadingPage from "@/components/loading-page";
 import LoadingWrapper from "@/components/loading-wrapper";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 const manrope = Manrope({
@@ -35,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.className}`}>
       <body>
+        <NextTopLoader />
         <AuthProvider>
           <CartProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
