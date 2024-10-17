@@ -35,10 +35,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.className}`}>
       <body>
-        <NextTopLoader />
         <AuthProvider>
           <CartProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <NextTopLoader />
               <LoadingWrapper>
                 <Suspense fallback={<LoadingPage />}>
                   <div className="fixed top-0 w-full flex items-center justify-between gap-3 z-10 bg-background lg:hidden px-4 py-2">
