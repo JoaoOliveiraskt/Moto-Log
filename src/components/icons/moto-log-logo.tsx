@@ -1,8 +1,12 @@
 import Link from "next/link";
 
-export default function MotoLogLogo() {
+interface Props {
+  className?: string;
+}
+
+export default function MotoLogLogo({className}: Props) {
   return (
-    <Link className="p-0" href="/">
+    <Link className={`p-0 ${className}`} href="/">
       <svg
         width="128"
         height="60"

@@ -24,7 +24,7 @@ const ProductCard = ({ product }: ProductProps) => {
     <div className="relative mb-6">
       <Link href={`/product/${product.id}`}>
         <div className="cursor-pointer h-max overflow-hidden text-foreground">
-          <div className="h-48 w-full lg:h-[17rem] rounded-2xl overflow-hidden border">
+          <div className="h-48 w-full lg:h-[12rem] rounded-2xl overflow-hidden border">
             <Image
               src={product.imagemUrl}
               alt={product.nome}

@@ -4,9 +4,6 @@ import { Button } from "@/components/ui/button";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import icon from "@/components/icons/icon-component";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
 import LoginDialog from "./login-dialog";
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
@@ -116,7 +113,7 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
             variant={"ghost"}
             className={`flex items-center space-x-2`}
           >
-            <span>Entrar</span>
+            <span>Login</span>
             <icon.signIn size={18} />
           </Button>
 

@@ -3,6 +3,7 @@ import LoginButton from "./login-button";
 import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
 import Image from "next/image";
 import { DialogDescription } from "@radix-ui/react-dialog";
+import MotoLogLogo from "./icons/moto-log-logo";
 
 interface Props {
   open: boolean;
@@ -12,10 +13,11 @@ interface Props {
 export default function LoginDialog({ open, onOpenChange }: Props) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="overflow-hidden max-w-xs md:max-w-3xl h-max md:h-[55%]   md:p-4 sm:rounded-3xl">
-        <div className="md:grid grid-cols-2 gap-4 h-full">
-          <div className="mx-auto w-full max-w-xs space-y-8 flex flex-col justify-center items-center">
-            <div className="space-y-4 text-center">
+      <DialogContent className="overflow-hidden max-w-md px-4 sm:max-w-2xl h-[50%] sm:h-[40%] sm:p-0 sm:rounded-3xl">
+        <div className="mx-auto w-full h-full flex flex-col justify-between items-center">
+          <div className="flex flex-col items-center space-y-4">
+            <MotoLogLogo />
+            <div className="space-y-4 text-center w-full">
               <DialogTitle className="text-3xl font-bold text-foreground">
                 Login
               </DialogTitle>
@@ -23,27 +25,9 @@ export default function LoginDialog({ open, onOpenChange }: Props) {
                 Faça login com sua conta
               </DialogDescription>
             </div>
-            <div className="flex gap-4 items-center">
-              <LoginButton className="py-6" />
-            </div>
           </div>
-
-          <div className="border relative h-full rounded-3xl hidden md:flex overflow-hidden items-center justify-center">
-            <Image
-              src="/login-2.png"
-              alt="Login"
-              width={1000}
-              height={1000}
-              className="object-cover w-full h-full"
-            />
-            <div className="max-w-72 absolute bottom-0 left-0 ml-6 mb-6">
-              <p className="text-6xl font-medium text-white tracking-tighter">
-                <Balancer>O Melhor em um só Lugar!</Balancer>
-              </p>
-              <p className="text-sm mt-4 text-white">
-                Aproveite promoções imperdíveis todos os dias!
-              </p>
-            </div>
+          <div className="flex flex-col justify-center gap-4 items-center border-t w-full py-4 min-h-36">
+            <LoginButton className="py-6 px-16 bg-card text-foreground border hover:bg-accent" />
           </div>
         </div>
       </DialogContent>
