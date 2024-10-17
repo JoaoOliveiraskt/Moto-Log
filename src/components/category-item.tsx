@@ -11,28 +11,15 @@ interface Category {
 interface CategoryProps {
   category: Category;
   link: string;
-  className?: string;
-  active?: boolean;
 }
 
-export default function CategoryItem({
-  category,
-  link,
-  className,
-  active,
-}: CategoryProps) {
+export default function CategoryItem({ category, link }: CategoryProps) {
   return (
     <Link
       href={link}
-      className={cn([
-        `w-auto rounded-full z-20 border dark:border/10`,
-        active && "bg-foreground text-background",
-        className,
-      ])}
+      className="flex items-center gap-1 w-fit px-5 py-2.5 border hover:bg-accent/50 hover:text-foreground rounded-full transition-all"
     >
-      <div className="flex items-center gap-1 w-fit px-4 py-2.5 bg-background hover:bg-accent/50 hover:text-foreground rounded-full transition-all">
-        <p className="font-bold">{category.nome}</p>
-      </div>
+      <p className="font-bold">{category.nome}</p>
     </Link>
   );
 }

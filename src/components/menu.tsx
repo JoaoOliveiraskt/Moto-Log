@@ -14,6 +14,8 @@ import {
 import icon from "@/components/icons/icon-component";
 import { useAuth } from "@/hooks/useAuth";
 import LoginDialog from "./login-dialog";
+import { Avatar, AvatarImage } from "./ui/avatar";
+import MenuBtn from "./menu-btn";
 
 interface Props {
   className?: string;
@@ -23,7 +25,7 @@ interface Props {
 }
 
 const Menu = ({ className, children, iconSize, model }: Props) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data: session } = useSession();
   const isLojista = session?.user.role === "LOJISTA";
@@ -39,14 +41,17 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
   return (
     <>
       <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-        <DropdownMenuTrigger
-          onClick={handleMenuOpen.open}
-          className={`rounded-md flex flex-col gap-1 items-center justify-center text-muted-foreground hover:transition-colors ${className}`}
-        >
-          <icon.menu size={iconSize} />
-          <p className="text-foreground hover:text-foreground text-sm">
-            {children}
-          </p>
+        <DropdownMenuTrigger onClick={handleMenuOpen.open}>
+          {isAuthenticated ? (
+            <Avatar>
+              <AvatarImage
+                src={user?.image as string | undefined}
+                alt={user?.name as string | undefined}
+              />
+            </Avatar>
+          ) : (
+            <MenuBtn>{children}</MenuBtn>
+          )}
         </DropdownMenuTrigger>
 
         <DropdownMenuContent

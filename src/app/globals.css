@@ -104,7 +104,7 @@
     --foreground: 60 6% 94%;
     --muted: 201 13% 14%;
     --muted-foreground: 60 1% 59%;
-    --card: 0 0% 11%;
+    --card: 0 0% 12%;
     --card-foreground: 231 21% 98%;
     --popover: 60 6% 94%;
     --popover-foreground: 231 21% 98%;
@@ -137,12 +137,16 @@
   scroll-behavior: smooth;
 }
 
-.scrollbar-hide {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-  -webkit-overflow-scrolling: touch;
+@keyframes meteor-effect {
+  0% {
+    transform: translate(0, 0) rotate(215deg);
+  }
+  100% {
+    transform: translate(500px, 400px) rotate(215deg);
+    opacity: 0;
+  }
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari e Edge */
+.animate-meteor-effect {
+  animation: meteor-effect linear infinite;
 }

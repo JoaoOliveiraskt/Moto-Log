@@ -5,30 +5,50 @@ import React from "react";
 import { Button } from "./ui/button";
 import Lottie from "lottie-react";
 import cartAnimation from "../../public/animations/cart-animation.json";
+import { Meteors } from "./meteors";
 
-export const BannerSec = () => {
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  btnContent: string;
+}
+
+export const MeteorBanner = ({
+  title,
+  description,
+  href,
+  btnContent,
+}: Props) => {
   return (
-    <div
-      className="flex items-center justify-around mx-auto max-w-[1440px] sm:h-64 p-4 sm:p-8 h-full w-full rounded-2xl overflow-hidden 
-      bg-gradient-to-bl backdrop-blur-3xl bg-sky-800"
-    >
-      <div className=" flex flex-col gap-12">
-        <div className="space-y-3">
-          <strong className="max-w-44 sm:max-w-xl text-left text-xl sm:text-2xl font-bold text-foreground drop-shadow-md">
-            Conectando você aos melhores produtos da região
-          </strong>
+    <div className="w-full max-w-screen-lg mx-auto pb-4 md:py-10">
+      <div className="relative w-full">
+        <div className="absolute inset-0 h-full w-full scale-[0.80] transform rounded-full bg-red-500 bg-gradient-to-r from-blue-200 to-teal-200 dark:from-blue-500 dark:to-teal-500 blur-3xl" />
+        <div className="relative flex h-full items-start justify-between overflow-hidden rounded-3xl border dark:border-gray-800 px-4 md:px-14 py-8 md:py-16 shadow-xl dark:bg-gray-900 dark:bg-opacity-70">
+          <div className="flex flex-col min-h-full justify-between w-full">
+            <div>
+              <h1 className="relative z-50 mb-4 text-3xl font-bold ">
+                {title}
+              </h1>
 
-          <h2 className="text-lg sm:text-xl text-foreground drop-shadow-md">
-            Descubra novidades e aproveite vantagens exclusivas
-          </h2>
+              <p className=" relative z-50 text-muted-foreground">
+                {description}
+              </p>
+            </div>
+            <Link href={`/${href}`} rel="noopener noreferrer">
+              <Button
+                size={"rounded"}
+                className="md:mt-6 border border-foreground/60 h-11 font-semibold px-8 bg-transparent hover:bg-transparent text-foreground hover:shadow-2xl hover:shadow-foreground/20"
+                
+              >
+                {btnContent}
+              </Button>
+            </Link>
+          </div>
+          {/* Meaty part - Meteor effect */}
+          <Meteors number={20} />
         </div>
-        <Link href="#category-list">
-          <Button size={"lg"} className="rounded-full">
-            Aproveite as Ofertas
-          </Button>
-        </Link>
       </div>
-      <Lottie animationData={cartAnimation} className="ml-8 h-72 w-fit" />
     </div>
   );
 };

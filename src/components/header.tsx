@@ -1,9 +1,9 @@
 import Menu from "./menu";
 import SearchInput from "./search-input";
 import CartSideBar from "./cart-button";
-import { ModeToggle } from "./theme/theme-switcher";
 import Container from "./container";
 import MotoLogLogo from "./icons/moto-log-logo";
+import HeaderLoginBtn from "./header-login-btn";
 
 export default function Header() {
   return (
@@ -21,11 +21,11 @@ export default function Header() {
           </div>
           <div className="flex items-center w-auto gap-2">
             <div className="flex items-center gap-2">
+              <HeaderLoginBtn />
 
               <CartSideBar
                 iconSize={18}
-                model="outline"
-                className="border-none"
+                model="ghost"
               />
 
               <Menu

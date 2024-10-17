@@ -21,6 +21,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Decimal } from "@prisma/client/runtime/library";
 import formatCurrency from "@/app/helpers/format-currency";
+import { useState } from "react";
 
 interface Product {
   id: string;
@@ -49,21 +50,50 @@ interface Props {
 }
 
 export default function ProductTable({ products, title, description }: Props) {
+  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleSelectAll = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      setSelectedProducts(products.map((product) => product.id));
+    } else {
+      setSelectedProducts([]);
+    }
+  };
+
+  const handleSelectProduct = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    productId: string
+  ) => {
+    if (event.target.checked) {
+      setSelectedProducts((prev) => [...prev, productId]);
+    } else {
+      setSelectedProducts((prev) => prev.filter((id) => id !== productId));
+    }
+  };
+
   return (
-    <Card className="rounded-md">
+    <Card className="bg-background">
       <CardContent className="px-0">
         <Table className="mt-6">
-          <TableHeader className="">
-            <TableRow className=" border-none">
+          <TableHeader>
+            <TableRow className="border-none">
+              <TableHead className="flex items-center gap-2">
+                <input
+                  className={`h-4 w-4 ml-4  accent-violet-600`}
+                  type="checkbox"
+                  checked={selectedProducts.length === products.length}
+                  onChange={handleSelectAll}
+                />
+              </TableHead>
               <TableHead className="hidden w-[100px] sm:table-cell">
                 <span className="sr-only">Imagem</span>
               </TableHead>
-              <TableHead className="">Nome</TableHead>
               <TableHead className="">Status</TableHead>
               <TableHead className="">Preço</TableHead>
               <TableHead className="hidden md:table-cell">Estoque</TableHead>
-              <TableHead className="hidden lg:table-cell ">Vendidos</TableHead>
-              <TableHead className="hidden lg:table-cell ">Criado em</TableHead>
+              <TableHead className="hidden lg:table-cell">Vendidos</TableHead>
+              <TableHead className="hidden lg:table-cell">Criado em</TableHead>
               <TableHead>
                 <span className="sr-only">Ações</span>
               </TableHead>
@@ -82,7 +112,17 @@ export default function ProductTable({ products, title, description }: Props) {
                 .reverse()
                 .map((product) => (
                   <TableRow key={product.id} className="px-2">
-                    <TableCell className="hidden sm:table-cell pl-4 py-2">
+                    <TableCell className="font-medium w-fit">
+                      <input
+                        className="w-4 h-4 ml-4 accent-violet-600"
+                        type="checkbox"
+                        checked={selectedProducts.includes(product.id)}
+                        onChange={(event) =>
+                          handleSelectProduct(event, product.id)
+                        }
+                      />
+                    </TableCell>
+                    <TableCell className="hidden sm:table-cell py-2">
                       <div className="relative h-16 w-16 overflow-hidden rounded-md">
                         <Image
                           alt="Product image"
@@ -93,8 +133,8 @@ export default function ProductTable({ products, title, description }: Props) {
                         />
                       </div>
                     </TableCell>
-                    <TableCell className="font-medium">
-                      <span className="text-xs sm:text-sm font-semibold ">
+                    <TableCell>
+                      <span className="text-xs sm:text-sm font-semibold ml-2">
                         {product.nome}
                       </span>
                     </TableCell>
