@@ -38,9 +38,9 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <NextTopLoader />
               <LoadingWrapper>
                 <Suspense fallback={<LoadingPage />}>
+                  <NextTopLoader />
                   <div className="fixed top-0 w-full flex items-center justify-between gap-3 z-10 bg-background lg:hidden px-4 py-2">
                     <GoBackButton />
                     <SearchInput className="h-10" />
