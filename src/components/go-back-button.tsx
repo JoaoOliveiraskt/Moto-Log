@@ -32,7 +32,7 @@ const GoBackButton: React.FC<Props> = ({ className, name }: Props) => {
             <GoArrowLeft size={30} />
           </Button>
           {title && (
-            <span className="font-bold text-primary text-xl sm:text-3xl">
+            <span className="font-bold text-primary text-4xl xl:text-[2.75rem]">
               {title}
             </span>
           )}

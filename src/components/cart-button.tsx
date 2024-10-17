@@ -47,9 +47,7 @@ const CartSideBar = ({ children, className, model, iconSize }: Props) => {
             {totalItems}
           </span>
         )}
-        <p className="text-muted-foreground hover:text-foreground text-sm">
-          {children}
-        </p>
+        <p className="font-semibold text-xs">{children}</p>
       </Button>
 
       <SheetContent className="w-full">

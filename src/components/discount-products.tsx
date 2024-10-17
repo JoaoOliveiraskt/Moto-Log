@@ -31,7 +31,7 @@ export default async function DiscountProducts() {
   return (
     <div className="space-y-5">
       <div className="flex justify-between items-center lg:justify-normal">
-        <h2 className="font-bold text-primary text-xl sm:text-4xl">
+        <h2 className="font-bold text-primary text-2xl sm:text-4xl">
           Com desconto
         </h2>
         <SeeAllButton href="/discount" />
@@ -47,6 +47,7 @@ export default async function DiscountProducts() {
             .slice(0, 15)
             .map((product) => (
               <div key={product.id}>
+                {/* @ts-ignore */}
                 <ProductCard product={product} />
               </div>
             ))

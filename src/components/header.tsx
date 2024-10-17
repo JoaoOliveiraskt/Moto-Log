@@ -17,7 +17,7 @@ export default function Header() {
           </div>
 
           <div className="absolute left-1/2 transform -translate-x-1/2">
-            <SearchInput className="w-96 xl:w-[30rem] " />
+            <SearchInput className="w-96 xl:w-[30rem]" />
           </div>
           <div className="flex items-center w-auto gap-2">
             <div className="flex items-center gap-2">
@@ -29,7 +29,7 @@ export default function Header() {
               />
 
               <Menu
-                iconSize={18}
+                iconSize={20}
                 className="h-9 w-9 bg-background hover:bg-accent shadow-sm"
               />
             </div>

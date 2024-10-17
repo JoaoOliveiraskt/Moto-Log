@@ -35,7 +35,7 @@ const ProductCard = ({ product }: ProductProps) => {
             />
           </div>
           <div className="min-h-full px-1 py-2 flex flex-col justify-between">
-            <h3 className="text-xs text-muted-foreground font-medium">
+            <h3 className="text-xs text-muted-foreground font-bold mb-1">
               {product.categoria?.nome}
             </h3>
 

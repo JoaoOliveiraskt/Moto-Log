@@ -105,7 +105,7 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
           </div>
         </div>
       ) : (
-        <div className="flex items-center gap-4 px-4 mb-2">
+        <div className="flex items-center justify-between gap-4 px-4 mb-2">
           <h2 className="font-semibold tracking-tight">Faça seu login!</h2>
 
           <Button

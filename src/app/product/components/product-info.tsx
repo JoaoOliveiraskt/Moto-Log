@@ -162,8 +162,8 @@ export default function ProductInfo({ product }: ProductInfoProps) {
               Você precisa estar logado para adicionar produtos ao carrinho.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+          <AlertDialogFooter className="gap-2">
+            <AlertDialogCancel className="rounded-full">Cancelar</AlertDialogCancel>
             <LoginButton className="w-full" />
           </AlertDialogFooter>
         </AlertDialogContent>
