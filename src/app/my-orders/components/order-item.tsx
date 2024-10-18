@@ -64,8 +64,8 @@ const OrderItem = ({ order }: OrderItemProps) => {
               className="flex gap-2 items-center mt-1  text-muted-foreground
               hover:text-cyan-600 w-fit"
             >
-              <div className="flex items-center space-x-3">
-                <Avatar className="w-7 h-7 rounded-lg border">
+              <div className="flex items-center space-x-2">
+                <Avatar className="w-8 h-8 rounded-md border">
                   <AvatarImage src={order.loja.imagemUrl || undefined} />
                 </Avatar>
                 <span className="font-semibold">{order.loja.nome}</span>

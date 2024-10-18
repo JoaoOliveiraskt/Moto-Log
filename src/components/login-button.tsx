@@ -54,9 +54,9 @@ const LoginButton = ({ className, size }: Props) => {
           }}
           className={`flex items-center space-x-2 ${className}`}
         >
-          <Icon.google size={20} />
+          <Icon.google size={24} />
           <span>Entrar com o Google</span>
-          <icon.signIn size={18} />
+          <icon.signIn size={24} />
         </Button>
       )}
     </div>

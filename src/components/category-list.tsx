@@ -20,7 +20,7 @@ export default async function CategoryList() {
 
       <div className="flex items-center gap-8">
         <Link href="/recommended" className="text-muted-foreground hover:text-foreground font-bold transition-all">
-          <span>Recomendados</span>
+          <span>Mais recentes</span>
         </Link>
         <Link href="/discount" className="text-muted-foreground hover:text-foreground font-bold transition-all">
           <span>Ofertas</span> 

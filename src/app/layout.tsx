@@ -39,7 +39,7 @@ export default function RootLayout({
           <CartProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               <LoadingWrapper>
-               
+                <Suspense fallback={<LoadingPage />}>
                   <NextTopLoader />
                   <div className="fixed top-0 w-full flex items-center justify-between gap-3 z-10 bg-background lg:hidden px-4 h-[72px]">
                     <GoBackButton />
@@ -51,7 +51,7 @@ export default function RootLayout({
                   <BottomNav />
                   <Footer />
                   <Toaster />
-            
+                </Suspense>
               </LoadingWrapper>
             </ThemeProvider>
           </CartProvider>

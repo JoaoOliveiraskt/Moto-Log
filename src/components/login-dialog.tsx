@@ -1,7 +1,5 @@
-import Balancer from "react-wrap-balancer";
 import LoginButton from "./login-button";
 import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
-import Image from "next/image";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import MotoLogLogo from "./icons/moto-log-logo";
 
@@ -27,7 +25,7 @@ export default function LoginDialog({ open, onOpenChange }: Props) {
             </div>
           </div>
           <div className="flex flex-col justify-center gap-4 items-center border-t w-full py-4 min-h-36">
-            <LoginButton className="py-6 lg:px-16 bg-card text-foreground border hover:bg-accent" />
+            <LoginButton className="py-10 rounded-2xl lg:px-16 bg-card text-foreground border hover:bg-card/70" />
           </div>
         </div>
       </DialogContent>
