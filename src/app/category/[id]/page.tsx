@@ -3,7 +3,7 @@ import GoBackButton from "@/components/go-back-button";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import { notFound } from "next/navigation";
-import { getCategoryById } from "@/app/actions/getCategory";
+import { getCategoryById } from "@/app/actions/category/get-category-by-id";
 
 interface Props {
   params: {
