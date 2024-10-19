@@ -1,5 +1,7 @@
 # Moto-Log 🚀
 
+![Página de início](https://drive.google.com/file/d/1yiUlAIwGiCfVUNYIzJIFHbjk-4Bq9W2i/view?usp=sharing)
+
 ## 📖 Descrição
 
 Moto-Log é um e-commerce multi-vendor desenvolvido como parte de um trabalho universitário, com o objetivo de ajudar pequenas empresas locais a vender seus produtos online. O sistema oferece uma experiência de compra fácil e segura, permitindo que lojas físicas criem suas vitrines online e se conectem com clientes de maneira intuitiva e eficiente.
