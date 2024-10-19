@@ -16,14 +16,14 @@ interface Props {
   iconSize?: number;
 }
 
-const CartSideBar = ({ children, className, model, iconSize }: Props) => {
+const CartButton = ({ children, className, model, iconSize }: Props) => {
   const { products } = useContext(CartContext);
   const totalItems = products.length;
 
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
-    <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
+    <>
       <Button
         onClick={() => setIsCartOpen(true)}
         className={`relative flex flex-col items-center gap-1 text-muted-foreground ${className}`}
@@ -49,16 +49,9 @@ const CartSideBar = ({ children, className, model, iconSize }: Props) => {
         )}
         <p className="font-semibold text-xs">{children}</p>
       </Button>
-
-      <SheetContent className="w-full">
-        <SheetHeader>
-          <SheetTitle>Seu carrinho</SheetTitle>
-          <Separator />
-        </SheetHeader>
-        <Cart setIsOpen={setIsCartOpen} />
-      </SheetContent>
-    </Sheet>
+      <Cart  isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
+    </>
   );
 };
 
-export default CartSideBar;
+export default CartButton;

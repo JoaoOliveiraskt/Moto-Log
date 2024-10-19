@@ -1,4 +1,4 @@
-import CartSideBar from "./cart-button";
+import CartButton from "./cart-button";
 import Menu from "./menu";
 import HomeButton from "./ui/button-home";
 import OrderButton from "./ui/button-order";
@@ -16,9 +16,9 @@ export default function BottomNav() {
           Pedidos
         </OrderButton>
 
-        <CartSideBar iconSize={18} model="icon" className="h-fit w-fit">
+        <CartButton iconSize={18} model="icon" className="h-fit w-fit">
           Carrinho
-        </CartSideBar>
+        </CartButton>
 
         <Menu iconSize={18} className="h-fit w-fit hover:bg-background">
           Menu

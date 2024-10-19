@@ -22,15 +22,15 @@ const ProductCard = ({ product }: ProductProps) => {
   return (
     <div className="relative mb-6">
       <Link href={`/product/${product.id}`}>
-        <div className="cursor-pointer h-max overflow-hidden text-foreground hover:bg-accent/50 dark:hover:bg-accent/30 rounded-2xl p-2 transition-all">
-          <div className="h-40 w-full lg:h-[13rem] rounded-2xl overflow-hidden border">
+        <div className="cursor-pointer h-max overflow-hidden text-foreground md:hover:bg-accent/50 md:dark:hover:bg-accent/30 rounded-2xl md:p-2 transition-all">
+          <div className="h-48 w-full lg:h-[13rem] rounded-2xl overflow-hidden border">
             <Image
               src={product.imagemUrl}
               alt={product.nome}
-              width={600}
-              height={600}
+              width={1000}
+              height={1000}
               priority
-              className="object-cover w-full h-full hover:scale-105  duration-500 transition-all"
+              className="object-cover w-full h-full hover:scale-105 duration-500 transition-all"
             />
           </div>
           <div className="min-h-full px-1 py-2 flex flex-col justify-between">
@@ -46,7 +46,7 @@ const ProductCard = ({ product }: ProductProps) => {
             </h2>
 
             <div className="flex flex-col-reverse items-start md:flex-row md:items-center md:gap-2 mt-0.5">
-              <span className="font-medium text-sm text-foreground">
+              <span className="font-bold text- text-foreground">
                 {formatCurrency(Number(calculateTotalPrice(product)))}
               </span>
               {Number(product.porcentagemDesconto) > 0 && (
@@ -91,7 +91,7 @@ const ProductCard = ({ product }: ProductProps) => {
       </Link>
 
       <div className="absolute top-3 right-3 h-7 w-7 bg-white flex items-center rounded-full ">
-        <LikeButton size={20} className="text-black hover:text-black" />
+        <LikeButton product={{ id: product.id }} size={20} className="text-black hover:text-black" />
       </div>
     </div>
   );

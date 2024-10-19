@@ -1,6 +1,6 @@
 import Menu from "./menu";
 import SearchInput from "./search-input";
-import CartSideBar from "./cart-button";
+import CartButton from "./cart-button";
 import Container from "./container";
 import MotoLogLogo from "./icons/moto-log-logo";
 import HeaderLoginBtn from "./header-login-btn";
@@ -23,7 +23,7 @@ export default function Header() {
             <div className="flex items-center gap-2">
               <HeaderLoginBtn />
 
-              <CartSideBar
+              <CartButton
                 iconSize={18}
                 model="ghost"
               />

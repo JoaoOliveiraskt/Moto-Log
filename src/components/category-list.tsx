@@ -19,7 +19,7 @@ export default async function CategoryList() {
 
       <div className="flex items-center gap-8">
         <Link
-          href="/recommended"
+          href="/recent-products"
           className="text-muted-foreground hover:text-foreground font-bold transition-all"
         >
           <span>Mais recentes</span>

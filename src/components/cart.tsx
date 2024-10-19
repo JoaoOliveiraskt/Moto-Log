@@ -25,12 +25,15 @@ import { toast } from "./ui/use-toast";
 import { ToastAction } from "./ui/toast";
 import { useRouter } from "next/navigation";
 import { ScrollArea } from "./ui/scroll-area";
+import Icon from "./icons/icon-component";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
 
 interface CartProps {
+  isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }
 
-const Cart = ({ setIsOpen }: CartProps) => {
+const Cart = ({isOpen ,setIsOpen }: CartProps) => {
   const router = useRouter();
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
@@ -94,64 +97,73 @@ const Cart = ({ setIsOpen }: CartProps) => {
 
   return (
     <>
-      <div className="flex flex-col h-full py-5 ">
-        {products.length > 0 ? (
-          <div className="flex flex-col h-full justify-between">
-            <ScrollArea className="h-full">
-              {products.map((product) => (
-                <>
-                  <CartItem key={product.id} cartProduct={product} />
-                  <Separator className="my-3" />
-                </>
-              ))}
-            </ScrollArea>
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <SheetContent className="w-full">
+        <SheetHeader>
+          <SheetTitle>Carrinho</SheetTitle>
+          <Separator />
+        </SheetHeader>
+          <div className="flex flex-col h-full py-5 ">
+            {products.length > 0 ? (
+              <div className="flex flex-col h-full justify-between">
+                <ScrollArea className="h-full">
+                  {products.map((product) => (
+                    <>
+                      <CartItem key={product.id} cartProduct={product} />
+                      <Separator className="my-3" />
+                    </>
+                  ))}
+                </ScrollArea>
 
-            <div className="mt-6">
-              <Card className="border-none">
-                <CardContent className="p-5 border-none space-y-5">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-muted-foreground">Entrega</span>
-                    <span className="text-confirmed uppercase">Grátis</span>
-                  </div>
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-muted-foreground">Subtotal</span>
-                    <span className="text-muted-foreground">
-                      {formatCurrency(Number(subTotalPrice))}
-                    </span>
-                  </div>
+                <div className="mt-6">
+                  <Card className="border-none">
+                    <CardContent className="p-5 border-none space-y-5">
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-muted-foreground">Entrega</span>
+                        <span className="text-confirmed uppercase">Grátis</span>
+                      </div>
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-muted-foreground">Subtotal</span>
+                        <span className="text-muted-foreground">
+                          {formatCurrency(Number(subTotalPrice))}
+                        </span>
+                      </div>
 
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-muted-foreground">Descontos</span>
-                    <span className="text-muted-foreground">
-                      - {formatCurrency(Number(totalDiscount))}
-                    </span>
-                  </div>
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-muted-foreground">Descontos</span>
+                        <span className="text-muted-foreground">
+                          - {formatCurrency(Number(totalDiscount))}
+                        </span>
+                      </div>
 
-                  <div className="flex justify-between items-center text-sm font-semibold">
-                    <span>Total</span>
-                    <span>{formatCurrency(Number(totalPrice))}</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                      <div className="flex justify-between items-center text-sm font-semibold">
+                        <span>Total</span>
+                        <span>{formatCurrency(Number(totalPrice))}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
 
-            <Button
-              size={"rounded"}
-              onClick={() => setIsConfirmDialogOpen(true)}
-              className="w-1/2 mx-auto mt-6 mb-4 font-semibold"
-              disabled={isSubmitLoading}
-            >
-              Fazer pedido
-            </Button>
+                <Button
+                  size={"rounded"}
+                  onClick={() => setIsConfirmDialogOpen(true)}
+                  className="w-1/2 mx-auto mt-6 mb-4 font-semibold"
+                  disabled={isSubmitLoading}
+                >
+                  Fazer pedido
+                </Button>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-4 justify-center items-center h-2/3">
+                <Icon.cart size={80} />
+                <p className="text-lg text-muted-foreground">
+                  Seu carrinho está vazio
+                </p>
+              </div>
+            )}
           </div>
-        ) : (
-          <div className="flex justify-center items-center h-96">
-            <p className="text-lg text-muted-foreground">
-              Seu carrinho está vazio
-            </p>
-          </div>
-        )}
-      </div>
+        </SheetContent>
+      </Sheet>
 
       <AlertDialog
         open={isConfirmDialogOpen}
@@ -168,7 +180,6 @@ const Cart = ({ setIsOpen }: CartProps) => {
           <AlertDialogFooter>
             <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <AlertDialogAction
-            
               onClick={handleFinishOrderClick}
               disabled={isSubmitLoading}
             >
