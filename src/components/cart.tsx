@@ -27,13 +27,14 @@ import { useRouter } from "next/navigation";
 import { ScrollArea } from "./ui/scroll-area";
 import Icon from "./icons/icon-component";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
+import Loader from "./ui/loader";
 
 interface CartProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }
 
-const Cart = ({isOpen ,setIsOpen }: CartProps) => {
+const Cart = ({ isOpen, setIsOpen }: CartProps) => {
   const router = useRouter();
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
@@ -42,11 +43,11 @@ const Cart = ({isOpen ,setIsOpen }: CartProps) => {
     useContext(CartContext);
 
   const handleFinishOrderClick = async () => {
+    setIsOpen(true);
     if (!data?.user) return;
     const loja = products?.[0].loja;
     try {
       setIsSubmitLoading(true);
-
       await CreateOrder({
         subTotalPrice,
         totalDiscount,
@@ -69,8 +70,6 @@ const Cart = ({isOpen ,setIsOpen }: CartProps) => {
           },
         },
       });
-
-      setIsOpen(false);
 
       clearCart();
 
@@ -99,10 +98,10 @@ const Cart = ({isOpen ,setIsOpen }: CartProps) => {
     <>
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetContent className="w-full">
-        <SheetHeader>
-          <SheetTitle>Carrinho</SheetTitle>
-          <Separator />
-        </SheetHeader>
+          <SheetHeader>
+            <SheetTitle>Carrinho</SheetTitle>
+            <Separator />
+          </SheetHeader>
           <div className="flex flex-col h-full py-5 ">
             {products.length > 0 ? (
               <div className="flex flex-col h-full justify-between">
@@ -147,15 +146,16 @@ const Cart = ({isOpen ,setIsOpen }: CartProps) => {
                 <Button
                   size={"rounded"}
                   onClick={() => setIsConfirmDialogOpen(true)}
-                  className="w-1/2 mx-auto mt-6 mb-4 font-semibold"
+                  className="w-1/2 mx-auto mt-6 mb-4 font-semibold flex items-center gap-2"
                   disabled={isSubmitLoading}
                 >
-                  Fazer pedido
+                  <span>Fazer pedido</span>
+                  {isSubmitLoading && <Loader />}
                 </Button>
               </div>
             ) : (
               <div className="flex flex-col gap-4 justify-center items-center h-2/3">
-                <Icon.cart size={80} className="text-muted-foreground"/>
+                <Icon.cart size={80} className="text-muted-foreground" />
                 <p className="text-lg text-muted-foreground">
                   Seu carrinho está vazio
                 </p>

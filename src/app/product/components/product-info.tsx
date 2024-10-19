@@ -7,12 +7,6 @@ import calculateTotalPrice from "@/app/helpers/price";
 import formatCurrency from "@/app/helpers/format-currency";
 import { Prisma } from "../../../../prisma/generated/client";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
 import Cart from "@/components/cart";
 import {
   AlertDialogHeader,

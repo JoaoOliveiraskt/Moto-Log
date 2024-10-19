@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import Icon from "@/components/icons/icon-component";
 import TypographyLarge from "./typography/typography-large";
+import Loader from "./ui/loader";
 
 const UserStatus = () => {
   const { status } = useSession();
@@ -25,8 +26,10 @@ interface Props {
 
 const LoginButton = ({ className, size, iconSize, children }: Props) => {
   const { isAuthenticated } = useAuth();
+  const [loading, setLoading] = useState(false);
 
   const handleSigInClick = () => {
+    setLoading(true);
     signIn("google");
   };
   const handleSigOutClick = () => {
@@ -59,7 +62,7 @@ const LoginButton = ({ className, size, iconSize, children }: Props) => {
         >
           <Icon.google size={24} />
           <span>Entrar com o Google</span>
-          <icon.signIn size={24} />
+          {loading ? <Loader /> : <Icon.signIn size={18} />}
         </Button>
       )}
     </div>
@@ -81,7 +84,7 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
       {status === "authenticated" ? (
         <div className="space-y-2 mb-4">
           <div className="flex flex-col gap-2 lg:gap-0 lg:flex-row items-center space-x-2 px-4">
-            <Avatar>
+            <Avatar className="w-12 h-12 lg:w-8 lg:h-8">
               <AvatarImage
                 src={data?.user?.image as string | undefined}
                 alt={data?.user?.name as string | undefined}
