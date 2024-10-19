@@ -1,6 +1,6 @@
 # Moto-Log 🚀
 
-![Página de início](https://drive.google.com/file/d/1yiUlAIwGiCfVUNYIzJIFHbjk-4Bq9W2i/view?usp=sharing)
+![Página de início](https://drive.google.com/uc?export=view&id=1yiUlAIwGiCfVUNYIzJIFHbjk-4Bq9W2i)
 
 ## 📖 Descrição
 
