@@ -12,14 +12,14 @@ import { Label } from "@/components/ui/label";
 import { useFormContext } from "react-hook-form";
 
 export default function Stock() {
-  const { register, setValue } = useFormContext();
+  const { register, setValue, formState: {errors} } = useFormContext();
 
   return (
     <Card x-chunk="dashboard-07-chunk-1" className="h-full">
       <CardHeader className="px-6 mt-6 space-y-2 mb-5">
         <CardTitle>Estoque</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="px-2">
         <Table className="">
           <TableHeader>
             <TableRow>
@@ -31,7 +31,7 @@ export default function Stock() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow className="hover-none">
+            <TableRow className="hover:bg-card">
               <TableCell>
                 <Label htmlFor="stock" className="sr-only">
                   Estoque
@@ -44,6 +44,7 @@ export default function Stock() {
                   type="number"
                   placeholder="Ex: 100"
                 />
+                
               </TableCell>
 
               <TableCell>

@@ -7,12 +7,6 @@ import calculateTotalPrice from "@/app/helpers/price";
 import formatCurrency from "@/app/helpers/format-currency";
 import { Prisma } from "../../../../prisma/generated/client";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
 import Cart from "@/components/cart";
 import {
   AlertDialogHeader,
@@ -145,14 +139,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         </div>
       </div>
 
-      <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
-        <SheetContent className="w-full">
-          <SheetHeader>
-            <SheetTitle>Seu carrinho</SheetTitle>
-          </SheetHeader>
-          <Cart setIsOpen={setIsCartOpen} />
-        </SheetContent>
-      </Sheet>
+      <Cart isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
 
       <AlertDialog open={isLoginModalOpen} onOpenChange={setIsLoginModalOpen}>
         <AlertDialogContent>
@@ -162,8 +149,10 @@ export default function ProductInfo({ product }: ProductInfoProps) {
               Você precisa estar logado para adicionar produtos ao carrinho.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+          <AlertDialogFooter className="gap-2">
+            <AlertDialogCancel className="rounded-full">
+              Cancelar
+            </AlertDialogCancel>
             <LoginButton className="w-full" />
           </AlertDialogFooter>
         </AlertDialogContent>

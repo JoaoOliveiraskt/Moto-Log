@@ -86,9 +86,10 @@ export default function ProductTable({ products, title, description }: Props) {
                   onChange={handleSelectAll}
                 />
               </TableHead>
-              <TableHead className="hidden w-[100px] sm:table-cell">
+              <TableHead className="w-[100px]">
                 <span className="sr-only">Imagem</span>
               </TableHead>
+              <TableHead>Nome</TableHead>
               <TableHead className="">Status</TableHead>
               <TableHead className="">Preço</TableHead>
               <TableHead className="hidden md:table-cell">Estoque</TableHead>
@@ -122,19 +123,19 @@ export default function ProductTable({ products, title, description }: Props) {
                         }
                       />
                     </TableCell>
-                    <TableCell className="hidden sm:table-cell py-2">
-                      <div className="relative h-16 w-16 overflow-hidden rounded-md">
+                    <TableCell className=" py-2">
+                      <div className="relative h-10 w-10 sm:h-16 sm:w-16 overflow-hidden rounded-md">
                         <Image
                           alt="Product image"
                           className="absolute inset-0 h-full w-full object-cover"
-                          height="1000"
-                          width="1000"
+                          height="500"
+                          width="500"
                           src={product.imagemUrl}
                         />
                       </div>
                     </TableCell>
                     <TableCell>
-                      <span className="text-xs sm:text-sm font-semibold ml-2">
+                      <span className="text-xs sm:text-sm font-semibold ml-2 line-clamp-2">
                         {product.nome}
                       </span>
                     </TableCell>

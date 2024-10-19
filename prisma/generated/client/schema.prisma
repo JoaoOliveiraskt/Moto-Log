@@ -9,20 +9,17 @@ datasource db {
 }
 
 model Loja {
-  id                   String    @id @default(uuid())
-  nome                 String
-  imagemUrl            String?
-  descricao            String?
-  imagemFile           String?
-  userId               String
-  createdAt            DateTime  @default(now()) @db.Timestamp(6)
-  endereco             String?
-  horarioFuncionamento String?
-  telefone             String?
-  email                String?   @db.VarChar
-  user                 User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  pedidos              Order[]
-  Produtos             Produto[]
+  id         String    @id @default(uuid())
+  nome       String
+  imagemUrl  String?
+  descricao  String?
+  imagemFile String?
+  userId     String
+  createdAt  DateTime  @default(now()) @db.Timestamp(6)
+  email      String?   @db.VarChar
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pedidos    Order[]
+  Produtos   Produto[]
 }
 
 model Categoria {
@@ -41,16 +38,16 @@ model Produto {
   estoque             Int
   preco               Decimal        @db.Decimal(10, 2)
   porcentagemDesconto Decimal?       @db.Decimal(10, 2)
+  status              ProdutoStatus  @default(ATIVO)
+  totalVendido        Int?
   lojaId              String
   categoriaId         String
   pedidos             OrderProduct[]
   categoria           Categoria      @relation(fields: [categoriaId], references: [id])
   loja                Loja           @relation(fields: [lojaId], references: [id])
 
-  status       ProdutoStatus @default(ATIVO)
-  totalVendido Int?
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime?     @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
 }
 
 enum ProdutoStatus {

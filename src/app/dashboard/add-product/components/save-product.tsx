@@ -8,18 +8,17 @@ interface ProductFormActionButtonsProps {
 
 const ProductFormActionButtons: React.FC<ProductFormActionButtonsProps> = ({ isLoading, onDiscard }) => {
   return (
-    <div className="hidden items-center gap-2 md:ml-auto md:flex">
+    <div className="flex items-center gap-4 md:ml-auto">
       <Button
         variant="outline"
         type="button"
         onClick={onDiscard}
       >
-        Descartar
+        limpar
       </Button>
       <Button
         type="submit"
         disabled={isLoading}
-        className="min-w-28"
       >
         {isLoading ? (
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />

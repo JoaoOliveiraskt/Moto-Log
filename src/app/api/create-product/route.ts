@@ -8,7 +8,7 @@ import { revalidatePath } from "next/cache";
 
 const createProductSchema = z.object({
   name: z.string().min(2, "O nome é obrigatório").max(100),
-  description: z.string().max(200).optional(),
+  description: z.string().max(500, "A descrição deve ter no máximo 500 caracteres").optional(),
   imageUrl: z.string().url("A URL da imagem deve ser válida"),
   price: z.number().min(0.01, "O preço deve ser maior que zero"),
   discountPercentage: z.number().optional(),
@@ -177,7 +177,7 @@ export async function PUT(request: Request) {
       },
     });
 
-    revalidatePaths(["/", "/recommended", "/discount"]);
+    revalidatePaths(["/"]);
 
     return NextResponse.json({ product: updatedProduct }, { status: 200 });
   } catch (error) {

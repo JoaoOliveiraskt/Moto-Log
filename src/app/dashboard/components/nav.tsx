@@ -11,7 +11,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Icon from "@/components/icons/icon-component";
 import StoreSelect from "./store-select";
-import MotoLogLogo from "@/components/icons/moto-log-logo";
 import Container from "@/components/container";
 
 const links = [

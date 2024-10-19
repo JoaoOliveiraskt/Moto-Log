@@ -4,6 +4,7 @@ import { useState } from "react";
 import LoginDialog from "./login-dialog";
 import { Button } from "./ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import TypographySmall from "./typography/typography-small";
 
 export default function HeaderLoginBtn() {
   const { isAuthenticated } = useAuth();
@@ -11,8 +12,8 @@ export default function HeaderLoginBtn() {
   const toggle = () => setOpen(!open);
   return (
     <div className={`${isAuthenticated ? "hidden" : ""}`}>
-      <Button size={"sm"} onClick={toggle} className="text-sm font-semibold tracking-wider rounded-full">
-        Login
+      <Button size={"sm"} onClick={toggle}>
+        <TypographySmall>Login</TypographySmall>
       </Button>
       <LoginDialog open={open} onOpenChange={setOpen} />
     </div>

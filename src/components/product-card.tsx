@@ -5,7 +5,6 @@ import calculateTotalPrice from "@/app/helpers/price";
 import Image from "next/image";
 import Link from "next/link";
 import { Prisma } from "../../prisma/generated/client";
-import icon from "@/components/icons/icon-component";
 import LikeButton from "./like-button";
 
 interface ProductProps {
@@ -23,28 +22,31 @@ const ProductCard = ({ product }: ProductProps) => {
   return (
     <div className="relative mb-6">
       <Link href={`/product/${product.id}`}>
-        <div className="cursor-pointer h-max overflow-hidden text-foreground">
-          <div className="h-48 w-full lg:h-[12rem] rounded-2xl overflow-hidden border">
+        <div className="cursor-pointer h-max overflow-hidden text-foreground md:hover:bg-accent/50 md:dark:hover:bg-accent/30 rounded-2xl md:p-2 transition-all">
+          <div className="h-48 w-full lg:h-[13rem] rounded-2xl overflow-hidden border">
             <Image
               src={product.imagemUrl}
               alt={product.nome}
-              width={600}
-              height={600}
+              width={1000}
+              height={1000}
               priority
-              className="object-cover w-full h-full hover:scale-105  duration-500 transition-all"
+              className="object-cover w-full h-full hover:scale-105 duration-500 transition-all"
             />
           </div>
           <div className="min-h-full px-1 py-2 flex flex-col justify-between">
-            <h3 className="text-xs text-muted-foreground font-medium">
+            <Link
+              href={`/category/${product.categoriaId}`}
+              className="text-xs text-muted-foreground font-bold hover:text-foreground w-fit"
+            >
               {product.categoria?.nome}
-            </h3>
+            </Link>
 
             <h2 className="font-bold line-clamp-2 lg:line-clamp-1">
               {product.nome}
             </h2>
 
             <div className="flex flex-col-reverse items-start md:flex-row md:items-center md:gap-2 mt-0.5">
-              <span className="font-medium text-sm text-foreground">
+              <span className="font-bold text- text-foreground">
                 {formatCurrency(Number(calculateTotalPrice(product)))}
               </span>
               {Number(product.porcentagemDesconto) > 0 && (
@@ -68,8 +70,8 @@ const ProductCard = ({ product }: ProductProps) => {
                   {product.loja.imagemUrl ? (
                     <Image
                       src={product.loja.imagemUrl}
-                      width={1000}
-                      height={1000}
+                      width={500}
+                      height={500}
                       alt="logo da loja"
                       className="object-cover w-full h-full"
                     />
@@ -88,8 +90,8 @@ const ProductCard = ({ product }: ProductProps) => {
         </div>
       </Link>
 
-      <div className="absolute top-2 right-2 h-7 w-7 bg-white flex items-center rounded-full ">
-        <LikeButton size={20} className="text-black hover:text-black" />
+      <div className="absolute top-3 right-3 h-7 w-7 bg-white flex items-center rounded-full ">
+        <LikeButton product={{ id: product.id }} size={20} className="text-black hover:text-black" />
       </div>
     </div>
   );

@@ -33,10 +33,10 @@ export default function WelcomeCreateStore() {
           </h1>
         </motion.div>
         <motion.div {...pAnimation}>
-          <h2 className="text-sm sm:text-base max-w-xs sm:max-w-md text-center px-7 md:px-0">
+          <p className="text-sm sm:text-base max-w-xs sm:max-w-md text-center px-7 md:px-0">
             Crie sua nova loja em poucos passos e comece a vender seus produtos
             online de forma simples e rápida.
-          </h2>
+          </p>
         </motion.div>
       </div>
 

@@ -87,7 +87,7 @@ export default async function Store({ params }: Props) {
               </div>
               <Button
                 size={"xl"}
-                className="w-full md:w-auto rounded-full md:text-[1.01rem] font-medium"
+                className="rounded-full md:text-[1.01rem] font-medium "
               >
                 Contate-nos
               </Button>

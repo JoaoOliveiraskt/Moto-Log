@@ -32,6 +32,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import Balancer from "react-wrap-balancer";
 
 interface ProductData {
   name: string;
@@ -108,12 +109,14 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DialogContent className="h-full max-h-[85%]">
+      <DialogContent className="h-full max-h-[85%] pb-14">
         <DialogHeader>
           <DialogTitle>Adicionar Produto</DialogTitle>
           <DialogDescription>
-            Preencha os detalhes abaixo para adicionar um novo produto à sua
-            loja.
+            <Balancer>
+              Preencha os detalhes abaixo para adicionar um novo produto à sua
+              loja.
+            </Balancer>
           </DialogDescription>
         </DialogHeader>
 
@@ -124,14 +127,13 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
               className="grid w-full h-full flex-1 auto-rows-max gap-4 md:gap-4 lg:min-h-[calc(100vh-9.125rem)]"
             >
               <div className="h-full grid gap-4 lg:gap-5 justify-between">
-                {/* Parte da esquerda com os detalhes do produto */}
                 <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-5">
                   <ProductDetails />
+                  <ProductCategory />
+                  <ProductStatus />
                   <Stock />
                 </div>
-
-                {/* Parte da direita com o status, imagem e botões */}
-                <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-5">
+                <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-5 mb-10">
                   <Card className="overflow-hidden h-full">
                     <CardHeader className="px-6 mt-6 space-y-2 mb-5">
                       <CardTitle>Imagem do Produto</CardTitle>
@@ -144,41 +146,15 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
                       />
                     </CardContent>
                   </Card>
-                  <ProductCategory />
-                  <ProductStatus />
-                  <ProductFormActionButtons
-                    isLoading={isLoading}
-                    onDiscard={() => methods.reset()}
-                  />
                 </div>
               </div>
 
-              <DialogFooter>
-                {/* Botões para telas menores */}
-                <div className="flex items-center justify-center gap-2 md:hidden h-full pb-4">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    type="button"
-                    onClick={() => methods.reset()}
-                  >
-                    Descartar
-                  </Button>
-                  <Button
-                    size="sm"
-                    type="submit"
-                    disabled={isLoading}
-                    className="min-w-28"
-                  >
-                    {isLoading ? (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    ) : (
-                      "Salvar produto"
-                    )}
-                  </Button>
-                </div>
+              <DialogFooter className="mb-8 fixed -bottom-4">
+                <ProductFormActionButtons
+                  isLoading={isLoading}
+                  onDiscard={() => methods.reset()}
+                />
 
-                {/* Mensagem de erro */}
                 {errorMessage && (
                   <p className="text-red-500 text-center">{errorMessage}</p>
                 )}
@@ -188,7 +164,6 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
           <ScrollBar orientation="vertical" className="-ml-2" />
         </ScrollArea>
 
-        {/* Modal de confirmação */}
         <ModalConfirmation
           isConfirmDialogOpen={isConfirmDialogOpen}
           setIsConfirmDialogOpen={setIsConfirmDialogOpen}

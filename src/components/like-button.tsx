@@ -8,13 +8,34 @@ import { toast } from "./ui/use-toast";
 interface Props {
   className?: string;
   size?: number;
+  product?: { id: string };
 }
 
-export default function LikeButton({ className, size = 24 }: Props) {
+export default function LikeButton({ className, size = 24, product }: Props) {
   const [liked, setLiked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleLike = () => {
-    setLiked(!liked);
+  const handleLike = async () => {
+    setLoading(true);
+    const response = await fetch("/api/favorite-product", {
+      method: liked ? "DELETE" : "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ productId: product?.id }),
+    });
+
+    if (response.ok) {
+      setLiked(!liked);
+      liked ? showUnlikedToast() : showLikedToast();
+    } else {
+      toast({
+        title: "Erro ao adicionar aos favoritos",
+        description: "Tente novamente mais tarde.",
+        variant: "destructive",
+      });
+    }
+    setLoading(false);
   };
 
   const showLikedToast = () => {
@@ -33,10 +54,7 @@ export default function LikeButton({ className, size = 24 }: Props) {
     <Button
       variant={"icon"}
       size={"icon"}
-      onClick={() => {
-        handleLike();
-        liked ? showUnlikedToast() : showLikedToast();
-      }}
+      disabled={loading}
       className={`flex items-center justify-center rounded-full border-none text-foreground hover:text-foreground ${className}`}
     >
       {liked ? (

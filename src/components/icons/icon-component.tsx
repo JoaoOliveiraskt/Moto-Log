@@ -22,6 +22,7 @@ import { MdBookmarkAdd } from "react-icons/md";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { LineChart, Package, Package2, Settings } from "lucide-react";
+import { VscLoading } from "react-icons/vsc";
 
 const Icon = {
   home: FiHome,
@@ -52,6 +53,7 @@ const Icon = {
   clock: FiClock,
   location: SlLocationPin,
   google: FcGoogle,
+  loading: VscLoading,
 };
 
 export default Icon;

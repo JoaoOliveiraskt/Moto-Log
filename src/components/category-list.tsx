@@ -1,5 +1,3 @@
-import * as React from "react";
-import FetchCategory from "../hooks/fetch-categories";
 import CategoryItem from "./category-item";
 import {
   Carousel,
@@ -8,9 +6,10 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 import Link from "next/link";
+import GetCategories from "@/app/actions/category/get-categories";
 
 export default async function CategoryList() {
-  const categories = await FetchCategory();
+  const categories = await GetCategories();
 
   return (
     <div id="category-list" className="mt-[100px] w-full space-y-8">
@@ -19,23 +18,30 @@ export default async function CategoryList() {
       </h2>
 
       <div className="flex items-center gap-8">
-        <Link href="/recommended" className="text-muted-foreground hover:text-foreground font-bold transition-all">
-          <span>Recomendados</span>
+        <Link
+          href="/recent-products"
+          className="text-muted-foreground hover:text-foreground font-bold transition-all"
+        >
+          <span>Mais recentes</span>
         </Link>
-        <Link href="/discount" className="text-muted-foreground hover:text-foreground font-bold transition-all">
-          <span>Ofertas</span> 
+        <Link
+          href="/discount"
+          className="text-muted-foreground hover:text-foreground font-bold transition-all"
+        >
+          <span>Ofertas</span>
         </Link>
       </div>
 
       <Carousel className="">
         <CarouselContent className="flex gap-2 lg:px-10 ">
-          {categories.map((category, index) => (
-            <CategoryItem
-              key={`${category.id}-${index}`}
-              category={category}
-              link={`/category/${category.id}`}
-            />
-          ))}
+          {categories &&
+            categories.map((category, index) => (
+              <CategoryItem
+                key={`${category.id}-${index}`}
+                category={category}
+                link={`/category/${category.id}`}
+              />
+            ))}
         </CarouselContent>
         <CarouselPrevious className="hidden lg:block left-0" />
         <CarouselNext className="hidden lg:block right-0" />

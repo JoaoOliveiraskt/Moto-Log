@@ -7,14 +7,10 @@ import { CartProvider } from "./context/cart";
 import AuthProvider from "./providers/auth";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import SearchInput from "@/components/search-input";
 import BottomNav from "@/components/bottom-nav";
-import GoBackButton from "@/components/go-back-button";
-import MotoLogLogo from "@/components/icons/moto-log-logo";
-import { Suspense } from "react";
-import LoadingPage from "@/components/loading-page";
 import LoadingWrapper from "@/components/loading-wrapper";
 import NextTopLoader from "nextjs-toploader";
+import MobileHeader from "@/components/mobile-header";
 
 const inter = Inter({ subsets: ["latin"] });
 const manrope = Manrope({
@@ -23,8 +19,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Moto Log",
-  description: "Moto Log App",
+  title: "Moto Log App",
+  description: "Moto Log App - O lugar que simplifica suas compras e vendas",
 };
 
 export default function RootLayout({
@@ -39,19 +35,13 @@ export default function RootLayout({
           <CartProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               <LoadingWrapper>
-                <Suspense fallback={<LoadingPage />}>
-                  <NextTopLoader />
-                  <div className="fixed top-0 w-full flex items-center justify-between gap-3 z-10 bg-background lg:hidden px-4 py-2">
-                    <GoBackButton />
-                    <SearchInput className="h-10" />
-                    <MotoLogLogo />
-                  </div>
-                  <Header />
-                  {children}
-                  <BottomNav />
-                  <Footer />
-                  <Toaster />
-                </Suspense>
+                <NextTopLoader />
+                <MobileHeader />
+                <Header />
+                {children}
+                <BottomNav />
+                <Footer />
+                <Toaster />
               </LoadingWrapper>
             </ThemeProvider>
           </CartProvider>
