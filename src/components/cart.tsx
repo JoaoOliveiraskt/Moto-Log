@@ -155,7 +155,7 @@ const Cart = ({isOpen ,setIsOpen }: CartProps) => {
               </div>
             ) : (
               <div className="flex flex-col gap-4 justify-center items-center h-2/3">
-                <Icon.cart size={80} />
+                <Icon.cart size={80} className="text-muted-foreground"/>
                 <p className="text-lg text-muted-foreground">
                   Seu carrinho está vazio
                 </p>

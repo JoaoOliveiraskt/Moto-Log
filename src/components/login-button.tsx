@@ -8,6 +8,7 @@ import LoginDialog from "./login-dialog";
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import Icon from "@/components/icons/icon-component";
+import TypographyLarge from "./typography/typography-large";
 
 const UserStatus = () => {
   const { status } = useSession();
@@ -18,9 +19,11 @@ interface Props {
   className?: string;
   onClick?: () => void;
   size?: "default" | "icon" | "sm" | "lg" | "xl" | "menu" | null;
+  iconSize?: number;
+  children?: React.ReactNode;
 }
 
-const LoginButton = ({ className, size }: Props) => {
+const LoginButton = ({ className, size, iconSize, children }: Props) => {
   const { isAuthenticated } = useAuth();
 
   const handleSigInClick = () => {
@@ -42,8 +45,8 @@ const LoginButton = ({ className, size }: Props) => {
           }}
           className={`flex items-center space-x-3 ${className}`}
         >
-          <icon.signOut size={18} />
-          <span>Sair</span>
+          <icon.signOut size={iconSize} />
+          {children}
         </Button>
       ) : (
         <Button
@@ -77,7 +80,7 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
     <>
       {status === "authenticated" ? (
         <div className="space-y-2 mb-4">
-          <div className="flex items-center space-x-2 px-4">
+          <div className="flex flex-col gap-2 lg:gap-0 lg:flex-row items-center space-x-2 px-4">
             <Avatar>
               <AvatarImage
                 src={data?.user?.image as string | undefined}
@@ -89,12 +92,12 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
               </AvatarFallback>
             </Avatar>
 
-            <div>
+            <div className="flex flex-col items-center lg:items-start gap-1">
               <div className="flex space-x-1 text-foreground">
                 <p className=" font-semibold tracking-tight">
                   {data?.user?.name?.split(" ")[0]}
                 </p>
-                <p className="line-clamp-1  font-semibold tracking-tight">
+                <p className="line-clamp-1 font-semibold tracking-tight">
                   {data?.user?.name?.split(" ")[1]}
                 </p>
               </div>
@@ -106,14 +109,13 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
         </div>
       ) : (
         <div className="flex items-center justify-between gap-4 px-4 mb-2">
-          <h2 className="font-semibold tracking-tight">Faça seu login!</h2>
+          <p className="font-semibold tracking-tight">Faça seu login!</p>
 
           <Button
             onClick={toggleOpen}
-            variant={"ghost"}
-            className={`flex items-center space-x-2`}
+            className={`flex items-center space-x-2 px-8 lg:px-4`}
           >
-            <span>Login</span>
+            <span className="text-sm font-semibold tracking-wider">Login</span>
             <icon.signIn size={18} />
           </Button>
 

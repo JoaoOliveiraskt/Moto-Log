@@ -11,9 +11,10 @@ interface Props {
   className?: string;
   children?: React.ReactNode;
   size?: "default" | "icon" | "sm" | "lg" | "xl" | "menu" | null;
+  iconSize?: number;
 }
 
-export function ModeToggle({ className, children, size }: Props) {
+export function ModeToggle({ className, children, size, iconSize = 18 }: Props) {
   const { theme, setTheme } = useTheme();
 
   function toggleTheme() {
@@ -28,11 +29,11 @@ export function ModeToggle({ className, children, size }: Props) {
       className={`${className}`}
     >
       <Icon.sun
-        size={18}
+        size={iconSize}
         className="flex rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
       />
       <Icon.moon
-        size={18}
+        size={iconSize}
         className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
       />
       <span className={``}>{children}</span>

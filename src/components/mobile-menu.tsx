@@ -16,15 +16,20 @@ import icon from "@/components/icons/icon-component";
 import { useAuth } from "@/hooks/useAuth";
 import LoginDialog from "./login-dialog";
 import MenuBtn from "./menu-btn";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTrigger,
+} from "./ui/drawer";
+import TypographyLarge from "./typography/typography-large";
 
 interface Props {
   className?: string;
   children?: React.ReactNode;
-  iconSize?: number;
-  model?: string;
 }
 
-const Menu = ({ className, children, iconSize, model }: Props) => {
+const MobileMenu = ({ className, children }: Props) => {
   const { isAuthenticated, user } = useAuth();
   const { data: session } = useSession();
   const [openDialog, setOpenDialog] = useState(false);
@@ -47,10 +52,10 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             onClick={handleMenuOpen.close}
             variant="ghost"
             size="menu"
-            className="flex gap-3 px-4 w-full justify-start py-6"
+            className="flex gap-4 px-10 w-full justify-start py-6 hover:bg-background"
           >
-            <icon.home size={18} />
-            <span>Início</span>
+            <icon.home size={20} />
+            <TypographyLarge>Home</TypographyLarge>
           </Button>
         </Link>
 
@@ -60,10 +65,10 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-start py-6"
+              className="flex gap-4 px-10 w-full justify-start py-6 hover:bg-background"
             >
-              <icon.dashboard size={18} />
-              <span>Dashboard</span>
+              <icon.dashboard size={20} />
+              <TypographyLarge>Dashboard</TypographyLarge>
             </Button>
           </Link>
         )}
@@ -73,41 +78,43 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             onClick={!isAuthenticated ? toggleOpen : handleMenuOpen.close}
             variant="ghost"
             size="menu"
-            className="flex gap-3 px-4 w-full justify-start py-6"
+            className="flex gap-4 px-10 w-full justify-start py-6 hover:bg-background"
           >
-            <icon.order size={18} />
-            <span>Pedidos</span>
+            <icon.order size={20} />
+            <TypographyLarge>Pedidos</TypographyLarge>
           </Button>
         </Link>
 
         {!isLojista && (
           <Link href="/welcome-create-store">
             <Button
+              onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-start py-6"
+              className="flex gap-4 px-10 w-full justify-start py-6 hover:bg-background"
             >
-              <icon.sell size={18} />
-              <span>Vender Agora</span>
+              <icon.sell size={20} />
+              <TypographyLarge>Vender Agora</TypographyLarge>
             </Button>
           </Link>
         )}
 
         <ModeToggle
-          className="flex gap-3 px-4 w-full justify-start py-6"
+          iconSize={20}
+          className="flex gap-4 px-10 w-full justify-start py-6 hover:bg-background"
           size="menu"
         >
-          <span>Tema</span>
+          <TypographyLarge>Tema</TypographyLarge>
         </ModeToggle>
 
         {isAuthenticated && (
           <LoginButton
-            iconSize={18}
+            iconSize={20}
             onClick={handleMenuOpen.close}
             size="menu"
-            className="flex px-4 w-full justify-start py-6 bg-transparent"
+            className="flex gap-1 px-10 w-full justify-start py-6 hover:bg-background"
           >
-            <span>Sair</span>
+            <TypographyLarge>Sair</TypographyLarge>
           </LoginButton>
         )}
       </>
@@ -117,33 +124,32 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
 
   return (
     <>
-      <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-        <DropdownMenuTrigger asChild>
+      <Drawer open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+        <DrawerTrigger asChild>
           {isAuthenticated ? (
             <Avatar className="cursor-pointer">
               <AvatarImage src={user?.image ?? ""} alt={user?.name ?? ""} />
             </Avatar>
           ) : (
             <button className="flex items-center">
-              <MenuBtn className={className} iconSize={iconSize}>
+              <MenuBtn className={className} iconSize={18}>
                 {children}
               </MenuBtn>
             </button>
           )}
-        </DropdownMenuTrigger>
+        </DrawerTrigger>
 
-        <DropdownMenuContent
-          align="end"
-          className="p-2 bg-card rounded-xl min-w-72 w-fit"
-        >
-          <AvatarInfo size="menu" />
+        <DrawerContent className="pb-8">
+          <DrawerHeader className="mx-auto w-full max-w-sm">
+            <AvatarInfo size="menu" />
+          </DrawerHeader>
           <div className="space-y-0">{menuItems}</div>
-        </DropdownMenuContent>
-      </DropdownMenu>
+        </DrawerContent>
+      </Drawer>
 
       <LoginDialog open={openDialog} onOpenChange={setOpenDialog} />
     </>
   );
 };
 
-export default Menu;
+export default MobileMenu;
