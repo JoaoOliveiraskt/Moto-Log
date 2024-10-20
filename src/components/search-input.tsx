@@ -15,7 +15,7 @@ export default function SearchInput({ className }: Props) {
         </label>
         <icon.search
           size={25}
-          className="absolute start-4 top-1/2 -translate-y-1/2"
+          className="absolute start-4 top-1/2 -translate-y-1/2 text-muted-foreground"
         />
 
         <Input

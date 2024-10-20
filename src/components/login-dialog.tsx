@@ -11,21 +11,21 @@ interface Props {
 export default function LoginDialog({ open, onOpenChange }: Props) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="overflow-hidden px-4 md:max-w-2xl h-[40%] sm:p-0 sm:rounded-3xl">
+      <DialogContent className="overflow-hidden p-6 md:max-w-2xl min-h-[38] sm:rounded-3xl">
         <div className="mx-auto w-full h-full flex flex-col justify-between items-center">
           <div className="flex flex-col items-center space-y-4">
             <MotoLogLogo />
             <div className="space-y-4 text-center w-full">
               <DialogTitle className="text-3xl font-bold text-foreground">
-                Login
+                Bem-vindo! 👋
               </DialogTitle>
               <DialogDescription className="text-muted-foreground">
-                Faça login com sua conta
+                Entre com sua conta
               </DialogDescription>
             </div>
           </div>
-          <div className="flex flex-col justify-center gap-4 items-center border-t w-full py-4 min-h-36">
-            <LoginButton className="py-10 rounded-2xl px-12 lg:px-16 bg-card text-foreground border hover:bg-card/70" />
+          <div className="flex flex-col justify-center gap-4 items-center w-full py-4 mt-2">
+            <LoginButton className="py-9 rounded-2xl px-12 lg:px-14 bg-card text-foreground border hover:bg-card/70" />
           </div>
         </div>
       </DialogContent>

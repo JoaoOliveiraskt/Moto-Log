@@ -21,7 +21,7 @@ export default function BottomNav() {
           Carrinho
         </CartButton>
 
-        <MobileMenu iconSize={18}>Menu</MobileMenu>
+        <MobileMenu iconSize={18}/>
       </nav>
     </div>
   );

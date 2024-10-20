@@ -49,7 +49,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             size="menu"
             className="flex gap-3 px-4 w-full justify-start py-6 font-semibold tracking-wide"
           >
-            <icon.home size={18} />
+            <icon.home size={20} />
             <span>Início</span>
           </Button>
         </Link>
@@ -62,23 +62,25 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               size="menu"
               className="flex gap-3 px-4 w-full justify-start py-6 font-semibold tracking-wide"
             >
-              <icon.dashboard size={18} />
+              <icon.dashboard size={20} />
               <span>Meus Anúncios</span>
             </Button>
           </Link>
         )}
 
-        <Link href={isAuthenticated ? "/my-orders" : ""}>
-          <Button
-            onClick={!isAuthenticated ? toggleOpen : handleMenuOpen.close}
-            variant="ghost"
-            size="menu"
-            className="flex gap-3 px-4 w-full justify-start py-6 font-semibold tracking-wide"
-          >
-            <icon.order size={18} />
-            <span>Pedidos</span>
-          </Button>
-        </Link>
+        {isAuthenticated && (
+          <Link href={"/my-orders"}>
+            <Button
+              onClick={handleMenuOpen.close}
+              variant="ghost"
+              size="menu"
+              className="flex gap-3 px-4 w-full justify-start py-6 font-semibold tracking-wide"
+            >
+              <icon.order size={20} />
+              <span>Pedidos</span>
+            </Button>
+          </Link>
+        )}
 
         {!isLojista && (
           <Link href="/welcome-create-store">
@@ -88,13 +90,14 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               size="menu"
               className="flex gap-3 px-4 w-full justify-start py-6 font-semibold tracking-wide"
             >
-              <icon.sell size={18} />
+              <icon.sell size={20} />
               <span>Vender Agora</span>
             </Button>
           </Link>
         )}
 
         <ModeToggle
+          iconSize={20}
           className="flex gap-3 px-4 w-full justify-start py-6 font-semibold tracking-wide"
           size="menu"
         >
@@ -103,7 +106,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
 
         {isAuthenticated && (
           <LoginButton
-            iconSize={18}
+            iconSize={20}
             onClick={handleMenuOpen.close}
             size="menu"
             className="flex px-4 w-full justify-start py-6 font-semibold tracking-wide bg-transparent"

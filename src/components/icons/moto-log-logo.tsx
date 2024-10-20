@@ -2,14 +2,18 @@ import Link from "next/link";
 
 interface Props {
   className?: string;
+  link?: string;
+  svgStyle?: string;
+  svgWidth?: number;
+  svgHeight?: number;
 }
 
-export default function MotoLogLogo({className}: Props) {
+export default function MotoLogLogo({ className, link = "/", svgWidth = 128, svgHeight = 60 }: Props) {
   return (
-    <Link className={`p-0 ${className}`} href="/">
+    <Link className={`p-0 ${className}`} href={link}>
       <svg
-        width="128"
-        height="60"
+        width={svgWidth}
+        height={svgHeight}
         viewBox="0 0 128 60"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"

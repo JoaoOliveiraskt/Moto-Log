@@ -7,11 +7,6 @@ import LoginButton, { AvatarInfo } from "./login-button";
 import { Button } from "./ui/button";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { ModeToggle } from "./theme/theme-switcher";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import icon from "@/components/icons/icon-component";
 import { useAuth } from "@/hooks/useAuth";
 import LoginDialog from "./login-dialog";
@@ -27,9 +22,10 @@ import TypographyLarge from "./typography/typography-large";
 interface Props {
   className?: string;
   children?: React.ReactNode;
+  iconSize?: number;
 }
 
-const MobileMenu = ({ className, children }: Props) => {
+const MobileMenu = ({ className, children, iconSize = 18 }: Props) => {
   const { isAuthenticated, user } = useAuth();
   const { data: session } = useSession();
   const [openDialog, setOpenDialog] = useState(false);
@@ -132,8 +128,8 @@ const MobileMenu = ({ className, children }: Props) => {
             </Avatar>
           ) : (
             <button className="flex items-center">
-              <MenuBtn className={className} iconSize={18}>
-                {children}
+              <MenuBtn className={className} iconSize={iconSize}>
+                Menu
               </MenuBtn>
             </button>
           )}

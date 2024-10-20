@@ -1,5 +1,5 @@
 import { RxMoon } from "react-icons/rx";
-import { FiHome, FiSun } from "react-icons/fi";
+import { FiHome, FiSun, FiSearch } from "react-icons/fi";
 import { RiFileList3Line } from "react-icons/ri";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { PiSignOutBold } from "react-icons/pi";
@@ -7,7 +7,6 @@ import { PiSignInBold } from "react-icons/pi";
 import { BsArrowDownShort } from "react-icons/bs";
 import { BiLike } from "react-icons/bi";
 import { HiMiniChevronRight } from "react-icons/hi2";
-import { RiMenu2Fill } from "react-icons/ri";
 import { GoStarFill } from "react-icons/go";
 import { RxMagnifyingGlass } from "react-icons/rx";
 import { MdOutlineSell } from "react-icons/md";
@@ -24,14 +23,15 @@ import { FcGoogle } from "react-icons/fc";
 import { LineChart, Package, Package2, Settings } from "lucide-react";
 import { VscLoading } from "react-icons/vsc";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
+import { GoHome } from "react-icons/go";
 
 const Icon = {
-  home: FiHome,
+  home: GoHome,
   cart: RiShoppingCart2Line,
   trash: IoTrashOutline,
   order: RiFileList3Line,
   menu: HiOutlineMenuAlt4,
-  search: RxMagnifyingGlass,
+  search: FiSearch,
   moon: RxMoon,
   sun: FiSun,
   star: GoStarFill,
