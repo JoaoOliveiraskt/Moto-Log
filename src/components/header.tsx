@@ -7,8 +7,8 @@ import HeaderLoginBtn from "./header-login-btn";
 
 export default function Header() {
   return (
-    <div className="hidden lg:flex fixed top-0 z-40 h-[72px] bg-background w-screen">
-      <Container className="h-full w-full relative">
+    <div className="hidden lg:flex fixed top-0 z-40 h-[72px] bg-background w-screen 2xl:pr-10 2xl:pl-6">
+      <Container className="h-full w-full relative lg:min-w-full">
         <div className="w-full h-full flex items-center justify-between">
           <div className="w-fit flex items-center gap-10">
             <div className="md:flex md:items-center md:gap-3">
