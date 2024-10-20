@@ -9,7 +9,7 @@ export default async function RecentProducts() {
       <div className="flex justify-between items-center">
         <GoBackButton name={name} className="hidden lg:flex" />
       </div>
-      <RecentProductsServer limit={200}/>
+      <RecentProductsServer limit={30}/>
     </Container>
   );
 }

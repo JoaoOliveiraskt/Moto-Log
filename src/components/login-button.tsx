@@ -46,7 +46,7 @@ const LoginButton = ({ className, size, iconSize, children }: Props) => {
             e.preventDefault();
             handleSigOutClick();
           }}
-          className={`flex items-center space-x-3 ${className}`}
+          className={`flex items-center space-x-3 text-destructive hover:text-destructive ${className}`}
         >
           <icon.signOut size={iconSize} />
           {children}
@@ -112,13 +112,14 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
         </div>
       ) : (
         <div className="flex items-center justify-between gap-4 px-4 mb-2">
-          <p className="font-semibold tracking-tight">Faça seu login!</p>
+          <p className="font-semibold tracking-tight">Entre na sua conta!</p>
 
           <Button
+            variant={"outline"}
             onClick={toggleOpen}
             className={`flex items-center space-x-2 px-8 lg:px-4`}
           >
-            <span className="text-sm font-semibold tracking-wider">Login</span>
+            <span className="text-sm font-semibold tracking-wider">Entrar</span>
             <icon.signIn size={18} />
           </Button>
 

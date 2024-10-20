@@ -23,13 +23,14 @@ import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { LineChart, Package, Package2, Settings } from "lucide-react";
 import { VscLoading } from "react-icons/vsc";
+import { HiOutlineMenuAlt4 } from "react-icons/hi";
 
 const Icon = {
   home: FiHome,
   cart: RiShoppingCart2Line,
   trash: IoTrashOutline,
   order: RiFileList3Line,
-  menu: RiMenu2Fill,
+  menu: HiOutlineMenuAlt4,
   search: RxMagnifyingGlass,
   moon: RxMoon,
   sun: FiSun,

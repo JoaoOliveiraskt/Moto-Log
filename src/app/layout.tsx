@@ -29,12 +29,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.className}`}>
+    <html lang="en" className={`${inter.className}`}>
       <body>
         <AuthProvider>
           <CartProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <LoadingWrapper>
+             
                 <NextTopLoader />
                 <MobileHeader />
                 <Header />
@@ -42,7 +42,7 @@ export default function RootLayout({
                 <BottomNav />
                 <Footer />
                 <Toaster />
-              </LoadingWrapper>
+             
             </ThemeProvider>
           </CartProvider>
         </AuthProvider>

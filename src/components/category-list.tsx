@@ -12,7 +12,7 @@ export default async function CategoryList() {
   const categories = await GetCategories();
 
   return (
-    <div id="category-list" className="mt-[100px] w-full space-y-8">
+    <div id="category-list" className="mt-[84px] w-full space-y-8">
       <h2 className="text-start text-4xl xl:text-[2.75rem] font-bold text-primary">
         Explorar
       </h2>
