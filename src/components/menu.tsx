@@ -47,10 +47,10 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             onClick={handleMenuOpen.close}
             variant="ghost"
             size="menu"
-            className="flex gap-3 px-4 w-full justify-start py-6 font-semibold tracking-wide"
+            className="flex gap-3 px-4 w-full justify-between py-6 font-semibold tracking-wide"
           >
-            <icon.home size={20} />
             <span>Início</span>
+            <icon.home size={20} />
           </Button>
         </Link>
 
@@ -60,10 +60,10 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-start py-6 font-semibold tracking-wide"
+              className="flex gap-3 px-4 w-full justify-between py-6 font-semibold tracking-wide"
             >
+              <span>Anúncios</span>
               <icon.dashboard size={20} />
-              <span>Meus Anúncios</span>
             </Button>
           </Link>
         )}
@@ -74,10 +74,10 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-start py-6 font-semibold tracking-wide"
+              className="flex gap-3 px-4 w-full justify-between py-6 font-semibold tracking-wide"
             >
-              <icon.order size={20} />
               <span>Pedidos</span>
+              <icon.order size={20} />
             </Button>
           </Link>
         )}
@@ -88,17 +88,17 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-start py-6 font-semibold tracking-wide"
+              className="flex gap-3 px-4 w-full justify-between py-6 font-semibold tracking-wide"
             >
-              <icon.sell size={20} />
               <span>Vender Agora</span>
+              <icon.sell size={20} />
             </Button>
           </Link>
         )}
 
         <ModeToggle
           iconSize={20}
-          className="flex gap-3 px-4 w-full justify-start py-6 font-semibold tracking-wide"
+          className="flex flex-row-reverse gap-3 px-4 w-full justify-between py-6 font-semibold tracking-wide"
           size="menu"
         >
           <span>Tema</span>
@@ -109,7 +109,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             iconSize={20}
             onClick={handleMenuOpen.close}
             size="menu"
-            className="flex px-4 w-full justify-start py-6 font-semibold tracking-wide bg-transparent"
+            className="flex flex-row-reverse px-4 w-full justify-between py-6 font-semibold tracking-wide bg-transparent"
           >
             <span>Sair</span>
           </LoginButton>

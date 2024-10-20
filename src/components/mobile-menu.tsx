@@ -108,7 +108,7 @@ const MobileMenu = ({ className, children, iconSize = 18 }: Props) => {
             iconSize={20}
             onClick={handleMenuOpen.close}
             size="menu"
-            className="flex gap-1 px-10 w-full justify-start py-6 hover:bg-background"
+            className="flex space-x-3 gap-1 px-10 w-full justify-start py-6 hover:bg-background"
           >
             <TypographyLarge>Sair</TypographyLarge>
           </LoginButton>

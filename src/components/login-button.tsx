@@ -46,7 +46,7 @@ const LoginButton = ({ className, size, iconSize, children }: Props) => {
             e.preventDefault();
             handleSigOutClick();
           }}
-          className={`flex items-center space-x-3 text-destructive hover:text-destructive ${className}`}
+          className={`flex items-center text-destructive hover:text-destructive ${className}`}
         >
           <icon.signOut size={iconSize} />
           {children}
