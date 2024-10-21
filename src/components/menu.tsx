@@ -138,7 +138,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
 
         <DropdownMenuContent
           align="end"
-          className="p-2 bg-card rounded-2xl min-w-72 w-full shadow-2xl"
+          className="p-2  bg-card rounded-3xl min-w-72 w-full shadow-2xl"
         >
           {isAuthenticated && <AvatarInfo size="menu" />}
           <div className="space-y-0">{menuItems}</div>

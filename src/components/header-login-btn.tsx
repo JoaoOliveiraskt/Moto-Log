@@ -12,7 +12,7 @@ export default function HeaderLoginBtn() {
   const toggle = () => setOpen(!open);
   return (
     <div className={`${isAuthenticated ? "hidden" : ""}`}>
-      <Button variant={"outline"} size={"sm"} onClick={toggle}>
+      <Button variant={"ghost"} size={"sm"} onClick={toggle} className="text-muted-foreground">
         <TypographySmall>Entrar</TypographySmall>
       </Button>
       <LoginDialog open={open} onOpenChange={setOpen} />

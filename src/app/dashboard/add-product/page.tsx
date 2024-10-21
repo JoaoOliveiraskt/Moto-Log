@@ -33,6 +33,8 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import Balancer from "react-wrap-balancer";
+import { Label } from "@/components/ui/label";
+import MotoLogLogo from "@/components/icons/moto-log-logo";
 
 interface ProductData {
   name: string;
@@ -109,15 +111,19 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DialogContent className="h-full max-h-[85%] pb-14">
-        <DialogHeader>
-          <DialogTitle>Adicionar Produto</DialogTitle>
-          <DialogDescription>
-            <Balancer>
-              Preencha os detalhes abaixo para adicionar um novo produto à sua
-              loja.
-            </Balancer>
-          </DialogDescription>
+      <DialogContent className="h-full max-h-[85%] lg:min-w-[40%] pb-16">
+        <DialogHeader className="pl-1  grid items-center justify-center">
+          <div className=" grid items-center justify-center">
+            <MotoLogLogo link="#" />
+          </div>
+          <DialogTitle>
+            <p className="text-center">
+              <Balancer>
+                Preencha os detalhes abaixo para adicionar um novo produto à sua
+                loja.
+              </Balancer>
+            </p>
+          </DialogTitle>
         </DialogHeader>
 
         <ScrollArea className="max-h-[98%] overflow-hidden">
@@ -126,27 +132,19 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
               onSubmit={methods.handleSubmit(onSubmit)}
               className="grid w-full h-full flex-1 auto-rows-max gap-4 md:gap-4 lg:min-h-[calc(100vh-9.125rem)]"
             >
-              <div className="h-full grid gap-4 lg:gap-5 justify-between">
-                <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-5">
-                  <ProductDetails />
-                  <ProductCategory />
-                  <ProductStatus />
-                  <Stock />
+              <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-8">
+                <div className="grid gap-4 pl-1 pr-6 mt-8">
+                  <Label htmlFor="imageUrl">Url da imagem</Label>
+                  <Input
+                    type="text"
+                    placeholder="URL da imagem"
+                    {...methods.register("imageUrl", { required: true })}
+                  />
                 </div>
-                <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-5 mb-10">
-                  <Card className="overflow-hidden h-full">
-                    <CardHeader className="px-6 mt-6 space-y-2 mb-5">
-                      <CardTitle>Imagem do Produto</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <Input
-                        type="text"
-                        placeholder="URL da imagem"
-                        {...methods.register("imageUrl", { required: true })}
-                      />
-                    </CardContent>
-                  </Card>
-                </div>
+                <ProductDetails />
+                <ProductCategory />
+                <ProductStatus />
+                <Stock />
               </div>
 
               <DialogFooter className="mb-8 fixed -bottom-4">

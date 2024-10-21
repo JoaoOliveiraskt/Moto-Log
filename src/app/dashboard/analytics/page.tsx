@@ -48,8 +48,8 @@ const chartData = [
 const DashboardAnalytics = () => {
   return (
     <Container>
-      <main className="flex flex-col gap-4 md:gap-8 mt-4">
-        <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
+      <main className="flex flex-col gap-4 md:gap-4 mt-4">
+        <div className="grid gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2 px-6 mt-6 space-y-2 mb-5">
               <CardTitle className="text-sm font-medium">
@@ -105,7 +105,7 @@ const DashboardAnalytics = () => {
           </Card>
         </div>
 
-        <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
           <Card className="xl:col-span-2">
             <CardHeader className="flex flex-row items-center px-6 mt-6 space-y-2 mb-5">
               <div className="grid gap-2">

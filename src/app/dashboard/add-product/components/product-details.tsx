@@ -21,45 +21,38 @@ export default function ProductDetails({ isEditing }: ProductDetailsProps) {
   } = useFormContext();
 
   return (
-    <Card  className="h-full">
-      <CardHeader className="px-6 mt-6 space-y-2 mb-5">
-        <CardTitle>Detalhes do Produto</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="grid gap-6">
-          <div className="grid gap-3">
-            <Label htmlFor="name">Nome</Label>
-            <Input
-              id="name"
-              type="text"
-              className="w-full"
-              placeholder="Nome do produto"
-              {...register("name", {
-                required: "O nome do produto é obrigatório",
-              })}
-            />
-            {errors.name && (
-              <p className="text-red-500 text-sm">
-                {errors.name.message?.toString()}
-              </p>
-            )}
-          </div>
-          <div className="grid gap-3">
-            <Label htmlFor="description">Descrição</Label>
-            <Textarea
-              id="description"
-              className="min-h-32"
-              placeholder="Descrição do produto"
-              {...register("description")}
-            />
-            {errors.description && (
-              <p className="text-red-500 text-sm">
-                {errors.description.message?.toString()}
-              </p>
-            )}
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+    <div className="grid gap-8 pl-1 pr-6">
+      <div className="grid gap-4">
+        <Label htmlFor="name">Nome</Label>
+        <Input
+          id="name"
+          type="text"
+          className="w-full"
+          placeholder="Nome do produto"
+          {...register("name", {
+            required: "O nome do produto é obrigatório",
+          })}
+        />
+        {errors.name && (
+          <p className="text-red-500 text-sm">
+            {errors.name.message?.toString()}
+          </p>
+        )}
+      </div>
+      <div className="grid gap-3">
+        <Label htmlFor="description">Descrição</Label>
+        <Textarea
+          id="description"
+          className="min-h-32"
+          placeholder="Descrição do produto"
+          {...register("description")}
+        />
+        {errors.description && (
+          <p className="text-red-500 text-sm">
+            {errors.description.message?.toString()}
+          </p>
+        )}
+      </div>
+    </div>
   );
 }
