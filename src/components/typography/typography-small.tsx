@@ -1,7 +1,14 @@
-export default function TypographySmall({
-  children,
-}: {
+import { cn } from "@/lib/utils";
+
+interface Props {
   children: React.ReactNode;
-}) {
-  return <small className="text-sm font-medium leading-none">{children}</small>;
+  className?: string;
+}
+
+export default function TypographySmall({ children, className }: Props) {
+  return (
+    <small className={cn("text-sm font-medium leading-none", className)}>
+      {children}
+    </small>
+  );
 }

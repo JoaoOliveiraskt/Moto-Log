@@ -1,7 +1,14 @@
-export default function TypographyP({
-  children,
-}: {
+import { cn } from "@/lib/utils";
+
+interface Props {
   children: React.ReactNode;
-}) {
-  return <p className="leading-7 [&:not(:first-child)]:mt-6">{children}</p>;
+  className?: string;
+}
+
+export default function TypographyP({ children, className }: Props) {
+  return (
+    <p className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}>
+      {children}
+    </p>
+  );
 }

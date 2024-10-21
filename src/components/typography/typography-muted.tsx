@@ -1,7 +1,12 @@
-export default function TypographyMuted({
-  children,
-}: {
+import { cn } from "@/lib/utils";
+
+interface props {
+  className?: string;
   children: React.ReactNode;
-}) {
-  return <p className="text-sm text-muted-foreground">{children}</p>;
+}
+
+export default function TypographyMuted({ children, className }: props) {
+  return (
+    <p className={cn("text-sm text-muted-foreground", className)}>{children}</p>
+  );
 }

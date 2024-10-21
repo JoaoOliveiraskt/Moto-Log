@@ -22,7 +22,7 @@ interface Props {
   size?: "default" | "icon" | "sm" | "lg" | "xl" | "menu" | null;
   iconSize?: number;
   children?: React.ReactNode;
-  variant?: "secondary" | "ghost";
+  variant?: "secondary" | "ghost" | "outline";
 }
 
 const LoginButton = ({
@@ -78,7 +78,7 @@ const LoginButton = ({
 
 export default LoginButton;
 
-export const AvatarInfo = ({ onClick, size, className }: Props) => {
+export const AvatarInfo = ({ className, variant = "outline" }: Props) => {
   const { data } = useSession();
   const status = UserStatus();
 
@@ -120,7 +120,7 @@ export const AvatarInfo = ({ onClick, size, className }: Props) => {
       ) : (
         <div className="flex w-full items-center justify-center gap-4 mb-2 pt-2 pb-4">
           <Button
-            variant={"outline"}
+            variant={variant}
             onClick={toggleOpen}
             className={`flex items-center space-x-2 py-6 px-8 lg:px-4 ${className}`}
           >

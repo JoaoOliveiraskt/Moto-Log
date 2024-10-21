@@ -2,15 +2,14 @@
 
 import React, { useState } from "react";
 import { Button } from "./ui/button";
-import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 import Icon from "./icons/icon-component";
 import Image from "next/image";
 import { useAuth } from "@/hooks/useAuth";
-import { motion } from "framer-motion";
 import LoginDialog from "./login-dialog";
 import TypographyH1 from "./typography/typography-h1";
-import { description } from "@/app/dashboard/orders/page";
+import TypographyP from "./typography/typography-p";
+import TypographySmall from "./typography/typography-small";
 
 const scrollToSection = () => {
   const element = document.getElementById("category-list");
@@ -21,11 +20,12 @@ const scrollToSection = () => {
 
 const heroContent = {
   title: "O App que simplifica suas compras e vendas online",
-  description:  "Evite idas às lojas físicas, economize horas e encontre produtos de qualidade com facilidade, tudo no conforto da sua casa.",
+  description:
+    "Evite idas às lojas físicas, economize horas e encontre produtos de qualidade com facilidade, tudo no conforto da sua casa.",
   buttonLoginText: "Criar conta gratuita",
   buttonExploreText: "Explorar",
   badge: "Lançamentos semanais 🎉",
-}
+};
 
 export default function Hero() {
   const { isAuthenticated } = useAuth();
@@ -44,21 +44,17 @@ export default function Hero() {
           </div>
           <div>
             <TypographyH1
-              className="text-3xl md:text-5xl lg:text-7xl font-bold mb-4 max-w-3xl text-foreground tracking-tight bg-gradient-to-b
-           dark:from-neutral-100 dark:via-neutral-300 dark:to-neutral-400  dark:text-transparent dark:bg-clip-text p-2"
+              className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 max-w-3xl text-foreground tracking-tighter bg-gradient-to-br
+           dark:from-white dark:via-neutral-200 dark:to-neutral-400  dark:text-transparent dark:bg-clip-text p-2"
             >
-              <Balancer>
-                {heroContent.title}
-              </Balancer>
+              <Balancer>{heroContent.title}</Balancer>
             </TypographyH1>
           </div>
 
           <div>
-            <p className="text-base md:text-lg mb-8 max-w-md md:max-w-xl text-muted-foreground">
-              <Balancer>
-                {heroContent.description}
-              </Balancer>
-            </p>
+            <TypographyP className="text-xs md:text-lg mb-8 max-w-md md:max-w-xl text-muted-foreground">
+              <Balancer>{heroContent.description}</Balancer>
+            </TypographyP>
           </div>
           <div className="flex space-x-4 mb-8">
             <Button
@@ -80,9 +76,9 @@ export default function Hero() {
 
           <div className="mb-8 flex flex-col items-center justify-center">
             <div className="mx-auto max-w-7xl flex flex-col items-center justify-center">
-              <h2 className="text-center text-sm  text-muted-foreground">
+              <TypographySmall className="text-center text-muted-foreground">
                 Com a confiança das equipes mais inovadoras do mundo
-              </h2>
+              </TypographySmall>
               <div className="flex gap-2 mt-4">
                 <Image
                   alt="Reform"
