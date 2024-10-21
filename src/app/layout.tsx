@@ -11,6 +11,8 @@ import BottomNav from "@/components/bottom-nav";
 import LoadingWrapper from "@/components/loading-wrapper";
 import NextTopLoader from "nextjs-toploader";
 import MobileHeader from "@/components/mobile-header";
+import { Suspense } from "react";
+import LoadingPage from "@/components/loading-page";
 
 const inter = Inter({ subsets: ["latin"] });
 const manrope = Manrope({
@@ -29,20 +31,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.className}`}>
+    <html lang="en" className={`${inter.className}`}>
       <body>
         <AuthProvider>
           <CartProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <LoadingWrapper>
-                <NextTopLoader />
-                <MobileHeader />
-                <Header />
-                {children}
-                <BottomNav />
-                <Footer />
-                <Toaster />
-              </LoadingWrapper>
+              <Suspense fallback={<LoadingPage />}>
+                <LoadingWrapper>
+                  <NextTopLoader />
+                  <MobileHeader />
+                  <Header />
+                  {children}
+                  <BottomNav />
+                  <Footer />
+                  <Toaster />
+                </LoadingWrapper>
+              </Suspense>
             </ThemeProvider>
           </CartProvider>
         </AuthProvider>

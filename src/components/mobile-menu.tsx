@@ -7,11 +7,6 @@ import LoginButton, { AvatarInfo } from "./login-button";
 import { Button } from "./ui/button";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { ModeToggle } from "./theme/theme-switcher";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import icon from "@/components/icons/icon-component";
 import { useAuth } from "@/hooks/useAuth";
 import LoginDialog from "./login-dialog";
@@ -26,18 +21,15 @@ import TypographyLarge from "./typography/typography-large";
 
 interface Props {
   className?: string;
-  children?: React.ReactNode;
+  iconSize?: number;
 }
 
-const MobileMenu = ({ className, children }: Props) => {
+const MobileMenu = ({ className, iconSize = 20 }: Props) => {
   const { isAuthenticated, user } = useAuth();
-  const { data: session } = useSession();
   const [openDialog, setOpenDialog] = useState(false);
-
-  const isLojista = useMemo(() => session?.user.role === "LOJISTA", [session]);
-
-  const toggleOpen = useCallback(() => setOpenDialog((prev) => !prev), []);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: session } = useSession();
+  const isLojista = useMemo(() => session?.user.role === "LOJISTA", [session]);
 
   const handleMenuOpen = {
     open: () => setIsMenuOpen(true),
@@ -47,79 +39,100 @@ const MobileMenu = ({ className, children }: Props) => {
   const menuItems = useMemo(
     () => (
       <>
-        <Link href="/">
-          <Button
-            onClick={handleMenuOpen.close}
-            variant="ghost"
-            size="menu"
-            className="flex gap-4 px-10 w-full justify-start py-6 hover:bg-background"
-          >
-            <icon.home size={20} />
-            <TypographyLarge>Home</TypographyLarge>
-          </Button>
-        </Link>
+        <Button
+          asChild
+          onClick={handleMenuOpen.close}
+          variant="secondary"
+          size="menu"
+          className="w-full  border-border/70 "
+        >
+          <Link href="/" className="flex gap-4 w-full justify-between py-6 ">
+            <TypographyLarge className="font-medium">Início</TypographyLarge>
+            <icon.home size={iconSize} />
+          </Link>
+        </Button>
 
         {isLojista && (
-          <Link href="/dashboard/products">
-            <Button
-              onClick={handleMenuOpen.close}
-              variant="ghost"
-              size="menu"
-              className="flex gap-4 px-10 w-full justify-start py-6 hover:bg-background"
+          <Button
+            asChild
+            onClick={handleMenuOpen.close}
+            variant="secondary"
+            size="menu"
+            className="w-full  border-border/70 "
+          >
+            <Link
+              href="/dashboard/products"
+              className="flex gap-4 w-full justify-between py-6 "
             >
-              <icon.dashboard size={20} />
-              <TypographyLarge>Dashboard</TypographyLarge>
-            </Button>
-          </Link>
+              <TypographyLarge className="font-medium">
+                Anúncios
+              </TypographyLarge>
+              <icon.dashboard size={iconSize} />
+            </Link>
+          </Button>
         )}
 
-        <Link href={isAuthenticated ? "/my-orders" : ""}>
+        {isAuthenticated && (
           <Button
-            onClick={!isAuthenticated ? toggleOpen : handleMenuOpen.close}
-            variant="ghost"
+            asChild
+            onClick={handleMenuOpen.close}
+            variant="secondary"
             size="menu"
-            className="flex gap-4 px-10 w-full justify-start py-6 hover:bg-background"
+            className="w-full  border-border/70 "
           >
-            <icon.order size={20} />
-            <TypographyLarge>Pedidos</TypographyLarge>
+            <Link
+              href={isAuthenticated ? "/my-orders" : ""}
+              className="flex gap-4 w-full justify-between py-6 "
+            >
+              <TypographyLarge className="font-medium">Pedidos</TypographyLarge>
+              <icon.order size={iconSize} />
+            </Link>
           </Button>
-        </Link>
+        )}
 
         {!isLojista && (
-          <Link href="/welcome-create-store">
-            <Button
-              onClick={handleMenuOpen.close}
-              variant="ghost"
-              size="menu"
-              className="flex gap-4 px-10 w-full justify-start py-6 hover:bg-background"
+          <Button
+            asChild
+            onClick={handleMenuOpen.close}
+            variant="secondary"
+            size="menu"
+            className="w-full  border-border/70 "
+          >
+            <Link
+              href="/welcome-create-store"
+              className="flex gap-4 w-full justify-between py-6 "
             >
-              <icon.sell size={20} />
-              <TypographyLarge>Vender Agora</TypographyLarge>
-            </Button>
-          </Link>
+              <TypographyLarge className="font-medium">
+                Vender Agora
+              </TypographyLarge>
+              <icon.sell size={iconSize} />
+            </Link>
+          </Button>
         )}
 
         <ModeToggle
-          iconSize={20}
-          className="flex gap-4 px-10 w-full justify-start py-6 hover:bg-background"
+          variant="secondary"
+          iconSize={iconSize}
+          className="flex flex-row-reverse gap-4 w-full justify-between py-6 hover:bg-secondary/80  border-border/70 "
           size="menu"
         >
-          <TypographyLarge>Tema</TypographyLarge>
+          <TypographyLarge className="font-medium">Tema</TypographyLarge>
         </ModeToggle>
 
         {isAuthenticated && (
           <LoginButton
-            iconSize={20}
+            variant="secondary"
+            iconSize={iconSize}
             onClick={handleMenuOpen.close}
             size="menu"
-            className="flex gap-1 px-10 w-full justify-start py-6 hover:bg-background"
+            className="flex flex-row-reverse gap-4 w-full justify-between py-6 hover:bg-secondary/80  border-border/70 "
           >
-            <TypographyLarge>Sair</TypographyLarge>
+            <TypographyLarge className="font-medium">Sair</TypographyLarge>
           </LoginButton>
         )}
       </>
     ),
-    [isAuthenticated, isLojista, toggleOpen, handleMenuOpen.close]
+    [isAuthenticated, isLojista, handleMenuOpen.close, iconSize]
   );
 
   return (
@@ -132,18 +145,20 @@ const MobileMenu = ({ className, children }: Props) => {
             </Avatar>
           ) : (
             <button className="flex items-center">
-              <MenuBtn className={className} iconSize={18}>
-                {children}
+              <MenuBtn className={className} iconSize={iconSize}>
+                Menu
               </MenuBtn>
             </button>
           )}
         </DrawerTrigger>
 
-        <DrawerContent className="pb-8">
-          <DrawerHeader className="mx-auto w-full max-w-sm">
+        <DrawerContent className="pb-6 px-4">
+          <DrawerHeader className="mx-auto w-full flex items-center justify-center">
             <AvatarInfo size="menu" />
           </DrawerHeader>
-          <div className="space-y-0">{menuItems}</div>
+          <div className="space-y-2 flex flex-col items-center w-full">
+            {menuItems}
+          </div>
         </DrawerContent>
       </Drawer>
 

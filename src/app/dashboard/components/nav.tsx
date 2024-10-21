@@ -12,6 +12,7 @@ import { usePathname } from "next/navigation";
 import Icon from "@/components/icons/icon-component";
 import StoreSelect from "./store-select";
 import Container from "@/components/container";
+import { cn } from "@/lib/utils";
 
 const links = [
   { name: "Produtos", icon: Icon.package, href: "/dashboard/products" },
@@ -20,11 +21,20 @@ const links = [
   { name: "Configurações", icon: Icon.settings, href: "/dashboard/settings" },
 ];
 
-export default function Nav() {
+interface Props {
+  className?: string;
+}
+
+export default function NavDashboard({ className }: Props) {
   const pathName = usePathname();
 
   return (
-    <header className="sticky top-0 z-10 lg:flex items-center w-full py-4 border-b mt-[60px] hidden">
+    <header
+      className={cn(
+        "sticky top-0 z-10 lg:flex items-center w-full py-4 border-b mt-[60px] hidden",
+        className
+      )}
+    >
       <Container className="w-full flex gap-4 px-0">
         <StoreSelect onStoreChange={() => {}} />
 
@@ -47,7 +57,9 @@ export default function Nav() {
                       className={`text-muted-foreground flex items-center px-4 py-1.5 transition-colors hover:text-foreground`}
                     >
                       <link.icon className="h-5 w-5" />
-                      <span className="ml-2 text-sm font-semibold">{link.name}</span>
+                      <span className="ml-2 text-sm font-semibold">
+                        {link.name}
+                      </span>
                     </Link>
                   </TooltipTrigger>
                   <TooltipContent side="bottom">{link.name}</TooltipContent>

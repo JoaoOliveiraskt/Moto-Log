@@ -44,40 +44,36 @@ export default function ProductCategory() {
   }, []);
 
   return (
-    <Card x-chunk="dashboard-07-chunk-2">
-      <CardHeader className="px-6 mt-6 space-y-2 mb-5">
-        <CardTitle>Categoria do Produto</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="grid gap-6 sm:grid-cols-3">
-          <div className="grid gap-3">
-            <Label htmlFor="category">Categoria</Label>
-            <Controller
-              control={control}
-              name="categoryId"
-              defaultValue=""
-              rules={{ required: true }}
-              render={({ field }) => (
-                <Select onValueChange={(value) => {
-                  field.onChange(value);
-                }} defaultValue={field.value}>
-                  <SelectTrigger id="category" aria-label="Select category">
-                    <SelectValue placeholder="Selecionar categoria" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {categories.map((category) => (
-                      <SelectItem key={category.id} value={category.id}>
-                        {category.nome}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              )}
-            />
-          </div>
-        </div>
-        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-      </CardContent>
-    </Card>
+    <div className="grid pr-6 pl-1">
+      <div className="grid gap-4">
+        <Label htmlFor="category">Categoria do Produto</Label>
+        <Controller
+          control={control}
+          name="categoryId"
+          defaultValue=""
+          rules={{ required: true }}
+          render={({ field }) => (
+            <Select
+              onValueChange={(value) => {
+                field.onChange(value);
+              }}
+              defaultValue={field.value}
+            >
+              <SelectTrigger id="category" aria-label="Select category">
+                <SelectValue placeholder="Selecionar categoria" />
+              </SelectTrigger>
+              <SelectContent>
+                {categories.map((category) => (
+                  <SelectItem key={category.id} value={category.id}>
+                    {category.nome}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        />
+      </div>
+      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+    </div>
   );
 }

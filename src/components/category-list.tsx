@@ -7,15 +7,16 @@ import {
 } from "./ui/carousel";
 import Link from "next/link";
 import GetCategories from "@/app/actions/category/get-categories";
+import TypographyH1 from "./typography/typography-h1";
 
 export default async function CategoryList() {
   const categories = await GetCategories();
 
   return (
-    <div id="category-list" className="mt-[100px] w-full space-y-8">
-      <h2 className="text-start text-4xl xl:text-[2.75rem] font-bold text-primary">
+    <div id="category-list" className="w-full space-y-8">
+      <TypographyH1 className="text-primary">
         Explorar
-      </h2>
+      </TypographyH1>
 
       <div className="flex items-center gap-8">
         <Link

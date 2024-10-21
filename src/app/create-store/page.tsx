@@ -109,7 +109,7 @@ export default function CreateStore() {
     return (
       <Container className="h-screen w-full flex items-center flex-col space-y-6 mt-[72px] md:mt-36">
         <motion.div {...animation1}>
-          <MotoLogLogo />
+          <MotoLogLogo disabled={true}/>
         </motion.div>
 
         <motion.div {...animation2}>

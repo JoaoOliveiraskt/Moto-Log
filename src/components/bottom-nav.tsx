@@ -17,11 +17,15 @@ export default function BottomNav() {
           Pedidos
         </OrderButton>
 
-        <CartButton iconSize={18} model="icon" className="h-fit w-fit">
+        <CartButton
+          iconSize={18}
+          model="icon"
+          className="h-fit w-fit gap-1 text-muted-foreground"
+        >
           Carrinho
         </CartButton>
 
-        <MobileMenu iconSize={18}>Menu</MobileMenu>
+        <MobileMenu className="gap-1" />
       </nav>
     </div>
   );

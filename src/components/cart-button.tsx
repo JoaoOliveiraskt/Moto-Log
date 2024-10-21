@@ -26,7 +26,7 @@ const CartButton = ({ children, className, model, iconSize }: Props) => {
     <>
       <Button
         onClick={() => setIsCartOpen(true)}
-        className={`relative flex flex-col items-center gap-1 text-muted-foreground ${className}`}
+        className={`relative flex flex-col items-center text-foreground rounded-sm ${className}`}
         variant={
           model as
             | "link"
@@ -43,8 +43,8 @@ const CartButton = ({ children, className, model, iconSize }: Props) => {
       >
         <icon.cart size={iconSize} color="foreground" />
         {totalItems > 0 && (
-          <span className="absolute flex items-center justify-center top-2 lg:-top-1 right-1 lg:-right-0 h-3.5 w-3.5 rounded-full bg-destructive text-destructive-foreground text-xs">
-            {totalItems}
+          <span className="absolute flex items-center justify-center top-0.5 lg:top-1.5 right-3 lg:right-1.5 h-1.5 w-1.5 rounded-full bg-destructive text-destructive-foreground text-xs">
+         
           </span>
         )}
         <p className="font-semibold text-xs">{children}</p>

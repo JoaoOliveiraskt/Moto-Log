@@ -7,15 +7,21 @@ interface Props {
   limit: number;
 }
 
-export default async function RecentProductsServer({limit = 15}: Props) {
+export default async function RecentProductsServer({ limit = 15 }: Props) {
   const products: Produto[] = await db.produto.findMany({
+    where: {
+      estoque: {
+        gt: 0,
+      },
+    },
     include: {
       loja: {
         select: { nome: true, id: true, descricao: true, imagemUrl: true },
       },
       categoria: { select: { nome: true, id: true } },
     },
-   
+    take: limit,
+    orderBy: { createdAt: "desc" },
   });
 
   return (
@@ -25,15 +31,12 @@ export default async function RecentProductsServer({limit = 15}: Props) {
           Nenhum produto disponível no momento.
         </h3>
       ) : (
-        products
-          .reverse()
-          .slice(0, limit)
-          .map((product: Produto) => (
-            <div key={product.id}>
-              {/* @ts-ignore */}
-              <ProductCard product={product} />
-            </div>
-          ))
+        products.map((product: Produto) => (
+          <div key={product.id}>
+            {/* @ts-ignore */}
+            <ProductCard product={product} />
+          </div>
+        ))
       )}
     </ProductList>
   );

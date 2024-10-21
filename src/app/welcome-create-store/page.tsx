@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Pattern from "@/components/pattern";
 
 const h1Animation = {
   initial: { y: 10, opacity: 0 },

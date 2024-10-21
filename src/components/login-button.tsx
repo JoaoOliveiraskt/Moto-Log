@@ -22,9 +22,16 @@ interface Props {
   size?: "default" | "icon" | "sm" | "lg" | "xl" | "menu" | null;
   iconSize?: number;
   children?: React.ReactNode;
+  variant?: "secondary" | "ghost" | "outline";
 }
 
-const LoginButton = ({ className, size, iconSize, children }: Props) => {
+const LoginButton = ({
+  className,
+  size,
+  iconSize,
+  children,
+  variant = "ghost",
+}: Props) => {
   const { isAuthenticated } = useAuth();
   const [loading, setLoading] = useState(false);
 
@@ -37,16 +44,16 @@ const LoginButton = ({ className, size, iconSize, children }: Props) => {
   };
 
   return (
-    <div>
+    <div className="w-full flex items-center justify-center">
       {isAuthenticated ? (
         <Button
-          variant={"ghost"}
+          variant={variant}
           size={size}
           onClick={(e) => {
             e.preventDefault();
             handleSigOutClick();
           }}
-          className={`flex items-center space-x-3 ${className}`}
+          className={`flex items-center text-destructive hover:text-destructive  ${className}`}
         >
           <icon.signOut size={iconSize} />
           {children}
@@ -71,7 +78,7 @@ const LoginButton = ({ className, size, iconSize, children }: Props) => {
 
 export default LoginButton;
 
-export const AvatarInfo = ({ onClick, size }: Props) => {
+export const AvatarInfo = ({ className, variant = "outline" }: Props) => {
   const { data } = useSession();
   const status = UserStatus();
 
@@ -83,7 +90,7 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
     <>
       {status === "authenticated" ? (
         <div className="space-y-2 mb-4">
-          <div className="flex flex-col gap-2 lg:gap-0 lg:flex-row items-center space-x-2 px-4">
+          <div className="flex gap-2 lg:gap-0 lg:flex-row items-center space-x-2 px-4">
             <Avatar className="w-12 h-12 lg:w-8 lg:h-8">
               <AvatarImage
                 src={data?.user?.image as string | undefined}
@@ -95,7 +102,7 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
               </AvatarFallback>
             </Avatar>
 
-            <div className="flex flex-col items-center lg:items-start gap-1">
+            <div className="flex flex-col items-start gap-1">
               <div className="flex space-x-1 text-foreground">
                 <p className=" font-semibold tracking-tight">
                   {data?.user?.name?.split(" ")[0]}
@@ -111,15 +118,16 @@ export const AvatarInfo = ({ onClick, size }: Props) => {
           </div>
         </div>
       ) : (
-        <div className="flex items-center justify-between gap-4 px-4 mb-2">
-          <p className="font-semibold tracking-tight">Faça seu login!</p>
-
+        <div className="flex w-full items-center justify-center gap-4 mb-2 pt-2 pb-4">
           <Button
+            variant={variant}
             onClick={toggleOpen}
-            className={`flex items-center space-x-2 px-8 lg:px-4`}
+            className={`flex items-center space-x-2 py-6 px-8 lg:px-4 ${className}`}
           >
-            <span className="text-sm font-semibold tracking-wider">Login</span>
-            <icon.signIn size={18} />
+            <span className="text-sm font-medium tracking-wider">
+              Acesse sua conta
+            </span>
+            <icon.signIn size={20} />
           </Button>
 
           <LoginDialog open={open} onOpenChange={setOpen} />

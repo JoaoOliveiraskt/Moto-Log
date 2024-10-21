@@ -47,10 +47,10 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             onClick={handleMenuOpen.close}
             variant="ghost"
             size="menu"
-            className="flex gap-3 px-4 w-full justify-start py-6"
+            className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
           >
-            <icon.home size={18} />
             <span>Início</span>
+            <icon.home size={20} />
           </Button>
         </Link>
 
@@ -60,41 +60,45 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-start py-6"
+              className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
             >
-              <icon.dashboard size={18} />
-              <span>Dashboard</span>
+              <span>Anúncios</span>
+              <icon.dashboard size={20} />
             </Button>
           </Link>
         )}
 
-        <Link href={isAuthenticated ? "/my-orders" : ""}>
-          <Button
-            onClick={!isAuthenticated ? toggleOpen : handleMenuOpen.close}
-            variant="ghost"
-            size="menu"
-            className="flex gap-3 px-4 w-full justify-start py-6"
-          >
-            <icon.order size={18} />
-            <span>Pedidos</span>
-          </Button>
-        </Link>
+        {isAuthenticated && (
+          <Link href={"/my-orders"}>
+            <Button
+              onClick={handleMenuOpen.close}
+              variant="ghost"
+              size="menu"
+              className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
+            >
+              <span>Pedidos</span>
+              <icon.order size={20} />
+            </Button>
+          </Link>
+        )}
 
         {!isLojista && (
           <Link href="/welcome-create-store">
             <Button
+              onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-start py-6"
+              className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
             >
-              <icon.sell size={18} />
               <span>Vender Agora</span>
+              <icon.sell size={20} />
             </Button>
           </Link>
         )}
 
         <ModeToggle
-          className="flex gap-3 px-4 w-full justify-start py-6"
+          iconSize={20}
+          className="flex flex-row-reverse gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
           size="menu"
         >
           <span>Tema</span>
@@ -102,17 +106,17 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
 
         {isAuthenticated && (
           <LoginButton
-            iconSize={18}
+            iconSize={20}
             onClick={handleMenuOpen.close}
             size="menu"
-            className="flex px-4 w-full justify-start py-6 bg-transparent"
+            className="flex flex-row-reverse px-4 w-full justify-between py-6 font-medium tracking-wide bg-transparent"
           >
             <span>Sair</span>
           </LoginButton>
         )}
       </>
     ),
-    [isAuthenticated, isLojista, toggleOpen, handleMenuOpen.close]
+    [isAuthenticated, isLojista, handleMenuOpen.close]
   );
 
   return (
@@ -134,10 +138,13 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
 
         <DropdownMenuContent
           align="end"
-          className="p-2 bg-card rounded-xl min-w-72 w-fit"
+          className="p-2  bg-card rounded-3xl min-w-72 w-full shadow-2xl"
         >
-          <AvatarInfo size="menu" />
+          {isAuthenticated && <AvatarInfo size="menu" />}
           <div className="space-y-0">{menuItems}</div>
+          {!isAuthenticated && (
+            <AvatarInfo size="menu" className="w-full -mb-6 py-6" />
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
 

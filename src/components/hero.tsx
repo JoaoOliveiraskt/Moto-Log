@@ -2,19 +2,29 @@
 
 import React, { useState } from "react";
 import { Button } from "./ui/button";
-import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 import Icon from "./icons/icon-component";
 import Image from "next/image";
 import { useAuth } from "@/hooks/useAuth";
-import { motion } from "framer-motion";
 import LoginDialog from "./login-dialog";
+import TypographyH1 from "./typography/typography-h1";
+import TypographyP from "./typography/typography-p";
+import TypographySmall from "./typography/typography-small";
 
 const scrollToSection = () => {
   const element = document.getElementById("category-list");
   if (element) {
     element.scrollIntoView({ behavior: "smooth" });
   }
+};
+
+const heroContent = {
+  title: "O App que simplifica suas compras e vendas online",
+  description:
+    "Evite idas às lojas físicas, economize horas e encontre produtos de qualidade com facilidade, tudo no conforto da sua casa.",
+  buttonLoginText: "Criar conta gratuita",
+  buttonExploreText: "Explorar",
+  badge: "Lançamentos semanais 🎉",
 };
 
 export default function Hero() {
@@ -29,27 +39,22 @@ export default function Hero() {
         <div className="flex flex-col items-center justify-center h-5/6 text-center p-4 mt-20 lg:mt-24 w-full border-b -mb-9 overflow-hidden">
           <div className="px-2 py-1 bg-sky-700 rounded-lg flex items-center justify-center mb-4">
             <span className="text-xs text-center text-white">
-              Lançamentos semanais 🎉
+              {heroContent.badge}
             </span>
           </div>
           <div>
-            <h1
-              className=" text-3xl md:text-7xl font-bold mb-4 max-w-3xl text-foreground tracking-tight bg-gradient-to-b
-           dark:from-neutral-100 dark:via-neutral-300 dark:to-neutral-400  dark:text-transparent dark:bg-clip-text p-2"
+            <TypographyH1
+              className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 max-w-3xl text-foreground tracking-tighter bg-gradient-to-br
+           dark:from-white dark:via-neutral-200 dark:to-neutral-400  dark:text-transparent dark:bg-clip-text p-2"
             >
-              <Balancer>
-                O App que simplifica suas compras e vendas online
-              </Balancer>
-            </h1>
+              <Balancer>{heroContent.title}</Balancer>
+            </TypographyH1>
           </div>
 
           <div>
-            <p className="text-base md:text-lg mb-8 max-w-md md:max-w-xl text-muted-foreground">
-              <Balancer>
-                Evite idas às lojas físicas, economize horas e encontre produtos
-                de qualidade com facilidade, tudo no conforto da sua casa.
-              </Balancer>
-            </p>
+            <TypographyP className="text-xs md:text-lg mb-8 max-w-md md:max-w-xl text-muted-foreground">
+              <Balancer>{heroContent.description}</Balancer>
+            </TypographyP>
           </div>
           <div className="flex space-x-4 mb-8">
             <Button
@@ -57,7 +62,7 @@ export default function Hero() {
               size={"xl"}
               className="rounded-full transition md:text-[1.01rem] font-medium"
             >
-              Criar conta gratuita
+              {heroContent.buttonLoginText}
             </Button>
             <Button
               size={"xl"}
@@ -65,15 +70,15 @@ export default function Hero() {
               className="rounded-full md:text-[1.01rem] font-medium"
               onClick={scrollToSection}
             >
-              Explorar
+              {heroContent.buttonExploreText}
             </Button>
           </div>
 
           <div className="mb-8 flex flex-col items-center justify-center">
             <div className="mx-auto max-w-7xl flex flex-col items-center justify-center">
-              <h2 className="text-center text-sm  text-muted-foreground">
+              <TypographySmall className="text-center text-muted-foreground">
                 Com a confiança das equipes mais inovadoras do mundo
-              </h2>
+              </TypographySmall>
               <div className="flex gap-2 mt-4">
                 <Image
                   alt="Reform"

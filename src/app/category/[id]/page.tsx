@@ -29,7 +29,9 @@ export default async function CategorieList({ params }: Props) {
           <ProductList>
             {products.map((product) => (
               <div key={product.id}>
-                <ProductCard product={{ ...product, categoria: { nome: category.nome } }} />
+                <ProductCard
+                  product={{ ...product, categoria: { nome: category.nome } }}
+                />
               </div>
             ))}
           </ProductList>

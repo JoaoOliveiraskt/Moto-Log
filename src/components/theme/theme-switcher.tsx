@@ -12,9 +12,16 @@ interface Props {
   children?: React.ReactNode;
   size?: "default" | "icon" | "sm" | "lg" | "xl" | "menu" | null;
   iconSize?: number;
+  variant?: "secondary" | "ghost";
 }
 
-export function ModeToggle({ className, children, size, iconSize = 18 }: Props) {
+export function ModeToggle({
+  className,
+  children,
+  size,
+  iconSize = 18,
+  variant = "ghost",
+}: Props) {
   const { theme, setTheme } = useTheme();
 
   function toggleTheme() {
@@ -24,7 +31,7 @@ export function ModeToggle({ className, children, size, iconSize = 18 }: Props) 
   return (
     <Button
       onClick={toggleTheme}
-      variant="ghost"
+      variant={variant}
       size={size}
       className={`${className}`}
     >

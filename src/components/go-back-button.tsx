@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
 import { GoArrowLeft } from "react-icons/go";
+import TypographyH2 from "./typography/typography-h2";
 
 interface Props {
   className?: string;
@@ -32,9 +33,9 @@ const GoBackButton: React.FC<Props> = ({ className, name }: Props) => {
             <GoArrowLeft size={30} />
           </Button>
           {title && (
-            <span className="font-bold text-primary text-4xl xl:text-[2.75rem]">
+            <TypographyH2 className="text-primary">
               {title}
-            </span>
+            </TypographyH2>
           )}
         </div>
       )}

@@ -12,12 +12,9 @@ export default function Footer() {
             <div className="max-w-sm flex w-full">
               <div className="flex flex-col">
                 <div className="space-x-4 flex items-center">
-                  <MotoLogLogo />
+                  <MotoLogLogo disabled={true}/>
                   <h3 className="text-2xl uppercase">Moto Log</h3>
                 </div>
-                <p className="text-foreground text-center tracking-tight lg:text-left ">
-                  Uma plataforma digital para lojas e entregas.
-                </p>
               </div>
             </div>
             <div className="flex sm:justify-center gap-4 lg:justify-start text-muted-foreground">
