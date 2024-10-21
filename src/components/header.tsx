@@ -15,7 +15,7 @@ import NavDashboard from "@/app/dashboard/components/nav";
 export default function Header() {
   return (
     <div className="hidden lg:flex fixed top-0 z-40 h-[72px] bg-background w-screen">
-      <Container className="h-full w-full relative lg:min-w-full">
+      <Container className="h-full w-full relative">
         <div className="w-full h-full flex items-center justify-between">
           <div className="w-fit flex items-center gap-10">
             <div className="md:flex md:items-center md:gap-3">
