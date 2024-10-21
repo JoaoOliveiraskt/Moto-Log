@@ -1,7 +1,10 @@
-export default function TypographyLarge({
-  children,
-}: {
+import { cn } from "@/lib/utils";
+
+interface Props {
   children: React.ReactNode;
-}) {
-  return <p className="text-lg font-semibold">{children}</p>;
+  className?: string;
+}
+
+export default function TypographyLarge({ children, className }: Props) {
+  return <p className={cn("text-lg font-semibold", className)}>{children}</p>;
 }

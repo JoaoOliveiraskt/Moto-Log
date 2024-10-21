@@ -11,7 +11,7 @@ interface Props {
 export default function LoginDialog({ open, onOpenChange }: Props) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="overflow-hidden p-6 md:max-w-2xl min-h-[38] sm:rounded-3xl">
+      <DialogContent className="overflow-hidden p-6 md:max-w-2xl min-h-[38] rounded-3xl">
         <div className="mx-auto w-full h-full flex flex-col justify-between items-center">
           <div className="flex flex-col items-center space-y-4">
             <MotoLogLogo />

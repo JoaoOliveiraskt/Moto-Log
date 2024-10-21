@@ -47,7 +47,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             onClick={handleMenuOpen.close}
             variant="ghost"
             size="menu"
-            className="flex gap-3 px-4 w-full justify-between py-6 font-semibold tracking-wide"
+            className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
           >
             <span>Início</span>
             <icon.home size={20} />
@@ -60,7 +60,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-between py-6 font-semibold tracking-wide"
+              className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
             >
               <span>Anúncios</span>
               <icon.dashboard size={20} />
@@ -74,7 +74,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-between py-6 font-semibold tracking-wide"
+              className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
             >
               <span>Pedidos</span>
               <icon.order size={20} />
@@ -88,7 +88,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-between py-6 font-semibold tracking-wide"
+              className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
             >
               <span>Vender Agora</span>
               <icon.sell size={20} />
@@ -98,7 +98,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
 
         <ModeToggle
           iconSize={20}
-          className="flex flex-row-reverse gap-3 px-4 w-full justify-between py-6 font-semibold tracking-wide"
+          className="flex flex-row-reverse gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
           size="menu"
         >
           <span>Tema</span>
@@ -109,14 +109,14 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
             iconSize={20}
             onClick={handleMenuOpen.close}
             size="menu"
-            className="flex flex-row-reverse px-4 w-full justify-between py-6 font-semibold tracking-wide bg-transparent"
+            className="flex flex-row-reverse px-4 w-full justify-between py-6 font-medium tracking-wide bg-transparent"
           >
             <span>Sair</span>
           </LoginButton>
         )}
       </>
     ),
-    [isAuthenticated, isLojista, toggleOpen, handleMenuOpen.close]
+    [isAuthenticated, isLojista, handleMenuOpen.close]
   );
 
   return (
@@ -140,8 +140,11 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
           align="end"
           className="p-2 bg-card rounded-2xl min-w-72 w-full shadow-2xl"
         >
-          <AvatarInfo size="menu" />
+          {isAuthenticated && <AvatarInfo size="menu" />}
           <div className="space-y-0">{menuItems}</div>
+          {!isAuthenticated && (
+            <AvatarInfo size="menu" className="w-full -mb-6 py-6" />
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
 
