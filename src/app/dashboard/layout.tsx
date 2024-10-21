@@ -2,7 +2,6 @@
 
 import React from "react";
 import Header from "./components/header";
-import Aside from "./components/aside";
 import NavDashboard from "./components/nav";
 
 export default function DashboardLayout({

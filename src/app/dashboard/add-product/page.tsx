@@ -97,7 +97,7 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DialogContent className="h-full max-h-[85%] lg:min-w-[40%] pb-16">
+      <DialogContent className="h-full max-h-[60%] lg:min-w-[45%] pb-16">
         <DialogHeader className="pl-1  grid items-center justify-center">
           <div className=" grid items-center justify-center">
             <MotoLogLogo disabled={true} />

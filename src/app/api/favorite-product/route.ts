@@ -1,5 +1,3 @@
-// src/app/api/favorites/route.ts
-
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { db } from "@/lib/prisma";

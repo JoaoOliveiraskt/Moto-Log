@@ -4,8 +4,7 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronLeft, Loader2 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -37,7 +36,11 @@ interface ProductData {
   tamanho: string;
 }
 
-export default function EditProductForm({ dadosIniciais }: { dadosIniciais: any }) {
+export default function EditProductForm({
+  dadosIniciais,
+}: {
+  dadosIniciais: any;
+}) {
   const router = useRouter();
   const methods = useForm<ProductData>({
     defaultValues: {
@@ -50,10 +53,10 @@ export default function EditProductForm({ dadosIniciais }: { dadosIniciais: any 
       status: dadosIniciais.status,
       imagemUrl: dadosIniciais.imagemUrl,
       cor: dadosIniciais.cor,
-      tamanho: dadosIniciais.tamanho
-    }
+      tamanho: dadosIniciais.tamanho,
+    },
   });
-  
+
   const { isLoading, isSuccessful, startLoading, stopLoading, setSuccess } =
     useSubmitState();
 
@@ -92,7 +95,7 @@ export default function EditProductForm({ dadosIniciais }: { dadosIniciais: any 
 
       const result = await response.json();
       setSuccess(true);
-      
+
       setIsConfirmDialogOpen(true);
     } catch (error) {
       console.error("Erro ao atualizar produto:", error);
@@ -139,9 +142,11 @@ export default function EditProductForm({ dadosIniciais }: { dadosIniciais: any 
                   />
                   {dadosIniciais.imagemUrl && (
                     <div className="mt-4">
-                      <p className="text-sm text-muted-foreground mb-2">Imagem atual:</p>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        Imagem atual:
+                      </p>
                       <Image
-                        src={dadosIniciais.imagemUrl} 
+                        src={dadosIniciais.imagemUrl}
                         alt="Imagem atual do produto"
                         className="w-full h-32 object-cover rounded-md"
                         width={400}
@@ -151,20 +156,18 @@ export default function EditProductForm({ dadosIniciais }: { dadosIniciais: any 
                   )}
                 </CardContent>
               </Card>
-              <ProductFormActionButtons 
-                isLoading={isLoading} 
+              <ProductFormActionButtons
+                isLoading={isLoading}
                 onDiscard={() => {
                   methods.reset(dadosIniciais);
-
                 }}
               />
             </div>
           </div>
-          
+
           <div className="flex items-center justify-center gap-2 md:hidden">
             <Button
               variant="outline"
-            
               type="button"
               onClick={() => {
                 methods.reset(dadosIniciais);
@@ -172,11 +175,7 @@ export default function EditProductForm({ dadosIniciais }: { dadosIniciais: any 
             >
               Descartar
             </Button>
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="min-w-28"
-            >
+            <Button type="submit" disabled={isLoading} className="min-w-28">
               {isLoading ? (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               ) : (
@@ -184,7 +183,7 @@ export default function EditProductForm({ dadosIniciais }: { dadosIniciais: any 
               )}
             </Button>
           </div>
-          
+
           {errorMessage && (
             <p className="text-red-500 text-center">{errorMessage}</p>
           )}

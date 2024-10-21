@@ -10,7 +10,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import NavDashboard from "@/app/dashboard/components/nav";
 
 export default function Header() {
   return (

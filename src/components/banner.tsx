@@ -3,8 +3,6 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import Lottie from "lottie-react";
-import cartAnimation from "../../public/animations/cart-animation.json";
 import { Meteors } from "./meteors";
 
 interface Props {
