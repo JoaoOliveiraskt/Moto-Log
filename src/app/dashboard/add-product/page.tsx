@@ -6,29 +6,15 @@ import ProductDetails from "./components/product-details";
 import Stock from "./components/stock";
 import ProductCategory from "./components/product-category";
 import ProductStatus from "./components/product-status";
-import { ChevronLeft, Loader2 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import ModalConfirmation from "./components/modal-confirmation";
 import ProductFormActionButtons from "./components/save-product";
-import Container from "@/components/container";
-import GoBackButton from "@/components/go-back-button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogFooter,
 } from "@/components/ui/dialog";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";

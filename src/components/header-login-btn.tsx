@@ -18,7 +18,9 @@ export default function HeaderLoginBtn() {
         onClick={toggle}
         className="text-foreground h-9"
       >
-        <TypographySmall>Entrar</TypographySmall>
+        <TypographySmall className="font-normal tracking-wide">
+          Entrar
+        </TypographySmall>
       </Button>
       <LoginDialog open={open} onOpenChange={setOpen} />
     </div>
