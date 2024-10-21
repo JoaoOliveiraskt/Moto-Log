@@ -14,7 +14,7 @@ export default function LoginDialog({ open, onOpenChange }: Props) {
       <DialogContent className="overflow-hidden p-6 md:max-w-2xl min-h-[38] rounded-3xl">
         <div className="mx-auto w-full h-full flex flex-col justify-between items-center">
           <div className="flex flex-col items-center space-y-4">
-            <MotoLogLogo />
+            <MotoLogLogo link="#"/>
             <div className="space-y-4 text-center w-full">
               <DialogTitle className="text-3xl font-bold text-foreground">
                 Bem-vindo! 👋

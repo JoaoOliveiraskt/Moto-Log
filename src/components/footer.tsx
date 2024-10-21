@@ -15,9 +15,6 @@ export default function Footer() {
                   <MotoLogLogo />
                   <h3 className="text-2xl uppercase">Moto Log</h3>
                 </div>
-                <p className="text-foreground text-center tracking-tight lg:text-left ">
-                  Uma plataforma digital para lojas e entregas.
-                </p>
               </div>
             </div>
             <div className="flex sm:justify-center gap-4 lg:justify-start text-muted-foreground">

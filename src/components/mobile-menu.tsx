@@ -21,19 +21,15 @@ import TypographyLarge from "./typography/typography-large";
 
 interface Props {
   className?: string;
-  children?: React.ReactNode;
   iconSize?: number;
 }
 
-const MobileMenu = ({ className, children, iconSize = 18 }: Props) => {
+const MobileMenu = ({ className, iconSize = 20 }: Props) => {
   const { isAuthenticated, user } = useAuth();
-  const { data: session } = useSession();
   const [openDialog, setOpenDialog] = useState(false);
-
-  const isLojista = useMemo(() => session?.user.role === "LOJISTA", [session]);
-
-  const toggleOpen = useCallback(() => setOpenDialog((prev) => !prev), []);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: session } = useSession();
+  const isLojista = useMemo(() => session?.user.role === "LOJISTA", [session]);
 
   const handleMenuOpen = {
     open: () => setIsMenuOpen(true),
@@ -48,11 +44,11 @@ const MobileMenu = ({ className, children, iconSize = 18 }: Props) => {
           onClick={handleMenuOpen.close}
           variant="secondary"
           size="menu"
-          className="w-full shadow-md"
+          className="w-full  border-border/70 "
         >
-          <Link href="/" className="flex gap-4 w-full justify-between py-7 ">
+          <Link href="/" className="flex gap-4 w-full justify-between py-6 ">
             <TypographyLarge className="font-medium">Início</TypographyLarge>
-            <icon.home size={20} />
+            <icon.home size={iconSize} />
           </Link>
         </Button>
 
@@ -62,16 +58,16 @@ const MobileMenu = ({ className, children, iconSize = 18 }: Props) => {
             onClick={handleMenuOpen.close}
             variant="secondary"
             size="menu"
-            className="w-full shadow-md"
+            className="w-full  border-border/70 "
           >
             <Link
               href="/dashboard/products"
-              className="flex gap-4 w-full justify-between py-7 "
+              className="flex gap-4 w-full justify-between py-6 "
             >
               <TypographyLarge className="font-medium">
                 Anúncios
               </TypographyLarge>
-              <icon.dashboard size={20} />
+              <icon.dashboard size={iconSize} />
             </Link>
           </Button>
         )}
@@ -82,14 +78,14 @@ const MobileMenu = ({ className, children, iconSize = 18 }: Props) => {
             onClick={handleMenuOpen.close}
             variant="secondary"
             size="menu"
-            className="w-full shadow-md"
+            className="w-full  border-border/70 "
           >
             <Link
               href={isAuthenticated ? "/my-orders" : ""}
-              className="flex gap-4 w-full justify-between py-7 "
+              className="flex gap-4 w-full justify-between py-6 "
             >
               <TypographyLarge className="font-medium">Pedidos</TypographyLarge>
-              <icon.order size={20} />
+              <icon.order size={iconSize} />
             </Link>
           </Button>
         )}
@@ -100,24 +96,24 @@ const MobileMenu = ({ className, children, iconSize = 18 }: Props) => {
             onClick={handleMenuOpen.close}
             variant="secondary"
             size="menu"
-            className="w-full shadow-md"
+            className="w-full  border-border/70 "
           >
             <Link
               href="/welcome-create-store"
-              className="flex gap-4 w-full justify-between py-7 "
+              className="flex gap-4 w-full justify-between py-6 "
             >
               <TypographyLarge className="font-medium">
                 Vender Agora
               </TypographyLarge>
-              <icon.sell size={20} />
+              <icon.sell size={iconSize} />
             </Link>
           </Button>
         )}
 
         <ModeToggle
           variant="secondary"
-          iconSize={20}
-          className="flex flex-row-reverse gap-4 w-full justify-between py-7 hover:bg-secondary/80 shadow-md"
+          iconSize={iconSize}
+          className="flex flex-row-reverse gap-4 w-full justify-between py-6 hover:bg-secondary/80  border-border/70 "
           size="menu"
         >
           <TypographyLarge className="font-medium">Tema</TypographyLarge>
@@ -126,17 +122,17 @@ const MobileMenu = ({ className, children, iconSize = 18 }: Props) => {
         {isAuthenticated && (
           <LoginButton
             variant="secondary"
-            iconSize={20}
+            iconSize={iconSize}
             onClick={handleMenuOpen.close}
             size="menu"
-            className="flex flex-row-reverse gap-4 w-full justify-between py-7 hover:bg-secondary/80 shadow-md"
+            className="flex flex-row-reverse gap-4 w-full justify-between py-6 hover:bg-secondary/80  border-border/70 "
           >
             <TypographyLarge className="font-medium">Sair</TypographyLarge>
           </LoginButton>
         )}
       </>
     ),
-    [isAuthenticated, isLojista, toggleOpen, handleMenuOpen.close]
+    [isAuthenticated, isLojista, handleMenuOpen.close, iconSize]
   );
 
   return (
@@ -156,8 +152,8 @@ const MobileMenu = ({ className, children, iconSize = 18 }: Props) => {
           )}
         </DrawerTrigger>
 
-        <DrawerContent className="pb-10 px-8 bg-card">
-          <DrawerHeader className="mx-auto w-full max-w-sm flex items-center justify-center">
+        <DrawerContent className="pb-6 px-4">
+          <DrawerHeader className="mx-auto w-full flex items-center justify-center">
             <AvatarInfo size="menu" />
           </DrawerHeader>
           <div className="space-y-2 flex flex-col items-center w-full">

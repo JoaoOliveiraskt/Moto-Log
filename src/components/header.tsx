@@ -4,6 +4,13 @@ import CartButton from "./cart-button";
 import Container from "./container";
 import MotoLogLogo from "./icons/moto-log-logo";
 import HeaderLoginBtn from "./header-login-btn";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import NavDashboard from "@/app/dashboard/components/nav";
 
 export default function Header() {
   return (
@@ -23,15 +30,26 @@ export default function Header() {
             <div className="flex items-center gap-2">
               <HeaderLoginBtn />
 
-              <CartButton
-                iconSize={18}
-                model="ghost"
-              />
+              <TooltipProvider delayDuration={0}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <CartButton iconSize={18} model="ghost" />
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">Carrinho</TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
 
-              <Menu
-                iconSize={20}
-                className="h-9 w-9 bg-background hover:bg-accent shadow-sm"
-              />
+              <TooltipProvider delayDuration={0}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Menu
+                      iconSize={20}
+                      className="h-9 w-9 bg-background hover:bg-accent shadow-sm !text-foreground"
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">Menu</TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </div>
         </div>

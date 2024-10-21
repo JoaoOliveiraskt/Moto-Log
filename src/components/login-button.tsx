@@ -90,7 +90,7 @@ export const AvatarInfo = ({ onClick, size, className }: Props) => {
     <>
       {status === "authenticated" ? (
         <div className="space-y-2 mb-4">
-          <div className="flex flex-col gap-2 lg:gap-0 lg:flex-row items-center space-x-2 px-4">
+          <div className="flex gap-2 lg:gap-0 lg:flex-row items-center space-x-2 px-4">
             <Avatar className="w-12 h-12 lg:w-8 lg:h-8">
               <AvatarImage
                 src={data?.user?.image as string | undefined}
@@ -102,7 +102,7 @@ export const AvatarInfo = ({ onClick, size, className }: Props) => {
               </AvatarFallback>
             </Avatar>
 
-            <div className="flex flex-col items-center lg:items-start gap-1">
+            <div className="flex flex-col items-start gap-1">
               <div className="flex space-x-1 text-foreground">
                 <p className=" font-semibold tracking-tight">
                   {data?.user?.name?.split(" ")[0]}
@@ -120,7 +120,7 @@ export const AvatarInfo = ({ onClick, size, className }: Props) => {
       ) : (
         <div className="flex w-full items-center justify-center gap-4 mb-2 pt-2 pb-4">
           <Button
-          variant={"outline"}
+            variant={"outline"}
             onClick={toggleOpen}
             className={`flex items-center space-x-2 py-6 px-8 lg:px-4 ${className}`}
           >

@@ -80,7 +80,11 @@ export default function ProductInfo({ product }: ProductInfoProps) {
     toast({
       title: "Produto adicionado ao carrinho!",
       action: (
-        <ToastAction altText="Ver pedido" onClick={() => setIsCartOpen(true)}>
+        <ToastAction
+          className="h-10"
+          altText="Ver pedido"
+          onClick={() => setIsCartOpen(true)}
+        >
           Ver carrinho
         </ToastAction>
       ),
@@ -150,7 +154,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="gap-2">
-            <AlertDialogCancel className="rounded-full">
+            <AlertDialogCancel className="rounded-full border-none">
               Cancelar
             </AlertDialogCancel>
             <LoginButton className="w-full" />

@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Container className="space-y-8 2xl:px-4">
+      <Container className="space-y-8 2xl:px-4 mt-[6rem]">
         <CategoryList />
         <DiscountProducts />
         <RecentProducts />

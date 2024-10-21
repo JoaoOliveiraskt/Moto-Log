@@ -8,7 +8,7 @@ interface Props {
 
 export default function SeeAllButton({ href }: Props) {
   return (
-    <Button asChild variant={"outline"}>
+    <Button asChild variant={"outline"} size={"rounded"}>
       <Link
         href={href}
         className="flex items-center gap-1 text-foreground transition-all ml-6"

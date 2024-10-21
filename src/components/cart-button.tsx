@@ -26,7 +26,7 @@ const CartButton = ({ children, className, model, iconSize }: Props) => {
     <>
       <Button
         onClick={() => setIsCartOpen(true)}
-        className={`relative flex flex-col items-center gap-1 text-muted-foreground rounded-sm ${className}`}
+        className={`relative flex flex-col items-center text-foreground rounded-sm ${className}`}
         variant={
           model as
             | "link"

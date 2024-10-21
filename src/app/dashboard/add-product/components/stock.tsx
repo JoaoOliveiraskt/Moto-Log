@@ -19,8 +19,8 @@ export default function Stock() {
   } = useFormContext();
 
   return (
-    <div className="pl-1 pr-6 flex gap-2 mb-10">
-      <div className="space-y-2">
+    <div className="pl-1 pr-6 flex gap-2 mb-10 w-full">
+      <div className="space-y-2 w-full">
         <Label htmlFor="stock">Estoque</Label>
         <Input
           {...register("stock", {
@@ -32,7 +32,7 @@ export default function Stock() {
         />
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-2 w-full">
         <Label htmlFor="price">Preço</Label>
         <Input
           {...register("price", {
@@ -45,7 +45,7 @@ export default function Stock() {
         />
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-2 w-full">
         <Label htmlFor="discountPercentage">Desconto</Label>
         <Input
           {...register("discountPercentage", {

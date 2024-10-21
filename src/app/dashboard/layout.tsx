@@ -3,7 +3,7 @@
 import React from "react";
 import Header from "./components/header";
 import Aside from "./components/aside";
-import Nav from "./components/nav";
+import NavDashboard from "./components/nav";
 
 export default function DashboardLayout({
   children,
@@ -12,7 +12,7 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="flex flex-col min-h-screen w-full">
-      <Nav />
+      <NavDashboard />
 
       <div className="flex flex-col w-full flex-grow sm:gap-4 sm:py-4  ml-0 px-4 mt-[65px] lg:mt-0">
         <Header />
