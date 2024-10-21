@@ -23,6 +23,7 @@ import { Decimal } from "@prisma/client/runtime/library";
 import formatCurrency from "@/app/helpers/format-currency";
 import { useState } from "react";
 import Link from "next/link";
+import DeleteProductDialog from "./delete-product-dialog";
 
 interface Product {
   id: string;
@@ -52,6 +53,7 @@ interface Props {
 
 export default function ProductTable({ products, title, description }: Props) {
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
 
   const handleSelectAll = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -191,7 +193,14 @@ export default function ProductTable({ products, title, description }: Props) {
                               Editar
                             </Link>
                           </DropdownMenuItem>
-                          <DropdownMenuItem>Deletar</DropdownMenuItem>
+                          <DropdownMenuItem
+                            className="text-red-500"
+                            onClick={() => {
+                              setIsConfirmDialogOpen(true);
+                            }}
+                          >
+                            Excluir
+                          </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </TableCell>
@@ -207,6 +216,11 @@ export default function ProductTable({ products, title, description }: Props) {
           <strong>{products.length}</strong> produtos
         </div>
       </CardFooter>
+
+      <DeleteProductDialog
+        isConfirmDialogOpen={isConfirmDialogOpen}
+        setIsConfirmDialogOpen={setIsConfirmDialogOpen}
+      />
     </Card>
   );
 }
