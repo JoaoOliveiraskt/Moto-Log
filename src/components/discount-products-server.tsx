@@ -16,6 +16,7 @@ export default async function DiscountProductsServer({ limit = 15 }: Props) {
       estoque: {
         gt: 0,
       },
+      status: "ATIVO",
     },
     include: {
       loja: {

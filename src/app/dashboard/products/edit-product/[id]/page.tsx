@@ -11,31 +11,35 @@ async function getProduto(id: string) {
     redirect("/auth/signin");
   }
 
-  const produto = await db.produto.findFirst({
-    where: {
-      id: id,
-      loja: { userId: session.user.id }
-    },
-    include: {
-      loja: {
-        select: { nome: true, id: true }
-      }
+  try {
+    const produto = await db.produto.findUnique({
+      where: {
+        id: id,
+        loja: { userId: session.user.id },
+      },
+      include: {
+        loja: {
+          select: { nome: true, id: true },
+        },
+      },
+    });
+
+    if (!produto) {
+      throw new Error("Produto não encontrado");
     }
-  });
 
-  if (!produto) {
-    redirect("/dashboard/products");
+    return produto;
+  } catch (error) {
+    console.error("Erro ao buscar produto:", error);
   }
-
-  return produto;
 }
 
 export default async function PaginaEditarProduto({
-  params
+  params,
 }: {
   params: { id: string };
 }) {
   const produto = await getProduto(params.id);
-  
+
   return <EditProductForm dadosIniciais={produto} />;
 }

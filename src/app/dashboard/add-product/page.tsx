@@ -23,16 +23,14 @@ import { Label } from "@/components/ui/label";
 import MotoLogLogo from "@/components/icons/moto-log-logo";
 
 interface ProductData {
-  name: string;
-  description?: string;
-  price: number;
-  discountPercentage?: number;
-  stock: number;
-  categoryId: string;
+  nome: string;
+  descricao?: string;
+  preco: number;
+  porcentagemDesconto?: number;
+  estoque: number;
+  categoriId: string;
   status: string;
-  imageUrl: string;
-  color: string;
-  size: string;
+  imagemUrl: string;
 }
 
 interface Props {
@@ -56,10 +54,10 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
     try {
       const formattedData = {
         ...data,
-        price: parseFloat(data.price as unknown as string),
-        stock: parseInt(data.stock as unknown as string, 10),
-        discountPercentage: parseFloat(
-          data.discountPercentage as unknown as string
+        preco: parseFloat(data.preco as unknown as string),
+        estoque: parseInt(data.estoque as unknown as string, 10),
+        porcentagemDesconto: parseFloat(
+          data.porcentagemDesconto as unknown as string
         ),
       };
 
@@ -120,11 +118,11 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
             >
               <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-8">
                 <div className="grid gap-4 pl-1 pr-6 mt-8">
-                  <Label htmlFor="imageUrl">Url da imagem</Label>
+                  <Label htmlFor="imagemUrl">Url da imagem</Label>
                   <Input
                     type="text"
                     placeholder="URL da imagem"
-                    {...methods.register("imageUrl", { required: true })}
+                    {...methods.register("imagemUrl", { required: true })}
                   />
                 </div>
                 <ProductDetails />
@@ -151,7 +149,9 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
         <ModalConfirmation
           isConfirmDialogOpen={isConfirmDialogOpen}
           setIsConfirmDialogOpen={setIsConfirmDialogOpen}
-        />
+        >
+          Produto adicionado com sucesso! 🎉
+        </ModalConfirmation>
       </DialogContent>
     </Dialog>
   );

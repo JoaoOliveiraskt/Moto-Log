@@ -15,7 +15,7 @@ const ProductFormActionButtons: React.FC<ProductFormActionButtonsProps> = ({
       <Button variant="outline" type="button" onClick={onDiscard}>
         limpar
       </Button>
-      <Button type="submit" disabled={isLoading}>
+      <Button type="submit" disabled={isLoading} className="min-w-32">
         {isLoading ? (
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
         ) : (

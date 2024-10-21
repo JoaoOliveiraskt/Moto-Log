@@ -12,10 +12,16 @@ import { useFormContext, Controller } from "react-hook-form";
 interface CategoriaProps {
   id: string;
   nome: string;
-  imageUrl: string;
+  imagemUrl: string;
 }
 
-export default function ProductCategory() {
+interface Props {
+  defaultValue?: {
+    categoria: string;
+  };
+}
+
+export default function ProductCategory({ defaultValue }: Props) {
   const [categories, setCategories] = useState<CategoriaProps[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { control } = useFormContext();
@@ -45,21 +51,27 @@ export default function ProductCategory() {
   return (
     <div className="grid pr-6 pl-1">
       <div className="grid gap-4">
-        <Label htmlFor="category">Categoria do Produto</Label>
+        <Label htmlFor="categoriaId">Categoria do Produto</Label>
         <Controller
           control={control}
-          name="categoryId"
-          defaultValue=""
+          name="categoriaId"
+          defaultValue={defaultValue?.categoria || ""}
           rules={{ required: true }}
           render={({ field }) => (
             <Select
               onValueChange={(value) => {
                 field.onChange(value);
               }}
-              defaultValue={field.value}
+              defaultValue={field.value || ""}
             >
-              <SelectTrigger id="category" aria-label="Select category">
-                <SelectValue placeholder="Selecionar categoria" />
+              <SelectTrigger id="categoriaId" aria-label="Select category">
+                <SelectValue
+                  placeholder={
+                    defaultValue?.categoria
+                      ? defaultValue.categoria
+                      : "Selecionar categoria"
+                  }
+                />
               </SelectTrigger>
               <SelectContent>
                 {categories.map((category) => (

@@ -10,6 +10,8 @@ export async function GET() {
         },
         categoria: { select: { nome: true, id: true } },
       },
+      where: { status: "ATIVO" },
+      orderBy: { createdAt: "desc" },
     });
 
     return NextResponse.json(response, { status: 200 });

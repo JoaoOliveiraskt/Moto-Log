@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button";
 import { Decimal } from "@prisma/client/runtime/library";
 import formatCurrency from "@/app/helpers/format-currency";
 import { useState } from "react";
+import Link from "next/link";
 
 interface Product {
   id: string;
@@ -51,7 +52,6 @@ interface Props {
 
 export default function ProductTable({ products, title, description }: Props) {
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
-  const [isChecked, setIsChecked] = useState(false);
 
   const handleSelectAll = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -184,7 +184,13 @@ export default function ProductTable({ products, title, description }: Props) {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
                           <DropdownMenuLabel>Ações</DropdownMenuLabel>
-                          <DropdownMenuItem>Editar</DropdownMenuItem>
+                          <DropdownMenuItem asChild>
+                            <Link
+                              href={`/dashboard/products/edit-product/${product.id}`}
+                            >
+                              Editar
+                            </Link>
+                          </DropdownMenuItem>
                           <DropdownMenuItem>Deletar</DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
