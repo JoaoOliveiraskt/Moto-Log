@@ -1,7 +1,4 @@
-import { PlusCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/prisma";
@@ -20,6 +17,7 @@ async function getProductsForUser() {
   const products = await db.produto.findMany({
     where: { loja: { userId: userId } },
     include: { loja: { select: { nome: true, id: true } } },
+    orderBy: { updatedAt: "asc" },
   });
 
   return products || [];

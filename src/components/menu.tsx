@@ -125,7 +125,10 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
         <DropdownMenuTrigger asChild>
           {isAuthenticated ? (
             <Avatar className="cursor-pointer">
-              <AvatarImage src={user?.image ?? ""} alt={user?.name ?? ""} />
+              <AvatarImage
+                src={user?.image as string}
+                alt={user?.name as string}
+              />
             </Avatar>
           ) : (
             <button className="flex items-center">

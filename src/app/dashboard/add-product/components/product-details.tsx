@@ -1,20 +1,20 @@
 import { useFormContext } from "react-hook-form";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 interface ProductDetailsProps {
-  isEditing?: boolean;
+  className?: string;
+  defaultValues?: {
+    nome: string;
+    descricao: string;
+  };
 }
 
-export default function ProductDetails({ isEditing }: ProductDetailsProps) {
+export default function ProductDetails({
+  defaultValues, className
+}: ProductDetailsProps) {
   const {
     register,
     formState: { errors },
@@ -23,33 +23,35 @@ export default function ProductDetails({ isEditing }: ProductDetailsProps) {
   return (
     <div className="grid gap-8 pl-1 pr-6">
       <div className="grid gap-4">
-        <Label htmlFor="name">Nome</Label>
+        <Label htmlFor="nome">Nome</Label>
         <Input
-          id="name"
+          id="nome"
           type="text"
-          className="w-full"
+          className={cn("w-full", className)}
+          defaultValue={defaultValues?.nome || ""}
           placeholder="Nome do produto"
-          {...register("name", {
+          {...register("nome", {
             required: "O nome do produto é obrigatório",
           })}
         />
-        {errors.name && (
+        {errors.nome && (
           <p className="text-red-500 text-sm">
-            {errors.name.message?.toString()}
+            {errors.nome.message?.toString()}
           </p>
         )}
       </div>
       <div className="grid gap-3">
-        <Label htmlFor="description">Descrição</Label>
+        <Label htmlFor="descricao">Descrição</Label>
         <Textarea
-          id="description"
-          className="min-h-32"
+          id="descricao"
+          className={cn("min-h-32", className)}
+          defaultValue={defaultValues?.descricao || ""}
           placeholder="Descrição do produto"
-          {...register("description")}
+          {...register("descricao")}
         />
-        {errors.description && (
+        {errors.descricao && (
           <p className="text-red-500 text-sm">
-            {errors.description.message?.toString()}
+            {errors.descricao.message?.toString()}
           </p>
         )}
       </div>

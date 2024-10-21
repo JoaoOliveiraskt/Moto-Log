@@ -7,9 +7,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 import { useFormContext, Controller } from "react-hook-form";
 
-export default function ProductStatus() {
+interface Props {
+  defaultValue?: {
+    status: string;
+  };
+}
+
+export default function ProductStatus({defaultValue}: Props) {
   const { control } = useFormContext();
 
   return (
@@ -19,10 +26,10 @@ export default function ProductStatus() {
         <Controller
           control={control}
           name="status"
-          defaultValue="ATIVO"
+          defaultValue={defaultValue?.status || "ATIVO"}
           render={({ field }) => (
-            <Select onValueChange={field.onChange} defaultValue={field.value}>
-              <SelectTrigger id="status" aria-label="Select status">
+            <Select onValueChange={field.onChange} defaultValue={field.value || "ATIVO"}>
+              <SelectTrigger id="status" aria-label="Select status" className={cn("")}>
                 <SelectValue placeholder="Selecionar status" />
               </SelectTrigger>
               <SelectContent>

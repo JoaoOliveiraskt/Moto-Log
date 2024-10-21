@@ -6,29 +6,15 @@ import ProductDetails from "./components/product-details";
 import Stock from "./components/stock";
 import ProductCategory from "./components/product-category";
 import ProductStatus from "./components/product-status";
-import { ChevronLeft, Loader2 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import ModalConfirmation from "./components/modal-confirmation";
 import ProductFormActionButtons from "./components/save-product";
-import Container from "@/components/container";
-import GoBackButton from "@/components/go-back-button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogFooter,
 } from "@/components/ui/dialog";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
@@ -37,16 +23,14 @@ import { Label } from "@/components/ui/label";
 import MotoLogLogo from "@/components/icons/moto-log-logo";
 
 interface ProductData {
-  name: string;
-  description?: string;
-  price: number;
-  discountPercentage?: number;
-  stock: number;
-  categoryId: string;
+  nome: string;
+  descricao?: string;
+  preco: number;
+  porcentagemDesconto?: number;
+  estoque: number;
+  categoriId: string;
   status: string;
-  imageUrl: string;
-  color: string;
-  size: string;
+  imagemUrl: string;
 }
 
 interface Props {
@@ -70,10 +54,10 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
     try {
       const formattedData = {
         ...data,
-        price: parseFloat(data.price as unknown as string),
-        stock: parseInt(data.stock as unknown as string, 10),
-        discountPercentage: parseFloat(
-          data.discountPercentage as unknown as string
+        preco: parseFloat(data.preco as unknown as string),
+        estoque: parseInt(data.estoque as unknown as string, 10),
+        porcentagemDesconto: parseFloat(
+          data.porcentagemDesconto as unknown as string
         ),
       };
 
@@ -111,7 +95,7 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DialogContent className="h-full max-h-[85%] lg:min-w-[40%] pb-16">
+      <DialogContent className="h-full max-h-[60%] lg:min-w-[45%] pb-16">
         <DialogHeader className="pl-1  grid items-center justify-center">
           <div className=" grid items-center justify-center">
             <MotoLogLogo disabled={true} />
@@ -134,11 +118,11 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
             >
               <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-8">
                 <div className="grid gap-4 pl-1 pr-6 mt-8">
-                  <Label htmlFor="imageUrl">Url da imagem</Label>
+                  <Label htmlFor="imagemUrl">Url da imagem</Label>
                   <Input
                     type="text"
                     placeholder="URL da imagem"
-                    {...methods.register("imageUrl", { required: true })}
+                    {...methods.register("imagemUrl", { required: true })}
                   />
                 </div>
                 <ProductDetails />
@@ -165,7 +149,9 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
         <ModalConfirmation
           isConfirmDialogOpen={isConfirmDialogOpen}
           setIsConfirmDialogOpen={setIsConfirmDialogOpen}
-        />
+        >
+          Produto adicionado com sucesso! 🎉
+        </ModalConfirmation>
       </DialogContent>
     </Dialog>
   );

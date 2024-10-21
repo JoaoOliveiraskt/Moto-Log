@@ -1,5 +1,4 @@
 import Container from "@/components/container";
-import GoBackButton from "@/components/go-back-button";
 import Icon from "@/components/icons/icon-component";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";

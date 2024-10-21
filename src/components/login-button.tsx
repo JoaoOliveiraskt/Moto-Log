@@ -8,7 +8,6 @@ import LoginDialog from "./login-dialog";
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import Icon from "@/components/icons/icon-component";
-import TypographyLarge from "./typography/typography-large";
 import Loader from "./ui/loader";
 
 const UserStatus = () => {

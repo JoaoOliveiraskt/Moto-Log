@@ -13,6 +13,7 @@ export default async function RecentProductsServer({ limit = 15 }: Props) {
       estoque: {
         gt: 0,
       },
+      status: "ATIVO",
     },
     include: {
       loja: {

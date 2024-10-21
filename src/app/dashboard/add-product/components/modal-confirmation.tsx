@@ -10,11 +10,13 @@ import {
 interface Props {
   isConfirmDialogOpen: boolean;
   setIsConfirmDialogOpen: (isOpen: boolean) => void;
+  children: React.ReactNode;
 }
 
 export default function ModalConfirmation({
   isConfirmDialogOpen,
   setIsConfirmDialogOpen,
+  children,
 }: Props) {
   return (
     <AlertDialog
@@ -23,7 +25,7 @@ export default function ModalConfirmation({
     >
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Produto criado com sucesso! 🎉</AlertDialogTitle>
+          <AlertDialogTitle>{children}</AlertDialogTitle>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Ok</AlertDialogCancel>

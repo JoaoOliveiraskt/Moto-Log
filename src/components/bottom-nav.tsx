@@ -1,5 +1,4 @@
 import CartButton from "./cart-button";
-import Menu from "./menu";
 import MobileMenu from "./mobile-menu";
 import HomeButton from "./ui/button-home";
 import OrderButton from "./ui/button-order";

@@ -1,17 +1,17 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 import { useFormContext } from "react-hook-form";
 
-export default function Stock() {
+interface StockProps {
+  defaultValues?: {
+    estoque: number;
+    preco: number;
+    porcentagemDesconto: number;
+  };
+}
+
+export default function Stock({ defaultValues }: StockProps) {
   const {
     register,
     setValue,
@@ -21,37 +21,53 @@ export default function Stock() {
   return (
     <div className="pl-1 pr-6 flex gap-2 mb-10 w-full">
       <div className="space-y-2 w-full">
-        <Label htmlFor="stock">Estoque</Label>
+        <Label htmlFor="estoque">Estoque</Label>
         <Input
-          {...register("stock", {
+          {...register("estoque", {
             required: "O estoque é obrigatório",
           })}
-          id="stock"
+          defaultValue={defaultValues?.estoque || ""}
+          id="estoque"
           type="number"
           placeholder="Ex: 100"
+          className={cn({ "border-red-500": errors.estoque })}
         />
+        {errors.stock && (
+          <span className="text-sm text-red-500">
+            {errors.stock.message as string}
+          </span>
+        )}
       </div>
 
       <div className="space-y-2 w-full">
-        <Label htmlFor="price">Preço</Label>
+        <Label htmlFor="preco">Preço</Label>
         <Input
-          {...register("price", {
+          {...register("preco", {
             required: "O preço é obrigatório",
           })}
-          id="price"
+          defaultValue={defaultValues?.preco || ""}
+          id="preco"
           type="number"
           step="0.01"
           placeholder="Ex: 99.99"
+          className={cn({ "border-red-500": errors.preco })}
         />
+        {errors.price && (
+          <span className="text-sm text-red-500">
+            {errors.price.message as string}
+          </span>
+        )}
       </div>
 
       <div className="space-y-2 w-full">
-        <Label htmlFor="discountPercentage">Desconto</Label>
+        <Label htmlFor="porcentagemDesconto">Desconto</Label>
         <Input
-          {...register("discountPercentage", {
+          {...register("porcentagemDesconto", {
             required: "O desconto é obrigatório",
           })}
-          id="discountPercentage"
+          defaultValue={defaultValues?.porcentagemDesconto || ""}
+          className={cn({ "border-red-500": errors.porcentagemDesconto })}
+          id="porcentagemDesconto"
           type="number"
           step="0.01"
           placeholder="Ex: 10.00"
