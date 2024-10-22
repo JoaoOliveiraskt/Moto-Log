@@ -172,7 +172,7 @@ const Cart = ({ isOpen, setIsOpen }: CartProps) => {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Deseja Finalizar seu pedido ?</AlertDialogTitle>
-            <AlertDialogDescription className="font-medium">
+            <AlertDialogDescription>
               Ao finalizar seu pedido, você concorda com os termos e condições
               da loja.
             </AlertDialogDescription>
