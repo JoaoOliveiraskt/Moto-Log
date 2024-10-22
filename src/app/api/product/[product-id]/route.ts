@@ -45,20 +45,60 @@ export async function PUT(
   }
 }
 
+async function validateProductExists(productId: string) {
+  const productExists = await db.produto.findUnique({
+    where: { id: productId },
+  });
+  return !!productExists;
+}
+
+async function deleteProductById(productId: string) {
+  const ordersCount = await db.orderProduct.count({
+    where: {
+      productId: productId,
+    },
+  });
+
+  if (ordersCount > 0) {
+    return await db.produto.update({
+      where: { id: productId },
+      data: { status: ProdutoStatus.ARQUIVADO },
+    });
+  } else {
+    return await db.produto.delete({
+      where: { id: productId },
+    });
+  }
+}
+
 export async function DELETE(
   request: Request,
   { params }: { params: { "product-id": string } }
 ) {
-  try {
-    const response = await db.produto.delete({
-      where: { id: params["product-id"] },
-    });
+  const productId = params["product-id"];
 
+  if (!productId) {
+    return NextResponse.json(
+      { message: "Está faltando o ID do produto" },
+      { status: 400 }
+    );
+  }
+
+  const productExists = await validateProductExists(productId);
+  if (!productExists) {
+    return NextResponse.json(
+      { message: "Produto não encontrado" },
+      { status: 404 }
+    );
+  }
+
+  try {
+    const response = await deleteProductById(productId);
     return NextResponse.json(response, { status: 200 });
   } catch (error) {
     console.error("Erro ao deletar produto: ", error);
     return NextResponse.json(
-      { message: "Erro ao deletar produto ", error },
+      { message: "Erro ao deletar produto", error },
       { status: 500 }
     );
   }

@@ -8,18 +8,18 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Loader2 } from "lucide-react";
+import DeleteProductBtn from "./delete-product-btn";
 
 interface Props {
   isConfirmDialogOpen: boolean;
   setIsConfirmDialogOpen: (isOpen: boolean) => void;
-  isSubmitLoading?: boolean;
+  productId: string;
 }
 
 export default function DeleteProductDialog({
   isConfirmDialogOpen,
   setIsConfirmDialogOpen,
-  isSubmitLoading,
+  productId,
 }: Props) {
   return (
     <AlertDialog
@@ -31,18 +31,16 @@ export default function DeleteProductDialog({
           <AlertDialogTitle>
             Tem certeza que deseja excluir este produto?
           </AlertDialogTitle>
-          <AlertDialogDescription className="font-medium">
+          <AlertDialogDescription>
             Esta ação não poderá ser desfeita.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancelar</AlertDialogCancel>
-          <AlertDialogAction>
-            {isSubmitLoading && (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            )}
-            Excluir
-          </AlertDialogAction>
+          <DeleteProductBtn
+            productId={productId}
+            setIsConfirmDialogOpen={() => setIsConfirmDialogOpen(false)}
+          />
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

@@ -17,7 +17,7 @@ async function getProductsForUser() {
   const products = await db.produto.findMany({
     where: { loja: { userId: userId } },
     include: { loja: { select: { nome: true, id: true } } },
-    orderBy: { updatedAt: "asc" },
+    orderBy: { createdAt: "asc" },
   });
 
   return products || [];

@@ -212,7 +212,7 @@ export default function CreateStore() {
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>Loja criada com sucesso! 🎉</AlertDialogTitle>
-              <AlertDialogDescription className="font-medium">
+              <AlertDialogDescription>
                 Você pode começar a adicionar produtos agora mesmo.
               </AlertDialogDescription>
             </AlertDialogHeader>
