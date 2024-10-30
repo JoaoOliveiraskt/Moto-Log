@@ -13,10 +13,10 @@ export default function HeaderLoginBtn() {
   return (
     <div className={`${isAuthenticated ? "hidden" : ""}`}>
       <Button
-        variant={"ghost"}
-        size={"sm"}
+        variant={"outline"}
+        size={"rounded"}
         onClick={toggle}
-        className="text-foreground h-9"
+        className="h-9"
       >
         <TypographySmall className="font-normal tracking-wide">
           Entrar
