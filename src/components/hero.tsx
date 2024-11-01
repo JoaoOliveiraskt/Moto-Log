@@ -101,13 +101,6 @@ export default function Hero() {
                   height={48}
                   className=" max-h-7 w-fit  "
                 />
-                <Image
-                  alt="Statamic"
-                  src="https://tailwindui.com/plus/img/logos/158x48/statamic-logo-gray-400.svg"
-                  width={158}
-                  height={48}
-                  className="max-h-7 w-fit "
-                />
               </div>
             </div>
 

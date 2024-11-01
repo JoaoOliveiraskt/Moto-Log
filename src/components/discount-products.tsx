@@ -6,7 +6,7 @@ export default async function DiscountProducts() {
   return (
     <div className="space-y-8">
       <div className="flex justify-between items-center">
-        <TypographyH2>Com desconto</TypographyH2>
+        <TypographyH2>Top ofertas</TypographyH2>
         <SeeAllButton href="/discount" />
       </div>
       <DiscountProductsServer limit={15} />

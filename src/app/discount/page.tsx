@@ -3,7 +3,7 @@ import GoBackButton from "@/components/go-back-button";
 import DiscountProductsServer from "@/components/discount-products-server";
 
 export default async function DiscountPage() {
-  const title = "Com desconto";
+  const title = "Top ofertas";
 
   return (
     <Container className="space-y-8 mt-20">

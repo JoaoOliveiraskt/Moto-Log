@@ -36,8 +36,8 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <Suspense fallback={<LoadingPage />}>
-                <LoadingWrapper>
+              <LoadingWrapper>
+                <Suspense fallback={<LoadingPage />}>
                   <NextTopLoader />
                   <MobileHeader />
                   <Header />
@@ -45,8 +45,8 @@ export default function RootLayout({
                   <BottomNav />
                   <Footer />
                   <Toaster />
-                </LoadingWrapper>
-              </Suspense>
+                </Suspense>
+              </LoadingWrapper>
             </ThemeProvider>
           </CartProvider>
         </AuthProvider>
