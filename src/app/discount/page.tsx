@@ -11,7 +11,6 @@ export default async function DiscountPage() {
   const url = process.env.NEXT_PUBLIC_API_URL;
 
   if (!url) {
-    console.error("URL da API não definida");
     return <div>Erro ao carregar produtos</div>;
   }
 
