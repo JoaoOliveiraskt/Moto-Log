@@ -146,7 +146,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
           {isAuthenticated && <AvatarInfo size="menu" />}
           <div className="space-y-0">{menuItems}</div>
           {!isAuthenticated && (
-            <AvatarInfo size="menu" className="w-full -mb-6 py-6" />
+            <AvatarInfo size="menu" className="w-full -mb-6 py-6 rounded-full" />
           )}
         </DropdownMenuContent>
       </DropdownMenu>
