@@ -11,13 +11,6 @@ import TypographyH1 from "./typography/typography-h1";
 import TypographyP from "./typography/typography-p";
 import TypographySmall from "./typography/typography-small";
 
-const scrollToSection = () => {
-  const element = document.getElementById("category-list");
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
 const heroContent = {
   title: "O App que simplifica suas compras e vendas online",
   description:
@@ -32,6 +25,15 @@ export default function Hero() {
   const [open, setOpen] = useState(false);
 
   const toggleOpen = () => setOpen(!open);
+
+  const scrollToSection = () => {
+    if (typeof window !== "undefined") {
+      const element = document.getElementById("category-list");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   if (!isAuthenticated) {
     return (
