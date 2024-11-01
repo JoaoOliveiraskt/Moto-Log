@@ -62,7 +62,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               size="menu"
               className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
             >
-              <span>Anúncios</span>
+              <span>Dashboard</span>
               <icon.dashboard size={20} />
             </Button>
           </Link>
@@ -146,7 +146,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
           {isAuthenticated && <AvatarInfo size="menu" />}
           <div className="space-y-0">{menuItems}</div>
           {!isAuthenticated && (
-            <AvatarInfo size="menu" className="w-full -mb-6 py-6" />
+            <AvatarInfo size="menu" className="w-full -mb-6 py-6 rounded-full" />
           )}
         </DropdownMenuContent>
       </DropdownMenu>
