@@ -62,7 +62,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
               size="menu"
               className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
             >
-              <span>Anúncios</span>
+              <span>Dashboard</span>
               <icon.dashboard size={20} />
             </Button>
           </Link>

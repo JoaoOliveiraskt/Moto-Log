@@ -4,7 +4,7 @@ import CategoryCarousel from "./category-carousel";
 
 export default function CategoryList() {
   return (
-    <div id="category-list" className="w-full space-y-8">
+    <div id="category-list" className="w-full space-y-5">
       <TypographyH1 className="text-primary">Explorar</TypographyH1>
 
       <div className="flex items-center gap-8">

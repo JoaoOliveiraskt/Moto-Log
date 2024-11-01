@@ -65,7 +65,7 @@ const MobileMenu = ({ className, iconSize = 20 }: Props) => {
               className="flex gap-4 w-full justify-between py-6 "
             >
               <TypographyLarge className="font-medium">
-                Anúncios
+                Dashboard
               </TypographyLarge>
               <icon.dashboard size={iconSize} />
             </Link>
