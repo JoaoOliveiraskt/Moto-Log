@@ -35,7 +35,7 @@ export default function TopStores() {
   }, []);
 
   return (
-    <div className="md:hidden space-y-4">
+    <div className="sm:hidden space-y-4">
       <div className="flex items-center justify-between ">
         <TypographyH3>Top Lojas</TypographyH3>
       </div>

@@ -36,17 +36,13 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <LoadingWrapper>
-                <Suspense fallback={<LoadingPage />}>
-                  <NextTopLoader />
-                  <MobileHeader />
-                  <Header />
-                  {children}
-                  <BottomNav />
-                  <Footer />
-                  <Toaster />
-                </Suspense>
-              </LoadingWrapper>
+              <NextTopLoader />
+              <MobileHeader />
+              <Header />
+              {children}
+              <BottomNav />
+              <Footer />
+              <Toaster />
             </ThemeProvider>
           </CartProvider>
         </AuthProvider>

@@ -1,7 +1,7 @@
 import { db } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request, take: number ) {
+export async function GET(req: Request) {
   try {
     const url = new URL(req.url);
     const takeParam = url.searchParams.get("take");

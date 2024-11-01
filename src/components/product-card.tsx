@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Prisma } from "../../prisma/generated/client";
 import LikeButton from "./like-button";
+import { cn } from "@/lib/utils";
 
 interface ProductProps {
   product: Prisma.ProdutoGetPayload<{
@@ -16,14 +17,20 @@ interface ProductProps {
       };
     };
   }>;
+  className?: string;
 }
 
-const ProductCard = ({ product }: ProductProps) => {
+const ProductCard = ({ product, className }: ProductProps) => {
   return (
     <div className="relative mb-6">
       <Link href={`/product/${product.id}`}>
         <div className="cursor-pointer h-max overflow-hidden text-foreground md:hover:bg-accent/50 md:dark:hover:bg-accent/30 rounded-2xl md:p-2 transition-all">
-          <div className="h-48 w-full lg:h-[13rem] rounded-2xl overflow-hidden border">
+          <div
+            className={cn(
+              "h-48 w-full lg:h-[13rem] rounded-2xl overflow-hidden border",
+              className
+            )}
+          >
             <Image
               src={product.imagemUrl}
               alt={product.nome}
@@ -36,7 +43,7 @@ const ProductCard = ({ product }: ProductProps) => {
           <div className="min-h-full px-1 py-2 flex flex-col justify-between">
             <Link
               href={`/category/${product.categoriaId}`}
-              className="text-xs text-muted-foreground font-bold hover:text-foreground w-fit"
+              className="text-xs text-muted-foreground font-bold hover:text-cyan-600 w-fit"
             >
               {product.categoria?.nome}
             </Link>
@@ -64,7 +71,7 @@ const ProductCard = ({ product }: ProductProps) => {
             <div className="w-fit mt-2">
               <Link
                 href={`/store/${product.lojaId}`}
-                className="text-foreground font-medium hover:text-cyan-600 mb-2 flex items-center gap-2"
+                className="text-foreground font-medium hover:text-cyan-600 flex items-center gap-2"
               >
                 <div className="w-8 h-8 rounded-md border overflow-hidden flex-shrink-0">
                   {product.loja.imagemUrl ? (
@@ -91,7 +98,11 @@ const ProductCard = ({ product }: ProductProps) => {
       </Link>
 
       <div className="absolute top-3 right-3 h-7 w-7 bg-white flex items-center rounded-full ">
-        <LikeButton product={{ id: product.id }} size={20} className="text-black hover:text-black" />
+        <LikeButton
+          product={{ id: product.id }}
+          size={20}
+          className="text-black hover:text-black"
+        />
       </div>
     </div>
   );
