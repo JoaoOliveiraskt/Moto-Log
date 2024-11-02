@@ -90,7 +90,7 @@ export default function CreateStore() {
       <>
         <Container className="h-screen w-full flex items-center justify-center flex-col space-y-10 md:-mt-36">
           <h1 className="text-xl text-center">
-            Você precisa estar logado para criar uma loja
+            Você precisa estar logado para criar uma loja!
           </h1>
           <div className="flex items-center gap-5">
             <Button asChild variant={"outline"} size={"rounded"}>
@@ -109,7 +109,7 @@ export default function CreateStore() {
     return (
       <Container className="h-screen w-full flex items-center flex-col space-y-6 mt-[72px] md:mt-36">
         <motion.div {...animation1}>
-          <MotoLogLogo disabled={true}/>
+          <MotoLogLogo disabled={true} />
         </motion.div>
 
         <motion.div {...animation2}>

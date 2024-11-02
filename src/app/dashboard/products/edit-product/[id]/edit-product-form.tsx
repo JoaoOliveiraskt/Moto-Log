@@ -81,19 +81,16 @@ export default function EditProductForm({
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error("Erro da API:", errorData);
         throw new Error(
           errorData.error || `HTTP error! status: ${response.status}`
         );
       }
 
       const result = await response.json();
-      console.log("Produto atualizado com sucesso:", result);
       setSuccess(true);
 
       setIsConfirmDialogOpen(true);
     } catch (error) {
-      console.error("Erro ao atualizar produto:", error);
       const errorMsg =
         error instanceof Error
           ? error.message

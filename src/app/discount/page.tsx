@@ -60,7 +60,6 @@ export default async function DiscountPage() {
       </Container>
     );
   } catch (error) {
-    console.error("Erro ao buscar produtos com desconto:", error);
     return (
       <Container className="space-y-8 mt-20">
         <GoBackButton name={title} className="hidden lg:flex" />

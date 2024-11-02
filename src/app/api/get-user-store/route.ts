@@ -29,7 +29,6 @@ export async function GET(req: Request) {
 
     return NextResponse.json(store, { status: 200 });
   } catch (error) {
-    console.error("Erro ao buscar a loja:", error);
     return NextResponse.json(
       { message: "Erro ao buscar a loja", error },
       { status: 500 }

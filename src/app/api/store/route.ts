@@ -20,7 +20,6 @@ export async function GET(req: Request) {
     });
     return NextResponse.json(stores, { status: 200 });
   } catch (error) {
-    console.error("Erro ao buscar lojas:", error);
     return NextResponse.json(
       { message: "Erro ao buscar lojas", error },
       { status: 500 }

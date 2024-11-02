@@ -88,7 +88,7 @@ const Cart = ({ isOpen, setIsOpen }: CartProps) => {
         ),
       });
     } catch (error) {
-      console.error(error);
+      throw new Error("Erro ao finalizar pedido");
     } finally {
       setIsSubmitLoading(false);
     }
