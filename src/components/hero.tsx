@@ -54,7 +54,7 @@ export default function Hero() {
           </div>
 
           <div>
-            <TypographyP className="text-sm md:text-lg mb-8 max-w-md md:max-w-xl text-muted-foreground">
+            <TypographyP className="text-sm md:text-base mb-8 max-w-md md:max-w-xl text-muted-foreground">
               <Balancer>{heroContent.description}</Balancer>
             </TypographyP>
           </div>

@@ -146,7 +146,7 @@ const Cart = ({ isOpen, setIsOpen }: CartProps) => {
                 <Button
                   size={"rounded"}
                   onClick={() => setIsConfirmDialogOpen(true)}
-                  className="w-1/2 mx-auto mt-6 mb-4 font-semibold flex items-center gap-2"
+                  className="w-1/2 h-12 mx-auto mt-6 mb-4 font-semibold flex items-center gap-2"
                   disabled={isSubmitLoading}
                 >
                   <span>Fazer pedido</span>

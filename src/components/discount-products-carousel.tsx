@@ -61,7 +61,7 @@ export default function DiscountProductsCarousel({ limit }: Props) {
             ))}
           </CarouselContent>
         ) : (
-          <CarouselContent className="flex gap-3">
+          <CarouselContent className="flex gap-2">
             {discountProducts.map((product) => (
               <div key={product.id}>
                 {/* @ts-ignore */}
@@ -70,8 +70,8 @@ export default function DiscountProductsCarousel({ limit }: Props) {
             ))}
           </CarouselContent>
         )}
-        <CarouselPrevious className="hidden lg:flex left-2 top-[23rem]" />
-        <CarouselNext className="hidden lg:flex left-12 top-[23rem]" />
+        <CarouselPrevious className="hidden lg:flex left-36 -top-[2rem]" />
+        <CarouselNext className="hidden lg:flex left-48 -top-[2rem]" />
       </Carousel>
     </>
   );

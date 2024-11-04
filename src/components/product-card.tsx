@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Prisma } from "../../prisma/generated/client";
 import LikeButton from "./like-button";
 import { cn } from "@/lib/utils";
+import StoreBadge from "./store-badge";
 
 interface ProductProps {
   product: Prisma.ProdutoGetPayload<{
@@ -41,18 +42,15 @@ const ProductCard = ({ product, className }: ProductProps) => {
             />
           </div>
           <div className="min-h-full px-1 py-2 flex flex-col justify-between">
+            <h2 className="text-sm line-clamp-2 ">{product.nome}</h2>
             <Link
               href={`/category/${product.categoriaId}`}
-              className="text-xs text-muted-foreground font-bold hover:text-cyan-600 w-fit"
+              className="text-xs text-muted-foreground  hover:text-cyan-600 w-fit"
             >
               {product.categoria?.nome}
             </Link>
 
-            <h2 className="font-bold line-clamp-2 lg:line-clamp-1">
-              {product.nome}
-            </h2>
-
-            <div className="flex flex-col-reverse items-start md:flex-row md:items-center md:gap-2 mt-0.5">
+            <div className="flex flex-col items-start mt-0.5">
               <span className="font-bold text- text-foreground">
                 {formatCurrency(Number(calculateTotalPrice(product)))}
               </span>
@@ -68,30 +66,9 @@ const ProductCard = ({ product, className }: ProductProps) => {
               )}
             </div>
 
-            <div className="w-fit mt-2">
-              <Link
-                href={`/store/${product.lojaId}`}
-                className="text-foreground font-medium hover:text-cyan-600 flex items-center gap-2"
-              >
-                <div className="w-8 h-8 rounded-md border overflow-hidden flex-shrink-0">
-                  {product.loja.imagemUrl ? (
-                    <Image
-                      src={product.loja.imagemUrl}
-                      width={500}
-                      height={500}
-                      alt="logo da loja"
-                      className="object-cover w-full h-full"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
-                  )}
-                </div>
-                <div className="flex flex-col justify-center">
-                  <h5 className="text-sm: md:text-base ">
-                    {product.loja.nome}
-                  </h5>
-                </div>
-              </Link>
+            <div>
+              {/* @ts-ignore */}
+              <StoreBadge product={product} />
             </div>
           </div>
         </div>

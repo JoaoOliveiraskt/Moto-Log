@@ -1,14 +1,18 @@
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import TypographyH3 from "@/components/typography/typography-h3";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "../../../components/ui/avatar";
 import icon from "@/components/icons/icon-component";
 
 export default function Comments() {
   return (
     <div className="mt-8 space-y-2">
-      <h2 className="text-2xl mb-4">Comentários</h2>
+      <TypographyH3 className="mb-4">Comentários</TypographyH3>
       <div className="grid gap-4 max-w-screen-sm">
         <div className="flex gap-2">
           <Avatar className="w-10 h-10 border">
-            <AvatarImage src="/placeholder-user.jpg" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div className="space-y-2">
@@ -41,7 +45,6 @@ export default function Comments() {
       <div className="grid gap-4 max-w-screen-sm">
         <div className="flex gap-2">
           <Avatar className="w-10 h-10 border">
-            <AvatarImage src="/placeholder-user.jpg" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div className="space-y-2">
@@ -74,7 +77,6 @@ export default function Comments() {
       <div className="grid gap-4 max-w-screen-sm">
         <div className="flex gap-2">
           <Avatar className="w-10 h-10 border">
-            <AvatarImage src="/placeholder-user.jpg" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div className="space-y-2">
@@ -107,7 +109,6 @@ export default function Comments() {
       <div className="grid gap-4 max-w-screen-sm">
         <div className="flex gap-2">
           <Avatar className="w-10 h-10 border">
-            <AvatarImage src="/placeholder-user.jpg" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div className="space-y-2">
