@@ -8,14 +8,14 @@ export default function ProductCardSkeleton() {
         <Skeleton className="h-48 min-w-64 lg:h-[13rem] rounded-2xl mb-3" />
 
         <div className="min-h-full px-1 py-0.5 flex flex-col justify-between">
-          {/* Categoria */}
-          <Skeleton className="h-4 w-1/3 mb-1" />
-
           {/* Nome do produto */}
           <Skeleton className="h-5 w-3/4 mb-1" />
 
+          {/* Categoria */}
+          <Skeleton className="h-3 w-1/3 mb-1" />
+
           {/* Preço e desconto */}
-          <div className="flex flex-col-reverse gap-y-2 items-start md:flex-row md:items-center md:gap-2 mt-0.5">
+          <div className="flex flex-col gap-y-2 items-start mt-0.5">
             <Skeleton className="h-5 w-28" />
             <div className="flex gap-2">
               <Skeleton className="h-4 w-24" />
@@ -25,7 +25,7 @@ export default function ProductCardSkeleton() {
 
           {/* Informações da loja */}
           <div className="w-fit mt-1 flex items-center gap-2">
-            <Skeleton className="w-8 h-8 rounded-md" />
+            <Skeleton className="w-9 h-9 rounded-full" />
             <Skeleton className="h-4 w-28" />
           </div>
         </div>

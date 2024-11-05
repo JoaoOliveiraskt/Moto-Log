@@ -24,8 +24,10 @@ import { useSession } from "next-auth/react";
 import LoginButton from "@/components/login-button";
 import { toast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
-import icon from "@/components/icons/icon-component";
 import LikeButton from "@/components/like-button";
+import TypographyP from "@/components/typography/typography-p";
+import Icon from "@/components/icons/icon-component";
+import Balancer from "react-wrap-balancer";
 
 interface ProductInfoProps {
   quantity: number;
@@ -93,53 +95,40 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
   return (
     <>
-      <div className="flex flex-col w-full max-w-3xl gap-6">
-        <h1 className="text-3xl font-bold">{product.nome}</h1>
-
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1 text-yellow-400 ">
-            <icon.star size={20} />
-            <icon.star size={20} />
-            <icon.star size={20} />
-            <icon.star size={20} />
-            <icon.star size={20} />
-          </div>
-          <p className="ml-2 ">157 Avaliações</p>
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-4">
+      <div className="flex flex-col w-full gap-6">
+        <div className="flex flex-col w-full gap-2">
+          <h1 className="text-2xl font-medium">{product.nome}</h1>
+          <div className="flex flex-col sm:flex-row sm:gap-4">
+            <p className="text-3xl font-semibold tracking-wide">
+              {formatCurrency(Number(calculateTotalPrice(product)))}
+            </p>
             {Number(product.porcentagemDesconto) > 0 && (
-              <p className="text-muted-foreground line-through">
-                {formatCurrency(Number(product.preco))}
-              </p>
-            )}
-            {Number(product.porcentagemDesconto) > 0 && (
-              <DiscountBadge product={product} />
+              <div className="flex items-center gap-4 w-full">
+                <p className="text-sm text-muted-foreground line-through">
+                  {formatCurrency(Number(product.preco))}
+                </p>
+                <DiscountBadge product={product} />
+              </div>
             )}
           </div>
-
-          <p className="text-xl font-bold tracking-wide">
-            {formatCurrency(Number(calculateTotalPrice(product)))}
-          </p>
         </div>
 
-        <div className="flex items-center gap-5 w-full">
+        <div className="">
+          <TypographyP className="text-muted-foreground [&:not(:first-child)]:mt-0">
+            <Balancer>{product.descricao}</Balancer>
+          </TypographyP>
+        </div>
+
+        <div className="flex items-center gap-4 w-full">
           <Button
             size={"xl"}
             onClick={handleAddToCart}
-            className="font-bold tracking-wide py-5"
+            className="font-bold tracking-wide h-14 space-x-2"
           >
-            Adicionar ao carrinho
+            <Icon.cart size={20} />
+            <span>Adicionar ao carrinho</span>
           </Button>
           <LikeButton />
-        </div>
-
-        <div>
-          <h2 className="mb-2 text-xl font-semibold">Descrição</h2>
-          <h3 className="text-muted-foreground max-w-screen-sm">
-            {product.descricao}
-          </h3>
         </div>
       </div>
 

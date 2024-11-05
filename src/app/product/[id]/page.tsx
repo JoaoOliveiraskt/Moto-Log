@@ -7,8 +7,10 @@ import GoBackButton from "@/components/go-back-button";
 import Container from "@/components/container";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
-import Comments from "@/components/comments";
+import Comments from "@/app/product/components/comments";
 import Image from "next/image";
+import TypographyH3 from "@/components/typography/typography-h3";
+import StoreBadge from "@/components/store-badge";
 
 interface ProductPageProps {
   params: {
@@ -50,41 +52,24 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
     },
     include: {
       loja: true,
+      categoria: true,
     },
     take: 5,
   });
-
-  const relatedProductsConvertidos = relatedProducts.map((prod) => ({
-    ...prod,
-    preco: prod.preco.toNumber(),
-    porcentagemDesconto: prod.porcentagemDesconto
-      ? prod.porcentagemDesconto.toNumber()
-      : 0,
-  }));
 
   return (
     <>
       <Container className="mt-5 lg:mt-20 space-y-4">
         <GoBackButton className="hidden lg:flex" />
-        <div className="w-full space-y-4">
-          <div className="flex items-center gap-2 lg:hidden">
-            <div className="w-fit h-fit border rounded-lg overflow-hidden">
-              <Image
-                src={produto.loja.imagemUrl as string}
-                alt={produto.nome}
-                width={500}
-                height={500}
-                className="w-8 h-8 object-cover"
-              />
+        <div className="w-full space-y-8">
+          <div className="grid lg:grid-cols-[1fr,1fr] gap-x-12 space-y-8 lg:space-y-0">
+            <div className="space-y-4 w-full">
+              <ProductBanner images={images} produto={produto} />
+              <div>
+                {/* @ts-ignore */}
+                <StoreBadge product={produto} />
+              </div>
             </div>
-            <p className="font-bold">{produto.loja.nome}</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-4">
-            <ProductBanner
-              images={images}
-              produto={produto}
-              className="rounded-xl"
-            />
             {/* @ts-ignore */}
             <ProductInfo product={convertedProduct} quantity={0} />
           </div>
@@ -92,11 +77,14 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
           <Comments />
 
           <div className="my-10 flex flex-col gap-4 w-full">
-            <h2 className="text-2xl font-bold">Produtos Relacionados</h2>
+            <TypographyH3>Produtos Relacionados</TypographyH3>
 
             <ProductList>
-              {relatedProductsConvertidos.map((product) => (
-                <ProductCard key={product.id} product={product} />
+              {relatedProducts.map((product) => (
+                <div key={product.id}>
+                  {/* @ts-ignore */}
+                  <ProductCard product={product} />
+                </div>
               ))}
             </ProductList>
           </div>

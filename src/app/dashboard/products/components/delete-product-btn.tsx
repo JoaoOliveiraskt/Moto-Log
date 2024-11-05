@@ -35,7 +35,7 @@ export default function DeleteProductBtn({
         setIsConfirmDialogOpen(false);
       }, 2000);
     } catch (error) {
-      console.error(error);
+      setSuccess(false);
     } finally {
       setIsSubmitLoading(false);
     }

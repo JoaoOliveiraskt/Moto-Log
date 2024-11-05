@@ -46,7 +46,7 @@ export default function Hero() {
           </div>
           <div>
             <TypographyH1
-              className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 max-w-3xl text-foreground tracking-tighter bg-gradient-to-br
+              className="text-3xl md:text-5xl lg:text-6xl mb-4 max-w-3xl text-foreground tracking-tighter bg-gradient-to-br
            dark:from-white dark:via-neutral-200 dark:to-neutral-400  dark:text-transparent dark:bg-clip-text p-2"
             >
               <Balancer>{heroContent.title}</Balancer>
@@ -54,7 +54,7 @@ export default function Hero() {
           </div>
 
           <div>
-            <TypographyP className="text-xs md:text-lg mb-8 max-w-md md:max-w-xl text-muted-foreground">
+            <TypographyP className="text-sm md:text-base mb-8 max-w-md md:max-w-xl text-muted-foreground">
               <Balancer>{heroContent.description}</Balancer>
             </TypographyP>
           </div>

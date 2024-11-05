@@ -37,7 +37,6 @@ export async function PUT(
 
     return NextResponse.json(response, { status: 200 });
   } catch (error) {
-    console.error("Erro ao atualizar produto: ", error);
     return NextResponse.json(
       { message: "Erro ao atualizar produto ", error },
       { status: 500 }
@@ -96,7 +95,6 @@ export async function DELETE(
     const response = await deleteProductById(productId);
     return NextResponse.json(response, { status: 200 });
   } catch (error) {
-    console.error("Erro ao deletar produto: ", error);
     return NextResponse.json(
       { message: "Erro ao deletar produto", error },
       { status: 500 }

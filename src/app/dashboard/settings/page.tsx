@@ -38,7 +38,7 @@ export default function EditStore() {
           setSelectedStore(storesData[0]);
         }
       } catch (error) {
-        console.error("Erro ao buscar lojas:", error);
+        throw new Error("Erro ao buscar lojas");
       }
     }
 
@@ -58,7 +58,7 @@ export default function EditStore() {
         const storeData: Loja = await response.json();
         setSelectedStore(storeData);
       } catch (error) {
-        console.error("Erro ao buscar detalhes da loja:", error);
+        throw new Error("Erro ao buscar detalhes da loja");
       }
     }
 

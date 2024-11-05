@@ -30,7 +30,7 @@ async function getProduto(id: string) {
 
     return produto;
   } catch (error) {
-    console.error("Erro ao buscar produto:", error);
+    throw new Error("Erro ao buscar o produto");
   }
 }
 

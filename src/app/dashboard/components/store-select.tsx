@@ -42,7 +42,6 @@ export default function StoreSelect({
           setStoreName("Minha Loja");
         }
       } catch (error) {
-        console.error("Erro ao buscar lojas:", error);
         setStoreName("Minha Loja");
       }
     }

@@ -70,7 +70,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json(store, { status: 201 });
   } catch (error) {
-    console.error("Error creating store", error);
     return handleErrorResponse(error);
   }
 }

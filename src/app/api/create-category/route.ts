@@ -21,8 +21,6 @@ export async function POST(request: Request) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({ error: error.errors }, { status: 400 });
     }
-
-    console.error(error);
     return NextResponse.json(
       { error: "Erro ao criar categoria" },
       { status: 500 }

@@ -71,7 +71,6 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error("Erro da API:", errorData);
         throw new Error(
           errorData.error || `HTTP error! status: ${response.status}`
         );
@@ -81,7 +80,6 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
       setSuccess(true);
       setIsConfirmDialogOpen(true);
     } catch (error) {
-      console.error("Erro ao salvar produto:", error);
       const errorMsg =
         error instanceof Error
           ? error.message
@@ -95,19 +93,12 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DialogContent className="h-full max-h-[60%] lg:min-w-[45%] pb-16">
-        <DialogHeader className="pl-1  grid items-center justify-center">
+      <DialogContent className="h-full max-h-[70%] lg:min-w-[45%] pb-16 pt-0">
+        <DialogHeader className="grid items-center justify-center space-y-0 p-0">
           <div className=" grid items-center justify-center">
             <MotoLogLogo disabled={true} />
           </div>
-          <DialogTitle>
-            <p className="text-center">
-              <Balancer>
-                Preencha os detalhes abaixo para adicionar um novo produto à sua
-                loja.
-              </Balancer>
-            </p>
-          </DialogTitle>
+          <DialogTitle className="text-center">Adicionar produto</DialogTitle>
         </DialogHeader>
 
         <ScrollArea className="max-h-[98%] overflow-hidden">
