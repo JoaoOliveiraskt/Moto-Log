@@ -14,9 +14,9 @@ export default function CategoryItem({ category, link }: CategoryProps) {
   return (
     <Link
       href={link}
-      className="flex items-center gap-1 w-fit px-5 py-2.5 border hover:bg-accent/50 hover:text-foreground rounded-full transition-all"
+      className="flex items-center w-fit px-4 py-1.5 bg-accent hover:bg-accent-foreground rounded-lg transition-all"
     >
-      <p className="font-bold">{category.nome}</p>
+      <p className="font-semibold">{category.nome}</p>
     </Link>
   );
 }

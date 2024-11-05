@@ -46,7 +46,7 @@ export default function CategoryCarousel({
       {loading ? (
         <div className="flex gap-2">
           {Array.from({ length: 8 }).map((_, index) => (
-            <Skeleton key={index} className="h-11 min-w-40 rounded-full" />
+            <Skeleton key={index} className="h-9 min-w-40 rounded-lg" />
           ))}
         </div>
       ) : (

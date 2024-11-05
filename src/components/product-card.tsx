@@ -23,7 +23,7 @@ interface ProductProps {
 
 const ProductCard = ({ product, className }: ProductProps) => {
   return (
-    <div className="relative mb-6">
+    <div className="relative">
       <Link href={`/product/${product.id}`}>
         <div className="cursor-pointer h-max overflow-hidden text-foreground md:hover:bg-accent/50 md:dark:hover:bg-accent/30 rounded-2xl md:p-2 transition-all">
           <div
