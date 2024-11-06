@@ -17,7 +17,7 @@ export default function Header() {
       <Container className="h-full w-full relative">
         <div className="w-full h-full flex items-center justify-between">
           <div className="w-fit flex items-center gap-10">
-            <div className="md:flex md:items-center md:gap-3">
+            <div className="md:flex md:items-center md:gap-3 hover:scale-105 transition-all active:scale-95">
               <MotoLogLogo />
             </div>
           </div>

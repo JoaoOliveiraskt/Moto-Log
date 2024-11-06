@@ -154,7 +154,7 @@ const MobileMenu = ({ className, iconSize = 20 }: Props) => {
 
         <DrawerContent className="pb-6 px-4 bg-card">
           <DrawerHeader className="mx-auto w-full flex items-center justify-center">
-            <AvatarInfo size="menu" />
+            <AvatarInfo size="menu" variant="default"/>
           </DrawerHeader>
           <div className="space-y-2 flex flex-col items-center w-full">
             {menuItems}

@@ -122,31 +122,36 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
   return (
     <>
       <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-        <DropdownMenuTrigger asChild>
-          {isAuthenticated ? (
+        {isAuthenticated ? (
+          <DropdownMenuTrigger asChild>
             <Avatar className="cursor-pointer">
               <AvatarImage
                 src={user?.image as string}
                 alt={user?.name as string}
               />
             </Avatar>
-          ) : (
-            <button className="flex items-center">
+          </DropdownMenuTrigger>
+        ) : (
+          <DropdownMenuTrigger asChild>
+            <div>
               <MenuBtn className={className} iconSize={iconSize}>
                 {children}
               </MenuBtn>
-            </button>
-          )}
-        </DropdownMenuTrigger>
-
+            </div>
+          </DropdownMenuTrigger>
+        )}
         <DropdownMenuContent
           align="end"
-          className="p-2  bg-card rounded-3xl min-w-72 w-full shadow-2xl"
+          className="p-2.5  bg-card rounded-3xl min-w-72 w-full shadow-2xl"
         >
           {isAuthenticated && <AvatarInfo size="menu" />}
           <div className="space-y-0">{menuItems}</div>
           {!isAuthenticated && (
-            <AvatarInfo size="menu" className="w-full -mb-6 py-6 rounded-full" />
+            <AvatarInfo
+              variant="default"
+              size="menu"
+              className="w-full -mb-6 py-5 rounded-full"
+            />
           )}
         </DropdownMenuContent>
       </DropdownMenu>
