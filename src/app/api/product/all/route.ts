@@ -12,7 +12,7 @@ export async function GET(req: Request) {
     const response = await db.produto.findMany({
       include: {
         loja: {
-          select: { nome: true, id: true, imagemUrl: true },
+          select: { nome: true, id: true, imagemUrl: true, descricao: true },
         },
         categoria: { select: { nome: true, id: true } },
       },

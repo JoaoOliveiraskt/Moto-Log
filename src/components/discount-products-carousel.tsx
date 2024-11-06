@@ -52,7 +52,7 @@ export default function DiscountProductsCarousel({ limit }: Props) {
   }, [limit]);
 
   return (
-    <>
+    < >
       <Carousel opts={{ dragFree: true, slidesToScroll: 2 }}>
         {loading ? (
           <CarouselContent className="flex gap-3">
@@ -65,7 +65,7 @@ export default function DiscountProductsCarousel({ limit }: Props) {
             {discountProducts.map((product) => (
               <div key={product.id}>
                 {/* @ts-ignore */}
-                <ProductCard product={product} className="min-w-64" />
+                <ProductCard product={product} className="min-w-64" showHoverCard={false}/>
               </div>
             ))}
           </CarouselContent>

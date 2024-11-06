@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import formatCurrency from "@/app/helpers/format-currency";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
+import StoreBadge from "@/components/store-badge";
 
 interface OrderItemProps {
   order: Prisma.OrderGetPayload<{
@@ -59,19 +60,14 @@ const OrderItem = ({ order }: OrderItemProps) => {
               </span>
             </div>
 
-            <Link
-              href={`/store/${order.lojaId}`}
+            <div
               className="flex gap-2 items-center mt-1  text-muted-foreground
               hover:text-cyan-600 w-fit"
             >
-              <div className="flex items-center space-x-2">
-                <Avatar className="w-8 h-8 rounded-md border">
-                  <AvatarImage src={order.loja.imagemUrl || undefined} />
-                </Avatar>
-                <span className="font-semibold">{order.loja.nome}</span>
-              </div>
+              {/* @ts-ignore */}
+              <StoreBadge product={order.loja} />
               <icon.arrowRight size={18} />
-            </Link>
+            </div>
           </div>
 
           <p className="text-foreground text-3xl font-semibold tracking-wider">
