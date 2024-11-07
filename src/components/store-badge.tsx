@@ -17,9 +17,11 @@ interface Props {
     };
   };
   showHoverCard?: boolean;
+  align?: "start" | "center" | "end";
+  side?: "top" | "right" | "bottom" | "left";
 }
 
-export default function StoreBadge({ product, showHoverCard = true }: Props) {
+export default function StoreBadge({ product, showHoverCard = true, align = "start", side = "bottom" }: Props) {
   return (
     <HoverCard openDelay={20} closeDelay={20}>
       <HoverCardTrigger asChild className="cursor-pointer z-10 w-fit h-fit">
@@ -47,9 +49,10 @@ export default function StoreBadge({ product, showHoverCard = true }: Props) {
       </HoverCardTrigger>
       <HoverCardContent
         className={cn(
-          `max-w-xs w-full z-50 cursor-default rounded-3xl dark:shadow-none p-6 ${showHoverCard === true ? "" : "hidden"} `
+          `max-w-xs w-full z-50 cursor-default rounded-2xl dark:shadow-none p-6 ${showHoverCard === true ? "" : "hidden"} `
         )}
-        align="start"
+        align={align}
+        side={side}
       >
         <div className="flex justify-between items-center">
           <Link

@@ -13,7 +13,7 @@ import {
 
 export default function Header() {
   return (
-    <div className="hidden lg:flex fixed top-0 z-40 h-[72px] bg-background w-screen">
+    <div className="hidden lg:flex fixed top-0 z-40 h-[72px] bg-background w-screen pr-4">
       <Container className="h-full w-full relative">
         <div className="w-full h-full flex items-center justify-between">
           <div className="w-fit flex items-center gap-10">

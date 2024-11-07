@@ -20,9 +20,11 @@ interface ProductProps {
   }>;
   className?: string;
   showHoverCard?: boolean;
+  align?: "start" | "center" | "end";
+  side?: "top" | "right" | "bottom" | "left";
 }
 
-const ProductCard = ({ product, className, showHoverCard }: ProductProps) => {
+const ProductCard = ({ product, className, showHoverCard, align = "start", side = "bottom" }: ProductProps) => {
   return (
     <div className="relative cursor-pointer h-max overflow-hidden text-foreground md:hover:bg-accent/50 md:dark:hover:bg-accent/30 rounded-2xl md:p-2 transition-all">
       <Link href={`/product/${product.id}`}>
@@ -70,7 +72,7 @@ const ProductCard = ({ product, className, showHoverCard }: ProductProps) => {
 
       <div>
         {/* @ts-ignore */}
-        <StoreBadge product={product} showHoverCard={showHoverCard} />
+        <StoreBadge product={product} showHoverCard={showHoverCard} align={align} side={side} />
       </div>
       <div className="absolute top-[9.6rem] mb-2 lg:top-44 right-3 lg:right-5 h-7 w-7 bg-white flex items-center rounded-full ">
         <LikeButton

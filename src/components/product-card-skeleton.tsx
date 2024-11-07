@@ -16,15 +16,15 @@ export default function ProductCardSkeleton() {
 
           {/* Preço e desconto */}
           <div className="flex flex-col gap-y-2 items-start mt-0.5">
-            <Skeleton className="h-5 w-28" />
             <div className="flex gap-2">
               <Skeleton className="h-4 w-24" />
               <Skeleton className="h-4 w-14" />
             </div>
+            <Skeleton className="h-5 w-28" />
           </div>
 
           {/* Informações da loja */}
-          <div className="w-fit mt-1 flex items-center gap-2">
+          <div className="w-fit mt-2 flex items-center gap-2">
             <Skeleton className="w-9 h-9 rounded-full" />
             <Skeleton className="h-4 w-28" />
           </div>

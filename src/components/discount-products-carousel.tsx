@@ -9,20 +9,20 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 import ProductCardSkeleton from "./product-card-skeleton";
+import { Produto, Categoria, Loja } from "prisma/generated/client";
+
 
 interface Props {
   limit?: number;
 }
 
-interface Product {
-  id: string;
-  nome: string;
-  descricao: string;
-  imagemUrl: string;
+interface ProductCardProps extends Produto {
+  categoria: Categoria;
+  loja: Loja;
 }
 
 export default function DiscountProductsCarousel({ limit }: Props) {
-  const [discountProducts, setDiscountProducts] = useState<Product[]>([]);
+  const [discountProducts, setDiscountProducts] = useState<ProductCardProps[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -52,8 +52,16 @@ export default function DiscountProductsCarousel({ limit }: Props) {
   }, [limit]);
 
   return (
-    < >
-      <Carousel opts={{ dragFree: true, slidesToScroll: 2 }}>
+    <>
+      <Carousel
+        opts={{
+          dragFree: true,
+          duration: 20,
+          containScroll: "trimSnaps",
+          align: "start",
+          slidesToScroll: "auto",
+        }}
+      >
         {loading ? (
           <CarouselContent className="flex gap-3">
             {Array.from({ length: 10 }).map((_, index) => (
@@ -64,8 +72,12 @@ export default function DiscountProductsCarousel({ limit }: Props) {
           <CarouselContent className="flex gap-2">
             {discountProducts.map((product) => (
               <div key={product.id}>
-                {/* @ts-ignore */}
-                <ProductCard product={product} className="min-w-64" showHoverCard={false}/>
+               {/* @ts-ignore */}
+                <ProductCard
+                  product={product}
+                  className="min-w-64"
+                  side="top"
+                />
               </div>
             ))}
           </CarouselContent>

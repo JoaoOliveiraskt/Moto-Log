@@ -38,7 +38,7 @@ export default function Hero() {
   if (!isAuthenticated) {
     return (
       <>
-        <div className="flex flex-col items-center justify-center h-5/6 text-center p-4 mt-20 lg:mt-24 w-full border-b -mb-9 overflow-hidden">
+        <div className="flex flex-col items-center justify-center h-5/6 text-center p-4 mt-32 w-full border-b -mb-9 overflow-hidden">
           <div className="px-2 py-1 bg-sky-700 rounded-lg flex items-center justify-center mb-4">
             <span className="text-xs text-center text-white">
               {heroContent.badge}
