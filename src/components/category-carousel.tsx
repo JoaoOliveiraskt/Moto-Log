@@ -73,9 +73,6 @@ export default function CategoryCarousel() {
         </div>
       ) : (
         <CarouselContent className="gap-x-3">
-          <CarouselItem className="basis-auto p-0">
-            <CategoryItem category={{ id: "all", nome: "Todos" }} link="/" />
-          </CarouselItem>
           {categories &&
             categories.map((category, index) => (
               <CarouselItem
