@@ -14,7 +14,7 @@ interface ProductProps {
     include: {
       categoria: { select: { nome: true } };
       loja: {
-        select: { nome: true; id: true; imagemUrl: true; descricao: true };
+        select: { id: true; nome: true; imagemUrl: true; descricao: true };
       };
     };
   }>;
@@ -24,7 +24,15 @@ interface ProductProps {
   side?: "top" | "right" | "bottom" | "left";
 }
 
-const ProductCard = ({ product, className, showHoverCard, align = "start", side = "bottom" }: ProductProps) => {
+const ProductCard = ({
+  product,
+  className,
+  showHoverCard,
+  align = "start",
+  side = "bottom",
+}: ProductProps) => {
+  const { loja } = product;
+
   return (
     <div className="relative cursor-pointer h-max overflow-hidden text-foreground md:hover:bg-accent/50 md:dark:hover:bg-accent/30 rounded-2xl md:p-2 transition-all">
       <Link href={`/product/${product.id}`}>
@@ -71,8 +79,17 @@ const ProductCard = ({ product, className, showHoverCard, align = "start", side 
       </Link>
 
       <div>
-        {/* @ts-ignore */}
-        <StoreBadge product={product} showHoverCard={showHoverCard} align={align} side={side} />
+        <StoreBadge
+          store={{
+            id: loja.id,
+            nome: loja.nome,
+            imagemUrl: loja.imagemUrl,
+            descricao: loja.descricao,
+          }}
+          showHoverCard={showHoverCard}
+          align={align}
+          side={side}
+        />
       </div>
       <div className="absolute top-[9.6rem] mb-2 lg:top-44 right-3 lg:right-5 h-7 w-7 bg-white flex items-center rounded-full ">
         <LikeButton

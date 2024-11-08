@@ -65,7 +65,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
               hover:text-cyan-600 w-fit"
             >
               {/* @ts-ignore */}
-              <StoreBadge product={order.loja} />
+              <StoreBadge store={order.loja} />
               <icon.arrowRight size={18} />
             </div>
           </div>

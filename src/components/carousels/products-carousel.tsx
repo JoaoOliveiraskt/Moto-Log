@@ -67,7 +67,6 @@ export default function ProductsCarousel({
           headers: {
             "Content-Type": "application/json",
           },
-          cache: "force-cache",
         });
         const data = await response.json();
         setProducts(data);
