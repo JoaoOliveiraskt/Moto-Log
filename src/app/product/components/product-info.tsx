@@ -128,7 +128,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
             <Icon.cart size={20} />
             <span>Adicionar ao carrinho</span>
           </Button>
-          <LikeButton />
+          <LikeButton>Salvar produto</LikeButton>
         </div>
       </div>
 

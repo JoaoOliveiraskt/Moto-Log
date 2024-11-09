@@ -51,7 +51,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
       id: { not: produto.id },
     },
     include: {
-      loja: true,
+      loja: { select: { id: true, nome: true, imagemUrl: true } },
       categoria: true,
     },
     take: 5,
@@ -67,7 +67,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
               <ProductBanner images={images} produto={produto} />
               <div>
                 {/* @ts-ignore */}
-                <StoreBadge product={produto} />
+                <StoreBadge store={produto.loja} />
               </div>
             </div>
             {/* @ts-ignore */}

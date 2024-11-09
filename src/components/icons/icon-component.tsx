@@ -26,6 +26,9 @@ import { GoHomeFill } from "react-icons/go";
 import { LuShoppingBag } from "react-icons/lu";
 import { BiShoppingBag } from "react-icons/bi";
 import { BiSolidShoppingBag } from "react-icons/bi";
+import { FiHeart } from "react-icons/fi";
+import { CiHeart } from "react-icons/ci";
+import { CiBookmark } from "react-icons/ci";
 
 const Icon = {
   home: GoHome,
@@ -51,9 +54,10 @@ const Icon = {
   lineChart: LineChart,
   github: FaGithub,
   confirmed: GoIssueClosed,
-  bookmark: MdOutlineBookmarkAdd,
+  bookmark: CiBookmark,
   bookmark2: MdBookmarkAdd,
   heartFilled: TbHeartFilled,
+  heart: CiHeart,
   clock: FiClock,
   location: SlLocationPin,
   google: FcGoogle,

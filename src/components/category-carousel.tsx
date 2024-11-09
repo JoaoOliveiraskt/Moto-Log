@@ -1,36 +1,49 @@
 "use client";
 
-import GetCategories from "@/app/actions/category/get-categories";
 import {
   Carousel,
   CarouselContent,
+  CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "./ui/carousel";
 import React, { useEffect, useState } from "react";
 import CategoryItem from "./category-item";
 import { Skeleton } from "./ui/skeleton";
+import { cn } from "@/lib/utils";
 
-interface Props {
-  opts?: {
-    dragFree?: boolean;
-    slidesToScroll?: number;
-  };
-}
-
-export default function CategoryCarousel({
-  opts = { dragFree: true, slidesToScroll: 2 },
-}: Props) {
+export default function CategoryCarousel() {
   const [categories, setCategories] = useState<
     { id: string; nome: string }[] | null
   >(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [api, setApi] = useState<CarouselApi | null>(null);
+  const [scrollPrev, setScrollPrev] = useState<boolean>(false);
+  const [scrollNext, setScrollNext] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    api.on("select", () => {
+      setScrollPrev(api.canScrollPrev());
+      setScrollNext(api.canScrollNext());
+    });
+  }, [api]);
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const data = await GetCategories();
+        const response = await fetch("/api/fetch-categories", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        const data = await response.json();
         setCategories(data);
       } catch (error) {
         setError("Erro ao carregar categorias.");
@@ -42,7 +55,16 @@ export default function CategoryCarousel({
   }, []);
 
   return (
-    <Carousel opts={opts}>
+    <Carousel
+      opts={{
+        dragFree: true,
+        duration: 20,
+        containScroll: "trimSnaps",
+        align: "start",
+        slidesToScroll: "auto",
+      }}
+      setApi={setApi}
+    >
       {loading ? (
         <div className="flex gap-2">
           {Array.from({ length: 8 }).map((_, index) => (
@@ -50,17 +72,39 @@ export default function CategoryCarousel({
           ))}
         </div>
       ) : (
-        <CarouselContent className="flex gap-2 ">
+        <CarouselContent className="gap-x-3">
           {categories &&
             categories.map((category, index) => (
-              <CategoryItem
+              <CarouselItem
                 key={`${category.id}-${index}`}
-                category={category}
-                link={`/category/${category.id}`}
-              />
+                className="basis-auto p-0"
+              >
+                <CategoryItem
+                  category={category}
+                  link={`/category/${category.id}`}
+                />
+              </CarouselItem>
             ))}
         </CarouselContent>
       )}
+
+      <div
+        className={cn(
+          "absolute bg-gradient-to-l from-transparent via-background/80 to-background left-0 top-0 h-full w-12 rounded-none",
+          scrollPrev ? "hidden sm:flex" : "hidden"
+        )}
+      >
+        <CarouselPrevious variant={"ghost"} className="-left-0 h-10 w-10" />
+      </div>
+
+      <div
+        className={cn(
+          "absolute bg-gradient-to-r from-transparent via-background/80 to-background right-0 top-0 h-full w-12 rounded-none",
+          scrollNext ? "hidden sm:flex" : "hidden"
+        )}
+      >
+        <CarouselNext variant={"ghost"} className="-right-2 h-10 w-10" />
+      </div>
     </Carousel>
   );
 }

@@ -13,7 +13,6 @@ export default function SeeAllButton({ href }: Props) {
       className="flex items-center gap-1 text-foreground transition-all ml-6 text-sky-600 hover:underline"
     >
       <span className="font-medium text-sm">Ver todos</span>
-      <GoChevronRight />
     </Link>
   );
 }

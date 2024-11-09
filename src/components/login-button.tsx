@@ -21,7 +21,7 @@ interface Props {
   size?: "default" | "icon" | "sm" | "lg" | "xl" | "menu" | null;
   iconSize?: number;
   children?: React.ReactNode;
-  variant?: "secondary" | "ghost" | "outline";
+  variant?: "secondary" | "ghost" | "outline" | "default";
 }
 
 const LoginButton = ({
@@ -90,7 +90,7 @@ export const AvatarInfo = ({ className, variant = "outline" }: Props) => {
       {status === "authenticated" ? (
         <div className="space-y-2 mb-4">
           <div className="flex gap-2 lg:gap-0 lg:flex-row items-center space-x-2 px-4">
-            <Avatar className="w-12 h-12 lg:w-8 lg:h-8">
+            <Avatar className="w-12 h-12 lg:w-11 lg:h-11">
               <AvatarImage
                 src={data?.user?.image as string | undefined}
                 alt={data?.user?.name as string | undefined}
@@ -101,7 +101,7 @@ export const AvatarInfo = ({ className, variant = "outline" }: Props) => {
               </AvatarFallback>
             </Avatar>
 
-            <div className="flex flex-col items-start gap-1">
+            <div className="flex flex-col items-start">
               <div className="flex space-x-1 text-foreground">
                 <p className=" font-semibold tracking-tight">
                   {data?.user?.name?.split(" ")[0]}
