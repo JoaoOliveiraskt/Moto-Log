@@ -6,7 +6,7 @@ export default function BestSellers() {
       <ProductsCarousel
         limit={12}
         link="/best-sellers"
-        title="Mais Vendidos"
+        title="Em Alta"
         productType="bestselling"
       />
     </div>

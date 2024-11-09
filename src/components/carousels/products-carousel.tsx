@@ -56,12 +56,16 @@ export default function ProductsCarousel({
         const url = process.env.NEXT_PUBLIC_API_URL;
         let endpoint = `${url}/product/all?limit=${limit}`;
 
-        if (productType === "discount") {
-          endpoint += "&withDiscount=true";
-        } else if (productType === "recent") {
-          endpoint += "&sort=recent";
-        } else if (productType === "bestselling") {
-          endpoint += "&bestSellers=true";
+        switch (productType) {
+          case "discount":
+            endpoint += "&withDiscount=true";
+            break;
+          case "recent":
+            endpoint += "&sort=recent";
+            break;
+          case "bestselling":
+            endpoint += "&bestSellers=true";
+            break;
         }
 
         const response = await fetch(endpoint, {
@@ -70,7 +74,17 @@ export default function ProductsCarousel({
             "Content-Type": "application/json",
           },
         });
+
+        if (!response.ok) {
+          throw new Error("Erro ao buscar produtos");
+        }
+
         const data = await response.json();
+
+        if (!Array.isArray(data) || data.length === 0) {
+          return [];
+        }
+
         setProducts(data);
       } catch (error) {
         throw new Error("Erro ao buscar produtos");

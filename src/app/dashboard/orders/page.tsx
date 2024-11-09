@@ -140,7 +140,7 @@ export default function Dashboard() {
             </div>
             <TabsContent value="week">
               <Card x-chunk="dashboard-05-chunk-3">
-                <CardHeader className="px-7 px-6 mt-6 space-y-2 mb-5">
+                <CardHeader className="px-6 mt-6 space-y-2 mb-5">
                   <CardTitle>Pedidos</CardTitle>
                   <CardDescription>
                     Pedidos recentes da sua loja

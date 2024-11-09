@@ -9,11 +9,24 @@ import ProductCardSkeleton from "@/components/product-card-skeleton";
 const skeletons = Array.from({ length: 10 }, (_, i) => i);
 
 async function RecentProductsContent() {
-  const products = await getRecentProducts();
+  try {
+    const products = await getRecentProducts();
 
-  return products.map((product) => (
-    <ProductCard key={product.id} product={product} />
-  ));
+    if (!Array.isArray(products) || products.length === 0) {
+      return (
+        <div className="w-full text-center py-4">
+          <p>Nenhum produto encontrado</p>
+        </div>
+      );
+    }
+
+    return products.map((product) => (
+      <ProductCard key={product.id} product={product} />
+    ));
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 }
 
 export default function RecentProducts() {

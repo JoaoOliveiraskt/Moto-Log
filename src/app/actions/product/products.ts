@@ -1,23 +1,42 @@
 import { Product } from "@/app/types/product";
+import { unstable_cache } from "next/cache";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export const getRecentProducts = async (): Promise<Product[]> => {
-  const response = await fetch(`${API_URL}/product/all?limit=30&sort=recent`);
+const RECENT_CACHE_TIME = 300;
+const BEST_SELLERS_CACHE_TIME = 900;
 
-  if (!response.ok) {
-    throw new Error("Falha ao buscar produtos");
+const fetchProducts = async (params: string): Promise<Product[]> => {
+  try {
+    const response = await fetch(`${API_URL}/product/all${params}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error(`Erro ao buscar produtos (${params}):`, error);
+    return [];
   }
-
-  return response.json();
 };
 
-export const getBestSellers = async (): Promise<Product[]> => {
-  const response = await fetch(`${API_URL}/product/all?bestSellers=true`);
+export const getRecentProducts = unstable_cache(
+  async () => {
+    return fetchProducts("?sortBy=recent");
+  },
+  ["recent-products"],
+  { revalidate: RECENT_CACHE_TIME, tags: ["products"] }
+);
 
-  if (!response.ok) {
-    throw new Error("Falha ao buscar produtos");
-  }
-
-  return response.json();
-};
+export const getBestSellers = unstable_cache(
+  async () => {
+    return fetchProducts("?bestSellers=true");
+  },
+  ["best-sellers"],
+  { revalidate: BEST_SELLERS_CACHE_TIME, tags: ["products"] }
+);
