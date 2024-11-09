@@ -38,6 +38,7 @@ export default function ProductsCarousel({
   const [api, setApi] = useState<CarouselApi | null>(null);
   const [scrollPrev, setScrollPrev] = useState<boolean>(false);
   const [scrollNext, setScrollNext] = useState<boolean>(true);
+  const [isHovering, setIsHovering] = useState<boolean>(false);
 
   useEffect(() => {
     if (!api) {
@@ -49,6 +50,14 @@ export default function ProductsCarousel({
       setScrollNext(api.canScrollNext());
     });
   }, [api]);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -96,11 +105,7 @@ export default function ProductsCarousel({
   }, [limit, productType]);
 
   return (
-    <div className="space-y-4 min-w-full">
-      <div className="flex justify-between items-center">
-        <TypographyH3>{title}</TypographyH3>
-        <SeeAllButton href={link} />
-      </div>
+    <div className="">
       <Carousel
         opts={{
           dragFree: true,
@@ -111,14 +116,24 @@ export default function ProductsCarousel({
         }}
         setApi={setApi}
       >
+        <div className="flex justify-between items-center">
+          <TypographyH3>{title}</TypographyH3>
+          <div className="flex items-center gap-x-2">
+            <SeeAllButton href={link} />
+          </div>
+        </div>
         {loading ? (
-          <CarouselContent className="flex gap-3">
+          <CarouselContent className="flex gap-3 mt-4">
             {Array.from({ length: 10 }).map((_, index) => (
               <ProductCardSkeleton key={index} />
             ))}
           </CarouselContent>
         ) : (
-          <CarouselContent className="flex gap-2">
+          <CarouselContent
+            className="flex gap-2 mt-4"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             {products.map((product) => (
               <div key={product.id}>
                 <ProductCard
@@ -130,14 +145,34 @@ export default function ProductsCarousel({
             ))}
           </CarouselContent>
         )}
-        <CarouselPrevious
-          variant={"ghost"}
-          className={cn("h-10 w-10", scrollPrev ? "hidden sm:flex" : "hidden")}
-        />
-        <CarouselNext
-          variant={"ghost"}
-          className={cn("h-10 w-10", scrollNext ? "hidden sm:flex" : "hidden")}
-        />
+        {/* Botão Previous */}
+        <div
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className={cn(
+            "absolute z-10 bg-gradient-to-l from-transparent via-background/80 to-background -left-0 top-6 h-full w-0 hover:w-32 transition-all duration-300",
+            isHovering ? "opacity-100" : "opacity-0",
+            scrollPrev ? "hidden sm:flex" : "hidden"
+          )}
+        >
+          <CarouselPrevious
+            variant={"secondary"}
+            className="-left-0 h-10 w-10"
+          />
+        </div>
+
+        {/* Botão Next */}
+        <div
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className={cn(
+            "absolute z-10 bg-gradient-to-r from-transparent via-background/50 to-background -right-0 top-8 h-full w-0 hover:w-32 transition-all duration-300",
+            isHovering ? "opacity-100" : "opacity-0",
+            scrollNext ? "hidden sm:flex" : "hidden"
+          )}
+        >
+          <CarouselNext variant={"secondary"} className="-right-2 h-10 w-10" />
+        </div>
       </Carousel>
     </div>
   );
