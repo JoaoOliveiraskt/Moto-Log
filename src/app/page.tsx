@@ -1,8 +1,9 @@
 import CategoryList from "@/components/category-list";
 import Container from "@/components/container";
-import DiscountProducts from "@/components/discount-products";
+import DiscountProducts from "@/components/carousels/discount-products";
 import Hero from "@/components/hero";
-import RecentProducts from "@/components/recent-products";
+import RecentProducts from "@/components/carousels/recent-products";
+import BestSellers from "@/components/carousels/best-sellers";
 import TopStores from "@/components/top-stores";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <TopStores />
         <DiscountProducts />
         <RecentProducts />
+        <BestSellers />
       </Container>
     </main>
   );

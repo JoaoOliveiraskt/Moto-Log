@@ -8,6 +8,7 @@ import { Prisma } from "../../prisma/generated/client";
 import LikeButton from "./like-button";
 import { cn } from "@/lib/utils";
 import StoreBadge from "./store-badge";
+import TypographySmall from "./typography/typography-small";
 
 interface ProductProps {
   product: Prisma.ProdutoGetPayload<{
@@ -38,7 +39,7 @@ const ProductCard = ({
       <Link href={`/product/${product.id}`}>
         <div
           className={cn(
-            "h-48 w-full lg:h-[13rem] rounded-2xl overflow-hidden border",
+            "h-48 w-fulll lg:h-[13rem] rounded-2xl overflow-hidden border",
             className
           )}
         >
@@ -48,17 +49,19 @@ const ProductCard = ({
             width={1000}
             height={1000}
             priority
-            className="object-cover w-full h-full hover:scale-105 duration-500 transition-all"
+            className="object-cover w-full h-full hover:brightness-75 duration-500 transition-all"
           />
         </div>
         <div className="min-h-full px-1 py-2 flex flex-col justify-between">
           <h2 className="text-sm line-clamp-2 ">{product.nome}</h2>
-          <Link
-            href={`/category/${product.categoriaId}`}
-            className="text-xs text-muted-foreground  hover:text-cyan-600 w-fit"
-          >
-            {product.categoria?.nome}
-          </Link>
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            <Link
+              href={`/category/${product.categoriaId}`}
+              className="  hover:text-cyan-600 w-fit"
+            >
+              {product.categoria?.nome}
+            </Link>
+          </div>
 
           <div className="flex flex-col items-start mt-2">
             {Number(product.porcentagemDesconto) > 0 && (
@@ -75,10 +78,14 @@ const ProductCard = ({
               {formatCurrency(Number(calculateTotalPrice(product)))}
             </span>
           </div>
+
+          <TypographySmall className="text-muted-foreground mt-2">
+            {product.totalVendido} vendidos
+          </TypographySmall>
         </div>
       </Link>
 
-      <div>
+      <div className="mt-2">
         <StoreBadge
           store={{
             id: loja.id,
@@ -91,7 +98,8 @@ const ProductCard = ({
           side={side}
         />
       </div>
-      <div className="absolute top-[9.6rem] mb-2 lg:top-44 right-3 lg:right-5 h-7 w-7 bg-white flex items-center rounded-full ">
+
+      <div className="absolute top-[44%] right-2.5 md:right-5 mb-2  h-7 w-7 bg-white flex items-center rounded-full ">
         <LikeButton
           product={{ id: product.id }}
           size={20}

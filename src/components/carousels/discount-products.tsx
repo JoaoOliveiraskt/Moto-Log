@@ -1,10 +1,10 @@
-import ProductsCarousel from "./carousels/products-carousel";
+import ProductsCarousel from "./products-carousel";
 
 export default function DiscountProducts() {
   return (
     <div>
       <ProductsCarousel
-        limit={10}
+        limit={12}
         link="/discount"
         title="Top Ofertas"
         productType="discount"

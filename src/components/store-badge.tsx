@@ -42,7 +42,7 @@ export default function StoreBadge({
           href={`/store/${store.id}`}
           className="text-foreground font-medium hover:text-cyan-600 flex items-center gap-2 w-fit h-fit"
         >
-          <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0">
+          <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
             {store.imagemUrl ? (
               <Image
                 src={store.imagemUrl}
@@ -55,14 +55,13 @@ export default function StoreBadge({
               <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
             )}
           </div>
-          <div className="flex flex-col justify-center">
-            <h5 className="text-sm">{store.nome}</h5>
-          </div>
+
+          <p className="text-sm">{store.nome}</p>
         </Link>
       </HoverCardTrigger>
       <HoverCardContent
         className={cn(
-          `max-w-xs w-full z-50 cursor-default rounded-2xl dark:shadow-none p-6 ${
+          `max-w-xs w-full z-50 cursor-default rounded-2xl dark:shadow-none p-4 ${
             showHoverCard === true ? "" : "hidden"
           } `
         )}
@@ -100,7 +99,7 @@ export default function StoreBadge({
             {store.descricao}
           </TypographyP>
         </div>
-        <Button asChild className="mt-6 w-full">
+        <Button asChild className="mt-6 w-full rounded-lg">
           <Link href={`/store/${store.id}`}>Ver loja</Link>
         </Button>
       </HoverCardContent>

@@ -8,6 +8,7 @@ export async function GET(req: Request) {
     const categoryId = searchParams.get("categoryId");
     const limitParam = searchParams.get("limit");
     const limit = limitParam ? parseInt(limitParam, 10) : undefined;
+    const bestSellers = searchParams.get("bestSellers") === "true";
 
     const response = await db.produto.findMany({
       include: {
@@ -21,18 +22,25 @@ export async function GET(req: Request) {
         estoque: { gt: 0 },
         ...(withDiscount && { porcentagemDesconto: { gt: 0 } }),
         ...(categoryId && { categoriaId: categoryId }),
+        ...(bestSellers && { totalVendido: { gt: 0 } }),
       },
-      orderBy: { createdAt: "desc" },
+      orderBy: {
+        ...(bestSellers
+          ? { totalVendido: "desc" }
+          : withDiscount
+          ? { porcentagemDesconto: "desc" }
+          : { createdAt: "desc" }),
+      },
       ...(limit && { take: limit }),
     });
 
     return NextResponse.json(response);
   } catch (error) {
     return NextResponse.json(
-      { 
+      {
         message: "Erro ao buscar produtos",
-        error: error instanceof Error ? error.message : "Erro desconhecido"
-      }, 
+        error: error instanceof Error ? error.message : "Erro desconhecido",
+      },
       { status: 500 }
     );
   }

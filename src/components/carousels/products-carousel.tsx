@@ -60,6 +60,8 @@ export default function ProductsCarousel({
           endpoint += "&withDiscount=true";
         } else if (productType === "recent") {
           endpoint += "&sort=recent";
+        } else if (productType === "bestselling") {
+          endpoint += "&bestSellers=true";
         }
 
         const response = await fetch(endpoint, {
@@ -88,7 +90,7 @@ export default function ProductsCarousel({
       <Carousel
         opts={{
           dragFree: true,
-          duration: 20,
+          duration: 17,
           containScroll: "trimSnaps",
           align: "start",
           slidesToScroll: "auto",
