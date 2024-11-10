@@ -22,7 +22,12 @@ export default function TopStores() {
     const fetchTopStores = async () => {
       try {
         const take = 10;
-        const response = await fetch(`/api/store?take=${take}`);
+        const response = await fetch(`/api/store?take=${take}`, {
+          next: {
+            tags: ["top-stores"],
+            revalidate: 300,
+          },
+        });
         const data = await response.json();
         setTopStores(data);
       } catch (error) {

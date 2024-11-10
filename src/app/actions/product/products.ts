@@ -1,16 +1,16 @@
 import { Product } from "@/app/types/product";
-import { unstable_cache } from "next/cache";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-const RECENT_CACHE_TIME = 300;
-const BEST_SELLERS_CACHE_TIME = 900;
 
 const fetchProducts = async (params: string): Promise<Product[]> => {
   try {
     const response = await fetch(`${API_URL}/product/all${params}`, {
       headers: {
         "Content-Type": "application/json",
+      },
+      next: {
+        tags: ["products"],
+        revalidate: 300,
       },
     });
 
@@ -25,18 +25,14 @@ const fetchProducts = async (params: string): Promise<Product[]> => {
   }
 };
 
-export const getRecentProducts = unstable_cache(
-  async () => {
-    return fetchProducts("?sortBy=recent");
-  },
-  ["recent-products"],
-  { revalidate: RECENT_CACHE_TIME, tags: ["products"] }
-);
+export const getDiscountProducts = async (limit?: number) => {
+  return fetchProducts(`?withDiscount=true${limit ? `&limit=${limit}` : ''}`);
+};
 
-export const getBestSellers = unstable_cache(
-  async () => {
-    return fetchProducts("?bestSellers=true");
-  },
-  ["best-sellers"],
-  { revalidate: BEST_SELLERS_CACHE_TIME, tags: ["products"] }
-);
+export const getRecentProducts = async (limit?: number) => {
+  return fetchProducts(`?sortBy=recent${limit ? `&limit=${limit}` : ''}`);
+};
+
+export const getBestSellers = async (limit?: number) => {
+  return fetchProducts(`?bestSellers=true${limit ? `&limit=${limit}` : ''}`);
+};

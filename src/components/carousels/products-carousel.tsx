@@ -14,6 +14,11 @@ import { Produto, Categoria, Loja } from "prisma/generated/client";
 import TypographyH3 from "../typography/typography-h3";
 import SeeAllButton from "../see-all-button";
 import { cn } from "@/lib/utils";
+import {
+  getDiscountProducts,
+  getRecentProducts,
+  getBestSellers,
+} from "@/app/actions/product/products";
 
 interface Props {
   limit?: number;
@@ -62,39 +67,25 @@ export default function ProductsCarousel({
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const url = process.env.NEXT_PUBLIC_API_URL;
-        let endpoint = `${url}/product/all?limit=${limit}`;
+        let productsData = [];
 
         switch (productType) {
           case "discount":
-            endpoint += "&withDiscount=true";
+            productsData = await getDiscountProducts(limit);
             break;
           case "recent":
-            endpoint += "&sort=recent";
+            productsData = await getRecentProducts(limit);
             break;
           case "bestselling":
-            endpoint += "&bestSellers=true";
+            productsData = await getBestSellers(limit);
             break;
         }
 
-        const response = await fetch(endpoint, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error("Erro ao buscar produtos");
-        }
-
-        const data = await response.json();
-
-        if (!Array.isArray(data) || data.length === 0) {
+        if (!Array.isArray(productsData) || productsData.length === 0) {
           return [];
         }
 
-        setProducts(data);
+        setProducts(productsData);
       } catch (error) {
         throw new Error("Erro ao buscar produtos");
       } finally {
@@ -145,7 +136,7 @@ export default function ProductsCarousel({
             ))}
           </CarouselContent>
         )}
-        {/* Botão Previous */}
+
         <div
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -161,7 +152,6 @@ export default function ProductsCarousel({
           />
         </div>
 
-        {/* Botão Next */}
         <div
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
