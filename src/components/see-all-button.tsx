@@ -1,16 +1,20 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { GoChevronRight } from "react-icons/go";
+import { cn } from "@/lib/utils";
 
 interface Props {
   href: string;
+  className?: string;
 }
 
-export default function SeeAllButton({ href }: Props) {
+export default function SeeAllButton({ href, className }: Props) {
   return (
     <Link
       href={href}
-      className="flex items-center gap-1 text-foreground transition-all ml-6 text-sky-600 hover:underline"
+      className={cn(
+        "flex items-center text-foreground transition-all text-sky-600 hover:underline",
+        className
+      )}
     >
       <span className="font-medium text-sm">Ver todos</span>
     </Link>
