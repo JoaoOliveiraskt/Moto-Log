@@ -17,14 +17,14 @@ export default function MotoLogLogo({
   disabled = false,
 }: Props) {
   return disabled ? (
-    <div className={`p-0 ${className}`}>
+    <div className={`p-0 ${className} border`}>
       <svg
         width={svgWidth}
         height={svgHeight}
         viewBox="0 0 128 60"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-20 w-[43px] fill-fg-primary"
+        className="h-full w-[43px] fill-fg-primary"
       >
         <title>Moto Log</title>
         <path d="M128 28H96V60H128V28Z"></path>
@@ -40,7 +40,7 @@ export default function MotoLogLogo({
         viewBox="0 0 128 60"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-20 w-[43px] fill-fg-primary"
+        className="h-full w-[43px] fill-fg-primary"
       >
         <title>Moto Log</title>
         <path d="M128 28H96V60H128V28Z"></path>

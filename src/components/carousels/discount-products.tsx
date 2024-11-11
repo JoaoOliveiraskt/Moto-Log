@@ -6,7 +6,7 @@ export default function DiscountProducts() {
       <ProductsCarousel
         limit={12}
         link="/discount"
-        title="Top Ofertas"
+        title="Melhores Ofertas"
         productType="discount"
       />
     </div>

@@ -29,6 +29,7 @@ import { BiSolidShoppingBag } from "react-icons/bi";
 import { FiHeart } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
+import { FaRegUserCircle } from "react-icons/fa";
 
 const Icon = {
   home: GoHome,
@@ -62,6 +63,7 @@ const Icon = {
   location: SlLocationPin,
   google: FcGoogle,
   loading: VscLoading,
+  user: FaRegUserCircle,
 };
 
 export default Icon;

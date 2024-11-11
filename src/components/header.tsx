@@ -13,13 +13,11 @@ import {
 
 export default function Header() {
   return (
-    <div className="hidden lg:flex fixed top-0 z-40 h-[72px] bg-background w-screen pr-4">
+    <div className="hidden lg:flex fixed top-0 z-40 h-16 bg-background w-screen">
       <Container className="h-full w-full relative">
         <div className="w-full h-full flex items-center justify-between">
-          <div className="w-fit flex items-center gap-10">
-            <div className="md:flex md:items-center md:gap-3 hover:scale-105 transition-all active:scale-95">
-              <MotoLogLogo />
-            </div>
+          <div className="hover:scale-105 transition-all active:scale-95 h-fit">
+            <MotoLogLogo />
           </div>
 
           <div className="absolute left-1/2 transform -translate-x-1/2">
@@ -27,12 +25,10 @@ export default function Header() {
           </div>
           <div className="flex items-center w-auto gap-2">
             <div className="flex items-center gap-2">
-              <HeaderLoginBtn />
-
               <TooltipProvider delayDuration={0}>
                 <Tooltip>
                   <TooltipTrigger>
-                    <CartButton iconSize={18} model="ghost" />
+                    <CartButton iconSize={18} model="icon" />
                   </TooltipTrigger>
                   <TooltipContent side="bottom">Carrinho</TooltipContent>
                 </Tooltip>
@@ -49,6 +45,8 @@ export default function Header() {
                   <TooltipContent side="bottom">Menu</TooltipContent>
                 </Tooltip>
               </TooltipProvider>
+
+              <HeaderLoginBtn />
             </div>
           </div>
         </div>

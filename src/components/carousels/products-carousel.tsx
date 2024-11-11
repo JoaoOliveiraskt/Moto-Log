@@ -43,7 +43,6 @@ export default function ProductsCarousel({
   const [api, setApi] = useState<CarouselApi | null>(null);
   const [scrollPrev, setScrollPrev] = useState<boolean>(false);
   const [scrollNext, setScrollNext] = useState<boolean>(true);
-  const [isHovering, setIsHovering] = useState<boolean>(false);
 
   useEffect(() => {
     if (!api) {
@@ -55,14 +54,6 @@ export default function ProductsCarousel({
       setScrollNext(api.canScrollNext());
     });
   }, [api]);
-
-  const handleMouseEnter = () => {
-    setIsHovering(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -100,8 +91,8 @@ export default function ProductsCarousel({
       <Carousel
         opts={{
           dragFree: true,
-          duration: 17,
           containScroll: "trimSnaps",
+          duration: 17,
           align: "start",
           slidesToScroll: "auto",
         }}
@@ -120,11 +111,7 @@ export default function ProductsCarousel({
             ))}
           </CarouselContent>
         ) : (
-          <CarouselContent
-            className="flex gap-2 mt-4"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
+          <CarouselContent className="flex gap-2 mt-4">
             {products.map((product) => (
               <div key={product.id}>
                 <ProductCard
@@ -137,32 +124,13 @@ export default function ProductsCarousel({
           </CarouselContent>
         )}
 
-        <div
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className={cn(
-            "absolute z-10 bg-gradient-to-l from-transparent via-background/80 to-background -left-0 top-6 h-full w-0 hover:w-32 transition-all duration-300",
-            isHovering ? "opacity-100" : "opacity-0",
-            scrollPrev ? "hidden sm:flex" : "hidden"
-          )}
-        >
-          <CarouselPrevious
-            variant={"secondary"}
-            className="-left-0 h-10 w-10"
-          />
-        </div>
+        <CarouselPrevious
+          className={cn("left-2", scrollPrev ? "" : "hidden")}
+        />
 
-        <div
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className={cn(
-            "absolute z-10 bg-gradient-to-r from-transparent via-background/50 to-background -right-0 top-8 h-full w-0 hover:w-32 transition-all duration-300",
-            isHovering ? "opacity-100" : "opacity-0",
-            scrollNext ? "hidden sm:flex" : "hidden"
-          )}
-        >
-          <CarouselNext variant={"secondary"} className="-right-2 h-10 w-10" />
-        </div>
+        <CarouselNext
+          className={cn("right-2", scrollNext ? "" : "hidden")}
+        />
       </Carousel>
     </div>
   );
