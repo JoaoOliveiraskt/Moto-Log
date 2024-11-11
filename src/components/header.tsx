@@ -4,6 +4,8 @@ import CartButton from "./cart-button";
 import Container from "./container";
 import MotoLogLogo from "./icons/moto-log-logo";
 import HeaderLoginBtn from "./header-login-btn";
+import Icon from "./icons/icon-component";
+import Link from "next/link";
 import {
   Tooltip,
   TooltipContent,
@@ -21,14 +23,26 @@ export default function Header() {
           </div>
 
           <div className="absolute left-1/2 transform -translate-x-1/2">
-            <SearchInput className="w-96 xl:w-[30rem]" />
+            <SearchInput className="w-96 xl:w-[32rem]" />
           </div>
           <div className="flex items-center w-auto gap-2">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-4">
+              <HeaderLoginBtn />
               <TooltipProvider delayDuration={0}>
                 <Tooltip>
                   <TooltipTrigger>
-                    <CartButton iconSize={18} model="icon" />
+                    <Link href="/community">
+                      <Icon.globe size={19} className="rotate-45" />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">Comunidade</TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
+              <TooltipProvider delayDuration={0}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <CartButton iconSize={19} model="icon" />
                   </TooltipTrigger>
                   <TooltipContent side="bottom">Carrinho</TooltipContent>
                 </Tooltip>
@@ -38,15 +52,13 @@ export default function Header() {
                 <Tooltip>
                   <TooltipTrigger>
                     <Menu
-                      iconSize={20}
-                      className="h-9 w-9 bg-background hover:bg-accent shadow-sm !text-foreground"
+                      iconSize={22}
+                      className="bg-background shadow-sm !text-foreground"
                     />
                   </TooltipTrigger>
                   <TooltipContent side="bottom">Menu</TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-
-              <HeaderLoginBtn />
             </div>
           </div>
         </div>

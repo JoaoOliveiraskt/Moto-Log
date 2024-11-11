@@ -30,6 +30,7 @@ import { FiHeart } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
 import { FaRegUserCircle } from "react-icons/fa";
+import { BiGlobe } from "react-icons/bi";
 
 const Icon = {
   home: GoHome,
@@ -64,6 +65,7 @@ const Icon = {
   google: FcGoogle,
   loading: VscLoading,
   user: FaRegUserCircle,
+  globe: BiGlobe,
 };
 
 export default Icon;

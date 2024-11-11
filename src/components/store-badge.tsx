@@ -22,6 +22,8 @@ interface StoreBadgeProps {
   showHoverCard?: boolean;
   align?: "start" | "center" | "end";
   side?: "top" | "right" | "bottom" | "left";
+  className?: string;
+  imageClassName?: string;
 }
 
 export default function StoreBadge({
@@ -29,6 +31,8 @@ export default function StoreBadge({
   showHoverCard = true,
   align = "start",
   side = "bottom",
+  imageClassName,
+  className,
 }: StoreBadgeProps) {
   if (!store || !store.id) {
     console.error("Loja não está definida ou não possui um ID:", store);
@@ -40,9 +44,17 @@ export default function StoreBadge({
       <HoverCardTrigger asChild className="cursor-pointer z-10 w-fit h-fit">
         <Link
           href={`/store/${store.id}`}
-          className="text-foreground font-medium hover:text-cyan-600 flex items-center gap-2 w-fit h-fit"
+          className={cn(
+            "text-foreground font-medium hover:text-muted-foreground flex items-center gap-2 w-fit h-fit",
+            className
+          )}
         >
-          <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
+          <div
+            className={cn(
+              "w-7 h-7 rounded-full overflow-hidden flex-shrink-0",
+              imageClassName
+            )}
+          >
             {store.imagemUrl ? (
               <Image
                 src={store.imagemUrl}

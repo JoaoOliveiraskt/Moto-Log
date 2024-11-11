@@ -9,8 +9,8 @@ interface Props {
 export default function MenuBtn({ children, className, iconSize }: Props) {
   return (
     <div
-      className={`cursor-pointer rounded-sm h-14 w-14 flex flex-col items-center hover:bg-background
-      justify-center  hover:transition-colors ${className}`}
+      className={`cursor-pointer h-fit w-fit flex flex-col items-center
+      justify-center ${className}`}
     >
       <Icon.menu size={iconSize} />
 

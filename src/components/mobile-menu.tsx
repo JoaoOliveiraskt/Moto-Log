@@ -110,6 +110,24 @@ const MobileMenu = ({ className, iconSize = 20 }: Props) => {
           </Button>
         )}
 
+        <Button
+          asChild
+          onClick={handleMenuOpen.close}
+          variant="secondary"
+          size="menu"
+          className="w-full  border-border/70 "
+        >
+          <Link
+            href="/community"
+            className="flex gap-4 w-full justify-between py-6 "
+          >
+            <TypographyLarge className="font-medium">
+              Comunidade
+            </TypographyLarge>
+            <icon.globe size={iconSize} />
+          </Link>
+        </Button>
+
         <ModeToggle
           variant="secondary"
           iconSize={iconSize}

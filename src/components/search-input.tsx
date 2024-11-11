@@ -14,14 +14,14 @@ export default function SearchInput({ className }: Props) {
           Buscar{" "}
         </label>
         <icon.search
-          size={25}
-          className="absolute start-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+          size={18}
+          className="absolute start-4 top-1/2 -translate-y-1/2"
         />
 
         <Input
           type="text"
           name="search"
-          className={`h-12 w-full px-16 rounded-full bg-accent dark:bg-accent-foreground border-none ${className}`}
+          className={`h-12 w-full px-12 rounded-full bg-accent dark:bg-accent-foreground border-none ${className}`}
           placeholder="Buscar produtos..."
         />
       </div>
