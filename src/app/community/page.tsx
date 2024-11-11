@@ -11,6 +11,7 @@ import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Suspense } from "react";
 import { cn } from "@/lib/utils";
+import { StoreCarouselSkeleton } from "@/components/skeletons/store-carousel-skeleton";
 
 export default async function Community() {
   let stores: Loja[] = [];
@@ -45,19 +46,8 @@ export default async function Community() {
         </TypographyP>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-8">
-        {stores.map((store: Loja) => (
-          <Suspense
-            key={store.id}
-            fallback={Array.from({ length: 10 }).map((_, index) => (
-              <div key={index}>
-                <Skeleton className="h-60 sm:h-72 w-full rounded-3xl" />
-                <div className="flex items-center gap-2">
-                  <Skeleton className="h-9 w-9 rounded-full" />
-                  <Skeleton className="h-3 w-16" />
-                </div>
-              </div>
-            ))}
-          >
+        <Suspense fallback={<StoreCarouselSkeleton />}>
+          {stores.map((store: Loja) => (
             <Link key={store.id} href={`/store/${store.id}`} className="">
               <Card className="bg-accent h-60 sm:h-72 w-full rounded-3xl overflow-hidden p-2">
                 <Image
@@ -75,8 +65,8 @@ export default async function Community() {
                 className="mt-3"
               />
             </Link>
-          </Suspense>
-        ))}
+          ))}
+        </Suspense>
       </div>
     </Container>
   );
