@@ -58,7 +58,7 @@ export default function CategoryCarousel() {
     <Carousel
       opts={{
         dragFree: true,
-        duration: 20,
+        duration: 17,
         containScroll: "trimSnaps",
         align: "start",
         slidesToScroll: "auto",
@@ -66,9 +66,9 @@ export default function CategoryCarousel() {
       setApi={setApi}
     >
       {loading ? (
-        <div className="flex gap-2">
-          {Array.from({ length: 8 }).map((_, index) => (
-            <Skeleton key={index} className="h-9 min-w-40 rounded-md" />
+        <div className="flex gap-2 w-full overflow-hidden">
+          {Array.from({ length: 9 }).map((_, index) => (
+            <Skeleton key={index} className="h-11 min-w-40 rounded-full" />
           ))}
         </div>
       ) : (

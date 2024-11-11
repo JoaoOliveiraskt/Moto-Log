@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 interface Category {
   id: string;
@@ -12,10 +14,17 @@ interface CategoryProps {
 }
 
 export default function CategoryItem({ category, link }: CategoryProps) {
+  const pathname = usePathname();
+  const isActive = pathname === `/category/${category.id}`;
+
   return (
     <Button
+      variant="secondary"
+      size={"rounded"}
+      className={cn(
+        isActive && "bg-foreground text-background hover:bg-foreground/90"
+      )}
       asChild
-      className="flex border-none items-center w-fit h-fit py-1.5 bg-accent/60 hover:bg-accent dark:bg-accent dark:hover:bg-accent-foreground rounded-md transition-all text-foreground"
     >
       <Link href={link}>
         <p className="font-semibold">{category.nome}</p>

@@ -7,7 +7,7 @@ import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/product-card-skeleton";
 
 export default async function DiscountPage() {
-  const title = "Top ofertas";
+  const title = "Melhores Ofertas";
   const url = process.env.NEXT_PUBLIC_API_URL;
 
   if (!url) {

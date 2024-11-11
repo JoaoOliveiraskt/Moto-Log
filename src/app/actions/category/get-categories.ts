@@ -1,15 +1,30 @@
-"use server";
-
 import { db } from "@/lib/prisma";
 
-export default async function GetCategories() {
-  const category = await db.categoria.findMany({
+interface Props {
+  categoryNames: string[];
+  maxDiscount?: number;
+}
+
+export default async function GetCategories({
+  categoryNames,
+  maxDiscount = 20,
+}: Props) {
+  const categories = await db.categoria.findMany({
+    where: {
+      nome: {
+        in: categoryNames,
+      },
+    },
     include: {
       produtos: {
+        where: {
+          porcentagemDesconto: {
+            lte: maxDiscount,
+          },
+        },
         select: {
           id: true,
           nome: true,
-          categoria: true,
           preco: true,
           porcentagemDesconto: true,
           imagemUrl: true,
@@ -18,11 +33,8 @@ export default async function GetCategories() {
         },
       },
     },
+    orderBy: { nome: "asc" },
   });
 
-  if (!category) {
-    return null;
-  }
-
-  return category || [];
+  return categories;
 }

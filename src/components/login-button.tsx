@@ -124,9 +124,9 @@ export const AvatarInfo = ({ className, variant = "outline" }: Props) => {
             className={`flex items-center space-x-2 py-6 px-8 lg:px-4 ${className}`}
           >
             <span className="text-sm font-medium tracking-wider">
-              Acesse sua conta
+              Entrar
             </span>
-            <icon.signIn size={20} />
+            <icon.user size={20} />
           </Button>
 
           <LoginDialog open={open} onOpenChange={setOpen} />

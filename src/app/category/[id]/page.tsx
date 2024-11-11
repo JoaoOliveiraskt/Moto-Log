@@ -22,7 +22,7 @@ export default async function CategorieList({ params }: Props) {
 
   return (
     <>
-      <Container className="flex flex-col gap-8 mt-20 min-h-screen">
+      <Container className="flex flex-col gap-8 mt-36 min-h-screen">
         <GoBackButton name={category.nome} className="hidden lg:flex" />
 
         {products.length > 0 ? (
