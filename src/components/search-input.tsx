@@ -21,7 +21,7 @@ export default function SearchInput({ className }: Props) {
         <Input
           type="text"
           name="search"
-          className={`h-12 w-full px-12 rounded-full bg-accent dark:bg-accent-foreground border-none ${className}`}
+          className={`h-12 w-full px-12 rounded-full bg-accent  border-none ${className}`}
           placeholder="Buscar produtos..."
         />
       </div>
