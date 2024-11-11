@@ -3,8 +3,6 @@ import TypographyP from "@/components/typography/typography-p";
 import Link from "next/link";
 import Image from "next/image";
 import GetStores from "@/app/actions/store/get-stores";
-import { Suspense } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Card } from "@/components/ui/card";
 import StoreBadge from "@/components/store-badge";
 import {
@@ -16,17 +14,8 @@ import {
 } from "@/components/ui/carousel";
 import SeeAllButton from "../see-all-button";
 
-async function getStores() {
-  try {
-    const stores = await GetStores({ limit: 6 });
-    return stores;
-  } catch (error) {
-    throw new Error("Error fetching stores");
-  }
-}
-
 export default async function StoreCarousel() {
-  const stores = await getStores();
+  const stores = await GetStores({ limit: 6 });
 
   return (
     <section className="space-y-6">
