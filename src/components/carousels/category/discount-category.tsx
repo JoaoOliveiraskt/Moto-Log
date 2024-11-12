@@ -1,6 +1,6 @@
 import GetCategories from "@/app/actions/category/get-categories";
-import TypographyH3 from "../typography/typography-h3";
-import { Card } from "../ui/card";
+import TypographyH3 from "../../typography/typography-h3";
+import { Card } from "../../ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -10,7 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import TypographyP from "../typography/typography-p";
+import TypographyP from "../../typography/typography-p";
 
 interface CategoryContent {
   discount: string;
@@ -74,7 +74,7 @@ export default async function DiscountCategoryCarousel() {
         opts={{
           align: "start",
           loop: true,
-          duration: 17,
+          duration: 14,
         }}
         className="w-full"
       >
@@ -86,7 +86,7 @@ export default async function DiscountCategoryCarousel() {
             return (
               <CarouselItem
                 key={category.id}
-                className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
+                className="pl-2 md:pl-4 sm:basis-1/2 lg:basis-1/3"
               >
                 <Link
                   href={`/category/${category.id}?discount=true`}

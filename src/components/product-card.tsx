@@ -39,16 +39,17 @@ const ProductCard = ({
       <Link href={`/product/${product.id}`}>
         <div
           className={cn(
-            "h-48 w-fulll lg:h-[13rem] rounded-2xl overflow-hidden border",
+            "h-48 w-fulll lg:h-[13rem] rounded-2xl overflow-hidden",
             className
           )}
         >
           <Image
             src={product.imagemUrl}
             alt={product.nome}
-            width={1000}
-            height={1000}
+            width={500}
+            height={500}
             priority
+            quality={80}
             className="object-cover w-full h-full hover:brightness-75 duration-500 transition-all"
           />
         </div>

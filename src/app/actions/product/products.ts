@@ -10,7 +10,7 @@ const fetchProducts = async (params: string): Promise<Product[]> => {
       },
       next: {
         tags: ["products"],
-        revalidate: 300,
+        revalidate: 180,
       },
     });
 
@@ -26,13 +26,13 @@ const fetchProducts = async (params: string): Promise<Product[]> => {
 };
 
 export const getDiscountProducts = async (limit?: number) => {
-  return fetchProducts(`?withDiscount=true${limit ? `&limit=${limit}` : ''}`);
+  return fetchProducts(`?withDiscount=true${limit ? `&limit=${limit}` : ""}`);
 };
 
 export const getRecentProducts = async (limit?: number) => {
-  return fetchProducts(`?sortBy=recent${limit ? `&limit=${limit}` : ''}`);
+  return fetchProducts(`?sortBy=recent${limit ? `&limit=${limit}` : ""}`);
 };
 
 export const getBestSellers = async (limit?: number) => {
-  return fetchProducts(`?bestSellers=true${limit ? `&limit=${limit}` : ''}`);
+  return fetchProducts(`?bestSellers=true${limit ? `&limit=${limit}` : ""}`);
 };
