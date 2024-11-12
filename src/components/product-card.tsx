@@ -39,7 +39,7 @@ const ProductCard = ({
       <Link href={`/product/${product.id}`}>
         <div
           className={cn(
-            "h-48 w-fulll lg:h-[13rem] rounded-2xl overflow-hidden border",
+            "h-48 w-fulll lg:h-[13rem] rounded-2xl overflow-hidden",
             className
           )}
         >

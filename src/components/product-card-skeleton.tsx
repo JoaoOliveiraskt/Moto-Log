@@ -5,7 +5,7 @@ export default function ProductCardSkeleton() {
     <div className="relative mb-6">
       <div className="cursor-pointer h-max overflow-hidden rounded-2xl transition-all">
         {/* Imagem do produto */}
-        <Skeleton className="h-48 min-w-64 lg:h-[13rem] rounded-2xl mb-3" />
+        <Skeleton className="h-48 w-full lg:min-w-64 lg:h-[13rem] rounded-2xl mb-3" />
 
         <div className="min-h-full px-1 py-0.5 flex flex-col justify-between">
           {/* Nome do produto */}

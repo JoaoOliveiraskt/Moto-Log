@@ -33,7 +33,7 @@ export default async function Community() {
       <div className="flex flex-col md:h-80 h-72 items-center mb-8 sm:mb-0">
         <TypographyH1
           className={cn(
-            "text-center text-3xl lg:text-[2.7rem] mt-14 md:mt-24 font-semibold tracking-tighter max-w-xs md:max-w-xl"
+            "text-center text-3xl lg:text-[2.7rem] mt-14 md:mt-24 font-semibold tracking-tighter max-w-[280px] md:max-w-xl"
           )}
         >
           Comunidade MotoLog

@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button";
 import { db } from "@/lib/prisma";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import ProductCardSkeleton from "@/components/product-card-skeleton";
+import TypographyH3 from "@/components/typography/typography-h3";
+import TypographyP from "@/components/typography/typography-p";
+import LikeButton from "@/components/like-button";
 
 async function getData(id: string) {
   const store = await db.loja.findUnique({
@@ -14,6 +18,7 @@ async function getData(id: string) {
       Produtos: {
         include: {
           loja: true,
+          categoria: true,
         },
       },
     },
@@ -62,9 +67,9 @@ export default async function Store({ params }: Props) {
             <h1 className="text-3xl font-bold text-foreground md:text-4xl lg:text-[44px]">
               {store.nome} -
             </h1>
-            <p className="text-3xl font-bold text-foreground md:text-4xl lg:text-[44px] line-clamp-2 max-w-4xl lg:leading-[50px]">
+            <TypographyP className="text-foreground max-w-xl text-balance [&:not(:first-child)]:mt-2 line-clamp-2">
               {store.descricao}
-            </p>
+            </TypographyP>
           </div>
         </div>
 
@@ -84,17 +89,18 @@ export default async function Store({ params }: Props) {
                   </div>
                 </div>
               </div>
-              <Button
-                size={"xl"}
-                className="rounded-full md:text-[1.01rem] font-medium "
-              >
-                Contate-nos
-              </Button>
+              <div className="flex items-center gap-4">
+                <Button
+                  size={"xl"}
+                  className="rounded-full md:text-[1.01rem] font-medium "
+                >
+                  Contate-nos
+                </Button>
+                <LikeButton>Salvar Loja</LikeButton>
+              </div>
             </div>
             <div className="grid gap-4 mt-8">
-              <h2 className="text-2xl font-bold text-foreground">
-                Produtos Mais Vendidos
-              </h2>
+              <TypographyH3>Produtos Mais Vendidos</TypographyH3>
               {products.length > 0 ? (
                 <div className=" gap-2 ">
                   <ProductList className="!grid-cols-2 sm:!grid-cols-3 lg:!grid-cols-4 ">
@@ -104,9 +110,16 @@ export default async function Store({ params }: Props) {
                   </ProductList>
                 </div>
               ) : (
-                <p className="text-muted-foreground">
-                  Nenhum produto encontrado
-                </p>
+                <div className="">
+                  <p className="text-muted-foreground mb-2">
+                    Nenhum produto encontrado
+                  </p>
+                  <ProductList>
+                    {Array.from({ length: 2 }).map((_, index) => (
+                      <ProductCardSkeleton key={index} />
+                    ))}
+                  </ProductList>
+                </div>
               )}
             </div>
           </div>
@@ -121,9 +134,16 @@ export default async function Store({ params }: Props) {
                 ))}
               </ProductList>
             ) : (
-              <p className="text-muted-foreground ">
-                Nenhum produto encontrado
-              </p>
+              <div className="">
+                <p className="text-muted-foreground mb-2">
+                  Nenhum produto encontrado
+                </p>
+                <ProductList>
+                  {Array.from({ length: 2 }).map((_, index) => (
+                    <ProductCardSkeleton key={index} />
+                  ))}
+                </ProductList>
+              </div>
             )}
           </div>
         </div>

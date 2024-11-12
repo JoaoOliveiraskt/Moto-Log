@@ -72,6 +72,7 @@ export default async function DiscountCategoryCarousel() {
 
       <Carousel
         opts={{
+          align: "start",
           loop: true,
           duration: 14,
         }}
@@ -85,7 +86,7 @@ export default async function DiscountCategoryCarousel() {
             return (
               <CarouselItem
                 key={category.id}
-                className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
+                className="pl-2 md:pl-4 sm:basis-1/2 lg:basis-1/3"
               >
                 <Link
                   href={`/category/${category.id}?discount=true`}
