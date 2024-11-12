@@ -90,12 +90,11 @@ export default function ProductsCarousel({
     <div className="">
       <Carousel
         opts={{
-          dragFree: true,
           containScroll: "trimSnaps",
-          duration: 17,
+          duration: 14,
           align: "start",
-          slidesToScroll: "auto",
         }}
+        className="space-y-4"
         setApi={setApi}
       >
         <div className="flex justify-between items-center">
@@ -105,13 +104,13 @@ export default function ProductsCarousel({
           </div>
         </div>
         {loading ? (
-          <CarouselContent className="flex gap-3 mt-4">
+          <CarouselContent className="flex gap-3">
             {Array.from({ length: 10 }).map((_, index) => (
               <ProductCardSkeleton key={index} />
             ))}
           </CarouselContent>
         ) : (
-          <CarouselContent className="flex gap-2 mt-4">
+          <CarouselContent className="flex gap-2">
             {products.map((product) => (
               <div key={product.id}>
                 <ProductCard
@@ -128,9 +127,7 @@ export default function ProductsCarousel({
           className={cn("left-2", scrollPrev ? "" : "hidden")}
         />
 
-        <CarouselNext
-          className={cn("right-2", scrollNext ? "" : "hidden")}
-        />
+        <CarouselNext className={cn("right-2", scrollNext ? "" : "hidden")} />
       </Carousel>
     </div>
   );

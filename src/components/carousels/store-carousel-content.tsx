@@ -9,11 +9,15 @@ import { Loja } from "prisma/generated/client";
 
 export function StoreCarouselContent({ stores }: { stores: Loja[] }) {
   return (
-    <CarouselContent className="-ml-2 md:-ml-4">
+    <CarouselContent className="-ml-4 md:-ml-4">
       {stores.map((store) => (
-        <CarouselItem key={store.id} className="md:basis-1/2 lg:basis-1/3">
-          <Link key={store.id} href={`/store/${store.id}`} className="">
-            <Card className="bg-accent h-60 sm:h-72 w-full rounded-3xl overflow-hidden p-2">
+        <CarouselItem key={store.id} className="sm:basis-1/2 lg:basis-1/3">
+          <Link
+            key={store.id}
+            href={`/store/${store.id}`}
+            className="group block h-[16rem] relative rounded-3xl"
+          >
+            <Card className="bg-accent h-full w-full rounded-3xl overflow-hidden p-2">
               <Image
                 src={store.imagemUrl || ""}
                 alt={store.nome}
@@ -22,13 +26,13 @@ export function StoreCarouselContent({ stores }: { stores: Loja[] }) {
                 className="object-cover w-full h-full rounded-[1.3rem] hover:brightness-75 transition-all"
               />
             </Card>
-            <StoreBadge
-              store={store}
-              side="top"
-              imageClassName="h-9 w-9"
-              className="mt-3"
-            />
           </Link>
+          <StoreBadge
+            store={store}
+            side="top"
+            imageClassName="h-9 w-9"
+            className="mt-3"
+          />
         </CarouselItem>
       ))}
     </CarouselContent>

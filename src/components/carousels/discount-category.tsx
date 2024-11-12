@@ -72,9 +72,8 @@ export default async function DiscountCategoryCarousel() {
 
       <Carousel
         opts={{
-          align: "start",
           loop: true,
-          duration: 17,
+          duration: 14,
         }}
         className="w-full"
       >

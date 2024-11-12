@@ -11,18 +11,13 @@ import {
 
 async function getStores() {
   try {
-    console.log("Starting store search...");
     const stores = await GetStores({ limit: 6 });
-    console.log("Stores found:", stores);
 
     if (!stores || stores.length === 0) {
-      console.log("No stores found");
-      return [];
+      throw new Error("No stores found");
     }
-
     return stores;
   } catch (error) {
-    console.error("Error fetching stores:", error);
     return [];
   }
 }
@@ -41,16 +36,7 @@ export default async function StoreCarousel() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <div className="space-y-1">
-          <TypographyH3>Lojas em Destaque</TypographyH3>
-          <TypographyP className="text-muted-foreground">
-            Explore{" "}
-            <span className="text-primary font-semibold">
-              lojas selecionadas
-            </span>{" "}
-            com os melhores produtos
-          </TypographyP>
-        </div>
+        <TypographyH3>Lojas em Destaque</TypographyH3>
         <SeeAllButton href="/community" />
       </div>
 
@@ -58,13 +44,13 @@ export default async function StoreCarousel() {
         opts={{
           align: "start",
           loop: true,
-          duration: 17,
+          duration: 14,
         }}
-        className="w-fit"
+        className="w-full h-full"
       >
         <StoreCarouselContent stores={stores} />
-        <CarouselPrevious className="left-6" />
-        <CarouselNext className="right-3" />
+        <CarouselPrevious className="left-4" />
+        <CarouselNext className="right-4" />
       </Carousel>
     </div>
   );

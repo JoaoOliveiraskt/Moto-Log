@@ -46,27 +46,25 @@ export default async function Community() {
         </TypographyP>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-8">
-        <Suspense fallback={<StoreCarouselSkeleton />}>
-          {stores.map((store: Loja) => (
-            <Link key={store.id} href={`/store/${store.id}`} className="">
-              <Card className="bg-accent h-60 sm:h-72 w-full rounded-3xl overflow-hidden p-2">
-                <Image
-                  src={store.imagemUrl || ""}
-                  alt={store.nome}
-                  width={500}
-                  height={500}
-                  className="object-cover w-full h-full rounded-[1.3rem] hover:brightness-75 transition-all"
-                />
-              </Card>
-              <StoreBadge
-                store={store}
-                side="top"
-                imageClassName="h-9 w-9"
-                className="mt-3"
+        {stores.map((store: Loja) => (
+          <Link key={store.id} href={`/store/${store.id}`} className="">
+            <Card className="bg-accent h-60 sm:h-72 w-full rounded-3xl overflow-hidden p-2">
+              <Image
+                src={store.imagemUrl || ""}
+                alt={store.nome}
+                width={500}
+                height={500}
+                className="object-cover w-full h-full rounded-[1.3rem] hover:brightness-75 transition-all"
               />
-            </Link>
-          ))}
-        </Suspense>
+            </Card>
+            <StoreBadge
+              store={store}
+              side="top"
+              imageClassName="h-9 w-9"
+              className="mt-3"
+            />
+          </Link>
+        ))}
       </div>
     </Container>
   );

@@ -58,7 +58,7 @@ export default function CategoryCarousel() {
     <Carousel
       opts={{
         dragFree: true,
-        duration: 17,
+        duration: 14,
         containScroll: "trimSnaps",
         align: "start",
         slidesToScroll: "auto",

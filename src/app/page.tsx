@@ -14,7 +14,7 @@ export default function Home() {
       <Container className="fixed top-16 left-1/2 transform -translate-x-1/2 w-full z-20 bg-background pb-2.5 pt-4">
         <CategoryList />
       </Container>
-      <Container className="space-y-12  mt-[9rem]">
+      <Container className="space-y-12  mt-[10rem]">
         <TopStores />
         <DiscountProducts />
         <DiscountCategoryCarousel />
