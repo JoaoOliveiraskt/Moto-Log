@@ -112,7 +112,7 @@ export default async function Store({ params }: Props) {
               ) : (
                 <div className="">
                   <p className="text-muted-foreground mb-2">
-                    Nenhum produto encontrado
+                    O vendedor ainda não postou nenhum produto!
                   </p>
                   <ProductList>
                     {Array.from({ length: 2 }).map((_, index) => (
@@ -136,7 +136,7 @@ export default async function Store({ params }: Props) {
             ) : (
               <div className="">
                 <p className="text-muted-foreground mb-2">
-                  Nenhum produto encontrado
+                  O vendedor ainda não postou nenhum produto!
                 </p>
                 <ProductList>
                   {Array.from({ length: 2 }).map((_, index) => (

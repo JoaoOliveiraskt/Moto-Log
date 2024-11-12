@@ -1,6 +1,6 @@
 import GetCategories from "@/app/actions/category/get-categories";
-import TypographyH3 from "../typography/typography-h3";
-import { Card } from "../ui/card";
+import TypographyH3 from "../../typography/typography-h3";
+import { Card } from "../../ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -10,7 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import TypographyP from "../typography/typography-p";
+import TypographyP from "../../typography/typography-p";
 
 interface CategoryContent {
   discount: string;
