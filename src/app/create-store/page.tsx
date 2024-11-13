@@ -30,7 +30,7 @@ import {
 import Icon from "@/components/icons/icon-component";
 import { motion } from "framer-motion";
 import Container from "@/components/container";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import LoginDialog from "@/components/login-dialog";
 import { useAuth } from "@/hooks/useAuth";
 import MotoLogLogo from "@/components/icons/moto-log-logo";

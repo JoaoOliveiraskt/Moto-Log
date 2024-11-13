@@ -6,7 +6,7 @@ import icon from "@/components/icons/icon-component";
 import { Separator } from "@/components/ui/separator";
 import formatCurrency from "@/app/helpers/format-currency";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import StoreBadge from "@/components/store-badge";
 
 interface OrderItemProps {

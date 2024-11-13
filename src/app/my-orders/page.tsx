@@ -6,7 +6,7 @@ import OrderItem from "./components/order-item";
 import GoBackButton from "@/components/go-back-button";
 import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 
 const MyOrdersPage = async () => {
   const session = await getServerSession(authOptions);

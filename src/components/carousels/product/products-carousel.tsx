@@ -51,8 +51,8 @@ export default function ProductsCarousel({ children, title, link }: Props) {
       >
         <Suspense fallback={<ProductsCarouselSkeleton />}>{children}</Suspense>
 
-        {scrollPrev && <CarouselPrevious className="left-2" />}
-        {scrollNext && <CarouselNext className="right-2" />}
+        {scrollPrev && <CarouselPrevious className="left-2 top-1/3" />}
+        {scrollNext && <CarouselNext className="right-2 top-1/3" />}
       </Carousel>
     </div>
   );

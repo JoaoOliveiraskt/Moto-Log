@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/button";
 import { Decimal } from "@prisma/client/runtime/library";
 import formatCurrency from "@/app/helpers/format-currency";
 import { useState } from "react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import DeleteProductDialog from "./delete-product-dialog";
 import { string } from "zod";
 

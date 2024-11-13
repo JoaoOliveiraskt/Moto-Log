@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import StoreBadge from "@/components/store-badge";

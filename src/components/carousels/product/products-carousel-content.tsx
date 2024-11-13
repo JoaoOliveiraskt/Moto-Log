@@ -49,7 +49,11 @@ export default async function ProductsCarouselContent({
     <CarouselContent className="flex gap-2">
       {products.map((product: ProductCardProps) => (
         <CarouselItem key={product.id} className="basis-auto p-0">
-          <ProductCard product={product} className="min-w-64" side="top" />
+          <ProductCard
+            product={product}
+            className="xl:max-w-full w-80"
+            side="top"
+          />
         </CarouselItem>
       ))}
     </CarouselContent>

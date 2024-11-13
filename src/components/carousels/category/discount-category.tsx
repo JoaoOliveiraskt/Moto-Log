@@ -1,7 +1,7 @@
 import GetCategories from "@/app/actions/category/get-categories";
 import TypographyH3 from "../../typography/typography-h3";
 import { Card } from "../../ui/card";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import Image from "next/image";
 import {
   Carousel,
