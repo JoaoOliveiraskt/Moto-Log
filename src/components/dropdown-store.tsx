@@ -6,7 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { db } from "@/lib/prisma";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { GoChevronRight } from "react-icons/go";
 

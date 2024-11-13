@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import TypographyH3 from "./typography/typography-h3";
 import { Skeleton } from "./ui/skeleton";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import TypographyP from "./typography/typography-p";
 
 interface StoreProps {

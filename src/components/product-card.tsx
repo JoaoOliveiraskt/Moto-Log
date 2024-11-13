@@ -3,7 +3,7 @@
 import formatCurrency from "@/app/helpers/format-currency";
 import calculateTotalPrice from "@/app/helpers/price";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { Prisma } from "../../prisma/generated/client";
 import LikeButton from "./like-button";
 import { cn } from "@/lib/utils";

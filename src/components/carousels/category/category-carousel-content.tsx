@@ -9,7 +9,7 @@ export default async function CategoryCarouselContent() {
   if (!categories || categories.length === 0) return null;
 
   return (
-    <CarouselContent className="gap-x-3 -ml-2">
+    <CarouselContent className="gap-x-3">
       {categories?.map((category: Categoria) => (
         <CarouselItem key={category.id} className="basis-auto p-0">
           <CategoryItem category={category} link={`/category/${category.id}`} />

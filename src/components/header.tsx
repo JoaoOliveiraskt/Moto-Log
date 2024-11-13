@@ -5,7 +5,7 @@ import Container from "./container";
 import MotoLogLogo from "./icons/moto-log-logo";
 import HeaderLoginBtn from "./header-login-btn";
 import Icon from "./icons/icon-component";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import {
   Tooltip,
   TooltipContent,

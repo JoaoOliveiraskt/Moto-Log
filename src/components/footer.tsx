@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import Container from "./container";
 import Icon from "./icons/icon-component";
 import MotoLogLogo from "./icons/moto-log-logo";

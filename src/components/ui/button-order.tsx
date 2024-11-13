@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import icon from "../icons/icon-component";
 import { Button } from "./button";
 import LoginDialog from "../login-dialog";

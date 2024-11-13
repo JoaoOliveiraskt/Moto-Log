@@ -7,7 +7,7 @@ import { Loja } from "prisma/generated/client";
 import StoreBadge from "@/components/store-badge";
 import { db } from "@/lib/prisma";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Suspense } from "react";
 import { cn } from "@/lib/utils";
