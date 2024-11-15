@@ -61,7 +61,7 @@ const ProductCard = ({
           </div>
         </Link>
 
-        <div className="absolute bottom-2.5 right-2.5 h-7 w-7 bg-white flex items-center rounded-full z-10">
+        <div className="absolute bottom-2.5 right-2.5 h-7 w-7 bg-white flex items-center rounded-full">
           <LikeButton
             product={{ id: product.id }}
             size={20}
