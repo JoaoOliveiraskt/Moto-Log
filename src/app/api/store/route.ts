@@ -5,8 +5,8 @@ export async function GET(req: Request) {
   const url = new URL(req.url);
   const takeParam = url.searchParams.get("take");
   const take = takeParam ? parseInt(takeParam, 10) : undefined;
+  
   try {
-
     const stores = await db.loja.findMany({
       select: {
         id: true,
@@ -16,9 +16,11 @@ export async function GET(req: Request) {
       ...(take && { take }),
       orderBy: {
         createdAt: "asc",
-      }
+      },
     });
+
     return NextResponse.json(stores, { status: 200 });
+    
   } catch (error) {
     return NextResponse.json(
       { message: "Erro ao buscar lojas", error },

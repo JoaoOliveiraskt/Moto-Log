@@ -8,6 +8,8 @@ import DiscountCategoryCarousel from "@/components/carousels/category/discount-c
 import StoreCarousel from "@/components/carousels/store/store-carousel";
 import CategoryCarousel from "@/components/carousels/category/category-carousel";
 import CategoryCarouselContent from "@/components/carousels/category/category-carousel-content";
+import TopStoreSkeleton from "@/components/skeletons/top-store-skeleton";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -18,7 +20,9 @@ export default function Home() {
         </CategoryCarousel>
       </Container>
       <Container className="space-y-10  mt-[9rem]">
-        <TopStores />
+        <Suspense fallback={<TopStoreSkeleton />}>
+          <TopStores />
+        </Suspense>
         <DiscountProducts />
         <DiscountCategoryCarousel />
         <BestSellers />

@@ -1,5 +1,4 @@
 import TypographyH3 from "@/components/typography/typography-h3";
-import TypographyP from "@/components/typography/typography-p";
 import GetStores from "@/app/actions/store/get-stores";
 import { StoreCarouselContent } from "./store-carousel-content";
 import SeeAllButton from "../../see-all-button";
