@@ -1,6 +1,5 @@
 import Container from "@/components/container";
 import DiscountProducts from "@/components/carousels/product/discount-products";
-import Hero from "@/components/hero";
 import RecentProducts from "@/components/carousels/product/recent-products";
 import BestSellers from "@/components/carousels/product/best-sellers";
 import TopStores from "@/components/top-stores";
@@ -14,7 +13,7 @@ import { Suspense } from "react";
 export default function Home() {
   return (
     <main>
-      <Container className="fixed top-16 left-1/2 transform -translate-x-1/2 w-full z-20 bg-background pb-2.5 pt-4">
+      <Container className="fixed top-16 left-1/2 transform -translate-x-1/2 w-full z-20 bg-background pb-2.5 pt-3">
         <CategoryCarousel>
           <CategoryCarouselContent />
         </CategoryCarousel>

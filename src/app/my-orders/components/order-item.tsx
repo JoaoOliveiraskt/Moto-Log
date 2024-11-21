@@ -1,9 +1,7 @@
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { OrderStatus, Prisma } from "prisma/generated/client";
 import icon from "@/components/icons/icon-component";
-import { Separator } from "@/components/ui/separator";
 import formatCurrency from "@/app/helpers/format-currency";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Link } from "next-view-transitions";
@@ -52,10 +50,12 @@ const OrderItem = ({ order }: OrderItemProps) => {
           <div className="flex gap-4 items-center justify-between">
             <div
               className={`${
-                order.status !== "COMPLETED" ? "" : "text-emerald-500"
+                order.status !== "COMPLETED"
+                  ? "text-foreground"
+                  : "text-emerald-500"
               }`}
             >
-              <span className="block text-sm  font-semibold tracking-wider">
+              <span className="block text-sm font-semibold">
                 {getOrderStatus(order.status)}
               </span>
             </div>
@@ -85,7 +85,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
               <Link
                 key={product.id}
                 href={`/product/${product.productId}`}
-                className="flex justify-between mb-2 text-muted-foreground hover:text-foreground"
+                className="flex justify-between mb-2 text-muted-foreground hover:text-foreground items-center"
               >
                 <div className="flex space-x-2">
                   <div className="flex flex-col items-center justify-center w-5 h-5 rounded-full border">

@@ -18,7 +18,7 @@ export default function Header() {
     <div className="hidden lg:flex fixed top-0 z-40 h-16 bg-background w-screen">
       <Container className="h-full w-full relative">
         <div className="w-full h-full flex items-center justify-between">
-          <div className="hover:scale-105 transition-all active:scale-95 h-fit">
+          <div className="hover:scale-105 active:scale-95 h-fit">
             <MotoLogLogo />
           </div>
 

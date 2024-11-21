@@ -89,7 +89,7 @@ export const AvatarInfo = ({ className, variant = "outline" }: Props) => {
     <>
       {status === "authenticated" ? (
         <div className="space-y-2 mb-4">
-          <div className="flex gap-2 lg:gap-0 lg:flex-row items-center space-x-2 px-4">
+          <div className="flex gap-2 lg:gap-0 lg:flex-row items-center space-x-2 px-2">
             <Avatar className="w-12 h-12 lg:w-11 lg:h-11">
               <AvatarImage
                 src={data?.user?.image as string | undefined}
@@ -123,9 +123,7 @@ export const AvatarInfo = ({ className, variant = "outline" }: Props) => {
             onClick={toggleOpen}
             className={`flex items-center space-x-2 py-6 px-8 lg:px-4 ${className}`}
           >
-            <span className="text-sm font-medium tracking-wider">
-              Entrar
-            </span>
+            <span className="text-sm font-medium tracking-wider">Entrar</span>
             <icon.user size={20} />
           </Button>
 

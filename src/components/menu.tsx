@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import { Link } from "next-view-transitions";
 import LoginButton, { AvatarInfo } from "./login-button";
@@ -21,18 +21,15 @@ interface Props {
   className?: string;
   children?: React.ReactNode;
   iconSize?: number;
-  model?: string;
 }
 
-const Menu = ({ className, children, iconSize, model }: Props) => {
+const Menu = ({ className, children, iconSize }: Props) => {
   const { isAuthenticated, user } = useAuth();
-  const { data: session } = useSession();
   const [openDialog, setOpenDialog] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: session } = useSession();
 
   const isLojista = useMemo(() => session?.user.role === "LOJISTA", [session]);
-
-  const toggleOpen = useCallback(() => setOpenDialog((prev) => !prev), []);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuOpen = {
     open: () => setIsMenuOpen(true),
@@ -142,7 +139,7 @@ const Menu = ({ className, children, iconSize, model }: Props) => {
         )}
         <DropdownMenuContent
           align="end"
-          className="p-2.5 bg-card rounded-3xl min-w-72 w-full shadow-2xl"
+          className="p-2.5 bg-card rounded-3xl w-full min-w-64 shadow-2xl"
         >
           {isAuthenticated && <AvatarInfo size="menu" />}
           <div className="space-y-0">{menuItems}</div>
