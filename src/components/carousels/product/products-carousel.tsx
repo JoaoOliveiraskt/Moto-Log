@@ -43,7 +43,8 @@ export default function ProductsCarousel({ children, title, link }: Props) {
       <Carousel
         opts={{
           containScroll: "trimSnaps",
-          duration: 14,
+          slidesToScroll: "auto",
+          duration: 20,
           align: "start",
         }}
         className="space-y-4"

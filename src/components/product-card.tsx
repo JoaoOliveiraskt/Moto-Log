@@ -9,36 +9,24 @@ import LikeButton from "./like-button";
 import { cn } from "@/lib/utils";
 import StoreBadge from "./store-badge";
 import TypographySmall from "./typography/typography-small";
+import { Produto, Loja, Categoria } from "../../prisma/generated/client";
 
 interface ProductProps {
-  product: Prisma.ProdutoGetPayload<{
-    include: {
-      categoria: { select: { nome: true } };
-      loja: {
-        select: { id: true; nome: true; imagemUrl: true; descricao: true };
-      };
-    };
-  }>;
+  product: Produto & {
+    categoria: Categoria;
+    loja: Loja;
+  };
   className?: string;
-  showHoverCard?: boolean;
-  align?: "start" | "center" | "end";
-  side?: "top" | "right" | "bottom" | "left";
 }
 
-const ProductCard = ({
-  product,
-  className,
-  showHoverCard,
-  align = "start",
-  side = "bottom",
-}: ProductProps) => {
+const ProductCard = ({ product, className }: ProductProps) => {
   const { loja } = product;
 
   return (
     <div
       className={cn(
-        "h-max w-full max-w-72 xl:max-w-80 overflow-hidden text-foreground ",
-        "md:hover:bg-accent/50 md:dark:hover:bg-accent/30 rounded-2xl md:p-2 transition-all ",
+        "h-max w-full  max-w-72 overflow-hidden text-foreground ",
+        "md:hover:bg-accent/50 md:dark:hover:bg-accent/30 rounded-2xl md:p-2",
         className
       )}
     >
@@ -74,7 +62,7 @@ const ProductCard = ({
 
       <div className="min-h-full px-1 py-2 flex flex-col justify-between">
         <Link href={`/product/${product.id}`} className="">
-          <h2 className="text-sm line-clamp-2">{product.nome}</h2>
+          <h2 className="text-sm line-clamp-1">{product.nome}</h2>
         </Link>
 
         <div className="flex items-center justify-between text-xs text-muted-foreground">
@@ -111,12 +99,9 @@ const ProductCard = ({
             store={{
               id: loja.id,
               nome: loja.nome,
-              imagemUrl: loja.imagemUrl,
-              descricao: loja.descricao,
+              imagemUrl: loja.imagemUrl || "",
+              descricao: loja.descricao || "",
             }}
-            showHoverCard={showHoverCard}
-            align={align}
-            side={side}
           />
         </div>
       </div>
