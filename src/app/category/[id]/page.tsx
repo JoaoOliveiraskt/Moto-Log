@@ -30,7 +30,10 @@ export default async function CategorieList({ params }: Props) {
             {products.map((product) => (
               <div key={product.id}>
                 <ProductCard
-                  product={{ ...product, categoria: { nome: category.nome } }}
+                  product={{
+                    ...product,
+                    categoria: { id: category.id, nome: category.nome },
+                  }}
                 />
               </div>
             ))}
