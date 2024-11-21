@@ -24,12 +24,13 @@ export default function CategoryItem({ category, link }: CategoryProps) {
       variant="secondary"
       size={"rounded"}
       className={cn(
+        "h-8 md:h-10",
         isActive && "bg-foreground text-background hover:bg-foreground/90"
       )}
       asChild
     >
       <Link href={link}>
-        <p className="font-semibold">{category.nome}</p>
+        <p className="font-semibold text-sm">{category.nome}</p>
       </Link>
     </Button>
   );
