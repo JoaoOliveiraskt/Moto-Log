@@ -32,7 +32,7 @@ export default function StoreBadge({
 
   return (
     <HoverCard openDelay={20} closeDelay={20}>
-      <HoverCardTrigger className="relative cursor-pointer z-10 w-fit h-fit">
+      <HoverCardTrigger  className="relative cursor-pointer z-10 inline-block">
         <Link
           href={`/store/${store.id}`}
           className={cn(
