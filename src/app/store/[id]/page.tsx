@@ -11,7 +11,7 @@ import TypographyH3 from "@/components/typography/typography-h3";
 import TypographyP from "@/components/typography/typography-p";
 import LikeButton from "@/components/like-button";
 
-async function getData(id: string) {
+async function getData(id: string, bestSellers?: boolean) {
   const store = await db.loja.findUnique({
     where: { id },
     include: {
@@ -20,6 +20,7 @@ async function getData(id: string) {
           loja: true,
           categoria: true,
         },
+        ...(bestSellers && { orderBy: { totalVendido: "desc" } }),
       },
     },
   });
@@ -34,17 +35,20 @@ async function getData(id: string) {
 interface Props {
   params: {
     id: string;
+    bestSellers?: boolean;
   };
 }
 
 export default async function Store({ params }: Props) {
   const store = await getData(params.id);
+  const bestSellers = await getData(params.id, true);
 
   if (!store) {
     notFound();
   }
 
   const products = store?.Produtos || [];
+  const bestSellersProducts = bestSellers?.Produtos || [];
   const storeImageUrl = store.imagemUrl;
 
   return (
@@ -101,10 +105,10 @@ export default async function Store({ params }: Props) {
             </div>
             <div className="grid gap-4 mt-8">
               <TypographyH3>Produtos Mais Vendidos</TypographyH3>
-              {products.length > 0 ? (
+              {bestSellersProducts.length > 0 ? (
                 <div className=" gap-2 ">
-                  <ProductList className="!grid-cols-2 sm:!grid-cols-3 lg:!grid-cols-4 ">
-                    {products.slice(0, 4).map((product) => (
+                  <ProductList className="!grid-cols-2 sm:!grid-cols-3 lg:!grid-cols-5 ">
+                    {bestSellersProducts.slice(0, 5).map((product) => (
                       <ProductCard key={product.id} product={product} />
                     ))}
                   </ProductList>
@@ -124,9 +128,7 @@ export default async function Store({ params }: Props) {
             </div>
           </div>
           <div className="mt-4 flex flex-col gap-4">
-            <h2 className="text-2xl font-bold text-foreground">
-              Todos os Produtos
-            </h2>
+            <TypographyH3>Todos os Produtos</TypographyH3>
             {products.length > 0 ? (
               <ProductList>
                 {products.map((product) => (
