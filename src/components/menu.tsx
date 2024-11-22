@@ -16,6 +16,7 @@ import icon from "@/components/icons/icon-component";
 import { useAuth } from "@/hooks/useAuth";
 import LoginDialog from "./login-dialog";
 import MenuBtn from "./menu-btn";
+import Loader from "./ui/loader";
 
 interface Props {
   className?: string;
@@ -24,7 +25,7 @@ interface Props {
 }
 
 const Menu = ({ className, children, iconSize }: Props) => {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, loading } = useAuth();
   const [openDialog, setOpenDialog] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data: session } = useSession();
@@ -119,7 +120,11 @@ const Menu = ({ className, children, iconSize }: Props) => {
   return (
     <>
       <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-        {isAuthenticated ? (
+        {loading ? ( // Verifica se está carregando
+          <div className="flex items-center justify-center">
+            <Loader size={16}/> {/* Exibe um ícone de carregamento */}
+          </div>
+        ) : isAuthenticated ? (
           <DropdownMenuTrigger asChild>
             <Avatar className="cursor-pointer">
               <AvatarImage

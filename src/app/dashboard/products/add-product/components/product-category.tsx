@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useFormContext, Controller } from "react-hook-form";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface CategoriaProps {
   id: string;
@@ -49,7 +50,7 @@ export default function ProductCategory({ defaultValue }: Props) {
   }, []);
 
   return (
-    <div className="grid pr-6 pl-1">
+    <div>
       <div className="grid gap-4">
         <Label htmlFor="categoriaId">Categoria do Produto</Label>
         <Controller
@@ -74,11 +75,13 @@ export default function ProductCategory({ defaultValue }: Props) {
                 />
               </SelectTrigger>
               <SelectContent>
-                {categories.map((category) => (
-                  <SelectItem key={category.id} value={category.id}>
-                    {category.nome}
-                  </SelectItem>
-                ))}
+                <ScrollArea className="h-60">
+                  {categories.map((category) => (
+                    <SelectItem key={category.id} value={category.id}>
+                      {category.nome}
+                    </SelectItem>
+                  ))}
+                </ScrollArea>
               </SelectContent>
             </Select>
           )}

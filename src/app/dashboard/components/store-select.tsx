@@ -52,15 +52,17 @@ export default function StoreSelect({
   return (
     <div className="flex gap-4 items-center w-fit">
       <div className="rounded-sm overflow-hidden">
-        {stores[0]?.imagemUrl && (
+        {stores[0]?.imagemUrl ? (
           <Image
             src={stores[0].imagemUrl}
             alt="logo da loja"
             width={100}
             height={100}
             objectFit="cover"
-            className="w-11 h-8 object-cover rounded-md border"
+            className="w-11 h-8 object-cover rounded-md"
           />
+        ) : (
+          <div className="w-11 h-8 rounded-md border bg-accent"></div>
         )}
       </div>
       <Select
@@ -72,7 +74,7 @@ export default function StoreSelect({
         <SelectTrigger
           id="store"
           aria-label="Select store"
-          className="w-full md:min-w-40 h-8 rounded-sm"
+          className="w-full md:min-w-40 h-8 rounded-sm bg-background border"
         >
           <SelectValue placeholder={storeName} />
         </SelectTrigger>

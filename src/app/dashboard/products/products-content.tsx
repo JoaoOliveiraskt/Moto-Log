@@ -53,27 +53,15 @@ export default async function ProductsContent() {
         </div>
 
         <TabsContent value="all">
-          <ProductTable
-            products={products}
-            title="Todos Produtos"
-            description="Gerencie seus produtos e visualize seu desempenho de vendas."
-          />
+          <ProductTable products={products} />
         </TabsContent>
 
         <TabsContent value="active">
-          <ProductTable
-            products={activeProducts}
-            title="Produtos Ativos"
-            description="Gerencie seus produtos ativos."
-          />
+          <ProductTable products={activeProducts} />
         </TabsContent>
 
         <TabsContent value="archived">
-          <ProductTable
-            products={archivedProducts}
-            title="Produtos Arquivados"
-            description="Gerencie seus produtos arquivados."
-          />
+          <ProductTable products={archivedProducts} />
         </TabsContent>
       </Tabs>
     </main>

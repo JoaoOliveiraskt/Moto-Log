@@ -13,7 +13,8 @@ interface ProductDetailsProps {
 }
 
 export default function ProductDetails({
-  defaultValues, className
+  defaultValues,
+  className,
 }: ProductDetailsProps) {
   const {
     register,
@@ -21,7 +22,7 @@ export default function ProductDetails({
   } = useFormContext();
 
   return (
-    <div className="grid gap-8 pl-1 pr-6">
+    <div className="grid gap-8">
       <div className="grid gap-4">
         <Label htmlFor="nome">Nome</Label>
         <Input

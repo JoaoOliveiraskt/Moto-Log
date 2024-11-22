@@ -19,8 +19,8 @@ export default function Stock({ defaultValues }: StockProps) {
   } = useFormContext();
 
   return (
-    <div className="pl-1 pr-6 flex gap-2 mb-10 w-full">
-      <div className="space-y-2 w-full">
+    <div className="flex flex-col gap-4 mb-10 w-full">
+      <div className="grid gap-y-4 w-full">
         <Label htmlFor="estoque">Estoque</Label>
         <Input
           {...register("estoque", {
@@ -39,7 +39,7 @@ export default function Stock({ defaultValues }: StockProps) {
         )}
       </div>
 
-      <div className="space-y-2 w-full">
+      <div className="grid gap-y-4 w-full">
         <Label htmlFor="preco">Preço</Label>
         <Input
           {...register("preco", {
@@ -59,7 +59,7 @@ export default function Stock({ defaultValues }: StockProps) {
         )}
       </div>
 
-      <div className="space-y-2 w-full">
+      <div className="grid gap-y-4 w-full">
         <Label htmlFor="porcentagemDesconto">Desconto</Label>
         <Input
           {...register("porcentagemDesconto", {

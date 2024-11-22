@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
 import { useState } from "react";
-import AddProductPage from "../../add-product/page";
+import AddProductDialog from "../add-product/dialog";
 
 export default function BtnAddProduct() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,7 +21,7 @@ export default function BtnAddProduct() {
           Adicionar produto
         </span>
       </Button>
-      <AddProductPage
+      <AddProductDialog
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
       />

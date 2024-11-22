@@ -18,7 +18,6 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import Balancer from "react-wrap-balancer";
 import { Label } from "@/components/ui/label";
 import MotoLogLogo from "@/components/icons/moto-log-logo";
 
@@ -38,7 +37,10 @@ interface Props {
   setIsModalOpen: (isOpen: boolean) => void;
 }
 
-export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
+export default function AddProductDialog({
+  isModalOpen,
+  setIsModalOpen,
+}: Props) {
   const methods = useForm<ProductData>();
   const { isLoading, isSuccessful, startLoading, stopLoading, setSuccess } =
     useSubmitState();
@@ -76,7 +78,6 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
         );
       }
 
-      const result = await response.json();
       setSuccess(true);
       setIsConfirmDialogOpen(true);
     } catch (error) {
@@ -93,36 +94,38 @@ export default function AddProductPage({ isModalOpen, setIsModalOpen }: Props) {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DialogContent className="h-full max-h-[70%] lg:min-w-[45%] pb-16 pt-0">
-        <DialogHeader className="grid items-center justify-center space-y-0 p-0">
-          <div className=" grid items-center justify-center">
-            <MotoLogLogo disabled={true} />
-          </div>
-          <DialogTitle className="text-center">Adicionar produto</DialogTitle>
+      <DialogContent
+        aria-describedby={undefined}
+        className="h-full max-h-[70%] lg:min-w-[30%] pb-16 pt-0 pr-0 pl-0"
+      >
+        <DialogHeader className="flex flex-row items-center gap-x-4 pl-6 mt-4">
+          <MotoLogLogo disabled={true} />
+          <DialogTitle className="">Adicionar produto</DialogTitle>
         </DialogHeader>
 
-        <ScrollArea className="max-h-[98%] overflow-hidden">
+        <ScrollArea className="max-h-[98%] overflow-hidden ">
           <FormProvider {...methods}>
             <form
               onSubmit={methods.handleSubmit(onSubmit)}
-              className="grid w-full h-full flex-1 auto-rows-max gap-4 md:gap-4 lg:min-h-[calc(100vh-9.125rem)]"
+              className="grid px-6 w-full h-full flex-1 auto-rows-max gap-4 md:gap-4 lg:min-h-[calc(100vh-9.125rem)]"
             >
-              <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-8">
-                <div className="grid gap-4 pl-1 pr-6 mt-8">
+              <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-8 mt-8">
+                <ProductDetails />
+                <div className="grid gap-4 ">
                   <Label htmlFor="imagemUrl">Url da imagem</Label>
                   <Input
+                    className="h-14"
                     type="text"
                     placeholder="URL da imagem"
                     {...methods.register("imagemUrl", { required: true })}
                   />
                 </div>
-                <ProductDetails />
                 <ProductCategory />
                 <ProductStatus />
                 <Stock />
               </div>
 
-              <DialogFooter className="mb-8 fixed -bottom-4">
+              <DialogFooter className="mb-8 fixed -bottom-4 right-4">
                 <ProductFormActionButtons
                   isLoading={isLoading}
                   onDiscard={() => methods.reset()}

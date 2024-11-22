@@ -1,25 +1,16 @@
 "use client";
 
+import ProductFormActionButtons from "@/app/dashboard/products/add-product/components/save-product";
+import ModalConfirmation from "@/app/dashboard/products/add-product/components/modal-confirmation";
+import ProductCategory from "@/app/dashboard/products/add-product/components/product-category";
+import ProductDetails from "@/app/dashboard/products/add-product/components/product-details";
+import ProductStatus from "@/app/dashboard/products/add-product/components/product-status";
+import ProductImage from "@/app/dashboard/products/add-product/components/product-image";
+import Stock from "@/app/dashboard/products/add-product/components/stock";
+import Container from "@/components/container";
+import { useSubmitState } from "@/hooks/use-submit-state";
 import { useForm, FormProvider } from "react-hook-form";
 import { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import ModalConfirmation from "@/app/dashboard/add-product/components/modal-confirmation";
-import { useSubmitState } from "@/hooks/use-submit-state";
-import ProductCategory from "@/app/dashboard/add-product/components/product-category";
-import ProductDetails from "@/app/dashboard/add-product/components/product-details";
-import ProductStatus from "@/app/dashboard/add-product/components/product-status";
-import ProductFormActionButtons from "@/app/dashboard/add-product/components/save-product";
-import Stock from "@/app/dashboard/add-product/components/stock";
-import Image from "next/image";
-import Container from "@/components/container";
-import ProductImage from "@/app/dashboard/add-product/components/product-image";
 
 interface ProductData {
   nome: string;
@@ -104,14 +95,14 @@ export default function EditProductForm({
   };
 
   return (
-    <Container className="grid flex-1 items-center justify-center gap-4 p-4 md:gap-8">
+    <Container className="grid items-center lg:justify-center gap-4 p-4 md:gap-8">
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
-          className="mx-auto grid max-w-[60rem] flex-1 auto-rows-max gap-4"
+          className="grid max-w-[60rem] gap-4"
         >
-          <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
-            <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
+          <div className="grid gap-4 lg:grid-cols-3 lg:gap-8">
+            <div className="space-y-4 gap-4 lg:col-span-2 lg:gap-8">
               <ProductDetails
                 defaultValues={{
                   nome: dadosIniciais.nome,
@@ -132,7 +123,7 @@ export default function EditProductForm({
               />
             </div>
 
-            <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
+            <div className="flex flex-col gap-y-4">
               <ProductStatus />
               <ProductImage
                 imagePreview={imagePreview}

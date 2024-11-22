@@ -48,11 +48,9 @@ interface Product {
 
 interface Props {
   products: Product[];
-  title: string;
-  description: string;
 }
 
-export default function ProductTable({ products, title, description }: Props) {
+export default function ProductTable({ products }: Props) {
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
   const [deleteProductId, setDeleteProductId] = useState<string>("");
@@ -83,17 +81,7 @@ export default function ProductTable({ products, title, description }: Props) {
           <Table className="mt-6">
             <TableHeader>
               <TableRow className="border-none">
-                <TableHead className="flex items-center gap-2">
-                  <input
-                    className={`h-4 w-4 ml-4  accent-violet-600`}
-                    type="checkbox"
-                    checked={selectedProducts.length === products.length}
-                    onChange={handleSelectAll}
-                  />
-                </TableHead>
-                <TableHead className="w-[100px]">
-                  <span className="sr-only">Imagem</span>
-                </TableHead>
+                <TableHead className="sr-only">Imagem</TableHead>
                 <TableHead>Nome</TableHead>
                 <TableHead className="">Status</TableHead>
                 <TableHead className="">Preço</TableHead>
@@ -120,16 +108,6 @@ export default function ProductTable({ products, title, description }: Props) {
                   .reverse()
                   .map((product) => (
                     <TableRow key={product.id} className="px-2">
-                      <TableCell className="font-medium w-fit">
-                        <input
-                          className="w-4 h-4 ml-4 accent-violet-600"
-                          type="checkbox"
-                          checked={selectedProducts.includes(product.id)}
-                          onChange={(event) =>
-                            handleSelectProduct(event, product.id)
-                          }
-                        />
-                      </TableCell>
                       <TableCell className=" py-2">
                         <div className="relative h-10 w-10 sm:h-16 sm:w-16 overflow-hidden rounded-md">
                           <Image
@@ -142,7 +120,7 @@ export default function ProductTable({ products, title, description }: Props) {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <span className="text-xs sm:text-sm font-semibold ml-2 line-clamp-2">
+                        <span className="text-xs sm:text-sm font-semibold line-clamp-2">
                           {product.nome}
                         </span>
                       </TableCell>
@@ -192,7 +170,6 @@ export default function ProductTable({ products, title, description }: Props) {
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>Ações</DropdownMenuLabel>
                             <DropdownMenuItem asChild>
                               <Link
                                 href={`/dashboard/products/edit-product/${product.id}`}
