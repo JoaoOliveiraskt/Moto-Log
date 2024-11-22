@@ -7,7 +7,6 @@ import calculateTotalPrice from "@/app/helpers/price";
 import formatCurrency from "@/app/helpers/format-currency";
 import { Prisma } from "../../../../prisma/generated/client";
 import { Button } from "@/components/ui/button";
-import Cart from "@/components/cart";
 import {
   AlertDialogHeader,
   AlertDialogFooter,
@@ -28,6 +27,7 @@ import LikeButton from "@/components/like-button";
 import TypographyP from "@/components/typography/typography-p";
 import Icon from "@/components/icons/icon-component";
 import Balancer from "react-wrap-balancer";
+import Link from "next/link";
 
 interface ProductInfoProps {
   quantity: number;
@@ -80,14 +80,19 @@ export default function ProductInfo({ product }: ProductInfoProps) {
     });
 
     toast({
-      title: "Produto adicionado ao carrinho!",
+      duration: 5000,
+      // @ts-ignore
+      title: (
+        <div className="flex items-center gap-x-2">
+          <Icon.confirmed color="green" />
+          <span>Produto adicionado ao carrinho</span>
+        </div>
+      ),
       action: (
-        <ToastAction
-          className="h-10"
-          altText="Ver pedido"
-          onClick={() => setIsCartOpen(true)}
-        >
-          Ver carrinho
+        <ToastAction className="h-10" altText="Ver pedido">
+          <Link legacyBehavior href="/cart">
+            Ver carrinho
+          </Link>
         </ToastAction>
       ),
     });
@@ -131,8 +136,6 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           <LikeButton>Salvar produto</LikeButton>
         </div>
       </div>
-
-      <Cart isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
 
       <AlertDialog open={isLoginModalOpen} onOpenChange={setIsLoginModalOpen}>
         <AlertDialogContent>

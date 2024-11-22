@@ -17,8 +17,6 @@ const GoBackButton: React.FC<Props> = ({ className, name }: Props) => {
 
   const handleGoBack = () => router.back();
 
-  const title = name || "";
-
   return (
     <>
       {!isHome && (
@@ -32,11 +30,7 @@ const GoBackButton: React.FC<Props> = ({ className, name }: Props) => {
           >
             <GoArrowLeft size={30} />
           </Button>
-          {title && (
-            <TypographyH2 className="text-primary">
-              {title}
-            </TypographyH2>
-          )}
+          {name && <TypographyH2 className="text-primary">{name}</TypographyH2>}
         </div>
       )}
     </>

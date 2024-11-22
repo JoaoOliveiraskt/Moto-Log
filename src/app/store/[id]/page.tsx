@@ -20,6 +20,10 @@ async function getData(id: string, bestSellers?: boolean) {
           loja: true,
           categoria: true,
         },
+        where: {
+          status: "ATIVO",
+          estoque: { gt: 0 },
+        },
         ...(bestSellers && { orderBy: { totalVendido: "desc" } }),
       },
     },

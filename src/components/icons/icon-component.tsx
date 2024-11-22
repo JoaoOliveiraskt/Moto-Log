@@ -31,6 +31,7 @@ import { CiHeart } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
 import { FaRegUserCircle } from "react-icons/fa";
 import { BiGlobe } from "react-icons/bi";
+import { PiCheckCircleFill } from "react-icons/pi";
 
 const Icon = {
   home: GoHome,
@@ -55,7 +56,7 @@ const Icon = {
   settings: Settings,
   lineChart: LineChart,
   github: FaGithub,
-  confirmed: GoIssueClosed,
+  confirmed: PiCheckCircleFill,
   bookmark: CiBookmark,
   bookmark2: MdBookmarkAdd,
   heartFilled: TbHeartFilled,
