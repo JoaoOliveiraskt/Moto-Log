@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Link } from "next-view-transitions";
 import TypographyP from "./typography/typography-p";
 import GetStores from "@/app/actions/store/get-stores";
+import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 
 interface StoreProps {
   id: string;
@@ -13,7 +14,7 @@ interface StoreProps {
 
 async function getStores() {
   try {
-    const stores = await GetStores({ limit: 10 });
+    const stores = await GetStores({ limit: 20 });
 
     if (!stores || stores.length === 0) {
       throw new Error("No stores found");
@@ -33,19 +34,26 @@ export default async function TopStores() {
 
   return (
     <div className="sm:hidden space-y-4">
-      <div className="flex items-center justify-between ">
-        <TypographyH3>Top Lojas</TypographyH3>
-      </div>
       <div>
-        <div className="grid grid-cols-5 w-full gap-x-10 gap-y-1 pl-2 pr-3">
+        <TypographyH3>Lojas em Destaque</TypographyH3>
+      </div>
+      <Carousel
+        opts={{
+          containScroll: "trimSnaps",
+          slidesToScroll: "auto",
+          duration: 20,
+          align: "start",
+        }}
+      >
+        <CarouselContent className="-ml-3">
           {stores &&
             stores.map((store: StoreProps) => (
-              <div className="w-fit" key={store.id}>
+              <CarouselItem className="basis-auto" key={store.id}>
                 <Link
                   href={`/store/${store.id}`}
-                  className="text-foreground font-medium hover:text-cyan-600 mb-2 flex flex-col items-center gap-1 max-w-10"
+                  className="text-foreground font-medium hover:text-cyan-600 flex flex-col gap-y-2"
                 >
-                  <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                  <div className="w-28 h-28 rounded-[1.5rem] overflow-hidden ">
                     {store.imagemUrl ? (
                       <Image
                         src={store.imagemUrl}
@@ -58,16 +66,17 @@ export default async function TopStores() {
                       <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
                     )}
                   </div>
-                  <div className="flex flex-col justify-center">
-                    <TypographyP className="text-sm md:text-base">
-                      {store.nome.split(" ")[0]}
-                    </TypographyP>
+                  <div className="flex flex-col gap-y-1 justify-center ml-0.5 font-light">
+                    <TypographyP className="text-xs ">{store.nome}</TypographyP>
+                    <span className="text-xs">
+                      4.8 <span>★</span>
+                    </span>
                   </div>
                 </Link>
-              </div>
+              </CarouselItem>
             ))}
-        </div>
-      </div>
+        </CarouselContent>
+      </Carousel>
     </div>
   );
 }

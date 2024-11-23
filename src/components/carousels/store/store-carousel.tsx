@@ -26,14 +26,14 @@ export default async function StoreCarousel() {
 
   if (!stores || stores.length === 0) {
     return (
-      <div className="text-center py-10">
+      <div className="text-center py-10 hidden sm:block">
         <p className="text-muted-foreground">No stores found</p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 hidden sm:block">
       <div className="flex items-center justify-between">
         <TypographyH3>Lojas em Destaque</TypographyH3>
         <SeeAllButton href="/community" />

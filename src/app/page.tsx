@@ -18,7 +18,7 @@ export default function Home() {
           <CategoryCarouselContent />
         </CategoryCarousel>
       </Container>
-      <Container className="space-y-10  mt-[9rem]">
+      <Container className="space-y-10 mt-[8.5rem] sm:mt-[9rem]">
         <Suspense fallback={<TopStoreSkeleton />}>
           <TopStores />
         </Suspense>
