@@ -2,7 +2,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 import { CartProvider } from "./context/cart";
 import AuthProvider from "./providers/auth";
 import { Toaster } from "@/components/ui/toaster";
@@ -42,7 +41,6 @@ export default function RootLayout({
                   <Header />
                   {children}
                   <BottomNav />
-                  <Footer />
                   <Toaster />
                 </ThemeProvider>
               </CartProvider>

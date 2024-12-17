@@ -24,8 +24,8 @@ export default function CategoryItem({ category, link }: CategoryProps) {
       variant="secondary"
       size={"rounded"}
       className={cn(
-        "h-8 md:h-10",
-        isActive && "bg-foreground text-background hover:bg-foreground/90"
+        "h-9 dark:shadow-inner dark:shadow-accent-foreground",
+        isActive && "bg-foreground text-background hover:bg-foreground/90 dark:shadow-none"
       )}
       asChild
     >

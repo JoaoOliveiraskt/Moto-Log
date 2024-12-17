@@ -1,4 +1,3 @@
-// Header.tsx
 "use client";
 
 import {
@@ -11,13 +10,12 @@ import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import Icon from "@/components/icons/icon-component";
 import StoreSelect from "./store-select";
-import Container from "@/components/container";
 import { cn } from "@/lib/utils";
 
 const links = [
   { name: "Produtos", icon: Icon.package, href: "/dashboard/products" },
   { name: "Pedidos", icon: Icon.cart, href: "/dashboard/orders" },
-  { name: "Analíticos", icon: Icon.lineChart, href: "/dashboard/analytics" },
+  { name: "Analíticos", icon: Icon.analytics, href: "/dashboard/analytics" },
   { name: "Configurações", icon: Icon.settings, href: "/dashboard/settings" },
 ];
 
@@ -31,11 +29,11 @@ export default function NavDashboard({ className }: Props) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-10 lg:flex items-center w-full py-4 border-b mt-[60px] hidden",
+        "sticky top-0 z-10 lg:flex hidden items-center w-full py-4 border-b mt-[60px] ",
         className
       )}
     >
-      <Container className="w-full flex gap-4 px-0">
+      <div className="w-full flex gap-x-20 px-0 md:px-0">
         <StoreSelect onStoreChange={() => {}} />
 
         <nav className="flex items-center space-x-4">
@@ -68,7 +66,7 @@ export default function NavDashboard({ className }: Props) {
             );
           })}
         </nav>
-      </Container>
+      </div>
     </header>
   );
 }

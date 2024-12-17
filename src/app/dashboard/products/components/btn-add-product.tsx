@@ -12,11 +12,11 @@ export default function BtnAddProduct() {
   return (
     <>
       <Button
-        size={"lg"}
-        className="flex items-center gap-1"
+        size={"rounded"}
+        className="flex items-center gap-2 h-10 w-10 sm:w-max px-0 py-0 sm:px-4 sm:py-4"
         onClick={toggleModalOpen}
       >
-        <PlusCircle className="h-3.5 w-3.5" />
+        <PlusCircle size={18} />
         <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
           Adicionar produto
         </span>

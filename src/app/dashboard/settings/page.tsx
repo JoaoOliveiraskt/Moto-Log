@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -68,7 +69,7 @@ export default function EditStore() {
   }, [selectedStoreId]);
 
   return (
-    <main className="w-full mx-auto max-w-[75rem] flex flex-col space-y-10 mt-4">
+    <main className="flex flex-col space-y-10 mt-4">
       {selectedStore && (
         <Card x-chunk="dashboard-07-chunk-0">
           <CardHeader className="px-6 mt-6 space-y-2 mb-5">

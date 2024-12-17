@@ -15,11 +15,10 @@ export default function CategoryLayout({
 }>) {
   return (
     <>
-      <Container className="fixed top-16 left-1/2 transform -translate-x-1/2 w-full z-20 bg-background pb-2.5 pt-3">
-        <CategoryCarousel>
-          <CategoryCarouselContent />
-        </CategoryCarousel>
-      </Container>
+      <CategoryCarousel>
+        <CategoryCarouselContent />
+      </CategoryCarousel>
+
       {children}
     </>
   );

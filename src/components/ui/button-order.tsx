@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "next-view-transitions";
-import icon from "../icons/icon-component";
+import Icon from "../icons/icon-component";
 import { Button } from "./button";
 import LoginDialog from "../login-dialog";
 import { useState } from "react";
@@ -31,16 +31,14 @@ export default function OrderButton({
     <>
       <Button
         asChild
-        onClick={
-          handleClick
-        } 
+        onClick={handleClick}
         variant="icon"
         size="icon"
         className={cn(
           "flex flex-col items-center gap-1 cursor-pointer outline-none border-none",
           pathName === "/my-orders"
             ? "text-foreground"
-            : "text-muted-foreground hover:text-foreground",
+            : "text-muted-foreground",
           className
         )}
       >
@@ -49,8 +47,12 @@ export default function OrderButton({
           prefetch={false}
           className="flex flex-col items-center gap-1"
         >
-          <icon.order color="foreground" size={size} />
-          <p className="font-semibold text-xs">{children}</p>
+          {pathName === "/my-orders" ? (
+            <Icon.orderSolid size={size} className="text-foreground"/>
+          ) : (
+            <Icon.order size={size} />
+          )}
+          <p className="text-xs">{children}</p>
         </Link>
       </Button>
 

@@ -59,13 +59,13 @@ export default function StoreSelect({
             width={100}
             height={100}
             objectFit="cover"
-            className="w-11 h-8 object-cover rounded-md"
+            className="w-8 h-8 object-cover rounded-md"
           />
         ) : (
-          <div className="w-11 h-8 rounded-md border bg-accent"></div>
+          <div className="w-8 h-8 rounded-md border bg-accent"></div>
         )}
       </div>
-      <Select
+      {/*<Select
         onValueChange={(value) => {
           setStoreName(value);
           onStoreChange(value);
@@ -85,7 +85,7 @@ export default function StoreSelect({
             </SelectItem>
           ))}
         </SelectContent>
-      </Select>
+      </Select>*/}
     </div>
   );
 }

@@ -6,6 +6,7 @@ import NavDashboard from "./components/nav";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/ui/loader";
+import Container from "@/components/container";
 
 export default function DashboardLayout({
   children,
@@ -29,14 +30,14 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="flex flex-col min-h-screen w-full">
+    <Container className="flex flex-col min-h-screen w-full">
       <NavDashboard />
 
-      <div className="flex flex-col w-full flex-grow sm:gap-4 sm:py-4  ml-0 px-4 mt-[65px] lg:mt-0">
+      <div className="flex flex-col w-full flex-grow sm:gap-4 sm:py-4  ml-0 mt-12 lg:mt-0">
         <Header />
 
         <div className="">{children}</div>
       </div>
-    </div>
+    </Container>
   );
 }

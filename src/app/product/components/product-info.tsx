@@ -20,7 +20,6 @@ import {
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
 import { useSession } from "next-auth/react";
-import LoginButton from "@/components/login-button";
 import { toast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import LikeButton from "@/components/like-button";
@@ -28,6 +27,7 @@ import TypographyP from "@/components/typography/typography-p";
 import Icon from "@/components/icons/icon-component";
 import Balancer from "react-wrap-balancer";
 import Link from "next/link";
+import LoginModal from "@/components/login-modal";
 
 interface ProductInfoProps {
   quantity: number;
@@ -102,7 +102,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
     <>
       <div className="flex flex-col w-full gap-6">
         <div className="flex flex-col w-full gap-2">
-          <h1 className="text-2xl font-medium">{product.nome}</h1>
+          <h1 className="text-2xl font-medium lg:hidden">{product.nome}</h1>
           <div className="flex flex-col sm:flex-row sm:gap-4">
             <p className="text-3xl font-semibold tracking-wide">
               {formatCurrency(Number(calculateTotalPrice(product)))}
@@ -137,22 +137,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         </div>
       </div>
 
-      <AlertDialog open={isLoginModalOpen} onOpenChange={setIsLoginModalOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Faça o Login</AlertDialogTitle>
-            <AlertDialogDescription>
-              Você precisa estar logado para adicionar produtos ao carrinho.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter className="gap-2">
-            <AlertDialogCancel className="rounded-full border-none">
-              Cancelar
-            </AlertDialogCancel>
-            <LoginButton className="w-full" />
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <LoginModal open={isLoginModalOpen} onOpenChange={setIsLoginModalOpen} />
 
       <AlertDialog
         open={isConfirmationModalOpen}

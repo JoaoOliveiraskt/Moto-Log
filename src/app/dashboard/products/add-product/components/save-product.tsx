@@ -12,12 +12,17 @@ const ProductFormActionButtons: React.FC<ProductFormActionButtonsProps> = ({
 }) => {
   return (
     <div className="flex items-center gap-4 md:ml-auto">
-      <Button variant="outline" type="button" onClick={onDiscard}>
+      <Button
+        size={"rounded"}
+        variant="outline"
+        type="button"
+        onClick={onDiscard}
+      >
         limpar
       </Button>
-      <Button type="submit" disabled={isLoading}>
+      <Button size={"rounded"} type="submit" disabled={isLoading}>
         {isLoading ? (
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          <Loader2 className="animate-spin" size={20} />
         ) : (
           "Adicionar"
         )}

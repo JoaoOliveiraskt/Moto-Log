@@ -32,9 +32,9 @@ async function RecentProductsContent() {
 export default function RecentProducts() {
   const name = "Mais recentes";
   return (
-    <Container className="space-y-8 mt-20">
+    <Container className="space-y-8 mt-16 lg:mt-20">
       <div className="flex justify-between items-center">
-        <GoBackButton name={name} className="hidden lg:flex" />
+        <GoBackButton name={name} containerClassName="hidden lg:flex" />
       </div>
       <ProductList>
         <Suspense

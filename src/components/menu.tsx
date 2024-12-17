@@ -3,7 +3,8 @@
 import { useState, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import { Link } from "next-view-transitions";
-import LoginButton, { AvatarInfo } from "./login-button";
+import LoginButton from "@/components/login-button";
+import UserInfo from "@/components/user-info";
 import { Button } from "./ui/button";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { ModeToggle } from "./theme/theme-switcher";
@@ -12,11 +13,12 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import icon from "@/components/icons/icon-component";
+import Icon from "@/components/icons/icon-component";
 import { useAuth } from "@/hooks/useAuth";
 import LoginDialog from "./login-dialog";
 import MenuBtn from "./menu-btn";
 import Loader from "./ui/loader";
+import { Separator } from "./ui/separator";
 
 interface Props {
   className?: string;
@@ -45,10 +47,10 @@ const Menu = ({ className, children, iconSize }: Props) => {
             onClick={handleMenuOpen.close}
             variant="ghost"
             size="menu"
-            className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
+            className="flex gap-3 px-4 w-full justify-between py-6  mt-4"
           >
             <span>Início</span>
-            <icon.home size={20} />
+            <Icon.home size={20} />
           </Button>
         </Link>
 
@@ -58,10 +60,10 @@ const Menu = ({ className, children, iconSize }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
+              className="flex gap-3 px-4 w-full justify-between py-6 "
             >
               <span>Dashboard</span>
-              <icon.dashboard size={20} />
+              <Icon.dashboard size={20} />
             </Button>
           </Link>
         )}
@@ -72,10 +74,10 @@ const Menu = ({ className, children, iconSize }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
+              className="flex gap-3 px-4 w-full justify-between py-6 "
             >
               <span>Pedidos</span>
-              <icon.order size={20} />
+              <Icon.order size={20} />
             </Button>
           </Link>
         )}
@@ -86,32 +88,21 @@ const Menu = ({ className, children, iconSize }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
+              className="flex gap-3 px-4 w-full justify-between py-6"
             >
-              <span>Vender Agora</span>
-              <icon.sell size={20} />
+              <span>Vender agora</span>
+              <Icon.sell size={20} />
             </Button>
           </Link>
         )}
 
         <ModeToggle
           iconSize={20}
-          className="flex flex-row-reverse gap-3 px-4 w-full justify-between py-6 font-medium tracking-wide"
+          className="flex flex-row-reverse gap-3 px-4 w-full justify-between py-6  mb-4"
           size="menu"
         >
           <span>Tema</span>
         </ModeToggle>
-
-        {isAuthenticated && (
-          <LoginButton
-            iconSize={20}
-            onClick={handleMenuOpen.close}
-            size="menu"
-            className="flex flex-row-reverse px-4 w-full justify-between py-6 font-medium tracking-wide bg-transparent"
-          >
-            <span>Sair</span>
-          </LoginButton>
-        )}
       </>
     ),
     [isAuthenticated, isLojista, handleMenuOpen.close]
@@ -120,41 +111,45 @@ const Menu = ({ className, children, iconSize }: Props) => {
   return (
     <>
       <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-        {loading ? ( // Verifica se está carregando
-          <div className="flex items-center justify-center">
-            <Loader size={16}/> {/* Exibe um ícone de carregamento */}
-          </div>
-        ) : isAuthenticated ? (
-          <DropdownMenuTrigger asChild>
-            <Avatar className="cursor-pointer">
-              <AvatarImage
-                src={user?.image as string}
-                alt={user?.name as string}
-              />
-            </Avatar>
-          </DropdownMenuTrigger>
+        {loading ? (
+          <div className="w-9 h-9 rounded-full bg-accent animate-pulse"></div>
         ) : (
           <DropdownMenuTrigger asChild>
-            <div>
-              <MenuBtn className={className} iconSize={iconSize}>
-                {children}
-              </MenuBtn>
-            </div>
+            {isAuthenticated ? (
+              <Avatar className="cursor-pointer">
+                {loading ? (
+                  <Loader size={16} />
+                ) : (
+                  <AvatarImage
+                    src={user?.image as string}
+                    alt={user?.name as string}
+                  />
+                )}
+              </Avatar>
+            ) : (
+              <div>
+                <MenuBtn className={className} iconSize={iconSize}>
+                  {children}
+                </MenuBtn>
+              </div>
+            )}
           </DropdownMenuTrigger>
         )}
         <DropdownMenuContent
           align="end"
-          className="p-2.5 bg-card rounded-3xl w-full min-w-64 shadow-2xl"
+          className="bg-card rounded-3xl w-64 min-w-64 shadow-2xl"
         >
-          {isAuthenticated && <AvatarInfo size="menu" />}
-          <div className="space-y-0">{menuItems}</div>
-          {!isAuthenticated && (
-            <AvatarInfo
-              variant="outline"
-              size="menu"
-              className="w-full -mb-6 py-5 rounded-xl"
-            />
+          {isAuthenticated && (
+            <div>
+              <UserInfo />
+              <Separator />
+            </div>
           )}
+          <div className="flex-col flex gap-y-2 px-2">{menuItems}</div>
+          <Separator />
+          <LoginButton className="rounded-none" iconSize={20}>
+            {isAuthenticated ? <span>Sair</span> : <span>Entrar</span>}
+          </LoginButton>
         </DropdownMenuContent>
       </DropdownMenu>
 

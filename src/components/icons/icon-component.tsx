@@ -1,60 +1,76 @@
 import { RxMoon } from "react-icons/rx";
-import { FiSun, FiSearch } from "react-icons/fi";
-import { RiShoppingCart2Line } from "react-icons/ri";
-import { PiSignOutBold } from "react-icons/pi";
-import { PiSignInBold } from "react-icons/pi";
+import { FiSearch } from "react-icons/fi";
 import { BsArrowDownShort } from "react-icons/bs";
 import { BiLike } from "react-icons/bi";
 import { HiMiniChevronRight } from "react-icons/hi2";
 import { GoStarFill } from "react-icons/go";
-import { MdOutlineSell } from "react-icons/md";
-import { RxDashboard } from "react-icons/rx";
 import { FaGithub } from "react-icons/fa6";
-import { GoIssueClosed } from "react-icons/go";
 import { TbHeartFilled } from "react-icons/tb";
 import { IoTrashOutline } from "react-icons/io5";
 import { FiClock } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
 import { MdBookmarkAdd } from "react-icons/md";
-import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
-import { LineChart, Package, Package2, Settings } from "lucide-react";
 import { VscLoading } from "react-icons/vsc";
-import { HiOutlineMenuAlt4 } from "react-icons/hi";
-import { GoHome } from "react-icons/go";
-import { GoHomeFill } from "react-icons/go";
-import { LuShoppingBag } from "react-icons/lu";
-import { BiShoppingBag } from "react-icons/bi";
-import { BiSolidShoppingBag } from "react-icons/bi";
-import { FiHeart } from "react-icons/fi";
+import { GoHomeFill, GoHome } from "react-icons/go";
+import { BiShoppingBag, BiSolidShoppingBag } from "react-icons/bi";
 import { CiHeart } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
 import { FaRegUserCircle } from "react-icons/fa";
-import { BiGlobe } from "react-icons/bi";
 import { PiCheckCircleFill } from "react-icons/pi";
+import { FiEdit2 } from "react-icons/fi";
+import { TbFolderDown } from "react-icons/tb";
+import { TbFolderCheck } from "react-icons/tb";
+import { TbSquareRoundedMinus } from "react-icons/tb";
+import { TbSquareRoundedPlus } from "react-icons/tb";
+import { TbPhotoMinus } from "react-icons/tb";
+import { FiBarChart2 } from "react-icons/fi";
+import {
+  Menu,
+  ShoppingCart,
+  Home,
+  Tag,
+  LogIn,
+  LogOut,
+  Sun,
+  Dribbble,
+  Package,
+  Package2,
+  Settings,
+  ChevronLeft,
+  ChevronRight,
+  Bell,
+  ArrowLeft,
+  ArrowRight,
+} from "lucide-react";
 
 const Icon = {
   home: GoHome,
   homeSolid: GoHomeFill,
-  cart: RiShoppingCart2Line,
+  cart: ShoppingCart,
   trash: IoTrashOutline,
   order: BiShoppingBag,
-  menu: HiOutlineMenuAlt4,
+  orderSolid: BiSolidShoppingBag,
+  menu: Menu,
   search: FiSearch,
   moon: RxMoon,
-  sun: FiSun,
+  sun: Sun,
   star: GoStarFill,
-  signOut: PiSignOutBold,
-  signIn: PiSignInBold,
+  signOut: LogOut,
+  signIn: LogIn,
+  notification: Bell,
   like: BiLike,
   arrowDown: BsArrowDownShort,
-  arrowRight: HiMiniChevronRight,
-  sell: MdOutlineSell,
-  dashboard: RxDashboard,
+  arrowRight: ArrowRight,
+  arrowLeft: ArrowLeft,
+  chevronRight: ChevronRight,
+  chevronLeft: ChevronLeft,
+  sell: Tag,
+  dashboard: FiBarChart2,
+  analytics: FiBarChart2,
   package: Package,
   package2: Package2,
   settings: Settings,
-  lineChart: LineChart,
   github: FaGithub,
   confirmed: PiCheckCircleFill,
   bookmark: CiBookmark,
@@ -66,7 +82,13 @@ const Icon = {
   google: FcGoogle,
   loading: VscLoading,
   user: FaRegUserCircle,
-  globe: BiGlobe,
+  globe: Dribbble,
+  edit: FiEdit2,
+  folderDown: TbFolderDown,
+  folderCheck: TbFolderCheck,
+  Minus: TbSquareRoundedMinus,
+  Plus: TbSquareRoundedPlus,
+  photoMinus: TbPhotoMinus,
 };
 
 export default Icon;

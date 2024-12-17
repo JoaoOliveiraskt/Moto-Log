@@ -4,10 +4,10 @@ import calculateTotalPrice from "@/app/helpers/price";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { useContext } from "react";
-import Icon from "./icons/icon-component";
 import TypographySmall from "./typography/typography-small";
 import Link from "next/link";
 import TypographyP from "./typography/typography-p";
+import Icon from "./icons/icon-component";
 
 interface CartItemProps {
   cartProduct: CartProduct;
@@ -35,7 +35,7 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
   return (
     <div>
       <div className="flex gap-4 h-28 w-full">
-        <div className="w-28 h-24 relative">
+        <div className="w-28 h-28 relative">
           <Image
             src={cartProduct.imagemUrl}
             alt={cartProduct.nome}
@@ -46,20 +46,20 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
 
         <div className="flex flex-col justify-between h-full w-full space-y-2">
           <div className="flex flex-col justify-between h-full">
-            <div className="">
+            <div className="w-fit">
               <Link
                 href={`/product/${cartProduct.id}`}
-                className="hover:text-cyan-600"
+                className="hover:text-cyan-600 w-fit"
               >
                 {cartProduct.nome}
               </Link>
               <Link
                 href={`/store/${cartProduct.lojaId}`}
-                className="hover:text-cyan-600"
+                className="text-muted-foreground hover:text-cyan-600 w-fit"
               >
-                <TypographySmall className="flex items-center mt-0.5">
+                <TypographySmall className="flex items-center mt-0.5 ">
                   {cartProduct.loja.nome}
-                  <Icon.arrowRight />
+                  <Icon.chevronRight size={14} />
                 </TypographySmall>
               </Link>
             </div>
@@ -82,33 +82,30 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
           </div>
 
           <div className="flex space-x-2 justify-between">
-            <div className="flex items-center space-x-2 justify-center border rounded-md overflow-hidden h-8">
+            <div className="flex items-center space-x-2 overflow-hidden -ml-0.5">
               <Button
                 onClick={handleDecreaseProductQuantityClick}
-                size={"icon"}
                 variant={"ghost"}
-                className="text-center rounded-none"
+                className="text-center text-foreground px-2 py-0"
               >
-                -
+                <Icon.Minus size={20} />
               </Button>
               <span className="w-8 text-center">{cartProduct.quantity}</span>
               <Button
                 onClick={handleIncreaseProductQuantityClick}
-                size={"icon"}
                 variant={"ghost"}
-                className="text-center rounded-none"
+                className="text-center text-foreground px-2 py-0"
               >
-                +
+                <Icon.Plus size={20} />
               </Button>
             </div>
 
             <Button
-              className="h-8 rounded-sm"
+              className="px-2 py-0"
               variant={"ghost"}
-              size={"icon"}
               onClick={handleRemoveProduct}
             >
-              <Icon.trash />
+              <Icon.trash size={20} />
             </Button>
           </div>
         </div>

@@ -34,7 +34,7 @@ export default function WelcomeCreateStore() {
           </TypographyH1>
         </motion.div>
         <motion.div {...pAnimation}>
-          <TypographyP className="text-sm sm:text-base max-w-xs sm:max-w-md text-center px-7 md:px-0">
+          <TypographyP className="text-center text-medium md:text-lg max-w-md md:max-w-xl text-muted-foreground tracking-tight [&:not(:first-child)]:mt-2 px-11 ">
             Crie sua nova loja em poucos passos e comece a vender seus produtos
             online de forma simples e rápida.
           </TypographyP>

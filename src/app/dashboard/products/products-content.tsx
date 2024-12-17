@@ -33,10 +33,10 @@ export default async function ProductsContent() {
   );
 
   return (
-    <main className="mx-auto w-full max-w-[75rem] gap-4 sm:py-0 md:gap-8 mt-4">
-      <Tabs defaultValue="all">
+    <main className="sm:py-0 mt-4">
+      <Tabs defaultValue="all" >
         <div className="flex items-center mb-4">
-          <TabsList className="space-x-2  border border-border p-1 rounded-lg">
+          <TabsList className="space-x-2 bg-accent">
             <TabsTrigger value="all" className="">
               Todos
             </TabsTrigger>
@@ -45,9 +45,9 @@ export default async function ProductsContent() {
             </TabsTrigger>
             <TabsTrigger value="archived" className="">
               Arquivado
-            </TabsTrigger>
+            </TabsTrigger>         
           </TabsList>
-          <div className="ml-auto flex items-center gap-2">
+          <div className="ml-auto">
             <BtnAddProduct />
           </div>
         </div>

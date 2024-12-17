@@ -244,7 +244,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\joaol\\Documents\\github\\Moto-Log\\prisma\\generated\\client",
+      "value": "C:\\Users\\joao\\Documents\\github\\Moto-Log\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -271,7 +271,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": true,
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {

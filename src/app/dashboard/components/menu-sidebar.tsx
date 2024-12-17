@@ -3,9 +3,9 @@
 import { Link } from "next-view-transitions";
 import { PanelLeft } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Icon from "@/components/icons/icon-component";
+import { Button } from "@/components/ui/button";
 
 export default function MenuSideBar() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -20,7 +20,7 @@ export default function MenuSideBar() {
     { name: "Pedidos", icon: Icon.cart, href: "/dashboard/orders" },
     {
       name: "Analíticos",
-      icon: Icon.lineChart,
+      icon: Icon.analytics,
       href: "/dashboard/analytics",
     },
     {
@@ -39,17 +39,18 @@ export default function MenuSideBar() {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="md:max-w-screen-md">
-        <nav className="grid text-lg font-medium">
+        <nav className="grid text-lg font-medium space-y-4 mt-8">
           {links.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={handleSheetOpen.close}
-              className={`flex px-4 py-4 gap-4 h-9 w-9 items-center rounded-lg transition-colors hover:text-foreground hover:bg-accent md:h-8 md:w-full`}
-            >
-              <link.icon className="h-5 w-5 text-primary-foreground" />
-              <span className="">{link.name}</span>
-            </Link>
+            <Button key={link.name} asChild variant="ghost" size="xl" className="w-full justify-start">
+              <Link
+                href={link.href}
+                onClick={handleSheetOpen.close}
+                className={`flex items-center gap-4`}
+              >
+                <link.icon className="h-6 w-6" />
+                <span className="">{link.name}</span>
+              </Link>
+            </Button>
           ))}
         </nav>
       </SheetContent>

@@ -59,8 +59,8 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
 
   return (
     <>
-      <Container className="mt-5 lg:mt-20 space-y-4">
-        <GoBackButton className="hidden lg:flex" />
+      <Container className="mt-16 space-y-4">
+        <GoBackButton containerClassName="hidden lg:flex" name={produto.nome}/>
         <div className="w-full space-y-8">
           <div className="grid lg:grid-cols-[1fr,1fr] gap-x-12 space-y-8 lg:space-y-0">
             <div className="space-y-4 w-full">

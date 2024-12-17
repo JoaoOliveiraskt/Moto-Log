@@ -1,10 +1,16 @@
-import TypographyH3 from "./typography/typography-h3";
-import { Skeleton } from "./ui/skeleton";
 import Image from "next/image";
 import { Link } from "next-view-transitions";
 import TypographyP from "./typography/typography-p";
 import GetStores from "@/app/actions/store/get-stores";
-import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel";
+import SeeAllButton from "./see-all-button";
+import TypographyH4 from "./typography/typography-h4";
 
 interface StoreProps {
   id: string;
@@ -33,9 +39,11 @@ export default async function TopStores() {
   }
 
   return (
-    <div className="sm:hidden space-y-4">
-      <div>
-        <TypographyH3>Lojas em Destaque</TypographyH3>
+    <div className="space-y-8 pb-6">
+      <div className="flex justify-between items-center">
+        <TypographyH4>Lojas em Destaque</TypographyH4>
+
+        <SeeAllButton href={"/community"} />
       </div>
       <Carousel
         opts={{
@@ -45,15 +53,18 @@ export default async function TopStores() {
           align: "start",
         }}
       >
-        <CarouselContent className="-ml-3">
+        <CarouselContent className="-ml-4 ">
           {stores &&
             stores.map((store: StoreProps) => (
-              <CarouselItem className="basis-auto" key={store.id}>
+              <CarouselItem
+                className="gap-x-1 basis-[124px] md:mr-2"
+                key={store.id}
+              >
                 <Link
                   href={`/store/${store.id}`}
-                  className="text-foreground font-medium hover:text-cyan-600 flex flex-col gap-y-2"
+                  className="text-foreground font-medium hover:text-cyan-600 hover:transition-colors flex flex-col gap-y-2"
                 >
-                  <div className="w-28 h-28 rounded-[1.5rem] overflow-hidden ">
+                  <div className="w-28 h-28 rounded-[1.5rem] overflow-hidden drop-shadow-lg">
                     {store.imagemUrl ? (
                       <Image
                         src={store.imagemUrl}
@@ -76,6 +87,8 @@ export default async function TopStores() {
               </CarouselItem>
             ))}
         </CarouselContent>
+        <CarouselNext className="hidden lg:-right-6  lg:inline-flex" />
+        <CarouselPrevious className="hidden lg:-left-4  lg:inline-flex" />
       </Carousel>
     </div>
   );

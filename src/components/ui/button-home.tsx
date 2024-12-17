@@ -36,8 +36,12 @@ export default function HomeButton({
           className
         )}
       >
-        <Icon.home size={size} />
-        <p className="font-semibold text-xs">{children}</p>
+        {pathName === "/" ? (
+          <Icon.homeSolid size={size} />
+        ) : (
+          <Icon.home size={size} />
+        )}
+        <p className="text-xs">{children}</p>
       </Button>
     </Link>
   );

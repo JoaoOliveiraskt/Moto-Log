@@ -22,7 +22,7 @@ export default function ProductDetails({
   } = useFormContext();
 
   return (
-    <div className="grid gap-8">
+    <div className="grid gap-12">
       <div className="grid gap-4">
         <Label htmlFor="nome">Nome</Label>
         <Input

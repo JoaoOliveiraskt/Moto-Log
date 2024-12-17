@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils";
 import StoreBadge from "./store-badge";
 import TypographySmall from "./typography/typography-small";
 import { Produto, Loja, Categoria } from "../../prisma/generated/client";
+import TypographyH4 from "./typography/typography-h4";
+import TypographyP from "./typography/typography-p";
 
 interface ProductProps {
   product: Produto & {
@@ -26,7 +28,7 @@ const ProductCard = ({ product, className }: ProductProps) => {
     <div
       className={cn(
         "h-max w-full  max-w-72 overflow-hidden text-foreground ",
-        "md:hover:bg-accent/50 md:dark:hover:bg-accent/30 rounded-2xl md:p-2",
+        "md:hover:bg-accent/50 md:dark:hover:bg-accent/30 rounded-2xl md:px-2 md:pt-2",
         className
       )}
     >
@@ -34,7 +36,7 @@ const ProductCard = ({ product, className }: ProductProps) => {
         <Link href={`/product/${product.id}`} className="block ">
           <div
             className={cn(
-              "h-48  w-full lg:h-[13rem] rounded-2xl overflow-hidden bg-accent"
+              "h-56  w-full lg:h-[13rem] rounded-2xl overflow-hidden bg-accent shadow-lg"
             )}
           >
             <Image
@@ -49,7 +51,7 @@ const ProductCard = ({ product, className }: ProductProps) => {
           </div>
         </Link>
 
-        <div className="absolute bottom-2.5 right-2.5 h-7 w-7 bg-white flex items-center rounded-full">
+        {/*<div className="absolute bottom-2.5 right-2.5 h-7 w-7 bg-white flex items-center rounded-full">
           <LikeButton
             product={{ id: product.id }}
             size={20}
@@ -58,21 +60,13 @@ const ProductCard = ({ product, className }: ProductProps) => {
             Salvar Produto
           </LikeButton>
         </div>
+        */}
       </div>
 
       <div className="min-h-full px-1 py-2 flex flex-col justify-between">
         <Link href={`/product/${product.id}`} className="">
-          <h2 className="text-sm line-clamp-1">{product.nome}</h2>
+          <TypographyP className="text-sm line-clamp-1">{product.nome}</TypographyP>
         </Link>
-
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <Link
-            href={`/category/${product.categoriaId}`}
-            className="hover:text-cyan-600 w-fit"
-          >
-            {product.categoria?.nome}
-          </Link>
-        </div>
 
         <div className="flex flex-col items-start mt-2">
           {Number(product.porcentagemDesconto) > 0 && (

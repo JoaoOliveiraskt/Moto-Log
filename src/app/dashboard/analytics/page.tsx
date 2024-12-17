@@ -47,7 +47,6 @@ const chartData = [
 
 const DashboardAnalytics = () => {
   return (
-    <Container>
       <main className="flex flex-col gap-4 md:gap-4 mt-4">
         <div className="grid gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
           <Card>
@@ -224,7 +223,6 @@ const DashboardAnalytics = () => {
           </Card>
         </div>
       </main>
-    </Container>
   );
 };
 

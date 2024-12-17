@@ -115,7 +115,7 @@ const Cart = () => {
         <div className="flex flex-col h-full max-w-screen-lg mx-auto mt-10 lg:mt-20 xl:mt-10">
           {products.length > 0 ? (
             <div className="grid lg:grid-cols-3 md:gap-x-8 h-full w-full">
-              <ScrollArea className="h-[30rem] lg:h-[50rem] col-span-2 pr-2">
+              <ScrollArea className="h-[31rem] lg:h-[50rem] col-span-2 pr-2">
                 <TypographyH3>Carrinho ({productQuantity})</TypographyH3>
                 {products.map((product) => (
                   <div key={product.id} className="mt-4">
@@ -125,10 +125,10 @@ const Cart = () => {
                 ))}
               </ScrollArea>
 
-              <div className="w-full col-span-2 lg:col-span-1">
+              <div className="w-full col-span-2 lg:col-span-1 ">
                 <TypographyH3>Resumo do Pedido</TypographyH3>
                 <Card className="border-none mt-4 h-max w-full">
-                  <CardContent className="p-5 border-none space-y-5 w-full">
+                  <CardContent className="p-6 border-none space-y-5 w-full">
                     <div className="flex justify-between items-center text-sm">
                       <span className="text-muted-foreground">Entrega</span>
                       <span className="text-confirmed uppercase">Grátis</span>
@@ -142,7 +142,7 @@ const Cart = () => {
 
                     <div className="flex justify-between items-center text-sm">
                       <span className="text-muted-foreground">Descontos</span>
-                      <span className="text-destructive">
+                      <span className="text-confirmed">
                         - {formatCurrency(Number(totalDiscount))}
                       </span>
                     </div>

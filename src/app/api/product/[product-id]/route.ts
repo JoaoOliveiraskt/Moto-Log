@@ -21,6 +21,33 @@ const updateProductSchema = z.object({
   status: z.enum([ProdutoStatus.ATIVO, ProdutoStatus.ARQUIVADO]).optional(),
 });
 
+export async function GET(
+  request: Request,
+  { params }: { params: { "product-id": string } }
+) {
+  const productId = params["product-id"];
+
+  if (!productId) {
+    return NextResponse.json(
+      { message: "Está faltando o ID do produto" },
+      { status: 400 }
+    );
+  }
+
+  const product = await db.produto.findUnique({
+    where: { id: productId },
+  });
+
+  if (!product) {
+    return NextResponse.json(
+      { message: "Produto não encontrado" },
+      { status: 404 }
+    );
+  }
+
+  return NextResponse.json(product, { status: 200 });
+}
+
 export async function PUT(
   request: Request,
   { params }: { params: { "product-id": string } }

@@ -1,5 +1,4 @@
 import GetCategories from "@/app/actions/category/get-categories";
-import TypographyH3 from "../../typography/typography-h3";
 import { Card } from "../../ui/card";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
@@ -11,6 +10,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import TypographyP from "../../typography/typography-p";
+import TypographyH4 from "@/components/typography/typography-h4";
 
 interface CategoryContent {
   discount: string;
@@ -58,16 +58,14 @@ export default async function DiscountCategoryCarousel() {
   });
 
   return (
-    <section className="space-y-6">
-      <div className="flex items-center justify-between mb-6">
-        <div className="space-y-1">
-          <TypographyH3>Categorias em Destaque</TypographyH3>
-          <TypographyP className="text-muted-foreground">
-            Aproveite até{" "}
-            <span className="text-primary font-semibold">20% OFF</span> nas
-            melhores ofertas
-          </TypographyP>
-        </div>
+    <section className="space-y-8">
+      <div className="space-y-1 mb-6">
+        <TypographyH4>Categorias em Destaque</TypographyH4>
+        <TypographyP className="text-muted-foreground text-sm md:text-base">
+          Aproveite até{" "}
+          <span className="text-primary font-semibold">20% OFF</span> nas
+          melhores ofertas
+        </TypographyP>
       </div>
 
       <Carousel
@@ -86,14 +84,13 @@ export default async function DiscountCategoryCarousel() {
             return (
               <CarouselItem
                 key={category.id}
-                className="pl-2 md:pl-4 sm:basis-1/2 lg:basis-1/3"
+                className="pl-2 md:pl-4 basis-[96%] sm:basis-1/2 lg:basis-1/3"
               >
                 <Link
                   href={`/category/${category.id}?discount=true`}
                   className="group block h-[16rem] relative overflow-hidden rounded-2xl"
                 >
                   <Card className="h-full relative overflow-hidden border-none">
-                    {/* Imagem de fundo */}
                     <div className="absolute inset-0">
                       <Image
                         src={content.imageUrl}
@@ -104,16 +101,13 @@ export default async function DiscountCategoryCarousel() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/20" />
                     </div>
 
-                    {/* Conteúdo do card */}
                     <div className="relative h-full p-6 flex flex-col justify-end text-white">
-                      {/* Badge de desconto */}
                       <div className="absolute top-4 right-4">
                         <span className="bg-primary px-3 py-1.5 rounded-full text-sm font-bold text-primary-foreground">
                           {content.discount}
                         </span>
                       </div>
 
-                      {/* Título e mensagem */}
                       <div className="space-y-2">
                         <h3 className="text-xl font-bold">{category.nome}</h3>
                         <p className="text-sm text-gray-200">
@@ -127,8 +121,8 @@ export default async function DiscountCategoryCarousel() {
             );
           })}
         </CarouselContent>
-        <CarouselPrevious className="left-2" />
-        <CarouselNext className="right-2 " />
+        <CarouselNext className="hidden  lg:inline-flex -right-6  " />
+        <CarouselPrevious className="hidden lg:inline-flex  -left-4  " />
       </Carousel>
     </section>
   );

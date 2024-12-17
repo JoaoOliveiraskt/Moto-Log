@@ -20,6 +20,8 @@ import {
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Label } from "@/components/ui/label";
 import MotoLogLogo from "@/components/icons/moto-log-logo";
+import { ResponsiveDialogOrDrawer } from "@/components/responsive-dialog-or-drawer";
+import { useEffect } from "react";
 
 interface ProductData {
   nome: string;
@@ -93,60 +95,54 @@ export default function AddProductDialog({
   };
 
   return (
-    <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DialogContent
-        aria-describedby={undefined}
-        className="h-full max-h-[70%] lg:min-w-[30%] pb-16 pt-0 pr-0 pl-0"
-      >
-        <DialogHeader className="flex flex-row items-center gap-x-4 pl-6 mt-4">
-          <MotoLogLogo disabled={true} />
-          <DialogTitle className="">Adicionar produto</DialogTitle>
-        </DialogHeader>
-
-        <ScrollArea className="max-h-[98%] overflow-hidden ">
-          <FormProvider {...methods}>
-            <form
-              onSubmit={methods.handleSubmit(onSubmit)}
-              className="grid px-6 w-full h-full flex-1 auto-rows-max gap-4 md:gap-4 lg:min-h-[calc(100vh-9.125rem)]"
-            >
-              <div className="h-full grid auto-rows-max items-start gap-4 lg:gap-8 mt-8">
-                <ProductDetails />
-                <div className="grid gap-4 ">
-                  <Label htmlFor="imagemUrl">Url da imagem</Label>
-                  <Input
-                    className="h-14"
-                    type="text"
-                    placeholder="URL da imagem"
-                    {...methods.register("imagemUrl", { required: true })}
-                  />
-                </div>
-                <ProductCategory />
-                <ProductStatus />
-                <Stock />
-              </div>
-
-              <DialogFooter className="mb-8 fixed -bottom-4 right-4">
-                <ProductFormActionButtons
-                  isLoading={isLoading}
-                  onDiscard={() => methods.reset()}
+    <ResponsiveDialogOrDrawer
+      isOpen={isModalOpen}
+      onOpenChange={setIsModalOpen}
+      title="Adicionar produto"
+    >
+      <ScrollArea className="max-h-[98%] overflow-hidden">
+        <FormProvider {...methods}>
+          <form
+            onSubmit={methods.handleSubmit(onSubmit)}
+            className="grid px-6 w-full h-full flex-1 auto-rows-max gap-4 md:gap-4"
+          >
+            <div className="h-full grid auto-rows-max items-start gap-12 mt-8">
+              <ProductDetails />
+              <div className="grid gap-4">
+                <Label htmlFor="imagemUrl">Url da imagem</Label>
+                <Input
+                  className="h-14"
+                  type="text"
+                  placeholder="URL da imagem"
+                  {...methods.register("imagemUrl", { required: true })}
                 />
+              </div>
+              <ProductCategory />
+              <ProductStatus />
+              <Stock />
+            </div>
 
-                {errorMessage && (
-                  <p className="text-red-500 text-center">{errorMessage}</p>
-                )}
-              </DialogFooter>
-            </form>
-          </FormProvider>
-          <ScrollBar orientation="vertical" className="-ml-2" />
-        </ScrollArea>
+            <DialogFooter className="mb-8 fixed -bottom-4 right-4">
+              <ProductFormActionButtons
+                isLoading={isLoading}
+                onDiscard={() => methods.reset()}
+              />
 
-        <ModalConfirmation
-          isConfirmDialogOpen={isConfirmDialogOpen}
-          setIsConfirmDialogOpen={setIsConfirmDialogOpen}
-        >
-          Produto adicionado com sucesso! 🎉
-        </ModalConfirmation>
-      </DialogContent>
-    </Dialog>
+              {errorMessage && (
+                <p className="text-red-500 text-center">{errorMessage}</p>
+              )}
+            </DialogFooter>
+          </form>
+        </FormProvider>
+        <ScrollBar orientation="vertical" className="-ml-2" />
+      </ScrollArea>
+
+      <ModalConfirmation
+        isConfirmDialogOpen={isConfirmDialogOpen}
+        setIsConfirmDialogOpen={setIsConfirmDialogOpen}
+      >
+        Produto adicionado com sucesso! 🎉
+      </ModalConfirmation>
+    </ResponsiveDialogOrDrawer>
   );
 }

@@ -4,6 +4,8 @@ import { useState } from "react";
 import LoginDialog from "./login-dialog";
 import { Button } from "./ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import Icon from "@/components/icons/icon-component";
+import TypographySmall from "./typography/typography-small";
 
 export default function HeaderLoginBtn() {
   const { isAuthenticated, loading } = useAuth();
@@ -15,11 +17,10 @@ export default function HeaderLoginBtn() {
   return (
     <div className={`${isAuthenticated ? "hidden" : ""}`}>
       <Button
-        variant="icon"
         onClick={toggle}
-        className="h-8 text-foreground px-2"
+        className="h-8 gap-x-2 mr-2 bg-[#0077ed] hover:bg-[#0077ed]/90 text-white"
       >
-        <p>Entrar</p>
+        <TypographySmall className="">Entrar</TypographySmall>
       </Button>
       <LoginDialog open={open} onOpenChange={setOpen} />
     </div>

@@ -1,4 +1,4 @@
-import LoginButton from "./login-button";
+import GoogleSignInButton from "./google-signin-button";
 import {
   AlertDialogHeader,
   AlertDialogFooter,
@@ -10,13 +10,13 @@ import {
 } from "@/components/ui/alert-dialog";
 
 interface LoginModalProps {
-  isOpen: boolean;
-  onClose: () => void;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
-export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
+export default function LoginModal({ open, onOpenChange }: LoginModalProps) {
   return (
-    <AlertDialog open={isOpen} onOpenChange={onClose}>
+    <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Faça o Login</AlertDialogTitle>
@@ -24,9 +24,9 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             Você precisa estar logado para adicionar produtos ao carrinho.
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter>
+        <AlertDialogFooter className="w-fit">
+          <GoogleSignInButton className="" />
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <LoginButton className="w-full" />
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

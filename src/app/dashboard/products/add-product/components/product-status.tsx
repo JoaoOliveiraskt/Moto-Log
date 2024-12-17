@@ -1,4 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -9,6 +8,7 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { useFormContext, Controller } from "react-hook-form";
+import Icon from "@/components/icons/icon-component";
 
 interface Props {
   defaultValue?: {
@@ -21,7 +21,9 @@ export default function ProductStatus({ defaultValue }: Props) {
 
   return (
     <div className="grid gap-4">
-      <Label htmlFor="status" className="h-fit">Status do Produto</Label>
+      <Label htmlFor="status" className="h-fit">
+        Status do Produto
+      </Label>
       <Controller
         control={control}
         name="status"
@@ -39,8 +41,18 @@ export default function ProductStatus({ defaultValue }: Props) {
               <SelectValue placeholder="Selecionar status" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="ATIVO">Ativo</SelectItem>
-              <SelectItem value="ARQUIVADO">Arquivado</SelectItem>
+              <SelectItem value="ATIVO" >
+                <div className="flex items-center gap-x-4">
+                  <Icon.folderCheck size={22}/>
+                  <span>Ativo</span>
+                </div>
+              </SelectItem>
+              <SelectItem value="ARQUIVADO">
+                <div className="flex items-center gap-x-4">
+                  <Icon.folderDown size={22}/>
+                  <span>Arquivado</span>
+                </div>
+              </SelectItem>
             </SelectContent>
           </Select>
         )}
