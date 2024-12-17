@@ -24,9 +24,9 @@ export default function LoginModal({ open, onOpenChange }: LoginModalProps) {
             Você precisa estar logado para adicionar produtos ao carrinho.
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter className="w-fit">
-          <GoogleSignInButton className="" />
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogFooter>
+          <AlertDialogCancel className="border">Cancel</AlertDialogCancel>
+          <GoogleSignInButton className="mr-auto border space-x-2 lg:space-x-4"/>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
