@@ -11,6 +11,8 @@ import Comments from "@/app/product/components/comments";
 import Image from "next/image";
 import TypographyH3 from "@/components/typography/typography-h3";
 import StoreBadge from "@/components/store-badge";
+import TypographyP from "@/components/typography/typography-p";
+import Balancer from "react-wrap-balancer";
 
 interface ProductPageProps {
   params: {
@@ -43,7 +45,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
       : 0,
   };
 
-  const images = Array.from({ length: 4 }, () => produto.imagemUrl);
+  const images = Array.from({ length: 6 }, () => produto.imagemUrl);
 
   const relatedProducts = await db.produto.findMany({
     where: {
@@ -60,18 +62,21 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
   return (
     <>
       <Container className="mt-16 space-y-4">
-        <GoBackButton containerClassName="hidden lg:flex" name={produto.nome}/>
         <div className="w-full space-y-8">
-          <div className="grid lg:grid-cols-[1fr,1fr] gap-x-12 space-y-8 lg:space-y-0">
-            <div className="space-y-4 w-full">
+          <div className="grid gap-x-12 gap-y-8 lg:gap-y-12 max-w-4xl">
+            {/* @ts-ignore */}
+            <ProductInfo product={convertedProduct} quantity={0} />
+
+            <div className="grid gap-y-4">
               <ProductBanner images={images} produto={produto} />
               <div>
                 {/* @ts-ignore */}
                 <StoreBadge store={produto.loja} />
               </div>
+              <p className="text-muted-foreground line-clamp-4 mt-2">
+                {produto.descricao}
+              </p>
             </div>
-            {/* @ts-ignore */}
-            <ProductInfo product={convertedProduct} quantity={0} />
           </div>
 
           <Comments />

@@ -23,11 +23,11 @@ import { useSession } from "next-auth/react";
 import { toast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import LikeButton from "@/components/like-button";
-import TypographyP from "@/components/typography/typography-p";
 import Icon from "@/components/icons/icon-component";
-import Balancer from "react-wrap-balancer";
 import Link from "next/link";
 import LoginModal from "@/components/login-modal";
+import TypographyH1 from "@/components/typography/typography-h1";
+import StoreBadge from "@/components/store-badge";
 
 interface ProductInfoProps {
   quantity: number;
@@ -100,38 +100,66 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
   return (
     <>
-      <div className="flex flex-col w-full gap-6">
-        <div className="flex flex-col w-full gap-2">
-          <h1 className="text-2xl font-medium lg:hidden">{product.nome}</h1>
-          <div className="flex flex-col sm:flex-row sm:gap-4">
-            <p className="text-3xl font-semibold tracking-wide">
-              {formatCurrency(Number(calculateTotalPrice(product)))}
-            </p>
+      <div className="flex flex-col w-full gap-y-4 mb-4">
+        <TypographyH1 className="font-bold tracking-wide text-2xl lg:text-4xl">
+          {product.nome}
+        </TypographyH1>
+
+        <div className="flex flex-wrap justify-between sm:justify-start gap-x-4 lg:gap-x-8 gap-y-4 text-sm">
+          <div className="flex flex-col items-start gap-y-1">
+            <div className="flex items-center space-x-1">
+              <span className="">4,8</span>
+              <Icon.star size={10} />
+            </div>
+
+            <span className="text-muted-foreground text-xs sm:text-sm">
+              13,2 mi avaliações
+            </span>
+          </div>
+          <div className="flex flex-col items-start gap-y-1">
+            <span className="">{product.totalVendido}</span>
+            <span className="text-muted-foreground text-xs sm:text-sm">
+              Vendidos
+            </span>
+          </div>
+          <div className="flex flex-col items-start gap-y-1">
+            <span className="">{product.estoque}</span>
+            <span className="text-muted-foreground text-xs sm:text-sm">
+              Em estoque
+            </span>
+          </div>
+          <div className="flex flex-col items-start gap-y-1">
+            <Icon.delivery size={20} />
+            <span className="text-muted-foreground text-xs sm:text-sm">
+              Entrega grátis
+            </span>
+          </div>
+        </div>
+
+        <div className="flex  gap-x-4 mt-2">
+          <p className="font-bold tracking-wide text-xl">
+            {formatCurrency(Number(calculateTotalPrice(product)))}
+          </p>
+          <div className="flex items-center gap-x-4">
             {Number(product.porcentagemDesconto) > 0 && (
-              <div className="flex items-center gap-4 w-full">
-                <p className="text-sm text-muted-foreground line-through">
-                  {formatCurrency(Number(product.preco))}
-                </p>
-                <DiscountBadge product={product} />
-              </div>
+              <p className="text-sm text-muted-foreground line-through">
+                {formatCurrency(Number(product.preco))}
+              </p>
+            )}
+
+            {Number(product.porcentagemDesconto) > 0 && (
+              <DiscountBadge product={product} />
             )}
           </div>
         </div>
 
-        <div className="">
-          <TypographyP className="text-muted-foreground [&:not(:first-child)]:mt-0">
-            <Balancer>{product.descricao}</Balancer>
-          </TypographyP>
-        </div>
-
-        <div className="flex items-center gap-4 w-full">
+        <div className="flex items-center gap-8 w-full mt-4">
           <Button
             size={"xl"}
             onClick={handleAddToCart}
-            className="font-bold tracking-wide h-14 space-x-2"
+            className="font-bold tracking-wide"
           >
-            <Icon.cart size={20} />
-            <span>Adicionar ao carrinho</span>
+            Adicionar ao carrinho
           </Button>
           <LikeButton>Salvar produto</LikeButton>
         </div>
