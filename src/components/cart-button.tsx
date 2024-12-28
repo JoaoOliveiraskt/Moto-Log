@@ -21,18 +21,16 @@ const CartButton = ({ children, className, model, iconSize }: Props) => {
 
   return (
     <div
-      className={`relative flex flex-col items-center text-foreground rounded-sm `}
+      className={cn(
+        "relative flex flex-col items-center justify-between text-foreground rounded-sm",
+        className,
+        pathName === "/cart"
+          ? "text-foreground fill-foreground"
+          : "text-muted-foreground"
+      )}
     >
       <Link href="/cart" className={`relative`}>
-        <Icon.cart
-          size={iconSize}
-          className={cn(
-            className,
-            pathName === "/cart"
-              ? "text-foreground fill-foreground"
-              : "text-muted-foreground"
-          )}
-        />
+        <Icon.cart size={iconSize} />
 
         {totalItems > 0 && (
           <span className="absolute flex items-center justify-center top-0 -right-0.5 h-2 w-2 rounded-full bg-destructive text-destructive-foreground text-xs"></span>

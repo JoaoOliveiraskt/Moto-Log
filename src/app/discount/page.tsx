@@ -7,7 +7,7 @@ import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/product-card-skeleton";
 
 export default async function DiscountPage() {
-  const title = "Melhores Ofertas";
+  const title = "Melhores ofertas";
   const url = process.env.NEXT_PUBLIC_API_URL;
 
   if (!url) {
@@ -33,7 +33,7 @@ export default async function DiscountPage() {
     }
 
     return (
-      <Container className="space-y-8 mt-20">
+      <Container className="space-y-8 mt-16">
         <GoBackButton name={title} containerClassName="hidden lg:flex"/>
         <Suspense
           fallback={

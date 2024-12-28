@@ -86,7 +86,7 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
               <Button
                 onClick={handleDecreaseProductQuantityClick}
                 variant={"ghost"}
-                className="text-center text-foreground px-2 py-0"
+                size={"iconShaped"}
               >
                 <Icon.Minus size={20} />
               </Button>
@@ -94,15 +94,16 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
               <Button
                 onClick={handleIncreaseProductQuantityClick}
                 variant={"ghost"}
-                className="text-center text-foreground px-2 py-0"
+                size={"iconShaped"}
               >
                 <Icon.Plus size={20} />
               </Button>
             </div>
 
             <Button
-              className="px-2 py-0"
+              className=""
               variant={"ghost"}
+              size={"iconShaped"}
               onClick={handleRemoveProduct}
             >
               <Icon.trash size={20} />

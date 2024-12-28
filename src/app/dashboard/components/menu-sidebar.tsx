@@ -33,8 +33,8 @@ export default function MenuSideBar() {
   return (
     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
       <SheetTrigger asChild>
-        <Button size="icon" variant="outline" className="lg:hidden">
-          <PanelLeft className="h-5 w-5" />
+        <Button size="iconShaped" variant="outline" className="lg:hidden">
+          <PanelLeft size={20} />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>

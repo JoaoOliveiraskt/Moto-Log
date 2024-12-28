@@ -18,7 +18,7 @@ export default function HeaderLoginBtn() {
     <div className={`${isAuthenticated ? "hidden" : ""}`}>
       <Button
         onClick={toggle}
-        className="h-8 gap-x-2 mr-2 bg-[#0077ed] hover:bg-[#0077ed]/90 text-white"
+        className="h-8 gap-x-2  bg-[#0077ed] hover:bg-[#0077ed]/90 text-white"
       >
         <TypographySmall className="">Entrar</TypographySmall>
       </Button>

@@ -30,7 +30,7 @@ const MyOrdersPage = async () => {
   });
   return (
     <>
-      <Container className="flex flex-col gap-8 mt-20">
+      <Container className="flex flex-col gap-8 mt-16">
         <GoBackButton
           name={"Meus pedidos"}
           containerClassName="hidden lg:flex"

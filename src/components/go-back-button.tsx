@@ -3,9 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
 import Icon from "./icons/icon-component";
-import TypographyH3 from "./typography/typography-h3";
 import { cn } from "@/lib/utils";
 import MotoLogLogo from "./icons/moto-log-logo";
+import TypographyH4 from "./typography/typography-h4";
 
 interface Props {
   className?: string;
@@ -15,19 +15,19 @@ interface Props {
 
 // Objeto de tradução de rotas
 const routeTranslations: Record<string, string> = {
-  "/best-sellers": "Em Alta",
-  "/cart": "Meu Carrinho",
+  "/best-sellers": "Em alta",
+  "/cart": "Meu carrinho",
   "/category": "Categoria",
   "/community": "Comunidade",
-  "/create-store": "Criar Loja",
+  "/create-store": "Criar loja",
   "/dashboard/analytics": "Analíticos",
   "/dashboard/orders": "Pedidos",
   "/dashboard/products": "Meus produtos",
   "/dashboard/settings": "Configurações",
-  "/discount": "Melhores Ofertas",
-  "/my-orders": "Meus Pedidos",
+  "/discount": "Melhores ofertas",
+  "/my-orders": "Meus pedidos",
   "/product": "Produto",
-  "/recent-products": "Mais Recentes",
+  "/recent-products": "Mais recentes",
   "/store": "Loja",
   "/welcome-create-store": " ",
 };
@@ -69,9 +69,9 @@ const GoBackButton: React.FC<Props> = ({
             </Button>
 
             {routeName && (
-              <TypographyH3 className="flex-1 lg:flex text-center text-foreground">
+              <TypographyH4 className="flex-1 lg:flex text-center text-foreground">
                 {routeName}
-              </TypographyH3>
+              </TypographyH4>
             )}
           </div>
         </div>

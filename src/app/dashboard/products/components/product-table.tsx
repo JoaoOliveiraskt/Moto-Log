@@ -57,7 +57,7 @@ export default function ProductTable({ products }: Props) {
 
   return (
     <>
-      <Card className="bg-background">
+      <Card className="bg-background border">
         <Table className="mt-2 sm:mt-4">
           <TableHeader>
             <TableRow className="border-none hover:bg-background dark:hover:bg-background">
@@ -98,9 +98,12 @@ export default function ProductTable({ products }: Props) {
                       </div>
                     </TableCell>
                     <TableCell>
-                      <span className="text-xs sm:text-sm font-semibold line-clamp-2">
+                      <Link
+                        href={`/product/${product.id}`}
+                        className="text-xs sm:text-sm font-semibold line-clamp-2"
+                      >
                         {product.nome}
-                      </span>
+                      </Link>
                     </TableCell>
                     <TableCell className="">
                       <div className="flex gap-2 items-center w-fit rounded-full px-1.5 py-0.5 ">
@@ -137,7 +140,7 @@ export default function ProductTable({ products }: Props) {
                         <DropdownMenuTrigger asChild>
                           <Button
                             aria-haspopup="true"
-                            size="icon"
+                            size="iconShaped"
                             variant="ghost"
                             className="transition-colors duration-450"
                           >

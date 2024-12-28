@@ -41,7 +41,7 @@ export default async function TopStores() {
   return (
     <div className="space-y-8 pb-6">
       <div className="flex justify-between items-center">
-        <TypographyH4>Lojas em Destaque</TypographyH4>
+        <TypographyH4>Lojas em destaque</TypographyH4>
 
         <SeeAllButton href={"/community"} />
       </div>

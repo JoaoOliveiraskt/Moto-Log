@@ -65,7 +65,9 @@ const ProductCard = ({ product, className }: ProductProps) => {
 
       <div className="min-h-full px-1 py-2 flex flex-col justify-between">
         <Link href={`/product/${product.id}`} className="">
-          <TypographyP className="text-sm line-clamp-1">{product.nome}</TypographyP>
+          <TypographyP className="text-sm line-clamp-1">
+            {product.nome}
+          </TypographyP>
         </Link>
 
         <div className="flex flex-col items-start mt-2">
@@ -79,7 +81,7 @@ const ProductCard = ({ product, className }: ProductProps) => {
               </span>
             </div>
           )}
-          <span className="font-bold text-xl text-foreground">
+          <span className="font-bold text-md text-foreground">
             {formatCurrency(Number(calculateTotalPrice(product)))}
           </span>
         </div>

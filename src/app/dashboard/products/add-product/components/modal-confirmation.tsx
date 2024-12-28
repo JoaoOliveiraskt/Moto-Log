@@ -1,5 +1,6 @@
 import {
   AlertDialog,
+  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogFooter,
@@ -23,12 +24,12 @@ export default function ModalConfirmation({
       open={isConfirmDialogOpen}
       onOpenChange={setIsConfirmDialogOpen}
     >
-      <AlertDialogContent>
+      <AlertDialogContent className="w-fit">
         <AlertDialogHeader>
           <AlertDialogTitle>{children}</AlertDialogTitle>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Ok</AlertDialogCancel>
+          <AlertDialogCancel className="border">Ok</AlertDialogCancel>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

@@ -19,9 +19,9 @@ const GoogleSignInButton = ({ className }: Props) => {
   };
 
   return (
-    <div className="w-full flex items-center justify-center">
+  
       <Button
-        size={"rounded"}
+        size={"xl"}
         onClick={(e) => {
           e.preventDefault();
           handleSigInClick();
@@ -32,7 +32,7 @@ const GoogleSignInButton = ({ className }: Props) => {
         <span>Entrar com o Google</span>
         {loading ? <Loader /> : <Icon.signIn size={18} />}
       </Button>
-    </div>
+
   );
 };
 

@@ -24,13 +24,13 @@ export default function CategoryItem({ category, link }: CategoryProps) {
       variant="secondary"
       size={"rounded"}
       className={cn(
-        "h-9 dark:shadow-inner dark:shadow-accent-foreground",
-        isActive && "bg-foreground text-background hover:bg-foreground/90 dark:shadow-none"
+        "h-9",
+        isActive && "bg-foreground text-background hover:bg-foreground/90"
       )}
       asChild
     >
       <Link href={link}>
-        <p className="font-semibold text-sm">{category.nome}</p>
+        <p className=" text-sm tracking-wide">{category.nome}</p>
       </Link>
     </Button>
   );

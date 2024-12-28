@@ -49,7 +49,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
             size="menu"
             className="flex gap-3 px-4 w-full justify-between py-6  mt-4"
           >
-            <span>Início</span>
+            <span className=" tracking-wide">Início</span>
             <Icon.home size={20} />
           </Button>
         </Link>
@@ -62,7 +62,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
               size="menu"
               className="flex gap-3 px-4 w-full justify-between py-6 "
             >
-              <span>Dashboard</span>
+              <span className=" tracking-wide">Dashboard</span>
               <Icon.dashboard size={20} />
             </Button>
           </Link>
@@ -76,7 +76,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
               size="menu"
               className="flex gap-3 px-4 w-full justify-between py-6 "
             >
-              <span>Pedidos</span>
+              <span className=" tracking-wide">Pedidos</span>
               <Icon.order size={20} />
             </Button>
           </Link>
@@ -90,7 +90,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
               size="menu"
               className="flex gap-3 px-4 w-full justify-between py-6"
             >
-              <span>Vender agora</span>
+              <span className=" tracking-wide">Vender agora</span>
               <Icon.sell size={20} />
             </Button>
           </Link>
@@ -101,7 +101,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
           className="flex flex-row-reverse gap-3 px-4 w-full justify-between py-6  mb-4"
           size="menu"
         >
-          <span>Tema</span>
+          <span className=" tracking-wide">Tema</span>
         </ModeToggle>
       </>
     ),
@@ -137,7 +137,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
         )}
         <DropdownMenuContent
           align="end"
-          className="bg-card rounded-3xl w-64 min-w-64 shadow-2xl"
+          className="bg-card rounded-2xl w-64 min-w-64 shadow-2xl"
         >
           {isAuthenticated && (
             <div>
@@ -148,7 +148,11 @@ const Menu = ({ className, children, iconSize }: Props) => {
           <div className="flex-col flex gap-y-2 px-2">{menuItems}</div>
           <Separator />
           <LoginButton className="rounded-none" iconSize={20}>
-            {isAuthenticated ? <span>Sair</span> : <span>Entrar</span>}
+            {isAuthenticated ? (
+              <span className=" tracking-wide">Sair</span>
+            ) : (
+              <span className=" tracking-wide">Entrar</span>
+            )}
           </LoginButton>
         </DropdownMenuContent>
       </DropdownMenu>

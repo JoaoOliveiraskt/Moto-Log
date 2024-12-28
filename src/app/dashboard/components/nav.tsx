@@ -16,7 +16,11 @@ const links = [
   { name: "Produtos", icon: Icon.package, href: "/dashboard/products" },
   { name: "Pedidos", icon: Icon.cart, href: "/dashboard/orders" },
   { name: "Analíticos", icon: Icon.analytics, href: "/dashboard/analytics" },
-  { name: "Configurações", icon: Icon.settings, href: "/dashboard/settings" },
+  {
+    name: "Personalização",
+    icon: Icon.personalization,
+    href: "/dashboard/settings",
+  },
 ];
 
 interface Props {
@@ -29,40 +33,30 @@ export default function NavDashboard({ className }: Props) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-10 lg:flex hidden items-center w-full py-4 border-b mt-[60px] ",
+        "sticky top-0 z-10 lg:flex hidden items-center w-full py-4",
         className
       )}
     >
-      <div className="w-full flex gap-x-20 px-0 md:px-0">
+      <div className="w-full flex gap-x-8 px-0 md:px-0">
         <StoreSelect onStoreChange={() => {}} />
 
         <nav className="flex items-center space-x-4">
           {links.map((link) => {
             const isActive = pathName.startsWith(link.href);
             return (
-              <TooltipProvider key={link.name} delayDuration={0}>
-                <Tooltip>
-                  <TooltipTrigger
-                    asChild
-                    className={`${
-                      isActive
-                        ? "border-b border-foreground rounded-none !text-foreground"
-                        : ""
-                    }`}
-                  >
-                    <Link
-                      href={link.href}
-                      className={`text-muted-foreground flex items-center px-4 py-1.5 transition-colors hover:text-foreground`}
-                    >
-                      <link.icon className="h-5 w-5" />
-                      <span className="ml-2 text-sm font-semibold">
-                        {link.name}
-                      </span>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom">{link.name}</TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <Link
+                key={link.href}
+                className={cn(
+                  "text-muted-foreground flex items-center px-4 py-1.5 transition-colors hover:text-foreground pb-2",
+                  isActive
+                    ? "border-b border-foreground rounded-none !text-foreground"
+                    : ""
+                )}
+                href={link.href}
+              >
+                <link.icon size={20} />
+                <span className="ml-2 text-sm font-semibold">{link.name}</span>
+              </Link>
             );
           })}
         </nav>

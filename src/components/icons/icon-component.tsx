@@ -2,7 +2,6 @@ import { RxMoon } from "react-icons/rx";
 import { FiSearch } from "react-icons/fi";
 import { BsArrowDownShort } from "react-icons/bs";
 import { BiLike } from "react-icons/bi";
-import { HiMiniChevronRight } from "react-icons/hi2";
 import { GoStarFill } from "react-icons/go";
 import { FaGithub } from "react-icons/fa6";
 import { TbHeartFilled } from "react-icons/tb";
@@ -25,6 +24,7 @@ import { TbSquareRoundedMinus } from "react-icons/tb";
 import { TbSquareRoundedPlus } from "react-icons/tb";
 import { TbPhotoMinus } from "react-icons/tb";
 import { FiBarChart2 } from "react-icons/fi";
+import { TbTruckDelivery } from "react-icons/tb";
 import {
   Menu,
   ShoppingCart,
@@ -42,6 +42,7 @@ import {
   Bell,
   ArrowLeft,
   ArrowRight,
+  WandSparkles,
 } from "lucide-react";
 
 const Icon = {
@@ -89,6 +90,8 @@ const Icon = {
   Minus: TbSquareRoundedMinus,
   Plus: TbSquareRoundedPlus,
   photoMinus: TbPhotoMinus,
+  delivery: TbTruckDelivery,
+  personalization: WandSparkles,
 };
 
 export default Icon;

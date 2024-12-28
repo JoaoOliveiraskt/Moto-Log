@@ -44,12 +44,13 @@ export default function DeleteProductBtn({
   return (
     <Button
       size={"rounded"}
+      variant={"destructive"}
       className={cn(success && "bg-confirmed text-white")}
       onClick={deleteProduct}
       disabled={isSubmitLoading}
     >
       {success ? <Icon.confirmed size={20} /> : "Excluir"}
-      {isSubmitLoading && <Loader2 className="ml-2 animate-spin" size={20}/>}
+      {isSubmitLoading && <Loader2 className="ml-2 animate-spin" size={20} />}
     </Button>
   );
 }

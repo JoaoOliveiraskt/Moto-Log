@@ -19,7 +19,7 @@ export default function DashboardLayout({
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <Loader size={32}/>
+        <Loader size={32} />
       </div>
     );
   }
@@ -30,10 +30,10 @@ export default function DashboardLayout({
   }
 
   return (
-    <Container className="flex flex-col min-h-screen w-full">
+    <Container className="flex flex-col min-h-screen w-full mt-12 lg:mt-16">
       <NavDashboard />
 
-      <div className="flex flex-col w-full flex-grow sm:gap-4 sm:py-4  ml-0 mt-12 lg:mt-0">
+      <div className="flex flex-col w-full sm:gap-4">
         <Header />
 
         <div className="">{children}</div>

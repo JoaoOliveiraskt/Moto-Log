@@ -52,10 +52,10 @@ export default function CategoryCarousel({ children }: CategoryCarouselProps) {
       initial={{ y: 0 }}
       animate={{ y: scrollingUp ? 0 : -100 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-12 pt-1 pb-2 lg:top-16 left-0 right-0 w-full z-20 bg-background mx-auto  flex justify-center"
+      className="fixed w-screen top-12 pt-1 pb-2 lg:top-16 lg:pr-4 left-0 right-0 z-20 bg-background mx-auto  flex justify-center"
     >
       <Carousel
-        className="w-full mx-auto max-w-screen-lg lg:max-w-[1294px] px-4 lg:px-12"
+        className="w-full mx-auto max-w-screen-lg lg:max-w-[1294px] "
         opts={{
           dragFree: true,
           duration: 14,
@@ -70,22 +70,22 @@ export default function CategoryCarousel({ children }: CategoryCarouselProps) {
         {scrollPrev && (
           <div
             className={cn(
-              "absolute bg-gradient-to-l from-transparent via-background/80 to-background left-12 top-0 h-full w-12 rounded-none",
-              "hidden sm:flex"
+              "absolute bg-gradient-to-l from-transparent via-background/90 to-background left-0 top-0 h-full w-20 rounded-none",
+              "hidden lg:flex"
             )}
           >
-            <CarouselPrevious variant="ghost" className="-left-0 h-10 w-10" />
+            <CarouselPrevious variant="ghost" className="-left-1 h-10 w-10" />
           </div>
         )}
 
         {scrollNext && (
           <div
             className={cn(
-              "absolute bg-gradient-to-r from-transparent via-background/80 to-background right-12 top-0 h-full w-12 rounded-none",
-              "hidden sm:flex"
+              "absolute bg-gradient-to-r from-transparent via-background/90 to-background right-0 top-0 h-full w-20 rounded-none",
+              "hidden lg:flex"
             )}
           >
-            <CarouselNext variant="ghost" className="-right-2 h-10 w-10" />
+            <CarouselNext variant="ghost" className="-right-1 h-10 w-10" />
           </div>
         )}
       </Carousel>

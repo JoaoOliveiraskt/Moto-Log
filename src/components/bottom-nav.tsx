@@ -24,7 +24,7 @@ export default function BottomNav() {
           Carrinho
         </CartButton>
 
-        <MobileMenu className="gap-1" />
+        <MobileMenu className="gap-1 text-muted-foreground" />
       </nav>
     </div>
   );

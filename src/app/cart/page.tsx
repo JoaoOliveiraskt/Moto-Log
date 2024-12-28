@@ -109,10 +109,10 @@ const Cart = () => {
 
   return (
     <>
-      <Container className="min-h-screen">
-        <GoBackButton className="hidden lg:flex mt-36" />
+      <Container className="min-h-screen mt-16">
+        <GoBackButton containerClassName="hidden lg:flex" />
 
-        <div className="flex flex-col h-full max-w-screen-lg mx-auto mt-10 lg:mt-20 xl:mt-10">
+        <div className="flex flex-col h-full mx-auto mt-8">
           {products.length > 0 ? (
             <div className="grid lg:grid-cols-3 md:gap-x-8 h-full w-full">
               <ScrollArea className="h-[31rem] lg:h-[50rem] col-span-2 pr-2">
