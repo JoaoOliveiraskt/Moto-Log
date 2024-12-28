@@ -8,6 +8,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import TypographyH3 from "@/components/typography/typography-h3";
 import TypographyP from "@/components/typography/typography-p";
+import TypographyH2 from "@/components/typography/typography-h2";
 
 async function getData(id: string, bestSellers?: boolean) {
   const store = await db.loja.findUnique({
@@ -68,7 +69,7 @@ export default async function Store({ params }: Props) {
             />
           ) : null}
         </div>
-        <div className="w-full flex items-start gap-x-4 mt-4">
+        <div className="w-full flex items-center gap-x-4 mt-4">
           <div className="">
             {storeImageUrl ? (
               <Image
@@ -76,27 +77,29 @@ export default async function Store({ params }: Props) {
                 alt="Store Banner"
                 width={600}
                 height={600}
-                className="w-16 h-16 md:w-32 md:h-32 object-cover rounded-full border flex-shrink-0"
+                className="w-20 h-20 sm:w-40 sm:h-40 object-cover rounded-full flex-shrink-0 drop-shadow-sm"
               />
-            ) : null}
+            ) : (
+              <div className="w-20 h-20 sm:w-40 sm:h-40 bg-accent rounded-full flex-shrink-0 animate-pulse"></div>
+            )}
           </div>
 
-          <div className="flex-1">
-            <TypographyH3 className="text-xl lg:text-2xl">
+          <div className="flex-1 ">
+            <TypographyH2 className="text-xl lg:text-4xl">
               {store.nome}
-            </TypographyH3>
+            </TypographyH2>
 
-            <TypographyP className="text-xs md:text-sm text-muted-foreground [&:not(:first-child)]:mt-0">
+            <TypographyP className="text-xs sm:text-sm text-muted-foreground [&:not(:first-child)]:mt-1">
               1999 seguidores • <span>{totalProducts} produtos</span>
             </TypographyP>
 
-            <TypographyP className="text-xs md:text-sm text-muted-foreground max-w-md [&:not(:first-child)]:mt-0 line-clamp-1">
+            <TypographyP className="text-xs sm:text-sm text-muted-foreground max-w-md [&:not(:first-child)]:mt-2 line-clamp-1">
               {store.descricao}
             </TypographyP>
 
             <Button
               size={"rounded"}
-              className="font-semibold px-8 mt-2 hidden lg:inline-flex"
+              className="font-semibold px-8 mt-4 hidden sm:inline-flex"
             >
               Seguir
             </Button>
@@ -104,7 +107,7 @@ export default async function Store({ params }: Props) {
         </div>
         <Button
           size={"rounded"}
-          className="font-semibold px-6 mt-4 lg:hidden w-full"
+          className="font-semibold px-6 mt-4 sm:hidden w-full "
         >
           Seguir
         </Button>
@@ -140,7 +143,7 @@ export default async function Store({ params }: Props) {
                   <TypographyH3>Produtos Mais Vendidos</TypographyH3>
 
                   <div className=" gap-2 ">
-                    <ProductList className="!grid-cols-2 sm:!grid-cols-3 lg:!grid-cols-5 ">
+                    <ProductList className="!grid-cols-2 sm:!grid-cols-3 lg:!grid-cols-4 xl:!grid-cols-5">
                       {bestSellersProducts.slice(0, 5).map((product) => (
                         <ProductCard key={product.id} product={product} />
                       ))}
