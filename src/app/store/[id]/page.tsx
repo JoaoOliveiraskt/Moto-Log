@@ -2,13 +2,10 @@ import Container from "@/components/container";
 import Icon from "@/components/icons/icon-component";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
-import { Button } from "@/components/ui/button";
 import { db } from "@/lib/prisma";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import TypographyH3 from "@/components/typography/typography-h3";
-import TypographyP from "@/components/typography/typography-p";
-import TypographyH2 from "@/components/typography/typography-h2";
+import StoreInfo from "../components/store-info";
 
 async function getData(id: string, bestSellers?: boolean) {
   const store = await db.loja.findUnique({
@@ -57,60 +54,13 @@ export default async function Store({ params }: Props) {
 
   return (
     <>
-      <Container className="mt-14 lg:mt-20 min-h-[calc(100vh-5rem)]">
-        <div className="w-full h-24 lg:h-52 relative">
-          {storeImageUrl ? (
-            <Image
-              src={storeImageUrl}
-              alt="Store Banner"
-              width={600}
-              height={600}
-              className="w-full h-full object-cover rounded-lg lg:rounded-2xl flex-shrink-0"
-            />
-          ) : null}
-        </div>
-        <div className="w-full flex items-center gap-x-4 mt-4">
-          <div className="">
-            {storeImageUrl ? (
-              <Image
-                src={storeImageUrl}
-                alt="Store Banner"
-                width={600}
-                height={600}
-                className="w-20 h-20 sm:w-40 sm:h-40 object-cover rounded-full flex-shrink-0 drop-shadow-sm"
-              />
-            ) : (
-              <div className="w-20 h-20 sm:w-40 sm:h-40 bg-accent rounded-full flex-shrink-0 animate-pulse"></div>
-            )}
-          </div>
-
-          <div className="flex-1 ">
-            <TypographyH2 className="text-xl lg:text-4xl">
-              {store.nome}
-            </TypographyH2>
-
-            <TypographyP className="text-xs sm:text-sm text-muted-foreground [&:not(:first-child)]:mt-1">
-              1999 seguidores • <span>{totalProducts} produtos</span>
-            </TypographyP>
-
-            <TypographyP className="text-xs sm:text-sm text-muted-foreground max-w-md [&:not(:first-child)]:mt-2 line-clamp-1">
-              {store.descricao}
-            </TypographyP>
-
-            <Button
-              size={"rounded"}
-              className="font-semibold px-8 mt-4 hidden sm:inline-flex"
-            >
-              Seguir
-            </Button>
-          </div>
-        </div>
-        <Button
-          size={"rounded"}
-          className="font-semibold px-6 mt-4 sm:hidden w-full "
-        >
-          Seguir
-        </Button>
+      <Container className="mt-12 lg:mt-16 min-h-screen">
+        <StoreInfo
+          name={store.nome}
+          description={store.descricao}
+          imageUrl={storeImageUrl}
+          totalProducts={totalProducts}
+        />
 
         <div className="flex flex-col w-full">
           <div className="gap-8">
@@ -139,7 +89,7 @@ export default async function Store({ params }: Props) {
               </div>
             ) : (
               <>
-                <div className="grid gap-4 mt-6">
+                <div className="grid gap-4 mt-8">
                   <TypographyH3>Produtos Mais Vendidos</TypographyH3>
 
                   <div className=" gap-2 ">
@@ -150,7 +100,7 @@ export default async function Store({ params }: Props) {
                     </ProductList>
                   </div>
                 </div>
-                <div className="mt-6 flex flex-col gap-4">
+                <div className="grid gap-4 mt-8">
                   <TypographyH3>Todos os Produtos</TypographyH3>
 
                   <ProductList>

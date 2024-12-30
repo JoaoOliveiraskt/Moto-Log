@@ -30,10 +30,10 @@
   }
 
   .dark {
-    --background: 0 0% 7%;
+    --background: 0 0% 4%;
     --foreground: 60 6% 94%;
     --muted: 201 13% 14%;
-    --muted-foreground: 60 1% 57%;
+    --muted-foreground: 60 1% 55%;
     --card: 0 0% 12%;
     --card-foreground: 231 21% 98%;
     --popover: 60 6% 94%;
