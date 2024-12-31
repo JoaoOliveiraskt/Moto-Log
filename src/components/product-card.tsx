@@ -19,16 +19,27 @@ interface ProductProps {
     loja: Loja;
   };
   className?: string;
+  imageClassName?: string;
+  showStoreImage?: boolean;
+  infoClassName?: string;
+  titleClassName?: string;
 }
 
-const ProductCard = ({ product, className }: ProductProps) => {
+const ProductCard = ({
+  product,
+  className,
+  imageClassName,
+  showStoreImage,
+  infoClassName,
+  titleClassName,
+}: ProductProps) => {
   const { loja } = product;
 
   return (
     <div
       className={cn(
-        "h-max w-full  max-w-72 overflow-hidden text-foreground ",
-        "md:hover:bg-accent/50 md:dark:hover:bg-accent/30 rounded-2xl md:px-2 md:pt-2",
+        "h-[21.5rem] w-full max-w-72 overflow-hidden text-foreground",
+        "md:hover:bg-accent md:dark:hover:bg-accent/30 rounded-2xl md:px-2 md:pt-2",
         className
       )}
     >
@@ -36,7 +47,8 @@ const ProductCard = ({ product, className }: ProductProps) => {
         <Link href={`/product/${product.id}`} className="block ">
           <div
             className={cn(
-              "h-56  w-full lg:h-[13rem] rounded-2xl overflow-hidden bg-accent shadow-lg"
+              "h-56 w-full lg:h-[13rem] rounded-2xl overflow-hidden bg-accent shadow-lg",
+              imageClassName
             )}
           >
             <Image
@@ -46,7 +58,9 @@ const ProductCard = ({ product, className }: ProductProps) => {
               height={1000}
               priority
               quality={80}
-              className="object-cover w-full h-full hover:brightness-75 duration-500 transition-all"
+              className={cn(
+                "object-cover w-full h-full hover:brightness-75 duration-500 transition-all"
+              )}
             />
           </div>
         </Link>
@@ -63,14 +77,21 @@ const ProductCard = ({ product, className }: ProductProps) => {
         */}
       </div>
 
-      <div className="min-h-full px-1 py-2 flex flex-col justify-between">
+      <div
+        className={cn(
+          "h-fit py-2 flex flex-col justify-between",
+          infoClassName
+        )}
+      >
         <Link href={`/product/${product.id}`} className="">
-          <TypographyP className="text-sm line-clamp-1">
+          <TypographyP
+            className={cn("text-sm font-semibold line-clamp-1", titleClassName)}
+          >
             {product.nome}
           </TypographyP>
         </Link>
 
-        <div className="flex flex-col items-start mt-2">
+        <div className="flex flex-col items-start mt-1">
           {Number(product.porcentagemDesconto) > 0 && (
             <div className="flex gap-2">
               <span className="text-xs line-through text-muted-foreground font-medium">
@@ -81,17 +102,18 @@ const ProductCard = ({ product, className }: ProductProps) => {
               </span>
             </div>
           )}
-          <span className="font-bold text-md text-foreground">
+          <span className=" text-sm text-foreground">
             {formatCurrency(Number(calculateTotalPrice(product)))}
           </span>
         </div>
 
-        <TypographySmall className="text-muted-foreground mt-2">
+        <TypographySmall className="text-muted-foreground mt-1">
           {product.totalVendido} vendidos
         </TypographySmall>
 
         <div className="mt-2">
           <StoreBadge
+            showImage={showStoreImage}
             store={{
               id: loja.id,
               nome: loja.nome,

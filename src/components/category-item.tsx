@@ -22,9 +22,8 @@ export default function CategoryItem({ category, link }: CategoryProps) {
   return (
     <Button
       variant="secondary"
-      size={"rounded"}
       className={cn(
-        "h-9",
+        "h-8",
         isActive && "bg-foreground text-background hover:bg-foreground/90"
       )}
       asChild

@@ -5,6 +5,7 @@ import {
   AvatarImage,
 } from "../../../components/ui/avatar";
 import icon from "@/components/icons/icon-component";
+import TypographyH4 from "@/components/typography/typography-h4";
 
 const commentContent = [
   {
@@ -20,7 +21,7 @@ const comments = Array.from({ length: 4 }, () => commentContent[0]);
 export default function Comments() {
   return (
     <div className="mt-8 space-y-2">
-      <TypographyH3 className="mb-4">Comentários</TypographyH3>
+      <TypographyH4 className="mb-4">997 comentários</TypographyH4>
 
       {comments.map((comment, i) => (
         <div key={i} className="grid gap-2 max-w-screen-sm pb-6">

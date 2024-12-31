@@ -53,23 +53,23 @@ const GoBackButton: React.FC<Props> = ({
       ) : (
         <div
           className={cn(
-            "flex items-center justify-between gap-4 h-12 w-full",
+            "flex items-center justify-between gap-4 w-full",
             containerClassName
           )}
         >
-          <div className="flex items-center gap-x-4">
+          <div className="flex items-center gap-x-2">
             <Button
               onClick={handleGoBack}
-              className={`flex items-center rounded-full lg:p-1 ${className}`}
+              className={`flex items-center rounded-full lg:p-1.5 ${className}`}
               size="icon"
               variant="ghost"
               title="Voltar"
             >
-              <Icon.arrowLeft size={28} />
+              <Icon.arrowLeft size={20} />
             </Button>
 
             {routeName && (
-              <TypographyH4 className="flex-1 lg:flex text-center text-foreground">
+              <TypographyH4 className="text-foreground">
                 {routeName}
               </TypographyH4>
             )}

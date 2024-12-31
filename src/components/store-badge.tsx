@@ -16,14 +16,18 @@ interface StoreBadgeProps {
     imagemUrl: string;
     descricao: string;
   };
+  followers?: number;
   className?: string;
   imageClassName?: string;
+  showImage?: boolean;
 }
 
 export default function StoreBadge({
   store,
   imageClassName,
   className,
+  followers,
+  showImage = true,
 }: StoreBadgeProps) {
   if (!store || !store.id) {
     console.error("Loja não está definida ou não possui um ID:", store);
@@ -32,7 +36,7 @@ export default function StoreBadge({
 
   return (
     <HoverCard openDelay={20} closeDelay={20}>
-      <HoverCardTrigger  className="relative cursor-pointer z-10 inline-block">
+      <HoverCardTrigger className="relative cursor-pointer z-10">
         <Link
           href={`/store/${store.id}`}
           className={cn(
@@ -40,26 +44,35 @@ export default function StoreBadge({
             className
           )}
         >
-          <div
-            className={cn(
-              "w-7 h-7 rounded-full overflow-hidden flex-shrink-0",
-              imageClassName
-            )}
-          >
-            {store.imagemUrl ? (
-              <Image
-                src={store.imagemUrl}
-                width={500}
-                height={500}
-                alt="logo da loja"
-                className="object-cover w-full h-full"
-              />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
+          {showImage === true ? (
+            <div
+              className={cn(
+                "w-6 h-6 rounded-full overflow-hidden flex-shrink-0",
+                imageClassName
+              )}
+            >
+              {store.imagemUrl ? (
+                <Image
+                  src={store.imagemUrl}
+                  width={500}
+                  height={500}
+                  alt="logo da loja"
+                  className="object-cover w-full h-full"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
+              )}
+            </div>
+          ) : null}
+
+          <div>
+            <p className="text-sm">{store.nome}</p>
+            {followers && (
+              <p className="text-xs text-muted-foreground hover:text-muted-foreground">
+                {followers} seguidores
+              </p>
             )}
           </div>
-
-          <p className="text-sm">{store.nome}</p>
         </Link>
       </HoverCardTrigger>
       <HoverCardContent

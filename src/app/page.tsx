@@ -16,7 +16,7 @@ export default function Home() {
         <CategoryCarouselContent />
       </CategoryCarousel>
 
-      <Container className="space-y-10 mt-28 lg:mt-36 pb-20">
+      <Container className="space-y-10 mt-28 lg:mt-32 pb-20">
         <DiscountProducts />
         <Suspense fallback={<TopStoreSkeleton />}>
           <TopStores />

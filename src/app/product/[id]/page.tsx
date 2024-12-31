@@ -2,17 +2,20 @@ import React from "react";
 import { db } from "../../../lib/prisma";
 import { notFound } from "next/navigation";
 import ProductBanner from "../components/product-banner";
-import ProductInfo from "../components/product-info";
-import GoBackButton from "@/components/go-back-button";
+import AddToCartButton from "../components/add-to-cart-button";
 import Container from "@/components/container";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import Comments from "@/app/product/components/comments";
-import Image from "next/image";
 import TypographyH3 from "@/components/typography/typography-h3";
 import StoreBadge from "@/components/store-badge";
-import TypographyP from "@/components/typography/typography-p";
-import Balancer from "react-wrap-balancer";
+import TypographyH1 from "@/components/typography/typography-h1";
+import { Button } from "@/components/ui/button";
+import formatCurrency from "@/app/helpers/format-currency";
+import calculateTotalPrice from "@/app/helpers/price";
+import DiscountBadge from "../components/discount-badge";
+import ProductInfo from "../components/product-info";
+import TypographyH4 from "@/components/typography/typography-h4";
 
 interface ProductPageProps {
   params: {
@@ -28,7 +31,9 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
       id,
     },
     include: {
-      loja: true,
+      loja: {
+        select: { id: true, nome: true, imagemUrl: true, descricao: true },
+      },
       categoria: true,
     },
   });
@@ -53,42 +58,89 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
       id: { not: produto.id },
     },
     include: {
-      loja: { select: { id: true, nome: true, imagemUrl: true } },
+      loja: {
+        select: { id: true, nome: true, imagemUrl: true, descricao: true },
+      },
       categoria: true,
     },
-    take: 5,
+    take: 10,
   });
 
   return (
     <>
-      <Container className="mt-16 space-y-4">
-        <div className="w-full space-y-8">
-          <div className="grid gap-x-12 gap-y-8 lg:gap-y-12 max-w-4xl">
-            {/* @ts-ignore */}
-            <ProductInfo product={convertedProduct} quantity={0} />
-
-            <div className="grid gap-y-4">
-              <ProductBanner images={images} produto={produto} />
+      <Container className="mt-16 lg:mt-24 space-y-4">
+        <div className="grid lg:grid-cols-[3fr_1.5fr] lg:gap-x-6 w-full space-y-8 lg:space-y-0">
+          {/* Coluna principal */}
+          <div>
+            <div className="grid gap-y-6 max-w-4xl">
               <div>
-                {/* @ts-ignore */}
-                <StoreBadge store={produto.loja} />
+                <ProductBanner images={images} produto={produto} />
+
+                <TypographyH1 className="font-semibold text-xl lg:text-2xl line-clamp-2 mt-2">
+                  {produto.nome}
+                </TypographyH1>
+
+                <div className="flex gap-x-4 mt-1">
+                  <p className="font-semibold tracking-wide text-lg">
+                    {formatCurrency(Number(calculateTotalPrice(produto)))}
+                  </p>
+                  <div className="flex items-center gap-x-4">
+                    {Number(produto.porcentagemDesconto) > 0 && (
+                      <p className="text-sm text-muted line-through">
+                        {formatCurrency(Number(produto.preco))}
+                      </p>
+                    )}
+
+                    {Number(produto.porcentagemDesconto) > 0 && (
+                      <DiscountBadge product={produto} />
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-y-4 sm:flex-row sm:items-center sm:justify-between mt-2">
+                  <div className="flex items-center justify-between sm:justify-normal sm:gap-x-4">
+                    {/* @ts-ignore */}
+                    <StoreBadge
+                      imageClassName="w-9 h-9"
+                      store={produto.loja as any}
+                      followers={1900}
+                    />
+                    <Button size={"rounded"} className="px-8">
+                      Seguir
+                    </Button>
+                  </div>
+
+                  {/* @ts-ignore */}
+                  <AddToCartButton product={convertedProduct} quantity={0} />
+                </div>
+
+                <p className="text-muted-foreground line-clamp-4 !mt-4">
+                  {produto.descricao}
+                </p>
               </div>
-              <p className="text-muted-foreground line-clamp-4 mt-2">
-                {produto.descricao}
-              </p>
+              {/* @ts-ignore */}
+              <ProductInfo product={convertedProduct} />
             </div>
+
+            <Comments />
           </div>
 
-          <Comments />
+          {/* Coluna lateral */}
 
-          <div className="my-10 flex flex-col gap-4 w-full">
-            <TypographyH3>Produtos Relacionados</TypographyH3>
+          <div className="space-y-8 lg:space-y-0">
+            <TypographyH4 className="lg:ml-2">Relacionados</TypographyH4>
 
-            <ProductList>
+            <ProductList className="lg:grid-cols-1 xl:grid-cols-1 lg:gap-y-0">
               {relatedProducts.map((product) => (
                 <div key={product.id}>
                   {/* @ts-ignore */}
-                  <ProductCard product={product} />
+                  <ProductCard product={product}
+                    className="lg:h-fit lg:flex lg:max-w-full lg:flex-1 lg:items-start lg:gap-x-2 lg:p-2"
+                    imageClassName="lg:w-48 lg:h-32"
+                    infoClassName="lg:py-0"
+                    titleClassName="line-clamp-2"
+                    showStoreImage={false}
+                  />
                 </div>
               ))}
             </ProductList>

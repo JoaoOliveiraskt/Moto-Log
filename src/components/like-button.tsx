@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import icon from "./icons/icon-component";
+import Icon from "./icons/icon-component";
 import { Button } from "./ui/button";
 import { toast } from "./ui/use-toast";
 import {
@@ -16,9 +16,20 @@ interface Props {
   size?: number;
   product?: { id: string };
   children?: React.ReactNode;
+  variant?: "icon" | "secondary";
+  buttonSize?: "icon" | "rounded";
+  name?: string;
 }
 
-export default function LikeButton({ className, size = 24, product, children }: Props) {
+export default function LikeButton({
+  className,
+  size = 20,
+  product,
+  children,
+  variant = "icon",
+  buttonSize = "icon",
+  name,
+}: Props) {
   const [liked, setLiked] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -59,33 +70,22 @@ export default function LikeButton({ className, size = 24, product, children }: 
 
   return (
     <TooltipProvider delayDuration={0}>
-      <Tooltip >
-        <TooltipTrigger asChild >
+      <Tooltip>
+        <TooltipTrigger asChild>
           <Button
-           
-            variant={"icon"}
-            size={"icon"}
+            variant={variant}
+            size={buttonSize}
             disabled={loading}
-            className={`flex items-center justify-center rounded-full border-none text-foreground hover:text-foreground ${className}`}
+            className={`rounded-full border-none text-foreground hover:text-foreground ${className}`}
           >
             {liked ? (
-              <icon.bookmark2
-                size={size}
-                className={`text-destructive`}
-                title="remover dos favoritos"
-              />
+              <Icon.bookmark size={size} className={`text-destructive`} />
             ) : (
-              <icon.bookmark
-                size={size}
-                className={``}
-                title="Adicionar aos favoritos"
-              />
+              <Icon.bookmark size={size} className={``} />
             )}
           </Button>
         </TooltipTrigger>
-        <TooltipContent >
-          {children}
-        </TooltipContent>
+        {children && <TooltipContent>{children}</TooltipContent>}
       </Tooltip>
     </TooltipProvider>
   );

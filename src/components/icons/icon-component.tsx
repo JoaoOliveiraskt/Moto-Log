@@ -28,7 +28,6 @@ import { TbTruckDelivery } from "react-icons/tb";
 import {
   Menu,
   ShoppingCart,
-  Home,
   Tag,
   LogIn,
   LogOut,
@@ -43,6 +42,7 @@ import {
   ArrowLeft,
   ArrowRight,
   WandSparkles,
+  Bookmark,
 } from "lucide-react";
 
 const Icon = {
@@ -74,8 +74,7 @@ const Icon = {
   settings: Settings,
   github: FaGithub,
   confirmed: PiCheckCircleFill,
-  bookmark: CiBookmark,
-  bookmark2: MdBookmarkAdd,
+  bookmark: Bookmark,
   heartFilled: TbHeartFilled,
   heart: CiHeart,
   clock: FiClock,

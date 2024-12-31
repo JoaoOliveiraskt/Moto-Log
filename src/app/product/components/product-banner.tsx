@@ -30,7 +30,7 @@ const ProductBanner: React.FC<ProductBannerProps> = ({
         {images.map((image, index) => (
           <CarouselItem
             key={index}
-            className="h-60 basis-[90%] sm:basis-auto overflow-hidden p-0 rounded-3xl border bg-card"
+            className="h-64 lg:h-80 basis-[94%] sm:basis-auto overflow-hidden p-0 rounded-3xl border bg-card"
           >
             <Image
               src={produto.imagemUrl}
