@@ -130,7 +130,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
           <div className="space-y-8 lg:space-y-0">
             <TypographyH4 className="lg:ml-2">Relacionados</TypographyH4>
 
-            <ProductList className="lg:grid-cols-1 xl:grid-cols-1 lg:gap-y-0">
+            <ProductList className="lg:!grid-cols-1 xl:!grid-cols-1 lg:gap-y-0">
               {relatedProducts.map((product) => (
                 <div key={product.id}>
                   {/* @ts-ignore */}

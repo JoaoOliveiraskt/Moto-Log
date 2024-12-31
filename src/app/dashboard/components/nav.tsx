@@ -40,14 +40,14 @@ export default function NavDashboard({ className }: Props) {
       <div className="w-full flex gap-x-8 px-0 md:px-0">
         <StoreSelect onStoreChange={() => {}} />
 
-        <nav className="flex items-center space-x-4">
+        <nav className="flex items-center space-x-6">
           {links.map((link) => {
             const isActive = pathName.startsWith(link.href);
             return (
               <Link
                 key={link.href}
                 className={cn(
-                  "text-muted-foreground flex items-center px-4 py-1.5 transition-colors hover:text-foreground pb-2",
+                  "text-muted-foreground h-9 flex items-center transition-colors pb-2 hover:border-b",
                   isActive
                     ? "border-b border-foreground rounded-none !text-foreground"
                     : ""
