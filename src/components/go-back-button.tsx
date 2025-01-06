@@ -13,7 +13,6 @@ interface Props {
   containerClassName?: string;
 }
 
-// Objeto de tradução de rotas
 const routeTranslations: Record<string, string> = {
   "/best-sellers": "Em alta",
   "/cart": "Meu carrinho",

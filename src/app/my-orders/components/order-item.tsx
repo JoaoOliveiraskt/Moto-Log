@@ -44,7 +44,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
   };
 
   return (
-    <Card className="cursor-pointer flex flex-col gap-2 bg-card">
+    <Card className="cursor-pointer flex flex-col gap-2 bg-card border">
       <CardContent className="p-4 flex flex-col gap-3">
         <CardHeader className="px-1 space-y-4 mb-4">
           <div className="flex gap-4 items-center justify-between">

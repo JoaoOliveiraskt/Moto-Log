@@ -8,6 +8,7 @@ import { db } from "@/lib/prisma";
 import Image from "next/image";
 import { Link } from "next-view-transitions";
 import { cn } from "@/lib/utils";
+import GoBackButton from "@/components/go-back-button";
 
 export default async function Community() {
   let stores: Loja[] = [];
@@ -26,6 +27,7 @@ export default async function Community() {
 
   return (
     <Container className="min-h-screen sm:mt-16 relative">
+      <GoBackButton containerClassName="hidden lg:flex" />
       <div className="flex flex-col md:h-80 h-64 sm:items-center">
         <TypographyH1
           className={cn(

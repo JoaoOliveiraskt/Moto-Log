@@ -30,7 +30,7 @@ export default function DashboardLayout({
   }
 
   return (
-    <Container className="flex flex-col min-h-screen w-full mt-12 lg:mt-16">
+    <Container className="flex flex-col min-h-screen w-full mt-12 lg:mt-14">
       <NavDashboard />
 
       <div className="flex flex-col w-full sm:gap-4">

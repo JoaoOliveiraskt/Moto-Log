@@ -30,11 +30,8 @@ const MyOrdersPage = async () => {
   });
   return (
     <>
-      <Container className="flex flex-col gap-8 mt-16">
-        <GoBackButton
-          name={"Meus pedidos"}
-          containerClassName="hidden lg:flex"
-        />
+      <Container className="space-y-4 mt-14 lg:mt-16">
+        <GoBackButton containerClassName="hidden lg:flex" />
 
         {orders.length > 0 ? (
           <div className="gap-5 grid grid-cols-1  max-w-screen-sm mx-auto w-full">

@@ -54,7 +54,7 @@ export default async function Store({ params }: Props) {
 
   return (
     <>
-      <Container className="mt-12 lg:mt-16 min-h-screen">
+      <Container className="mt-12 lg:mt-14 min-h-screen">
         <StoreInfo
           name={store.nome}
           description={store.descricao}
