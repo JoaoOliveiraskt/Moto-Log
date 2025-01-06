@@ -26,7 +26,7 @@ const routeTranslations: Record<string, string> = {
   "/dashboard/settings": "Configurações",
   "/discount": "Melhores ofertas",
   "/my-orders": "Meus pedidos",
-  "/product": "Produto",
+  "/product": " ",
   "/recent-products": "Mais recentes",
   "/store": "Loja",
   "/welcome-create-store": " ",
@@ -41,7 +41,6 @@ const GoBackButton: React.FC<Props> = ({
   const pathName = usePathname();
   const isHome = pathName === "/";
 
-  // Busca o título traduzido da rota ou usa um fallback
   const routeName = name || routeTranslations[pathName] || " ";
 
   const handleGoBack = () => router.back();
@@ -57,15 +56,15 @@ const GoBackButton: React.FC<Props> = ({
             containerClassName
           )}
         >
-          <div className="flex items-center gap-x-2">
+          <div className="flex items-center gap-x-4">
             <Button
               onClick={handleGoBack}
-              className={`flex items-center rounded-full lg:p-1.5 ${className}`}
+              className={`flex items-center rounded-full lg:p-1 lg:border lg:bg-card ${className}`}
               size="icon"
               variant="ghost"
               title="Voltar"
             >
-              <Icon.arrowLeft size={20} />
+              <Icon.arrowLeft size={16} />
             </Button>
 
             {routeName && (
