@@ -6,6 +6,8 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import TypographyP from "./typography/typography-p";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 interface StoreBadgeProps {
   store: {
@@ -14,10 +16,21 @@ interface StoreBadgeProps {
     imagemUrl: string;
     descricao: string;
   };
-  followers?: number;
   className?: string;
   imageClassName?: string;
   showImage?: boolean;
+  totalFollowers?: number;
+}
+function useGetStoreFollowers(storeId: string) {
+  return useQuery({
+    queryKey: ["storeFollowers", storeId],
+    queryFn: async () => {
+      const response = await fetch(`/api/store/${storeId}/followers`);
+      const data = await response.json();
+      return data.followers;
+    },
+    staleTime: 1000 * 60 * 5,
+  });
 }
 
 export default function StoreBadge({
@@ -26,6 +39,8 @@ export default function StoreBadge({
   className,
   showImage = true,
 }: StoreBadgeProps) {
+  const { data: followers } = useGetStoreFollowers(store.id);
+
   if (!store || !store.id) {
     console.error("Loja não está definida ou não possui um ID:", store);
     return null;
@@ -64,7 +79,9 @@ export default function StoreBadge({
             )}
           </div>
 
-          <p className="text-sm whitespace-nowrap">{store.nome}</p>
+          <p className="text-sm whitespace-nowrap line-clamp-1 max-w-40">
+            {store.nome.split(" ").slice(0, 2).join(" ")}
+          </p>
         </Link>
       </HoverCardTrigger>
 
@@ -72,7 +89,7 @@ export default function StoreBadge({
         align="start"
         side="top"
         className={cn(
-          `max-w-xs lg:max-w-80 lg:min-w-80 w-full cursor-default rounded-xl dark:shadow-none p-4`
+          `max-w-xs lg:max-w-80 lg:min-w-80 w-full cursor-default rounded-xl dark:shadow-none p-4 border`
         )}
       >
         <div className="flex justify-between items-start">
@@ -107,6 +124,9 @@ export default function StoreBadge({
           <TypographyP className="line-clamp-3 text-sm">
             {store.descricao}
           </TypographyP>
+          <p className="text-muted-foreground text-sm mt-2">
+            {followers} seguidores
+          </p>
         </div>
 
         <Button asChild className="mt-6 w-full rounded-md">

@@ -9,7 +9,6 @@ import ProductList from "@/components/product-list";
 import Comments from "@/app/product/components/comments";
 import StoreBadge from "@/components/store-badge";
 import TypographyH1 from "@/components/typography/typography-h1";
-import { Button } from "@/components/ui/button";
 import formatCurrency from "@/app/helpers/format-currency";
 import calculateTotalPrice from "@/app/helpers/price";
 import DiscountBadge from "../components/discount-badge";
@@ -17,6 +16,7 @@ import ProductInfo from "../components/product-info";
 import TypographyH4 from "@/components/typography/typography-h4";
 import GoBackButton from "@/components/go-back-button";
 import FavoriteProductButton from "@/components/favorite-product-button";
+import FollowButton from "@/components/follow-button";
 
 interface ProductPageProps {
   params: {
@@ -72,7 +72,6 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
       <Container className="mt-14 lg:mt-16 space-y-4">
         <GoBackButton containerClassName="hidden lg:flex" />
         <div className="grid lg:grid-cols-[3fr_1.5fr] lg:gap-x-6 w-full space-y-8 lg:space-y-0">
-          {/* Coluna principal */}
           <div>
             <div className="grid gap-y-6 max-w-4xl">
               <div>
@@ -100,16 +99,13 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
                 </div>
 
                 <div className="flex flex-col gap-y-4 sm:flex-row sm:items-center sm:justify-between mt-2">
-                  <div className="flex items-center justify-between sm:justify-normal sm:gap-x-4">
+                  <div className="inline-flex items-center justify-between sm:justify-normal">
                     {/* @ts-ignore */}
                     <StoreBadge
                       imageClassName="w-9 h-9"
                       store={produto.loja as any}
-                      followers={1900}
                     />
-                    <Button size={"rounded"} className="px-8">
-                      Seguir
-                    </Button>
+                    <FollowButton storeId={produto.loja.id} className="sm:ml-4"/>
                   </div>
 
                   <div className="flex items-center gap-2">
@@ -135,8 +131,6 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
             <Comments />
           </div>
 
-          {/* Coluna lateral */}
-
           <div className="space-y-8 lg:space-y-0">
             <TypographyH4 className="lg:ml-2">Relacionados</TypographyH4>
 
@@ -146,10 +140,9 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
                   {/* @ts-ignore */}
                   <ProductCard product={product}
                     className="lg:h-fit lg:flex lg:max-w-full lg:flex-1 lg:items-start lg:gap-x-2 lg:p-2"
-                    imageClassName="lg:w-48 lg:h-32"
+                    imageClassName="lg:w-48 lg:h-36"
                     infoClassName="lg:py-0"
                     titleClassName="line-clamp-2"
-                    showStoreImage={false}
                   />
                 </div>
               ))}

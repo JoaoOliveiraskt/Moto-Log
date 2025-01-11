@@ -11,6 +11,9 @@ async function getData(id: string, bestSellers?: boolean) {
   const store = await db.loja.findUnique({
     where: { id },
     include: {
+      _count: {
+        select: { followers: true },
+      },
       Produtos: {
         include: {
           loja: true,
@@ -60,6 +63,8 @@ export default async function Store({ params }: Props) {
           description={store.descricao}
           imageUrl={storeImageUrl}
           totalProducts={totalProducts}
+          storeId={store.id}
+          followers={store._count.followers}
         />
 
         <div className="flex flex-col w-full">
@@ -90,22 +95,15 @@ export default async function Store({ params }: Props) {
             ) : (
               <>
                 <div className="grid gap-4 mt-8">
-                  <TypographyH3>Produtos Mais Vendidos</TypographyH3>
-
-                  <div className=" gap-2 ">
-                    <ProductList className="!grid-cols-2 sm:!grid-cols-3 lg:!grid-cols-4 xl:!grid-cols-5">
-                      {bestSellersProducts.slice(0, 5).map((product) => (
-                        <ProductCard key={product.id} product={product} showStoreImage={false}/>
-                      ))}
-                    </ProductList>
-                  </div>
-                </div>
-                <div className="grid gap-4 mt-8">
                   <TypographyH3>Todos os Produtos</TypographyH3>
 
                   <ProductList>
                     {products.map((product) => (
-                      <ProductCard key={product.id} product={product} showStoreImage={false}/>
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        showStoreImage={false}
+                      />
                     ))}
                   </ProductList>
                 </div>

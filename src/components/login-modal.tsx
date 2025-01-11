@@ -28,7 +28,7 @@ export default function LoginModal({
           <AlertDialogDescription>{description}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="border">Cancel</AlertDialogCancel>
+          <AlertDialogCancel className="border">Cancelar</AlertDialogCancel>
           <GoogleSignInButton className="mr-auto border space-x-2 lg:space-x-4 rounded-full" />
         </AlertDialogFooter>
       </AlertDialogContent>

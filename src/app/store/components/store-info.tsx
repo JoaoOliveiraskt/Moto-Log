@@ -1,6 +1,6 @@
+import FollowButton from "@/components/follow-button";
 import TypographyH2 from "@/components/typography/typography-h2";
 import TypographyP from "@/components/typography/typography-p";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 interface Props {
@@ -8,12 +8,14 @@ interface Props {
   description: string | null;
   imageUrl: string | null;
   totalProducts: number | null;
+  storeId: string;
+  followers: number;
 }
 
 export default function StoreInfo({ ...store }: Props) {
   return (
     <div className="space-y-4">
-      <div className="w-full h-24 lg:h-52">
+      <div className="w-full h-28 lg:h-52">
         {store.imageUrl ? (
           <Image
             src={store.imageUrl}
@@ -25,7 +27,7 @@ export default function StoreInfo({ ...store }: Props) {
         ) : null}
       </div>
 
-      <div className="w-full flex items-start gap-x-4 h-20 sm:h-40">
+      <div className="w-full flex items-center gap-x-4 fit sm:h-40">
         <div>
           {store.imageUrl ? (
             <Image
@@ -42,32 +44,41 @@ export default function StoreInfo({ ...store }: Props) {
 
         <div className="flex-1 flex flex-col justify-between h-full">
           <div className="flex-1">
-            <TypographyH2 className="text-xl lg:text-4xl">
-              {store.name}
+            <TypographyH2 className="text-xl lg:text-4xl line-clamp-2 lg:line-clamp-1">
+              {store.name} disponível em nossa megaloja online
             </TypographyH2>
 
-            <TypographyP className="text-xs sm:text-sm text-muted-foreground [&:not(:first-child)]:mt-1">
-              1999 seguidores • <span>{store.totalProducts} produtos</span>
-            </TypographyP>
+            <div className="flex items-center gap-x-2 mt-2">
+              <TypographyP className="text-xs sm:text-sm text-muted-foreground [&:not(:first-child)]:mt-0">
+                {store.followers > 999
+                  ? `${(store.followers / 1000)
+                      .toFixed(1)
+                      .replace(".", ",")} mil seguidores`
+                  : `${store.followers} ${
+                      store.followers === 1 ? "seguidor" : "seguidores"
+                    }`}
+              </TypographyP>
+              <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+              <TypographyP className="text-xs sm:text-sm text-muted-foreground [&:not(:first-child)]:mt-0">
+                {store.totalProducts}{" "}
+                {store.totalProducts === 1 ? "produto" : "produtos"}
+              </TypographyP>
+            </div>
 
             <TypographyP className="text-xs sm:text-sm text-muted-foreground max-w-md [&:not(:first-child)]:mt-1 line-clamp-1">
               {store.description}
             </TypographyP>
           </div>
-          <Button
-            size={"rounded"}
-            className="font-semibold px-8 w-fit hidden sm:inline-flex"
-          >
-            Seguir
-          </Button>
+          <FollowButton
+            storeId={store.storeId}
+            className="font-semibold px-8 hidden sm:inline-flex"
+          />
         </div>
       </div>
-      <Button
-        size={"rounded"}
-        className="font-semibold px-6 mt-4 sm:hidden w-full "
-      >
-        Seguir
-      </Button>
+      <FollowButton
+        storeId={store.storeId}
+        className="font-semibold w-full mt-4 sm:hidden"
+      />
     </div>
   );
 }

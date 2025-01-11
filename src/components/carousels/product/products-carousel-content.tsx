@@ -52,6 +52,7 @@ export default async function ProductsCarouselContent({
           key={product.id}
           className="basis-[47%] sm:basis-auto p-0"
         >
+          {/* @ts-ignore */}
           <ProductCard product={product} className="max-w-64 lg:min-w-64" />
         </CarouselItem>
       ))}
