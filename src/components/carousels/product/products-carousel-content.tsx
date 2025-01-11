@@ -46,13 +46,13 @@ export default async function ProductsCarouselContent({
   }
 
   return (
-    <CarouselContent className="flex gap-2 bg-transparent">
+    <CarouselContent className="flex gap-2 lg:gap-0 bg-transparent">
       {products.map((product: ProductCardProps) => (
         <CarouselItem
           key={product.id}
           className="basis-[47%] sm:basis-auto p-0"
         >
-          <ProductCard product={product} className="max-w-64" />
+          <ProductCard product={product} className="max-w-64 lg:min-w-64" />
         </CarouselItem>
       ))}
     </CarouselContent>

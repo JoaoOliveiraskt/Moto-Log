@@ -49,13 +49,13 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
             <div className="w-fit">
               <Link
                 href={`/product/${cartProduct.id}`}
-                className="hover:text-cyan-600 w-fit"
+                className="hover:text-sky-600 w-fit"
               >
                 {cartProduct.nome}
               </Link>
               <Link
                 href={`/store/${cartProduct.lojaId}`}
-                className="text-muted-foreground hover:text-cyan-600 w-fit"
+                className="text-muted-foreground hover:text-sky-600 w-fit"
               >
                 <TypographySmall className="flex items-center mt-0.5 ">
                   {cartProduct.loja.nome}

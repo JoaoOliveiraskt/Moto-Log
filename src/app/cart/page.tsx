@@ -109,78 +109,71 @@ const Cart = () => {
 
   return (
     <>
-      <Container className="min-h-screen mt-14 lg:mt-16 space-y-8">
+      <Container className="min-h-[calc(100vh-8rem)] mt-14 lg:mt-16 space-y-6   ">
         <GoBackButton containerClassName="hidden lg:flex" />
 
-        <div className="flex flex-col h-full mx-auto">
-          {products.length > 0 ? (
-            <div className="grid lg:grid-cols-3 md:gap-x-8 h-full w-full">
-              <ScrollArea className="h-[31rem] lg:h-[50rem] col-span-2 pr-2">
-                <TypographyH3>Carrinho ({productQuantity})</TypographyH3>
+        {products.length > 0 ? (
+          <div className="grid lg:grid-cols-3 md:gap-x-8 h-full w-full">
+            <div className="col-span-2 pr-2">
+              <TypographyH3>({productQuantity}) itens</TypographyH3>
+              <ScrollArea className="h-[31rem] lg:h-[42rem] mt-4">
                 {products.map((product) => (
                   <div key={product.id} className="mt-4">
                     <CartItem cartProduct={product} />
-                    <Separator className="mt-6" />
+                    <Separator className="mt-4 lg:mt-6" />
                   </div>
                 ))}
               </ScrollArea>
-
-              <div className="w-full col-span-2 lg:col-span-1 ">
-                <TypographyH3>Resumo do Pedido</TypographyH3>
-                <Card className="border-none mt-4 h-max w-full">
-                  <CardContent className="p-6 border-none space-y-5 w-full">
-                    <div className="flex justify-between items-center text-sm">
-                      <span className="text-muted-foreground">Entrega</span>
-                      <span className="text-confirmed uppercase">Grátis</span>
-                    </div>
-                    <div className="flex justify-between items-center text-sm">
-                      <span className="text-muted-foreground">Subtotal</span>
-                      <span className="text-muted-foreground">
-                        {formatCurrency(Number(subTotalPrice))}
-                      </span>
-                    </div>
-
-                    <div className="flex justify-between items-center text-sm">
-                      <span className="text-muted-foreground">Descontos</span>
-                      <span className="text-confirmed">
-                        - {formatCurrency(Number(totalDiscount))}
-                      </span>
-                    </div>
-
-                    <div className="flex justify-between items-center text-sm font-semibold">
-                      <span>Total</span>
-                      <span>{formatCurrency(Number(totalPrice))}</span>
-                    </div>
-                    <Button
-                      size={"rounded"}
-                      onClick={() => setIsConfirmDialogOpen(true)}
-                      className="h-12 w-full mt-4 mb-4 font-semibold flex items-center gap-2"
-                      disabled={isSubmitLoading}
-                    >
-                      <span>Fazer pedido ({totalProductQuantity})</span>
-                      {isSubmitLoading && <Loader />}
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
             </div>
-          ) : (
-            <div className="flex items-center justify-center min-h-[calc(100vh-200px)]">
-              <div className="flex flex-col gap-4 text-center">
-                <Icon.cart
-                  size={80}
-                  className="mx-auto text-muted-foreground"
-                />
-                <p className="text-lg text-muted-foreground">
-                  Seu carrinho está vazio
-                </p>
-                <Button asChild>
-                  <Link href="/">Ir as compras</Link>
-                </Button>
-              </div>
+
+            <div className="w-full col-span-2 lg:col-span-1 pt-2 lg:pt-0">
+              <TypographyH3>Resumo do Pedido</TypographyH3>
+              <Card className="border-none mt-4 h-max w-full">
+                <CardContent className="p-6 border-none space-y-5 w-full">
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-muted-foreground">Subtotal</span>
+                    <span className="text-muted-foreground">
+                      {formatCurrency(Number(subTotalPrice))}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-muted-foreground">Descontos</span>
+                    <span className="text-confirmed">
+                      - {formatCurrency(Number(totalDiscount))}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center text-sm font-semibold">
+                    <span>Total</span>
+                    <span>{formatCurrency(Number(totalPrice))}</span>
+                  </div>
+                  <Button
+                    size={"rounded"}
+                    onClick={() => setIsConfirmDialogOpen(true)}
+                    className="h-12 w-full mt-4 mb-4 font-semibold flex items-center gap-2"
+                    disabled={isSubmitLoading}
+                  >
+                    <span>Fazer pedido ({totalProductQuantity})</span>
+                    {isSubmitLoading && <Loader />}
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="flex items-center justify-center min-h-[calc(100vh-300px)]">
+            <div className="flex flex-col gap-4 items-center">
+              <Icon.cart size={80} className="mx-auto text-muted-foreground" />
+              <p className="text-lg text-muted-foreground">
+                Seu carrinho está vazio
+              </p>
+              <Button asChild className="w-fit">
+                <Link href="/">Ir as compras</Link>
+              </Button>
+            </div>
+          </div>
+        )}
       </Container>
 
       <AlertDialog

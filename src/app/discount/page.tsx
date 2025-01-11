@@ -36,7 +36,7 @@ export default async function DiscountPage() {
         <GoBackButton containerClassName="hidden lg:flex"/>
         <Suspense
           fallback={
-            <ProductList>
+            <ProductList className="lg:gap-x-2">
               {Array.from({ length: 10 }, (_, index) => (
                 <ProductCardSkeleton key={index} />
               ))}

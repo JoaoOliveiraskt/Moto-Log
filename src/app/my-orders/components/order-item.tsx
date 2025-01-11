@@ -60,10 +60,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
               </span>
             </div>
 
-            <div
-              className="flex gap-2 items-center mt-1  text-muted-foreground
-              hover:text-cyan-600 w-fit"
-            >
+            <div className="flex gap-2 items-center mt-1  text-muted-foreground hover:text-sky-600 w-fit">
               {/* @ts-ignore */}
               <StoreBadge store={order.loja} />
               <icon.arrowRight size={18} />

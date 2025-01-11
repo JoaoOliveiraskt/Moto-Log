@@ -53,16 +53,13 @@ export default async function TopStores() {
           align: "start",
         }}
       >
-        <CarouselContent className="-ml-4 ">
+        <CarouselContent className="-ml-4 w-full">
           {stores &&
             stores.map((store: StoreProps) => (
-              <CarouselItem
-                className="gap-x-1 basis-[124px] md:mr-2"
-                key={store.id}
-              >
+              <CarouselItem className="basis-[124px] " key={store.id}>
                 <Link
                   href={`/store/${store.id}`}
-                  className="text-foreground font-medium hover:text-cyan-600 hover:transition-colors flex flex-col gap-y-2"
+                  className="text-foreground font-medium hover:text-sky-600 hover:transition-colors flex flex-col gap-y-2"
                 >
                   <div className="w-28 h-28 rounded-[1.5rem] overflow-hidden drop-shadow-lg">
                     {store.imagemUrl ? (

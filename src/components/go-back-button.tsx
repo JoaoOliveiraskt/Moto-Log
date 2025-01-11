@@ -29,6 +29,7 @@ const routeTranslations: Record<string, string> = {
   "/recent-products": "Mais recentes",
   "/store": "Loja",
   "/welcome-create-store": " ",
+  "/favorites": "Favoritos",
 };
 
 const GoBackButton: React.FC<Props> = ({
