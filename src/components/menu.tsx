@@ -82,6 +82,20 @@ const Menu = ({ className, children, iconSize }: Props) => {
           </Link>
         )}
 
+        {isAuthenticated && (
+          <Link href={"/favorites"}>
+            <Button
+              onClick={handleMenuOpen.close}
+              variant="ghost"
+              size="menu"
+              className="flex gap-3 px-4 w-full justify-between py-6 "
+            >
+              <span className=" tracking-wide">Favoritos</span>
+              <Icon.bookmark size={20} />
+            </Button>
+          </Link>
+        )}
+
         {!isLojista && (
           <Link href="/welcome-create-store">
             <Button
@@ -145,7 +159,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
               <Separator />
             </div>
           )}
-          <div className="flex-col flex gap-y-2 px-2">{menuItems}</div>
+          <div className="flex-col flex px-2">{menuItems}</div>
           <Separator />
           <LoginButton className="rounded-none" iconSize={20}>
             {isAuthenticated ? (

@@ -6,8 +6,6 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import TypographyP from "./typography/typography-p";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
-import LikeButton from "./like-button";
-import { Prisma } from "../../prisma/generated/client";
 
 interface StoreBadgeProps {
   store: {
@@ -26,7 +24,6 @@ export default function StoreBadge({
   store,
   imageClassName,
   className,
-  followers,
   showImage = true,
 }: StoreBadgeProps) {
   if (!store || !store.id) {
@@ -34,78 +31,76 @@ export default function StoreBadge({
     return null;
   }
 
+  if (showImage === false) {
+    return null;
+  }
+
   return (
-    <HoverCard openDelay={20} closeDelay={20}>
-      <HoverCardTrigger className="relative cursor-pointer z-10">
+    <HoverCard openDelay={300} closeDelay={20}>
+      <HoverCardTrigger className="relative cursor-pointer z-10 inline-flex">
         <Link
           href={`/store/${store.id}`}
           className={cn(
-            "text-foreground font-medium hover:text-cyan-600 flex items-center gap-2 w-fit h-fit",
+            "text-foreground font-medium hover:text-sky-600 items-center gap-2 inline-flex max-h-fit",
             className
           )}
         >
-          {showImage === true ? (
-            <div
-              className={cn(
-                "w-6 h-6 rounded-full overflow-hidden flex-shrink-0",
-                imageClassName
-              )}
-            >
-              {store.imagemUrl ? (
-                <Image
-                  src={store.imagemUrl}
-                  width={500}
-                  height={500}
-                  alt="logo da loja"
-                  className="object-cover w-full h-full"
-                />
-              ) : (
-                <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
-              )}
-            </div>
-          ) : null}
-
-          <div>
-            <p className="text-sm">{store.nome}</p>
-            {followers && (
-              <p className="text-xs text-muted-foreground hover:text-muted-foreground">
-                {followers} seguidores
-              </p>
+          <div
+            className={cn(
+              "w-6 h-6 rounded-full overflow-hidden flex-shrink-0",
+              imageClassName
+            )}
+          >
+            {store.imagemUrl ? (
+              <Image
+                src={store.imagemUrl}
+                width={500}
+                height={500}
+                alt="logo da loja"
+                className="object-cover w-full h-full"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
             )}
           </div>
+
+          <p className="text-sm whitespace-nowrap">{store.nome}</p>
         </Link>
       </HoverCardTrigger>
+
       <HoverCardContent
         align="start"
         side="top"
         className={cn(
-          `max-w-xs w-full cursor-default rounded-2xl dark:shadow-none p-4`
+          `max-w-xs lg:max-w-80 lg:min-w-80 w-full cursor-default rounded-xl dark:shadow-none p-4`
         )}
       >
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-start">
           <Link
             href={`/store/${store.id}`}
-            className="text-foreground font-medium w-fit h-fit hover:text-cyan-600 flex items-center gap-2"
+            className="w-full text-foreground font-medium h-fit  flex items-center  justify-between gap-2 hover:transition-colors"
           >
-            <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+            <div>
+              <h5 className="text-xl uppercase font-bold hover:text-sky-600">
+                {store.nome}
+              </h5>
+            </div>
+            <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
               {store.imagemUrl ? (
-                <Image
-                  src={store.imagemUrl}
-                  width={500}
-                  height={500}
-                  alt="logo da loja"
-                  className="object-cover w-full h-full"
-                />
+                <div>
+                  <Image
+                    src={store.imagemUrl}
+                    width={500}
+                    height={500}
+                    alt="logo da loja"
+                    className="object-cover w-16 h-16 rounded-full"
+                  />
+                </div>
               ) : (
-                <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-green-500"></div>
               )}
             </div>
-            <div className="flex flex-col justify-center">
-              <h5 className="text-xl ">{store.nome}</h5>
-            </div>
           </Link>
-
-          <LikeButton>Salvar Loja</LikeButton>
         </div>
 
         <div className="mt-4">
@@ -113,7 +108,8 @@ export default function StoreBadge({
             {store.descricao}
           </TypographyP>
         </div>
-        <Button asChild className="mt-6 w-full rounded-lg">
+
+        <Button asChild className="mt-6 w-full rounded-md">
           <Link href={`/store/${store.id}`}>Ver loja</Link>
         </Button>
       </HoverCardContent>

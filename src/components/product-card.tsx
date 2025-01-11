@@ -4,14 +4,12 @@ import formatCurrency from "@/app/helpers/format-currency";
 import calculateTotalPrice from "@/app/helpers/price";
 import Image from "next/image";
 import { Link } from "next-view-transitions";
-import { Prisma } from "../../prisma/generated/client";
-import LikeButton from "./like-button";
 import { cn } from "@/lib/utils";
 import StoreBadge from "./store-badge";
 import TypographySmall from "./typography/typography-small";
 import { Produto, Loja, Categoria } from "../../prisma/generated/client";
-import TypographyH4 from "./typography/typography-h4";
 import TypographyP from "./typography/typography-p";
+import FavoriteProductButton from "./favorite-product-button";
 
 interface ProductProps {
   product: Produto & {
@@ -38,8 +36,8 @@ const ProductCard = ({
   return (
     <div
       className={cn(
-        "h-[21.5rem] w-full max-w-72 overflow-hidden text-foreground",
-        "md:hover:bg-accent md:dark:hover:bg-accent/30 rounded-2xl md:px-2 md:pt-2",
+        "h-[21.85rem] w-full max-w-72 overflow-hidden text-foreground",
+        "md:hover:bg-accent md:dark:hover:bg-accent/30 rounded-2xl md:px-2 md:pb-2 md:pt-2",
         className
       )}
     >
@@ -47,7 +45,7 @@ const ProductCard = ({
         <Link href={`/product/${product.id}`} className="block ">
           <div
             className={cn(
-              "h-56 w-full lg:h-[13rem] rounded-2xl overflow-hidden bg-accent shadow-lg",
+              "h-56 w-full lg:h-[13rem] rounded-xl overflow-hidden bg-accent shadow-lg",
               imageClassName
             )}
           >
@@ -59,22 +57,20 @@ const ProductCard = ({
               priority
               quality={80}
               className={cn(
-                "object-cover w-full h-full hover:brightness-75 duration-500 transition-all"
+                "object-cover w-full h-full brightness-90 hover:brightness-100 duration-500 transition-opacity"
               )}
             />
           </div>
         </Link>
 
-        {/*<div className="absolute bottom-2.5 right-2.5 h-7 w-7 bg-white flex items-center rounded-full">
-          <LikeButton
+        {/*<div className="absolute bottom-2.5 right-2.5 flex items-center">
+          <FavoriteProductButton
             product={{ id: product.id }}
             size={20}
-            className="text-black hover:text-black"
-          >
-            Salvar Produto
-          </LikeButton>
-        </div>
-        */}
+            
+       />
+        </div>*/}
+     
       </div>
 
       <div
@@ -102,7 +98,7 @@ const ProductCard = ({
               </span>
             </div>
           )}
-          <span className=" text-sm text-foreground">
+          <span className="text-sm text-foreground">
             {formatCurrency(Number(calculateTotalPrice(product)))}
           </span>
         </div>
@@ -111,7 +107,7 @@ const ProductCard = ({
           {product.totalVendido} vendidos
         </TypographySmall>
 
-        <div className="mt-2">
+        <div className="mt-auto pt-3">
           <StoreBadge
             showImage={showStoreImage}
             store={{
@@ -120,6 +116,7 @@ const ProductCard = ({
               imagemUrl: loja.imagemUrl || "",
               descricao: loja.descricao || "",
             }}
+            followers={410}
           />
         </div>
       </div>

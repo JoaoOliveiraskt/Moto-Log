@@ -19,7 +19,6 @@ import {
 import { useSession } from "next-auth/react";
 import { toast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
-import LikeButton from "@/components/like-button";
 import Icon from "@/components/icons/icon-component";
 import Link from "next/link";
 import LoginModal from "@/components/login-modal";
@@ -45,6 +44,8 @@ export default function AddToCartButton({ product }: ProductInfoProps) {
   const { addProductToCart, products } = useContext(CartContext);
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const loginModalDescription =
+    "Você precisa estar logado para adicionar produtos ao carrinho.";
 
   const addToCart = ({ emptyCart }: { emptyCart?: boolean }) => {
     addProductToCart({ product, emptyCart, quantity: 1 });
@@ -102,18 +103,14 @@ export default function AddToCartButton({ product }: ProductInfoProps) {
           >
             Adicionar ao carrinho
           </Button>
-          <LikeButton
-            variant={"secondary"}
-            buttonSize={"rounded"}
-            name="Salvar produto"
-            className="w-9 h-9 lg:w-10 lg:h-10 p-1"
-          >
-            Salvar Produto
-          </LikeButton>
         </div>
       </div>
 
-      <LoginModal open={isLoginModalOpen} onOpenChange={setIsLoginModalOpen} />
+      <LoginModal
+        open={isLoginModalOpen}
+        onOpenChange={setIsLoginModalOpen}
+        description={loginModalDescription}
+      />
 
       <AlertDialog
         open={isConfirmationModalOpen}

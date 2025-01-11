@@ -7,7 +7,6 @@ import Container from "@/components/container";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import Comments from "@/app/product/components/comments";
-import TypographyH3 from "@/components/typography/typography-h3";
 import StoreBadge from "@/components/store-badge";
 import TypographyH1 from "@/components/typography/typography-h1";
 import { Button } from "@/components/ui/button";
@@ -17,6 +16,7 @@ import DiscountBadge from "../components/discount-badge";
 import ProductInfo from "../components/product-info";
 import TypographyH4 from "@/components/typography/typography-h4";
 import GoBackButton from "@/components/go-back-button";
+import FavoriteProductButton from "@/components/favorite-product-button";
 
 interface ProductPageProps {
   params: {
@@ -70,7 +70,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
   return (
     <>
       <Container className="mt-14 lg:mt-16 space-y-4">
-        <GoBackButton containerClassName="hidden lg:flex"/>
+        <GoBackButton containerClassName="hidden lg:flex" />
         <div className="grid lg:grid-cols-[3fr_1.5fr] lg:gap-x-6 w-full space-y-8 lg:space-y-0">
           {/* Coluna principal */}
           <div>
@@ -112,8 +112,16 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
                     </Button>
                   </div>
 
-                  {/* @ts-ignore */}
-                  <AddToCartButton product={convertedProduct} quantity={0} />
+                  <div className="flex items-center gap-2">
+                    {/* @ts-ignore */}
+                    <AddToCartButton product={convertedProduct} quantity={0} />
+                    <FavoriteProductButton
+                      variant={"secondary"}
+                      buttonSize={"rounded"}
+                      className="w-9 h-9 lg:w-10 lg:h-10 p-1"
+                      product={{ id: produto.id }}
+                    />
+                  </div>
                 </div>
 
                 <p className="text-muted-foreground line-clamp-4 !mt-4">

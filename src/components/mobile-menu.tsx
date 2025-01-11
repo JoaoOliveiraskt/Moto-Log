@@ -92,6 +92,24 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
           </Button>
         )}
 
+{isAuthenticated && (
+          <Button
+            asChild
+            onClick={handleMenuOpen.close}
+            variant="secondary"
+            size="menu"
+            className="w-full  border-border/70 "
+          >
+            <Link
+              href={isAuthenticated ? "/favorites" : ""}
+              className="flex gap-4 w-full justify-between py-6 "
+            >
+              <TypographyLarge className="font-medium">Favoritos</TypographyLarge>
+              <Icon.bookmark size={iconSize} />
+            </Link>
+          </Button>
+        )}
+
         {!isLojista && (
           <Button
             asChild
