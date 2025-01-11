@@ -12,8 +12,6 @@ import { Link } from "next-view-transitions";
 import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/product-card-skeleton";
 
-const skeletons = Array.from({ length: 10 }, (_, i) => i);
-
 async function FavoritesContent() {
   try {
     const favorites = await GetUserFavorites();

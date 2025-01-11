@@ -14,6 +14,9 @@ export default async function GetUserFavorites() {
       where: {
         userId: session.user.id,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
       include: {
         product: {
           include: {
