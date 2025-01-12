@@ -33,7 +33,12 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
     },
     include: {
       loja: {
-        select: { id: true, nome: true, imagemUrl: true, descricao: true },
+        select: {
+          id: true,
+          nome: true,
+          imagemUrl: true,
+          descricao: true,
+        },
       },
       categoria: true,
     },
@@ -82,7 +87,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
                 </TypographyH1>
 
                 <div className="flex gap-x-4 mt-1">
-                  <p className="font-semibold tracking-wide text-lg">
+                  <p className="font-semibold tracking-wide">
                     {formatCurrency(Number(calculateTotalPrice(produto)))}
                   </p>
                   <div className="flex items-center gap-x-4">
@@ -98,14 +103,18 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-y-4 sm:flex-row sm:items-center sm:justify-between mt-2">
+                <div className="flex flex-col gap-y-4 sm:flex-row sm:items-center sm:justify-between mt-4">
                   <div className="inline-flex items-center justify-between sm:justify-normal">
-                    {/* @ts-ignore */}
                     <StoreBadge
-                      imageClassName="w-9 h-9"
+                      imageClassName="w-10 h-10"
                       store={produto.loja as any}
+                      showFollowers={true}
                     />
-                    <FollowButton storeId={produto.loja.id} className="sm:ml-4"/>
+                    <FollowButton
+                      storeId={produto.loja.id}
+                      storeName={produto.loja.nome}
+                      className="sm:ml-4"
+                    />
                   </div>
 
                   <div className="flex items-center gap-2">
@@ -142,7 +151,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
                     className="lg:h-fit lg:flex lg:max-w-full lg:flex-1 lg:items-start lg:gap-x-2 lg:p-2"
                     imageClassName="lg:w-48 lg:h-36"
                     infoClassName="lg:py-0"
-                    titleClassName="line-clamp-2"
+                    titleClassName="lg:line-clamp-2"
                   />
                 </div>
               ))}
