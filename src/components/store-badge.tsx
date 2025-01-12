@@ -6,7 +6,6 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import TypographyP from "./typography/typography-p";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 interface StoreBadgeProps {
@@ -20,7 +19,9 @@ interface StoreBadgeProps {
   imageClassName?: string;
   showImage?: boolean;
   totalFollowers?: number;
+  showFollowers?: boolean;
 }
+
 function useGetStoreFollowers(storeId: string) {
   return useQuery({
     queryKey: ["storeFollowers", storeId],
@@ -38,6 +39,7 @@ export default function StoreBadge({
   imageClassName,
   className,
   showImage = true,
+  showFollowers = false,
 }: StoreBadgeProps) {
   const { data: followers } = useGetStoreFollowers(store.id);
 
@@ -79,9 +81,22 @@ export default function StoreBadge({
             )}
           </div>
 
-          <p className="text-sm whitespace-nowrap line-clamp-1 max-w-40">
-            {store.nome.split(" ").slice(0, 2).join(" ")}
-          </p>
+          <div>
+            <p className="text-sm whitespace-nowrap line-clamp-1 max-w-40">
+              {store.nome.split(" ").slice(0, 3).join(" ")}
+            </p>
+            {showFollowers && (
+              <p className="text-muted-foreground text-xs">
+                {followers > 999
+                  ? `${(followers / 1000)
+                      .toFixed(1)
+                      .replace(".", ",")} mil seguidores`
+                  : `${followers} ${
+                      followers <= 1 ? "seguidor" : "seguidores"
+                    }`}
+              </p>
+            )}
+          </div>
         </Link>
       </HoverCardTrigger>
 
@@ -124,8 +139,15 @@ export default function StoreBadge({
           <TypographyP className="line-clamp-3 text-sm">
             {store.descricao}
           </TypographyP>
-          <p className="text-muted-foreground text-sm mt-2">
-            {followers} seguidores
+        </div>
+
+        <div className="mt-2 flex items-center gap-4">
+          <p className="text-muted-foreground text-xs">
+            {followers > 999
+              ? `${(followers / 1000)
+                  .toFixed(1)
+                  .replace(".", ",")} mil seguidores`
+              : `${followers} ${followers <= 1 ? "seguidor" : "seguidores"}`}
           </p>
         </div>
 
