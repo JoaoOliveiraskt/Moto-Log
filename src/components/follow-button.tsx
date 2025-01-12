@@ -14,9 +14,17 @@ import {
 import Icon from "./icons/icon-component";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogTitle,
+} from "./ui/alert-dialog";
 
 interface Props {
   storeId: string;
+  storeName: string | null;
   className?: string;
 }
 
@@ -71,8 +79,9 @@ const unfollowStore = async ({
   return response.json();
 };
 
-export default function FollowButton({ storeId, className }: Props) {
+export default function FollowButton({ storeId, storeName, className }: Props) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { isAuthenticated, user } = useAuth();
   const queryClient = useQueryClient();
 
@@ -97,6 +106,7 @@ export default function FollowButton({ storeId, className }: Props) {
       queryClient.invalidateQueries({
         queryKey: ["followStatus", storeId, user?.id],
       });
+      setIsDialogOpen(false);
     },
   });
 
@@ -106,7 +116,15 @@ export default function FollowButton({ storeId, className }: Props) {
       return;
     }
 
-    await toggleFollow();
+    if (!isFollowing) {
+      await toggleFollow();
+    }
+  };
+
+  const handleUnfollowConfirm = async () => {
+    if (isFollowing) {
+      await toggleFollow();
+    }
   };
 
   const loading = isCheckingStatus || isToggling;
@@ -152,13 +170,32 @@ export default function FollowButton({ storeId, className }: Props) {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem
-            onClick={handleFollowClick}
+            onClick={() => setIsDialogOpen(true)}
             className="p-4 bg-secondary"
           >
-            {loading ? <Loader size={20} /> : "Deixar de seguir"}
+            Deixar de seguir
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+
+      <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <AlertDialogContent className="lg:w-80">
+          <AlertDialogTitle>Deixar de seguir {storeName} ?</AlertDialogTitle>
+          <AlertDialogFooter>
+            <AlertDialogCancel className="border-none">
+              Cancelar
+            </AlertDialogCancel>
+            <Button
+              variant="ghost"
+              size="rounded"
+              onClick={handleUnfollowConfirm}
+              className="w-36 text-sky-600 hover:text-sky-600 hover:bg-sky-600/10"
+            >
+              {loading ? <Loader size={20} /> : "Deixar de seguir"}
+            </Button>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   );
 }
