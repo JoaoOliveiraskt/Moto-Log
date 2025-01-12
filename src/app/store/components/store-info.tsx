@@ -45,7 +45,7 @@ export default function StoreInfo({ ...store }: Props) {
         <div className="flex-1 flex flex-col justify-between h-full">
           <div className="flex-1">
             <TypographyH2 className="text-xl lg:text-4xl line-clamp-2 lg:line-clamp-1">
-              {store.name} disponível em nossa megaloja online
+              {store.name}
             </TypographyH2>
 
             <div className="flex items-center gap-x-2 mt-2">
@@ -55,7 +55,7 @@ export default function StoreInfo({ ...store }: Props) {
                       .toFixed(1)
                       .replace(".", ",")} mil seguidores`
                   : `${store.followers} ${
-                      store.followers === 1 ? "seguidor" : "seguidores"
+                      store.followers <= 1 ? "seguidor" : "seguidores"
                     }`}
               </TypographyP>
               <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
@@ -71,12 +71,14 @@ export default function StoreInfo({ ...store }: Props) {
           </div>
           <FollowButton
             storeId={store.storeId}
+            storeName={store.name}
             className="font-semibold px-8 hidden sm:inline-flex"
           />
         </div>
       </div>
       <FollowButton
         storeId={store.storeId}
+        storeName={store.name}
         className="font-semibold w-full mt-4 sm:hidden"
       />
     </div>
