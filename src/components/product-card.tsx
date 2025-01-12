@@ -1,5 +1,3 @@
-"use client";
-
 import formatCurrency from "@/app/helpers/format-currency";
 import calculateTotalPrice from "@/app/helpers/price";
 import Image from "next/image";
@@ -9,7 +7,6 @@ import StoreBadge from "./store-badge";
 import TypographySmall from "./typography/typography-small";
 import { Produto, Loja, Categoria } from "../../prisma/generated/client";
 import TypographyP from "./typography/typography-p";
-import FavoriteProductButton from "./favorite-product-button";
 
 interface ProductProps {
   product: Produto & {
@@ -36,8 +33,8 @@ const ProductCard = ({
   return (
     <div
       className={cn(
-        "h-[21.85rem] w-full max-w-72 overflow-hidden text-foreground",
-        "md:hover:bg-accent md:dark:hover:bg-accent/30 rounded-2xl md:px-2 md:pb-2 md:pt-2",
+        "h-[22.2rem] lg:h-[21.87rem] w-full max-w-72 overflow-hidden text-foreground",
+        "lg:hover:bg-accent lg:dark:hover:bg-accent/30 rounded-2xl lg:px-2 lg:pb-2 lg:pt-2",
         className
       )}
     >
@@ -62,15 +59,6 @@ const ProductCard = ({
             />
           </div>
         </Link>
-
-        {/*<div className="absolute bottom-2.5 right-2.5 flex items-center">
-          <FavoriteProductButton
-            product={{ id: product.id }}
-            size={20}
-            
-       />
-        </div>*/}
-     
       </div>
 
       <div
@@ -81,6 +69,7 @@ const ProductCard = ({
       >
         <Link href={`/product/${product.id}`} className="">
           <TypographyP
+            title={product.nome}
             className={cn("text-sm font-semibold line-clamp-1", titleClassName)}
           >
             {product.nome}
@@ -116,7 +105,6 @@ const ProductCard = ({
               imagemUrl: loja.imagemUrl || "",
               descricao: loja.descricao || "",
             }}
-            followers={410}
           />
         </div>
       </div>
