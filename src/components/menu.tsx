@@ -47,10 +47,10 @@ const Menu = ({ className, children, iconSize }: Props) => {
             onClick={handleMenuOpen.close}
             variant="ghost"
             size="menu"
-            className="flex gap-3 px-4 w-full justify-between py-6  mt-4"
+            className="flex gap-4 items-center px-4 w-full justify-start py-6  mt-2"
           >
-            <span className=" tracking-wide">Início</span>
             <Icon.home size={20} />
+            <span className=" tracking-wide">Início</span>
           </Button>
         </Link>
 
@@ -60,10 +60,10 @@ const Menu = ({ className, children, iconSize }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-between py-6 "
+              className="flex gap-4 items-center px-4 w-full justify-start py-6 "
             >
-              <span className=" tracking-wide">Dashboard</span>
               <Icon.dashboard size={20} />
+              <span className=" tracking-wide">Dashboard</span>
             </Button>
           </Link>
         )}
@@ -74,10 +74,24 @@ const Menu = ({ className, children, iconSize }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-between py-6 "
+              className="flex gap-4 items-center px-4 w-full justify-start py-6 "
             >
-              <span className=" tracking-wide">Pedidos</span>
               <Icon.order size={20} />
+              <span className=" tracking-wide">Pedidos</span>
+            </Button>
+          </Link>
+        )}
+
+        {isAuthenticated && (
+          <Link href={"/following"}>
+            <Button
+              onClick={handleMenuOpen.close}
+              variant="ghost"
+              size="menu"
+              className="flex gap-4 items-center px-4 w-full justify-start py-6 "
+            >
+              <Icon.users size={20} strokeWidth={1.25} />
+              <span className=" tracking-wide">Seguindo</span>
             </Button>
           </Link>
         )}
@@ -88,10 +102,10 @@ const Menu = ({ className, children, iconSize }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-between py-6 "
+              className="flex gap-4 items-center px-4 w-full justify-start py-6 "
             >
-              <span className=" tracking-wide">Favoritos</span>
               <Icon.bookmark size={20} />
+              <span className=" tracking-wide">Favoritos</span>
             </Button>
           </Link>
         )}
@@ -102,17 +116,17 @@ const Menu = ({ className, children, iconSize }: Props) => {
               onClick={handleMenuOpen.close}
               variant="ghost"
               size="menu"
-              className="flex gap-3 px-4 w-full justify-between py-6"
+              className="flex gap-4 items-center px-4 w-full justify-start py-6"
             >
+              <Icon.sell size={20} strokeWidth={1.25} />
               <span className=" tracking-wide">Vender agora</span>
-              <Icon.sell size={20} />
             </Button>
           </Link>
         )}
 
         <ModeToggle
           iconSize={20}
-          className="flex flex-row-reverse gap-3 px-4 w-full justify-between py-6  mb-4"
+          className="flex gap-4 items-center px-4 w-full justify-start py-6  mb-2"
           size="menu"
         >
           <span className=" tracking-wide">Tema</span>
@@ -155,10 +169,11 @@ const Menu = ({ className, children, iconSize }: Props) => {
         >
           {isAuthenticated && (
             <div>
-              <UserInfo />
+              <UserInfo className="py-4 pl-6" />
               <Separator />
             </div>
           )}
+
           <div className="flex-col flex px-2">{menuItems}</div>
           <Separator />
           <LoginButton className="rounded-none" iconSize={20}>

@@ -26,7 +26,7 @@ export default async function Community() {
   }
 
   return (
-    <Container className="min-h-screen sm:mt-16 relative">
+    <Container className="min-h-screen sm:mt-14 lg:pt-2 relative">
       <GoBackButton containerClassName="hidden lg:flex" />
       <div className="flex flex-col md:h-80 h-64 sm:items-center">
         <TypographyH1

@@ -39,10 +39,10 @@ export default function LoginButton({
             e.preventDefault();
             handleSigOutClick();
           }}
-          className={`text-destructive hover:text-destructive flex px-6 w-full justify-between py-6 ${className}`}
+          className={`text-destructive hover:text-destructive flex gap-4 items-center px-7 w-full justify-start py-6 ${className}`}
         >
+          <Icon.signOut size={iconSize} strokeWidth={1.25}/>
           {children}
-          <Icon.signOut size={iconSize} />
         </Button>
       ) : (
         <div className="w-full">
@@ -50,10 +50,10 @@ export default function LoginButton({
             size={"menu"}
             variant={variant}
             onClick={toggleOpen}
-            className={`flex px-6 w-full justify-between py-6 ${className}`}
+            className={`flex px-6 w-full items-center gap-4 justify-start py-6 text-sky-600 hover:text-sky-500 ${className}`}
           >
+            <Icon.signIn size={iconSize} strokeWidth={1.25}/>
             {children}
-            <Icon.signIn size={iconSize} />
           </Button>
 
           <LoginDialog open={open} onOpenChange={setOpen} />

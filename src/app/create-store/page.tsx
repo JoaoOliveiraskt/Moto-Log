@@ -88,7 +88,7 @@ export default function CreateStore() {
   if (!isAuthenticated) {
     return (
       <>
-        <Container className="h-screen w-full flex items-center justify-center flex-col space-y-10 md:-mt-36">
+        <Container className="h-screen w-full flex items-center justify-center flex-col space-y-10">
           <h1 className="text-xl text-center">
             Você precisa estar logado para criar uma loja!
           </h1>
@@ -107,7 +107,7 @@ export default function CreateStore() {
     );
   } else {
     return (
-      <Container className="min-h-[calc(100vh-200px)] w-full flex items-center flex-col space-y-6 mt-[72px] md:mt-36">
+      <Container className="h-screen w-full flex items-center justify-center flex-col space-y-6">
         <motion.div {...animation1}>
           <MotoLogLogo disabled={true} />
         </motion.div>
@@ -184,16 +184,12 @@ export default function CreateStore() {
                       type="submit"
                       className={`mt-6 bg-confirmed`}
                     >
-                      <Icon.confirmed size={20}/>
+                      <Icon.confirmed size={20} />
                     </Button>
                   ) : (
-                    <Button
-                      size={"rounded"}
-                      type="submit"
-                      className={`mt-6`}
-                    >
+                    <Button size={"rounded"} type="submit" className={`mt-6`}>
                       {isSubmitLoading ? (
-                        <Loader2 className="animate-spin" size={20}/>
+                        <Loader2 className="animate-spin" size={20} />
                       ) : (
                         <p className="font-semibold">Criar Loja</p>
                       )}

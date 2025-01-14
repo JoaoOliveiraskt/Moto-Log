@@ -42,7 +42,7 @@ const ProductCard = ({
         <Link href={`/product/${product.id}`} className="block ">
           <div
             className={cn(
-              "h-56 w-full lg:h-[13rem] rounded-xl overflow-hidden bg-accent shadow-lg",
+              "h-56 w-full lg:h-[13rem] rounded-xl overflow-hidden bg-accent",
               imageClassName
             )}
           >
@@ -54,7 +54,7 @@ const ProductCard = ({
               priority
               quality={80}
               className={cn(
-                "object-cover w-full h-full brightness-90 hover:brightness-100 duration-500 transition-opacity"
+                "object-cover w-full h-full duration-500 transition-opacity"
               )}
             />
           </div>

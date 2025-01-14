@@ -52,7 +52,7 @@ export default function CategoryCarousel({ children }: CategoryCarouselProps) {
       initial={{ y: 0 }}
       animate={{ y: scrollingUp ? 0 : -100 }}
       transition={{ duration: 0.5 }}
-      className="fixed w-screen top-12 pt-1 pb-2 lg:top-16 lg:pr-4 left-0 right-0 z-20 bg-background mx-auto  flex justify-center"
+      className="fixed w-screen top-12 pt-1 pb-2 lg:top-14 lg:pr-4 left-0 right-0 z-20 bg-background mx-auto  flex justify-center"
     >
       <Carousel
         className="w-full mx-auto max-w-screen-lg lg:max-w-[1294px] "

@@ -8,13 +8,11 @@ import { TbHeartFilled } from "react-icons/tb";
 import { IoTrashOutline } from "react-icons/io5";
 import { FiClock } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
-import { MdBookmarkAdd } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { VscLoading } from "react-icons/vsc";
 import { GoHomeFill, GoHome } from "react-icons/go";
 import { BiShoppingBag, BiSolidShoppingBag } from "react-icons/bi";
 import { CiHeart } from "react-icons/ci";
-import { CiBookmark } from "react-icons/ci";
 import { FaRegUserCircle } from "react-icons/fa";
 import { PiCheckCircleFill } from "react-icons/pi";
 import { FiEdit2 } from "react-icons/fi";
@@ -25,6 +23,7 @@ import { TbSquareRoundedPlus } from "react-icons/tb";
 import { TbPhotoMinus } from "react-icons/tb";
 import { FiBarChart2 } from "react-icons/fi";
 import { TbTruckDelivery } from "react-icons/tb";
+import { CgShoppingBag } from "react-icons/cg";
 import {
   Menu,
   ShoppingCart,
@@ -44,12 +43,14 @@ import {
   ArrowRight,
   WandSparkles,
   Bookmark,
+  Users,
 } from "lucide-react";
 
 const Icon = {
   home: GoHome,
   homeSolid: GoHomeFill,
   cart: ShoppingCart,
+  bag: CgShoppingBag,
   trash: IoTrashOutline,
   order: BiShoppingBag,
   orderSolid: BiSolidShoppingBag,
@@ -84,6 +85,7 @@ const Icon = {
   google: FcGoogle,
   loading: VscLoading,
   user: FaRegUserCircle,
+  users: Users,
   globe: Dribbble,
   edit: FiEdit2,
   folderDown: TbFolderDown,

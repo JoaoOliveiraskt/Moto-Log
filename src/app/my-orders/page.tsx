@@ -7,6 +7,7 @@ import GoBackButton from "@/components/go-back-button";
 import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
 import { Link } from "next-view-transitions";
+import TypographyH1 from "@/components/typography/typography-h1";
 
 const MyOrdersPage = async () => {
   const session = await getServerSession(authOptions);
@@ -30,7 +31,7 @@ const MyOrdersPage = async () => {
   });
   return (
     <>
-      <Container className="space-y-4 mt-14 lg:mt-16">
+      <Container className="min-h-[calc(100vh-3.5rem)] space-y-6 mt-12 lg:mt-14 lg:pt-2">
         <GoBackButton containerClassName="hidden lg:flex" />
 
         {orders.length > 0 ? (
@@ -40,13 +41,22 @@ const MyOrdersPage = async () => {
             ))}
           </div>
         ) : (
-          <div className="flex flex-col md:flex-row gap-4 my-16 sm:my-32 items-center justify-center">
-            <h2 className="text-center font-bold">
-              Você ainda não fez nenhum pedido.
-            </h2>
-            <Link href="/">
-              <Button>Ir às compras</Button>
-            </Link>
+          <div className=" pt-6 lg:pt-0">
+            <div>
+              <TypographyH1 className="font-semibold ">
+                Você ainda não fez nenhum pedido.
+              </TypographyH1>
+
+              <p className="text-muted-foreground mt-2">
+                Continue comprando e faça seu primeiro pedido.
+              </p>
+
+              <div className="flex items-center gap-4 mt-8">
+                <Button asChild className="w-fit">
+                  <Link href="/">Ir às compras</Link>
+                </Button>
+              </div>
+            </div>
           </div>
         )}
       </Container>

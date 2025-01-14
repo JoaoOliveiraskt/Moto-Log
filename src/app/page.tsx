@@ -13,10 +13,10 @@ export default function Home() {
   return (
     <main className="">
       <CategoryCarousel>
-        <CategoryCarouselContent />
+        <CategoryCarouselContent /> 
       </CategoryCarousel>
 
-      <Container className="space-y-10 mt-28 lg:mt-32 pb-20">
+      <Container className="space-y-10 mt-[5.7rem] lg:mt-[6.2rem] pb-20 pt-4">
         <DiscountProducts />
         <Suspense fallback={<TopStoreSkeleton />}>
           <TopStores />

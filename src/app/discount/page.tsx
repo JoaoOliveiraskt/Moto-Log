@@ -32,7 +32,7 @@ export default async function DiscountPage() {
     }
 
     return (
-      <Container className="space-y-4 mt-14 lg:mt-16">
+      <Container className="space-y-4 mt-12 lg:mt-14 lg:pt-2">
         <GoBackButton containerClassName="hidden lg:flex"/>
         <Suspense
           fallback={

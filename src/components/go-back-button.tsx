@@ -30,6 +30,7 @@ const routeTranslations: Record<string, string> = {
   "/store": "Loja",
   "/welcome-create-store": " ",
   "/favorites": "Favoritos",
+  "/following": "Seguindo",
 };
 
 const GoBackButton: React.FC<Props> = ({
@@ -52,7 +53,7 @@ const GoBackButton: React.FC<Props> = ({
       ) : (
         <div
           className={cn(
-            "flex items-center justify-between gap-4 w-full",
+            "flex items-center justify-between gap-4 ",
             containerClassName
           )}
         >

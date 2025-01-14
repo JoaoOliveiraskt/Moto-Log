@@ -31,10 +31,16 @@ import Container from "@/components/container";
 import GoBackButton from "@/components/go-back-button";
 import { Link } from "next-view-transitions";
 import TypographyH3 from "@/components/typography/typography-h3";
+import TypographyH2 from "@/components/typography/typography-h2";
+import LoginDialog from "@/components/login-dialog";
+import TypographyH1 from "@/components/typography/typography-h1";
+import TypographyP from "@/components/typography/typography-p";
+import HeaderLoginBtn from "@/components/header-login-btn";
 
 const Cart = () => {
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
+  const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
   const { data } = useSession();
   const { products, subTotalPrice, totalPrice, totalDiscount, clearCart } =
     useContext(CartContext);
@@ -43,6 +49,8 @@ const Cart = () => {
     (acc, product) => acc + product.quantity,
     0
   );
+
+  const openLoginDialog = () => setIsLoginDialogOpen(true);
 
   const handleFinishOrderClick = async () => {
     if (!data?.user) return;
@@ -81,7 +89,7 @@ const Cart = () => {
         // @ts-ignore
         title: (
           <div className="flex items-center gap-x-2">
-            <Icon.confirmed color="green" />
+            <Icon.confirmed color="green" strokeWidth={1.25} />
             <span>Pedido finalizado com sucesso!</span>
           </div>
         ),
@@ -109,7 +117,7 @@ const Cart = () => {
 
   return (
     <>
-      <Container className="min-h-[calc(100vh-8rem)] mt-14 lg:mt-16 space-y-6   ">
+      <Container className="min-h-[calc(100vh-3.5rem)] mt-12 lg:mt-14 space-y-6 lg:pt-2">
         <GoBackButton containerClassName="hidden lg:flex" />
 
         {products.length > 0 ? (
@@ -162,19 +170,37 @@ const Cart = () => {
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-center min-h-[calc(100vh-300px)]">
-            <div className="flex flex-col gap-4 items-center">
-              <Icon.cart size={80} className="mx-auto text-muted-foreground" />
-              <p className="text-lg text-muted-foreground">
+          <div className="min-h-[calc(100vh-300px)] pt-6 lg:pt-0">
+            <div>
+              <TypographyH1 className="font-semibold ">
                 Seu carrinho está vazio
-              </p>
-              <Button asChild className="w-fit">
-                <Link href="/">Ir as compras</Link>
-              </Button>
+              </TypographyH1>
+              {!data?.user ? (
+                <p className="text-muted-foreground mt-2">
+                  Entre para adicionar algum item ao carrinho. Ou continue
+                  comprando.
+                </p>
+              ) : (
+                <p className="text-muted-foreground mt-2">
+                  Continue comprando e adicione produtos ao seu carrinho.
+                </p>
+              )}
+
+              <div className="flex items-center gap-4 mt-8">
+                {!data?.user && <HeaderLoginBtn onClick={openLoginDialog} />}
+                <Button asChild className="w-fit">
+                  <Link href="/">Continuar comprando</Link>
+                </Button>
+              </div>
             </div>
           </div>
         )}
       </Container>
+
+      <LoginDialog
+        open={isLoginDialogOpen}
+        onOpenChange={setIsLoginDialogOpen}
+      />
 
       <AlertDialog
         open={isConfirmDialogOpen}

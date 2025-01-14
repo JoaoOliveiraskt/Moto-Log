@@ -4,7 +4,6 @@ import { useState, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import { Link } from "next-view-transitions";
 import UserInfo from "@/components/user-info";
-import GoogleSignInButton from "./google-signin-button";
 import { Button } from "./ui/button";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { ModeToggle } from "./theme/theme-switcher";
@@ -44,13 +43,13 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
         <Button
           asChild
           onClick={handleMenuOpen.close}
-          variant="secondary"
+          variant="ghost"
           size="menu"
-          className="w-full  border-border/70 "
+          className="w-full border-border/7 justify-start hover:bg-background"
         >
-          <Link href="/" className="flex gap-4 w-full justify-between py-6 ">
-            <TypographyLarge className="font-medium">Início</TypographyLarge>
+          <Link href="/" className="flex gap-4 w-full items-center py-7 ">
             <Icon.home size={iconSize} />
+            <TypographyLarge className="font-medium">Início</TypographyLarge>
           </Link>
         </Button>
 
@@ -58,18 +57,18 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
           <Button
             asChild
             onClick={handleMenuOpen.close}
-            variant="secondary"
+            variant="ghost"
             size="menu"
-            className="w-full  border-border/70 "
+            className="w-full  border-border/7 justify-start hover:bg-background"
           >
             <Link
               href="/dashboard/products"
-              className="flex gap-4 w-full justify-between py-6 "
+              className="flex gap-4 w-full items-center py-7 "
             >
+              <Icon.dashboard size={iconSize} />
               <TypographyLarge className="font-medium">
                 Dashboard
               </TypographyLarge>
-              <Icon.dashboard size={iconSize} />
             </Link>
           </Button>
         )}
@@ -78,34 +77,56 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
           <Button
             asChild
             onClick={handleMenuOpen.close}
-            variant="secondary"
+            variant="ghost"
             size="menu"
-            className="w-full  border-border/70 "
+            className="w-full  border-border/7 justify-start hover:bg-background"
           >
             <Link
               href={isAuthenticated ? "/my-orders" : ""}
-              className="flex gap-4 w-full justify-between py-6 "
+              className="flex gap-4 w-full items-center py-7 "
             >
-              <TypographyLarge className="font-medium">Pedidos</TypographyLarge>
               <Icon.order size={iconSize} />
+              <TypographyLarge className="font-medium">Pedidos</TypographyLarge>
             </Link>
           </Button>
         )}
 
-{isAuthenticated && (
+        {isAuthenticated && (
           <Button
             asChild
             onClick={handleMenuOpen.close}
-            variant="secondary"
+            variant="ghost"
             size="menu"
-            className="w-full  border-border/70 "
+            className="w-full  border-border/7 justify-start hover:bg-background"
+          >
+            <Link
+              href={isAuthenticated ? "/following" : ""}
+              className="flex gap-4 w-full items-center py-7 "
+            >
+              <Icon.users size={iconSize} strokeWidth={1.25} />
+              <TypographyLarge className="font-medium">
+                Seguindo
+              </TypographyLarge>
+            </Link>
+          </Button>
+        )}
+
+        {isAuthenticated && (
+          <Button
+            asChild
+            onClick={handleMenuOpen.close}
+            variant="ghost"
+            size="menu"
+            className="w-full  border-border/7 justify-start hover:bg-background"
           >
             <Link
               href={isAuthenticated ? "/favorites" : ""}
-              className="flex gap-4 w-full justify-between py-6 "
+              className="flex gap-4 w-full items-center py-7 "
             >
-              <TypographyLarge className="font-medium">Favoritos</TypographyLarge>
               <Icon.bookmark size={iconSize} />
+              <TypographyLarge className="font-medium">
+                Favoritos
+              </TypographyLarge>
             </Link>
           </Button>
         )}
@@ -114,18 +135,18 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
           <Button
             asChild
             onClick={handleMenuOpen.close}
-            variant="secondary"
+            variant="ghost"
             size="menu"
-            className="w-full  border-border/70 "
+            className="w-full  border-border/7 justify-start hover:bg-background"
           >
             <Link
               href="/welcome-create-store"
-              className="flex gap-4 w-full justify-between py-6 "
+              className="flex gap-4 w-full items-center py-7 "
             >
+              <Icon.sell size={iconSize} strokeWidth={1.25} />
               <TypographyLarge className="font-medium">
                 Vender Agora
               </TypographyLarge>
-              <Icon.sell size={iconSize} />
             </Link>
           </Button>
         )}
@@ -133,25 +154,25 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
         <Button
           asChild
           onClick={handleMenuOpen.close}
-          variant="secondary"
+          variant="ghost"
           size="menu"
-          className="w-full  border-border/70 "
+          className="w-full  border-border/7 justify-start hover:bg-background"
         >
           <Link
             href="/community"
-            className="flex gap-4 w-full justify-between py-6 "
+            className="flex gap-4 w-full items-center py-7 "
           >
+            <Icon.globe size={iconSize} strokeWidth={1.25} />
             <TypographyLarge className="font-medium">
               Comunidade
             </TypographyLarge>
-            <Icon.globe size={iconSize} />
           </Link>
         </Button>
 
         <ModeToggle
-          variant="secondary"
+          variant="ghost"
           iconSize={iconSize}
-          className="flex flex-row-reverse gap-4 w-full justify-between py-6 border-border/70 "
+          className="flex gap-4 w-full justify-start items-center py-7 border-border/70 hover:bg-background"
           size="menu"
         >
           <TypographyLarge className="font-medium">Tema</TypographyLarge>
@@ -159,8 +180,8 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
 
         <LoginButton
           iconSize={iconSize}
-          variant="secondary"
-          className="w-full border-border/70 px-4"
+          variant="ghost"
+          className="w-full border-border/70 px-4 py-7 hover:bg-background"
         >
           {isAuthenticated ? (
             <TypographyLarge className="font-medium">Sair</TypographyLarge>
@@ -178,9 +199,12 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
       <Drawer open={isMenuOpen} onOpenChange={setIsMenuOpen}>
         <DrawerTrigger asChild>
           {isAuthenticated ? (
-            <Avatar className="cursor-pointer">
-              <AvatarImage src={user?.image ?? ""} alt={user?.name ?? ""} />
-            </Avatar>
+            <div className="flex flex-col items-center justify-center gap-1">
+              <Avatar className="cursor-pointer w-6 h-6">
+                <AvatarImage src={user?.image ?? ""} alt={user?.name ?? ""} />
+              </Avatar>
+              <p className="text-xs font-medium text-muted-foreground">Você</p>
+            </div>
           ) : (
             <button className="flex items-center">
               <MenuBtn className={className} iconSize={iconSize}>
@@ -190,12 +214,17 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
           )}
         </DrawerTrigger>
 
-        <DrawerContent className="pb-6 px-4 bg-card">
-          <DrawerHeader className="mx-auto w-full flex items-center justify-center">
-            <UserInfo />
-          </DrawerHeader>
-          <div className="space-y-2 flex flex-col items-center w-full">
-            {menuItems}
+        <DrawerContent className="pb-4 px-4 outline-none overflow-hidden">
+          {/* Efeitos de glass e gradientes */}
+          <div className="absolute inset-0 dark:bg-gradient-to-b dark:from-black/40 dark:to-transparent" />
+          <div className="absolute top-2 left-1/4 w-full h-72 dark:bg-gradient-to-b dark:from-purple-500/15 dark:via-transparent dark:to-transparent dark:blur-xl" />
+          <div className="absolute top-2 right-1/4 w-full h-72 dark:bg-gradient-to-b dark:from-sky-600/15 dark:via-transparent dark:to-transparent dark:blur-xl" />
+
+          <div className="relative z-10">
+            <DrawerHeader className=" w-full flex items-center justify-start">
+              <UserInfo />
+            </DrawerHeader>
+            <div className="flex flex-col items-center w-full">{menuItems}</div>
           </div>
         </DrawerContent>
       </Drawer>

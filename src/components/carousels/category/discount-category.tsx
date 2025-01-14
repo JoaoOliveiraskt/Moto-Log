@@ -96,9 +96,9 @@ export default async function DiscountCategoryCarousel() {
                         src={content.imageUrl}
                         alt={category.nome}
                         fill
-                        className="object-cover transition-all duration-500 group-hover:brightness-75"
+                        className="object-cover transition-all duration-500 "
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/20" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-black/0" />
                     </div>
 
                     <div className="relative h-full p-6 flex flex-col justify-end text-white">

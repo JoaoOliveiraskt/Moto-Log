@@ -31,7 +31,7 @@ async function RecentProductsContent() {
 
 export default function RecentProducts() {
   return (
-    <Container className="space-y-4 mt-14 lg:mt-16">
+    <Container className="space-y-4 mt-12 lg:mt-14">
       <GoBackButton containerClassName="hidden lg:flex" />
 
       <Suspense

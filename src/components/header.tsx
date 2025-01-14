@@ -15,7 +15,7 @@ import {
 export default function Header() {
   return (
     <div className="hidden lg:flex fixed top-0 z-40 h-14 bg-background w-screen lg:pr-4">
-      <div className="h-full w-full lg:max-w-[1290px] relative mx-auto px-4 xl:px-0 flex items-center justify-between">
+      <div className="h-full w-full max-w-[1290px] relative mx-auto px-4 xl:px-0 flex items-center justify-between">
         <div className="hover:scale-105 active:scale-95 h-fit">
           <MotoLogLogo />
         </div>
@@ -25,7 +25,7 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-x-6">
-          <HeaderLoginBtn />
+          <HeaderLoginBtn className="h-8 text-xs" />
 
           <TooltipProvider delayDuration={0}>
             <Tooltip>

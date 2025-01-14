@@ -61,7 +61,7 @@ export default async function TopStores() {
                   href={`/store/${store.id}`}
                   className="text-foreground font-medium hover:text-sky-600 hover:transition-colors flex flex-col gap-y-2"
                 >
-                  <div className="w-28 h-28 rounded-[1.5rem] overflow-hidden drop-shadow-lg">
+                  <div className="w-28 h-28 rounded-[1.5rem] overflow-hidden drop-shadow-md">
                     {store.imagemUrl ? (
                       <Image
                         src={store.imagemUrl}

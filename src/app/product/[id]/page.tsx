@@ -74,7 +74,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
 
   return (
     <>
-      <Container className="mt-14 lg:mt-16 space-y-4">
+      <Container className=" mt-12 lg:mt-14 space-y-4 lg:pt-2">
         <GoBackButton containerClassName="hidden lg:flex" />
         <div className="grid lg:grid-cols-[3fr_1.5fr] lg:gap-x-6 w-full space-y-8 lg:space-y-0">
           <div>

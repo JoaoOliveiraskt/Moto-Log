@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    --background: 240 11% 96%;
+    --foreground: 240 3% 12%;
     --muted: 0 0% 62%;
-    --muted-foreground: 0 0% 50%;
+    --muted-foreground: 240 2% 54%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;

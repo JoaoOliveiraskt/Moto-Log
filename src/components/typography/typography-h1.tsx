@@ -9,7 +9,7 @@ export default function TypographyH1({ children, className }: Props) {
   return (
     <h1
       className={cn(
-        "scroll-m-20 text-3xl lg:text-5xl font-extrabold tracking-tight dark:bg-gradient-to-br",
+        "scroll-m-20 text-3xl lg:text-5xl font-extrabold tracking-tight text-foreground",
         className
       )}
     >
