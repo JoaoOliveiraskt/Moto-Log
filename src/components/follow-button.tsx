@@ -134,7 +134,7 @@ export default function FollowButton({ storeId, storeName, className }: Props) {
       <>
         <Button
           size="rounded"
-          className={cn("font-semibold px-8 w-32", className)}
+          className={cn("px-8 w-32", className)}
           onClick={handleFollowClick}
         >
           {loading ? <Loader size={20} /> : "Seguir"}
@@ -156,7 +156,7 @@ export default function FollowButton({ storeId, storeName, className }: Props) {
           <Button
             size="rounded"
             variant="secondary"
-            className={cn("font-semibold px-8 w-32", className)}
+            className={cn("px-8 w-32", className)}
           >
             {loading ? (
               <Loader size={20} />

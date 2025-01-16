@@ -51,7 +51,6 @@ export default async function Store({ params }: Props) {
   }
 
   const products = store?.Produtos || [];
-  const bestSellersProducts = bestSellers?.Produtos || [];
   const storeImageUrl = store.imagemUrl;
   const totalProducts = products.length;
 
@@ -65,6 +64,7 @@ export default async function Store({ params }: Props) {
           totalProducts={totalProducts}
           storeId={store.id}
           followers={store._count.followers}
+          createdAt={store.createdAt}
         />
 
         <div className="flex flex-col w-full">

@@ -44,6 +44,7 @@ import {
   WandSparkles,
   Bookmark,
   Users,
+  Info,
 } from "lucide-react";
 
 const Icon = {
@@ -55,6 +56,7 @@ const Icon = {
   order: BiShoppingBag,
   orderSolid: BiSolidShoppingBag,
   menu: Menu,
+  info: Info,
   search: FiSearch,
   moon: RxMoon,
   sun: Sun,

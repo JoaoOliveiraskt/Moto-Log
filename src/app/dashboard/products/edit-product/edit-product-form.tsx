@@ -7,7 +7,6 @@ import ProductDetails from "@/app/dashboard/products/add-product/components/prod
 import ProductStatus from "@/app/dashboard/products/add-product/components/product-status";
 import ProductImage from "@/app/dashboard/products/add-product/components/product-image";
 import Stock from "@/app/dashboard/products/add-product/components/stock";
-import Container from "@/components/container";
 import { useSubmitState } from "@/hooks/use-submit-state";
 import { useForm, FormProvider } from "react-hook-form";
 import { useState } from "react";
@@ -151,6 +150,6 @@ export default function EditProductForm({
       >
         Produto atualizado com sucesso! 🎉
       </ModalConfirmation>
-</>
+    </>
   );
 }

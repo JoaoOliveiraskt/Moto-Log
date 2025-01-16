@@ -90,7 +90,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
               size="menu"
               className="flex gap-4 items-center px-4 w-full justify-start py-6 "
             >
-              <Icon.users size={20} strokeWidth={1.25} />
+              <Icon.users size={20}  />
               <span className=" tracking-wide">Seguindo</span>
             </Button>
           </Link>

@@ -2,14 +2,16 @@ import FollowButton from "@/components/follow-button";
 import TypographyH2 from "@/components/typography/typography-h2";
 import TypographyP from "@/components/typography/typography-p";
 import Image from "next/image";
+import StoreAbout from "./store-about";
 
 interface Props {
   name: string | null;
   description: string | null;
   imageUrl: string | null;
-  totalProducts: number | null;
+  totalProducts: number;
   storeId: string;
   followers: number;
+  createdAt: Date;
 }
 
 export default function StoreInfo({ ...store }: Props) {
@@ -22,7 +24,7 @@ export default function StoreInfo({ ...store }: Props) {
             alt="Store Banner"
             width={600}
             height={600}
-            className="w-full h-full object-cover rounded-lg lg:rounded-2xl shadow-lg"
+            className="w-full h-full object-cover rounded-lg lg:rounded-2xl"
           />
         ) : null}
       </div>
@@ -35,7 +37,7 @@ export default function StoreInfo({ ...store }: Props) {
               alt="Store Banner"
               width={600}
               height={600}
-              className="w-20 h-20 sm:w-40 sm:h-40 object-cover rounded-full flex-shrink-0 shadow-xl"
+              className="w-20 h-20 sm:w-40 sm:h-40 object-cover rounded-full flex-shrink-0"
             />
           ) : (
             <div className="w-20 h-20 sm:w-40 sm:h-40 bg-accent rounded-full flex-shrink-0 animate-pulse"></div>
@@ -48,7 +50,7 @@ export default function StoreInfo({ ...store }: Props) {
               {store.name}
             </TypographyH2>
 
-            <div className="flex items-center gap-x-2 mt-2">
+            <div className="flex items-center gap-x-2 mt-2 ">
               <TypographyP className="text-xs sm:text-sm text-muted-foreground [&:not(:first-child)]:mt-0">
                 {store.followers > 999
                   ? `${(store.followers / 1000)
@@ -65,9 +67,12 @@ export default function StoreInfo({ ...store }: Props) {
               </TypographyP>
             </div>
 
-            <TypographyP className="text-xs sm:text-sm text-muted-foreground max-w-md [&:not(:first-child)]:mt-1 line-clamp-1">
-              {store.description}
-            </TypographyP>
+            <div className="flex items-center ">
+              <p className="text-xs sm:text-sm text-muted-foreground max-w-md  line-clamp-1">
+                {store.description}
+              </p>
+              <StoreAbout {...store} />
+            </div>
           </div>
           <FollowButton
             storeId={store.storeId}

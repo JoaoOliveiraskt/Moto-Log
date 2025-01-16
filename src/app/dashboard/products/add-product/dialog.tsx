@@ -10,18 +10,15 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import ModalConfirmation from "./components/modal-confirmation";
 import ProductFormActionButtons from "./components/save-product";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Label } from "@/components/ui/label";
-import MotoLogLogo from "@/components/icons/moto-log-logo";
-import { ResponsiveDialogOrDrawer } from "@/components/responsive-dialog-or-drawer";
-import { useEffect } from "react";
+import {
+  ResponsiveModal,
+  ResponsiveModalContent,
+  ResponsiveModalFooter,
+  ResponsiveModalHeader,
+  ResponsiveModalTitle,
+} from "@/components/responsive-modal";
 
 interface ProductData {
   nome: string;
@@ -95,47 +92,48 @@ export default function AddProductDialog({
   };
 
   return (
-    <ResponsiveDialogOrDrawer
-      isOpen={isModalOpen}
-      onOpenChange={setIsModalOpen}
-      title="Adicionar produto"
-    >
-      <ScrollArea className="max-h-[98%] overflow-hidden">
-        <FormProvider {...methods}>
-          <form
-            onSubmit={methods.handleSubmit(onSubmit)}
-            className="grid px-6 w-full h-full flex-1 auto-rows-max gap-4 md:gap-4"
-          >
-            <div className="h-full grid auto-rows-max items-start gap-12 mt-8">
-              <ProductDetails />
-              <div className="grid gap-4">
-                <Label htmlFor="imagemUrl">Url da imagem</Label>
-                <Input
-                  className="h-14"
-                  type="text"
-                  placeholder="URL da imagem"
-                  {...methods.register("imagemUrl", { required: true })}
-                />
+    <ResponsiveModal isOpen={isModalOpen} onOpenChange={setIsModalOpen}>
+      <ResponsiveModalContent className="h-full max-h-[70%] lg:min-w-[30%] pb-16 pt-0 pr-0 pl-0">
+        <ResponsiveModalHeader className="flex flex-row items-center gap-x-4 pl-6">
+          <ResponsiveModalTitle>Adicionar produto</ResponsiveModalTitle>
+        </ResponsiveModalHeader>
+        <ScrollArea className="max-h-[98%] overflow-hidden">
+          <FormProvider {...methods}>
+            <form
+              onSubmit={methods.handleSubmit(onSubmit)}
+              className="grid px-6 w-full h-full flex-1 auto-rows-max gap-4 md:gap-4"
+            >
+              <div className="h-full grid auto-rows-max items-start gap-12 mt-8">
+                <ProductDetails />
+                <div className="grid gap-4">
+                  <Label htmlFor="imagemUrl">Url da imagem</Label>
+                  <Input
+                    className="h-14"
+                    type="text"
+                    placeholder="URL da imagem"
+                    {...methods.register("imagemUrl", { required: true })}
+                  />
+                </div>
+                <ProductCategory />
+                <ProductStatus />
+                <Stock />
               </div>
-              <ProductCategory />
-              <ProductStatus />
-              <Stock />
-            </div>
 
-            <DialogFooter className="mb-8 fixed -bottom-4 right-4">
-              <ProductFormActionButtons
-                isLoading={isLoading}
-                onDiscard={() => methods.reset()}
-              />
+              <ResponsiveModalFooter className="fixed bottom-0 lg:bottom-4 flex-1 h-fit right-2 max-h-16">
+                <ProductFormActionButtons
+                  isLoading={isLoading}
+                  onDiscard={() => methods.reset()}
+                />
 
-              {errorMessage && (
-                <p className="text-red-500 text-center">{errorMessage}</p>
-              )}
-            </DialogFooter>
-          </form>
-        </FormProvider>
-        <ScrollBar orientation="vertical" className="-ml-2" />
-      </ScrollArea>
+                {errorMessage && (
+                  <p className="text-red-500 text-center">{errorMessage}</p>
+                )}
+              </ResponsiveModalFooter>
+            </form>
+          </FormProvider>
+          <ScrollBar orientation="vertical" className="-ml-2" />
+        </ScrollArea>
+      </ResponsiveModalContent>
 
       <ModalConfirmation
         isConfirmDialogOpen={isConfirmDialogOpen}
@@ -143,6 +141,6 @@ export default function AddProductDialog({
       >
         Produto adicionado com sucesso! 🎉
       </ModalConfirmation>
-    </ResponsiveDialogOrDrawer>
+    </ResponsiveModal>
   );
 }

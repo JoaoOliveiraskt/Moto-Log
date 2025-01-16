@@ -103,7 +103,7 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
               href={isAuthenticated ? "/following" : ""}
               className="flex gap-4 w-full items-center py-7 "
             >
-              <Icon.users size={iconSize} strokeWidth={1.25} />
+              <Icon.users size={iconSize} />
               <TypographyLarge className="font-medium">
                 Seguindo
               </TypographyLarge>
