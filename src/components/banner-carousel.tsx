@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { Button } from "./ui/button";
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";

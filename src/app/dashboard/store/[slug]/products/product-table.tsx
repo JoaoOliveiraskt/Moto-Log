@@ -21,7 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Decimal } from "@prisma/client/runtime/library";
 import formatCurrency from "@/app/helpers/format-currency";
 import { useState } from "react";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import DeleteProductDialog from "../../components/delete-product-dialog";
 import Icon from "@/components/icons/icon-component";
 

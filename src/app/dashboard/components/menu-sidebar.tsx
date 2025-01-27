@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { PanelLeft } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";

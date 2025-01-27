@@ -4,7 +4,7 @@ import CartButton from "./cart-button";
 import MotoLogLogo from "./icons/moto-log-logo";
 import HeaderLoginBtn from "./header-login-btn";
 import Icon from "./icons/icon-component";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import {
   Tooltip,
   TooltipContent,

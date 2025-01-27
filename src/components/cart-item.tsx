@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { useContext } from "react";
 import TypographySmall from "./typography/typography-small";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import TypographyP from "./typography/typography-p";
 import Icon from "./icons/icon-component";
 

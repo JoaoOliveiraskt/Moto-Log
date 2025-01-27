@@ -29,7 +29,7 @@ import Loader from "@/components/ui/loader";
 import { updateProductSales } from "@/app/actions/product/update-product-sales";
 import Container from "@/components/container";
 import GoBackButton from "@/components/go-back-button";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import TypographyH3 from "@/components/typography/typography-h3";
 import TypographyH2 from "@/components/typography/typography-h2";
 import LoginDialog from "@/components/login-dialog";

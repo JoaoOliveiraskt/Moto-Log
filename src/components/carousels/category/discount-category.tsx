@@ -1,6 +1,6 @@
 import GetCategories from "@/app/actions/category/get-categories";
 import { Card } from "../../ui/card";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import Image from "next/image";
 import {
   Carousel,

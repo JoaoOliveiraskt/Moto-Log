@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import TypographyH1 from "@/components/typography/typography-h1";
 import TypographyP from "@/components/typography/typography-p";

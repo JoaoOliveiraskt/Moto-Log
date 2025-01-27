@@ -20,7 +20,7 @@ import { useSession } from "next-auth/react";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import Icon from "@/components/icons/icon-component";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import LoginModal from "@/components/login-modal";
 
 interface ProductInfoProps {

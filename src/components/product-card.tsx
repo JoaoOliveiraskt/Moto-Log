@@ -1,7 +1,7 @@
 import formatCurrency from "@/app/helpers/format-currency";
 import calculateTotalPrice from "@/app/helpers/price";
 import Image from "next/image";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import StoreBadge from "./store-badge";
 import TypographySmall from "./typography/typography-small";

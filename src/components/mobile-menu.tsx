@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useSession } from "next-auth/react";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import UserInfo from "@/components/user-info";
 import { Button } from "./ui/button";
 import { Avatar, AvatarImage } from "./ui/avatar";

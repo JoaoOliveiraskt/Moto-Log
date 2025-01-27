@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import Image from "next/image";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import TypographyP from "./typography/typography-p";

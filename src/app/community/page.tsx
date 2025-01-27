@@ -6,7 +6,7 @@ import { Loja } from "prisma/generated/client";
 import StoreBadge from "@/components/store-badge";
 import { db } from "@/lib/prisma";
 import Image from "next/image";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import GoBackButton from "@/components/go-back-button";
 

@@ -8,7 +8,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import GetUserFavorites from "../actions/user/favorites/get-user-favorites";
 import { Button } from "@/components/ui/button";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/product-card-skeleton";
 import TypographyH1 from "@/components/typography/typography-h1";

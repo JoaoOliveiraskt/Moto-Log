@@ -4,7 +4,7 @@ import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import TypographyH4 from "@/components/typography/typography-h4";
 import { Button } from "@/components/ui/button";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/product-card-skeleton";
 import { GetUserFollows } from "../actions/user/following/get-user-follows";

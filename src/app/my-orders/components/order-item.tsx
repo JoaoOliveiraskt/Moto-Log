@@ -4,7 +4,7 @@ import { OrderStatus, Prisma } from "prisma/generated/client";
 import icon from "@/components/icons/icon-component";
 import formatCurrency from "@/app/helpers/format-currency";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import StoreBadge from "@/components/store-badge";
 
 interface OrderItemProps {

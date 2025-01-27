@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import TypographyP from "./typography/typography-p";
 import GetStores from "@/app/actions/store/get-stores";
 import {
