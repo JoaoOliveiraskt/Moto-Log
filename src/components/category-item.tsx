@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
@@ -22,14 +22,14 @@ export default function CategoryItem({ category, link }: CategoryProps) {
   return (
     <Button
       variant="secondary"
-      size={"rounded"}
       className={cn(
+        "h-8",
         isActive && "bg-foreground text-background hover:bg-foreground/90"
       )}
       asChild
     >
       <Link href={link}>
-        <p className="font-semibold">{category.nome}</p>
+        <p className=" text-sm tracking-wide">{category.nome}</p>
       </Link>
     </Button>
   );

@@ -1,12 +1,10 @@
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { OrderStatus, Prisma } from "prisma/generated/client";
 import icon from "@/components/icons/icon-component";
-import { Separator } from "@/components/ui/separator";
 import formatCurrency from "@/app/helpers/format-currency";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import StoreBadge from "@/components/store-badge";
 
 interface OrderItemProps {
@@ -46,24 +44,23 @@ const OrderItem = ({ order }: OrderItemProps) => {
   };
 
   return (
-    <Card className="cursor-pointer flex flex-col gap-2 bg-card">
+    <Card className="cursor-pointer flex flex-col gap-2 bg-card border">
       <CardContent className="p-4 flex flex-col gap-3">
         <CardHeader className="px-1 space-y-4 mb-4">
           <div className="flex gap-4 items-center justify-between">
             <div
               className={`${
-                order.status !== "COMPLETED" ? "" : "text-emerald-500"
+                order.status !== "COMPLETED"
+                  ? "text-foreground"
+                  : "text-emerald-500"
               }`}
             >
-              <span className="block text-sm  font-semibold tracking-wider">
+              <span className="block text-sm font-semibold">
                 {getOrderStatus(order.status)}
               </span>
             </div>
 
-            <div
-              className="flex gap-2 items-center mt-1  text-muted-foreground
-              hover:text-cyan-600 w-fit"
-            >
+            <div className="flex gap-2 items-center mt-1  text-muted-foreground hover:text-sky-600 w-fit">
               {/* @ts-ignore */}
               <StoreBadge store={order.loja} />
               <icon.arrowRight size={18} />
@@ -85,7 +82,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
               <Link
                 key={product.id}
                 href={`/product/${product.productId}`}
-                className="flex justify-between mb-2 text-muted-foreground hover:text-foreground"
+                className="flex justify-between mb-2 text-muted-foreground hover:text-foreground items-center"
               >
                 <div className="flex space-x-2">
                   <div className="flex flex-col items-center justify-center w-5 h-5 rounded-full border">

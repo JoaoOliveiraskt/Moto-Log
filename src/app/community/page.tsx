@@ -1,17 +1,14 @@
 import Container from "@/components/container";
 import TypographyH1 from "@/components/typography/typography-h1";
 import TypographyP from "@/components/typography/typography-p";
-import { Card, CardContent } from "@/components/ui/card";
-import Balancer from "react-wrap-balancer";
+import { Card } from "@/components/ui/card";
 import { Loja } from "prisma/generated/client";
 import StoreBadge from "@/components/store-badge";
 import { db } from "@/lib/prisma";
 import Image from "next/image";
-import { Link } from "next-view-transitions";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Suspense } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { StoreCarouselSkeleton } from "@/components/skeletons/store-carousel-skeleton";
+import GoBackButton from "@/components/go-back-button";
 
 export default async function Community() {
   let stores: Loja[] = [];
@@ -29,26 +26,24 @@ export default async function Community() {
   }
 
   return (
-    <Container className="min-h-screen mt-16">
-      <div className="flex flex-col md:h-80 h-72 items-center mb-8 sm:mb-0">
+    <Container className="min-h-screen sm:mt-14 lg:pt-2 relative">
+      <GoBackButton containerClassName="hidden lg:flex" />
+      <div className="flex flex-col md:h-80 h-64 sm:items-center">
         <TypographyH1
           className={cn(
-            "text-center text-3xl lg:text-[2.7rem] mt-14 md:mt-24 font-semibold tracking-tighter max-w-[280px] md:max-w-xl"
+            "text-start sm:text-center mt-24 font-bold tracking-tight sm:max-w-2xl"
           )}
         >
           Comunidade MotoLog
         </TypographyH1>
-        <TypographyP className="text-center text-medium max-w-xs md:max-w-lg text-muted-foreground tracking-tight [&:not(:first-child)]:mt-2">
-          <Balancer>
-            Encontre vendedores em destaque no nosso marketplace. Faça parte
-            dessa comunidade e comece a vender seus produtos hoje mesmo.
-          </Balancer>
+        <TypographyP className="text-start sm:text-center text-medium md:text-lg sm:max-w-xl text-muted-foreground tracking-tight [&:not(:first-child)]:mt-2">
+          Encontre vendedores em destaque no nosso marketplace.
         </TypographyP>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-8 ">
         {stores.map((store: Loja) => (
           <Link key={store.id} href={`/store/${store.id}`} className="">
-            <Card className="bg-accent h-60 sm:h-72 w-full rounded-3xl overflow-hidden p-2">
+            <Card className="bg-accent h-60 sm:h-80 w-full rounded-3xl overflow-hidden p-2">
               <Image
                 src={store.imagemUrl || ""}
                 alt={store.nome}
@@ -58,6 +53,7 @@ export default async function Community() {
               />
             </Card>
             <StoreBadge
+              // @ts-ignore
               store={store}
               side="top"
               imageClassName="h-9 w-9"

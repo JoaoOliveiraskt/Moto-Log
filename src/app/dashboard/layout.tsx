@@ -1,34 +1,34 @@
-"use client";
-
 import React from "react";
-import Header from "./components/header";
+import MobileHeader from "./components/mobile-dashboard-header";
 import NavDashboard from "./components/nav";
-import { useAuth } from "@/hooks/useAuth";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
+import Container from "@/components/container";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import GoBackButton from "@/components/go-back-button";
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { isAuthenticated } = useAuth();
-  const router = useRouter();
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/");
+  }
 
   return (
-    <>
-      {isAuthenticated ? (
-        <div className="flex flex-col min-h-screen w-full">
-          <NavDashboard />
+    <Container className="flex flex-col min-h-screen w-full mt-12 lg:mt-14">
+      <div className="flex items-center gap-x-4">
+        <GoBackButton className="hidden lg:flex" />
+        <NavDashboard />
+      </div>
+      <div className="flex flex-col w-full sm:gap-4">
+        <MobileHeader />
 
-          <div className="flex flex-col w-full flex-grow sm:gap-4 sm:py-4  ml-0 px-4 mt-[65px] lg:mt-0">
-            <Header />
-
-            <div className="">{children}</div>
-          </div>
-        </div>
-      ) : (
-        (router.push("/"), null)
-      )}
-    </>
+        <div>{children}</div>
+      </div>
+    </Container>
   );
 }

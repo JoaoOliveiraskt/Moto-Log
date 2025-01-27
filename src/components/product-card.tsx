@@ -1,44 +1,40 @@
-"use client";
-
 import formatCurrency from "@/app/helpers/format-currency";
 import calculateTotalPrice from "@/app/helpers/price";
 import Image from "next/image";
-import { Link } from "next-view-transitions";
-import { Prisma } from "../../prisma/generated/client";
-import LikeButton from "./like-button";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import StoreBadge from "./store-badge";
 import TypographySmall from "./typography/typography-small";
+import { Produto, Loja, Categoria } from "../../prisma/generated/client";
+import TypographyP from "./typography/typography-p";
 
 interface ProductProps {
-  product: Prisma.ProdutoGetPayload<{
-    include: {
-      categoria: { select: { nome: true } };
-      loja: {
-        select: { id: true; nome: true; imagemUrl: true; descricao: true };
-      };
-    };
-  }>;
+  product: Produto & {
+    categoria: Categoria;
+    loja: Loja;
+  };
   className?: string;
-  showHoverCard?: boolean;
-  align?: "start" | "center" | "end";
-  side?: "top" | "right" | "bottom" | "left";
+  imageClassName?: string;
+  showStoreImage?: boolean;
+  infoClassName?: string;
+  titleClassName?: string;
 }
 
 const ProductCard = ({
   product,
   className,
-  showHoverCard,
-  align = "start",
-  side = "bottom",
+  imageClassName,
+  showStoreImage,
+  infoClassName,
+  titleClassName,
 }: ProductProps) => {
   const { loja } = product;
 
   return (
     <div
       className={cn(
-        "h-max w-full max-w-72 xl:max-w-80 overflow-hidden text-foreground ",
-        "md:hover:bg-accent/50 md:dark:hover:bg-accent/30 rounded-2xl md:p-2 transition-all ",
+        "h-[22.2rem] lg:h-[21.87rem] w-full max-w-72 overflow-hidden text-foreground",
+        "lg:hover:bg-accent lg:dark:hover:bg-accent/30 rounded-2xl lg:px-2 lg:pb-2 lg:pt-2",
         className
       )}
     >
@@ -46,7 +42,8 @@ const ProductCard = ({
         <Link href={`/product/${product.id}`} className="block ">
           <div
             className={cn(
-              "h-48  w-full lg:h-[13rem] rounded-2xl overflow-hidden bg-accent"
+              "h-56 w-full lg:h-[13rem] rounded-xl overflow-hidden bg-accent",
+              imageClassName
             )}
           >
             <Image
@@ -56,37 +53,30 @@ const ProductCard = ({
               height={1000}
               priority
               quality={80}
-              className="object-cover w-full h-full hover:brightness-75 duration-500 transition-all"
+              className={cn(
+                "object-cover w-full h-full duration-500 transition-opacity"
+              )}
             />
           </div>
         </Link>
-
-        <div className="absolute bottom-2.5 right-2.5 h-7 w-7 bg-white flex items-center rounded-full z-10">
-          <LikeButton
-            product={{ id: product.id }}
-            size={20}
-            className="text-black hover:text-black"
-          >
-            Salvar Produto
-          </LikeButton>
-        </div>
       </div>
 
-      <div className="min-h-full px-1 py-2 flex flex-col justify-between">
+      <div
+        className={cn(
+          "h-fit py-2 flex flex-col justify-between",
+          infoClassName
+        )}
+      >
         <Link href={`/product/${product.id}`} className="">
-          <h2 className="text-sm line-clamp-2">{product.nome}</h2>
+          <TypographyP
+            title={product.nome}
+            className={cn("text-sm font-semibold line-clamp-1", titleClassName)}
+          >
+            {product.nome}
+          </TypographyP>
         </Link>
 
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <Link
-            href={`/category/${product.categoriaId}`}
-            className="hover:text-cyan-600 w-fit"
-          >
-            {product.categoria?.nome}
-          </Link>
-        </div>
-
-        <div className="flex flex-col items-start mt-2">
+        <div className="flex flex-col items-start mt-1">
           {Number(product.porcentagemDesconto) > 0 && (
             <div className="flex gap-2">
               <span className="text-xs line-through text-muted-foreground font-medium">
@@ -97,26 +87,24 @@ const ProductCard = ({
               </span>
             </div>
           )}
-          <span className="font-bold text-xl text-foreground">
+          <span className="text-sm text-foreground">
             {formatCurrency(Number(calculateTotalPrice(product)))}
           </span>
         </div>
 
-        <TypographySmall className="text-muted-foreground mt-2">
+        <TypographySmall className="text-muted-foreground mt-1">
           {product.totalVendido} vendidos
         </TypographySmall>
 
-        <div className="mt-2">
+        <div className="mt-auto pt-3">
           <StoreBadge
+            showImage={showStoreImage}
             store={{
               id: loja.id,
               nome: loja.nome,
-              imagemUrl: loja.imagemUrl,
-              descricao: loja.descricao,
+              imagemUrl: loja.imagemUrl || "",
+              descricao: loja.descricao || "",
             }}
-            showHoverCard={showHoverCard}
-            align={align}
-            side={side}
           />
         </div>
       </div>

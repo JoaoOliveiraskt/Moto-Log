@@ -2,12 +2,12 @@
 
 import { useState, useMemo } from "react";
 import { useSession } from "next-auth/react";
-import { Link } from "next-view-transitions";
-import LoginButton, { AvatarInfo } from "./login-button";
+import Link from "next/link";
+import UserInfo from "@/components/user-info";
 import { Button } from "./ui/button";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { ModeToggle } from "./theme/theme-switcher";
-import icon from "@/components/icons/icon-component";
+import Icon from "@/components/icons/icon-component";
 import { useAuth } from "@/hooks/useAuth";
 import LoginDialog from "./login-dialog";
 import MenuBtn from "./menu-btn";
@@ -18,149 +18,66 @@ import {
   DrawerTrigger,
 } from "./ui/drawer";
 import TypographyLarge from "./typography/typography-large";
+import LoginButton from "./login-button";
+import { getMenuItems } from "./menu-links";
+import { useStore } from "@/hooks/use-store";
 
 interface Props {
   className?: string;
   iconSize?: number;
 }
 
-const MobileMenu = ({ className, iconSize = 20 }: Props) => {
+const MobileMenu = ({ className, iconSize = 22 }: Props) => {
   const { isAuthenticated, user } = useAuth();
   const [openDialog, setOpenDialog] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data: session } = useSession();
   const isLojista = useMemo(() => session?.user.role === "LOJISTA", [session]);
+  const { data: storeData } = useStore();
+
+  const storeSlug = storeData?.slug || "";
 
   const handleMenuOpen = {
     open: () => setIsMenuOpen(true),
     close: () => setIsMenuOpen(false),
   };
 
-  const menuItems = useMemo(
-    () => (
-      <>
+  const menuItems = useMemo(() => {
+    return getMenuItems(isAuthenticated, isLojista, storeSlug).map(
+      (item, i) => (
         <Button
+          key={i}
           asChild
           onClick={handleMenuOpen.close}
-          variant="secondary"
+          variant="ghost"
           size="menu"
-          className="w-full  border-border/70 "
-        >
-          <Link href="/" className="flex gap-4 w-full justify-between py-6 ">
-            <TypographyLarge className="font-medium">Início</TypographyLarge>
-            <icon.home size={iconSize} />
-          </Link>
-        </Button>
-
-        {isLojista && (
-          <Button
-            asChild
-            onClick={handleMenuOpen.close}
-            variant="secondary"
-            size="menu"
-            className="w-full  border-border/70 "
-          >
-            <Link
-              href="/dashboard/products"
-              className="flex gap-4 w-full justify-between py-6 "
-            >
-              <TypographyLarge className="font-medium">
-                Dashboard
-              </TypographyLarge>
-              <icon.dashboard size={iconSize} />
-            </Link>
-          </Button>
-        )}
-
-        {isAuthenticated && (
-          <Button
-            asChild
-            onClick={handleMenuOpen.close}
-            variant="secondary"
-            size="menu"
-            className="w-full  border-border/70 "
-          >
-            <Link
-              href={isAuthenticated ? "/my-orders" : ""}
-              className="flex gap-4 w-full justify-between py-6 "
-            >
-              <TypographyLarge className="font-medium">Pedidos</TypographyLarge>
-              <icon.order size={iconSize} />
-            </Link>
-          </Button>
-        )}
-
-        {!isLojista && (
-          <Button
-            asChild
-            onClick={handleMenuOpen.close}
-            variant="secondary"
-            size="menu"
-            className="w-full  border-border/70 "
-          >
-            <Link
-              href="/welcome-create-store"
-              className="flex gap-4 w-full justify-between py-6 "
-            >
-              <TypographyLarge className="font-medium">
-                Vender Agora
-              </TypographyLarge>
-              <icon.sell size={iconSize} />
-            </Link>
-          </Button>
-        )}
-
-        <Button
-          asChild
-          onClick={handleMenuOpen.close}
-          variant="secondary"
-          size="menu"
-          className="w-full  border-border/70 "
+          className="w-full border-border/7 justify-start hover:bg-background"
         >
           <Link
-            href="/community"
-            className="flex gap-4 w-full justify-between py-6 "
+            href={item.href}
+            className="flex gap-4 w-full items-center py-7 "
           >
+            {item.icon}
             <TypographyLarge className="font-medium">
-              Comunidade
+              {item.label}
             </TypographyLarge>
-            <icon.globe size={iconSize} />
           </Link>
         </Button>
-
-        <ModeToggle
-          variant="secondary"
-          iconSize={iconSize}
-          className="flex flex-row-reverse gap-4 w-full justify-between py-6 hover:bg-secondary/80  border-border/70 "
-          size="menu"
-        >
-          <TypographyLarge className="font-medium">Tema</TypographyLarge>
-        </ModeToggle>
-
-        {isAuthenticated && (
-          <LoginButton
-            variant="secondary"
-            iconSize={iconSize}
-            onClick={handleMenuOpen.close}
-            size="menu"
-            className="flex flex-row-reverse gap-4 w-full justify-between py-6 hover:bg-secondary/80  border-border/70 "
-          >
-            <TypographyLarge className="font-medium">Sair</TypographyLarge>
-          </LoginButton>
-        )}
-      </>
-    ),
-    [isAuthenticated, isLojista, handleMenuOpen.close, iconSize]
-  );
+      )
+    );
+  }, [isAuthenticated, isLojista, storeSlug, handleMenuOpen.close]);
 
   return (
     <>
       <Drawer open={isMenuOpen} onOpenChange={setIsMenuOpen}>
         <DrawerTrigger asChild>
           {isAuthenticated ? (
-            <Avatar className="cursor-pointer">
-              <AvatarImage src={user?.image ?? ""} alt={user?.name ?? ""} />
-            </Avatar>
+            <div className="flex flex-col items-center justify-center gap-1">
+              <Avatar className="cursor-pointer w-6 h-6">
+                <AvatarImage src={user?.image ?? ""} alt={user?.name ?? ""} />
+              </Avatar>
+              <p className="text-xs font-medium text-muted-foreground">Você</p>
+            </div>
           ) : (
             <button className="flex items-center">
               <MenuBtn className={className} iconSize={iconSize}>
@@ -170,13 +87,57 @@ const MobileMenu = ({ className, iconSize = 20 }: Props) => {
           )}
         </DrawerTrigger>
 
-        <DrawerContent className="pb-6 px-4 bg-card">
-          <DrawerHeader className="mx-auto w-full flex items-center justify-center">
-            <AvatarInfo size="menu" variant="default" className="rounded-lg" />
-          </DrawerHeader>
-          <div className="space-y-2 flex flex-col items-center w-full">
-            {menuItems}
+        <DrawerContent className="pb-4 px-4 outline-none overflow-hidden">
+          {/* Efeitos de glass e gradientes */}
+          <div className="absolute inset-0 dark:bg-gradient-to-b dark:from-black/40 dark:to-transparent" />
+          <div className="absolute top-2 left-1/4 w-full h-72 dark:bg-gradient-to-b dark:from-purple-500/15 dark:via-transparent dark:to-transparent dark:blur-xl" />
+          <div className="absolute top-2 right-1/4 w-full h-72 dark:bg-gradient-to-b dark:from-sky-600/15 dark:via-transparent dark:to-transparent dark:blur-xl" />
+
+          <div className="relative z-10">
+            <DrawerHeader className=" w-full flex items-center justify-start">
+              <UserInfo />
+            </DrawerHeader>
+            <div className="flex flex-col items-center w-full">
+              {menuItems}
+              <Button
+                asChild
+                onClick={handleMenuOpen.close}
+                variant="ghost"
+                size="menu"
+                className="w-full  border-border/7 justify-start hover:bg-background"
+              >
+                <Link
+                  href="/community"
+                  className="flex gap-4 w-full items-center py-7 "
+                >
+                  <Icon.globe size={iconSize} strokeWidth={1.25} />
+                  <TypographyLarge className="font-medium">
+                    Comunidade
+                  </TypographyLarge>
+                </Link>
+              </Button>
+              <ModeToggle
+                variant="ghost"
+                iconSize={iconSize}
+                className="flex gap-4 w-full justify-start items-center py-7 border-border/70 hover:bg-background"
+                size="menu"
+              >
+                <TypographyLarge className="font-medium">Tema</TypographyLarge>
+              </ModeToggle>
+            </div>
           </div>
+
+          <LoginButton
+            iconSize={iconSize}
+            variant="ghost"
+            className="w-full border-border/70 px-4 py-7 hover:bg-background"
+          >
+            {isAuthenticated ? (
+              <TypographyLarge className="font-medium">Sair</TypographyLarge>
+            ) : (
+              <TypographyLarge className="font-medium">Entrar</TypographyLarge>
+            )}
+          </LoginButton>
         </DrawerContent>
       </Drawer>
 

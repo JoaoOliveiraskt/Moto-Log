@@ -1,11 +1,16 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import TypographyH3 from "./typography/typography-h3";
-import { Skeleton } from "./ui/skeleton";
 import Image from "next/image";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import TypographyP from "./typography/typography-p";
+import GetStores from "@/app/actions/store/get-stores";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel";
+import SeeAllButton from "./see-all-button";
+import TypographyH4 from "./typography/typography-h4";
 
 interface StoreProps {
   id: string;
@@ -13,83 +18,75 @@ interface StoreProps {
   imagemUrl: string;
 }
 
-export default function TopStores() {
-  const [topStores, setTopStores] = useState<StoreProps[] | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+async function getStores() {
+  try {
+    const stores = await GetStores({ limit: 20 });
 
-  useEffect(() => {
-    const fetchTopStores = async () => {
-      try {
-        const take = 10;
-        const response = await fetch(`/api/store?take=${take}`, {
-          next: {
-            tags: ["top-stores"],
-            revalidate: 300,
-          },
-        });
-        const data = await response.json();
-        setTopStores(data);
-      } catch (error) {
-        setError("Error loading top stores.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchTopStores();
-  }, []);
+    if (!stores || stores.length === 0) {
+      throw new Error("No stores found");
+    }
+    return stores;
+  } catch (error) {
+    return [];
+  }
+}
+
+export default async function TopStores() {
+  const stores = await getStores();
+
+  if (!stores || stores.length === 0) {
+    return null;
+  }
 
   return (
-    <div className="sm:hidden space-y-4">
-      <div className="flex items-center justify-between ">
-        <TypographyH3>Top Lojas</TypographyH3>
+    <div className="space-y-8 pb-6">
+      <div className="flex justify-between items-center">
+        <TypographyH4>Lojas em destaque</TypographyH4>
+
+        <SeeAllButton href={"/community"} />
       </div>
-      <div>
-        {loading ? (
-          <div className="grid grid-cols-5 w-full gap-x-10 gap-y-1.5">
-            {Array.from({ length: 10 }).map((_, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center gap-2 max-w-10"
-              >
-                <Skeleton className="h-14 w-14 rounded-full" />
-                <Skeleton className="h-4 w-10" />
-              </div>
+      <Carousel
+        opts={{
+          containScroll: "trimSnaps",
+          slidesToScroll: "auto",
+          duration: 20,
+          align: "start",
+        }}
+      >
+        <CarouselContent className="-ml-4 w-full">
+          {stores &&
+            stores.map((store: StoreProps) => (
+              <CarouselItem className="basis-[124px] " key={store.id}>
+                <Link
+                  href={`/store/${store.id}`}
+                  className="text-foreground font-medium hover:text-sky-600 hover:transition-colors flex flex-col gap-y-2"
+                >
+                  <div className="w-28 h-28 rounded-[1.5rem] overflow-hidden drop-shadow-md">
+                    {store.imagemUrl ? (
+                      <Image
+                        src={store.imagemUrl}
+                        width={500}
+                        height={500}
+                        alt="logo da loja"
+                        className="object-cover w-full h-full"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-y-1 justify-center ml-0.5 font-light">
+                    <TypographyP className="text-xs ">{store.nome}</TypographyP>
+                    <span className="text-xs">
+                      4.8 <span>★</span>
+                    </span>
+                  </div>
+                </Link>
+              </CarouselItem>
             ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-5 w-full gap-x-10 gap-y-1 pl-2 pr-3">
-            {topStores &&
-              topStores.map((store, index) => (
-                <div className="w-fit" key={store.id}>
-                  <Link
-                    href={`/store/${store.id}`}
-                    className="text-foreground font-medium hover:text-cyan-600 mb-2 flex flex-col items-center gap-1 max-w-10"
-                  >
-                    <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                      {store.imagemUrl ? (
-                        <Image
-                          src={store.imagemUrl}
-                          width={500}
-                          height={500}
-                          alt="logo da loja"
-                          className="object-cover w-full h-full"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
-                      )}
-                    </div>
-                    <div className="flex flex-col justify-center">
-                      <TypographyP className="text-sm md:text-base">
-                        {store.nome.split(" ")[0]}
-                      </TypographyP>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-          </div>
-        )}
-      </div>
+        </CarouselContent>
+        <CarouselNext className="hidden lg:-right-6  lg:inline-flex" />
+        <CarouselPrevious className="hidden lg:-left-4  lg:inline-flex" />
+      </Carousel>
     </div>
   );
 }

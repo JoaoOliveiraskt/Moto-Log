@@ -22,15 +22,21 @@ export default async function CategorieList({ params }: Props) {
 
   return (
     <>
-      <Container className="flex flex-col gap-8 mt-36 min-h-screen">
-        <GoBackButton name={category.nome} className="hidden lg:flex" />
+      <Container className="space-y-4 mt-[5.7rem] lg:mt-[6.2rem] min-h-screen pt-4">
+        <GoBackButton
+          name={category.nome}
+          containerClassName="hidden lg:flex"
+        />
 
         {products.length > 0 ? (
           <ProductList>
             {products.map((product) => (
               <div key={product.id}>
                 <ProductCard
-                  product={{ ...product, categoria: { nome: category.nome } }}
+                  product={{
+                    ...product,
+                    categoria: { id: category.id, nome: category.nome },
+                  }}
                 />
               </div>
             ))}

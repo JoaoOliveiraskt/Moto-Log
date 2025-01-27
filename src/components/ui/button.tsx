@@ -5,28 +5,30 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex active:scale-95 transition-all items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex transform tracking-tight active:scale-95 transition-transform items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-foreground text-background shadow hover:bg-primary/90",
+        default:
+          "bg-foreground text-background shadow hover:bg-primary/90 font-semibold",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
-          "border border-border bg-background hover:bg-accent/50 shadow-sm hover:text-foreground",
+          "border border-border bg-transparent hover:bg-accent/50 shadow-sm hover:text-foreground",
         secondary: "text-foreground bg-accent hover:bg-accent-foreground",
         ghost: "hover:bg-accent hover:text-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        icon: "text-muted-foreground hover:text-foreground focus:text-primary-foreground",
+        link: "text-primary",
+        icon: "text-muted-foreground hover:text-foreground",
       },
       size: {
-        default: "h-10 px-4 py-4 rounded-sm",
-        sm: "h-8 rounded-sm px-4 text-xs",
-        lg: "h-10 rounded-sm px-6",
+        default: "h-10 px-4 py-4 rounded-md",
+        sm: "h-8 rounded-md px-4 text-xs",
+        lg: "h-10 rounded-md px-6",
         xl: "h-12 rounded-md px-6",
-        icon: "h-9 w-9",
-        rounded: "h-10 px-4 py-4 rounded-full",
-        menu: "h-9 px-4 py-5 rounded-xl",
+        icon: "h-fit w-fit",
+        iconShaped: "h-9 w-9 rounded-md",
+        rounded: "h-9 lg:h-10 px-4 py-4 rounded-full",
+        menu: "h-9 px-4 py-5 rounded-md",
       },
     },
     defaultVariants: {

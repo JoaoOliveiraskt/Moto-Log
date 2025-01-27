@@ -30,21 +30,23 @@ async function RecentProductsContent() {
 }
 
 export default function RecentProducts() {
-  const name = "Mais recentes";
   return (
-    <Container className="space-y-8 mt-20">
-      <div className="flex justify-between items-center">
-        <GoBackButton name={name} className="hidden lg:flex" />
-      </div>
-      <ProductList>
-        <Suspense
-          fallback={skeletons.map((skeleton) => (
-            <ProductCardSkeleton key={skeleton} />
-          ))}
-        >
+    <Container className="space-y-4 mt-12 lg:mt-14">
+      <GoBackButton containerClassName="hidden lg:flex" />
+
+      <Suspense
+        fallback={
+          <ProductList className="lg:gap-x-2">
+            {Array.from({ length: 10 }, (_, index) => (
+              <ProductCardSkeleton key={index} />
+            ))}
+          </ProductList>
+        }
+      >
+        <ProductList>
           <RecentProductsContent />
-        </Suspense>
-      </ProductList>
+        </ProductList>
+      </Suspense>
     </Container>
   );
 }

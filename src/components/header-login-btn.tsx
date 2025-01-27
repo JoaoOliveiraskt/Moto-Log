@@ -1,25 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import LoginDialog from "./login-dialog";
 import { Button } from "./ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import TypographySmall from "./typography/typography-small";
-import Icon from "./icons/icon-component";
-import TypographyP from "./typography/typography-p";
+import { cn } from "@/lib/utils";
 
-export default function HeaderLoginBtn() {
-  const { isAuthenticated } = useAuth();
+interface Props extends React.ComponentProps<"button"> {
+  className?: string;
+}
+
+export default function HeaderLoginBtn({ className, ...props }: Props) {
+  const { isAuthenticated, loading } = useAuth();
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
+
+  if (loading) return null;
+
   return (
     <div className={`${isAuthenticated ? "hidden" : ""}`}>
       <Button
-        variant="icon"
         onClick={toggle}
-        className="h-8 text-foreground px-2"
+        {...props}
+        className={cn(
+          "bg-[#0077ed] hover:bg-[#0077ed]/90 text-white tracking-wide",
+          className
+        )}
       >
-        <p>Entrar</p>
+        Entrar
       </Button>
       <LoginDialog open={open} onOpenChange={setOpen} />
     </div>

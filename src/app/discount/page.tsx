@@ -7,7 +7,6 @@ import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/product-card-skeleton";
 
 export default async function DiscountPage() {
-  const title = "Melhores Ofertas";
   const url = process.env.NEXT_PUBLIC_API_URL;
 
   if (!url) {
@@ -33,11 +32,11 @@ export default async function DiscountPage() {
     }
 
     return (
-      <Container className="space-y-8 mt-20">
-        <GoBackButton name={title} className="hidden lg:flex" />
+      <Container className="space-y-4 mt-12 lg:mt-14 lg:pt-2">
+        <GoBackButton containerClassName="hidden lg:flex"/>
         <Suspense
           fallback={
-            <ProductList>
+            <ProductList className="lg:gap-x-2">
               {Array.from({ length: 10 }, (_, index) => (
                 <ProductCardSkeleton key={index} />
               ))}
@@ -62,7 +61,7 @@ export default async function DiscountPage() {
   } catch (error) {
     return (
       <Container className="space-y-8 mt-20">
-        <GoBackButton name={title} className="hidden lg:flex" />
+        <GoBackButton className="hidden lg:flex" />
         <div>
           Erro ao carregar produtos em desconto. Por favor, tente novamente mais
           tarde.

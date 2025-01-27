@@ -1,4 +1,4 @@
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import Container from "./container";
 import Icon from "./icons/icon-component";
 import MotoLogLogo from "./icons/moto-log-logo";
@@ -6,7 +6,7 @@ import MotoLogLogo from "./icons/moto-log-logo";
 export default function Footer() {
   return (
     <>
-      <Container className="mt-10 sm:mt-16 md:mt-32 pb-24 lg:pb-12">
+      <Container className="mt-10 sm:mt-14 md:mt-32 pb-24 lg:pb-12">
         <footer className="flex flex-col gap-6 mx-auto max-w-[1440px]">
           <div className="flex justify-between items-center">
             <div className="space-x-4 flex items-center">

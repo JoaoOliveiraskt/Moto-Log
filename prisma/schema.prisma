@@ -9,18 +9,33 @@ datasource db {
 }
 
 model Loja {
-  id         String    @id @default(uuid())
+  id         String   @id @default(uuid())
   nome       String
+  slug       String?  @unique
   imagemUrl  String?
   descricao  String?
   imagemFile String?
   userId     String
-  createdAt  DateTime  @default(now()) @db.Timestamp(6)
-  email      String?   @db.VarChar
-  views      Int       @default(0)
-  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  pedidos    Order[]
-  Produtos   Produto[]
+  email      String?  @db.VarChar
+  createdAt  DateTime @default(now()) @db.Timestamp(6)
+
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pedidos   Order[]
+  Produtos  Produto[]
+  followers Follows[]
+}
+
+model Follows {
+  id      String @id @default(uuid())
+  userId  String
+  storeId String
+
+  user  User @relation(fields: [userId], references: [id])
+  store Loja @relation(fields: [storeId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, storeId])
 }
 
 model Categoria {
@@ -30,24 +45,25 @@ model Categoria {
 }
 
 model Produto {
-  id                  String         @id @default(uuid())
-  sku                 String         @unique
+  id                  String        @id @default(uuid())
+  sku                 String        @unique
   nome                String
   descricao           String
   imagemUrl           String
-  imagemUrls          String[]       @default([])
+  imagemUrls          String[]      @default([])
   estoque             Int
-  preco               Decimal        @db.Decimal(10, 2)
-  porcentagemDesconto Decimal?       @db.Decimal(10, 2)
-  status              ProdutoStatus  @default(ATIVO)
+  preco               Decimal       @db.Decimal(10, 2)
+  porcentagemDesconto Decimal?      @db.Decimal(10, 2)
+  status              ProdutoStatus @default(ATIVO)
   totalVendido        Int?
   lojaId              String
   categoriaId         String
-  views               Int            @default(0)
-  pedidos             OrderProduct[]
-  favorites           Favorite[]
-  categoria           Categoria      @relation(fields: [categoriaId], references: [id])
-  loja                Loja           @relation(fields: [lojaId], references: [id])
+  views               Int           @default(0)
+
+  pedidos   OrderProduct[]
+  favorites Favorite[]
+  categoria Categoria      @relation(fields: [categoriaId], references: [id])
+  loja      Loja           @relation(fields: [lojaId], references: [id])
 
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
@@ -134,6 +150,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   favorites     Favorite[]
+  follows       Follows[]
 
   @@map("users")
 }

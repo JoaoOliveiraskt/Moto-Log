@@ -26,24 +26,25 @@ const ProductBanner: React.FC<ProductBannerProps> = ({
 }) => {
   return (
     <Carousel className="w-full">
-      <CarouselContent className="h-full">
+      <CarouselContent className="w-full gap-x-4">
         {images.map((image, index) => (
           <CarouselItem
             key={index}
-            className="w-full md:h-fit overflow-hidden p-0 rounded-3xl border bg-card"
+            className="h-64 lg:h-80 basis-[90%] sm:basis-auto overflow-hidden p-0 rounded-2xl border bg-card"
           >
             <Image
               src={produto.imagemUrl}
               alt={produto.nome}
-              width={800}
-              height={500}
-              className="object-contain w-full h-full rounded-3xl"
+              width={1000}
+              height={1000}
+              loading="lazy"
+              className="object-cover w-full h-full rounded-2xl"
             />
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="left-4" />
-      <CarouselNext className="right-4" />
+      <CarouselPrevious className="left-2 hidden lg:inline-flex" />
+      <CarouselNext className="right-2 hidden lg:inline-flex" />
     </Carousel>
   );
 };

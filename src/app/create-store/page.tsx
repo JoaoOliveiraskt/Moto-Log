@@ -30,7 +30,7 @@ import {
 import Icon from "@/components/icons/icon-component";
 import { motion } from "framer-motion";
 import Container from "@/components/container";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import LoginDialog from "@/components/login-dialog";
 import { useAuth } from "@/hooks/useAuth";
 import MotoLogLogo from "@/components/icons/moto-log-logo";
@@ -88,7 +88,7 @@ export default function CreateStore() {
   if (!isAuthenticated) {
     return (
       <>
-        <Container className="h-screen w-full flex items-center justify-center flex-col space-y-10 md:-mt-36">
+        <Container className="h-screen w-full flex items-center justify-center flex-col space-y-10">
           <h1 className="text-xl text-center">
             Você precisa estar logado para criar uma loja!
           </h1>
@@ -107,14 +107,14 @@ export default function CreateStore() {
     );
   } else {
     return (
-      <Container className="h-screen w-full flex items-center flex-col space-y-6 mt-[72px] md:mt-36">
+      <Container className="h-screen w-full flex items-center justify-center flex-col space-y-6">
         <motion.div {...animation1}>
           <MotoLogLogo disabled={true} />
         </motion.div>
 
         <motion.div {...animation2}>
-          <Card className="w-full sm:w-[30rem] bg-card/75 opacity-90 ">
-            <CardHeader className="px-6 space-y-2 mt-4 mb-5">
+          <Card className="w-full sm:w-[30rem] bg-card/75 opacity-90 border-none shadow-lg">
+            <CardHeader className="px-6 pt-4 space-y-2 mt-4 mb-5">
               <CardTitle className="text-2xl">Crie sua loja</CardTitle>
               <CardDescription>
                 Comece a vender seus produtos agora mesmo
@@ -177,23 +177,19 @@ export default function CreateStore() {
                   </div>
                 </div>
 
-                <div className="w-full">
+                <div className="w-full flex justify-end">
                   {isSubmitOk === true ? (
                     <Button
                       size={"rounded"}
                       type="submit"
-                      className={`mt-6 bg-confirmed w-full `}
+                      className={`mt-6 bg-confirmed`}
                     >
-                      <Icon.confirmed />
+                      <Icon.confirmed size={20} />
                     </Button>
                   ) : (
-                    <Button
-                      size={"rounded"}
-                      type="submit"
-                      className={`mt-6 w-full `}
-                    >
+                    <Button size={"rounded"} type="submit" className={`mt-6`}>
                       {isSubmitLoading ? (
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin " />
+                        <Loader2 className="animate-spin" size={20} />
                       ) : (
                         <p className="font-semibold">Criar Loja</p>
                       )}

@@ -7,7 +7,7 @@ interface DiscountBadgeProps {
 export default function DiscountBadge({ product }: DiscountBadgeProps) {
   return (
     <div className="">
-      <span className="text-sm tracking-wider text-confirmed">
+      <span className="text-sm font-medium text-confirmed">
         {product.porcentagemDesconto?.toString() ?? ""}% OFF
       </span>
     </div>

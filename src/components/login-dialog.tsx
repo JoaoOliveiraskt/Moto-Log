@@ -1,6 +1,5 @@
-import LoginButton from "./login-button";
-import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
-import { DialogDescription } from "@radix-ui/react-dialog";
+import GoogleSignInButton from "./google-signin-button";
+import { Dialog, DialogContent, DialogFooter, DialogTitle } from "./ui/dialog";
 import MotoLogLogo from "./icons/moto-log-logo";
 
 interface Props {
@@ -11,23 +10,17 @@ interface Props {
 export default function LoginDialog({ open, onOpenChange }: Props) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="overflow-hidden p-6 md:max-w-2xl min-h-[38] rounded-3xl">
-        <div className="mx-auto w-full h-full flex flex-col justify-between items-center">
-          <div className="flex flex-col items-center space-y-4">
-            <MotoLogLogo disabled={true}/>
-            <div className="space-y-4 text-center w-full">
-              <DialogTitle className="text-3xl font-bold text-foreground">
-                Bem-vindo! 👋
-              </DialogTitle>
-              <DialogDescription className="text-muted-foreground">
-                Entre com sua conta
-              </DialogDescription>
-            </div>
-          </div>
-          <div className="flex flex-col justify-center gap-4 items-center w-full py-4 mt-2">
-            <LoginButton className="py-9 rounded-2xl px-12 lg:px-14 bg-card text-foreground border hover:bg-card/70" />
+      <DialogContent className="overflow-hidden rounded-3xl p-0 md:max-w-md">
+        <div className="mx-auto w-full flex flex-col items-center p-6">
+          <div className="flex flex-col items-center space-y-10">
+            <MotoLogLogo disabled={true} />
+
+            <DialogTitle>Entrar no Moto Log</DialogTitle>
           </div>
         </div>
+        <DialogFooter className="py-4 border-t bg-card w-full flex items-center sm:justify-center">
+          <GoogleSignInButton className="rounded-lg" />
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

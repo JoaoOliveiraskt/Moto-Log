@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import Icon from "../icons/icon-component";
 import { Button } from "./button";
 import { usePathname } from "next/navigation";
@@ -36,8 +36,12 @@ export default function HomeButton({
           className
         )}
       >
-        <Icon.home size={size} />
-        <p className="font-semibold text-xs">{children}</p>
+        {pathName === "/" ? (
+          <Icon.homeSolid size={size} />
+        ) : (
+          <Icon.home size={size} />
+        )}
+        <p className="text-xs">{children}</p>
       </Button>
     </Link>
   );

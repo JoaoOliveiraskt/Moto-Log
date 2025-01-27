@@ -10,6 +10,7 @@ export interface CartProduct
       loja: {
         select: {
           id: true;
+          nome: true;
           deliveryFee: true;
           deliveryTime: true;
         };
@@ -96,7 +97,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     return setProducts((prev) =>
       prev.map((cartProduct) => {
         if (cartProduct.id === productId) {
-          return { ...cartProduct, quantity: cartProduct.quantity + 1 };
+          if (cartProduct.quantity < cartProduct.estoque) {
+            return { ...cartProduct, quantity: cartProduct.quantity + 1 };
+          }
         }
 
         return cartProduct;

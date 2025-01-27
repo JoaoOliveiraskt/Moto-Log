@@ -3,10 +3,13 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/prisma";
 
-export async function GET(req: Request) {
+export async function GET(
+  req: Request,
+  { params }: { params: { storeId: string } }
+) {
   const session = await getServerSession(authOptions);
 
-  if (!session || !session.user?.email) {
+  if (!session?.user?.id) {
     return NextResponse.json(
       { message: "Usuário não autenticado" },
       { status: 401 }
@@ -16,8 +19,12 @@ export async function GET(req: Request) {
   try {
     const store = await db.loja.findMany({
       where: {
-        email: session.user.email,
+        userId: session.user.id,
       },
+      include: {
+        pedidos: true,
+      },
+      orderBy: { createdAt: "asc" },
     });
 
     if (!store) {

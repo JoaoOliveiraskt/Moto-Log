@@ -1,15 +1,10 @@
 "use client";
 
-import {
-  Carousel,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "../../ui/carousel";
+import { Carousel, CarouselNext, CarouselPrevious } from "../../ui/carousel";
 import { ProductsCarouselSkeleton } from "./skeleton/products-carousel-skeleton";
-import { Suspense, useEffect, useState } from "react";
-import TypographyH3 from "@/components/typography/typography-h3";
+import { Suspense } from "react";
 import SeeAllButton from "@/components/see-all-button";
+import TypographyH4 from "@/components/typography/typography-h4";
 
 interface Props {
   children: React.ReactNode;
@@ -18,41 +13,27 @@ interface Props {
 }
 
 export default function ProductsCarousel({ children, title, link }: Props) {
-  const [api, setApi] = useState<CarouselApi | null>(null);
-  const [scrollPrev, setScrollPrev] = useState<boolean>(false);
-  const [scrollNext, setScrollNext] = useState<boolean>(true);
-
-  useEffect(() => {
-    if (!api) return;
-
-    api.on("select", () => {
-      setScrollPrev(api.canScrollPrev());
-      setScrollNext(api.canScrollNext());
-    });
-  }, [api]);
-
   return (
-    <div className="space-y-4">
+    <div className="space-y-6 bg-transparent">
       <div className="flex justify-between items-center">
-        <TypographyH3>{title}</TypographyH3>
-        <div className="flex items-center gap-x-2">
-          <SeeAllButton href={link} />
-        </div>
+        <TypographyH4>{title}</TypographyH4>
+
+        <SeeAllButton href={link} />
       </div>
 
       <Carousel
         opts={{
           containScroll: "trimSnaps",
-          duration: 14,
+          slidesToScroll: "auto",
+          duration: 20,
           align: "start",
         }}
         className="space-y-4"
-        setApi={setApi}
       >
         <Suspense fallback={<ProductsCarouselSkeleton />}>{children}</Suspense>
 
-        {scrollPrev && <CarouselPrevious className="left-2 top-1/3" />}
-        {scrollNext && <CarouselNext className="right-2 top-1/3" />}
+        <CarouselPrevious className="hidden lg:inline-flex -left-4 top-1/3" />
+        <CarouselNext className="hidden lg:inline-flex -right-6 top-1/3" />
       </Carousel>
     </div>
   );

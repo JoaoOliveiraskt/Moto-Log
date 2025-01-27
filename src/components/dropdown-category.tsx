@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { db } from "@/lib/prisma";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 
 export default async function DropdownCategory() {
   const categories = await db.categoria.findMany({});
