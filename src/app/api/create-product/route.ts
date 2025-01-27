@@ -10,7 +10,7 @@ export const createProductSchema = z.object({
   nome: z.string().min(2, "O nome é obrigatório").max(100),
   descricao: z
     .string()
-    .max(500, "A descrição deve ter no máximo 500 caracteres")
+    .max(1000, "A descrição deve ter no máximo 500 caracteres")
     .optional(),
   imagemUrl: z.string().url("A URL da imagem deve ser válida"),
   preco: z.number().min(0.01, "O preço deve ser maior que zero"),
@@ -51,10 +51,6 @@ const generateSKU = async (tx: any): Promise<string> => {
   return nextSKU;
 };
 
-const revalidatePaths = (paths: string[]) => {
-  paths.forEach((path) => revalidatePath(path));
-};
-
 export async function POST(request: Request) {
   try {
     const session = await getServerSession(authOptions);
@@ -67,6 +63,7 @@ export async function POST(request: Request) {
 
     const userId = session.user.id;
     const userStore = await db.loja.findFirst({
+      orderBy: { createdAt: "asc" },
       where: { userId: userId },
       select: { id: true, slug: true },
     });
@@ -112,9 +109,6 @@ export async function POST(request: Request) {
         },
       });
     });
-
-    const storeSlug = userStore.slug;
-    revalidatePaths(["/", `/dashboard/store/${storeSlug}/products`]);
 
     return NextResponse.json({ product }, { status: 201 });
   } catch (error) {

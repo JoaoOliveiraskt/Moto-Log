@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import Container from "@/components/container";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
+import GoBackButton from "@/components/go-back-button";
 
 export default async function DashboardLayout({
   children,
@@ -19,8 +20,10 @@ export default async function DashboardLayout({
 
   return (
     <Container className="flex flex-col min-h-screen w-full mt-12 lg:mt-14">
-      <NavDashboard />
-
+      <div className="flex items-center gap-x-4">
+        <GoBackButton className="hidden lg:flex" />
+        <NavDashboard />
+      </div>
       <div className="flex flex-col w-full sm:gap-4">
         <MobileHeader />
 

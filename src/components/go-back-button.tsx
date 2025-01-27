@@ -6,6 +6,7 @@ import Icon from "./icons/icon-component";
 import { cn } from "@/lib/utils";
 import MotoLogLogo from "./icons/moto-log-logo";
 import TypographyH4 from "./typography/typography-h4";
+import useIsMobile from "@/hooks/use-is-mobile";
 
 interface Props {
   className?: string;
@@ -41,10 +42,9 @@ const GoBackButton: React.FC<Props> = ({
   const router = useRouter();
   const pathName = usePathname();
   const isHome = pathName === "/";
-
   const routeName = name || routeTranslations[pathName] || " ";
-
   const handleGoBack = () => router.back();
+  const isMobile = useIsMobile();
 
   return (
     <>
@@ -60,12 +60,12 @@ const GoBackButton: React.FC<Props> = ({
           <div className="flex items-center gap-x-4">
             <Button
               onClick={handleGoBack}
-              className={`flex items-center rounded-full lg:p-1 lg:border lg:bg-card ${className}`}
+              className={`flex items-center justify-start lg:justify-center rounded-none lg:rounded-full h-12 w-12 lg:w-fit lg:h-fit lg:p-1 lg:border lg:bg-card ${className}`}
               size="icon"
               variant="ghost"
               title="Voltar"
             >
-              <Icon.arrowLeft size={16} />
+              <Icon.arrowLeft size={isMobile ? 24 : 16} />
             </Button>
 
             {routeName && (

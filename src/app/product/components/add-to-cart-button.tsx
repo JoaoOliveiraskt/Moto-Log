@@ -17,7 +17,7 @@ import {
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
 import { useSession } from "next-auth/react";
-import { toast } from "@/components/ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import Icon from "@/components/icons/icon-component";
 import { Link } from "next-view-transitions";
@@ -46,6 +46,7 @@ export default function AddToCartButton({ product }: ProductInfoProps) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const loginModalDescription =
     "Você precisa estar logado para adicionar produtos ao carrinho.";
+  const { toast } = useToast();
 
   const addToCart = ({ emptyCart }: { emptyCart?: boolean }) => {
     addProductToCart({ product, emptyCart, quantity: 1 });
@@ -83,7 +84,7 @@ export default function AddToCartButton({ product }: ProductInfoProps) {
         </div>
       ),
       action: (
-        <ToastAction altText="Ver pedido">
+        <ToastAction altText="Ver carrinho">
           <Link legacyBehavior href="/cart">
             Ver carrinho
           </Link>

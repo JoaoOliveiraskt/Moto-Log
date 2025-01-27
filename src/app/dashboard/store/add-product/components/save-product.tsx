@@ -20,7 +20,7 @@ const ProductFormActionButtons: React.FC<ProductFormActionButtonsProps> = ({
       >
         limpar
       </Button>
-      <Button size={"rounded"} type="submit" disabled={isLoading}>
+      <Button size={"rounded"} type="submit" disabled={isLoading} className="w-24">
         {isLoading ? (
           <Loader2 className="animate-spin" size={20} />
         ) : (

@@ -1,7 +1,6 @@
 "use client";
 
 import ProductFormActionButtons from "@/app/dashboard/store/add-product/components/save-product";
-import ModalConfirmation from "@/app/dashboard/store/add-product/components/modal-confirmation";
 import ProductCategory from "@/app/dashboard/store/add-product/components/product-category";
 import ProductDetails from "@/app/dashboard/store/add-product/components/product-details";
 import ProductStatus from "@/app/dashboard/store/add-product/components/product-status";
@@ -11,6 +10,8 @@ import Container from "@/components/container";
 import { useSubmitState } from "@/hooks/use-submit-state";
 import { useForm, FormProvider } from "react-hook-form";
 import { useState } from "react";
+import Icon from "@/components/icons/icon-component";
+import { useToast } from "@/components/ui/use-toast";
 
 interface ProductData {
   nome: string;
@@ -48,6 +49,7 @@ export default function EditProductForm({
   const [imagePreview, setImagePreview] = useState<string | null>(
     dadosIniciais.imagemUrl || null
   );
+  const { toast } = useToast();
 
   const onSubmit = async (data: ProductData) => {
     startLoading();
@@ -80,7 +82,16 @@ export default function EditProductForm({
       const result = await response.json();
       setSuccess(true);
 
-      setIsConfirmDialogOpen(true);
+      toast({
+        duration: 3000,
+        // @ts-ignore
+        title: (
+          <div className="flex items-center gap-x-2">
+            <Icon.confirmed color="green" size={20} />
+            <span>Produto atualizado com sucesso</span>
+          </div>
+        ),
+      });
     } catch (error) {
       const errorMsg =
         error instanceof Error
@@ -144,13 +155,6 @@ export default function EditProductForm({
           )}
         </form>
       </FormProvider>
-
-      <ModalConfirmation
-        isConfirmDialogOpen={isConfirmDialogOpen}
-        setIsConfirmDialogOpen={setIsConfirmDialogOpen}
-      >
-        Produto atualizado com sucesso! 🎉
-      </ModalConfirmation>
     </Container>
   );
 }

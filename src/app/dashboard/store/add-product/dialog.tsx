@@ -8,7 +8,7 @@ import ProductCategory from "./components/product-category";
 import ProductStatus from "./components/product-status";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import ModalConfirmation from "./components/modal-confirmation";
+import { useToast } from "@/components/ui/use-toast";
 import ProductFormActionButtons from "./components/save-product";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Label } from "@/components/ui/label";
@@ -19,6 +19,8 @@ import {
   ResponsiveModalHeader,
   ResponsiveModalTitle,
 } from "@/components/responsive-modal";
+import Icon from "@/components/icons/icon-component";
+import { ToastAction } from "@/components/ui/toast";
 
 interface ProductData {
   nome: string;
@@ -43,10 +45,8 @@ export default function AddProductDialog({
   const methods = useForm<ProductData>();
   const { isLoading, isSuccessful, startLoading, stopLoading, setSuccess } =
     useSubmitState();
-
-  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState("");
+  const { toast } = useToast();
 
   const onSubmit = async (data: ProductData) => {
     startLoading();
@@ -78,7 +78,17 @@ export default function AddProductDialog({
       }
 
       setSuccess(true);
-      setIsConfirmDialogOpen(true);
+      toast({
+        duration: 3000,
+        // @ts-ignore
+        title: (
+          <div className="flex items-center gap-x-2">
+            <Icon.confirmed color="green" size={20} />
+            <span>Produto adicionado com sucesso</span>
+          </div>
+        ),
+        action: <ToastAction altText="Ok">Ok</ToastAction>,
+      });
     } catch (error) {
       const errorMsg =
         error instanceof Error
@@ -134,13 +144,6 @@ export default function AddProductDialog({
           <ScrollBar orientation="vertical" className="-ml-2" />
         </ScrollArea>
       </ResponsiveModalContent>
-
-      <ModalConfirmation
-        isConfirmDialogOpen={isConfirmDialogOpen}
-        setIsConfirmDialogOpen={setIsConfirmDialogOpen}
-      >
-        Produto adicionado com sucesso! 🎉
-      </ModalConfirmation>
     </ResponsiveModal>
   );
 }

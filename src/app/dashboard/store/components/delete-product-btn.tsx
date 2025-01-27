@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 
 interface Props {
   productId: string;
@@ -17,6 +19,7 @@ export default function DeleteProductBtn({
 }: Props) {
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const { toast } = useToast();
 
   const timeOut = setTimeout(() => {
     setSuccess(false);
@@ -30,6 +33,17 @@ export default function DeleteProductBtn({
         method: "DELETE",
       });
       setSuccess(true);
+
+      toast({
+        duration: 3000,
+        // @ts-ignore
+        title: (
+          <div className="flex items-center gap-x-2">
+            <Icon.confirmed color="green" size={20} />
+            <span>Produto excluído com sucesso</span>
+          </div>
+        ),
+      });
 
       setTimeout(() => {
         setIsConfirmDialogOpen(false);
@@ -45,7 +59,7 @@ export default function DeleteProductBtn({
     <Button
       size={"rounded"}
       variant={"destructive"}
-      className={cn(success && "bg-confirmed text-white")}
+      className={cn("w-24", success && "bg-confirmed text-white")}
       onClick={deleteProduct}
       disabled={isSubmitLoading}
     >
