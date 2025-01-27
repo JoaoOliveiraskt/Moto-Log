@@ -4,31 +4,21 @@ import { Link } from "next-view-transitions";
 import { PanelLeft } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
-import Icon from "@/components/icons/icon-component";
 import { Button } from "@/components/ui/button";
+import { DashboardLinks } from "./dashboard-links";
+import { useStore } from "@/hooks/use-store";
 
 export default function MenuSideBar() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const { data: storeData } = useStore();
+  const storeSlug = storeData?.slug;
+
+  const links = DashboardLinks({ storeSlug });
 
   const handleSheetOpen = {
     open: () => setIsSheetOpen(true),
     close: () => setIsSheetOpen(false),
   };
-
-  const links = [
-    { name: "Produtos", icon: Icon.package, href: "/dashboard/products" },
-    { name: "Pedidos", icon: Icon.cart, href: "/dashboard/orders" },
-    {
-      name: "Analíticos",
-      icon: Icon.analytics,
-      href: "/dashboard/analytics",
-    },
-    {
-      name: "Configurações",
-      icon: Icon.settings,
-      href: "/dashboard/settings",
-    },
-  ];
 
   return (
     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
@@ -41,7 +31,13 @@ export default function MenuSideBar() {
       <SheetContent side="left" className="md:max-w-screen-md">
         <nav className="grid text-lg font-medium space-y-4 mt-8">
           {links.map((link) => (
-            <Button key={link.name} asChild variant="ghost" size="xl" className="w-full justify-start">
+            <Button
+              key={link.name}
+              asChild
+              variant="ghost"
+              size="xl"
+              className="w-full justify-start"
+            >
               <Link
                 href={link.href}
                 onClick={handleSheetOpen.close}

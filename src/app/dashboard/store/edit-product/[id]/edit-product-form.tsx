@@ -1,12 +1,12 @@
 "use client";
 
-import ProductFormActionButtons from "@/app/dashboard/products/add-product/components/save-product";
-import ModalConfirmation from "@/app/dashboard/products/add-product/components/modal-confirmation";
-import ProductCategory from "@/app/dashboard/products/add-product/components/product-category";
-import ProductDetails from "@/app/dashboard/products/add-product/components/product-details";
-import ProductStatus from "@/app/dashboard/products/add-product/components/product-status";
-import ProductImage from "@/app/dashboard/products/add-product/components/product-image";
-import Stock from "@/app/dashboard/products/add-product/components/stock";
+import ProductFormActionButtons from "@/app/dashboard/store/add-product/components/save-product";
+import ModalConfirmation from "@/app/dashboard/store/add-product/components/modal-confirmation";
+import ProductCategory from "@/app/dashboard/store/add-product/components/product-category";
+import ProductDetails from "@/app/dashboard/store/add-product/components/product-details";
+import ProductStatus from "@/app/dashboard/store/add-product/components/product-status";
+import ProductImage from "@/app/dashboard/store/add-product/components/product-image";
+import Stock from "@/app/dashboard/store/add-product/components/stock";
 import Container from "@/components/container";
 import { useSubmitState } from "@/hooks/use-submit-state";
 import { useForm, FormProvider } from "react-hook-form";

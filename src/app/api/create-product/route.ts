@@ -68,6 +68,7 @@ export async function POST(request: Request) {
     const userId = session.user.id;
     const userStore = await db.loja.findFirst({
       where: { userId: userId },
+      select: { id: true, slug: true },
     });
 
     if (!userStore) {
@@ -82,6 +83,7 @@ export async function POST(request: Request) {
 
     const category = await db.categoria.findUnique({
       where: { id: data.categoriaId },
+      select: { id: true },
     });
 
     if (!category) {
@@ -110,7 +112,9 @@ export async function POST(request: Request) {
         },
       });
     });
-    revalidatePaths(["/", "/recommended", "/discount"]);
+
+    const storeSlug = userStore.slug;
+    revalidatePaths(["/", `/dashboard/store/${storeSlug}/products`]);
 
     return NextResponse.json({ product }, { status: 201 });
   } catch (error) {

@@ -95,8 +95,9 @@ export default async function DiscountCategoryCarousel() {
                       <Image
                         src={content.imageUrl}
                         alt={category.nome}
-                        fill
-                        className="object-cover transition-all duration-500 "
+                        width={1000}
+                        height={1000}
+                        className="object-cover w-full h-full"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-black/0" />
                     </div>

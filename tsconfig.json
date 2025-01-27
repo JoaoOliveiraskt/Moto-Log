@@ -2,7 +2,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": [
+        "src/*"
+      ],
+      "typeRoots": [
+        "./node_modules/@types",
+        "./types"
+      ]
     },
     "target": "es2016",
     "module": "commonjs",
@@ -10,7 +16,11 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "noEmit": true,
     "incremental": true,
@@ -28,6 +38,7 @@
     "next-env.d.ts",
     "next-auth-extensions.d.ts",
     ".next/types/**/*.ts",
+    "types/**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "src/lib/prisma.js",
@@ -44,5 +55,7 @@
     "src/components/product-card.tsx",
     "src/hooks/fetch-product-id.ts",
   ],
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
 }

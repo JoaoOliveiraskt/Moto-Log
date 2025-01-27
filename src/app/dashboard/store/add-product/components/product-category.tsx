@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { Label } from "@/components/ui/label";
 import {
@@ -6,6 +8,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  SelectGroup,
 } from "@/components/ui/select";
 import { useFormContext, Controller } from "react-hook-form";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -75,13 +78,17 @@ export default function ProductCategory({ defaultValue }: Props) {
                 />
               </SelectTrigger>
               <SelectContent>
-                <ScrollArea className="h-60">
+                <SelectGroup>
                   {categories.map((category) => (
-                    <SelectItem key={category.id} value={category.id}>
+                    <SelectItem
+                      aria-hidden={false}
+                      key={category.id}
+                      value={category.id}
+                    >
                       {category.nome}
                     </SelectItem>
                   ))}
-                </ScrollArea>
+                </SelectGroup>
               </SelectContent>
             </Select>
           )}

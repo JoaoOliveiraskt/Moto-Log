@@ -26,7 +26,7 @@ interface ProductData {
   preco: number;
   porcentagemDesconto?: number;
   estoque: number;
-  categoriId: string;
+  categoriaId: string;
   status: string;
   imagemUrl: string;
 }

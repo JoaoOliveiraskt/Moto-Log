@@ -15,9 +15,9 @@ export async function GET(
     });
     return NextResponse.json({ followers: storeFollowers });
   } catch (error) {
-    console.error("Erro ao buscar seguidores da loja:", error);
+    console.error("Error fetching store followers:", error);
     return NextResponse.json(
-      { error: "Erro ao buscar seguidores da loja" },
+      { error: "Error fetching store followers" },
       { status: 500 }
     );
   }

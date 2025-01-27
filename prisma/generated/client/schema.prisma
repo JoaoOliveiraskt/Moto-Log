@@ -11,12 +11,12 @@ datasource db {
 model Loja {
   id         String   @id @default(uuid())
   nome       String
+  slug       String?  @unique
   imagemUrl  String?
   descricao  String?
   imagemFile String?
   userId     String
   email      String?  @db.VarChar
-  views      Int      @default(0)
   createdAt  DateTime @default(now()) @db.Timestamp(6)
 
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)

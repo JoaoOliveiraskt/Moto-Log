@@ -2,12 +2,11 @@
 
 import Image from "next/image";
 import { MoreHorizontal } from "lucide-react";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardFooter } from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -23,28 +22,20 @@ import { Decimal } from "@prisma/client/runtime/library";
 import formatCurrency from "@/app/helpers/format-currency";
 import { useState } from "react";
 import { Link } from "next-view-transitions";
-import DeleteProductDialog from "./delete-product-dialog";
-import { string } from "zod";
+import DeleteProductDialog from "../../components/delete-product-dialog";
 import Icon from "@/components/icons/icon-component";
 
 interface Product {
   id: string;
-  sku: string;
   nome: string;
   descricao: string;
   imagemUrl: string;
-  imagemUrls: string[];
   estoque: number;
   preco: Decimal;
   porcentagemDesconto: Decimal | null;
   status: string;
   createdAt: Date;
-  updatedAt: Date | null;
   totalVendido: number | null;
-  loja: {
-    id: string;
-    nome: string;
-  };
 }
 
 interface Props {
@@ -154,7 +145,7 @@ export default function ProductTable({ products }: Props) {
                         >
                           <DropdownMenuItem asChild>
                             <Link
-                              href={`/dashboard/products/edit-product/${product.id}`}
+                              href={`/dashboard/store/edit-product/${product.id}`}
                               className="flex items-center gap-x-2"
                             >
                               <Icon.edit />

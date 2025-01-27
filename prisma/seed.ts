@@ -92,8 +92,6 @@ async function main() {
 
     categoriasCriadas.push(categoriaCriada);
   }
-
-  console.log({ lojasCriadas, categoriasCriadas});
 }
 
 main()

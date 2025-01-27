@@ -1,32 +1,20 @@
-"use client";
-
 import React from "react";
-import Header from "./components/header";
+import MobileHeader from "./components/mobile-dashboard-header";
 import NavDashboard from "./components/nav";
-import { useAuth } from "@/hooks/useAuth";
-import { useRouter } from "next/navigation";
-import Loader from "@/components/ui/loader";
+import { redirect } from "next/navigation";
 import Container from "@/components/container";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { isAuthenticated, loading } = useAuth();
-  const router = useRouter();
+  const session = await getServerSession(authOptions);
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <Loader size={32} />
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    router.push("/");
-    return null;
+  if (!session) {
+    redirect("/");
   }
 
   return (
@@ -34,9 +22,9 @@ export default function DashboardLayout({
       <NavDashboard />
 
       <div className="flex flex-col w-full sm:gap-4">
-        <Header />
+        <MobileHeader />
 
-        <div className="">{children}</div>
+        <div>{children}</div>
       </div>
     </Container>
   );
