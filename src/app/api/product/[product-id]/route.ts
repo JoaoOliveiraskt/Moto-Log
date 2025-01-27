@@ -7,7 +7,7 @@ const updateProductSchema = z.object({
   nome: z.string().min(2, "O nome é obrigatório").max(100).optional(),
   descricao: z
     .string()
-    .max(500, "A descrição deve ter no máximo 500 caracteres")
+    .max(1000, "A descrição deve ter no máximo 500 caracteres")
     .optional(),
   imagemUrl: z.string().url("A URL da imagem deve ser válida").optional(),
   preco: z.number().min(0.01, "O preço deve ser maior que zero").optional(),
