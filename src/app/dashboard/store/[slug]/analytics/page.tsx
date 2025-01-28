@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import MonthlyIncomeChart from "./components/monthly-income-chart";
 import { getUserStore } from "@/app/actions/store/get-user-store";
 import getStoreMetrics from "@/app/actions/store/get-store-metrics";
@@ -9,6 +9,7 @@ import TotalFollowers from "./components/total-followers-card";
 import TotalSales from "./components/total-sales-card";
 import TotalOrders from "./components/total-orders-card";
 import RecentSalesCard from "./components/recent-sales-card";
+import { DashboardAnalyticsSkeleton } from "./components/analytics-skeleton";
 
 const DashboardAnalytics = async () => {
   const store = await getUserStore();
@@ -17,23 +18,25 @@ const DashboardAnalytics = async () => {
   const monthlyRevenue = await getMonthlyRevenue(store.id);
 
   return (
-    <main className="flex flex-col gap-4 md:gap-4 mt-4 h-max">
-      <div className="grid gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
-        <TotalRevenue totalRevenue={storeMetrics.receitaTotal} />
-        <TotalSales totalVendas={storeMetrics.totalVendas} />
-        <TotalFollowers storeFollowers={store._count.followers} />
-        <TotalOrders totalOrders={store._count.pedidos} />
-      </div>
+    <main className="flex flex-col gap-4 md:gap-4 mt-4">
+      <Suspense fallback={<DashboardAnalyticsSkeleton />}>
+        <div className="grid gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
+          <TotalRevenue totalRevenue={storeMetrics.receitaTotal} />
+          <TotalSales totalVendas={storeMetrics.totalVendas} />
+          <TotalFollowers storeFollowers={store._count.followers} />
+          <TotalOrders totalOrders={store._count.pedidos} />
+        </div>
 
-      <div className="grid gap-4 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
-        <MonthlyIncomeChart MonthlyRevenue={monthlyRevenue} />
+        <div className="grid gap-4 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
+          <MonthlyIncomeChart MonthlyRevenue={monthlyRevenue} />
 
-        <RecentSalesCard
-          recentUsers={recentUsers.map((user) => ({
-            ...user,
-          }))}
-        />
-      </div>
+          <RecentSalesCard
+            recentUsers={recentUsers.map((user) => ({
+              ...user,
+            }))}
+          />
+        </div>
+      </Suspense>
     </main>
   );
 };
