@@ -31,7 +31,7 @@ const MyOrdersPage = async () => {
   });
   return (
     <>
-      <Container className="min-h-[calc(100vh-3.5rem)] space-y-6 mt-12 lg:mt-14 lg:pt-2">
+      <Container className="min-h-[calc(100vh-3.5rem)] space-y-6 pt-12 lg:pt-14">
         <GoBackButton containerClassName="hidden lg:flex" />
 
         {orders.length > 0 ? (
