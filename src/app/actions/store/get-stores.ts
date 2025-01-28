@@ -4,10 +4,10 @@ interface Props {
 
 export default async function GetStores({ limit }: Props) {
   try {
-    const url = new URL(
-      "/api/store",
-      process.env.NEXT_PUBLIC_API_URL || window.location.origin
-    );
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+
+    const url = new URL("/api/store", baseUrl);
+
     if (limit) {
       url.searchParams.append("take", limit.toString());
     }

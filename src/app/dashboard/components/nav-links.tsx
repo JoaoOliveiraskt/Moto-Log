@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { DashboardLinks } from "./dashboard-links";
@@ -11,6 +11,7 @@ interface Props {
 
 export default function NavLinks({ storeSlug }: Props) {
   const pathName = usePathname();
+  const router = useRouter();
 
   const links = DashboardLinks({ storeSlug });
 
@@ -21,6 +22,7 @@ export default function NavLinks({ storeSlug }: Props) {
         return (
           <Link
             key={link.href}
+            onMouseEnter={() => router.prefetch(link.href)}
             className={cn(
               "text-muted-foreground h-9 flex items-center transition-colors pb-2 ",
               isActive
