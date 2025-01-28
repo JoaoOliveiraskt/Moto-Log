@@ -9,7 +9,12 @@ import TotalFollowers from "./components/total-followers-card";
 import TotalSales from "./components/total-sales-card";
 import TotalOrders from "./components/total-orders-card";
 import RecentSalesCard from "./components/recent-sales-card";
-import { DashboardAnalyticsSkeleton } from "./components/analytics-skeleton";
+import {
+  ChartSkeleton,
+  MetricsSkeleton,
+  RecentSalesSkeleton,
+  StoreStatsSkeleton,
+} from "./components/analytics-skeleton";
 
 const DashboardAnalytics = async () => {
   const store = await getUserStore();
@@ -19,24 +24,31 @@ const DashboardAnalytics = async () => {
 
   return (
     <main className="flex flex-col gap-4 md:gap-4 mt-4">
-      <Suspense fallback={<DashboardAnalyticsSkeleton />}>
-        <div className="grid gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
+        <Suspense fallback={<MetricsSkeleton />}>
           <TotalRevenue totalRevenue={storeMetrics.receitaTotal} />
           <TotalSales totalVendas={storeMetrics.totalVendas} />
+        </Suspense>
+
+        <Suspense fallback={<StoreStatsSkeleton />}>
           <TotalFollowers storeFollowers={store._count.followers} />
           <TotalOrders totalOrders={store._count.pedidos} />
-        </div>
+        </Suspense>
+      </div>
 
-        <div className="grid gap-4 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-4 md:gap-4 lg:grid-cols-2 xl:grid-cols-3">
+        <Suspense fallback={<ChartSkeleton />}>
           <MonthlyIncomeChart MonthlyRevenue={monthlyRevenue} />
+        </Suspense>
 
+        <Suspense fallback={<RecentSalesSkeleton />}>
           <RecentSalesCard
             recentUsers={recentUsers.map((user) => ({
               ...user,
             }))}
           />
-        </div>
-      </Suspense>
+        </Suspense>
+      </div>
     </main>
   );
 };
