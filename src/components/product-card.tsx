@@ -1,12 +1,12 @@
 import formatCurrency from "@/app/helpers/format-currency";
 import calculateTotalPrice from "@/app/helpers/price";
-import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import StoreBadge from "./store-badge";
 import TypographySmall from "./typography/typography-small";
 import { Produto, Loja, Categoria } from "../../prisma/generated/client";
 import TypographyP from "./typography/typography-p";
+import ProductCardBanner from "./product-card-banner";
 
 interface ProductProps {
   product: Produto & {
@@ -38,28 +38,7 @@ const ProductCard = ({
         className
       )}
     >
-      <div className="relative">
-        <Link href={`/product/${product.id}`} className="block ">
-          <div
-            className={cn(
-              "h-56 w-full lg:h-[13rem] rounded-xl overflow-hidden bg-accent",
-              imageClassName
-            )}
-          >
-            <Image
-              src={product.imagemUrl}
-              alt={product.nome}
-              width={1000}
-              height={1000}
-              priority
-              quality={80}
-              className={cn(
-                "object-cover w-full h-full duration-500 transition-opacity"
-              )}
-            />
-          </div>
-        </Link>
-      </div>
+      <ProductCardBanner product={product} imageClassName={imageClassName} />
 
       <div
         className={cn(
