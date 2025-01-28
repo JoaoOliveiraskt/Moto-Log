@@ -30,18 +30,18 @@ interface Props {
 }
 
 const MonthlyRevenueTestData = [
-  { month: "Dad", totalIncome: 7000 },
-  { month: "osF", totalIncome: 3000 },
-  { month: "ake", totalIncome: 5000 },
-  { month: "Dad", totalIncome: 4000 },
-  { month: "osF", totalIncome: 7000 },
-  { month: "ake", totalIncome: 6000 },
-  { month: "Dad", totalIncome: 8000 },
-  { month: "osF", totalIncome: 4000 },
-  { month: "ake", totalIncome: 3000 },
-  { month: "Dad", totalIncome: 6000 },
-  { month: "osF", totalIncome: 2000 },
-  { month: "ake", totalIncome: 11000 },
+  { month: "Jan", totalIncome: 7000 },
+  { month: "Fev", totalIncome: 3000 },
+  { month: "Mar", totalIncome: 5000 },
+  { month: "Abr", totalIncome: 4000 },
+  { month: "Mai", totalIncome: 7000 },
+  { month: "Jun", totalIncome: 6000 },
+  { month: "Jul", totalIncome: 8000 },
+  { month: "Ago", totalIncome: 4000 },
+  { month: "Set", totalIncome: 3000 },
+  { month: "Out", totalIncome: 6000 },
+  { month: "Nov", totalIncome: 2000 },
+  { month: "Dez", totalIncome: 11000 },
 ];
 
 export default function MonthlyIncomeChart({ MonthlyRevenue }: Props) {
@@ -56,17 +56,17 @@ export default function MonthlyIncomeChart({ MonthlyRevenue }: Props) {
   }).format(new Date());
 
   return (
-    <Card className="xl:col-span-2 relative overflow-hidden border-2 border-border/25">
-      <div className="absolute inset-x-0 top-0 h-[100px] bg-gradient-to-b from-white/[0.04] to-transparent" />
+    <Card className="xl:col-span-2 relative overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-[0px] bg-gradient-to-b from-white/[0.04] to-transparent" />
       <CardHeader className="p-6 relative">
-        <CardTitle>Visão Geral</CardTitle>
+        <CardTitle className="text-sm">Visão Geral</CardTitle>
         <CardDescription>
           {MonthlyRevenue.length === 0
             ? " (Esses dados são fictícios enquanto não há dados reais)"
             : " Visão geral da receita mensal em reais (R$)"}
         </CardDescription>
       </CardHeader>
-      <CardContent className="relative">
+      <CardContent className="relative p-4">
         <ChartContainer config={chartConfig} className="max-h-64 w-full">
           <AreaChart
             accessibilityLayer
@@ -97,12 +97,12 @@ export default function MonthlyIncomeChart({ MonthlyRevenue }: Props) {
                 <stop
                   offset="5%"
                   stopColor="var(--color-totalIncome)"
-                  stopOpacity={0.8}
+                  stopOpacity={0.1}
                 />
                 <stop
                   offset="95%"
                   stopColor="var(--color-totalIncome)"
-                  stopOpacity={0.1}
+                  stopOpacity={0.01}
                 />
               </linearGradient>
             </defs>

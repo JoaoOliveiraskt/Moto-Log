@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import formatCurrency from "@/app/helpers/format-currency";
 import { Separator } from "@/components/ui/separator";
-import { CreateOrder } from "@/app/actions/order";
+import { CreateOrder } from "../actions/order/order";
 import { OrderStatus } from "prisma/generated/client";
 import { useSession } from "next-auth/react";
 import { Loader2 } from "lucide-react";

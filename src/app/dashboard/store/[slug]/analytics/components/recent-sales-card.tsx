@@ -13,14 +13,14 @@ interface Props {
 
 export default function RecentSalesCard({ recentUsers }: Props) {
   return (
-    <Card className="relative overflow-hidden border-2 border-border/25">
-      <div className="absolute inset-x-0 top-0 h-[100px] bg-gradient-to-b from-white/[0.04] to-transparent" />
+    <Card className="relative overflow-hidden h-max">
+      <div className="absolute inset-x-0 top-0 h-[0px] bg-gradient-to-b from-white/[0.04] to-transparent" />
       <CardHeader className="p-6 relative">
         <CardTitle>Vendas Recentes</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-8 relative">
         {!recentUsers.length && (
-          <p className="text-center">Não há vendas recentes</p>
+          <p className="text-2xl font-bold">0</p>
         )}
         {recentUsers.length > 0 &&
           recentUsers.map((user) => (

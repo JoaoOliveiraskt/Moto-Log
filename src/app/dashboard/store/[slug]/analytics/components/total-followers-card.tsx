@@ -7,8 +7,8 @@ interface Props {
 
 export default function TotalFollowers({ storeFollowers }: Props) {
   return (
-    <Card className="relative overflow-hidden border-2 border-border/25">
-      <div className="absolute inset-x-0 top-0 h-[100px] bg-gradient-to-b from-white/[0.04] to-transparent" />
+    <Card className="relative overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-[0px] bg-gradient-to-b from-white/[0.04] to-transparent" />
       <CardHeader className="flex flex-row items-center justify-between p-6 relative">
         <CardTitle className="text-sm ">Seguidores</CardTitle>
         <Users className="h-4 w-4 text-muted-foreground" />

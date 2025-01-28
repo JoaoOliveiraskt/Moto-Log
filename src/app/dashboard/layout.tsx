@@ -19,8 +19,8 @@ export default async function DashboardLayout({
   }
 
   return (
-    <Container className="flex flex-col min-h-screen w-full mt-12 lg:mt-14">
-      <div className="flex items-center gap-x-4">
+    <Container className="mt-12 lg:mt-14">
+      <div className="lg:flex items-center gap-x-4  hidden">
         <GoBackButton className="hidden lg:flex" />
         <NavDashboard />
       </div>
