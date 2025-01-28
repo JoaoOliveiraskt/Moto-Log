@@ -26,7 +26,8 @@
     --confirmed: 144 50% 53%;
     --confirmed-foreground: 0 0% 100%;
     --radius: 0.7rem;
-    --brand: 220 90% 56%;
+    --brand: 220 70% 50%;
+    --chart-1: 220 90% 56%;
   }
 
   .dark {
@@ -50,6 +51,7 @@
     --input: 0 0% 20%;
     --ring: 210 4% 22%;
     --confirmed: 144 50% 53%;
+    --chart-1: 220 90% 56%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
   }
