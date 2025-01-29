@@ -87,12 +87,7 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
           )}
         </DrawerTrigger>
 
-        <DrawerContent className="pb-4 px-4 outline-none overflow-hidden">
-          {/* Efeitos de glass e gradientes */}
-          <div className="absolute inset-0 dark:bg-gradient-to-b dark:from-black/40 dark:to-transparent" />
-          <div className="absolute top-2 left-1/4 w-full h-72 dark:bg-gradient-to-b dark:from-purple-500/15 dark:via-transparent dark:to-transparent dark:blur-xl" />
-          <div className="absolute top-2 right-1/4 w-full h-72 dark:bg-gradient-to-b dark:from-sky-600/15 dark:via-transparent dark:to-transparent dark:blur-xl" />
-
+        <DrawerContent className="pb-8 px-4 outline-none overflow-hidden">
           <div className="relative z-10">
             <DrawerHeader className=" w-full flex items-center justify-start">
               <UserInfo />
