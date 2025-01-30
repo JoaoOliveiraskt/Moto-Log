@@ -25,8 +25,8 @@ export default function RootLayout({
 }>) {
   return (
     <QueryProvider>
-      <html lang="en" className={`${inter.className}`}>
-        <body className="overflow-y-scroll">
+      <html lang="en">
+        <body className={`overflow-y-scroll ${inter.className}`}>
           <AuthProvider>
             <CartProvider>
               <ThemeProvider
