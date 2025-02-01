@@ -23,6 +23,7 @@ async function getData(id: string, bestSellers?: boolean) {
           status: "ATIVO",
           estoque: { gt: 0 },
         },
+        orderBy: { createdAt: "desc" },
         ...(bestSellers && { orderBy: { totalVendido: "desc" } }),
       },
     },

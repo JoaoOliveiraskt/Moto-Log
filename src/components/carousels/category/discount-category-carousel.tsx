@@ -37,12 +37,12 @@ export default function CarouselClient({
       opts={{
         align: "start",
         loop: true,
-        duration: 14,
+        duration: 20,
       }}
       className="w-full"
-      plugins={[Autoplay({ delay: 2000, stopOnMouseEnter: true })]}
+      plugins={[Autoplay({ delay: 3000, stopOnMouseEnter: true })]}
     >
-      <CarouselContent className="-ml-2 md:-ml-4">
+      <CarouselContent className=" mx-4 2xl:mx-0">
         {categories.map((category) => {
           const content = categoryContent[category.nome];
           if (!content) return null;
@@ -50,7 +50,7 @@ export default function CarouselClient({
           return (
             <CarouselItem
               key={category.id}
-              className="pl-2 md:pl-4 basis-[96%] sm:basis-1/2 lg:basis-1/3"
+              className="pl-2 md:pl-4 basis-[98%] sm:basis-1/2 lg:basis-1/3"
             >
               <Link
                 href={`/category/${category.id}?discount=true`}
@@ -86,8 +86,8 @@ export default function CarouselClient({
           );
         })}
       </CarouselContent>
-      <CarouselNext className="hidden lg:inline-flex -right-6" />
-      <CarouselPrevious className="hidden lg:inline-flex -left-4" />
+      <CarouselNext className="hidden lg:inline-flex right-0 2xl:-right-6" />
+      <CarouselPrevious className="hidden lg:inline-flex left-0 2xl:-left-4" />
     </Carousel>
   );
 }

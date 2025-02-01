@@ -33,8 +33,8 @@ const ProductCard = ({
   return (
     <div
       className={cn(
-        "h-[22.2rem] lg:h-[21.87rem] w-full max-w-72 overflow-hidden text-foreground",
-        "lg:hover:bg-accent lg:dark:hover:bg-accent/30 rounded-2xl lg:px-2 lg:pb-2 lg:pt-2",
+        "h-[22.9rem] lg:h-[23.6rem] w-full max-w-72 overflow-hidden text-foreground",
+        "lg:hover:bg-accent lg:dark:hover:bg-accent/30 rounded-2xl lg:p-2",
         className
       )}
     >

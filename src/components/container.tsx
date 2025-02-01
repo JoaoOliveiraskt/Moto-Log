@@ -9,7 +9,7 @@ export default function Container({ children, className, id }: ContainerProps) {
     <div className="w-full max-w-screen">
       <div
         id={`${id}`}
-        className={`${className} mx-auto max-w-screen-lg lg:max-w-[1290px] px-4 xl:px-0 pb-20`}
+        className={`${className} mx-auto max-w-screen-lg lg:max-w-[1230px] px-4 2xl:px-0 pb-20`}
       >
         {children}
       </div>

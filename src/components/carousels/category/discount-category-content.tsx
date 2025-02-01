@@ -50,7 +50,7 @@ export default async function DiscountCategoryCarousel() {
 
   return (
     <section className="space-y-8">
-      <div className="space-y-1 mb-6">
+      <div className="space-y-1 mb-6 px-4 2xl:px-0">
         <TypographyH4>Categorias em Destaque</TypographyH4>
         <TypographyP className="text-muted-foreground text-sm md:text-base">
           Aproveite até{" "}

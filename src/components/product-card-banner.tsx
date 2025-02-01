@@ -24,7 +24,7 @@ export default function ProductCardBanner({ product, imageClassName }: Props) {
       >
         <div
           className={cn(
-            "h-56 w-full lg:h-[13rem] rounded-xl overflow-hidden bg-accent",
+            "h-60 w-full rounded-2xl overflow-hidden bg-accent",
             imageClassName
           )}
         >
