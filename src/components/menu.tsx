@@ -51,7 +51,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
             onClick={handleMenuOpen.close}
             variant="ghost"
             size="menu"
-            className="flex gap-4 items-center px-4 w-full justify-start py-6"
+            className="flex gap-4 items-center px-4 w-full justify-start py-5 mb-1 hover:bg-accent-foreground"
           >
             {item.icon}
             <span className="tracking-wide">{item.label}</span>
@@ -90,30 +90,39 @@ const Menu = ({ className, children, iconSize }: Props) => {
         )}
         <DropdownMenuContent
           align="end"
-          className="bg-card rounded-2xl w-64 min-w-64 shadow-2xl"
+          className="dark:bg-[hsl(0_0%_15%/90%)] backdrop-blur-[24px] rounded-2xl w-64 min-w-64 shadow-xl"
         >
           {isAuthenticated && (
             <div>
               <UserInfo className="py-4 pl-6" />
-              <Separator />
+              <Separator className="bg-accent-foreground" />
             </div>
           )}
-          <div className="flex-col flex p-2">
+          <div className="p-2">
             {menuItems}
             <ModeToggle
               iconSize={20}
-              className="flex gap-4 items-center px-4 w-full justify-start py-6  mb-2"
+              className="flex gap-4 items-center px-4 w-full justify-start py-5 mb-1 hover:bg-accent-foreground"
               size="menu"
             >
               <span className=" tracking-wide">Tema</span>
             </ModeToggle>
+            <LoginButton iconSize={20} className="hover:bg-accent-foreground">
+              <span className="tracking-wide">
+                {isAuthenticated ? "Sair" : "Entrar"}
+              </span>
+            </LoginButton>
           </div>
-          <Separator />
-          <LoginButton className="rounded-none" iconSize={20}>
-            <span className="tracking-wide">
-              {isAuthenticated ? "Sair" : "Entrar"}
-            </span>
-          </LoginButton>
+          <Separator className="bg-accent-foreground" />
+          <div className="py-2 px-6">
+            <Link
+              onClick={handleMenuOpen.close}
+              href={"/download-app"}
+              className="text-xs text-muted-foreground hover:text-sky-600"
+            >
+              Baixar app
+            </Link>
+          </div>
         </DropdownMenuContent>
       </DropdownMenu>
 

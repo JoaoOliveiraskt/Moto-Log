@@ -35,12 +35,7 @@ export const getMenuItems = (
     !isLojista && {
       href: "/welcome-create-store",
       label: "Vender agora",
-      icon: <Icon.sell size={20} strokeWidth={1.25} />,
-    },
-    {
-      href: "/download-app",
-      label: "Baixar app",
-      icon: <Icon.download size={20} />,
+      icon: <Icon.sell size={20} />,
     },
   ].filter((item): item is { href: string; label: string; icon: JSX.Element } =>
     Boolean(item)

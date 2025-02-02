@@ -14,6 +14,7 @@ import MenuBtn from "./menu-btn";
 import {
   Drawer,
   DrawerContent,
+  DrawerFooter,
   DrawerHeader,
   DrawerTrigger,
 } from "./ui/drawer";
@@ -21,6 +22,7 @@ import TypographyLarge from "./typography/typography-large";
 import LoginButton from "./login-button";
 import { getMenuItems } from "./menu-links";
 import { useStore } from "@/hooks/use-store";
+import { Separator } from "./ui/separator";
 
 interface Props {
   className?: string;
@@ -87,13 +89,14 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
           )}
         </DrawerTrigger>
 
-        <DrawerContent className="pb-8 px-4 outline-none overflow-hidden">
-          <div className="relative z-10">
+        <DrawerContent className="pb-2 px-0 outline-none overflow-hidden">
+          <div className="relative z-10 px-4">
             <DrawerHeader className=" w-full flex items-center justify-start">
               <UserInfo />
             </DrawerHeader>
-            <div className="flex flex-col items-center w-full">
+            <div className="flex flex-col items-center w-full ">
               {menuItems}
+
               <Button
                 asChild
                 onClick={handleMenuOpen.close}
@@ -105,12 +108,13 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
                   href="/community"
                   className="flex gap-4 w-full items-center py-7 "
                 >
-                  <Icon.globe size={iconSize} strokeWidth={1.25} />
+                  <Icon.globe size={iconSize} />
                   <TypographyLarge className="font-medium">
                     Comunidade
                   </TypographyLarge>
                 </Link>
               </Button>
+
               <ModeToggle
                 variant="ghost"
                 iconSize={iconSize}
@@ -119,20 +123,35 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
               >
                 <TypographyLarge className="font-medium">Tema</TypographyLarge>
               </ModeToggle>
+
+              <LoginButton
+                iconSize={iconSize}
+                variant="ghost"
+                className="w-full border-border/70 px-4 py-7 hover:bg-background"
+              >
+                {isAuthenticated ? (
+                  <TypographyLarge className="font-medium">
+                    Sair
+                  </TypographyLarge>
+                ) : (
+                  <TypographyLarge className="font-medium">
+                    Entrar
+                  </TypographyLarge>
+                )}
+              </LoginButton>
             </div>
           </div>
-
-          <LoginButton
-            iconSize={iconSize}
-            variant="ghost"
-            className="w-full border-border/70 px-4 py-7 hover:bg-background"
-          >
-            {isAuthenticated ? (
-              <TypographyLarge className="font-medium">Sair</TypographyLarge>
-            ) : (
-              <TypographyLarge className="font-medium">Entrar</TypographyLarge>
-            )}
-          </LoginButton>
+          <DrawerFooter className="py-4 px-0">
+            <div className="px-8">
+              <Link
+                onClick={handleMenuOpen.close}
+                href={"/download-app"}
+                className="text-sm text-muted-foreground hover:text-sky-600 underline"
+              >
+                Baixar app
+              </Link>
+            </div>
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
 

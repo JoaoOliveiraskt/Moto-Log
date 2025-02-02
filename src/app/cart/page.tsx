@@ -89,7 +89,7 @@ const Cart = () => {
         // @ts-ignore
         title: (
           <div className="flex items-center gap-x-2">
-            <Icon.confirmed color="green" strokeWidth={1.25} />
+            <Icon.confirmed color="green"  />
             <span>Pedido finalizado com sucesso!</span>
           </div>
         ),

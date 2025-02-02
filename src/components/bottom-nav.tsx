@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export default function BottomNav() {
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-background border-t z-50 h-fit py-1">
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-background border-t z-50 h-fit py-3">
       <nav className="flex items-center justify-around">
         <HomeButton className={cn("h-fit w-fit")} size={22}>
           Início
@@ -19,7 +19,7 @@ export default function BottomNav() {
         <CartButton
           iconSize={22}
           model="icon"
-          className="h-fit w-fit gap-1 text-muted-foreground p-0"
+          className="h-fit w-fit gap-1 p-0"
         >
           Carrinho
         </CartButton>
