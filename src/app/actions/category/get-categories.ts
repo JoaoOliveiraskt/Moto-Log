@@ -12,7 +12,7 @@ export default async function GetCategories({ categoryNames }: Props) {
         in: categoryNames,
       },
     },
-    orderBy: { nome: "asc" },
+    orderBy: { nome: "desc" },
   });
 
   return categories;

@@ -3,24 +3,19 @@ import Link from "next/link";
 interface Props {
   className?: string;
   link?: string;
-  svgStyle?: string;
-  svgWidth?: number;
-  svgHeight?: number;
   disabled?: boolean;
 }
 
 export default function MotoLogLogo({
   className,
   link = "/",
-  svgWidth = 128,
-  svgHeight = 60,
   disabled = false,
 }: Props) {
   return disabled ? (
     <div className={`p-0 ${className}`}>
       <svg
-        width={svgWidth}
-        height={svgHeight}
+        width={128}
+        height={60}
         viewBox="0 0 128 60"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
@@ -35,8 +30,8 @@ export default function MotoLogLogo({
   ) : (
     <Link className={`p-0 ${className}`} href={link}>
       <svg
-        width={svgWidth}
-        height={svgHeight}
+        width={128}
+        height={60}
         viewBox="0 0 128 60"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"

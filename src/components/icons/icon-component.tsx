@@ -45,6 +45,8 @@ import {
   Bookmark,
   Users,
   Info,
+  Download,
+  ArrowDownToLine,
 } from "lucide-react";
 
 const Icon = {
@@ -72,6 +74,7 @@ const Icon = {
   chevronLeft: ChevronLeft,
   chevronDown: ChevronDown,
   sell: Tag,
+  download: ArrowDownToLine,
   dashboard: FiBarChart2,
   analytics: FiBarChart2,
   package: Package,

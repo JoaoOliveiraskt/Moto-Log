@@ -35,11 +35,11 @@ export const getMenuItems = (
     !isLojista && {
       href: "/welcome-create-store",
       label: "Vender agora",
-      icon: <Icon.sell size={20} strokeWidth={1.25} />,
+      icon: <Icon.sell size={20} />,
     },
   ].filter((item): item is { href: string; label: string; icon: JSX.Element } =>
     Boolean(item)
-  ); // Remove valores falsy
+  );
 
   return menuLinks;
 };

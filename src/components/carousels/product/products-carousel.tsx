@@ -15,7 +15,7 @@ interface Props {
 export default function ProductsCarousel({ children, title, link }: Props) {
   return (
     <div className="space-y-6 bg-transparent">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center px-4 2xl:px-0">
         <TypographyH4>{title}</TypographyH4>
 
         <SeeAllButton href={link} />
@@ -28,12 +28,11 @@ export default function ProductsCarousel({ children, title, link }: Props) {
           duration: 20,
           align: "start",
         }}
-        className="space-y-4"
       >
         <Suspense fallback={<ProductsCarouselSkeleton />}>{children}</Suspense>
 
-        <CarouselPrevious className="hidden lg:inline-flex -left-4 top-1/3" />
-        <CarouselNext className="hidden lg:inline-flex -right-6 top-1/3" />
+        <CarouselPrevious className="hidden xl:inline-flex left-0 2xl:-left-4 top-1/3" />
+        <CarouselNext className="hidden xl:inline-flex right-0 2xl:-right-6 top-1/3" />
       </Carousel>
     </div>
   );

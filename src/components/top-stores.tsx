@@ -16,6 +16,7 @@ interface StoreProps {
   id: string;
   nome: string;
   imagemUrl: string;
+  productsCount: number;
 }
 
 async function getStores() {
@@ -40,7 +41,7 @@ export default async function TopStores() {
 
   return (
     <div className="space-y-8 pb-6">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center px-4 2xl:px-0">
         <TypographyH4>Lojas em destaque</TypographyH4>
 
         <SeeAllButton href={"/community"} />
@@ -53,15 +54,15 @@ export default async function TopStores() {
           align: "start",
         }}
       >
-        <CarouselContent className="-ml-4 w-full">
+        <CarouselContent className="flex gap-x-2.5 mx-4 2xl:mx-0">
           {stores &&
             stores.map((store: StoreProps) => (
-              <CarouselItem className="basis-[124px] " key={store.id}>
+              <CarouselItem className="basis-auto p-0" key={store.id}>
                 <Link
                   href={`/store/${store.id}`}
                   className="text-foreground font-medium hover:text-sky-600 hover:transition-colors flex flex-col gap-y-2"
                 >
-                  <div className="w-28 h-28 rounded-[1.5rem] overflow-hidden drop-shadow-md">
+                  <div className="w-[7.3rem] h-[7.3rem] rounded-[2rem] overflow-hidden drop-shadow-sm">
                     {store.imagemUrl ? (
                       <Image
                         src={store.imagemUrl}
@@ -74,7 +75,7 @@ export default async function TopStores() {
                       <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
                     )}
                   </div>
-                  <div className="flex flex-col gap-y-1 justify-center ml-0.5 font-light">
+                  <div className="flex flex-col gap-y-1 justify-center ml-0.5">
                     <TypographyP className="text-xs ">{store.nome}</TypographyP>
                     <span className="text-xs">
                       4.8 <span>★</span>
@@ -84,8 +85,8 @@ export default async function TopStores() {
               </CarouselItem>
             ))}
         </CarouselContent>
-        <CarouselNext className="hidden lg:-right-6  lg:inline-flex" />
-        <CarouselPrevious className="hidden lg:-left-4  lg:inline-flex" />
+        <CarouselNext className="hidden right-0 2xl:-right-6  xl:inline-flex" />
+        <CarouselPrevious className="hidden left-0 2xl:-left-4  xl:inline-flex" />
       </Carousel>
     </div>
   );
