@@ -5,7 +5,6 @@ import { useQRCode } from "next-qrcode";
 import Container from "@/components/container";
 import TypographyH4 from "@/components/typography/typography-h4";
 import { Button } from "@/components/ui/button";
-import { Users, Zap } from "lucide-react";
 import Image from "next/image";
 import TypographyH1 from "@/components/typography/typography-h1";
 import TypographyP from "@/components/typography/typography-p";
