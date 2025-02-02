@@ -17,13 +17,13 @@ export function ProductsTabs({
     <Tabs defaultValue="all">
       <div className="flex items-center mb-4">
         <TabsList className="space-x-2">
-          <TabsTrigger value="all" className="hover:text-foreground">
+          <TabsTrigger value="all" >
             Todos
           </TabsTrigger>
-          <TabsTrigger value="active" className="hover:text-foreground">
+          <TabsTrigger value="active" >
             Ativo
           </TabsTrigger>
-          <TabsTrigger value="archived" className="hover:text-foreground">
+          <TabsTrigger value="archived" >
             Arquivado
           </TabsTrigger>
         </TabsList>
