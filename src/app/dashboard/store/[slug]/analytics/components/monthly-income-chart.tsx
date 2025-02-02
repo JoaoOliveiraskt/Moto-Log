@@ -49,11 +49,7 @@ export default function MonthlyIncomeChart({ MonthlyRevenue }: Props) {
     MonthlyRevenue.push({ month: "", totalIncome: 0 });
   }
 
-  const atualDate = new Intl.DateTimeFormat("pt-BR", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  }).format(new Date());
+  console.log(MonthlyRevenue);
 
   return (
     <Card className="xl:col-span-2 relative overflow-hidden">
@@ -123,9 +119,6 @@ export default function MonthlyIncomeChart({ MonthlyRevenue }: Props) {
             <div className="flex items-center gap-2 font-medium leading-none">
               Crescimento de 0% este mês{" "}
               <TrendingUp className="h-4 w-4 text-emerald-500" />
-            </div>
-            <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              {atualDate}
             </div>
           </div>
         </div>
