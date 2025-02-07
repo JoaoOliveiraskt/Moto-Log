@@ -49,8 +49,6 @@ export default function MonthlyIncomeChart({ MonthlyRevenue }: Props) {
     MonthlyRevenue.push({ month: "", totalIncome: 0 });
   }
 
-  console.log(MonthlyRevenue);
-
   return (
     <Card className="xl:col-span-2 relative overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-[0px] bg-gradient-to-b from-white/[0.04] to-transparent" />
