@@ -19,16 +19,18 @@ export default async function DashboardLayout({
   }
 
   return (
-    <Container className="mt-12 lg:mt-14">
-      <div className="lg:flex items-center gap-x-4  hidden">
+    <>
+      <div className="lg:flex items-center gap-x-4 hidden lg:px-6 pt-14 fixed bg-background w-full border-b z-10">
         <GoBackButton className="hidden lg:flex" />
         <NavDashboard />
       </div>
-      <div className="flex flex-col w-full sm:gap-4">
-        <MobileHeader />
+      <Container className="pt-12 lg:pt-24">
+        <div className="flex flex-col w-full sm:gap-4">
+          <MobileHeader />
 
-        <div>{children}</div>
-      </div>
-    </Container>
+          <div>{children}</div>
+        </div>
+      </Container>
+    </>
   );
 }

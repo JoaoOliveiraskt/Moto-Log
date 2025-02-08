@@ -26,13 +26,13 @@ export default function NavLinks({ storeSlug }: Props) {
             className={cn(
               "text-muted-foreground h-9 flex items-center transition-colors pb-2 ",
               isActive
-                ? "border-b border-sky-600 rounded-none !text-sky-600"
-                : "hover:text-sky-600 relative after:absolute after:bg-sky-600 after:bottom-0 after:left-0 after:h-px after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300 "
+                ? "border-b border-foreground rounded-none !text-foreground"
+                : "hover:text-foreground relative after:absolute after:bg-foreground after:bottom-0 after:left-0 after:h-px after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300 "
             )}
             href={link.href}
           >
-            <link.icon size={20} />
-            <span className="ml-2 text-sm font-semibold">{link.name}</span>
+            <link.icon size={16} />
+            <span className="ml-2 text-sm">{link.name}</span>
           </Link>
         );
       })}

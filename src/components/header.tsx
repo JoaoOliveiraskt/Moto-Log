@@ -14,8 +14,8 @@ import {
 
 export default function Header() {
   return (
-    <div className="hidden lg:flex fixed top-0 z-40 h-14 bg-background w-screen xl:pr-4">
-      <div className="h-full w-full max-w-[1230px] relative mx-auto px-4 2xl:px-0 flex items-center justify-between">
+    <div className="hidden lg:flex fixed top-0 z-40 h-14 w-screen xl:pr-4 bg-background">
+      <div className="h-full w-full  relative mx-auto px-4  lg:px-6 flex items-center justify-between">
         <div className="hover:scale-105 active:scale-95 h-fit">
           <MotoLogLogo />
         </div>
