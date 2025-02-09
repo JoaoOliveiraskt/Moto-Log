@@ -21,7 +21,7 @@ interface StoreProps {
 
 async function getStores() {
   try {
-    const stores = await GetStores({ limit: 20 });
+    const stores = await GetStores({ limit: 30 });
 
     if (!stores || stores.length === 0) {
       throw new Error("No stores found");
@@ -41,7 +41,7 @@ export default async function TopStores() {
 
   return (
     <div className="space-y-8 pb-6">
-      <div className="flex justify-between items-center px-4 2xl:px-0">
+      <div className="flex justify-between items-center px-4 lg:px-0 lg:pl-4">
         <TypographyH4>Lojas em destaque</TypographyH4>
 
         <SeeAllButton href={"/community"} />
