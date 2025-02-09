@@ -1,15 +1,18 @@
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 interface Props {
   className?: string;
   link?: string;
   disabled?: boolean;
+  logoClassName?: string;
 }
 
 export default function MotoLogLogo({
   className,
   link = "/",
   disabled = false,
+  logoClassName,
 }: Props) {
   return disabled ? (
     <div className={`p-0 ${className}`}>
@@ -19,7 +22,7 @@ export default function MotoLogLogo({
         viewBox="0 0 128 60"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-full w-[43px]"
+        className={cn("h-full w-[43px]", logoClassName)}
       >
         <title>Moto Log</title>
         <path d="M128 28H96V60H128V28Z"></path>
@@ -35,7 +38,7 @@ export default function MotoLogLogo({
         viewBox="0 0 128 60"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-full w-[43px]"
+        className={cn("h-full w-[43px]", logoClassName)}
       >
         <title>Moto Log</title>
         <path d="M128 28H96V60H128V28Z"></path>
