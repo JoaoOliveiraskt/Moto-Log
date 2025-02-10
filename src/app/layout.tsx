@@ -10,6 +10,7 @@ import BottomNav from "@/components/bottom-nav";
 import NextTopLoader from "nextjs-toploader";
 import MobileHeader from "@/components/mobile-header";
 import QueryProvider from "@/providers/query-provider";
+import BgGradient from "@/components/bg-gradient";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
                 defaultTheme="system"
                 enableSystem
               >
+                <BgGradient />
                 <NextTopLoader />
                 <MobileHeader />
                 <Header />
