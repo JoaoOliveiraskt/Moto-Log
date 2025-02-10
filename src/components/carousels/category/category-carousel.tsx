@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Suspense } from "react";
 import { CategoryCarouselSkeleton } from "./skeleton/category-carousel-skeleton";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 interface CategoryCarouselProps {
   children: React.ReactNode;
 }
@@ -21,6 +21,8 @@ export default function CategoryCarousel({ children }: CategoryCarouselProps) {
   const [scrollNext, setScrollNext] = useState<boolean>(true);
   const [scrollingUp, setScrollingUp] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,15 +49,24 @@ export default function CategoryCarousel({ children }: CategoryCarouselProps) {
     });
   }, [api]);
 
+  useEffect(() => {
+    return scrollY.onChange((latest) => {
+      setIsScrolled(latest > 0);
+    });
+  }, [scrollY]);
+
   return (
     <motion.div
       initial={{ y: 0 }}
       animate={{ y: scrollingUp ? 0 : -100 }}
       transition={{ duration: 0.5 }}
-      className="fixed max-w-screen-lg lg:max-w-[1230px] top-12 pt-3 pb-2 lg:top-14 left-0 right-0 z-20 bg-background mx-auto flex justify-center"
+      className={cn(
+        "fixed top-12 pt-1 pb-2 lg:top-14 left-0 right-0 z-20  mx-auto flex justify-center",
+        isScrolled ? "bg-background" : ""
+      )}
     >
       <Carousel
-        className="w-full"
+        className="w-full max-w-screen-lg lg:max-w-[1230px]"
         opts={{
           dragFree: true,
           duration: 14,
