@@ -20,7 +20,7 @@ export default async function DashboardLayout({
 
   return (
     <>
-      <div className="lg:flex items-center gap-x-4 hidden lg:px-6 pt-14 fixed bg-background w-full border-b z-10">
+      <div className="lg:flex items-center gap-x-4 hidden lg:px-6 pt-14 fixed w-full border-b z-10">
         <GoBackButton className="hidden lg:flex" />
         <NavDashboard />
       </div>
