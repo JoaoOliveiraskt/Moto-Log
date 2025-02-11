@@ -17,9 +17,11 @@ export async function getUserStore() {
         id: true,
         nome: true,
         descricao: true,
-        imagemUrl: true,
+        profileImageUrl: true,
+        bannerImageUrl: true,
         createdAt: true,
         slug: true,
+        email: true,
         _count: {
           select: {
             pedidos: true,

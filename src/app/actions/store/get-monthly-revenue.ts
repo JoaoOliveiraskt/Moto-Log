@@ -3,11 +3,11 @@ import { db } from "@/lib/prisma";
 
 function formatMonthName(date: string) {
   return (
-    new Intl.DateTimeFormat("pt-BR", { month: "long" })
+    new Intl.DateTimeFormat("pt-BR", { month: "long", timeZone: "UTC" })
       .format(new Date(date))
       .charAt(0)
       .toUpperCase() +
-    new Intl.DateTimeFormat("pt-BR", { month: "long" })
+    new Intl.DateTimeFormat("pt-BR", { month: "long", timeZone: "UTC" })
       .format(new Date(date))
       .slice(1)
   );

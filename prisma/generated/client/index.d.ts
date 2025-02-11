@@ -2023,6 +2023,8 @@ export namespace Prisma {
     id: string | null
     nome: string | null
     slug: string | null
+    profileImageUrl: string | null
+    bannerImageUrl: string | null
     imagemUrl: string | null
     descricao: string | null
     imagemFile: string | null
@@ -2035,6 +2037,8 @@ export namespace Prisma {
     id: string | null
     nome: string | null
     slug: string | null
+    profileImageUrl: string | null
+    bannerImageUrl: string | null
     imagemUrl: string | null
     descricao: string | null
     imagemFile: string | null
@@ -2047,6 +2051,8 @@ export namespace Prisma {
     id: number
     nome: number
     slug: number
+    profileImageUrl: number
+    bannerImageUrl: number
     imagemUrl: number
     descricao: number
     imagemFile: number
@@ -2061,6 +2067,8 @@ export namespace Prisma {
     id?: true
     nome?: true
     slug?: true
+    profileImageUrl?: true
+    bannerImageUrl?: true
     imagemUrl?: true
     descricao?: true
     imagemFile?: true
@@ -2073,6 +2081,8 @@ export namespace Prisma {
     id?: true
     nome?: true
     slug?: true
+    profileImageUrl?: true
+    bannerImageUrl?: true
     imagemUrl?: true
     descricao?: true
     imagemFile?: true
@@ -2085,6 +2095,8 @@ export namespace Prisma {
     id?: true
     nome?: true
     slug?: true
+    profileImageUrl?: true
+    bannerImageUrl?: true
     imagemUrl?: true
     descricao?: true
     imagemFile?: true
@@ -2170,6 +2182,8 @@ export namespace Prisma {
     id: string
     nome: string
     slug: string | null
+    profileImageUrl: string | null
+    bannerImageUrl: string | null
     imagemUrl: string | null
     descricao: string | null
     imagemFile: string | null
@@ -2199,6 +2213,8 @@ export namespace Prisma {
     id?: boolean
     nome?: boolean
     slug?: boolean
+    profileImageUrl?: boolean
+    bannerImageUrl?: boolean
     imagemUrl?: boolean
     descricao?: boolean
     imagemFile?: boolean
@@ -2216,6 +2232,8 @@ export namespace Prisma {
     id?: boolean
     nome?: boolean
     slug?: boolean
+    profileImageUrl?: boolean
+    bannerImageUrl?: boolean
     imagemUrl?: boolean
     descricao?: boolean
     imagemFile?: boolean
@@ -2229,6 +2247,8 @@ export namespace Prisma {
     id?: boolean
     nome?: boolean
     slug?: boolean
+    profileImageUrl?: boolean
+    bannerImageUrl?: boolean
     imagemUrl?: boolean
     descricao?: boolean
     imagemFile?: boolean
@@ -2260,6 +2280,8 @@ export namespace Prisma {
       id: string
       nome: string
       slug: string | null
+      profileImageUrl: string | null
+      bannerImageUrl: string | null
       imagemUrl: string | null
       descricao: string | null
       imagemFile: string | null
@@ -2695,6 +2717,8 @@ export namespace Prisma {
     readonly id: FieldRef<"Loja", 'String'>
     readonly nome: FieldRef<"Loja", 'String'>
     readonly slug: FieldRef<"Loja", 'String'>
+    readonly profileImageUrl: FieldRef<"Loja", 'String'>
+    readonly bannerImageUrl: FieldRef<"Loja", 'String'>
     readonly imagemUrl: FieldRef<"Loja", 'String'>
     readonly descricao: FieldRef<"Loja", 'String'>
     readonly imagemFile: FieldRef<"Loja", 'String'>
@@ -13305,6 +13329,8 @@ export namespace Prisma {
     id: 'id',
     nome: 'nome',
     slug: 'slug',
+    profileImageUrl: 'profileImageUrl',
+    bannerImageUrl: 'bannerImageUrl',
     imagemUrl: 'imagemUrl',
     descricao: 'descricao',
     imagemFile: 'imagemFile',
@@ -13593,6 +13619,8 @@ export namespace Prisma {
     id?: StringFilter<"Loja"> | string
     nome?: StringFilter<"Loja"> | string
     slug?: StringNullableFilter<"Loja"> | string | null
+    profileImageUrl?: StringNullableFilter<"Loja"> | string | null
+    bannerImageUrl?: StringNullableFilter<"Loja"> | string | null
     imagemUrl?: StringNullableFilter<"Loja"> | string | null
     descricao?: StringNullableFilter<"Loja"> | string | null
     imagemFile?: StringNullableFilter<"Loja"> | string | null
@@ -13609,6 +13637,8 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     slug?: SortOrderInput | SortOrder
+    profileImageUrl?: SortOrderInput | SortOrder
+    bannerImageUrl?: SortOrderInput | SortOrder
     imagemUrl?: SortOrderInput | SortOrder
     descricao?: SortOrderInput | SortOrder
     imagemFile?: SortOrderInput | SortOrder
@@ -13628,6 +13658,8 @@ export namespace Prisma {
     OR?: LojaWhereInput[]
     NOT?: LojaWhereInput | LojaWhereInput[]
     nome?: StringFilter<"Loja"> | string
+    profileImageUrl?: StringNullableFilter<"Loja"> | string | null
+    bannerImageUrl?: StringNullableFilter<"Loja"> | string | null
     imagemUrl?: StringNullableFilter<"Loja"> | string | null
     descricao?: StringNullableFilter<"Loja"> | string | null
     imagemFile?: StringNullableFilter<"Loja"> | string | null
@@ -13644,6 +13676,8 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     slug?: SortOrderInput | SortOrder
+    profileImageUrl?: SortOrderInput | SortOrder
+    bannerImageUrl?: SortOrderInput | SortOrder
     imagemUrl?: SortOrderInput | SortOrder
     descricao?: SortOrderInput | SortOrder
     imagemFile?: SortOrderInput | SortOrder
@@ -13662,6 +13696,8 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Loja"> | string
     nome?: StringWithAggregatesFilter<"Loja"> | string
     slug?: StringNullableWithAggregatesFilter<"Loja"> | string | null
+    profileImageUrl?: StringNullableWithAggregatesFilter<"Loja"> | string | null
+    bannerImageUrl?: StringNullableWithAggregatesFilter<"Loja"> | string | null
     imagemUrl?: StringNullableWithAggregatesFilter<"Loja"> | string | null
     descricao?: StringNullableWithAggregatesFilter<"Loja"> | string | null
     imagemFile?: StringNullableWithAggregatesFilter<"Loja"> | string | null
@@ -14353,6 +14389,8 @@ export namespace Prisma {
     id?: string
     nome: string
     slug?: string | null
+    profileImageUrl?: string | null
+    bannerImageUrl?: string | null
     imagemUrl?: string | null
     descricao?: string | null
     imagemFile?: string | null
@@ -14368,6 +14406,8 @@ export namespace Prisma {
     id?: string
     nome: string
     slug?: string | null
+    profileImageUrl?: string | null
+    bannerImageUrl?: string | null
     imagemUrl?: string | null
     descricao?: string | null
     imagemFile?: string | null
@@ -14383,6 +14423,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14398,6 +14440,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14413,6 +14457,8 @@ export namespace Prisma {
     id?: string
     nome: string
     slug?: string | null
+    profileImageUrl?: string | null
+    bannerImageUrl?: string | null
     imagemUrl?: string | null
     descricao?: string | null
     imagemFile?: string | null
@@ -14425,6 +14471,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14436,6 +14484,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15226,6 +15276,8 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     slug?: SortOrder
+    profileImageUrl?: SortOrder
+    bannerImageUrl?: SortOrder
     imagemUrl?: SortOrder
     descricao?: SortOrder
     imagemFile?: SortOrder
@@ -15238,6 +15290,8 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     slug?: SortOrder
+    profileImageUrl?: SortOrder
+    bannerImageUrl?: SortOrder
     imagemUrl?: SortOrder
     descricao?: SortOrder
     imagemFile?: SortOrder
@@ -15250,6 +15304,8 @@ export namespace Prisma {
     id?: SortOrder
     nome?: SortOrder
     slug?: SortOrder
+    profileImageUrl?: SortOrder
+    bannerImageUrl?: SortOrder
     imagemUrl?: SortOrder
     descricao?: SortOrder
     imagemFile?: SortOrder
@@ -17333,6 +17389,8 @@ export namespace Prisma {
     id?: string
     nome: string
     slug?: string | null
+    profileImageUrl?: string | null
+    bannerImageUrl?: string | null
     imagemUrl?: string | null
     descricao?: string | null
     imagemFile?: string | null
@@ -17347,6 +17405,8 @@ export namespace Prisma {
     id?: string
     nome: string
     slug?: string | null
+    profileImageUrl?: string | null
+    bannerImageUrl?: string | null
     imagemUrl?: string | null
     descricao?: string | null
     imagemFile?: string | null
@@ -17416,6 +17476,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17430,6 +17492,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17568,6 +17632,8 @@ export namespace Prisma {
     id?: string
     nome: string
     slug?: string | null
+    profileImageUrl?: string | null
+    bannerImageUrl?: string | null
     imagemUrl?: string | null
     descricao?: string | null
     imagemFile?: string | null
@@ -17582,6 +17648,8 @@ export namespace Prisma {
     id?: string
     nome: string
     slug?: string | null
+    profileImageUrl?: string | null
+    bannerImageUrl?: string | null
     imagemUrl?: string | null
     descricao?: string | null
     imagemFile?: string | null
@@ -17685,6 +17753,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17699,6 +17769,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18049,6 +18121,8 @@ export namespace Prisma {
     id?: string
     nome: string
     slug?: string | null
+    profileImageUrl?: string | null
+    bannerImageUrl?: string | null
     imagemUrl?: string | null
     descricao?: string | null
     imagemFile?: string | null
@@ -18063,6 +18137,8 @@ export namespace Prisma {
     id?: string
     nome: string
     slug?: string | null
+    profileImageUrl?: string | null
+    bannerImageUrl?: string | null
     imagemUrl?: string | null
     descricao?: string | null
     imagemFile?: string | null
@@ -18148,6 +18224,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18162,6 +18240,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18375,6 +18455,8 @@ export namespace Prisma {
     id?: string
     nome: string
     slug?: string | null
+    profileImageUrl?: string | null
+    bannerImageUrl?: string | null
     imagemUrl?: string | null
     descricao?: string | null
     imagemFile?: string | null
@@ -18389,6 +18471,8 @@ export namespace Prisma {
     id?: string
     nome: string
     slug?: string | null
+    profileImageUrl?: string | null
+    bannerImageUrl?: string | null
     imagemUrl?: string | null
     descricao?: string | null
     imagemFile?: string | null
@@ -18573,6 +18657,8 @@ export namespace Prisma {
     id?: StringFilter<"Loja"> | string
     nome?: StringFilter<"Loja"> | string
     slug?: StringNullableFilter<"Loja"> | string | null
+    profileImageUrl?: StringNullableFilter<"Loja"> | string | null
+    bannerImageUrl?: StringNullableFilter<"Loja"> | string | null
     imagemUrl?: StringNullableFilter<"Loja"> | string | null
     descricao?: StringNullableFilter<"Loja"> | string | null
     imagemFile?: StringNullableFilter<"Loja"> | string | null
@@ -18994,6 +19080,8 @@ export namespace Prisma {
     id?: string
     nome: string
     slug?: string | null
+    profileImageUrl?: string | null
+    bannerImageUrl?: string | null
     imagemUrl?: string | null
     descricao?: string | null
     imagemFile?: string | null
@@ -19050,6 +19138,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19064,6 +19154,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19078,6 +19170,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    profileImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bannerImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imagemUrl?: NullableStringFieldUpdateOperationsInput | string | null
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     imagemFile?: NullableStringFieldUpdateOperationsInput | string | null

@@ -7,7 +7,7 @@ export default async function fetchCategories() {
       },
       next: {
         tags: ["categories"],
-        revalidate: 24 * 3600,
+        revalidate: 60,
       },
     });
 

@@ -34,7 +34,7 @@ const CartButton = ({ children, className, model, iconSize }: Props) => {
         />
 
         {totalItems > 0 && (
-          <span className="absolute flex items-center justify-center top-0 -right-0.5 h-2 w-2 rounded-full bg-destructive text-destructive-foreground text-xs"></span>
+          <span className="absolute flex items-center justify-center top-0 right-1.5 lg:right-1 lg:top-0 h-2 w-2 rounded-full bg-destructive text-destructive-foreground text-xs"></span>
         )}
       </Link>
       {children && <p className="text-xs font-medium">{children}</p>}

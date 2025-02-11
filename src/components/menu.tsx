@@ -90,7 +90,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
         )}
         <DropdownMenuContent
           align="end"
-          className="dark:bg-[hsl(0_0%_15%/90%)] backdrop-blur-[24px] rounded-2xl w-64 min-w-64 shadow-xl"
+          className="rounded-2xl w-64 min-w-64 shadow-xl"
         >
           {isAuthenticated && (
             <div>

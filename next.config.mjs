@@ -3,6 +3,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
+        hostname: "res.cloudinary.com",
+      },
+      {
         hostname: "i.imgur.com",
       },
       {

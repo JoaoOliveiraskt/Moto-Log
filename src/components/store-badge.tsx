@@ -12,7 +12,7 @@ interface StoreBadgeProps {
   store: {
     id: string;
     nome: string;
-    imagemUrl: string;
+    profileImageUrl: string;
     descricao: string;
   };
   className?: string;
@@ -30,7 +30,8 @@ function useGetStoreFollowers(storeId: string) {
       const data = await response.json();
       return data.followers;
     },
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60,
+    
   });
 }
 
@@ -68,9 +69,9 @@ export default function StoreBadge({
               imageClassName
             )}
           >
-            {store.imagemUrl ? (
+            {store.profileImageUrl ? (
               <Image
-                src={store.imagemUrl}
+                src={store.profileImageUrl}
                 width={500}
                 height={500}
                 alt="logo da loja"
@@ -118,10 +119,10 @@ export default function StoreBadge({
               </h5>
             </div>
             <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
-              {store.imagemUrl ? (
+              {store.profileImageUrl ? (
                 <div>
                   <Image
-                    src={store.imagemUrl}
+                    src={store.profileImageUrl}
                     width={500}
                     height={500}
                     alt="logo da loja"

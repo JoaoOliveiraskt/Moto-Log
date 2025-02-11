@@ -52,7 +52,7 @@ export default async function Store({ params }: Props) {
   }
 
   const products = store?.Produtos || [];
-  const storeImageUrl = store.imagemUrl;
+  const storeImageUrl = store.profileImageUrl;
   const totalProducts = products.length;
 
   return (
@@ -61,7 +61,8 @@ export default async function Store({ params }: Props) {
         <StoreInfo
           name={store.nome}
           description={store.descricao}
-          imageUrl={storeImageUrl}
+          profileImageUrl={storeImageUrl}
+          bannerImageUrl={store.bannerImageUrl}
           totalProducts={totalProducts}
           storeId={store.id}
           followers={store._count.followers}

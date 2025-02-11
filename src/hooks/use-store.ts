@@ -5,7 +5,7 @@ interface Store {
   nome: string;
   descricao: string;
   slug: string;
-  imagemUrl: string;
+  profileImageUrl: string;
 }
 
 const fetchStoreData = async (): Promise<Store | null> => {

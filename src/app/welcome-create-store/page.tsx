@@ -29,7 +29,7 @@ export default function WelcomeCreateStore() {
     <main className="max-w-full h-screen flex flex-col items-center justify-center">
       <div className="relative  w-full space-y-3 flex flex-col items-center justify-center -top-8">
         <motion.div {...h1Animation} className="max-w-xs lg:max-w-2xl">
-          <TypographyH1 className="text-center p-2 tracking-tighter dark:bg-gradient-to-br dark:from-neutral-50 dark:via-neutral-300 dark:to-neutral-500  dark:text-transparent dark:bg-clip-text ">
+          <TypographyH1 className="text-center">
             Seja bem-vindo ao Moto Log
           </TypographyH1>
         </motion.div>

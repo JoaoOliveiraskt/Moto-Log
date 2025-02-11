@@ -48,7 +48,7 @@ export default function ProductTable({ products }: Props) {
 
   return (
     <>
-      <Card className="bg-background border">
+      <Card className="bg-card/30 border">
         <Table className="mt-2 sm:mt-4">
           <TableHeader>
             <TableRow className="border-none hover:bg-background dark:hover:bg-background">
@@ -160,7 +160,7 @@ export default function ProductTable({ products }: Props) {
                             }}
                           >
                             <Icon.trash />
-                            <span>Excluir</span>
+                            <span>Remover</span>
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>

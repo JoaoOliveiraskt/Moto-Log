@@ -31,7 +31,7 @@ interface ProductInfoProps {
         select: {
           id: true;
           nome: true;
-          imagemUrl: true;
+          profileImageUrl: true;
           deliveryFee: true;
           deliveryTime: true;
         };

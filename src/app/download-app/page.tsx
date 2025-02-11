@@ -10,6 +10,8 @@ import TypographyH1 from "@/components/typography/typography-h1";
 import TypographyP from "@/components/typography/typography-p";
 import Balancer from "react-wrap-balancer";
 import MotoLogLogo from "@/components/icons/moto-log-logo";
+import { Badge } from "@/components/ui/badge";
+import { Smartphone } from "lucide-react";
 
 const DownloadAppPage = () => {
   const [isInstallPromptVisible, setInstallPromptVisible] = useState(false);
@@ -43,69 +45,89 @@ const DownloadAppPage = () => {
 
   return (
     <div>
-      <div className="fixed inset-0 lg:hidden -z-20">
-        <div className="absolute inset-0 bg-gradient-to-t from-purple-600/10 via-background via-50% to-background" />
-        <div className="absolute inset-0 bg-gradient-to-t from-cyan-600/10 via-background via-50% to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/40 to-rose-600/20 opacity-0" />
-      </div>
       <Container className="pt-12 lg:pt-28 lg:max-w-[1104px]">
         <div className="grid justify-center">
           <div className="flex flex-col items-center space-y-12">
-            <div className="flex flex-col items-center space-y-4 lg:space-y-12">
-              <div className="flex items-center justify-center w-16 h-16 bg-card rounded-2xl border">
+            <div className="flex flex-col items-center space-y-4 lg:space-y-8">
+              <div className="flex items-center justify-center w-16 h-16 bg-card rounded-2xl dark:border">
                 <MotoLogLogo disabled />
               </div>
 
-              <div className="text-center space-y-2">
-                <TypographyH1 className="tracking-tighter text-4xl lg:text-6xl">
-                  <Balancer>Bem vindo ao Moto Log Mobile</Balancer>
+              <div className="text-center space-y-2 flex flex-col items-center max-w-3xl">
+                <Badge
+                  className="flex items-center gap-x-2 w-fit text-sm text-foreground py-0.5 px-2 bg-card hover:bg-card"
+                  variant={"secondary"}
+                >
+                  <MotoLogLogo logoClassName="w-6" disabled />
+                  <span>Apresentando: Moto Log Mobile</span>
+                </Badge>
+                <TypographyH1>
+                  <Balancer>
+                    Leve o seu negócio para o próximo nível com o Moto Log
+                  </Balancer>
                 </TypographyH1>
-                <TypographyP className="text-muted-foreground lg:hidden">
-                  <Balancer>instale o web app Moto Log</Balancer>
+                <TypographyP className="text-muted-foreground ">
+                  <Balancer>
+                    Baixe o app agora e descubra como é fácil comprar e vender
+                    online. Apoie os lojistas e tenha acesso a ofertas
+                    exclusivas!
+                  </Balancer>
                 </TypographyP>
               </div>
             </div>
 
-            <div className="hidden lg:flex gap-x-6">
-              <div className="w-fit h-fit p-1 bg-white rounded-2xl overflow-hidden">
-                <Canvas
-                  text={pwaUrl}
-                  options={{
-                    errorCorrectionLevel: "M",
-                    width: 80,
-                    color: {
-                      dark: "#000000",
-                      light: "#FFFFFF",
-                    },
-                  }}
-                />
-              </div>
+            <div className="hidden lg:flex items-center justify-start gap-x-8">
+              <Button
+                size="lg"
+                onClick={handleInstallClick}
+                className="px-6 h-11 text-base font-medium"
+              >
+                Baixar para desktop
+              </Button>
 
-              <div className="space-y-2">
-                <TypographyH4 className="max-w-60">
-                  Escaneie o QR Code para instalar o aplicativo
-                </TypographyH4>
-                <TypographyP className="text-muted-foreground text-sm">
-                  Moto Log será instalado como
-                  <br />
-                  um aplicativo web progressivo (PWA)
-                </TypographyP>
+              <div className="flex items-center gap-x-8">
+                <span className="text-base text-muted-foreground">Ou</span>
+
+                <div className="flex items-center gap-x-6">
+                  <div className="flex items-center gap-x-3">
+                    <Smartphone className="text-muted-foreground w-6 h-6" />
+                    <p className="text-sm font-medium">
+                      Escaneie o QR Code para
+                      <br />
+                      baixar no celular
+                    </p>
+                  </div>
+
+                  <div className="bg-white rounded-xl overflow-hidden">
+                    <Canvas
+                      text={pwaUrl}
+                      options={{
+                        errorCorrectionLevel: "M",
+                        width: 90,
+                        color: {
+                          dark: "#000000",
+                          light: "#FFFFFF",
+                        },
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="w-fit h-fit mt-8 lg:-mt-12 overflow-hidden -z-10">
+          <div className="w-fit h-fit mt-8 lg:-mt-12 overflow-hidden -z-10 mx-auto">
             <Image
               src="/ml-mockup/mockup-3-so.png"
               width={1000}
               height={1000}
               priority={true}
               alt="Moto Log App Mockup"
-              className="rounded-3xl scale-150 w-fit h-fit md:scale-100"
+              className="rounded-3xl scale-125 w-fit h-fit md:scale-100"
             />
           </div>
 
-          <div className="text-center lg:hidden mt-12 ">
+          <div className="text-center lg:hidden mt-4">
             <Button
               size={"xl"}
               onClick={handleInstallClick}

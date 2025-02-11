@@ -6,7 +6,6 @@ import CartItem from "@/components/cart-item";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import formatCurrency from "@/app/helpers/format-currency";
-import { Separator } from "@/components/ui/separator";
 import { CreateOrder } from "../actions/order/order";
 import { OrderStatus } from "prisma/generated/client";
 import { useSession } from "next-auth/react";
@@ -31,11 +30,10 @@ import Container from "@/components/container";
 import GoBackButton from "@/components/go-back-button";
 import Link from "next/link";
 import TypographyH3 from "@/components/typography/typography-h3";
-import TypographyH2 from "@/components/typography/typography-h2";
 import LoginDialog from "@/components/login-dialog";
 import TypographyH1 from "@/components/typography/typography-h1";
-import TypographyP from "@/components/typography/typography-p";
 import HeaderLoginBtn from "@/components/header-login-btn";
+import TypographyH4 from "@/components/typography/typography-h4";
 
 const Cart = () => {
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
@@ -89,7 +87,7 @@ const Cart = () => {
         // @ts-ignore
         title: (
           <div className="flex items-center gap-x-2">
-            <Icon.confirmed color="green"  />
+            <Icon.confirmed color="green" />
             <span>Pedido finalizado com sucesso!</span>
           </div>
         ),
@@ -121,21 +119,19 @@ const Cart = () => {
         <GoBackButton containerClassName="hidden lg:flex" />
 
         {products.length > 0 ? (
-          <div className="grid lg:grid-cols-3 md:gap-x-8 h-full w-full">
-            <div className="col-span-2 pr-2">
-              <TypographyH3>({productQuantity}) itens</TypographyH3>
-              <ScrollArea className="h-[31rem] lg:h-[42rem] mt-4">
+          <div className="grid lg:grid-cols-5 md:gap-x-4 h-full w-full">
+            <div className="col-span-2 lg:col-span-3">
+              <ScrollArea className="h-[31rem] lg:h-[42rem]">
                 {products.map((product) => (
-                  <div key={product.id} className="mt-4">
+                  <div key={product.id} className="mb-4 lg:mr-6">
                     <CartItem cartProduct={product} />
-                    <Separator className="mt-4 lg:mt-6" />
                   </div>
                 ))}
               </ScrollArea>
             </div>
 
-            <div className="w-full col-span-2 lg:col-span-1 pt-2 lg:pt-0">
-              <TypographyH3>Resumo do Pedido</TypographyH3>
+            <div className="w-full col-span-2 lg:col-span-2 pt-2 lg:pt-0">
+              <TypographyH4>Resumo do Pedido</TypographyH4>
               <Card className="border-none mt-4 h-max w-full">
                 <CardContent className="p-6 border-none space-y-5 w-full">
                   <div className="flex justify-between items-center text-sm">

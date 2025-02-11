@@ -7,7 +7,8 @@ import StoreAbout from "./store-about";
 interface Props {
   name: string | null;
   description: string | null;
-  imageUrl: string | null;
+  profileImageUrl: string | null;
+  bannerImageUrl: string | null;
   totalProducts: number;
   storeId: string;
   followers: number;
@@ -17,23 +18,23 @@ interface Props {
 export default function StoreInfo({ ...store }: Props) {
   return (
     <div className="space-y-4">
-      <div className="w-full h-28 lg:h-52">
-        {store.imageUrl ? (
+      {store.bannerImageUrl ? (
+        <div className="w-full h-28 lg:h-52">
           <Image
-            src={store.imageUrl}
+            src={store.bannerImageUrl}
             alt="Store Banner"
             width={600}
             height={600}
             className="w-full h-full object-cover rounded-lg lg:rounded-2xl"
           />
-        ) : null}
-      </div>
+        </div>
+      ) : null}
 
       <div className="w-full flex items-center gap-x-4 fit sm:h-40">
         <div>
-          {store.imageUrl ? (
+          {store.profileImageUrl ? (
             <Image
-              src={store.imageUrl}
+              src={store.profileImageUrl}
               alt="Store Banner"
               width={600}
               height={600}

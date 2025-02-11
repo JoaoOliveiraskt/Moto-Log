@@ -11,7 +11,8 @@ export async function GET(req: Request) {
       select: {
         id: true,
         nome: true,
-        imagemUrl: true,
+        profileImageUrl: true,
+        bannerImageUrl: true,
       },
       ...(take && { take }),
       orderBy: {

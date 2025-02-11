@@ -11,7 +11,6 @@ import {
   SelectGroup,
 } from "@/components/ui/select";
 import { useFormContext, Controller } from "react-hook-form";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface CategoriaProps {
   id: string;

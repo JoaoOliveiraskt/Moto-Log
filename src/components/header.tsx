@@ -1,3 +1,5 @@
+"use client";
+
 import Menu from "./menu";
 import SearchInput from "./search-input";
 import CartButton from "./cart-button";
@@ -12,10 +14,34 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+import { useState, useEffect } from "react";
+import { motion, useScroll } from "framer-motion";
+import { cn } from "@/lib/utils";
+
 export default function Header() {
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    return scrollY.onChange((latest) => {
+      setIsScrolled(latest > 0);
+    });
+  }, [scrollY]);
   return (
-    <div className="hidden lg:flex fixed top-0 z-40 h-14 bg-background w-screen xl:pr-4">
-      <div className="h-full w-full max-w-[1230px] relative mx-auto px-4 2xl:px-0 flex items-center justify-between">
+    <motion.header
+      className={cn(
+        "hidden lg:flex fixed top-0 z-40 h-14 w-screen xl:pr-4",
+        isScrolled ? "bg-background" : ""
+      )}
+      animate={{
+        backdropFilter: isScrolled ? "blur(200px)" : "blur(0px)",
+      }}
+      transition={{
+        duration: 0.2,
+        ease: "easeInOut",
+      }}
+    >
+      <div className="h-full w-full relative mx-auto px-4  lg:px-6 flex items-center justify-between">
         <div className="hover:scale-105 active:scale-95 h-fit">
           <MotoLogLogo />
         </div>
@@ -64,6 +90,6 @@ export default function Header() {
           </TooltipProvider>
         </div>
       </div>
-    </div>
+    </motion.header>
   );
 }

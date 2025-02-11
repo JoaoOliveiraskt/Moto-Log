@@ -56,9 +56,9 @@ export default async function FollowingPage() {
                     className="text-foreground font-medium hover:text-sky-600 hover:transition-colors flex flex-col items-center"
                   >
                     <div className="w-14 h-14 rounded-full overflow-hidden">
-                      {follow.store?.imagemUrl ? (
+                      {follow.store?.profileImageUrl ? (
                         <Image
-                          src={follow.store.imagemUrl}
+                          src={follow.store.profileImageUrl}
                           width={500}
                           height={500}
                           alt="logo da loja"

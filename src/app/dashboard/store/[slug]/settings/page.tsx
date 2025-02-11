@@ -8,7 +8,7 @@ interface Loja {
   id: string;
   nome: string;
   descricao: string | null;
-  imagemUrl: string | null;
+  profileImageUrl: string | null;
 }
 
 export default async function EditStore() {
