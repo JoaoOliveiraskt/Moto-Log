@@ -123,6 +123,8 @@ exports.Prisma.LojaScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   slug: 'slug',
+  profileImageUrl: 'profileImageUrl',
+  bannerImageUrl: 'bannerImageUrl',
   imagemUrl: 'imagemUrl',
   descricao: 'descricao',
   imagemFile: 'imagemFile',

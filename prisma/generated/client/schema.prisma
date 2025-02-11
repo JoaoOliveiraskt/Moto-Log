@@ -9,15 +9,17 @@ datasource db {
 }
 
 model Loja {
-  id         String   @id @default(uuid())
-  nome       String
-  slug       String?  @unique
-  imagemUrl  String?
-  descricao  String?
-  imagemFile String?
-  userId     String
-  email      String?  @db.VarChar
-  createdAt  DateTime @default(now()) @db.Timestamp(6)
+  id              String   @id @default(uuid())
+  nome            String
+  slug            String?  @unique
+  profileImageUrl String?
+  bannerImageUrl  String?
+  imagemUrl       String?
+  descricao       String?
+  imagemFile      String?
+  userId          String
+  email           String?  @db.VarChar
+  createdAt       DateTime @default(now()) @db.Timestamp(6)
 
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   pedidos   Order[]
