@@ -1,6 +1,4 @@
 import { getUserStore } from "@/app/actions/store/get-user-store";
-import TypographyH1 from "@/components/typography/typography-h1";
-import TypographyP from "@/components/typography/typography-p";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,9 +17,9 @@ export default async function UserStoreSelector() {
     <DropdownMenu>
       <DropdownMenuTrigger className="data-[state=open]:text-foreground flex items-center gap-2 p-2 rounded-md w-52">
         <div className="rounded-md overflow-hidden">
-          {store?.imagemUrl ? (
+          {store?.profileImageUrl ? (
             <Image
-              src={store.imagemUrl}
+              src={store.profileImageUrl}
               alt="logo da loja"
               width={100}
               height={100}
@@ -42,9 +40,9 @@ export default async function UserStoreSelector() {
         <DropdownMenuItem>
           <div className="flex items-center gap-2">
             <div className="rounded-md overflow-hidden">
-              {store?.imagemUrl ? (
+              {store?.profileImageUrl ? (
                 <Image
-                  src={store.imagemUrl}
+                  src={store.profileImageUrl}
                   alt="logo da loja"
                   width={100}
                   height={100}

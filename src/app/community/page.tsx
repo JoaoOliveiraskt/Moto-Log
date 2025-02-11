@@ -9,22 +9,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import GoBackButton from "@/components/go-back-button";
+import GetStores from "../actions/store/get-stores";
+
+async function getStoresData() {
+  try {
+    const stores = await GetStores({ limit: 30 });
+
+    if (!stores || stores.length === 0) {
+      throw new Error("No stores found");
+    }
+    return stores;
+  } catch (error) {
+    return [];
+  }
+}
 
 export default async function Community() {
-  let stores: Loja[] = [];
-
-  try {
-    const response = await db.loja.findMany({
-      orderBy: {
-        createdAt: "asc",
-      },
-    });
-
-    stores = response;
-  } catch (error) {
-    throw new Error("Error fetching stores");
-  }
-
+  const stores = await getStoresData();
   return (
     <Container className="min-h-screen sm:mt-14 lg:pt-2 relative">
       <GoBackButton containerClassName="hidden lg:flex" />
@@ -45,7 +46,7 @@ export default async function Community() {
           <Link key={store.id} href={`/store/${store.id}`} className="">
             <Card className="bg-accent h-60 sm:h-80 w-full rounded-3xl overflow-hidden p-2">
               <Image
-                src={store.imagemUrl || ""}
+                src={store.profileImageUrl || ""}
                 alt={store.nome}
                 width={500}
                 height={500}

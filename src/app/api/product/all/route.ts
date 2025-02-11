@@ -17,7 +17,7 @@ export async function GET(req: Request) {
           select: {
             nome: true,
             id: true,
-            imagemUrl: true,
+            profileImageUrl: true,
             descricao: true,
           },
         },

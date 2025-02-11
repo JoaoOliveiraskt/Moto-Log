@@ -22,7 +22,7 @@ export async function GetUserFollows() {
             id: true,
             nome: true,
             descricao: true,
-            imagemUrl: true,
+            profileImageUrl: true,
             Produtos: {
               select: {
                 id: true,
@@ -31,14 +31,17 @@ export async function GetUserFollows() {
                 porcentagemDesconto: true,
                 totalVendido: true,
                 imagemUrl: true,
-                // Incluindo a categoria
-                categoria: true,
-                // Incluindo a loja
+                categoria: {
+                  select: {
+                    id: true,
+                    nome: true,
+                  },
+                },
                 loja: {
                   select: {
                     id: true,
                     nome: true,
-                    imagemUrl: true,
+                    profileImageUrl: true,
                     descricao: true,
                   },
                 },
@@ -63,7 +66,7 @@ export async function GetUserFollows() {
             id: follow.store.id,
             nome: follow.store.nome,
             descricao: follow.store.descricao,
-            imagemUrl: follow.store.imagemUrl,
+            profileImageUrl: follow.store.profileImageUrl,
           }
         : null,
       produtos:

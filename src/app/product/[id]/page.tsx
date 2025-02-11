@@ -36,7 +36,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
         select: {
           id: true,
           nome: true,
-          imagemUrl: true,
+          profileImageUrl: true,
           descricao: true,
         },
       },
@@ -65,7 +65,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
     },
     include: {
       loja: {
-        select: { id: true, nome: true, imagemUrl: true, descricao: true },
+        select: { id: true, nome: true, profileImageUrl: true, descricao: true },
       },
       categoria: true,
     },

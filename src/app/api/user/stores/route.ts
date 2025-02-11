@@ -18,7 +18,7 @@ export async function GET(request: Request) {
         id: true,
         nome: true,
         slug: true,
-        imagemUrl: true,
+        profileImageUrl: true,
       },
     });
     return NextResponse.json(stores, { status: 200 });

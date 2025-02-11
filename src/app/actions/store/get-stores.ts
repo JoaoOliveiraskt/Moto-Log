@@ -18,7 +18,7 @@ export default async function GetStores({ limit }: Props) {
         "Content-Type": "application/json",
       },
       next: {
-        revalidate: 3600,
+        revalidate: 60,
       },
     });
 

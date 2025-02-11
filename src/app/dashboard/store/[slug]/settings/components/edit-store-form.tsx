@@ -12,7 +12,7 @@ interface EditStoreFormProps {
     id: string;
     nome: string;
     descricao: string | null;
-    imagemUrl: string | null;
+    profileImageUrl: string | null;
   };
 }
 
@@ -50,7 +50,7 @@ export default function EditStoreForm({ store }: EditStoreFormProps) {
               width={200}
               height={100}
               className="w-full max-w-72 h-44 object-cover rounded-md"
-              src={store?.imagemUrl || "/placeholder-image.png"}
+              src={store?.profileImageUrl || "/placeholder-image.png"}
             />
             <div className="flex flex-col gap-y-4">
               <TypographyP className="text-muted-foreground text-sm max-w-xs">
@@ -88,7 +88,7 @@ export default function EditStoreForm({ store }: EditStoreFormProps) {
                 width={200}
                 height={100}
                 className="w-36 h-full object-cover rounded-full"
-                src={store?.imagemUrl || "/placeholder-image.png"}
+                src={store?.profileImageUrl || ""}
               />
             </div>
             <div className="flex flex-col gap-y-4">

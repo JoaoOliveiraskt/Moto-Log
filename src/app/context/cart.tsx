@@ -36,7 +36,7 @@ interface ICartContext {
           select: {
             id: true;
             nome: true;
-            imagemUrl: true;
+            profileImageUrl: true;
             deliveryFee: true;
             deliveryTime: true;
           };
@@ -128,7 +128,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           select: {
             id: true;
             nome: true;
-            imagemUrl: true;
+            profileImageUrl: true;
             deliveryFee: true;
             deliveryTime: true;
           };

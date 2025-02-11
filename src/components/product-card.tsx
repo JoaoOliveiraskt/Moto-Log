@@ -81,7 +81,7 @@ const ProductCard = ({
             store={{
               id: loja.id,
               nome: loja.nome,
-              imagemUrl: loja.imagemUrl || "",
+              profileImageUrl: loja.profileImageUrl || "",
               descricao: loja.descricao || "",
             }}
           />

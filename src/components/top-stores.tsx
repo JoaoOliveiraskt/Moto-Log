@@ -15,11 +15,11 @@ import TypographyH4 from "./typography/typography-h4";
 interface StoreProps {
   id: string;
   nome: string;
-  imagemUrl: string;
+  profileImageUrl: string;
   productsCount: number;
 }
 
-async function getStores() {
+async function getStoresData() {
   try {
     const stores = await GetStores({ limit: 30 });
 
@@ -33,7 +33,7 @@ async function getStores() {
 }
 
 export default async function TopStores() {
-  const stores = await getStores();
+  const stores = await getStoresData();
 
   if (!stores || stores.length === 0) {
     return null;
@@ -63,9 +63,9 @@ export default async function TopStores() {
                   className="text-foreground font-medium hover:text-sky-600 hover:transition-colors flex flex-col gap-y-2"
                 >
                   <div className="w-[7.3rem] h-[7.3rem] rounded-[2rem] overflow-hidden drop-shadow-sm">
-                    {store.imagemUrl ? (
+                    {store.profileImageUrl ? (
                       <Image
-                        src={store.imagemUrl}
+                        src={store.profileImageUrl}
                         width={500}
                         height={500}
                         alt="logo da loja"

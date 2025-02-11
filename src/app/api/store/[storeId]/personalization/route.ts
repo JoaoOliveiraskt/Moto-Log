@@ -23,7 +23,7 @@ export async function GET(
         id: true,
         nome: true,
         descricao: true,
-        imagemUrl: true,
+        profileImageUrl: true,
         userId: true,
       },
     });
