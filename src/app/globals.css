@@ -7,7 +7,7 @@
     --background: 240 11% 96%;
     --foreground: 240 3% 12%;
     --muted: 0 0% 62%;
-    --muted-foreground: 240 2% 54%;
+    --muted-foreground: 240 2% 40%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
@@ -31,7 +31,7 @@
   }
 
   .dark {
-    --background: 0 0% 4%;
+    --background: 0 0% 5%;
     --foreground: 60 6% 94%;
     --muted: 60 1% 35%;
     --muted-foreground: 0 0% 64%;

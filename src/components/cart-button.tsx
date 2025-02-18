@@ -20,25 +20,23 @@ const CartButton = ({ children, className, model, iconSize }: Props) => {
   const pathName = usePathname();
 
   return (
-    <div
-      className={cn(
-        "relative flex flex-col items-center justify-between",
-        className,
-        pathName === "/cart" ? "text-foreground" : "text-muted-foreground"
-      )}
+    <Link
+      href="/cart"
+      className={cn("flex items-center justify-center relative", className)}
     >
-      <Link href="/cart" className={`relative`}>
-        <Icon.cart
-          size={iconSize}
-          fill={`${pathName === "/cart" ? "currentColor" : "transparent"}`}
-        />
-
-        {totalItems > 0 && (
-          <span className="absolute flex items-center justify-center top-0 right-1.5 lg:right-1 lg:top-0 h-2 w-2 rounded-full bg-destructive text-destructive-foreground text-xs"></span>
+      <Icon.cart
+        size={iconSize}
+        className={cn(
+          pathName === "/cart"
+            ? "text-foreground"
+            : "text-muted lg:text-foreground"
         )}
-      </Link>
-      {children && <p className="text-xs font-medium">{children}</p>}
-    </div>
+      />
+
+      {totalItems > 0 && (
+        <span className="absolute flex items-center justify-center -bottom-2 right-2 lg:right-1 lg:top-0 h-1.5 w-1.5 lg:h-2 lg:w-2 rounded-full bg-destructive text-destructive-foreground text-xs"></span>
+      )}
+    </Link>
   );
 };
 

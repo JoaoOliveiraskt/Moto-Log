@@ -81,9 +81,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
               </Avatar>
             ) : (
               <div>
-                <MenuBtn className={className} iconSize={iconSize}>
-                  {children}
-                </MenuBtn>
+                <MenuBtn className={className} iconSize={iconSize} />
               </div>
             )}
           </DropdownMenuTrigger>

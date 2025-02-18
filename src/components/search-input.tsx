@@ -1,5 +1,5 @@
 import { Input } from "./ui/input";
-import icon from "@/components/icons/icon-component";
+import Icon from "@/components/icons/icon-component";
 
 interface Props {
   className?: string;
@@ -13,16 +13,16 @@ export default function SearchInput({ className }: Props) {
           {" "}
           Buscar{" "}
         </label>
-        <icon.search
+        <Icon.search
           size={18}
-          className="absolute start-4 top-1/2 -translate-y-1/2"
+          className="absolute start-3 lg:start-4 top-1/2 -translate-y-1/2 text-muted lg:text-muted-foreground"
         />
 
         <Input
           type="text"
           name="search"
-          className={`h-10 w-full px-12 rounded-full bg-accent  border-none ${className}`}
-          placeholder="Buscar produtos..."
+          className={`h-10 w-full px-10 lg:px-12 rounded-full bg-accent border-none placeholder:text-muted lg:placeholder:text-muted-foreground  ${className}`}
+          placeholder="Pesquisar..."
         />
       </div>
     </form>

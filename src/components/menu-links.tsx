@@ -1,3 +1,4 @@
+import FeedIcon from "./icons/feed-icon";
 import Icon from "./icons/icon-component";
 import { JSX } from "react";
 
@@ -7,7 +8,6 @@ export const getMenuItems = (
   storeSlug: string
 ) => {
   const menuLinks = [
-    { href: "/", label: "Início", icon: <Icon.home size={20} /> },
     ...(isLojista
       ? [
           {

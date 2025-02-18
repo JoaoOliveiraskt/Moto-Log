@@ -1,47 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import Icon from "../icons/icon-component";
 import { Button } from "./button";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import FeedIcon from "../icons/feed-icon";
 
 interface Props {
-  children?: React.ReactNode;
   className?: string;
-  size?: number;
-  onClick?: () => void;
 }
 
-export default function HomeButton({
-  children,
-  className,
-  size,
-  onClick,
-}: Props) {
+export default function HomeButton({ className }: Props) {
   const pathName = usePathname();
 
   return (
-    <Link
-      href="/"
-      prefetch={false}
-      className="flex flex-col items-center gap-1"
-    >
+    <Link href="/" prefetch={false}>
       <Button
         variant="icon"
         size="icon"
         className={cn(
-          "flex flex-col items-center gap-1 cursor-pointer outline-none border-none",
-          pathName === "/" ? "text-foreground" : "text-muted-foreground",
+          "flex items-center justify-center cursor-pointer mt-1",
           className
         )}
       >
-        {pathName === "/" ? (
-          <Icon.homeSolid size={size} />
-        ) : (
-          <Icon.home size={size} />
-        )}
-        <p className="text-xs">{children}</p>
+        <FeedIcon isActive={pathName === "/"} />
       </Button>
     </Link>
   );
