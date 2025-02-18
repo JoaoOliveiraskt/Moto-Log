@@ -57,7 +57,7 @@ export default function Header() {
             <Tooltip>
               <TooltipTrigger>
                 <Link href="/community">
-                  <Icon.globe size={18} className="rotate-45" />
+                  <Icon.globe size={20} className="rotate-45" />
                 </Link>
               </TooltipTrigger>
               <TooltipContent side="bottom">Comunidade</TooltipContent>
@@ -68,7 +68,7 @@ export default function Header() {
             <Tooltip>
               <TooltipTrigger>
                 <CartButton
-                  iconSize={18}
+                  iconSize={20}
                   model="icon"
                   className="!text-foreground"
                 />
@@ -81,7 +81,7 @@ export default function Header() {
             <Tooltip>
               <TooltipTrigger>
                 <Menu
-                  iconSize={18}
+                  iconSize={20}
                   className="bg-background shadow-sm !text-foreground"
                 />
               </TooltipTrigger>
