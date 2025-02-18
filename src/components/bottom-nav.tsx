@@ -1,30 +1,19 @@
 import CartButton from "./cart-button";
 import MobileMenu from "./mobile-menu";
+import SearchButton from "./search-button";
 import HomeButton from "./ui/button-home";
-import OrderButton from "./ui/button-order";
-import { cn } from "@/lib/utils";
 
 export default function BottomNav() {
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-background border-t z-50 h-fit py-3">
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-background z-50 h-fit py-3">
       <nav className="flex items-center justify-around">
-        <HomeButton className={cn("h-fit w-fit")} size={22}>
-          Início
-        </HomeButton>
+        <HomeButton />
 
-        <OrderButton className={cn("h-fit w-fit")} size={22}>
-          Pedidos
-        </OrderButton>
+        <SearchButton />
 
-        <CartButton
-          iconSize={22}
-          model="icon"
-          className="h-fit w-fit gap-1 p-0"
-        >
-          Carrinho
-        </CartButton>
+        <CartButton iconSize={27} model="icon" className="text-muted" />
 
-        <MobileMenu className="gap-1 text-muted-foreground" />
+        <MobileMenu iconSize={24} />
       </nav>
     </div>
   );

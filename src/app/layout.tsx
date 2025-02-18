@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <QueryProvider>
       <html lang="en">
-        <body className={`overflow-y-scroll ${inter.className}`}>
+        <body className={`overflow-y-scroll ${inter.className} antialiased`}>
           <AuthProvider>
             <CartProvider>
               <ThemeProvider
@@ -35,7 +35,7 @@ export default function RootLayout({
                 defaultTheme="system"
                 enableSystem
               >
-                <BgGradient />
+                {/* <BgGradient /> */}
                 <NextTopLoader />
                 <MobileHeader />
                 <Header />

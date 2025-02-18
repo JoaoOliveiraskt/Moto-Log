@@ -14,7 +14,7 @@ interface Props {
 
 export default function ProductsCarousel({ children, title, link }: Props) {
   return (
-    <div className="space-y-6 bg-transparent">
+    <div className="space-y-6">
       <div className="flex justify-between items-center px-4 lg:px-0 lg:pl-4">
         <TypographyH4>{title}</TypographyH4>
 

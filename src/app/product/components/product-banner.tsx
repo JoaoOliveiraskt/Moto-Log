@@ -1,6 +1,4 @@
 import Image from "next/image";
-import React from "react";
-
 import {
   Carousel,
   CarouselContent,
@@ -30,7 +28,7 @@ const ProductBanner: React.FC<ProductBannerProps> = ({
         {images.map((image, index) => (
           <CarouselItem
             key={index}
-            className="h-64 lg:h-80 basis-[90%] sm:basis-auto overflow-hidden p-0 rounded-2xl border bg-card"
+            className="h-64 lg:h-80 basis-[90%] sm:basis-auto overflow-hidden p-0 rounded-2xl bg-card"
           >
             <Image
               src={produto.imagemUrl}

@@ -33,6 +33,7 @@ const routeTranslations: Record<string, string> = {
   "/welcome-create-store": " ",
   "/favorites": "Favoritos",
   "/following": "Seguindo",
+  "/search": "Pesquisar",
 };
 
 const GoBackButton: React.FC<Props> = ({
@@ -56,7 +57,8 @@ const GoBackButton: React.FC<Props> = ({
         <div className={cn("flex items-center", containerClassName)}>
           <Button
             onClick={handleGoBack}
-            className={`flex items-center justify-start lg:justify-center rounded-none lg:rounded-full h-12 w-12 lg:w-fit lg:h-fit lg:p-1 lg:border lg:bg-card ${className}`}
+            className={`flex items-center justify-start lg:justify-center hover:bg-transparent lg:hover:bg-accent
+            rounded-full h-12 w-12 lg:w-fit lg:h-fit lg:p-1 lg:border lg:bg-card ${className}`}
             size="icon"
             variant="ghost"
             title="Voltar"
@@ -66,7 +68,10 @@ const GoBackButton: React.FC<Props> = ({
 
           {routeName && (
             <TypographyH4
-              className={cn("text-foreground ml-4", routeNameClassName)}
+              className={cn(
+                "text-foreground font-extrabold",
+                routeNameClassName
+              )}
             >
               {routeName}
             </TypographyH4>

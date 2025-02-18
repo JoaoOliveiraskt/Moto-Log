@@ -22,14 +22,13 @@ import TypographyLarge from "./typography/typography-large";
 import LoginButton from "./login-button";
 import { getMenuItems } from "./menu-links";
 import { useStore } from "@/hooks/use-store";
-import { Separator } from "./ui/separator";
 
 interface Props {
   className?: string;
   iconSize?: number;
 }
 
-const MobileMenu = ({ className, iconSize = 22 }: Props) => {
+const MobileMenu = ({ className, iconSize = 24 }: Props) => {
   const { isAuthenticated, user } = useAuth();
   const [openDialog, setOpenDialog] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,18 +73,15 @@ const MobileMenu = ({ className, iconSize = 22 }: Props) => {
       <Drawer open={isMenuOpen} onOpenChange={setIsMenuOpen}>
         <DrawerTrigger asChild>
           {isAuthenticated ? (
-            <div className="flex flex-col items-center justify-center gap-1">
+            <div>
               <Avatar className="cursor-pointer w-6 h-6">
                 <AvatarImage src={user?.image ?? ""} alt={user?.name ?? ""} />
               </Avatar>
-              <p className="text-xs font-medium text-muted-foreground">Você</p>
             </div>
           ) : (
-            <button className="flex items-center">
-              <MenuBtn className={className} iconSize={iconSize}>
-                Menu
-              </MenuBtn>
-            </button>
+            <div>
+              <MenuBtn className={className} iconSize={iconSize} />
+            </div>
           )}
         </DrawerTrigger>
 

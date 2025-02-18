@@ -24,6 +24,7 @@ import { TbPhotoMinus } from "react-icons/tb";
 import { FiBarChart2 } from "react-icons/fi";
 import { TbTruckDelivery } from "react-icons/tb";
 import { CgShoppingBag } from "react-icons/cg";
+import { FaRegUser } from "react-icons/fa6";
 import {
   Menu,
   ShoppingCart,
@@ -89,7 +90,7 @@ const Icon = {
   location: SlLocationPin,
   google: FcGoogle,
   loading: VscLoading,
-  user: FaRegUserCircle,
+  user: FaRegUser,
   users: Users,
   globe: Dribbble,
   edit: FiEdit2,

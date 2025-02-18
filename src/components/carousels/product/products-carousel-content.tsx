@@ -46,7 +46,7 @@ export default async function ProductsCarouselContent({
   }
 
   return (
-    <CarouselContent className="flex gap-2 lg:gap-0 bg-transparent mx-4 2xl:mx-0">
+    <CarouselContent className="flex gap-2 lg:gap-0 mx-4 2xl:mx-0">
       {products.map((product: ProductCardProps) => (
         <CarouselItem
           key={product.id}
