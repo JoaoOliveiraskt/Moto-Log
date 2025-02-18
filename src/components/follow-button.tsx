@@ -22,10 +22,11 @@ import {
   AlertDialogTitle,
 } from "./ui/alert-dialog";
 
-interface Props {
+interface Props extends React.ComponentProps<typeof Button> {
   storeId: string;
   storeName: string | null;
   className?: string;
+  followingClassName?: string;
 }
 
 interface FollowResponse {
@@ -79,7 +80,12 @@ const unfollowStore = async ({
   return response.json();
 };
 
-export default function FollowButton({ storeId, storeName, className }: Props) {
+export default function FollowButton({
+  storeId,
+  storeName,
+  className,
+  followingClassName,
+}: Props) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { isAuthenticated, user } = useAuth();
@@ -156,16 +162,9 @@ export default function FollowButton({ storeId, storeName, className }: Props) {
           <Button
             size="rounded"
             variant="secondary"
-            className={cn("px-8 w-32", className)}
+            className={cn("px-8 w-32", followingClassName)}
           >
-            {loading ? (
-              <Loader size={20} />
-            ) : (
-              <div className="flex items-center gap-x-2">
-                <p>Seguindo</p>
-                <Icon.chevronDown size={16} />
-              </div>
-            )}
+            {loading ? <Loader size={20} /> : <p>Seguindo</p>}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
