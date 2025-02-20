@@ -69,7 +69,7 @@ const GoBackButton: React.FC<Props> = ({
           {routeName && (
             <TypographyH4
               className={cn(
-                "text-foreground font-extrabold",
+                "text-foreground font-extrabold lg:ml-4",
                 routeNameClassName
               )}
             >
