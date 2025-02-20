@@ -27,24 +27,20 @@ async function getStoresData() {
 export default async function Community() {
   const stores = await getStoresData();
   return (
-    <Container className="min-h-screen sm:mt-14 lg:pt-2 relative">
+    <Container className="min-h-screen pt-14 lg:pt-16 relative">
       <GoBackButton containerClassName="hidden lg:flex" />
-      <div className="flex flex-col md:h-80 h-64 sm:items-center">
-        <TypographyH1
-          className={cn(
-            "text-start sm:text-center mt-24 tracking-tight sm:max-w-2xl"
-          )}
-        >
+      <div className="flex flex-col items-center mt-8">
+        <TypographyH1 className={cn("text-center tracking-tight sm:max-w-2xl")}>
           Comunidade MotoLog
         </TypographyH1>
-        <TypographyP className="text-start sm:text-center text-medium md:text-lg sm:max-w-xl text-muted-foreground tracking-tight [&:not(:first-child)]:mt-2">
+        <TypographyP className="text-center text-medium md:text-lg sm:max-w-xl text-muted-foreground tracking-tight [&:not(:first-child)]:mt-2">
           Encontre vendedores em destaque no nosso marketplace.
         </TypographyP>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-8 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-8 mt-8 lg:mt-20">
         {stores.map((store: Loja) => (
           <Link key={store.id} href={`/store/${store.id}`} className="">
-            <Card className="bg-accent h-60 sm:h-80 w-full rounded-3xl overflow-hidden p-2">
+            <Card className="bg-accent h-64 w-full rounded-3xl overflow-hidden p-2">
               <Image
                 src={store.profileImageUrl || ""}
                 alt={store.nome}
