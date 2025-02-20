@@ -102,9 +102,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
               iconSize={20}
               className="flex gap-4 items-center px-4 w-full justify-start py-5 mb-1 hover:bg-accent-foreground"
               size="menu"
-            >
-              <span className=" tracking-wide">Tema</span>
-            </ModeToggle>
+            />
             <LoginButton iconSize={20} className="hover:bg-accent-foreground">
               <span className="tracking-wide">
                 {isAuthenticated ? "Sair" : "Entrar"}

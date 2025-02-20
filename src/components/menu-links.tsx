@@ -1,4 +1,3 @@
-import FeedIcon from "./icons/feed-icon";
 import Icon from "./icons/icon-component";
 import { JSX } from "react";
 
@@ -19,7 +18,7 @@ export const getMenuItems = (
       : []),
     isAuthenticated && {
       href: "/my-orders",
-      label: "Pedidos",
+      label: "Compras",
       icon: <Icon.order size={20} />,
     },
     isAuthenticated && {

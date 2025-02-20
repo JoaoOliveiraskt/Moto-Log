@@ -104,7 +104,7 @@ const MobileMenu = ({ className, iconSize = 24 }: Props) => {
                   href="/community"
                   className="flex gap-4 w-full items-center py-7 "
                 >
-                  <Icon.globe size={iconSize} />
+                  <Icon.globe size={iconSize}/>
                   <TypographyLarge className="font-medium">
                     Comunidade
                   </TypographyLarge>
@@ -116,9 +116,7 @@ const MobileMenu = ({ className, iconSize = 24 }: Props) => {
                 iconSize={iconSize}
                 className="flex gap-4 w-full justify-start items-center py-7 border-border/70 hover:bg-background"
                 size="menu"
-              >
-                <TypographyLarge className="font-medium">Tema</TypographyLarge>
-              </ModeToggle>
+              />
 
               <LoginButton
                 iconSize={iconSize}
