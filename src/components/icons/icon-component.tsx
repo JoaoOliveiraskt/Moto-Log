@@ -48,12 +48,14 @@ import {
   Info,
   Download,
   ArrowDownToLine,
+  Smartphone,
 } from "lucide-react";
 
 const Icon = {
   home: GoHome,
   homeSolid: GoHomeFill,
   cart: ShoppingCart,
+  smartphone: Smartphone,
   bag: CgShoppingBag,
   trash: IoTrashOutline,
   order: BiShoppingBag,

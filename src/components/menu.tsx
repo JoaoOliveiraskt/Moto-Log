@@ -23,11 +23,10 @@ import { getMenuItems } from "./menu-links";
 
 interface Props {
   className?: string;
-  children?: React.ReactNode;
   iconSize?: number;
 }
 
-const Menu = ({ className, children, iconSize }: Props) => {
+const Menu = ({ className, iconSize }: Props) => {
   const { isAuthenticated, user, loading } = useAuth();
   const [openDialog, setOpenDialog] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,7 +50,7 @@ const Menu = ({ className, children, iconSize }: Props) => {
             onClick={handleMenuOpen.close}
             variant="ghost"
             size="menu"
-            className="flex gap-4 items-center px-4 w-full justify-start py-5 mb-1 hover:bg-accent-foreground"
+            className="flex gap-4 items-center w-full justify-start py-5 mb-1 hover:bg-accent-foreground"
           >
             {item.icon}
             <span className="tracking-wide">{item.label}</span>
@@ -99,15 +98,11 @@ const Menu = ({ className, children, iconSize }: Props) => {
           <div className="p-2">
             {menuItems}
             <ModeToggle
-              iconSize={20}
-              className="flex gap-4 items-center px-4 w-full justify-start py-5 mb-1 hover:bg-accent-foreground"
+              iconSize={16}
+              className="flex gap-4 items-center px-3 w-full justify-start py-5 mb-1 hover:bg-accent-foreground"
               size="menu"
             />
-            <LoginButton iconSize={20} className="hover:bg-accent-foreground">
-              <span className="tracking-wide">
-                {isAuthenticated ? "Sair" : "Entrar"}
-              </span>
-            </LoginButton>
+            <LoginButton iconSize={16} className="hover:bg-accent-foreground" />
           </div>
           <Separator className="bg-accent-foreground" />
           <div className="py-2 px-6">

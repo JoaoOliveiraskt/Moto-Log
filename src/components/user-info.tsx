@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export default function UserInfo({ className }: { className?: string }) {
   const { data } = useSession();
 
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   return (
     <>
@@ -19,7 +19,7 @@ export default function UserInfo({ className }: { className?: string }) {
             className
           )}
         >
-          <Avatar className="w-12 h-12 lg:w-11 lg:h-11">
+          <Avatar className="w-12 h-12 lg:w-9 lg:h-9">
             <AvatarImage
               src={data?.user?.image as string | undefined}
               alt={data?.user?.name as string | undefined}
