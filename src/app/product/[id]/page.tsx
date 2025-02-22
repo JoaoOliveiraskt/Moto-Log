@@ -17,6 +17,13 @@ import TypographyH4 from "@/components/typography/typography-h4";
 import GoBackButton from "@/components/go-back-button";
 import FavoriteProductButton from "@/components/favorite-product-button";
 import FollowButton from "@/components/follow-button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import TypographyP from "@/components/typography/typography-p";
 
 interface ProductPageProps {
   params: {
@@ -65,7 +72,12 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
     },
     include: {
       loja: {
-        select: { id: true, nome: true, profileImageUrl: true, descricao: true },
+        select: {
+          id: true,
+          nome: true,
+          profileImageUrl: true,
+          descricao: true,
+        },
       },
       categoria: true,
     },
@@ -128,13 +140,29 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
                     />
                   </div>
                 </div>
-
-                <p className="text-muted-foreground line-clamp-4 !mt-4">
-                  {produto.descricao}
-                </p>
               </div>
-              {/* @ts-ignore */}
-              <ProductInfo product={convertedProduct} />
+            </div>
+
+            <div className="w-full mt-6">
+              <Accordion
+                type="single"
+                collapsible
+                className="w-full bg-accent rounded-xl "
+              >
+                <AccordionItem value="item-1" className="px-4">
+                  <AccordionTrigger>
+                    <div className="space-y-2">
+                      <ProductInfo product={convertedProduct} />
+                      <p>Descrição...</p>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <TypographyP className="text-sm">
+                      {produto.descricao}
+                    </TypographyP>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
 
             <Comments />

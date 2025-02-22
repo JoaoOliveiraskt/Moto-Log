@@ -79,6 +79,7 @@ export default function StoreInfo({ ...store }: Props) {
             storeId={store.storeId}
             storeName={store.name}
             className="font-semibold px-8 hidden sm:inline-flex"
+            followingClassName="hidden sm:inline-flex"
           />
         </div>
       </div>
@@ -86,6 +87,7 @@ export default function StoreInfo({ ...store }: Props) {
         storeId={store.storeId}
         storeName={store.name}
         className="font-semibold w-full mt-4 sm:hidden"
+        followingClassName="sm:hidden w-full"
       />
     </div>
   );

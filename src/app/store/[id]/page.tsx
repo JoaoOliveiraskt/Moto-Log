@@ -6,6 +6,7 @@ import { db } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import TypographyH3 from "@/components/typography/typography-h3";
 import StoreInfo from "../components/store-info";
+import TypographyH4 from "@/components/typography/typography-h4";
 
 async function getData(id: string, bestSellers?: boolean) {
   const store = await db.loja.findUnique({
@@ -97,7 +98,7 @@ export default async function Store({ params }: Props) {
             ) : (
               <>
                 <div className="grid gap-4 mt-8">
-                  <TypographyH3>Todos os Produtos</TypographyH3>
+                  <TypographyH4>Todos os Produtos</TypographyH4>
 
                   <ProductList>
                     {products.map((product) => (
