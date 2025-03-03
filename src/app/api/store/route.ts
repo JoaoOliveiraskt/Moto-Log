@@ -17,6 +17,7 @@ export async function GET(req: Request) {
         _count: {
           select: {
             followers: true,
+            Produtos: true,
           },
         },
       },
