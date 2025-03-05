@@ -1,8 +1,8 @@
-import { getProducts } from "@/app/actions/product/get-store-products";
+import { getStoreProducts } from "@/app/actions/product/get-store-products";
 import { ProductsTabs } from "./product-tabs";
 
 export default async function ProductsData({ storeId }: { storeId: string }) {
-  const products = await getProducts(storeId);
+  const products = await getStoreProducts(storeId);
 
   const activeProducts = products.filter(
     (product) => product.status === "ATIVO"

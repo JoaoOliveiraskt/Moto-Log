@@ -1,6 +1,6 @@
 import { db } from "@/lib/prisma";
 
-export async function getProducts(storeId: string) {
+export async function getStoreProducts(storeId: string) {
   try {
     const products = await db.produto.findMany({
       where: {
