@@ -21,11 +21,10 @@ export default function EditStoreForm({ store }: EditStoreFormProps) {
     <form className="grid gap-8" onSubmit={(e) => e.preventDefault()}>
       <div className="grid gap-8">
         <div className="grid gap-4">
-          <Label htmlFor="name">Nome {store?.nome}</Label>
+          <Label htmlFor="name">Nome</Label>
           <Input
             id="name"
             type="text"
-            className=""
             defaultValue={store?.nome}
             placeholder={store?.nome}
           />

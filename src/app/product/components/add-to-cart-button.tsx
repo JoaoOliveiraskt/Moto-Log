@@ -99,8 +99,8 @@ export default function AddToCartButton({ product }: ProductInfoProps) {
         <div className="flex items-center gap-2 w-full">
           <Button
             size={"rounded"}
-            variant={"secondary"}
             onClick={handleAddToCart}
+            variant={"secondary"}
           >
             Adicionar ao carrinho
           </Button>

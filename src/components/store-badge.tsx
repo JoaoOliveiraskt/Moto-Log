@@ -7,6 +7,7 @@ import TypographyP from "./typography/typography-p";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
+import FormatFollowers from "@/app/helpers/format-followers";
 
 interface StoreBadgeProps {
   store: {
@@ -16,6 +17,7 @@ interface StoreBadgeProps {
     descricao: string;
   };
   className?: string;
+  nameClassName?: string;
   imageClassName?: string;
   showImage?: boolean;
   totalFollowers?: number;
@@ -31,12 +33,12 @@ function useGetStoreFollowers(storeId: string) {
       return data.followers;
     },
     staleTime: 1000 * 60,
-    
   });
 }
 
 export default function StoreBadge({
   store,
+  nameClassName,
   imageClassName,
   className,
   showImage = true,
@@ -46,10 +48,6 @@ export default function StoreBadge({
 
   if (!store || !store.id) {
     console.error("Loja não está definida ou não possui um ID:", store);
-    return null;
-  }
-
-  if (showImage === false) {
     return null;
   }
 
@@ -63,40 +61,37 @@ export default function StoreBadge({
             className
           )}
         >
-          <div
-            className={cn(
-              "w-6 h-6 rounded-full overflow-hidden flex-shrink-0",
-              imageClassName
-            )}
-          >
-            {store.profileImageUrl ? (
-              <Image
-                src={store.profileImageUrl}
-                width={500}
-                height={500}
-                alt="logo da loja"
-                className="object-cover w-full h-full"
-              />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
-            )}
-          </div>
+          {showImage && (
+            <div
+              className={cn(
+                "w-6 h-6 rounded-full overflow-hidden flex-shrink-0",
+                imageClassName
+              )}
+            >
+              {store.profileImageUrl ? (
+                <Image
+                  src={store.profileImageUrl}
+                  width={500}
+                  height={500}
+                  alt="logo da loja"
+                  className="object-cover w-full h-full"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500"></div>
+              )}
+            </div>
+          )}
 
-          <div>
-            <p className="text-sm whitespace-nowrap line-clamp-1 max-w-40">
+          <div className="flex items-center gap-x-2 lg:flex-col lg:items-start">
+            <p
+              className={cn(
+                "text-sm whitespace-nowrap line-clamp-1 max-w-44",
+                nameClassName
+              )}
+            >
               {store.nome.split(" ").slice(0, 3).join(" ")}
             </p>
-            {showFollowers && (
-              <p className="text-muted-foreground text-xs">
-                {followers > 999
-                  ? `${(followers / 1000)
-                      .toFixed(1)
-                      .replace(".", ",")} mil seguidores`
-                  : `${followers} ${
-                      followers <= 1 ? "seguidor" : "seguidores"
-                    }`}
-              </p>
-            )}
+            {showFollowers && <FormatFollowers followers={followers} className="text-muted-foreground" />}
           </div>
         </Link>
       </HoverCardTrigger>

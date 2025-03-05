@@ -29,26 +29,18 @@ import { updateProductSales } from "@/app/actions/product/update-product-sales";
 import Container from "@/components/container";
 import GoBackButton from "@/components/go-back-button";
 import Link from "next/link";
-import TypographyH3 from "@/components/typography/typography-h3";
-import LoginDialog from "@/components/login-dialog";
-import TypographyH1 from "@/components/typography/typography-h1";
-import HeaderLoginBtn from "@/components/header-login-btn";
-import TypographyH4 from "@/components/typography/typography-h4";
+import EmptyCart from "./components/empty-cart";
 
 const Cart = () => {
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
-  const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
   const { data } = useSession();
   const { products, subTotalPrice, totalPrice, totalDiscount, clearCart } =
     useContext(CartContext);
-  const productQuantity = products.length;
   const totalProductQuantity = products.reduce(
     (acc, product) => acc + product.quantity,
     0
   );
-
-  const openLoginDialog = () => setIsLoginDialogOpen(true);
 
   const handleFinishOrderClick = async () => {
     if (!data?.user) return;
@@ -113,90 +105,61 @@ const Cart = () => {
     }
   };
 
+  if (!products || products.length === 0) {
+    return <EmptyCart user={data?.user} />;
+  }
+
   return (
     <>
-      <Container className="min-h-[calc(100vh-3.5rem)] mt-12 lg:mt-14 space-y-6 lg:pt-2">
+      <Container className="h-screen pt-10 lg:pt-14 space-y-6">
         <GoBackButton containerClassName="hidden lg:flex" />
 
-        {products.length > 0 ? (
-          <div className="grid lg:grid-cols-5 md:gap-x-4 h-full w-full">
-            <div className="col-span-2 lg:col-span-3">
-              <ScrollArea className="h-[31rem] lg:h-[42rem]">
-                {products.map((product) => (
-                  <div key={product.id} className="mb-4 lg:mr-6">
-                    <CartItem cartProduct={product} />
-                  </div>
-                ))}
-              </ScrollArea>
-            </div>
-
-            <div className="w-full col-span-2 lg:col-span-2 pt-2 lg:pt-0">
-              <TypographyH4>Resumo do Pedido</TypographyH4>
-              <Card className="border-none mt-4 h-max w-full">
-                <CardContent className="p-6 border-none space-y-5 w-full">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-muted-foreground">Subtotal</span>
-                    <span className="text-muted-foreground">
-                      {formatCurrency(Number(subTotalPrice))}
-                    </span>
-                  </div>
-
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-muted-foreground">Descontos</span>
-                    <span className="text-confirmed">
-                      - {formatCurrency(Number(totalDiscount))}
-                    </span>
-                  </div>
-
-                  <div className="flex justify-between items-center text-sm font-semibold">
-                    <span>Total</span>
-                    <span>{formatCurrency(Number(totalPrice))}</span>
-                  </div>
-                  <Button
-                    size={"rounded"}
-                    onClick={() => setIsConfirmDialogOpen(true)}
-                    className="h-12 w-full mt-4 mb-4 font-semibold flex items-center gap-2"
-                    disabled={isSubmitLoading}
-                  >
-                    <span>Fazer pedido ({totalProductQuantity})</span>
-                    {isSubmitLoading && <Loader />}
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
+        <div className="grid lg:grid-cols-5 md:gap-x-4 h-full w-full">
+          <div className="col-span-2 lg:col-span-3">
+            <ScrollArea className="h-[calc(100vh-19.3rem)] lg:h-[42rem]">
+              {products.map((product) => (
+                <div key={product.id} className="mb-4 lg:mr-6">
+                  <CartItem cartProduct={product} />
+                </div>
+              ))}
+            </ScrollArea>
           </div>
-        ) : (
-          <div className="min-h-[calc(100vh-300px)] pt-6 lg:pt-0">
-            <div>
-              <TypographyH1 className="font-semibold ">
-                Seu carrinho está vazio
-              </TypographyH1>
-              {!data?.user ? (
-                <p className="text-muted-foreground mt-2">
-                  Entre para adicionar algum item ao carrinho. Ou continue
-                  comprando.
-                </p>
-              ) : (
-                <p className="text-muted-foreground mt-2">
-                  Continue comprando e adicione produtos ao seu carrinho.
-                </p>
-              )}
 
-              <div className="flex items-center gap-4 mt-8">
-                {!data?.user && <HeaderLoginBtn onClick={openLoginDialog} />}
-                <Button asChild className="w-fit">
-                  <Link href="/">Continuar comprando</Link>
+          <div className="w-full col-span-2 px-4 lg:col-span-2 fixed bottom-4 left-0 right-0 z-10 lg:static lg:bottom-auto lg:z-auto">
+            <Card className="border-none mt-4 h-max w-full">
+              <CardContent className="p-6 border-none space-y-5 w-full">
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-muted-foreground">Subtotal</span>
+                  <span className="text-muted-foreground">
+                    {formatCurrency(Number(subTotalPrice))}
+                  </span>
+                </div>
+
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-muted-foreground">Descontos</span>
+                  <span className="text-confirmed">
+                    - {formatCurrency(Number(totalDiscount))}
+                  </span>
+                </div>
+
+                <div className="flex justify-between items-center text-sm font-semibold">
+                  <span>Total</span>
+                  <span>{formatCurrency(Number(totalPrice))}</span>
+                </div>
+                <Button
+                  size={"rounded"}
+                  onClick={() => setIsConfirmDialogOpen(true)}
+                  className="h-12 w-full mt-4 mb-4 font-semibold flex items-center gap-2"
+                  disabled={isSubmitLoading}
+                >
+                  <span>Fazer pedido ({totalProductQuantity})</span>
+                  {isSubmitLoading && <Loader />}
                 </Button>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </div>
-        )}
+        </div>
       </Container>
-
-      <LoginDialog
-        open={isLoginDialogOpen}
-        onOpenChange={setIsLoginDialogOpen}
-      />
 
       <AlertDialog
         open={isConfirmDialogOpen}

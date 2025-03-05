@@ -22,7 +22,7 @@ export default function ProductDetails({
   } = useFormContext();
 
   return (
-    <div className="grid gap-12">
+    <div className="grid gap-8">
       <div className="grid gap-4">
         <Label htmlFor="nome">Nome</Label>
         <Input
@@ -41,11 +41,11 @@ export default function ProductDetails({
           </p>
         )}
       </div>
-      <div className="grid gap-3">
+      <div className="grid gap-4">
         <Label htmlFor="descricao">Descrição</Label>
         <Textarea
           id="descricao"
-          className={cn("min-h-32", className)}
+          className={cn("min-h-32 rounded-2xl", className)}
           defaultValue={defaultValues?.descricao || ""}
           placeholder="Descrição do produto"
           {...register("descricao")}

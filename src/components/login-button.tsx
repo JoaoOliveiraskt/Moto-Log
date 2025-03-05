@@ -6,12 +6,14 @@ import Icon from "@/components/icons/icon-component";
 import LoginDialog from "./login-dialog";
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import TypographyLarge from "./typography/typography-large";
 
 interface Props {
   className?: string;
   variant?: "secondary" | "ghost";
   children?: React.ReactNode;
   iconSize?: number;
+  size?: "menu" | "sm" | "lg" | "xl";
 }
 
 const handleSigOutClick = () => {
@@ -19,10 +21,10 @@ const handleSigOutClick = () => {
 };
 
 export default function LoginButton({
+  size = "menu",
   variant = "ghost",
-  iconSize = 18,
+  iconSize = 16,
   className,
-  children,
 }: Props) {
   const { isAuthenticated } = useAuth();
 
@@ -39,21 +41,25 @@ export default function LoginButton({
             e.preventDefault();
             handleSigOutClick();
           }}
-          className={`text-destructive hover:text-destructive flex gap-4 items-center px-4 w-full justify-start py-5 ${className}`}
+          className={`text-destructive hover:text-destructive flex gap-x-4 items-center !px-3 lg:!px-4 w-full justify-start py-5 ${className}`}
         >
-          <Icon.signOut size={iconSize} />
-          {children}
+          <div className="lg:w-fit w-9 lg:h-fit h-9 flex items-center justify-center rounded-xl bg-accent lg:bg-transparent">
+            <Icon.signOut size={iconSize} />
+          </div>
+          <TypographyLarge className="font-medium">Sair</TypographyLarge>
         </Button>
       ) : (
         <div className="w-full">
           <Button
-            size={"menu"}
+            size={size}
             variant={variant}
             onClick={toggleOpen}
-            className={`flex px-4 w-full items-center gap-4 justify-start py-5 text-sky-600 hover:text-sky-500 ${className}`}
+            className={`flex !px-3 lg:!px-4 w-full items-center gap-4 justify-start py-5 text-sky-600 hover:text-sky-500 ${className}`}
           >
-            <Icon.signIn size={iconSize} />
-            {children}
+            <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-accent lg:w-fit lg:h-fit lg:bg-transparent">
+              <Icon.signIn size={iconSize} />
+            </div>
+            <TypographyLarge className="!font-medium">Entrar</TypographyLarge>
           </Button>
 
           <LoginDialog open={open} onOpenChange={setOpen} />

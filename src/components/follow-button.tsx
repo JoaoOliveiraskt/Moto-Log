@@ -11,7 +11,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import Icon from "./icons/icon-component";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import {
@@ -21,6 +20,8 @@ import {
   AlertDialogFooter,
   AlertDialogTitle,
 } from "./ui/alert-dialog";
+import { useToast } from "./ui/use-toast";
+import Icon from "@/components/icons/icon-component";
 
 interface Props extends React.ComponentProps<typeof Button> {
   storeId: string;
@@ -90,6 +91,7 @@ export default function FollowButton({
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { isAuthenticated, user } = useAuth();
   const queryClient = useQueryClient();
+  const { toast } = useToast();
 
   const { data: isFollowing, isLoading: isCheckingStatus } = useQuery({
     queryKey: ["followStatus", storeId, user?.id],
@@ -112,6 +114,35 @@ export default function FollowButton({
       queryClient.invalidateQueries({
         queryKey: ["followStatus", storeId, user?.id],
       });
+      toast({
+        duration: 3000,
+        // @ts-ignore
+        title: (
+          <div className="flex items-center gap-x-2">
+            <Icon.confirmed color="green" size={20} />
+            <div>
+              {isFollowing ? (
+                <span className="font-normal text-muted-foreground">
+                  Você deixou de seguir{" "}
+                  <strong className="font-bold text-foreground">
+                    {" "}
+                    {storeName}
+                  </strong>
+                </span>
+              ) : (
+                <span className="font-normal text-muted-foreground">
+                  Você começou a seguir{" "}
+                  <strong className="font-bold text-foreground">
+                    {" "}
+                    {storeName}
+                  </strong>
+                </span>
+              )}
+            </div>
+          </div>
+        ),
+      });
+
       setIsDialogOpen(false);
     },
   });
@@ -164,7 +195,7 @@ export default function FollowButton({
             variant="secondary"
             className={cn("px-8 w-32", followingClassName)}
           >
-            {loading ? <Loader size={20} /> : <p>Seguindo</p>}
+            <p>Seguindo</p>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>

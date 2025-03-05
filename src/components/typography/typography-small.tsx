@@ -7,7 +7,7 @@ interface Props {
 
 export default function TypographySmall({ children, className }: Props) {
   return (
-    <small className={cn("text-xs font-medium leading-none", className)}>
+    <small className={cn("text-xs leading-none font-normal", className)}>
       {children}
     </small>
   );

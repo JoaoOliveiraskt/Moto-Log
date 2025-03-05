@@ -4,6 +4,9 @@ import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import { notFound } from "next/navigation";
 import { getCategoryById } from "@/app/actions/category/get-category-by-id";
+import EmptyState from "@/components/empty-state";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface Props {
   params: {
@@ -11,7 +14,7 @@ interface Props {
   };
 }
 
-export default async function CategorieList({ params }: Props) {
+export default async function Category({ params }: Props) {
   const category = await getCategoryById(params.id);
 
   if (!category) {
@@ -19,6 +22,18 @@ export default async function CategorieList({ params }: Props) {
   }
 
   const products = category?.produtos || [];
+
+  if (!products || products.length === 0) {
+    return (
+      <EmptyState title="Ops, não encontramos produtos nessa categoria">
+        <div className="flex items-center justify-center w-full">
+          <Button size={"xl"} asChild className="w-fit">
+            <Link href="/">Ver todos os produtos</Link>
+          </Button>
+        </div>
+      </EmptyState>
+    );
+  }
 
   return (
     <>
@@ -28,24 +43,18 @@ export default async function CategorieList({ params }: Props) {
           containerClassName="hidden lg:flex"
         />
 
-        {products.length > 0 ? (
-          <ProductList>
-            {products.map((product) => (
-              <div key={product.id}>
-                <ProductCard
-                  product={{
-                    ...product,
-                    categoria: { id: category.id, nome: category.nome },
-                  }}
-                />
-              </div>
-            ))}
-          </ProductList>
-        ) : (
-          <h2 className="font-bold text-primary text-xl sm:text-3xl text-center mt-20">
-            Ops, não encontramos produtos nessa categoria
-          </h2>
-        )}
+        <ProductList>
+          {products.map((product) => (
+            <div key={product.id}>
+              <ProductCard
+                product={{
+                  ...product,
+                  categoria: { id: category.id, nome: category.nome },
+                }}
+              />
+            </div>
+          ))}
+        </ProductList>
       </Container>
     </>
   );

@@ -19,7 +19,7 @@ export default function Stock({ defaultValues }: StockProps) {
   } = useFormContext();
 
   return (
-    <div className="flex flex-col gap-12 mb-10 w-full">
+    <div className="flex flex-col gap-8 w-full">
       <div className="grid gap-y-4 w-full">
         <Label htmlFor="estoque">Estoque</Label>
         <Input

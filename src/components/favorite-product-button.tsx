@@ -128,7 +128,7 @@ export default function FavoriteProductButton({
               {loading ? (
                 <Loader size={18} />
               ) : isFavorited ? (
-                <Icon.bookmark size={size} fill="currentColor" />
+                <Icon.bookmark size={size} fill="" className="fill-destructive stroke-destructive" />
               ) : (
                 <Icon.bookmark size={size} />
               )}

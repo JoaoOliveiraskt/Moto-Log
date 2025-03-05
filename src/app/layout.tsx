@@ -10,9 +10,9 @@ import BottomNav from "@/components/bottom-nav";
 import NextTopLoader from "nextjs-toploader";
 import MobileHeader from "@/components/mobile-header";
 import QueryProvider from "@/providers/query-provider";
-import BgGradient from "@/components/bg-gradient";
 
 const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "Moto Log App",

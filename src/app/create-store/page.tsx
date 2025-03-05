@@ -9,7 +9,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createStoreSchema } from "../api/create-store-api/route";
@@ -21,19 +20,15 @@ import Container from "@/components/container";
 import Link from "next/link";
 import LoginDialog from "@/components/login-dialog";
 import { useAuth } from "@/hooks/useAuth";
-import MotoLogLogo from "@/components/icons/moto-log-logo";
 import StoreCreatedDialog from "./components/store-created-dialog";
 import { createStoreData } from "../api/create-store-api/route";
 import TextAreaWithCounter from "@/components/text-area-with-counter";
 import { ImageUpload } from "./components/image-upload";
+import EmptyState from "@/components/empty-state";
+import { cn } from "@/lib/utils";
+import { Label } from "@/components/ui/label";
 
 const animation1 = {
-  initial: { y: 10, opacity: 0 },
-  animate: { y: 0, opacity: 1 },
-  transition: { type: "spring", stiffness: 50, duration: 0.9 },
-};
-
-const animation2 = {
   initial: { y: 10, opacity: 0 },
   animate: { y: 0, opacity: 1 },
   transition: { type: "spring", stiffness: 50, duration: 0.9, delay: 0.4 },
@@ -128,19 +123,25 @@ export default function CreateStore() {
   if (!isAuthenticated) {
     return (
       <>
-        <Container className="h-screen w-full flex items-center justify-center flex-col space-y-10">
-          <h1 className="text-xl text-center">
-            Você precisa estar logado para criar uma loja!
-          </h1>
-          <div className="flex items-center gap-5">
-            <Button asChild variant={"outline"} size={"rounded"}>
-              <Link href={"/"}>Cancelar</Link>
-            </Button>
-            <Button size={"rounded"} onClick={toggleOpen}>
+        <EmptyState title="Faça login para criar sua loja">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-2 w-full">
+            <Button
+              size={"xl"}
+              onClick={toggleOpen}
+              className="w-full lg:w-fit"
+            >
               Fazer login
             </Button>
+            <Button
+              asChild
+              variant={"outline"}
+              size={"xl"}
+              className="w-full lg:w-fit"
+            >
+              <Link href={"/"}>Cancelar</Link>
+            </Button>
           </div>
-        </Container>
+        </EmptyState>
 
         <LoginDialog open={openDialog} onOpenChange={setOpenDialog} />
       </>
@@ -148,30 +149,30 @@ export default function CreateStore() {
   }
 
   return (
-    <Container className="w-full flex items-center justify-center flex-col space-y-6 pt-20">
+    <Container className="w-full space-y-6 pt-8 lg:pt-16 px-0 lg:flex lg:justify-center">
       <motion.div {...animation1}>
-        <MotoLogLogo disabled={true} />
-      </motion.div>
-
-      <motion.div {...animation2}>
-        <Card className="w-full sm:w-[30rem] bg-card/75 opacity-90 border-none shadow-lg">
-          <CardHeader className="px-6 pt-4 space-y-2 mt-4 mb-5">
+        <Card className="w-full sm:w-[32rem] bg-transparent border-none pt-4 lg:pt-0">
+          <CardHeader className="pt-4 space-y-2 mb-5">
             <CardTitle className="text-2xl">Crie sua loja</CardTitle>
             <CardDescription>
               Comece a vender seus produtos agora mesmo
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="!p-0">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid gap-6">
                 {/* Nome da loja */}
                 <div className="grid gap-3">
-                  <Label htmlFor="name">Nome</Label>
+                  <Label htmlFor="name">Nome da loja</Label>
                   <Input
                     id="name"
                     type="text"
-                    className="w-full"
+                    className={cn(
+                      "w-full",
+                      errors.name && "border-destructive"
+                    )}
                     placeholder="Nome da loja"
+                    required={true}
                     {...register("name")}
                   />
                   {errors.name && (
@@ -184,8 +185,12 @@ export default function CreateStore() {
                 {/* Descrição */}
                 <div className="grid gap-3">
                   <TextAreaWithCounter
-                    className="w-full min-h-24 rounded-2xl"
                     label="Descrição"
+                    optional={true}
+                    className={cn(
+                      "w-full min-h-24 rounded-2xl",
+                      errors.description && "border-destructive"
+                    )}
                     value={descriptionValue}
                     maxLength={1000}
                     onChange={(e) => {
@@ -193,8 +198,6 @@ export default function CreateStore() {
                         shouldValidate: true,
                       });
                     }}
-                    optional={true}
-                    placeholder="Descrição da loja"
                     errorMessage={errors.description?.message}
                   />
                 </div>
@@ -242,17 +245,17 @@ export default function CreateStore() {
                     error={errors.bannerImage?.message?.toString()}
                   />
                 </div>
-                <div className="w-full flex justify-end">
+                <div className="w-full flex">
                   {isSubmitOk === true ? (
                     <Button
-                      size={"rounded"}
+                      size={"xl"}
                       type="submit"
-                      className={`mt-6 bg-confirmed`}
+                      className={`bg-confirmed h-12 w-full`}
                     >
                       <Icon.confirmed size={20} />
                     </Button>
                   ) : (
-                    <Button size={"rounded"} type="submit" className={`mt-6`}>
+                    <Button size={"xl"} type="submit" className="h-12 w-full">
                       {isSubmitLoading ? (
                         <Loader2 className="animate-spin" size={20} />
                       ) : (

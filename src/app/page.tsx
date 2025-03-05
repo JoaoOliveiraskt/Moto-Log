@@ -2,7 +2,7 @@ import Container from "@/components/container";
 import DiscountProducts from "@/components/carousels/product/discount-products";
 import RecentProducts from "@/components/carousels/product/recent-products";
 import BestSellers from "@/components/carousels/product/best-sellers";
-import TopStores from "@/components/top-stores";
+import TopStores from "@/components/top-stores/index";
 import DiscountCategoryCarousel from "@/components/carousels/category/discount-category-content";
 import CategoryCarousel from "@/components/carousels/category/category-carousel";
 import CategoryCarouselContent from "@/components/carousels/category/category-carousel-content";

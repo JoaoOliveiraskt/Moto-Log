@@ -54,7 +54,12 @@ const GoBackButton: React.FC<Props> = ({
       {isHome ? (
         <MotoLogLogo />
       ) : (
-        <div className={cn("flex items-center", containerClassName)}>
+        <div
+          className={cn(
+            "flex items-center w-full lg:w-fit",
+            containerClassName
+          )}
+        >
           <Button
             onClick={handleGoBack}
             className={`flex items-center justify-start lg:justify-center hover:bg-transparent lg:hover:bg-accent
@@ -66,16 +71,18 @@ const GoBackButton: React.FC<Props> = ({
             <Icon.arrowLeft size={isMobile ? 24 : 16} />
           </Button>
 
-          {routeName && (
-            <TypographyH4
-              className={cn(
-                "text-foreground font-extrabold",
-                routeNameClassName
-              )}
-            >
-              {routeName}
-            </TypographyH4>
-          )}
+          <div className="flex items-center justify-center lg:justify-start w-full">
+            {routeName && (
+              <TypographyH4
+                className={cn(
+                  "text-foreground lg:ml-4 mr-2 lg:mr-0",
+                  routeNameClassName
+                )}
+              >
+                {routeName}
+              </TypographyH4>
+            )}
+          </div>
         </div>
       )}
     </>

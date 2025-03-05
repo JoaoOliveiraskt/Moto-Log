@@ -103,9 +103,11 @@ export default function AddProductDialog({
 
   return (
     <ResponsiveModal isOpen={isModalOpen} onOpenChange={setIsModalOpen}>
-      <ResponsiveModalContent className="h-full max-h-[70%] lg:min-w-[30%] pb-16 pt-0 pr-0 pl-0">
+      <ResponsiveModalContent className="h-full max-h-[70%] lg:min-w-[30%] pb-14 pt-0 pr-0 pl-0 overflow-hidden">
         <ResponsiveModalHeader className="flex flex-row items-center gap-x-4 pl-6">
-          <ResponsiveModalTitle>Adicionar produto</ResponsiveModalTitle>
+          <ResponsiveModalTitle className="text-2xl">
+            Adicionar produto
+          </ResponsiveModalTitle>
         </ResponsiveModalHeader>
         <ScrollArea className="max-h-[98%] overflow-hidden">
           <FormProvider {...methods}>
@@ -113,11 +115,14 @@ export default function AddProductDialog({
               onSubmit={methods.handleSubmit(onSubmit)}
               className="grid px-6 w-full h-full flex-1 auto-rows-max gap-4 md:gap-4"
             >
-              <div className="h-full grid auto-rows-max items-start gap-12 mt-8">
+              <div className="h-full grid auto-rows-max items-start gap-8 mb-2">
                 <ProductDetails />
                 <div className="grid gap-4">
-                  <Label htmlFor="imagemUrl">Url da imagem</Label>
+                  <Label htmlFor="imagemUrl" className="text-sm">
+                    Url da imagem
+                  </Label>
                   <Input
+                    id="imagemUrl"
                     className="h-14"
                     type="text"
                     placeholder="URL da imagem"
@@ -129,7 +134,7 @@ export default function AddProductDialog({
                 <Stock />
               </div>
 
-              <ResponsiveModalFooter className="fixed bottom-0 lg:bottom-4 flex-1 h-fit right-2 max-h-16">
+              <ResponsiveModalFooter className="fixed bottom-0 right-0 px-4 py-2 items-end h-fit w-full">
                 <ProductFormActionButtons
                   isLoading={isLoading}
                   onDiscard={() => methods.reset()}

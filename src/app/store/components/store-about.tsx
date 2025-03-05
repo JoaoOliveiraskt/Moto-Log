@@ -9,6 +9,7 @@ import {
 } from "@/components/responsive-modal";
 import TypographyH4 from "@/components/typography/typography-h4";
 import TypographyP from "@/components/typography/typography-p";
+import TypographySmall from "@/components/typography/typography-small";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
@@ -61,19 +62,36 @@ export default function StoreAbout({ ...store }: StoreData) {
 
   return (
     <>
-      <div className="-ml-2 w-fit h-fit">
-        <Button
-          variant={"link"}
-          onClick={openModal}
+      <Button
+        variant="link"
+        onClick={openModal}
+        className={cn(
+          "text-left w-full",
+          "text-muted-foreground max-w-lg",
+          "p-0 h-auto text-start"
+        )}
+      >
+        <TypographySmall
           className={cn(
-            "transition-colors text-xs lg:text-sm relative after:absolute after:bg-foreground after:bottom-2",
-            "after:left-0 after:h-px after:w-[60%] after:ml-4 after:origin-bottom-right after:scale-x-0 ",
-            "hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300 "
+            "flex-grow pr-8 w-full line-clamp-2 lg:line-clamp-1 sm:text-sm"
+          )}
+        >
+          {store.description}
+        </TypographySmall>
+        <span
+          className={cn(
+            "absolute right-0 bottom-0 text-xs lg:text-sm text-foreground font-bold ml-1",
+            "transition-opacity duration-300",
+            "relative after:absolute after:bg-foreground",
+            "after:bottom-0 after:left-0 after:h-px after:w-[100%]",
+            "after:origin-bottom-right after:scale-x-0",
+            "group-hover:after:origin-bottom-left group-hover:after:scale-x-100",
+            "after:transition-transform after:ease-in-out after:duration-300"
           )}
         >
           ...mais
-        </Button>
-      </div>
+        </span>
+      </Button>
       <ResponsiveModal isOpen={isModalOpen} onOpenChange={setIsModalOpen}>
         <ResponsiveModalContent className="px-6 pb-8 md:w-[35rem] md:max-w-full max-h-[90vh] lg:bg-card">
           <ResponsiveModalHeader className="px-0 ">

@@ -26,31 +26,28 @@ const buttonAnimation = {
 
 export default function WelcomeCreateStore() {
   return (
-    <main className="max-w-full h-screen flex flex-col items-center justify-center">
-      <div className="relative  w-full space-y-3 flex flex-col items-center justify-center -top-8">
-        <motion.div {...h1Animation} className="max-w-xs lg:max-w-2xl">
-          <TypographyH1 className="text-center">
-            Seja bem-vindo ao Moto Log
-          </TypographyH1>
-        </motion.div>
-        <motion.div {...pAnimation}>
-          <TypographyP className="text-center text-medium md:text-lg max-w-md md:max-w-xl text-muted-foreground tracking-tight [&:not(:first-child)]:mt-2 px-11 ">
-            Crie sua nova loja em poucos passos e comece a vender seus produtos
-            online de forma simples e rápida.
-          </TypographyP>
+    <main className="max-w-full h-screen flex flex-col items-center justify-center sm:max-w-md mx-auto">
+      <div className="-top-8 lg:-top-48 relative flex flex-col items-center justify-center gap-y-6 px-4">
+        <div className="w-full gap-y-2 flex flex-col items-center justify-center">
+          <motion.div {...h1Animation} className="max-w-xs">
+            <TypographyH1 className="text-center text-xl lg:text-2xl font-semibold !tracking-tight dark:text-white">
+              Seja bem-vindo ao Moto Log
+            </TypographyH1>
+          </motion.div>
+          <motion.div {...pAnimation}>
+            <TypographyP className="text-center text-sm font-medium text-muted-foreground tracking-tight max-w-72 lg:max-w-full">
+              Crie sua nova loja em poucos passos e comece a vender seus
+              produtos online de forma simples e rápida.
+            </TypographyP>
+          </motion.div>
+        </div>
+
+        <motion.div {...buttonAnimation}>
+          <Link href="/create-store" passHref>
+            <Button size={"xl"}>Começar</Button>
+          </Link>
         </motion.div>
       </div>
-
-      <motion.div {...buttonAnimation}>
-        <Link href="/create-store" passHref>
-          <Button
-            className="tracking-tight py-6 px-10 font-semibold"
-            size={"rounded"}
-          >
-            Começar
-          </Button>
-        </Link>
-      </motion.div>
     </main>
   );
 }

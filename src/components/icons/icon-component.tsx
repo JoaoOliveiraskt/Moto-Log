@@ -25,6 +25,8 @@ import { FiBarChart2 } from "react-icons/fi";
 import { TbTruckDelivery } from "react-icons/tb";
 import { CgShoppingBag } from "react-icons/cg";
 import { FaRegUser } from "react-icons/fa6";
+import { TbLoaderQuarter } from "react-icons/tb";
+import { FiLoader } from "react-icons/fi";
 import {
   Menu,
   ShoppingCart,
@@ -46,14 +48,16 @@ import {
   Bookmark,
   Users,
   Info,
-  Download,
   ArrowDownToLine,
+  Smartphone,
+  Loader,
 } from "lucide-react";
 
 const Icon = {
   home: GoHome,
   homeSolid: GoHomeFill,
   cart: ShoppingCart,
+  smartphone: Smartphone,
   bag: CgShoppingBag,
   trash: IoTrashOutline,
   order: BiShoppingBag,
@@ -89,7 +93,7 @@ const Icon = {
   clock: FiClock,
   location: SlLocationPin,
   google: FcGoogle,
-  loading: VscLoading,
+  loading: Loader,
   user: FaRegUser,
   users: Users,
   globe: Dribbble,

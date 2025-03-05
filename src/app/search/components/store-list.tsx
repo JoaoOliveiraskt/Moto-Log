@@ -23,6 +23,20 @@ const StoreList: React.FC<StoreListProps> = ({
   stores = [],
   title = "Lojas",
 }) => {
+  const getFollowersText = (store: Store) => {
+    const followersCount = store._count?.followers ?? 0;
+
+    if (followersCount > 999) {
+      return `${(followersCount / 1000)
+        .toFixed(1)
+        .replace(".", ",")} mil seguidores`;
+    }
+
+    return `${followersCount} ${
+      followersCount <= 1 ? "seguidor" : "seguidores"
+    }`;
+  };
+
   return (
     <div className="mt-2">
       {/* <TypographyH4 className="mt-8">{title}</TypographyH4> */}
@@ -45,26 +59,20 @@ const StoreList: React.FC<StoreListProps> = ({
             )}
             <div className="flex flex-col w-full">
               <h3 className="font-semibold">{store.nome}</h3>
-              <p className="text-sm line-clamp-1 text-muted-foreground">
-                {store.descricao}
-              </p>
-              <span className="text-sm">
-                {store._count.followers > 999
-                  ? `${(store._count.followers / 1000)
-                      .toFixed(1)
-                      .replace(".", ",")} mil seguidores`
-                  : `${store._count.followers} ${
-                      store._count.followers <= 1 ? "seguidor" : "seguidores"
-                    }`}
-              </span>
+              {store.descricao && (
+                <p className="text-sm line-clamp-1 text-muted-foreground">
+                  {store.descricao}
+                </p>
+              )}
+              <span className="text-sm">{getFollowersText(store)}</span>
             </div>
           </Link>
-          <div className="py-2 pl-4">
+          <div className="pt-4 pl-4">
             <FollowButton
               storeId={store.id}
               storeName={store.nome}
-              className="rounded-xl w-fit"
-              followingClassName="w-fit px-6 rounded-xl bg-transparent border text-muted"
+              className="rounded-xl w-24"
+              followingClassName="w-24 px-6 rounded-xl bg-transparent border text-muted"
             />
           </div>
         </div>

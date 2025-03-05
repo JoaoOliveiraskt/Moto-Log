@@ -12,7 +12,7 @@ export default function NavDashboard({ className }: Props) {
   return (
     <header
       className={cn(
-        "hidden lg:flex items-center w-full gap-x-8",
+        "hidden lg:flex items-center w-full gap-x-8 bg-background",
         className
       )}
     >

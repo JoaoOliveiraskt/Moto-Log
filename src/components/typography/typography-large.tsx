@@ -6,5 +6,5 @@ interface Props {
 }
 
 export default function TypographyLarge({ children, className }: Props) {
-  return <p className={cn("text-lg font-semibold", className)}>{children}</p>;
+  return <p className={cn("text-base font-semibold", className)}>{children}</p>;
 }
