@@ -21,7 +21,7 @@ export default async function FollowingPage() {
     }
 
     return (
-      <Container className="mt-12 lg:mt-14 lg:pt-2 space-y-6">
+      <Container className="pt-12 lg:pt-14 space-y-6">
         <GoBackButton containerClassName="hidden lg:flex " />
 
         <CustomCarousel>
