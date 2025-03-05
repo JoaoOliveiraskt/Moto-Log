@@ -3,43 +3,21 @@ import GoBackButton from "@/components/go-back-button";
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import TypographyH4 from "@/components/typography/typography-h4";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/product-card-skeleton";
 import { GetUserFollows } from "../actions/user/following/get-user-follows";
 import Image from "next/image";
 import { CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import TypographyH1 from "@/components/typography/typography-h1";
 import CustomCarousel from "@/components/carousels/custom-carousel";
+import EmptyFollowing from "./components/empty-following";
 
 export default async function FollowingPage() {
   try {
     const follows = await GetUserFollows();
 
-    if (!follows?.length) {
-      return (
-        <Container className="min-h-[calc(100vh-3.5rem)] mt-12 lg:mt-14 lg:pt-2 space-y-6">
-          <GoBackButton containerClassName="hidden lg:flex " />
-          <div className="pt-6 lg:pt-0">
-            <div>
-              <TypographyH1 className="font-semibold ">
-                Você ainda não segue nenhuma loja.
-              </TypographyH1>
-
-              <p className="text-muted-foreground mt-2">
-                Siga lojas para receber atualizações de produtos e promoções.
-              </p>
-
-              <div className="flex items-center gap-4 mt-8">
-                <Button asChild className="w-fit">
-                  <Link href="/community">Procure lojas para seguir</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </Container>
-      );
+    if (!follows || follows.length === 0) {
+      return <EmptyFollowing />;
     }
 
     return (

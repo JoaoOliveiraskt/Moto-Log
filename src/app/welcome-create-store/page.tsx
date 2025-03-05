@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import TypographyH1 from "@/components/typography/typography-h1";
 import TypographyP from "@/components/typography/typography-p";
-import Balancer from "react-wrap-balancer";
 
 const h1Animation = {
   initial: { y: 10, opacity: 0 },
