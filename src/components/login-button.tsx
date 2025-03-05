@@ -13,6 +13,7 @@ interface Props {
   variant?: "secondary" | "ghost";
   children?: React.ReactNode;
   iconSize?: number;
+  size?: "menu" | "sm" | "lg" | "xl";
 }
 
 const handleSigOutClick = () => {
@@ -20,6 +21,7 @@ const handleSigOutClick = () => {
 };
 
 export default function LoginButton({
+  size = "menu",
   variant = "ghost",
   iconSize = 16,
   className,
@@ -49,15 +51,15 @@ export default function LoginButton({
       ) : (
         <div className="w-full">
           <Button
-            size={"menu"}
+            size={size}
             variant={variant}
             onClick={toggleOpen}
-            className={`flex !px-3 w-full items-center gap-4 justify-start py-5 text-sky-600 hover:text-sky-500 ${className}`}
+            className={`flex !px-3 lg:!px-4 w-full items-center gap-4 justify-start py-5 text-sky-600 hover:text-sky-500 ${className}`}
           >
-            <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-accent">
+            <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-accent lg:w-fit lg:h-fit lg:bg-transparent">
               <Icon.signIn size={iconSize} />
             </div>
-            <TypographyLarge className="font-medium">Entrar</TypographyLarge>
+            <TypographyLarge className="!font-medium">Entrar</TypographyLarge>
           </Button>
 
           <LoginDialog open={open} onOpenChange={setOpen} />

@@ -4,53 +4,73 @@
 
 @layer base {
   :root {
-    --background:  0 0% 95.69%;
+    --background: 0 0% 96%;
     --foreground: 240 3% 12%;
+
     --muted: 0 0% 62%;
     --muted-foreground: 240 2% 40%;
+
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
+
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
+
     --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
+
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
+
     --accent: 210 0% 90%;
-    --accent-foreground: 210 0% 85%;  
+    --accent-foreground: 210 0% 85%;
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
+
     --border: 240 1% 80%;
     --input: 240 1% 75%;
-    --ring: 240 5.9% 10%;
+    --ring: 240 1% 70%;
+
     --confirmed: 144 50% 53%;
     --confirmed-foreground: 0 0% 100%;
+
     --radius: 0.8rem;
-    --brand: 220 70% 50%;
+
     --chart-1: 220 90% 56%;
   }
 
   .dark {
     --background: 0 0% 6%;
     --foreground: 60 6% 94%;
+
     --muted: 60 1% 35%;
     --muted-foreground: 0 0% 64%;
+
     --card: 0 0% 10%;
     --card-foreground: 231 21% 98%;
+
     --popover: 60 6% 94%;
     --popover-foreground: 231 21% 98%;
+
     --primary: 60 6% 94%;
     --primary-foreground: 231 5% 13%;
+
     --secondary: 0 0% 11%;
     --secondary-foreground: 201 5% 13%;
+
     --accent: 0 0% 13%;
     --accent-foreground: 0 0% 22%;
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
+
     --border: 0 0% 16%;
     --input: 0 0% 20%;
     --ring: 210 4% 22%;
+
     --confirmed: 144 50% 53%;
+
     --chart-1: 220 90% 56%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
@@ -69,17 +89,3 @@
 * {
   scroll-behavior: smooth;
 }
-
-/* @keyframes meteor-effect {
-  0% {
-    transform: translate(0, 0) rotate(215deg);
-  }
-  100% {
-    transform: translate(500px, 400px) rotate(215deg);
-    opacity: 0;
-  }
-}
-
-.animate-meteor-effect {
-  animation: meteor-effect linear infinite;
-} */

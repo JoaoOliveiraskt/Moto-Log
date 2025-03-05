@@ -19,20 +19,17 @@ const GoogleSignInButton = ({ className }: Props) => {
   };
 
   return (
-  
-      <Button
-        size={"xl"}
-        onClick={(e) => {
-          e.preventDefault();
-          handleSigInClick();
-        }}
-        className={`flex items-center space-x-4 ${className}`}
-      >
-        <Icon.google size={24} />
-        <span>Entrar com o Google</span>
-        {loading ? <Loader /> : <Icon.signIn size={18} />}
-      </Button>
-
+    <Button
+      size={"xl"}
+      onClick={(e) => {
+        e.preventDefault();
+        handleSigInClick();
+      }}
+      className={`flex items-center space-x-4 w-full ${className}`}
+    >
+      {loading ? <Loader /> : <Icon.google size={24} />}
+      <span>Entrar com o Google</span>
+    </Button>
   );
 };
 

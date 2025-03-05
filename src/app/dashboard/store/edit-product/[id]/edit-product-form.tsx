@@ -106,20 +106,30 @@ export default function EditProductForm({
   };
 
   return (
-    <Container className="grid items-center lg:justify-center gap-4 p-4 md:gap-8">
+    <Container className="grid !px-0 pt-8 pb-0">
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
-          className="grid max-w-[60rem] gap-4"
+          className="grid lg:min-w-[60rem] w-full gap-4"
         >
-          <div className="grid gap-4 lg:grid-cols-3 lg:gap-8">
-            <div className="space-y-4 gap-4 lg:col-span-2 lg:gap-8">
+          <div className="grid gap-4 lg:grid-cols-5 lg:gap-8">
+            <div className="space-y-8 gap-4 lg:col-span-3 lg:gap-8">
               <ProductDetails
                 defaultValues={{
                   nome: dadosIniciais.nome,
                   descricao: dadosIniciais.descricao,
                 }}
               />
+
+              <ProductImage
+                imagePreview={imagePreview}
+                setImagePreview={setImagePreview}
+                dadosIniciais={dadosIniciais}
+                register={methods.register}
+              />
+            </div>
+
+            <div className="flex flex-col gap-y-8 lg:col-span-2">
               <Stock
                 defaultValues={{
                   estoque: Number(dadosIniciais.estoque),
@@ -132,16 +142,8 @@ export default function EditProductForm({
               <ProductCategory
                 defaultValue={{ categoria: dadosIniciais.categoriaId }}
               />
-            </div>
-
-            <div className="flex flex-col gap-y-4">
               <ProductStatus />
-              <ProductImage
-                imagePreview={imagePreview}
-                setImagePreview={setImagePreview}
-                dadosIniciais={dadosIniciais}
-                register={methods.register}
-              />
+
               <ProductFormActionButtons
                 isLoading={isLoading}
                 onDiscard={() => {

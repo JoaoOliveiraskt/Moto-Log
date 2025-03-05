@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Card, CardContent } from "../ui/card";
 import FollowButton from "../follow-button";
 import { StoreProps } from "@/components/top-stores/types";
+import FormatFollowers from "@/app/helpers/format-followers";
 
 interface StoreCardProps {
   store: StoreProps;
@@ -46,11 +47,11 @@ export default function StoreCard({ store }: StoreCardProps) {
               </h3>
 
               {/* Contadores */}
-              <div className="mb-4 flex w-full justify-center gap-2 text-xs text-muted-foreground font-medium">
-                <span>
-                  {store._count?.followers}{" "}
-                  {store._count?.followers === 1 ? "seguidor" : "seguidores"}
-                </span>
+              <div className="mb-4 flex w-full items-center justify-center gap-2 text-xs text-muted-foreground font-medium">
+                <FormatFollowers
+                  followers={store._count?.followers}
+                  className="font-medium"
+                />
                 <span>
                   {store._count?.Produtos}{" "}
                   {store._count?.Produtos === 1 ? "produto" : "produtos"}

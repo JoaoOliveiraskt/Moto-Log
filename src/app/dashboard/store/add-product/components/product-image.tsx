@@ -2,7 +2,13 @@
 
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
 import { UseFormRegister } from "react-hook-form";
 
 interface ProductImageProps {
@@ -14,7 +20,12 @@ interface ProductImageProps {
   register: UseFormRegister<any>;
 }
 
-const ProductImage: React.FC<ProductImageProps> = ({ imagePreview, setImagePreview, dadosIniciais, register }) => {
+const ProductImage: React.FC<ProductImageProps> = ({
+  imagePreview,
+  setImagePreview,
+  dadosIniciais,
+  register,
+}) => {
   return (
     <Card className="overflow-hidden">
       <CardHeader className="px-6 mt-6 space-y-2 mb-5">
@@ -23,6 +34,7 @@ const ProductImage: React.FC<ProductImageProps> = ({ imagePreview, setImagePrevi
       </CardHeader>
       <CardContent>
         <Input
+          id="imagemUrl"
           type="text"
           placeholder="URL da imagem"
           {...register("imagemUrl", { required: true })}
@@ -30,11 +42,13 @@ const ProductImage: React.FC<ProductImageProps> = ({ imagePreview, setImagePrevi
         />
         {imagePreview && (
           <div className="mt-4">
-            <p className="text-sm text-muted-foreground mb-2">Pré-visualização da nova imagem:</p>
+            <p className="text-sm text-muted-foreground mb-2">
+              Pré-visualização da nova imagem:
+            </p>
             <Image
               src={imagePreview}
               alt="Pré-visualização da imagem do produto"
-              className="w-full h-32 object-cover rounded-md"
+              className="w-40 h-32 object-cover rounded-md"
               width={400}
               height={400}
             />

@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 
 interface Props extends React.ComponentProps<"button"> {
   className?: string;
+  size?: "menu" | "sm" | "lg" | "xl";
 }
 
 export default function HeaderLoginBtn({ className, ...props }: Props) {
@@ -19,18 +20,16 @@ export default function HeaderLoginBtn({ className, ...props }: Props) {
   if (loading) return null;
 
   return (
-    <div className={`${isAuthenticated ? "hidden" : ""}`}>
+    <>
       <Button
+        size={props.size}
         onClick={toggle}
         {...props}
-        className={cn(
-          "bg-[#0077ed] hover:bg-[#0077ed]/90 text-white tracking-wide",
-          className
-        )}
+        className={cn(isAuthenticated ? "hidden" : "", className)}
       >
         Entrar
       </Button>
       <LoginDialog open={open} onOpenChange={setOpen} />
-    </div>
+    </>
   );
 }

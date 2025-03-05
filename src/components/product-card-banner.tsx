@@ -10,6 +10,7 @@ interface Props {
     id: string;
     imagemUrl: string;
     nome: string;
+    porcentagemDesconto: number | null;
   };
   imageClassName?: string;
 }
@@ -17,6 +18,11 @@ interface Props {
 export default function ProductCardBanner({ product, imageClassName }: Props) {
   return (
     <div className="relative">
+      {product.porcentagemDesconto && product.porcentagemDesconto > 0 ? (
+        <span className="bg-black px-2 h-5 font-medium flex items-center justify-center rounded-sm text-xs text-white absolute left-2 top-2 uppercase">
+          {Number(product.porcentagemDesconto)}% off
+        </span>
+      ) : null}
       <Link
         href={`/product/${product.id}`}
         className="block "

@@ -100,6 +100,7 @@ export default function AddToCartButton({ product }: ProductInfoProps) {
           <Button
             size={"rounded"}
             onClick={handleAddToCart}
+            variant={"secondary"}
           >
             Adicionar ao carrinho
           </Button>

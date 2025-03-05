@@ -33,12 +33,20 @@ const ProductCard = ({
   return (
     <div
       className={cn(
-        "h-[22.9rem] lg:h-[23.6rem] w-full max-w-72 overflow-hidden text-foreground",
+        "h-[22rem] lg:h-[22.5rem] w-full max-w-72 overflow-hidden text-foreground",
         "lg:hover:bg-accent lg:dark:hover:bg-accent/30 rounded-2xl lg:p-2",
         className
       )}
     >
-      <ProductCardBanner product={product} imageClassName={imageClassName} />
+      <ProductCardBanner
+        product={{
+          id: product.id,
+          imagemUrl: product.imagemUrl,
+          nome: product.nome,
+          porcentagemDesconto: Number(product.porcentagemDesconto),
+        }}
+        imageClassName={imageClassName}
+      />
 
       <div
         className={cn(
@@ -55,20 +63,15 @@ const ProductCard = ({
           </TypographyP>
         </Link>
 
-        <div className="flex flex-col items-start mt-1">
-          {Number(product.porcentagemDesconto) > 0 && (
-            <div className="flex gap-2">
-              <span className="text-xs line-through text-muted-foreground font-medium">
-                {formatCurrency(Number(product.preco))}
-              </span>
-              <span className="text-xs text-confirmed">
-                {Number(product.porcentagemDesconto)}% OFF
-              </span>
-            </div>
-          )}
-          <span className="text-sm text-foreground">
+        <div className="flex items-center mt-1 gap-x-2">
+          <span className="text-sm text-foreground font-medium">
             {formatCurrency(Number(calculateTotalPrice(product)))}
           </span>
+          {Number(product.porcentagemDesconto) > 0 && (
+            <span className="text-xs line-through text-muted-foreground mt-0.5">
+              {formatCurrency(Number(product.preco))}
+            </span>
+          )}
         </div>
 
         <TypographySmall className="text-muted-foreground mt-1">

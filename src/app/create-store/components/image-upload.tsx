@@ -71,7 +71,7 @@ export function ImageUpload({
     imageType === "profile" ? "w-32 rounded-full" : "w-full rounded-2xl";
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-4">
       {label && (
         <div className="flex items-center gap-x-1">
           <Label>
@@ -89,10 +89,11 @@ export function ImageUpload({
           className,
           height,
           width,
-          "relative cursor-pointer border-2 border-dashed",
+          "relative cursor-pointer border-2 overflow-hidden border-dashed",
           "flex items-center justify-center",
           isDragActive ? "border-primary" : "border-muted-foreground/25",
-          error ? "border-destructive" : ""
+          error ? "border-destructive" : "",
+          previewUrl ? "border-none" : ""
         )}
       >
         <input {...getInputProps()} />
@@ -118,11 +119,8 @@ export function ImageUpload({
             </button>
           </>
         ) : (
-          <div className="flex flex-col items-center gap-2 text-muted-foreground">
+          <div className="text-muted-foreground">
             <ImagePlus className="h-8 w-8" />
-            <p className="text-xs text-center">
-              Arraste ou clique para fazer upload
-            </p>
           </div>
         )}
       </div>

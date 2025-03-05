@@ -3,6 +3,8 @@ import TypographyH2 from "@/components/typography/typography-h2";
 import TypographyP from "@/components/typography/typography-p";
 import Image from "next/image";
 import StoreAbout from "./store-about";
+import TypographySmall from "@/components/typography/typography-small";
+import FormatFollowers from "@/app/helpers/format-followers";
 
 interface Props {
   name: string | null;
@@ -17,15 +19,15 @@ interface Props {
 
 export default function StoreInfo({ ...store }: Props) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-2 lg:space-y-4">
       {store.bannerImageUrl ? (
-        <div className="w-full h-28 lg:h-52">
+        <div className="w-full h-28 lg:h-52 rounded-md lg:rounded-2xl overflow-hidden">
           <Image
             src={store.bannerImageUrl}
             alt="Store Banner"
             width={600}
             height={600}
-            className="w-full h-full object-cover rounded-lg lg:rounded-2xl"
+            className="w-full h-full object-cover"
           />
         </div>
       ) : null}
@@ -45,50 +47,59 @@ export default function StoreInfo({ ...store }: Props) {
           )}
         </div>
 
-        <div className="flex-1 flex flex-col justify-between h-full">
-          <div className="flex-1">
-            <TypographyH2 className="text-xl lg:text-4xl line-clamp-2 lg:line-clamp-1">
-              {store.name}
-            </TypographyH2>
+        <div className="flex flex-col justify-between items-start h-full">
+          <TypographyH2 className="text-2xl lg:text-4xl line-clamp-2 lg:line-clamp-1">
+            {store.name}
+          </TypographyH2>
 
-            <div className="flex items-center gap-x-2 mt-2 ">
-              <TypographyP className="text-xs sm:text-sm text-muted-foreground [&:not(:first-child)]:mt-0">
-                {store.followers > 999
-                  ? `${(store.followers / 1000)
-                      .toFixed(1)
-                      .replace(".", ",")} mil seguidores`
-                  : `${store.followers} ${
-                      store.followers <= 1 ? "seguidor" : "seguidores"
-                    }`}
-              </TypographyP>
+          <div className="flex flex-col gap-y-1 lg:flex-row lg:items-center lg:gap-x-2">
+            <p className="text-xs lg:text-sm font-semibold">
+              @
+              {store.name
+                ?.split(" ")
+                .map(
+                  (word) =>
+                    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                )
+                .join("")}
+            </p>
+
+            <div className="flex items-center gap-x-2">
+              <FormatFollowers
+                followers={store.followers}
+                className="sm:text-sm text-muted-foreground"
+              />
               <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-              <TypographyP className="text-xs sm:text-sm text-muted-foreground [&:not(:first-child)]:mt-0">
+              <TypographySmall className="sm:text-sm text-muted-foreground">
                 {store.totalProducts}{" "}
                 {store.totalProducts === 1 ? "produto" : "produtos"}
-              </TypographyP>
+              </TypographySmall>
             </div>
+          </div>
 
-            <div className="flex items-center ">
-              <p className="text-xs sm:text-sm text-muted-foreground max-w-md  line-clamp-1">
-                {store.description}
-              </p>
-              <StoreAbout {...store} />
-            </div>
+          <div className="hidden sm:flex">
+            <StoreAbout {...store} />
           </div>
           <FollowButton
             storeId={store.storeId}
             storeName={store.name}
-            className="font-semibold px-8 hidden sm:inline-flex"
-            followingClassName="hidden sm:inline-flex"
+            className="font-semibold px-8 hidden sm:inline-flex !mt-2"
+            followingClassName="hidden sm:inline-flex !mt-2"
           />
         </div>
       </div>
-      <FollowButton
-        storeId={store.storeId}
-        storeName={store.name}
-        className="font-semibold w-full mt-4 sm:hidden"
-        followingClassName="sm:hidden w-full"
-      />
+      <div>
+        <div className="flex w-full sm:hidden mt-4">
+          <StoreAbout {...store} />
+        </div>
+
+        <FollowButton
+          storeId={store.storeId}
+          storeName={store.name}
+          className="font-semibold w-full !mt-4 sm:hidden h-10"
+          followingClassName="sm:hidden w-full !mt-4 h-10"
+        />
+      </div>
     </div>
   );
 }

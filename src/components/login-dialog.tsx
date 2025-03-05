@@ -18,7 +18,7 @@ export default function LoginDialog({ open, onOpenChange }: Props) {
             <DialogTitle>Entrar no Moto Log</DialogTitle>
           </div>
         </div>
-        <DialogFooter className="py-4 border-t bg-card w-full flex items-center sm:justify-center">
+        <DialogFooter className="p-6 lg:px-12 border-t bg-card w-full flex items-center sm:justify-center">
           <GoogleSignInButton className="rounded-lg" />
         </DialogFooter>
       </DialogContent>

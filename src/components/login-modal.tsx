@@ -22,7 +22,7 @@ export default function LoginModal({
 }: LoginModalProps) {
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
-      <AlertDialogContent>
+      <AlertDialogContent className="sm:w-96">
         <AlertDialogHeader>
           <AlertDialogTitle>Faça o Login</AlertDialogTitle>
           <AlertDialogDescription>{description}</AlertDialogDescription>

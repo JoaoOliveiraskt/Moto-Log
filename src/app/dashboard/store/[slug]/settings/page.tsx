@@ -17,7 +17,9 @@ export default async function EditStore() {
   return (
     <main>
       <div className="max-w-4xl mt-4">
-        <TypographyH4 className="mb-8">Personalização da loja</TypographyH4>
+        <TypographyH4 className="mb-8 text-2xl">
+          Personalização da loja
+        </TypographyH4>
 
         <Suspense fallback={<StoreSettingsSkeleton />}>
           <EditStoreForm store={store} />

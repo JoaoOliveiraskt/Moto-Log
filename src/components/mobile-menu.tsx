@@ -156,12 +156,12 @@ const MobileMenu = ({ className, iconSize = 24 }: Props) => {
           )}
         </DrawerTrigger>
 
-        <DrawerContent className="pb-2 px-0 outline-none overflow-hidden h-[98%] bg-background">
+        <DrawerContent className="pb-4 px-0 outline-none overflow-hidden bg-background">
           <div className="relative z-10 px-4">
             <DrawerHeader className=" w-full flex items-center justify-start px-1">
               <UserInfo />
             </DrawerHeader>
-            <div className="flex flex-col items-center w-full  mt-4">
+            <div className="flex flex-col items-center w-full">
               {menuBlocks.map(renderMenuBlock)}
 
               <div className="bg-card rounded-2xl w-full overflow-hidden">
