@@ -22,7 +22,7 @@ export default async function FavoritesPage() {
   } catch (error) {
     console.error("Erro ao buscar favoritos do usuário:", error);
     return (
-      <Container>
+      <Container className="pt-12 lg:pt-14 space-y-4">
         <GoBackButton />
         <TypographyH4>Erro ao carregar os favoritos.</TypographyH4>
       </Container>
@@ -34,9 +34,8 @@ export default async function FavoritesPage() {
   }
 
   return (
-    <Container>
+    <Container className="pt-12 lg:pt-14 space-y-4">
       <GoBackButton />
-      <TypographyH4>Seus Favoritos</TypographyH4>
       <ProductList>
         {favorites.map((product) => (
           <ProductCard key={product.id} product={product} />
