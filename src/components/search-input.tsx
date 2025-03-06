@@ -22,7 +22,7 @@ export default function SearchInput({ className }: Props) {
           id="search"
           type="text"
           name="search"
-          className={`h-10 w-full px-10 lg:px-12 rounded-full bg-accent border-none placeholder:text-muted lg:placeholder:text-muted-foreground  ${className}`}
+          className={`h-12 w-full px-10 lg:px-12 rounded-full bg-accent border-none placeholder:text-muted lg:placeholder:text-muted-foreground  ${className}`}
           placeholder="Pesquisar..."
         />
       </div>

@@ -10,7 +10,7 @@ export default async function CategoryCarouselContent() {
   if (!categories || categories.length === 0) return null;
 
   return (
-    <CarouselContent className="gap-x-2 lg:gap-x-3 mx-4 lg::mx-0 lg:ml-2">
+    <CarouselContent className="gap-x-2 lg:gap-x-3 mx-4 lg:mx-0">
       <CategoryHomeButton />
       {categories?.map((category: Categoria) => (
         <CarouselItem key={category.id} className="basis-auto p-0">

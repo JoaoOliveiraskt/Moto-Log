@@ -33,8 +33,8 @@ const ProductCard = ({
   return (
     <div
       className={cn(
-        "h-[22rem] lg:h-[22.5rem] w-full max-w-72 overflow-hidden text-foreground",
-        "lg:hover:bg-accent lg:dark:hover:bg-accent/30 rounded-2xl lg:p-2",
+        "h-fit w-full max-w-72 overflow-hidden",
+        "lg:hover:bg-accent rounded-3xl lg:px-2 lg:pb-1 lg:pt-2",
         className
       )}
     >
@@ -50,7 +50,7 @@ const ProductCard = ({
 
       <div
         className={cn(
-          "h-fit py-2 flex flex-col justify-between",
+          "h-fit pt-2 flex flex-col justify-between",
           infoClassName
         )}
       >

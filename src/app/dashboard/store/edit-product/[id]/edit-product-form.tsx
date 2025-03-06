@@ -106,7 +106,7 @@ export default function EditProductForm({
   };
 
   return (
-    <Container className="grid !px-0 pt-8 pb-0">
+    <Container className="grid px-4 lg:px-0 pt-8 pb-0">
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
@@ -146,9 +146,6 @@ export default function EditProductForm({
 
               <ProductFormActionButtons
                 isLoading={isLoading}
-                onDiscard={() => {
-                  methods.reset(dadosIniciais);
-                }}
               />
             </div>
           </div>

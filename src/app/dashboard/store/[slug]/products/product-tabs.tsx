@@ -1,31 +1,29 @@
+"use client";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProductTable from "./product-table";
 import BtnAddProduct from "../../components/btn-add-product";
+import { useSearchParams, useRouter } from "next/navigation";
 
-interface ProductsTabsClientProps {
-  products: any[];
-  activeProducts: any[];
-  archivedProducts: any[];
-}
+export function ProductsTabs() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const status = searchParams.get("status") || "all";
 
-export function ProductsTabs({
-  products,
-  activeProducts,
-  archivedProducts,
-}: ProductsTabsClientProps) {
+  const handleTabChange = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("status", value);
+    params.set("page", "1");
+    router.replace(`?${params.toString()}`);
+  };
+
   return (
-    <Tabs defaultValue="all">
-      <div className="flex items-center mb-4">
+    <Tabs value={status} onValueChange={handleTabChange}>
+      <div className="flex items-center mb-4 px-4 lg:px-0">
         <TabsList className="space-x-2">
-          <TabsTrigger value="all" >
-            Todos
-          </TabsTrigger>
-          <TabsTrigger value="active" >
-            Ativo
-          </TabsTrigger>
-          <TabsTrigger value="archived" >
-            Arquivado
-          </TabsTrigger>
+          <TabsTrigger value="all">Todos</TabsTrigger>
+          <TabsTrigger value="active">Ativo</TabsTrigger>
+          <TabsTrigger value="archived">Arquivado</TabsTrigger>
         </TabsList>
         <div className="ml-auto">
           <BtnAddProduct />
@@ -33,15 +31,15 @@ export function ProductsTabs({
       </div>
 
       <TabsContent value="all">
-        <ProductTable products={products} />
+        <ProductTable />
       </TabsContent>
 
       <TabsContent value="active">
-        <ProductTable products={activeProducts} />
+        <ProductTable />
       </TabsContent>
 
       <TabsContent value="archived">
-        <ProductTable products={archivedProducts} />
+        <ProductTable />
       </TabsContent>
     </Tabs>
   );

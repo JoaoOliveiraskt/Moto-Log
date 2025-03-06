@@ -16,7 +16,7 @@ export default async function EditStore() {
 
   return (
     <main>
-      <div className="max-w-4xl mt-4">
+      <div className="max-w-4xl mt-4 px-4 lg:px-0">
         <TypographyH4 className="mb-8 text-2xl">
           Personalização da loja
         </TypographyH4>

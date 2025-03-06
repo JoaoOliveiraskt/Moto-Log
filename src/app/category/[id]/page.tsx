@@ -37,7 +37,7 @@ export default async function Category({ params }: Props) {
 
   return (
     <>
-      <Container className="space-y-4 mt-[5.7rem] lg:mt-[6.2rem] min-h-screen pt-4">
+      <Container className="space-y-2 pt-[7.5rem] lg:pt-[9rem] min-h-screen">
         <GoBackButton
           name={category.nome}
           containerClassName="hidden lg:flex"

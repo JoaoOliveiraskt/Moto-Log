@@ -23,7 +23,7 @@ const DashboardAnalytics = async () => {
   const monthlyRevenue = await getMonthlyRevenue(store.id);
 
   return (
-    <main className="flex flex-col gap-4 md:gap-4 mt-4">
+    <main className="flex flex-col gap-4 md:gap-4 mt-4 px-4 lg:px-0">
       <div className="grid gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4">
         <Suspense fallback={<MetricsSkeleton />}>
           <TotalRevenue totalRevenue={storeMetrics.receitaTotal} />

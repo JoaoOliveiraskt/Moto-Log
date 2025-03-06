@@ -24,7 +24,7 @@ export default async function DashboardLayout({
         <GoBackButton className="hidden lg:flex" />
         <NavDashboard />
       </div>
-      <Container className="pt-12 lg:pt-24">
+      <Container className="pt-12 lg:pt-24 !px-0">
         <div className="flex flex-col w-full sm:gap-4">
           <MobileHeader />
 
