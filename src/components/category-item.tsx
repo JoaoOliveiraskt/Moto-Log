@@ -21,10 +21,10 @@ export default function CategoryItem({ category, link }: CategoryProps) {
 
   return (
     <Button
-      variant="secondary"
+      variant="outline"
       className={cn(
-        "h-8",
-        isActive && "bg-foreground text-background hover:bg-foreground/90"
+        "h-10 rounded-full ",
+        isActive && "bg-foreground text-background hover:text-white dark:hover:text-black hover:bg-foreground/90"
       )}
       asChild
     >

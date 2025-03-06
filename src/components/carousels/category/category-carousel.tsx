@@ -49,20 +49,13 @@ export default function CategoryCarousel({ children }: CategoryCarouselProps) {
     });
   }, [api]);
 
-  useEffect(() => {
-    return scrollY.onChange((latest) => {
-      setIsScrolled(latest > 0);
-    });
-  }, [scrollY]);
-
   return (
     <motion.div
       initial={{ y: 0 }}
       animate={{ y: scrollingUp ? 0 : -100 }}
       transition={{ duration: 0.5 }}
       className={cn(
-        "fixed top-12 pt-1 pb-2 lg:top-14 left-0 right-0 z-20  mx-auto flex justify-center",
-        isScrolled ? "bg-background" : ""
+        "fixed top-9 pb-2 pt-6 lg:top-12 left-0 right-0 z-20  mx-auto flex justify-center bg-background"
       )}
     >
       <Carousel
