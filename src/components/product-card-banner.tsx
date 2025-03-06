@@ -19,7 +19,7 @@ export default function ProductCardBanner({ product, imageClassName }: Props) {
   return (
     <div className="relative">
       {product.porcentagemDesconto && product.porcentagemDesconto > 0 ? (
-        <span className="bg-black px-2 h-5 font-medium flex items-center justify-center rounded-sm text-xs text-white absolute left-2 top-2 uppercase">
+        <span className="bg-accent/90 text-foreground px-2 h-fit font-medium flex items-center justify-center rounded-sm text-xs absolute left-2 top-2 uppercase">
           {Number(product.porcentagemDesconto)}% off
         </span>
       ) : null}
@@ -30,7 +30,7 @@ export default function ProductCardBanner({ product, imageClassName }: Props) {
       >
         <div
           className={cn(
-            "h-60 w-full rounded-2xl overflow-hidden bg-accent",
+            "h-72 w-full rounded-2xl overflow-hidden bg-accent",
             imageClassName
           )}
         >
