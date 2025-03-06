@@ -3,24 +3,19 @@ import { Loader2 } from "lucide-react";
 
 interface ProductFormActionButtonsProps {
   isLoading: boolean;
-  onDiscard: () => void;
 }
 
 const ProductFormActionButtons: React.FC<ProductFormActionButtonsProps> = ({
   isLoading,
-  onDiscard,
 }) => {
   return (
     <div className="flex items-center gap-4 md:ml-auto">
       <Button
-        size={"rounded"}
-        variant="outline"
-        type="button"
-        onClick={onDiscard}
+        size={"roundedXl"}
+        type="submit"
+        disabled={isLoading}
+        className="w-24"
       >
-        limpar
-      </Button>
-      <Button size={"rounded"} type="submit" disabled={isLoading} className="w-24">
         {isLoading ? (
           <Loader2 className="animate-spin" size={20} />
         ) : (

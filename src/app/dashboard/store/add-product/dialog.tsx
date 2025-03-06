@@ -137,7 +137,6 @@ export default function AddProductDialog({
               <ResponsiveModalFooter className="fixed bottom-0 right-0 px-4 py-2 items-end h-fit w-full">
                 <ProductFormActionButtons
                   isLoading={isLoading}
-                  onDiscard={() => methods.reset()}
                 />
 
                 {errorMessage && (

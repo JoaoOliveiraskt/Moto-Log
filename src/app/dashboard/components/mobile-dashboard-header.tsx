@@ -5,7 +5,7 @@ import { StoreSelectSkeleton } from "./store-select-skeleton";
 
 export default function MobileHeader() {
   return (
-    <header className="sticky top-0 z-10 flex h-14 items-center gap-4 bg-background md:static md:h-auto md:border-0 ">
+    <header className="px-4 sticky top-0 z-10 flex h-14 items-center gap-4 bg-background md:static md:h-auto md:border-0 ">
       <MenuSideBar />
 
       <div className="lg:hidden">

@@ -1,13 +1,28 @@
 import { db } from "@/lib/prisma";
 
-export async function getStoreProducts(storeId: string) {
+export async function getStoreProducts(
+  storeId: string,
+  page = 1,
+  pageSize = 10,
+  status?: string
+) {
   try {
+    const whereClause: any = {
+      lojaId: storeId,
+    };
+
+    if (status && status !== "all") {
+      whereClause.status = status === "active" ? "ATIVO" : "ARQUIVADO";
+    }
+
+    const totalProducts = await db.produto.count({
+      where: whereClause,
+    });
+
     const products = await db.produto.findMany({
-      where: {
-        lojaId: storeId,
-      },
+      where: whereClause,
       orderBy: {
-        createdAt: "asc",
+        createdAt: "desc",
       },
       select: {
         id: true,
@@ -21,9 +36,19 @@ export async function getStoreProducts(storeId: string) {
         createdAt: true,
         totalVendido: true,
       },
+      skip: (page - 1) * pageSize,
+      take: pageSize,
     });
 
-    return products;
+    return {
+      products,
+      pagination: {
+        totalItems: totalProducts,
+        totalPages: Math.ceil(totalProducts / pageSize),
+        currentPage: page,
+        pageSize,
+      },
+    };
   } catch (error) {
     console.error("Error fetching products:", error);
     throw new Error("Failed to fetch products");
