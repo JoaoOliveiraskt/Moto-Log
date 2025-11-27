@@ -254,7 +254,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\joao\\Documents\\github\\Moto-Log\\prisma\\generated\\client",
+      "value": "C:\\Users\\joao\\Documents\\github\\AppMotoLogV2\\Moto-Log\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
