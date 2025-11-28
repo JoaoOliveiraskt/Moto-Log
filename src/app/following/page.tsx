@@ -1,5 +1,5 @@
 import Container from "@/components/container";
-import GoBackButton from "@/components/go-back-button";
+
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import TypographyH4 from "@/components/typography/typography-h4";
@@ -22,7 +22,6 @@ export default async function FollowingPage() {
 
     return (
       <Container className="pt-12 lg:pt-14 space-y-6">
-        <GoBackButton containerClassName="hidden lg:flex " />
 
         <CustomCarousel>
           <CarouselContent className="-ml-3">

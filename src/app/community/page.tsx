@@ -8,7 +8,7 @@ import { db } from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import GoBackButton from "@/components/go-back-button";
+
 import GetStores from "../actions/store/get-stores";
 
 async function getStoresData() {
@@ -28,7 +28,7 @@ export default async function Community() {
   const stores = await getStoresData();
   return (
     <Container className="min-h-screen pt-14 lg:pt-16 relative">
-      <GoBackButton containerClassName="hidden lg:flex" />
+
       <div className="flex flex-col items-center mt-8">
         <TypographyH1 className={cn("text-center tracking-tight sm:max-w-2xl")}>
           Comunidade MotoLog

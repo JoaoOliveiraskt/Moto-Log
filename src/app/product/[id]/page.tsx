@@ -14,7 +14,7 @@ import calculateTotalPrice from "@/app/helpers/price";
 import DiscountBadge from "../components/discount-badge";
 import ProductInfo from "../components/product-info";
 import TypographyH4 from "@/components/typography/typography-h4";
-import GoBackButton from "@/components/go-back-button";
+
 import FavoriteProductButton from "@/components/favorite-product-button";
 import FollowButton from "@/components/follow-button";
 import {
@@ -87,7 +87,7 @@ const ProductDetail: React.FC<ProductPageProps> = async ({
   return (
     <>
       <Container className=" mt-12 lg:mt-14 space-y-4 lg:pt-2">
-        <GoBackButton containerClassName="hidden lg:flex" />
+
         <div className="grid lg:grid-cols-[3fr_1.5fr] lg:gap-x-6 w-full space-y-8 lg:space-y-0">
           <div>
             <div>

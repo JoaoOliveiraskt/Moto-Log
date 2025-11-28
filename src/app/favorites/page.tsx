@@ -1,5 +1,5 @@
 import Container from "@/components/container";
-import GoBackButton from "@/components/go-back-button";
+
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import TypographyH4 from "@/components/typography/typography-h4";
@@ -23,7 +23,6 @@ export default async function FavoritesPage() {
     console.error("Erro ao buscar favoritos do usuário:", error);
     return (
       <Container className="pt-12 lg:pt-14 space-y-4">
-        <GoBackButton />
         <TypographyH4>Erro ao carregar os favoritos.</TypographyH4>
       </Container>
     );
@@ -35,7 +34,6 @@ export default async function FavoritesPage() {
 
   return (
     <Container className="pt-12 lg:pt-14 space-y-4">
-      <GoBackButton />
       <ProductList>
         {favorites.map((product) => (
           <ProductCard key={product.id} product={product} />

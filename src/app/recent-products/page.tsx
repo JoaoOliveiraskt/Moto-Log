@@ -1,4 +1,4 @@
-import GoBackButton from "@/components/go-back-button";
+
 import Container from "@/components/container";
 import { getRecentProducts } from "@/app/actions/product/products";
 import ProductList from "@/components/product-list";
@@ -32,7 +32,7 @@ async function RecentProductsContent() {
 export default function RecentProducts() {
   return (
     <Container className="space-y-4 mt-12 lg:mt-14">
-      <GoBackButton containerClassName="hidden lg:flex" />
+
 
       <Suspense
         fallback={

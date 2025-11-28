@@ -27,7 +27,7 @@ import Icon from "@/components/icons/icon-component";
 import Loader from "@/components/ui/loader";
 import { updateProductSales } from "@/app/actions/product/update-product-sales";
 import Container from "@/components/container";
-import GoBackButton from "@/components/go-back-button";
+
 import Link from "next/link";
 import EmptyCart from "./components/empty-cart";
 
@@ -112,7 +112,7 @@ const Cart = () => {
   return (
     <>
       <Container className="h-screen pt-10 lg:pt-14 space-y-6">
-        <GoBackButton containerClassName="hidden lg:flex" />
+
 
         <div className="grid lg:grid-cols-5 md:gap-x-4 h-full w-full">
           <div className="col-span-2 lg:col-span-3">

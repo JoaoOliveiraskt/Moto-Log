@@ -1,5 +1,5 @@
 import Container from "@/components/container";
-import GoBackButton from "@/components/go-back-button";
+
 import ProductList from "@/components/product-list";
 import ProductCard from "@/components/product-card";
 import type { Produto } from "prisma/generated/client";
@@ -33,7 +33,7 @@ export default async function DiscountPage() {
 
     return (
       <Container className="space-y-4 mt-12 lg:mt-14 lg:pt-2">
-        <GoBackButton containerClassName="hidden lg:flex"/>
+
         <Suspense
           fallback={
             <ProductList className="lg:gap-x-2">
@@ -61,7 +61,7 @@ export default async function DiscountPage() {
   } catch (error) {
     return (
       <Container className="space-y-8 mt-20">
-        <GoBackButton className="hidden lg:flex" />
+
         <div>
           Erro ao carregar produtos em desconto. Por favor, tente novamente mais
           tarde.

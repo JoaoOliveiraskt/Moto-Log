@@ -1,5 +1,5 @@
 import Container from "@/components/container";
-import GoBackButton from "@/components/go-back-button";
+
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import { notFound } from "next/navigation";
@@ -38,11 +38,6 @@ export default async function Category({ params }: Props) {
   return (
     <>
       <Container className="space-y-2 pt-[7.5rem] lg:pt-[9rem] min-h-screen">
-        <GoBackButton
-          name={category.nome}
-          containerClassName="hidden lg:flex"
-        />
-
         <ProductList>
           {products.map((product) => (
             <div key={product.id}>
