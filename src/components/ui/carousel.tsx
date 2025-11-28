@@ -197,68 +197,98 @@ CarouselItem.displayName = "CarouselItem";
 
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = "secondary", size = "icon", ...props }, ref) => {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+  React.ComponentProps<typeof Button> & { containerClassName?: string }
+>(
+  (
+    {
+      className,
+      containerClassName,
+      variant = "secondary",
+      size = "icon",
+      ...props
+    },
+    ref
+  ) => {
+    const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
-  return (
-    <>
-      {canScrollPrev && (
-        <Button
-          ref={ref}
-          variant={variant}
-          size={size}
-          className={cn(
-            "absolute h-11 w-11 rounded-full",
-            orientation === "horizontal"
-              ? "-left-12 top-1/2 -translate-y-1/2"
-              : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
-            className
-          )}
-          disabled={!canScrollPrev}
-          onClick={scrollPrev}
-          {...props}
-        >
-          <Icon.chevronLeft size={20} />
-          <span className="sr-only">Previous slide</span>
-        </Button>
-      )}
-    </>
-  );
-});
+    if (!canScrollPrev) return null;
+
+    const ButtonComponent = (
+      <Button
+        ref={ref}
+        variant={variant}
+        size={size}
+        className={cn(
+          "absolute h-11 w-11 rounded-full",
+          orientation === "horizontal"
+            ? "-left-12 top-1/2 -translate-y-1/2"
+            : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+          className
+        )}
+        disabled={!canScrollPrev}
+        onClick={scrollPrev}
+        {...props}
+      >
+        <Icon.chevronLeft size={20} />
+        <span className="sr-only">Previous slide</span>
+      </Button>
+    );
+
+    if (containerClassName) {
+      return <div className={containerClassName}>{ButtonComponent}</div>;
+    }
+
+    return ButtonComponent;
+  }
+);
 CarouselPrevious.displayName = "CarouselPrevious";
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = "secondary", size = "icon", ...props }, ref) => {
-  const { orientation, scrollNext, canScrollNext } = useCarousel();
+  React.ComponentProps<typeof Button> & { containerClassName?: string }
+>(
+  (
+    {
+      className,
+      containerClassName,
+      variant = "secondary",
+      size = "icon",
+      ...props
+    },
+    ref
+  ) => {
+    const { orientation, scrollNext, canScrollNext } = useCarousel();
 
-  return (
-    <>
-      {canScrollNext && (
-        <Button
-          ref={ref}
-          variant={variant}
-          size={size}
-          className={cn(
-            "absolute h-11 w-11 rounded-full",
-            orientation === "horizontal"
-              ? "-right-12 top-1/2 -translate-y-1/2"
-              : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
-            className
-          )}
-          disabled={!canScrollNext}
-          onClick={scrollNext}
-          {...props}
-        >
-          <Icon.chevronRight size={20} />
-          <span className="sr-only">Next slide</span>
-        </Button>
-      )}
-    </>
-  );
-});
+    if (!canScrollNext) return null;
+
+    const ButtonComponent = (
+      <Button
+        ref={ref}
+        variant={variant}
+        size={size}
+        className={cn(
+          "absolute h-11 w-11 rounded-full",
+          orientation === "horizontal"
+            ? "-right-12 top-1/2 -translate-y-1/2"
+            : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+          className
+        )}
+        disabled={!canScrollNext}
+        onClick={scrollNext}
+        {...props}
+      >
+        <Icon.chevronRight size={20} />
+        <span className="sr-only">Next slide</span>
+      </Button>
+    );
+
+    if (containerClassName) {
+      return <div className={containerClassName}>{ButtonComponent}</div>;
+    }
+
+    return ButtonComponent;
+  }
+);
 CarouselNext.displayName = "CarouselNext";
 
 export {

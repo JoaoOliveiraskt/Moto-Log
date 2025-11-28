@@ -15,18 +15,19 @@ interface CategoryProps {
   link: string;
 }
 
-export default function CategoryItem({ category, link }: CategoryProps) {
+export default function CategoryItem({ category, link, onClick }: CategoryProps & { onClick?: () => void }) {
   const pathname = usePathname();
   const isActive = pathname === `/category/${category.id}`;
 
   return (
     <Button
-      variant="outline"
+      variant="secondary"
       className={cn(
         "h-10 rounded-full ",
         isActive && "bg-foreground text-background hover:text-white dark:hover:text-black hover:bg-foreground/90"
       )}
       asChild
+      onClick={onClick}
     >
       <Link href={link}>
         <p className=" text-sm tracking-wide">{category.nome}</p>

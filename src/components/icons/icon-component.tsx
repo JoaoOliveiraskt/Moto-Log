@@ -51,6 +51,8 @@ import {
   ArrowDownToLine,
   Smartphone,
   Loader,
+  Store,
+  X,
 } from "lucide-react";
 
 const Icon = {
@@ -105,6 +107,8 @@ const Icon = {
   photoMinus: TbPhotoMinus,
   delivery: TbTruckDelivery,
   personalization: WandSparkles,
+  store: Store,
+  x: X,
 };
 
 export default Icon;

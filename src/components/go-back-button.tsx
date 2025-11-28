@@ -56,26 +56,26 @@ const GoBackButton: React.FC<Props> = ({
       ) : (
         <div
           className={cn(
-            "flex items-center w-full lg:w-fit",
+            "flex items-center w-fit",
             containerClassName
           )}
         >
           <Button
             onClick={handleGoBack}
             className={`flex items-center justify-start lg:justify-center hover:bg-transparent lg:hover:bg-accent
-            rounded-full h-12 w-12 lg:w-fit lg:h-fit lg:p-1 lg:border lg:bg-card ${className}`}
+            rounded-full h-12 ${className}`}
             size="icon"
             variant="ghost"
             title="Voltar"
           >
-            <Icon.arrowLeft size={isMobile ? 24 : 16} />
+            <Icon.chevronLeft size={isMobile ? 26 : 16} />
           </Button>
 
           <div className="flex items-center justify-center lg:justify-start w-full">
             {routeName && (
               <TypographyH4
                 className={cn(
-                  "text-foreground lg:ml-4 mr-2 lg:mr-0",
+                  "text-foreground ml-2",
                   routeNameClassName
                 )}
               >

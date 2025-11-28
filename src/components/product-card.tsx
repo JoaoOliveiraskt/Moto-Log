@@ -7,6 +7,7 @@ import TypographySmall from "./typography/typography-small";
 import { Produto, Loja, Categoria } from "../../prisma/generated/client";
 import TypographyP from "./typography/typography-p";
 import ProductCardBanner from "./product-card-banner";
+import { memo } from "react";
 
 interface ProductProps {
   product: Produto & {
@@ -20,7 +21,7 @@ interface ProductProps {
   titleClassName?: string;
 }
 
-const ProductCard = ({
+const ProductCard = memo(({
   product,
   className,
   imageClassName,
@@ -92,6 +93,8 @@ const ProductCard = ({
       </div>
     </div>
   );
-};
+});
+
+ProductCard.displayName = 'ProductCard';
 
 export default ProductCard;

@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 96%;
+    --background: 240, 11%, 96%;
     --foreground: 240 3% 12%;
 
     --muted: 0 0% 62%;
@@ -22,7 +22,7 @@
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
 
-    --accent: 210 0% 90%;
+    --accent: 0 0% 100%;
     --accent-foreground: 210 0% 85%;
 
     --destructive: 0 84.2% 60.2%;
@@ -41,7 +41,7 @@
   }
 
   .dark {
-    --background: 0 0% 6%;
+    --background: 0 0% 0%;
     --foreground: 60 6% 94%;
 
     --muted: 60 1% 35%;
@@ -81,6 +81,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
