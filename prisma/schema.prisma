@@ -25,6 +25,10 @@ model Loja {
   pedidos   Order[]
   Produtos  Produto[]
   followers Follows[]
+
+  searchVector Unsupported("tsvector")?
+
+  @@index([searchVector], type: Gin)
 }
 
 model Follows {
@@ -44,6 +48,10 @@ model Categoria {
   id       String    @id @default(uuid())
   nome     String
   produtos Produto[]
+
+  searchVector Unsupported("tsvector")?
+
+  @@index([searchVector], type: Gin)
 }
 
 model Produto {
@@ -69,6 +77,10 @@ model Produto {
 
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
+
+  searchVector Unsupported("tsvector")?
+
+  @@index([searchVector], type: Gin)
 }
 
 enum ProdutoStatus {
