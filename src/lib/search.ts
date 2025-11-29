@@ -1,4 +1,4 @@
-
+import { cache } from "react";
 import { db } from "@/lib/prisma";
 import { Produto, Loja, Categoria } from "../../prisma/generated/client";
 
@@ -8,7 +8,7 @@ export interface SearchResults {
     categories: Categoria[];
 }
 
-export async function searchGlobal(query: string): Promise<SearchResults> {
+export const searchGlobal = cache(async (query: string): Promise<SearchResults> => {
     if (!query) {
         return { products: [], stores: [], categories: [] };
     }
@@ -78,4 +78,4 @@ export async function searchGlobal(query: string): Promise<SearchResults> {
         stores: orderedStores,
         categories: orderedCategories,
     };
-}
+});
