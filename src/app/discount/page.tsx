@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/product-card-skeleton";
 import { getDiscountProducts } from "@/app/actions/product/products";
 import ProductSortDropdown from "@/components/product-sort-dropdown";
-import TypographyH4 from "@/components/typography/typography-h4";
+import TypographyH2 from "@/components/typography/typography-h2";
 
 interface DiscountPageProps {
   searchParams: {
@@ -18,9 +18,9 @@ export default async function DiscountPage({ searchParams }: DiscountPageProps) 
   const DiscountProducts = await getDiscountProducts(undefined, sort);
 
   return (
-    <Container className="space-y-4 mt-14 lg:mt-20">
+    <Container className="space-y-8 mt-14 lg:mt-20">
       <div className="flex items-center justify-between mb-6">
-        <TypographyH4>Melhores Ofertas</TypographyH4>
+        <TypographyH2 className="hidden lg:flex font-medium">Melhores Ofertas</TypographyH2>
         <ProductSortDropdown />
       </div>
 

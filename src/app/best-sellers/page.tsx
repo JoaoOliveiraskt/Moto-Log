@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/product-card-skeleton";
 import ProductSortDropdown from "@/components/product-sort-dropdown";
 import TypographyH4 from "@/components/typography/typography-h4";
+import TypographyH2 from "@/components/typography/typography-h2";
 
 interface BestSellersPageProps {
   searchParams: {
@@ -18,9 +19,9 @@ export default async function BestSellers({ searchParams }: BestSellersPageProps
   const products = await getBestSellers(undefined, sort);
 
   return (
-    <Container className="space-y-4 mt-14 lg:mt-20">
-      <div className="flex items-center justify-between mb-6">
-        <TypographyH4>Em Alta</TypographyH4>
+    <Container className="space-y-8 mt-14 lg:mt-20">
+      <div className="flex items-center justify-between">
+        <TypographyH2 className="hidden lg:flex font-medium">Em Alta</TypographyH2>
         <ProductSortDropdown />
       </div>
 
