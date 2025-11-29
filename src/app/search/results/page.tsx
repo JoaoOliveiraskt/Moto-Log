@@ -145,7 +145,7 @@ async function SearchResultsContent({ q, type, sort }: { q: string; type?: strin
                                 <Icon.categories className="text-muted-foreground" size={24} />
                             </div>
                             <TypographyP className="text-muted-foreground">
-                                Nenhuma categoria encontrada para "{q}".
+                                Nenhuma categoria encontrada para &quot;{q}&quot;.
                             </TypographyP>
                         </div>
                     ) : null}
