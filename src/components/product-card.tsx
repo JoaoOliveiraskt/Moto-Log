@@ -1,13 +1,12 @@
 import formatCurrency from "@/app/helpers/format-currency";
 import calculateTotalPrice from "@/app/helpers/price";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
-import StoreBadge from "./store-badge";
-import TypographySmall from "./typography/typography-small";
 import { Produto, Loja, Categoria } from "../../prisma/generated/client";
-import TypographyP from "./typography/typography-p";
-import ProductCardBanner from "./product-card-banner";
 import { memo } from "react";
+import { Badge } from "./ui/badge";
+import Icon from "@/components/icons/icon-component";
 
 interface ProductProps {
   product: Produto & {
@@ -16,7 +15,6 @@ interface ProductProps {
   };
   className?: string;
   imageClassName?: string;
-  showStoreImage?: boolean;
   infoClassName?: string;
   titleClassName?: string;
 }
@@ -25,73 +23,62 @@ const ProductCard = memo(({
   product,
   className,
   imageClassName,
-  showStoreImage,
   infoClassName,
   titleClassName,
 }: ProductProps) => {
   const { loja } = product;
+  const totalPrice = calculateTotalPrice(product);
+
+  const isCustomLayout = !!imageClassName || !!infoClassName || !!titleClassName;
 
   return (
-    <div
-      className={cn(
-        "h-fit w-full max-w-72 overflow-hidden",
-        "lg:hover:bg-accent rounded-3xl lg:px-2 lg:pb-1 lg:pt-2",
-        className
-      )}
-    >
-      <ProductCardBanner
-        product={{
-          id: product.id,
-          imagemUrl: product.imagemUrl,
-          nome: product.nome,
-          porcentagemDesconto: Number(product.porcentagemDesconto),
-        }}
-        imageClassName={imageClassName}
-      />
+    <Link href={`/product/${product.id}`} className={cn("group block relative w-full h-full transform-gpu will-change-transform", className)}>
+      <div className={cn(
+        "relative w-full overflow-hidden rounded-2xl shadow-sm transition-all duration-500 group-hover:shadow-md will-change-transform",
+        isCustomLayout ? "aspect-[2/3] lg:aspect-[3/2]" : "aspect-[2/3]"
+      )}>
+        <Image
+          src={product.imagemUrl}
+          alt={product.nome}
+          fill
+          className="object-cover group-hover:brightness-90 transition-all duration-200"
+          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+        />
 
-      <div
-        className={cn(
-          "h-fit pt-2 flex flex-col justify-between",
-          infoClassName
-        )}
-      >
-        <Link href={`/product/${product.id}`} className="">
-          <TypographyP
-            title={product.nome}
-            className={cn("text-sm font-semibold line-clamp-1", titleClassName)}
-          >
-            {product.nome}
-          </TypographyP>
-        </Link>
+        <div className="absolute top-0 left-0 right-0 p-3 flex justify-between items-start">
+          {loja.profileImageUrl ? (
+            <div className="relative w-6 h-6 rounded-full overflow-hidden">
+              <Image src={loja.profileImageUrl} alt={loja.nome} fill className="object-cover" />
+            </div>
+          ) : (
+            <div className="relative w-6 h-6 rounded-full overflow-hidden bg-card flex items-center justify-center">
+              <Icon.store className="object-cover text-muted-foreground" size={12} />
+            </div>
+          )}
 
-        <div className="flex items-center mt-1 gap-x-2">
-          <span className="text-sm text-foreground font-medium">
-            {formatCurrency(Number(calculateTotalPrice(product)))}
-          </span>
           {Number(product.porcentagemDesconto) > 0 && (
-            <span className="text-xs line-through text-muted-foreground mt-0.5">
-              {formatCurrency(Number(product.preco))}
-            </span>
+            <Badge className="px-1 py-0 rounded-[6px] text-[10px] lg:text-[10.5px] font-extrabold border border-white/15">
+              {Number(product.porcentagemDesconto)}% OFF
+            </Badge>
           )}
         </div>
 
-        <TypographySmall className="text-muted-foreground mt-1">
-          {product.totalVendido} vendidos
-        </TypographySmall>
+        <div className="absolute bottom-0 left-0 right-0">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80" />
 
-        <div className="mt-auto pt-3">
-          <StoreBadge
-            showImage={showStoreImage}
-            store={{
-              id: loja.id,
-              nome: loja.nome,
-              profileImageUrl: loja.profileImageUrl || "",
-              descricao: loja.descricao || "",
-            }}
-          />
+
+          <div className="relative pt-12 px-3 pb-3 flex flex-col justify-end h-full gap-1">
+            <h3 className="text-base leading-snug font-medium tracking-tight text-white/90 line-clamp-2">
+              {product.nome}
+            </h3>
+
+            <span className="text-lg font-bold tracking-tight text-white">
+              {formatCurrency(Number(totalPrice))}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 });
 

@@ -15,7 +15,6 @@ export default function Home() {
       <CategoryCarousel>
         <CategoryCarouselContent />
       </CategoryCarousel>
-
       <Container className="space-y-10 pt-[7.5rem] lg:pt-[9rem] pb-20 !px-0 xl:px-0">
         <DiscountProducts />
         <Suspense fallback={<TopStoreSkeleton />}>
