@@ -16,6 +16,7 @@ import SearchResultsSkeleton from "./components/search-results-skeleton";
 import ProductList from "@/components/product-list";
 import StoreCardListItem from "@/components/store-card-list-item";
 import ProductSortDropdown from "@/components/product-sort-dropdown";
+import InfiniteProductsList from "./components/infinite-products-list";
 
 interface SearchResultsPageProps {
     searchParams: {
@@ -71,10 +72,14 @@ async function SearchResultsContent({ q, type, sort }: { q: string; type?: strin
     const displayedProducts = !type ? products.slice(0, LIMIT_IN_ALL_TAB) : products;
     const displayedCategories = !type ? categories.slice(0, LIMIT_IN_ALL_TAB) : categories;
 
+    const shouldShowStores = type === "stores" || (!type && stores.length > 0);
+    const shouldShowCategories = type === "categories" || (!type && categories.length > 0);
+    const shouldShowProducts = type === "products" || (!type && products.length > 0);
+
     return (
         <div className="space-y-8">
             {/* Lojas */}
-            {(!type || type === "stores") && (
+            {shouldShowStores && (
                 <section className="space-y-4">
                     {showTitles && stores.length > 0 && (
                         !type && stores.length > LIMIT_IN_ALL_TAB ? (
@@ -108,9 +113,8 @@ async function SearchResultsContent({ q, type, sort }: { q: string; type?: strin
                 </section>
             )}
 
-
             {/* Categorias */}
-            {(!type || type === "categories") && (
+            {shouldShowCategories && (
                 <section className="space-y-4">
                     {showTitles && categories.length > 0 && (
                         !type && categories.length > LIMIT_IN_ALL_TAB ? (
@@ -149,7 +153,7 @@ async function SearchResultsContent({ q, type, sort }: { q: string; type?: strin
             )}
 
             {/* Produtos */}
-            {(!type || type === "products") && (
+            {shouldShowProducts && (
                 <section className="space-y-4">
                     <div className="flex items-center justify-between">
                         {showTitles && products.length > 0 && (
@@ -165,23 +169,19 @@ async function SearchResultsContent({ q, type, sort }: { q: string; type?: strin
                                 <TypographyH4>Produtos</TypographyH4>
                             )
                         )}
-                        {products.length > 0 && <ProductSortDropdown />}
+                        {products.length > 0 && type === "products" && <ProductSortDropdown />}
                     </div>
-                    {displayedProducts.length > 0 ? (
+                    {type === "products" ? (
+                        <InfiniteProductsList
+                            query={q}
+                            sort={sort}
+                        />
+                    ) : displayedProducts.length > 0 ? (
                         <ProductList>
                             {displayedProducts.map((product) => (
                                 <ProductCard key={product.id} product={product} />
                             ))}
                         </ProductList>
-                    ) : type === "products" ? (
-                        <div className="flex flex-col items-center justify-center py-12 text-center space-y-3">
-                            <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center">
-                                <Icon.products className="text-muted-foreground" size={24} />
-                            </div>
-                            <TypographyP className="text-muted-foreground">
-                                Nenhum produto encontrado para "{q}".
-                            </TypographyP>
-                        </div>
                     ) : null}
                 </section>
             )}
