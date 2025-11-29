@@ -4,6 +4,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import GoBackButton from "./go-back-button";
 import Icon from "./icons/icon-component";
 import SearchInputButton from "@/app/search/components/search-input-button";
+import Link from "next/link";
 
 const MobileHeader = () => {
   const pathname = usePathname();
@@ -22,7 +23,9 @@ const MobileHeader = () => {
         </div>
       )}
       <div className="ml-auto flex justify-end items-center">
-        <Icon.notification className="text-primary" size={24} />
+        <Link href="/notifications" className="flex items-center justify-center">
+          <Icon.notification className="text-primary" size={24} />
+        </Link>
       </div>
     </div>
   );

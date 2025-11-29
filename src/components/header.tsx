@@ -53,6 +53,17 @@ export default function Header() {
           <TooltipProvider delayDuration={0}>
             <Tooltip>
               <TooltipTrigger>
+                <Link href="/notifications">
+                  <Icon.notification size={20} />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">Notificações</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+
+          <TooltipProvider delayDuration={0}>
+            <Tooltip>
+              <TooltipTrigger>
                 <Link href="/community">
                   <Icon.globe size={20} className="rotate-45" />
                 </Link>
