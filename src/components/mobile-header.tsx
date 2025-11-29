@@ -14,7 +14,7 @@ const MobileHeader = () => {
 
   return (
     <div
-      className="bg-background px-4 lg:px-12 py-2 fixed top-0 w-full flex items-center justify-between gap-2 z-40 lg:hidden "
+      className="bg-background px-4 lg:px-12 h-12 fixed top-0 w-full flex items-center justify-between gap-2 z-40 lg:hidden "
     >
       <GoBackButton />
       {isResultsPage && (

@@ -22,7 +22,7 @@ export default function StoreCarousel({ stores }: StoreCarouselProps) {
         align: "start",
       }}
     >
-      <CarouselContent className="flex gap-x-3 mx-4 2xl:mx-0 h-full">
+      <CarouselContent className="flex gap-x-4 mx-4 2xl:mx-0 h-full">
         {stores &&
           stores.map((store: StoreProps) => (
             <CarouselItem className="p-0 basis-auto w-[11.4rem]" key={store.id}>
