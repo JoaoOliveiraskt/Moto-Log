@@ -89,7 +89,7 @@ export default function InfiniteProductsList({
                     <Icon.products className="text-muted-foreground" size={24} />
                 </div>
                 <TypographyP className="text-muted-foreground">
-                    Nenhum produto encontrado para "{query}".
+                    Nenhum produto encontrado para &quot;{query}&quot;.
                 </TypographyP>
             </div>
         );
@@ -99,7 +99,7 @@ export default function InfiniteProductsList({
         <>
             <ProductList>
                 {allProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
+                    <ProductCard key={product.id} product={product as any} />
                 ))}
             </ProductList>
 

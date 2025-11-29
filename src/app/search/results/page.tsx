@@ -106,7 +106,7 @@ async function SearchResultsContent({ q, type, sort }: { q: string; type?: strin
                                 <Icon.store className="text-muted-foreground" size={24} />
                             </div>
                             <TypographyP className="text-muted-foreground">
-                                Nenhuma loja encontrada para "{q}".
+                                Nenhuma loja encontrada para &quot;{q}&quot;.
                             </TypographyP>
                         </div>
                     ) : null}

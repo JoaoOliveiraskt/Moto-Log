@@ -16,6 +16,7 @@ interface Product {
         id: string;
         nome: string;
         profileImageUrl: string | null;
+        descricao?: string;
     };
 }
 
