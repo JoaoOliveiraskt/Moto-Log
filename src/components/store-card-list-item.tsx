@@ -31,7 +31,7 @@ export default function StoreCardListItem({ store, onClick }: StoreCardListItemP
                 onClick={onClick}
                 className="flex items-center gap-4 flex-1 min-w-0"
             >
-                <div className="relative w-12 h-12 rounded-full overflow-hidden bg-accent border shrink-0">
+                <div className="relative w-12 h-12 lg:w-16 lg:h-16 rounded-full overflow-hidden bg-accent border shrink-0">
                     {store.profileImageUrl ? (
                         <Image
                             src={store.profileImageUrl}
