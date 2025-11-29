@@ -1,5 +1,4 @@
-import TypographyH4 from "@/components/typography/typography-h4";
-import SeeAllButton from "@/components/see-all-button";
+import SectionHeader from "@/components/section-header";
 import StoreCarousel from "@/components/top-stores/store-carousel";
 import { getStoresData } from "@/components/top-stores/store-service";
 
@@ -12,9 +11,8 @@ export default async function TopStores() {
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between items-center px-4 lg:px-0 lg:pl-2">
-        <TypographyH4>Lojas em destaque</TypographyH4>
-        <SeeAllButton href={"/community"} />
+      <div className="px-4 lg:px-0 lg:pl-2">
+        <SectionHeader title="Lojas em destaque" href="/community" />
       </div>
       <StoreCarousel stores={stores} />
     </div>

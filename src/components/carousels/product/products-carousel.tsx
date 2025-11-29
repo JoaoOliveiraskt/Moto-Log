@@ -3,8 +3,7 @@
 import { Carousel, CarouselNext, CarouselPrevious } from "../../ui/carousel";
 import { ProductsCarouselSkeleton } from "./skeleton/products-carousel-skeleton";
 import { Suspense } from "react";
-import SeeAllButton from "@/components/see-all-button";
-import TypographyH4 from "@/components/typography/typography-h4";
+import SectionHeader from "@/components/section-header";
 
 interface Props {
   children: React.ReactNode;
@@ -15,10 +14,8 @@ interface Props {
 export default function ProductsCarousel({ children, title, link }: Props) {
   return (
     <div className="space-y-4 lg:space-y-2">
-      <div className="flex justify-between items-center px-4 lg:px-0 lg:pl-2">
-        <TypographyH4>{title}</TypographyH4>
-
-        <SeeAllButton href={link} />
+      <div className="px-4 lg:px-0 lg:pl-2">
+        <SectionHeader title={title} href={link} />
       </div>
 
       <Carousel

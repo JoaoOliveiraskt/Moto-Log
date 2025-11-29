@@ -50,7 +50,7 @@ export default async function ProductsCarouselContent({
       {products.map((product: ProductCardProps) => (
         <CarouselItem
           key={product.id}
-          className="basis-[42%] sm:basis-[30%] md:basis-[24%] lg:basis-[18%] xl:basis-[15%] p-0 pl-1"
+          className="basis-[42%] sm:basis-[30%] md:basis-[24%] lg:basis-[18%] xl:basis-[15%] p-0"
         >
           {/* @ts-ignore */}
           <ProductCard product={product} />

@@ -51,7 +51,7 @@ export default function CategoryCarousel({ children }: CategoryCarouselProps) {
     <motion.div
       style={{ y }}
       className={cn(
-        "fixed top-9 pb-2 pt-4 lg:top-12 left-0 right-0 z-20  mx-auto flex justify-center bg-background"
+        "fixed top-9 pb-2 pt-5 lg:top-12 left-0 right-0 z-20  mx-auto flex justify-center bg-background"
       )}
     >
       <Carousel
