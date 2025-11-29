@@ -119,7 +119,7 @@ async function SearchResultsContent({ q, type }: { q: string; type?: string }) {
             {products.length > 0 && (!type || type === "products") && (
                 <section className="space-y-4">
                     {showTitles && <TypographyH4>Produtos</TypographyH4>}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 lg:gap-0">
                         {products.map((product) => (
                             <ProductCard key={product.id} product={product} />
                         ))}
