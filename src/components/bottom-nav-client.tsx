@@ -20,7 +20,7 @@ export default function BottomNavClient() {
     }
 
     return (
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-background z-50 h-fit py-3">
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-background z-50 h-fit py-1.5">
             <nav className="flex items-center justify-around">
                 <HomeButton />
 
