@@ -45,7 +45,9 @@ export default function RootLayout({
                   <Header />
                 </Suspense>
                 {children}
-                <BottomNav />
+                <Suspense>
+                  <BottomNav />
+                </Suspense>
                 <Toaster />
               </ThemeProvider>
             </CartProvider>
