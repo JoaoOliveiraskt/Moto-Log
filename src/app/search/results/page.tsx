@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { Metadata } from "next";
+import Link from "next/link";
 import { z } from "zod";
 import Container from "@/components/container";
 import TypographyP from "@/components/typography/typography-p";
@@ -64,15 +65,33 @@ async function SearchResultsContent({ q, type, sort }: { q: string; type?: strin
 
     const showTitles = !type; // Show titles only in "Tudo" view
 
+    // Limit results in "Tudo" tab
+    const LIMIT_IN_ALL_TAB = 6;
+    const displayedStores = !type ? stores.slice(0, LIMIT_IN_ALL_TAB) : stores;
+    const displayedProducts = !type ? products.slice(0, LIMIT_IN_ALL_TAB) : products;
+    const displayedCategories = !type ? categories.slice(0, LIMIT_IN_ALL_TAB) : categories;
+
     return (
         <div className="space-y-8">
             {/* Lojas */}
             {(!type || type === "stores") && (
                 <section className="space-y-4">
-                    {showTitles && stores.length > 0 && <TypographyH4>Lojas</TypographyH4>}
-                    {stores.length > 0 ? (
+                    {showTitles && stores.length > 0 && (
+                        !type && stores.length > LIMIT_IN_ALL_TAB ? (
+                            <Link
+                                href={`/search/results?q=${q}&type=stores`}
+                                className="flex items-center gap-2 group"
+                            >
+                                <TypographyH4>Lojas</TypographyH4>
+                                <Icon.chevronRight size={20} className="text-muted-foreground group-hover:text-foreground transition-colors" />
+                            </Link>
+                        ) : (
+                            <TypographyH4>Lojas</TypographyH4>
+                        )
+                    )}
+                    {displayedStores.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {stores.map((store) => (
+                            {displayedStores.map((store) => (
                                 <StoreCardListItem key={store.id} store={store} />
                             ))}
                         </div>
@@ -93,10 +112,22 @@ async function SearchResultsContent({ q, type, sort }: { q: string; type?: strin
             {/* Categorias */}
             {(!type || type === "categories") && (
                 <section className="space-y-4">
-                    {showTitles && categories.length > 0 && <TypographyH4>Categorias</TypographyH4>}
-                    {categories.length > 0 ? (
+                    {showTitles && categories.length > 0 && (
+                        !type && categories.length > LIMIT_IN_ALL_TAB ? (
+                            <Link
+                                href={`/search/results?q=${q}&type=categories`}
+                                className="flex items-center gap-2 group"
+                            >
+                                <TypographyH4>Categorias</TypographyH4>
+                                <Icon.chevronRight size={20} className="text-muted-foreground group-hover:text-foreground transition-colors" />
+                            </Link>
+                        ) : (
+                            <TypographyH4>Categorias</TypographyH4>
+                        )
+                    )}
+                    {displayedCategories.length > 0 ? (
                         <div className="flex flex-wrap gap-2">
-                            {categories.map((category) => (
+                            {displayedCategories.map((category) => (
                                 <CategoryItem
                                     key={category.id}
                                     category={category}
@@ -121,12 +152,24 @@ async function SearchResultsContent({ q, type, sort }: { q: string; type?: strin
             {(!type || type === "products") && (
                 <section className="space-y-4">
                     <div className="flex items-center justify-between">
-                        {showTitles && products.length > 0 && <TypographyH4>Produtos</TypographyH4>}
+                        {showTitles && products.length > 0 && (
+                            !type && products.length > LIMIT_IN_ALL_TAB ? (
+                                <Link
+                                    href={`/search/results?q=${q}&type=products`}
+                                    className="flex items-center gap-2 group"
+                                >
+                                    <TypographyH4>Produtos</TypographyH4>
+                                    <Icon.chevronRight size={20} className="text-muted-foreground group-hover:text-foreground transition-colors" />
+                                </Link>
+                            ) : (
+                                <TypographyH4>Produtos</TypographyH4>
+                            )
+                        )}
                         {products.length > 0 && <ProductSortDropdown />}
                     </div>
-                    {products.length > 0 ? (
+                    {displayedProducts.length > 0 ? (
                         <ProductList>
-                            {products.map((product) => (
+                            {displayedProducts.map((product) => (
                                 <ProductCard key={product.id} product={product} />
                             ))}
                         </ProductList>
