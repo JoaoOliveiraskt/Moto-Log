@@ -24,7 +24,7 @@ export default function SearchResultsSkeleton({ type }: SearchResultsSkeletonPro
                                     <Skeleton className="h-4 w-32" />
                                     <Skeleton className="h-3 w-24" />
                                 </div>
-                                <Skeleton className="w-20 h-8 rounded-md" />
+                                <Skeleton className="w-32 h-9 rounded-full" />
                             </div>
                         ))}
                     </div>
@@ -46,7 +46,10 @@ export default function SearchResultsSkeleton({ type }: SearchResultsSkeletonPro
             {/* Products Skeleton */}
             {showProducts && (
                 <section className="space-y-4">
-                    {showTitles && <Skeleton className="h-6 w-28" />}
+                    <div className="flex items-center justify-between">
+                        {showTitles && <Skeleton className="h-6 w-28" />}
+                        <Skeleton className="h-9 w-[180px] rounded-md" />
+                    </div>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                         {[...Array(10)].map((_, i) => (
                             <div key={i} className="space-y-3">

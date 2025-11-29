@@ -19,7 +19,7 @@ export default function SearchResultsTabs({ currentType, q }: SearchResultsTabsP
     ];
 
     return (
-        <div className="border-b border-border sticky top-12 lg:top-14 z-30 bg-background/80 backdrop-blur-md">
+        <div className="border-b border-border sticky top-12 lg:top-14 z-30 bg-background">
             <div className="flex justify-between md:justify-start px-4 gap-2">
                 {tabs.map((tab) => {
                     const isActive = currentType === tab.value;
