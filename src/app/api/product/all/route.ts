@@ -31,13 +31,19 @@ export async function GET(req: Request) {
         ...(bestSellers && { totalVendido: { gt: 0 } }),
       },
       orderBy: {
-        ...(bestSellers
-          ? { totalVendido: "desc" }
-          : withDiscount
-          ? { porcentagemDesconto: "desc" }
-          : sortBy === "recent"
-          ? { createdAt: "desc" }
-          : { createdAt: "desc" }),
+        ...(sortBy === "price_asc"
+          ? { preco: "asc" }
+          : sortBy === "price_desc"
+            ? { preco: "desc" }
+            : sortBy === "name_asc"
+              ? { nome: "asc" }
+              : sortBy === "recent"
+                ? { createdAt: "desc" }
+                : bestSellers
+                  ? { totalVendido: "desc" }
+                  : withDiscount
+                    ? { porcentagemDesconto: "desc" }
+                    : { createdAt: "desc" }),
       },
       ...(limit && { take: limit }),
     });

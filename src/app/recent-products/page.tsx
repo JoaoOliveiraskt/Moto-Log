@@ -1,38 +1,28 @@
-
 import Container from "@/components/container";
 import { getRecentProducts } from "@/app/actions/product/products";
 import ProductList from "@/components/product-list";
 import ProductCard from "@/components/product-card";
 import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/product-card-skeleton";
+import ProductSortDropdown from "@/components/product-sort-dropdown";
+import TypographyH4 from "@/components/typography/typography-h4";
 
-const skeletons = Array.from({ length: 10 }, (_, i) => i);
-
-async function RecentProductsContent() {
-  try {
-    const products = await getRecentProducts();
-
-    if (!Array.isArray(products) || products.length === 0) {
-      return (
-        <div className="w-full text-center py-4">
-          <p>Nenhum produto encontrado</p>
-        </div>
-      );
-    }
-
-    return products.map((product) => (
-      <ProductCard key={product.id} product={product} />
-    ));
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+interface RecentProductsPageProps {
+  searchParams: {
+    sort?: string;
+  };
 }
 
-export default function RecentProducts() {
-  return (
-    <Container className="space-y-4 mt-12 lg:mt-14">
+export default async function RecentProducts({ searchParams }: RecentProductsPageProps) {
+  const sort = searchParams.sort;
+  const products = await getRecentProducts(undefined, sort);
 
+  return (
+    <Container className="space-y-4 mt-14 lg:mt-20">
+      <div className="flex items-center justify-between mb-6">
+        <TypographyH4 className="hidden lg:flex">Mais Recentes</TypographyH4>
+        <ProductSortDropdown />
+      </div>
 
       <Suspense
         fallback={
@@ -44,7 +34,18 @@ export default function RecentProducts() {
         }
       >
         <ProductList>
-          <RecentProductsContent />
+          {products && products.length > 0 ? (
+            products.map((product) => (
+              <div key={product.id}>
+                {/* @ts-ignore */}
+                <ProductCard product={product} />
+              </div>
+            ))
+          ) : (
+            <div className="w-full text-center py-4">
+              <p>Nenhum produto encontrado</p>
+            </div>
+          )}
         </ProductList>
       </Suspense>
     </Container>

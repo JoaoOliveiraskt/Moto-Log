@@ -13,7 +13,7 @@ interface Props {
 
 export default function ProductsCarousel({ children, title, link }: Props) {
   return (
-    <div className="space-y-4 lg:space-y-2">
+    <div className="space-y-4">
       <div className="px-4 lg:px-0 lg:pl-2">
         <SectionHeader title={title} href={link} />
       </div>

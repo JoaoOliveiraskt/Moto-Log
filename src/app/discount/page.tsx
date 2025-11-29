@@ -1,72 +1,51 @@
 import Container from "@/components/container";
-
 import ProductList from "@/components/product-list";
 import ProductCard from "@/components/product-card";
-import type { Produto } from "prisma/generated/client";
 import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/product-card-skeleton";
+import { getDiscountProducts } from "@/app/actions/product/products";
+import ProductSortDropdown from "@/components/product-sort-dropdown";
+import TypographyH4 from "@/components/typography/typography-h4";
 
-export default async function DiscountPage() {
-  const url = process.env.NEXT_PUBLIC_API_URL;
+interface DiscountPageProps {
+  searchParams: {
+    sort?: string;
+  };
+}
 
-  if (!url) {
-    return <div>Erro ao carregar produtos</div>;
-  }
+export default async function DiscountPage({ searchParams }: DiscountPageProps) {
+  const sort = searchParams.sort;
+  const DiscountProducts = await getDiscountProducts(undefined, sort);
 
-  try {
-    const response = await fetch(`${url}/product/all?withDiscount=true`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  return (
+    <Container className="space-y-4 mt-14 lg:mt-20">
+      <div className="flex items-center justify-between mb-6">
+        <TypographyH4>Melhores Ofertas</TypographyH4>
+        <ProductSortDropdown />
+      </div>
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const DiscountProducts: Produto[] = await response.json();
-
-    if (!Array.isArray(DiscountProducts)) {
-      throw new Error("Dados recebidos não estão no formato esperado");
-    }
-
-    return (
-      <Container className="space-y-4 mt-12 lg:mt-14 lg:pt-2">
-
-        <Suspense
-          fallback={
-            <ProductList className="lg:gap-x-2">
-              {Array.from({ length: 10 }, (_, index) => (
-                <ProductCardSkeleton key={index} />
-              ))}
-            </ProductList>
-          }
-        >
-          <ProductList>
-            {DiscountProducts.length > 0 ? (
-              DiscountProducts.map((product) => (
-                <div key={product.id}>
-                  {/* @ts-ignore */}
-                  <ProductCard product={product} />
-                </div>
-              ))
-            ) : (
-              <div>Nenhum produto em desconto encontrado</div>
-            )}
+      <Suspense
+        fallback={
+          <ProductList className="lg:gap-x-2">
+            {Array.from({ length: 10 }, (_, index) => (
+              <ProductCardSkeleton key={index} />
+            ))}
           </ProductList>
-        </Suspense>
-      </Container>
-    );
-  } catch (error) {
-    return (
-      <Container className="space-y-8 mt-20">
-
-        <div>
-          Erro ao carregar produtos em desconto. Por favor, tente novamente mais
-          tarde.
-        </div>
-      </Container>
-    );
-  }
+        }
+      >
+        <ProductList>
+          {DiscountProducts.length > 0 ? (
+            DiscountProducts.map((product) => (
+              <div key={product.id}>
+                {/* @ts-ignore */}
+                <ProductCard product={product} />
+              </div>
+            ))
+          ) : (
+            <div>Nenhum produto em desconto encontrado</div>
+          )}
+        </ProductList>
+      </Suspense>
+    </Container>
+  );
 }

@@ -25,14 +25,14 @@ const fetchProducts = async (params: string): Promise<Product[]> => {
   }
 };
 
-export const getDiscountProducts = async (limit?: number) => {
-  return fetchProducts(`?withDiscount=true${limit ? `&limit=${limit}` : ""}`);
+export const getDiscountProducts = async (limit?: number, sort?: string) => {
+  return fetchProducts(`?withDiscount=true${limit ? `&limit=${limit}` : ""}${sort ? `&sortBy=${sort}` : ""}`);
 };
 
-export const getRecentProducts = async (limit?: number) => {
-  return fetchProducts(`?sortBy=recent${limit ? `&limit=${limit}` : ""}`);
+export const getRecentProducts = async (limit?: number, sort?: string) => {
+  return fetchProducts(`?sortBy=${sort || "recent"}${limit ? `&limit=${limit}` : ""}`);
 };
 
-export const getBestSellers = async (limit?: number) => {
-  return fetchProducts(`?bestSellers=true${limit ? `&limit=${limit}` : ""}`);
+export const getBestSellers = async (limit?: number, sort?: string) => {
+  return fetchProducts(`?bestSellers=true${limit ? `&limit=${limit}` : ""}${sort ? `&sortBy=${sort}` : ""}`);
 };
