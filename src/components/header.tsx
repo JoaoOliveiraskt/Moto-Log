@@ -24,7 +24,7 @@ export default function Header() {
   const searchTerm = searchParams.get("q") || "";
 
   return (
-    <header className="hidden lg:flex fixed top-0 z-40 h-14 w-screen xl:pr-4 bg-background/80 backdrop-blur-md border-b">
+    <header className="hidden lg:flex fixed top-0 z-40 h-14 w-screen xl:pr-4 bg-background border-b">
       <div className="h-full w-full relative mx-auto px-4 lg:px-6 flex items-center justify-between">
         <div className="hover:scale-105 active:scale-95 h-fit">
           <MotoLogLogo />
