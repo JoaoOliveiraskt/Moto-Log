@@ -41,21 +41,21 @@ export default function FavoriteProductButton({
     setIsLoginModalOpen(true);
   };
 
-  const fetchFavoriteStatus = async () => {
-    try {
-      const response = await fetch(`/api/favorite-product/check/${product.id}`);
-      if (response.ok) {
-        const data = await response.json();
-        setIsFavorited(data.isFavorited);
-      }
-    } catch (error) {
-      console.error("Erro ao verificar status do favorito:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchFavoriteStatus = async () => {
+      try {
+        const response = await fetch(`/api/favorite-product/check/${product.id}`);
+        if (response.ok) {
+          const data = await response.json();
+          setIsFavorited(data.isFavorited);
+        }
+      } catch (error) {
+        console.error("Erro ao verificar status do favorito:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchFavoriteStatus();
   }, [product.id]);
 

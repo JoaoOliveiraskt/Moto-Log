@@ -18,15 +18,25 @@ import Icon from "@/components/icons/icon-component";
 import { motion } from "framer-motion";
 import Container from "@/components/container";
 import Link from "next/link";
-import LoginDialog from "@/components/login-dialog";
 import { useAuth } from "@/hooks/useAuth";
-import StoreCreatedDialog from "./components/store-created-dialog";
 import { createStoreData } from "../api/create-store-api/route";
 import TextAreaWithCounter from "@/components/text-area-with-counter";
-import { ImageUpload } from "./components/image-upload";
 import EmptyState from "@/components/empty-state";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
+import dynamic from "next/dynamic";
+
+const LoginDialog = dynamic(() => import("@/components/login-dialog"), {
+  ssr: false,
+});
+const StoreCreatedDialog = dynamic(
+  () => import("./components/store-created-dialog"),
+  { ssr: false }
+);
+const ImageUpload = dynamic(
+  () => import("./components/image-upload").then((mod) => mod.ImageUpload),
+  { ssr: false }
+);
 
 const animation1 = {
   initial: { y: 10, opacity: 0 },
