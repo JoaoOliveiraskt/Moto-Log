@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 import Icon from "@/components/icons/icon-component";
 import { Input } from "@/components/ui/input";
@@ -25,9 +25,11 @@ interface SearchDialogProps {
 export default function SearchDialog({ children }: SearchDialogProps) {
     const router = useRouter();
     const { data, isLoading: isLoadingInitial } = useSearchInitialData();
+    const searchParams = useSearchParams();
+    const initialQuery = searchParams.get("q") || "";
     const [open, setOpen] = useState(false);
-    const [query, setQuery] = useState("");
-    const [isSearching, setIsSearching] = useState(false);
+    const [query, setQuery] = useState(initialQuery);
+    const [isSearching, setIsSearching] = useState(!!initialQuery);
     const [results, setResults] = useState({
         stores: [],
         products: [],
@@ -36,6 +38,21 @@ export default function SearchDialog({ children }: SearchDialogProps) {
     const [isLoading, setIsLoading] = useState(false);
     const debounceRef = useRef<NodeJS.Timeout | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+
+    // Update query when dialog opens to match URL
+    // Atualiza query e aciona a busca quando dialog abre
+    useEffect(() => {
+        if (open) {
+            const currentQ = searchParams.get("q") || "";
+            setQuery(currentQ);
+
+            // NOVO: Se há um termo na URL, aciona a busca imediatamente
+            if (currentQ) {
+                handleSearch(currentQ);
+            }
+        }
+        // OBS: searchParams deve estar nas dependências porque currentQ depende dele.
+    }, [open, searchParams]); // A função handleSearch é estável, não precisa estar aqui.
 
     // Atalho de teclado Ctrl+K / Cmd+K
     useEffect(() => {
@@ -99,8 +116,6 @@ export default function SearchDialog({ children }: SearchDialogProps) {
     };
 
     const handleCancel = () => {
-        setQuery("");
-        setIsSearching(false);
         setResults({ stores: [], products: [], categories: [] });
         setOpen(false);
     };

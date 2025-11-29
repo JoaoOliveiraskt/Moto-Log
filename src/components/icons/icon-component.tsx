@@ -53,6 +53,8 @@ import {
   Loader,
   Store,
   X,
+  LayoutGrid,
+  Box,
 } from "lucide-react";
 
 const Icon = {
@@ -109,6 +111,8 @@ const Icon = {
   personalization: WandSparkles,
   store: Store,
   x: X,
+  categories: LayoutGrid,
+  products: Box,
 };
 
 export default Icon;
