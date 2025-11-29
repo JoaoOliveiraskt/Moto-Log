@@ -1,4 +1,5 @@
 import { getServerSession } from "next-auth";
+export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from "next/server";
 import { authOptions } from "@/lib/auth";
 import { getUserStore } from "@/app/actions/store/get-user-store";

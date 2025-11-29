@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/header";
@@ -37,8 +38,12 @@ export default function RootLayout({
               >
                 {/* <BgGradient /> */}
                 <NextTopLoader />
-                <MobileHeader />
-                <Header />
+                <Suspense>
+                  <MobileHeader />
+                </Suspense>
+                <Suspense>
+                  <Header />
+                </Suspense>
                 {children}
                 <BottomNav />
                 <Toaster />

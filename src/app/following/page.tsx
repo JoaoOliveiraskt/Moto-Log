@@ -1,5 +1,7 @@
 import Container from "@/components/container";
 
+export const dynamic = 'force-dynamic';
+
 import ProductCard from "@/components/product-card";
 import ProductList from "@/components/product-list";
 import TypographyH4 from "@/components/typography/typography-h4";
