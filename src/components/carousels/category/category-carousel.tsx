@@ -6,11 +6,11 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "../../ui/carousel";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Suspense } from "react";
 import { CategoryCarouselSkeleton } from "./skeleton/category-carousel-skeleton";
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll, useMotionValue, useMotionValueEvent } from "framer-motion";
 interface CategoryCarouselProps {
   children: React.ReactNode;
 }
@@ -19,26 +19,24 @@ export default function CategoryCarousel({ children }: CategoryCarouselProps) {
   const [api, setApi] = useState<CarouselApi | null>(null);
   const [scrollPrev, setScrollPrev] = useState<boolean>(false);
   const [scrollNext, setScrollNext] = useState<boolean>(true);
-  const [scrollingUp, setScrollingUp] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+
   const { scrollY } = useScroll();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const y = useMotionValue(0);
+  const lastScrollY = useRef(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setScrollingUp(false);
-      } else {
-        setScrollingUp(true);
-      }
-      setLastScrollY(window.scrollY);
-    };
+  useMotionValueEvent(scrollY, "change", (current: number) => {
+    const diff = current - lastScrollY.current;
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastScrollY]);
+    // Se diff > 0 (descendo), queremos esconder (y vai para negativo)
+    // Se diff < 0 (subindo), queremos mostrar (y vai para 0)
+    const newY = y.get() - diff;
+
+    // Clamp entre -100 (escondido) e 0 (visível)
+    const clampedY = Math.min(Math.max(newY, -100), 0);
+
+    y.set(clampedY);
+    lastScrollY.current = current;
+  });
 
   useEffect(() => {
     if (!api) return;
@@ -51,11 +49,9 @@ export default function CategoryCarousel({ children }: CategoryCarouselProps) {
 
   return (
     <motion.div
-      initial={{ y: 0 }}
-      animate={{ y: scrollingUp ? 0 : -100 }}
-      transition={{ duration: 0.5 }}
+      style={{ y }}
       className={cn(
-        "fixed top-9 pb-2 pt-6 lg:top-12 left-0 right-0 z-20  mx-auto flex justify-center bg-background"
+        "fixed top-9 pb-2 pt-6 lg:top-12 left-0 right-0 z-20  mx-auto flex justify-center bg-background/80 backdrop-blur-md"
       )}
     >
       <Carousel
