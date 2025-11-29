@@ -7,6 +7,7 @@ import TypographyMuted from "@/components/typography/typography-muted";
 import TypographySmall from "@/components/typography/typography-small";
 import TypographyP from "@/components/typography/typography-p";
 import CategoryItem from "@/components/category-item";
+import StoreCardListItem from "@/components/store-card-list-item";
 
 interface SearchResult {
     stores: any[];
@@ -42,35 +43,13 @@ export default function SearchStateActive({ results, onSelect }: SearchStateActi
                     <TypographyMuted className="px-1 font-medium">
                         Lojas
                     </TypographyMuted>
-                    <div className="space-y-2">
+                    <div className="grid grid-cols-1 gap-2">
                         {results.stores.map((store) => (
-                            <Link
+                            <StoreCardListItem
                                 key={store.id}
-                                href={`/store/${store.id}`}
+                                store={store}
                                 onClick={onSelect}
-                                className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent transition-colors"
-                            >
-                                <div className="relative w-10 h-10 rounded-full overflow-hidden border bg-muted shrink-0">
-                                    {store.profileImageUrl ? (
-                                        <Image
-                                            src={store.profileImageUrl}
-                                            alt={store.nome}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    ) : (
-                                        <div className="w-full h-full flex items-center justify-center bg-accent">
-                                            <Icon.store className="text-muted-foreground" size={16} />
-                                        </div>
-                                    )}
-                                </div>
-                                <div className="flex flex-col gap-0.5">
-                                    <TypographyP className="font-medium truncate leading-none">{store.nome}</TypographyP>
-                                    <TypographyMuted className="text-xs">
-                                        {store.followers || 0} {store.followers > 1 ? "seguidores" : "seguidor"}
-                                    </TypographyMuted>
-                                </div>
-                            </Link>
+                            />
                         ))}
                     </div>
                 </section>
